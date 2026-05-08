@@ -1,5 +1,9 @@
 # Playfloor
 
+[The Dynamics of Learning](https://standardgalactic.github.io/playfloor/dynamics-of-learning.pdf)
+
+* [Audio Overviews](https://standardgalactic.github.io/playfloor/audio-overviews.html)
+
 A retro-inspired digital oscilloscope and signal visualizer built entirely in a single HTML file using the Web Audio API and HTML5 Canvas.
 
 Playfloor recreates the feel of vintage phosphor CRT instrumentation while supporting live microphone input, synthesized waveform generation, phosphor persistence effects, trigger synchronization, scanlines, glow rendering, and interactive diagnostic controls. The project combines old laboratory hardware aesthetics with modern browser-native audio processing and visualization.

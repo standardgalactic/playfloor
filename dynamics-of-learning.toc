@@ -1,0 +1,204 @@
+\contentsline {section}{\numberline {1}Introduction}{9}{section.1}%
+\contentsline {section}{\numberline {2}Definitions and Scope}{11}{section.2}%
+\contentsline {section}{\numberline {3}Historical Compression Paradigms}{15}{section.3}%
+\contentsline {section}{\numberline {4}Representational Capacity and Experiential Complexity}{18}{section.4}%
+\contentsline {section}{\numberline {5}The Three Regimes of Representational Capacity}{23}{section.5}%
+\contentsline {subsection}{\numberline {5.1}Constrained Capacity Regimes}{24}{subsection.5.1}%
+\contentsline {subsection}{\numberline {5.2}Sufficient Capacity Regimes}{25}{subsection.5.2}%
+\contentsline {subsection}{\numberline {5.3}Excess Capacity Regimes}{27}{subsection.5.3}%
+\contentsline {subsection}{\numberline {5.4}Representational Flexibility and High-Dimensional Separation}{28}{subsection.5.4}%
+\contentsline {subsection}{\numberline {5.5}The Emergence of Smoothness}{29}{subsection.5.5}%
+\contentsline {subsection}{\numberline {5.6}Regime Transitions and Dynamic Cognition}{30}{subsection.5.6}%
+\contentsline {section}{\numberline {6}Double Descent and Benign Overfitting}{31}{section.6}%
+\contentsline {subsection}{\numberline {6.1}The Classical Bias--Variance Paradigm}{32}{subsection.6.1}%
+\contentsline {subsection}{\numberline {6.2}The Interpolation Threshold}{33}{subsection.6.2}%
+\contentsline {subsection}{\numberline {6.3}The Second Descent}{34}{subsection.6.3}%
+\contentsline {subsection}{\numberline {6.4}Polynomial Interpolation and Geometric Intuition}{35}{subsection.6.4}%
+\contentsline {subsection}{\numberline {6.5}Benign Overfitting}{36}{subsection.6.5}%
+\contentsline {subsection}{\numberline {6.6}Minimum-Norm Interpolation}{37}{subsection.6.6}%
+\contentsline {subsection}{\numberline {6.7}Volume Effects and High-Dimensional Geometry}{38}{subsection.6.7}%
+\contentsline {subsection}{\numberline {6.8}The Philosophical Inversion}{39}{subsection.6.8}%
+\contentsline {section}{\numberline {7}Smooth Interpolation and Soft Inductive Bias}{40}{section.7}%
+\contentsline {subsection}{\numberline {7.1}Restriction Biases and Soft Biases}{40}{subsection.7.1}%
+\contentsline {subsection}{\numberline {7.2}Interpolation Geometry}{41}{subsection.7.2}%
+\contentsline {subsection}{\numberline {7.3}Minimum-Norm Dynamics}{42}{subsection.7.3}%
+\contentsline {subsection}{\numberline {7.4}Flat Minima and Volume Effects}{43}{subsection.7.4}%
+\contentsline {subsection}{\numberline {7.5}Localized Residual Accommodation}{44}{subsection.7.5}%
+\contentsline {subsection}{\numberline {7.6}Representational Expansion and Interference Avoidance}{45}{subsection.7.6}%
+\contentsline {subsection}{\numberline {7.7}The Emergence of Abstraction}{46}{subsection.7.7}%
+\contentsline {subsection}{\numberline {7.8}Biological Implications}{47}{subsection.7.8}%
+\contentsline {section}{\numberline {8}Human Empirical Signatures of Excess Capacity}{47}{section.8}%
+\contentsline {subsection}{\numberline {8.1}The Classical Compression Prediction}{48}{subsection.8.1}%
+\contentsline {subsection}{\numberline {8.2}Massive Recognition Fidelity}{49}{subsection.8.2}%
+\contentsline {subsection}{\numberline {8.3}Superficial Detail Sensitivity}{50}{subsection.8.3}%
+\contentsline {subsection}{\numberline {8.4}Prototype Effects and Emergent Smoothness}{51}{subsection.8.4}%
+\contentsline {subsection}{\numberline {8.5}Perceptual Deterioration and Regime Transition}{52}{subsection.8.5}%
+\contentsline {subsection}{\numberline {8.6}False Recognition and Representational Blurring}{53}{subsection.8.6}%
+\contentsline {subsection}{\numberline {8.7}Noise Sensitivity and Adversarial Fragility}{54}{subsection.8.7}%
+\contentsline {subsection}{\numberline {8.8}Developmental U-Shaped Learning}{55}{subsection.8.8}%
+\contentsline {subsection}{\numberline {8.9}Attention, Constraint, and Gradient Preservation}{56}{subsection.8.9}%
+\contentsline {subsection}{\numberline {8.10}Toward a Unified Empirical Interpretation}{57}{subsection.8.10}%
+\contentsline {section}{\numberline {9}Developmental Dynamics and Regime Transitions}{58}{section.9}%
+\contentsline {subsection}{\numberline {9.1}Development as Representational Rebalancing}{59}{subsection.9.1}%
+\contentsline {subsection}{\numberline {9.2}The Geometry of U-Shaped Development}{60}{subsection.9.2}%
+\contentsline {subsection}{\numberline {9.3}Constraint Emergence Through Experiential Saturation}{61}{subsection.9.3}%
+\contentsline {subsection}{\numberline {9.4}Play, Constraint, and Generative Differentiation}{62}{subsection.9.4}%
+\contentsline {subsection}{\numberline {9.5}The Development of Heuristics}{63}{subsection.9.5}%
+\contentsline {subsection}{\numberline {9.6}False Closure and Premature Compression}{64}{subsection.9.6}%
+\contentsline {subsection}{\numberline {9.7}Developmental Scaling Laws}{65}{subsection.9.7}%
+\contentsline {subsection}{\numberline {9.8}Educational Implications}{65}{subsection.9.8}%
+\contentsline {subsection}{\numberline {9.9}Toward Dynamic Cognitive Architecture}{66}{subsection.9.9}%
+\contentsline {section}{\numberline {10}Clinical Dissociations and Pathological Regime Dynamics}{67}{section.10}%
+\contentsline {subsection}{\numberline {10.1}Amnesia as Extreme Constraint}{68}{subsection.10.1}%
+\contentsline {subsection}{\numberline {10.2}Parkinsonian Rigidity and Near-Threshold Dynamics}{69}{subsection.10.2}%
+\contentsline {subsection}{\numberline {10.3}Autism and Hyper-Differentiated Representation}{70}{subsection.10.3}%
+\contentsline {subsection}{\numberline {10.4}Schizophrenia and Excessive Accommodation}{71}{subsection.10.4}%
+\contentsline {subsection}{\numberline {10.5}Obsessive Cognition and Recursive Constraint Locking}{72}{subsection.10.5}%
+\contentsline {subsection}{\numberline {10.6}Attention Disorders and Gradient Collapse}{72}{subsection.10.6}%
+\contentsline {subsection}{\numberline {10.7}Depression and Manifold Contraction}{73}{subsection.10.7}%
+\contentsline {subsection}{\numberline {10.8}Clinical Phenomena as Regime Distortion}{74}{subsection.10.8}%
+\contentsline {subsection}{\numberline {10.9}The One-System Hypothesis Revisited}{74}{subsection.10.9}%
+\contentsline {section}{\numberline {11}Scaling Laws, Artificial Intelligence, and Relative Capacity}{76}{section.11}%
+\contentsline {subsection}{\numberline {11.1}Artificial Neural Networks as Excess-Capacity Systems}{77}{subsection.11.1}%
+\contentsline {subsection}{\numberline {11.2}Memorization Without Collapse}{78}{subsection.11.2}%
+\contentsline {subsection}{\numberline {11.3}Large Language Models and Relative Constraint}{79}{subsection.11.3}%
+\contentsline {subsection}{\numberline {11.4}Transformers as Dynamic Interpolation Geometry}{80}{subsection.11.4}%
+\contentsline {subsection}{\numberline {11.5}Grokking and Delayed Manifold Organization}{81}{subsection.11.5}%
+\contentsline {subsection}{\numberline {11.6}Adversarial Examples and Catastrophic Accommodation}{82}{subsection.11.6}%
+\contentsline {subsection}{\numberline {11.7}Scaling Laws and Phase Transitions}{83}{subsection.11.7}%
+\contentsline {subsection}{\numberline {11.8}The Labyrinth Problem}{84}{subsection.11.8}%
+\contentsline {subsection}{\numberline {11.9}Toward Relational Artificial Intelligence}{85}{subsection.11.9}%
+\contentsline {section}{\numberline {12}Boundary Conditions, Failure Modes, and the Cost of Excess}{86}{section.12}%
+\contentsline {subsection}{\numberline {12.1}The Ecological Dependence of Learning Regimes}{87}{subsection.12.1}%
+\contentsline {subsection}{\numberline {12.2}Spurious Correlations and Local Overcommitment}{88}{subsection.12.2}%
+\contentsline {subsection}{\numberline {12.3}Noise Thresholds and Geometric Breakdown}{89}{subsection.12.3}%
+\contentsline {subsection}{\numberline {12.4}Adversarial Environments and Defensive Compression}{90}{subsection.12.4}%
+\contentsline {subsection}{\numberline {12.5}Energy Costs and Metabolic Constraints}{91}{subsection.12.5}%
+\contentsline {subsection}{\numberline {12.6}The Labyrinth Problem Revisited}{92}{subsection.12.6}%
+\contentsline {subsection}{\numberline {12.7}Premature Compression and Educational Failure}{93}{subsection.12.7}%
+\contentsline {subsection}{\numberline {12.8}Overabundance and Semantic Diffusion}{94}{subsection.12.8}%
+\contentsline {subsection}{\numberline {12.9}Constraint as Dynamic Guidance}{94}{subsection.12.9}%
+\contentsline {subsection}{\numberline {12.10}Toward a Regime Ecology of Cognition}{95}{subsection.12.10}%
+\contentsline {section}{\numberline {13}Toward a Unified Theory of Representational Abundance}{96}{section.13}%
+\contentsline {subsection}{\numberline {13.1}From Compression to Geometric Organization}{96}{subsection.13.1}%
+\contentsline {subsection}{\numberline {13.2}The Inversion of Memorization and Abstraction}{97}{subsection.13.2}%
+\contentsline {subsection}{\numberline {13.3}The Geometry of Meaning}{98}{subsection.13.3}%
+\contentsline {subsection}{\numberline {13.4}Constraint and Freedom}{99}{subsection.13.4}%
+\contentsline {subsection}{\numberline {13.5}Cognition as State-Space Navigation}{100}{subsection.13.5}%
+\contentsline {subsection}{\numberline {13.6}Intelligence as Interpolation Stability}{100}{subsection.13.6}%
+\contentsline {subsection}{\numberline {13.7}The Philosophical Consequences}{101}{subsection.13.7}%
+\contentsline {subsection}{\numberline {13.8}The End of the Economy of Thought}{102}{subsection.13.8}%
+\contentsline {subsection}{\numberline {13.9}Toward a Regime Theory of Mind}{102}{subsection.13.9}%
+\contentsline {subsection}{\numberline {13.10}The New Question}{103}{subsection.13.10}%
+\contentsline {section}{\numberline {14}Conclusion}{104}{section.14}%
+\contentsline {section}{\numberline {A}Geometric Formalization of Representational Capacity}{110}{appendix.A}%
+\contentsline {subsection}{\numberline {A.1}Representational Systems as Maps Between Manifolds}{110}{subsection.A.1}%
+\contentsline {subsection}{\numberline {A.2}Experiential Complexity}{111}{subsection.A.2}%
+\contentsline {subsection}{\numberline {A.3}Representational Flexibility}{112}{subsection.A.3}%
+\contentsline {subsection}{\numberline {A.4}The Operational Capacity Ratio}{113}{subsection.A.4}%
+\contentsline {subsection}{\numberline {A.5}Interpolation Geometry}{113}{subsection.A.5}%
+\contentsline {subsection}{\numberline {A.6}Localized Residual Accommodation Structures}{115}{subsection.A.6}%
+\contentsline {subsection}{\numberline {A.7}Global Smoothness Functionals}{116}{subsection.A.7}%
+\contentsline {subsection}{\numberline {A.8}Minimum-Norm Interpolation}{116}{subsection.A.8}%
+\contentsline {subsection}{\numberline {A.9}Volume Effects in High Dimensions}{117}{subsection.A.9}%
+\contentsline {subsection}{\numberline {A.10}Dynamic Regime Evolution}{117}{subsection.A.10}%
+\contentsline {subsection}{\numberline {A.11}Generalization Through Interpolation}{118}{subsection.A.11}%
+\contentsline {section}{\numberline {B}Statistical Learning Theory, Double Descent, and Benign Overfitting}{119}{appendix.B}%
+\contentsline {subsection}{\numberline {B.1}Classical Bias--Variance Theory}{119}{subsection.B.1}%
+\contentsline {subsection}{\numberline {B.2}The Interpolation Threshold}{121}{subsection.B.2}%
+\contentsline {subsection}{\numberline {B.3}The Double Descent Transition}{122}{subsection.B.3}%
+\contentsline {subsection}{\numberline {B.4}Linear Regression in the Overparameterized Regime}{123}{subsection.B.4}%
+\contentsline {subsection}{\numberline {B.5}Benign Overfitting}{124}{subsection.B.5}%
+\contentsline {subsection}{\numberline {B.6}Localized Accommodation Decomposition}{124}{subsection.B.6}%
+\contentsline {subsection}{\numberline {B.7}Kernel Regression and Infinite-Dimensional Interpolation}{125}{subsection.B.7}%
+\contentsline {subsection}{\numberline {B.8}Neural Tangent Kernels and Deep Networks}{126}{subsection.B.8}%
+\contentsline {subsection}{\numberline {B.9}Flat Minima and Volume Concentration}{126}{subsection.B.9}%
+\contentsline {subsection}{\numberline {B.10}Grokking as Delayed Curvature Minimization}{127}{subsection.B.10}%
+\contentsline {subsection}{\numberline {B.11}Noise Scaling and Generalization Bounds}{128}{subsection.B.11}%
+\contentsline {subsection}{\numberline {B.12}The Statistical Interpretation of Regime Dynamics}{129}{subsection.B.12}%
+\contentsline {section}{\numberline {C}Dynamical Systems, Information Geometry, and Manifold Flows}{130}{appendix.C}%
+\contentsline {subsection}{\numberline {C.1}Representational State-Spaces}{130}{subsection.C.1}%
+\contentsline {subsection}{\numberline {C.2}Learning as Gradient Flow}{130}{subsection.C.2}%
+\contentsline {subsection}{\numberline {C.3}Information Geometry and Fisher Metrics}{131}{subsection.C.3}%
+\contentsline {subsection}{\numberline {C.4}Geodesic Interpolation}{132}{subsection.C.4}%
+\contentsline {subsection}{\numberline {C.5}Curvature and Cognitive Rigidity}{133}{subsection.C.5}%
+\contentsline {subsection}{\numberline {C.6}Attractor Dynamics}{134}{subsection.C.6}%
+\contentsline {subsection}{\numberline {C.7}Entropy and Trajectory Volume}{134}{subsection.C.7}%
+\contentsline {subsection}{\numberline {C.8}Attention as Curvature Navigation}{135}{subsection.C.8}%
+\contentsline {subsection}{\numberline {C.9}Prediction Error and Manifold Correction}{136}{subsection.C.9}%
+\contentsline {subsection}{\numberline {C.10}Catastrophic Overfitting as Curvature Explosion}{137}{subsection.C.10}%
+\contentsline {subsection}{\numberline {C.11}Neural Collapse and Symmetry Formation}{137}{subsection.C.11}%
+\contentsline {subsection}{\numberline {C.12}Representational Phase Transitions}{138}{subsection.C.12}%
+\contentsline {subsection}{\numberline {C.13}The Dynamical Interpretation of Intelligence}{139}{subsection.C.13}%
+\contentsline {section}{\numberline {D}Functional Analysis, Kernel Operators, and Spectral Geometry}{140}{appendix.D}%
+\contentsline {subsection}{\numberline {D.1}Representational Operators}{140}{subsection.D.1}%
+\contentsline {subsection}{\numberline {D.2}Kernel Representations}{141}{subsection.D.2}%
+\contentsline {subsection}{\numberline {D.3}Localized Accommodation as Spectral Perturbation}{141}{subsection.D.3}%
+\contentsline {subsection}{\numberline {D.4}Spectral Bias}{142}{subsection.D.4}%
+\contentsline {subsection}{\numberline {D.5}Operator Smoothness and Sobolev Norms}{143}{subsection.D.5}%
+\contentsline {subsection}{\numberline {D.6}Mercer Decomposition and Cognitive Modes}{144}{subsection.D.6}%
+\contentsline {subsection}{\numberline {D.7}Compression as Spectral Truncation}{144}{subsection.D.7}%
+\contentsline {subsection}{\numberline {D.8}The Spectral Interpretation of Overfitting}{145}{subsection.D.8}%
+\contentsline {subsection}{\numberline {D.9}Attention as Operator Reweighting}{145}{subsection.D.9}%
+\contentsline {subsection}{\numberline {D.10}Memory as Operator Persistence}{146}{subsection.D.10}%
+\contentsline {subsection}{\numberline {D.11}The Spectral Geometry of Expertise}{147}{subsection.D.11}%
+\contentsline {subsection}{\numberline {D.12}Operator Phase Transitions}{147}{subsection.D.12}%
+\contentsline {subsection}{\numberline {D.13}Toward a Spectral Theory of Cognition}{148}{subsection.D.13}%
+\contentsline {section}{\numberline {E}Category Theory, Sheaf Structures, and Cognitive Gluing}{148}{appendix.E}%
+\contentsline {subsection}{\numberline {E.1}Representations as Morphisms}{149}{subsection.E.1}%
+\contentsline {subsection}{\numberline {E.2}Representational Functors}{149}{subsection.E.2}%
+\contentsline {subsection}{\numberline {E.3}Local Representational Neighborhoods}{150}{subsection.E.3}%
+\contentsline {subsection}{\numberline {E.4}Gluing Conditions}{151}{subsection.E.4}%
+\contentsline {subsection}{\numberline {E.5}Compression as Forced Globalization}{151}{subsection.E.5}%
+\contentsline {subsection}{\numberline {E.6}Localized Accommodation and Cohomological Obstruction}{152}{subsection.E.6}%
+\contentsline {subsection}{\numberline {E.7}Excess Capacity and Local Resolution}{152}{subsection.E.7}%
+\contentsline {subsection}{\numberline {E.8}Representational Fiber Bundles}{153}{subsection.E.8}%
+\contentsline {subsection}{\numberline {E.9}Attention as Local Trivialization}{154}{subsection.E.9}%
+\contentsline {subsection}{\numberline {E.10}Functorial Generalization}{154}{subsection.E.10}%
+\contentsline {subsection}{\numberline {E.11}Natural Transformations and Learning Dynamics}{155}{subsection.E.11}%
+\contentsline {subsection}{\numberline {E.12}Hierarchical Sheaf Structure}{155}{subsection.E.12}%
+\contentsline {subsection}{\numberline {E.13}The One-System Hypothesis Revisited Categorically}{156}{subsection.E.13}%
+\contentsline {subsection}{\numberline {E.14}Toward a Sheaf-Theoretic Theory of Cognition}{156}{subsection.E.14}%
+\contentsline {section}{\numberline {F}Thermodynamics, Entropy, and Representational Phase Space}{157}{appendix.F}%
+\contentsline {subsection}{\numberline {F.1}Representational Phase Spaces}{157}{subsection.F.1}%
+\contentsline {subsection}{\numberline {F.2}Representational Entropy}{158}{subsection.F.2}%
+\contentsline {subsection}{\numberline {F.3}Experiential Entropy and Capacity}{158}{subsection.F.3}%
+\contentsline {subsection}{\numberline {F.4}Free Energy and Predictive Stabilization}{159}{subsection.F.4}%
+\contentsline {subsection}{\numberline {F.5}Representational Temperature}{160}{subsection.F.5}%
+\contentsline {subsection}{\numberline {F.6}Phase Transitions Between Regimes}{161}{subsection.F.6}%
+\contentsline {subsection}{\numberline {F.7}Localized Accommodation as Entropic Isolation}{162}{subsection.F.7}%
+\contentsline {subsection}{\numberline {F.8}Catastrophic Overfitting as Entropic Propagation}{162}{subsection.F.8}%
+\contentsline {subsection}{\numberline {F.9}Memory as Entropy Stabilization}{163}{subsection.F.9}%
+\contentsline {subsection}{\numberline {F.10}Attention and Entropic Gradients}{163}{subsection.F.10}%
+\contentsline {subsection}{\numberline {F.11}Creativity and Metastable Exploration}{164}{subsection.F.11}%
+\contentsline {subsection}{\numberline {F.12}Biological Scaling and Energetic Tradeoffs}{164}{subsection.F.12}%
+\contentsline {subsection}{\numberline {F.13}Toward a Thermodynamic Theory of Cognition}{165}{subsection.F.13}%
+\contentsline {section}{\numberline {G}Variational Principles and the Euler--Lagrange Formulation of Representational Dynamics}{166}{appendix.G}%
+\contentsline {subsection}{\numberline {G.1}Representational Action Functionals}{166}{subsection.G.1}%
+\contentsline {subsection}{\numberline {G.2}The Representational Lagrangian}{167}{subsection.G.2}%
+\contentsline {subsection}{\numberline {G.3}Euler--Lagrange Dynamics}{167}{subsection.G.3}%
+\contentsline {subsection}{\numberline {G.4}Interpolation Constraints as Boundary Conditions}{168}{subsection.G.4}%
+\contentsline {subsection}{\numberline {G.5}Localized Accommodation Fields}{168}{subsection.G.5}%
+\contentsline {subsection}{\numberline {G.6}Representational Curvature Minimization}{169}{subsection.G.6}%
+\contentsline {subsection}{\numberline {G.7}Noether Symmetries and Cognitive Invariants}{170}{subsection.G.7}%
+\contentsline {subsection}{\numberline {G.8}Attention as Variational Focusing}{170}{subsection.G.8}%
+\contentsline {subsection}{\numberline {G.9}Learning as Geodesic Flow}{171}{subsection.G.9}%
+\contentsline {subsection}{\numberline {G.10}Constraint Potentials and Cognitive Rigidity}{171}{subsection.G.10}%
+\contentsline {subsection}{\numberline {G.11}Entropy-Regularized Action Principles}{172}{subsection.G.11}%
+\contentsline {subsection}{\numberline {G.12}Regime Dynamics as Bifurcation Theory}{172}{subsection.G.12}%
+\contentsline {subsection}{\numberline {G.13}The Variational Interpretation of Intelligence}{173}{subsection.G.13}%
+\contentsline {section}{\numberline {H}Topological Structure, Persistent Homology, and Cognitive Phase Geometry}{174}{appendix.H}%
+\contentsline {subsection}{\numberline {H.1}Representational Topology}{174}{subsection.H.1}%
+\contentsline {subsection}{\numberline {H.2}Representational Simplicial Complexes}{175}{subsection.H.2}%
+\contentsline {subsection}{\numberline {H.3}Homology Groups and Cognitive Structure}{176}{subsection.H.3}%
+\contentsline {subsection}{\numberline {H.4}Persistent Homology}{176}{subsection.H.4}%
+\contentsline {subsection}{\numberline {H.5}Compression as Topological Collapse}{177}{subsection.H.5}%
+\contentsline {subsection}{\numberline {H.6}Localized Accommodation and Topological Isolation}{178}{subsection.H.6}%
+\contentsline {subsection}{\numberline {H.7}The Topology of Generalization}{178}{subsection.H.7}%
+\contentsline {subsection}{\numberline {H.8}Topological Phase Transitions}{179}{subsection.H.8}%
+\contentsline {subsection}{\numberline {H.9}Cognitive Rigidity as Topological Freezing}{179}{subsection.H.9}%
+\contentsline {subsection}{\numberline {H.10}Semantic Diffusion as Topological Fragmentation}{180}{subsection.H.10}%
+\contentsline {subsection}{\numberline {H.11}Attention as Topological Navigation}{180}{subsection.H.11}%
+\contentsline {subsection}{\numberline {H.12}Memory and Topological Persistence}{181}{subsection.H.12}%
+\contentsline {subsection}{\numberline {H.13}The Topological Interpretation of Abstraction}{181}{subsection.H.13}%
+\contentsline {subsection}{\numberline {H.14}Toward a Topological Theory of Cognition}{182}{subsection.H.14}%

@@ -1,0 +1,2828 @@
+1
+00:00:00,000 --> 00:00:05,500
+So I want you to think about the last time you had a true, genuine aha moment.
+
+2
+00:00:05,740 --> 00:00:09,160
+Just like really put yourself back in that exact headspace.
+
+3
+00:00:09,320 --> 00:00:11,160
+Oh yeah, that's a great place to start.
+
+4
+00:00:11,300 --> 00:00:12,900
+Because you know the feeling I'm talking about, right?
+
+5
+00:00:13,040 --> 00:00:13,220
+Yeah.
+
+6
+00:00:13,260 --> 00:00:17,940
+You're wrestling with a problem at work, or maybe you're trying to fix something in your house.
+
+7
+00:00:18,140 --> 00:00:20,300
+Right, and you've just been staring at it for hours.
+
+8
+00:00:20,620 --> 00:00:21,060
+Exactly.
+
+9
+00:00:21,420 --> 00:00:22,280
+Maybe even weeks.
+
+10
+00:00:22,660 --> 00:00:25,080
+You were just completely stuck.
+
+11
+00:00:25,640 --> 00:00:28,060
+And then, out of nowhere, snap.
+
+12
+00:00:28,580 --> 00:00:31,100
+The answer is just suddenly there, right in front of you.
+
+13
+00:00:31,340 --> 00:00:34,720
+It's a very specific physical sensation, isn't it?
+
+14
+00:00:34,760 --> 00:00:36,860
+I mean, your heart rate actually changes when that happens.
+
+15
+00:00:37,040 --> 00:00:37,760
+It totally does.
+
+16
+00:00:38,080 --> 00:00:42,420
+But I want to focus on what that actually felt like structurally in your mind.
+
+17
+00:00:42,740 --> 00:00:45,760
+Like, did it feel like you just magically pulled a rabbit out of a hat?
+
+18
+00:00:45,860 --> 00:00:47,000
+Right, like pure invention.
+
+19
+00:00:47,000 --> 00:00:52,240
+Yeah, like a spark of pure, unprecedented invention that just materialized from the ether.
+
+20
+00:00:52,240 --> 00:01:03,440
+Or did it feel more like you were looking at a giant jigsaw puzzle, and that final missing piece just, you know, effortlessly, inevitably clicked right into the only place it could possibly go?
+
+21
+00:01:03,440 --> 00:01:07,700
+I think if we're being honest with ourselves, it's almost always the puzzle piece.
+
+22
+00:01:07,860 --> 00:01:08,100
+Yeah.
+
+23
+00:01:08,220 --> 00:01:13,020
+We love the myth of the lone genius pulling the rabbit out of the hat, you know?
+
+24
+00:01:13,260 --> 00:01:15,080
+It makes for a really great story.
+
+25
+00:01:15,540 --> 00:01:23,620
+But if you actually interrogate that sensation of discovery, the real feeling is one of recognition.
+
+26
+00:01:24,260 --> 00:01:24,700
+Recognition, yes.
+
+27
+00:01:24,780 --> 00:01:26,740
+It's not like, look what I just created.
+
+28
+00:01:26,900 --> 00:01:28,960
+It's a feeling of, oh, of course, it had to be that.
+
+29
+00:01:29,020 --> 00:01:29,920
+Why didn't I see it before?
+
+30
+00:01:29,920 --> 00:01:32,600
+Right, like it was there the whole time.
+
+31
+00:01:32,860 --> 00:01:45,120
+And that crucial distinction between inventing something out of thin air versus recognizing a pattern that was already structurally there, that is really the beating heart of our deep dive today.
+
+32
+00:01:45,180 --> 00:01:45,980
+It really is.
+
+33
+00:01:45,980 --> 00:01:49,820
+We're looking at this staggering synthesis by a researcher named Flixion.
+
+34
+00:01:50,120 --> 00:01:53,140
+And our mission today is, well, it's ambitious.
+
+35
+00:01:53,340 --> 00:01:53,820
+Very ambitious.
+
+36
+00:01:54,000 --> 00:01:57,240
+We are going to completely rewire how you think about ideas.
+
+37
+00:01:57,240 --> 00:01:59,440
+And I mean that literally, okay, let's unpack this.
+
+38
+00:01:59,760 --> 00:01:59,840
+Yeah.
+
+39
+00:01:59,840 --> 00:02:06,820
+Because if these sources are right, the entire universe, including our own minds, operates on the exact same hidden machinery.
+
+40
+00:02:07,260 --> 00:02:26,380
+We are going to draw a single unbroken line connecting how a child learns to play a new video game, to the fundamental physical laws of gravity and entropy, to whether or not super intelligent AI will destroy us, and finally, to the geometric shape of human consciousness itself.
+
+41
+00:02:26,380 --> 00:02:29,020
+It sounds kind of impossible when you list it out like that.
+
+42
+00:02:29,100 --> 00:02:31,500
+I mean, gravity, video games, consciousness.
+
+43
+00:02:31,840 --> 00:02:32,220
+It's a lot.
+
+44
+00:02:32,740 --> 00:02:38,800
+We are deeply conditioned to believe that those domains are governed by completely different rules, right?
+
+45
+00:02:38,860 --> 00:02:40,120
+You have physics over here.
+
+46
+00:02:40,220 --> 00:02:41,620
+You have psychology over there.
+
+47
+00:02:41,680 --> 00:02:44,820
+And computer science is just in a completely different building entirely.
+
+48
+00:02:44,980 --> 00:02:45,300
+Exactly.
+
+49
+00:02:45,300 --> 00:02:51,220
+But what we're going to explore is the argument that they are actually the exact same structural phenomenon.
+
+50
+00:02:51,580 --> 00:02:58,560
+The math, the underlying topology of how things hold together or break apart, it's completely invariant.
+
+51
+00:02:58,600 --> 00:03:00,880
+It just happens to be operating on different substrates.
+
+52
+00:03:01,020 --> 00:03:02,560
+It's wild to even consider.
+
+53
+00:03:02,560 --> 00:03:07,800
+But to get our heads around the topology of the entire universe, we really have to start small.
+
+54
+00:03:08,160 --> 00:03:19,520
+We have to look at the basic, everyday mechanics of how a human being actually learns anything, because it completely upends how we normally think about education.
+
+55
+00:03:20,040 --> 00:03:22,800
+We usually treat learning like, you know, filling up hard drive.
+
+56
+00:03:22,900 --> 00:03:23,100
+Right.
+
+57
+00:03:23,240 --> 00:03:24,740
+The rote memorization approach.
+
+58
+00:03:24,780 --> 00:03:24,960
+Yeah.
+
+59
+00:03:25,100 --> 00:03:26,680
+You memorize the capital of France.
+
+60
+00:03:26,760 --> 00:03:28,600
+You memorize the dates of the Civil War.
+
+61
+00:03:28,760 --> 00:03:30,840
+It's just a list of disconnected facts.
+
+62
+00:03:30,840 --> 00:03:33,140
+But genuine learning is entirely different.
+
+63
+00:03:33,400 --> 00:03:35,180
+It's not about memorization at all.
+
+64
+00:03:35,860 --> 00:03:40,640
+Learning is the process of noticing what stays the same across different situations.
+
+65
+00:03:41,080 --> 00:03:45,820
+It is the active collection of rules or constraints.
+
+66
+00:03:46,240 --> 00:03:47,300
+Let's ground this a bit.
+
+67
+00:03:47,560 --> 00:03:48,680
+Think about cooking.
+
+68
+00:03:49,220 --> 00:03:51,900
+Say you're making pancakes from scratch for the very first time.
+
+69
+00:03:52,040 --> 00:03:52,300
+Okay.
+
+70
+00:03:52,440 --> 00:03:55,900
+You probably don't know the exact chemical formula of gluten development.
+
+71
+00:03:56,020 --> 00:03:57,120
+I definitely don't.
+
+72
+00:03:57,180 --> 00:03:57,340
+Right.
+
+73
+00:03:57,400 --> 00:03:59,440
+Or the thermodynamics of a cast iron skillet.
+
+74
+00:03:59,820 --> 00:04:00,660
+And you don't need to.
+
+75
+00:04:00,660 --> 00:04:02,760
+You learn the rules through direct observation.
+
+76
+00:04:03,180 --> 00:04:04,400
+You add a little too much water.
+
+77
+00:04:04,540 --> 00:04:06,340
+The batter is runny and spreads too thin.
+
+78
+00:04:06,560 --> 00:04:07,800
+You add too much flour.
+
+79
+00:04:08,000 --> 00:04:09,560
+It turns into a dense hockey puck.
+
+80
+00:04:09,780 --> 00:04:10,220
+Exactly.
+
+81
+00:04:10,500 --> 00:04:15,480
+Or you turn the heat up too high and the outside burns before the inside even cooks.
+
+82
+00:04:15,880 --> 00:04:17,580
+You're just mapping the possibility space.
+
+83
+00:04:17,680 --> 00:04:18,200
+You are.
+
+84
+00:04:18,320 --> 00:04:20,440
+And over time, you aren't guessing anymore.
+
+85
+00:04:20,940 --> 00:04:24,500
+You aren't randomly throwing ingredients in a bowl hoping for a miracle.
+
+86
+00:04:24,500 --> 00:04:27,020
+You are applying a collected set of constraints.
+
+87
+00:04:27,020 --> 00:04:34,380
+You've internalized the rule that when ingredients combine under heat, only certain physical outcomes are actually possible.
+
+88
+00:04:34,380 --> 00:04:37,000
+We see this exact dynamic everywhere.
+
+89
+00:04:37,000 --> 00:04:39,540
+Like, think about a painter mixing colors.
+
+90
+00:04:40,040 --> 00:04:42,520
+They learn very quickly that blue and yellow make green.
+
+91
+00:04:42,660 --> 00:04:43,000
+Right.
+
+92
+00:04:43,000 --> 00:04:45,140
+The artist doesn't invent that combination.
+
+93
+00:04:45,620 --> 00:04:48,520
+They can't just force blue and yellow to make red through sheer willpower.
+
+94
+00:04:48,880 --> 00:04:51,980
+The physical rules of light and pigment dictate it.
+
+95
+00:04:52,660 --> 00:04:54,640
+The artist just maps that constraint.
+
+96
+00:04:55,100 --> 00:04:56,280
+Or take plumbing.
+
+97
+00:04:56,720 --> 00:04:57,760
+Water flows down.
+
+98
+00:04:57,960 --> 00:04:59,980
+It seeks the lowest point of pressure.
+
+99
+00:05:00,240 --> 00:05:00,440
+Right.
+
+100
+00:05:00,880 --> 00:05:02,220
+A plumber doesn't command the water.
+
+101
+00:05:02,620 --> 00:05:02,740
+You know.
+
+102
+00:05:03,080 --> 00:05:08,860
+The plumber learns the absolute boundaries of how water behaves and then builds a structure that respects those boundaries.
+
+103
+00:05:08,860 --> 00:05:11,480
+Even something as trivial as playing a new video game.
+
+104
+00:05:11,860 --> 00:05:12,400
+Oh, man.
+
+105
+00:05:12,720 --> 00:05:12,960
+Yeah.
+
+106
+00:05:13,160 --> 00:05:19,080
+I remember the first time I played one of those punishingly hard games where you just die over and over again.
+
+107
+00:05:19,220 --> 00:05:20,540
+At first, it's total chaos.
+
+108
+00:05:20,660 --> 00:05:21,480
+You're mashing buttons.
+
+109
+00:05:21,620 --> 00:05:22,820
+The enemies are swarming you.
+
+110
+00:05:22,920 --> 00:05:24,100
+It feels completely random.
+
+111
+00:05:24,280 --> 00:05:25,000
+Totally unfair.
+
+112
+00:05:25,320 --> 00:05:25,760
+Exactly.
+
+113
+00:05:26,180 --> 00:05:28,420
+But after an hour, you start to see the matrix.
+
+114
+00:05:29,000 --> 00:05:33,040
+You realize, wait, that enemy always swings twice and then pauses.
+
+115
+00:05:33,380 --> 00:05:34,520
+You collect a rule.
+
+116
+00:05:34,740 --> 00:05:35,040
+Right.
+
+117
+00:05:35,040 --> 00:05:39,900
+Then you realize, this button makes me dodge, but it takes half a second to trigger.
+
+118
+00:05:40,640 --> 00:05:41,260
+Another rule.
+
+119
+00:05:41,860 --> 00:05:46,820
+The game itself hasn't changed its code one bit, but your brain has mapped its constraints.
+
+120
+00:05:47,080 --> 00:05:49,400
+You stop thinking about your hands and you just start flowing.
+
+121
+00:05:49,700 --> 00:05:51,880
+Now, here is where it gets really interesting.
+
+122
+00:05:52,560 --> 00:05:56,540
+What happens when you start layering these distinct rules on top of each other?
+
+123
+00:05:57,180 --> 00:06:00,220
+Fliction refers to this mechanism as constraint convergence.
+
+124
+00:06:00,620 --> 00:06:01,040
+Yes.
+
+125
+00:06:01,360 --> 00:06:02,900
+An idea isn't a single thing.
+
+126
+00:06:02,900 --> 00:06:08,040
+An idea forms when multiple independent rules from different places suddenly stack up.
+
+127
+00:06:08,420 --> 00:06:09,960
+Each rule acts as a filter.
+
+128
+00:06:10,600 --> 00:06:15,100
+It shaves away impossibilities until only one inevitable answer remains standing.
+
+129
+00:06:15,460 --> 00:06:19,460
+Bef, do a live experiment to show exactly what constraint convergence feels like in the brain.
+
+130
+00:06:19,560 --> 00:06:20,400
+Okay, I love this.
+
+131
+00:06:20,460 --> 00:06:20,840
+Let's do it.
+
+132
+00:06:20,940 --> 00:06:23,220
+I'm going to think of a number, and I want you to guess it.
+
+133
+00:06:23,480 --> 00:06:23,740
+All right.
+
+134
+00:06:24,340 --> 00:06:27,660
+At this moment, the possibility space is literally infinite.
+
+135
+00:06:28,180 --> 00:06:29,560
+I have zero constraints.
+
+136
+00:06:29,740 --> 00:06:32,560
+Rule number one, the number is between one and a hundred.
+
+137
+00:06:32,900 --> 00:06:38,620
+Okay, so we just threw out infinity and narrowed the universe down to a hundred possibilities.
+
+138
+00:06:38,760 --> 00:06:41,260
+Rule number two, the number is an even number.
+
+139
+00:06:41,520 --> 00:06:42,000
+Got it.
+
+140
+00:06:42,420 --> 00:06:43,540
+The field is cut in half.
+
+141
+00:06:43,780 --> 00:06:45,160
+We're down to 50 possibilities.
+
+142
+00:06:45,300 --> 00:06:47,720
+Rule number three, it is greater than 90.
+
+143
+00:06:47,940 --> 00:06:49,900
+Okay, now the constraints are really tightening.
+
+144
+00:06:50,220 --> 00:06:52,680
+The number has to be even and between 90 and a hundred.
+
+145
+00:06:52,680 --> 00:06:58,680
+So the only surviving possibilities are 92, 94, 96, 98, and a hundred.
+
+146
+00:06:59,200 --> 00:07:00,040
+Five left.
+
+147
+00:07:00,540 --> 00:07:01,620
+And the final rule.
+
+148
+00:07:02,180 --> 00:07:03,160
+The number ends in four.
+
+149
+00:07:03,580 --> 00:07:04,740
+Then it has to be 94.
+
+150
+00:07:05,020 --> 00:07:05,340
+Yes.
+
+151
+00:07:05,840 --> 00:07:07,600
+Now, pause and look at what just happened.
+
+152
+00:07:07,940 --> 00:07:09,340
+You didn't invent the number 94.
+
+153
+00:07:09,540 --> 00:07:12,160
+I didn't hand you a piece of paper with 94 written on it.
+
+154
+00:07:12,220 --> 00:07:13,480
+The rules just stacked up.
+
+155
+00:07:13,600 --> 00:07:14,520
+The rules stacked up.
+
+156
+00:07:14,520 --> 00:07:19,560
+Every other number in the universe violated at least one of those rules and got filtered out.
+
+157
+00:07:19,880 --> 00:07:19,980
+Right.
+
+158
+00:07:20,240 --> 00:07:22,760
+94 was the only number that survived the gauntlet.
+
+159
+00:07:23,520 --> 00:07:27,480
+And that is why a brilliant idea feels like a surprise.
+
+160
+00:07:27,580 --> 00:07:29,140
+You can't always see all the rules at once.
+
+161
+00:07:29,260 --> 00:07:30,240
+They're scattered around.
+
+162
+00:07:30,460 --> 00:07:34,140
+You picked up one rule from a conversation you had like five years ago.
+
+163
+00:07:34,340 --> 00:07:36,820
+You picked up another from a mistake you made yesterday.
+
+164
+00:07:37,140 --> 00:07:37,620
+Exactly.
+
+165
+00:07:38,280 --> 00:07:43,420
+The moment of a great aha idea is the moment all those isolated constraints finally align in your head
+
+166
+00:07:43,420 --> 00:07:46,180
+and you see the shape they were pointing toward the whole time.
+
+167
+00:07:46,700 --> 00:07:48,020
+Discovery is recognition.
+
+168
+00:07:48,760 --> 00:07:50,700
+But there's a biological problem here, right?
+
+169
+00:07:51,340 --> 00:07:53,720
+Our brains have limited working memory.
+
+170
+00:07:53,960 --> 00:07:54,180
+Sure.
+
+171
+00:07:54,180 --> 00:08:00,820
+If we tried to hold every single rule, every granular detail of every experience we've ever had,
+
+172
+00:08:00,860 --> 00:08:01,940
+we would just freeze up.
+
+173
+00:08:02,000 --> 00:08:03,020
+The system would crash.
+
+174
+00:08:03,240 --> 00:08:05,080
+This is why we rely on abstraction.
+
+175
+00:08:05,080 --> 00:08:06,940
+Had I always struggled with that word, honestly.
+
+176
+00:08:07,120 --> 00:08:12,020
+People use abstract to mean something vague or overly academic, like abstract art,
+
+177
+00:08:12,200 --> 00:08:14,080
+something that doesn't look like anything real.
+
+178
+00:08:14,300 --> 00:08:14,660
+Right.
+
+179
+00:08:14,960 --> 00:08:18,940
+But in this framework, abstraction is something incredibly precise.
+
+180
+00:08:19,140 --> 00:08:19,800
+It is reduction.
+
+181
+00:08:20,440 --> 00:08:23,960
+Abstraction is the act of aggressively throwing away what doesn't matter
+
+182
+00:08:23,960 --> 00:08:26,340
+and keeping only the structural skeleton.
+
+183
+00:08:26,760 --> 00:08:29,080
+I like the suitcase analogy for this from the source.
+
+184
+00:08:29,560 --> 00:08:33,060
+A good idea is like a suitcase you pack for a trip.
+
+185
+00:08:33,060 --> 00:08:35,820
+If it's too heavy to carry, you pack too much.
+
+186
+00:08:35,980 --> 00:08:37,020
+You have to take things out.
+
+187
+00:08:37,100 --> 00:08:38,060
+That's a great way to put it.
+
+188
+00:08:38,140 --> 00:08:41,740
+Like if you have a map of a room and that map is so incredibly detailed
+
+189
+00:08:41,740 --> 00:08:46,600
+that it shows every single fiber of the carpet, every speck of dust on the window,
+
+190
+00:08:46,800 --> 00:08:51,400
+and the exact atomic structure of the doorknob, that map is completely useless.
+
+191
+00:08:51,660 --> 00:08:52,620
+You couldn't even read it.
+
+192
+00:08:52,860 --> 00:08:53,100
+Right.
+
+193
+00:08:53,520 --> 00:08:56,780
+A useful map throws almost everything away.
+
+194
+00:08:57,120 --> 00:09:00,480
+It keeps the walls, the door, and where you are standing.
+
+195
+00:09:00,480 --> 00:09:02,180
+It keeps the invariant shape.
+
+196
+00:09:02,840 --> 00:09:03,760
+Think about a triangle.
+
+197
+00:09:03,960 --> 00:09:05,120
+A triangle is a rule.
+
+198
+00:09:05,400 --> 00:09:07,420
+Three straight sides connecting three points.
+
+199
+00:09:07,820 --> 00:09:08,520
+That's the skeleton.
+
+200
+00:09:09,040 --> 00:09:09,140
+Yeah.
+
+201
+00:09:09,260 --> 00:09:11,620
+Now you can draw a triangle in the sand with a stick.
+
+202
+00:09:11,780 --> 00:09:15,240
+You can build one out of massive steel beams to hold up a bridge.
+
+203
+00:09:15,460 --> 00:09:17,080
+You can project one with lasers.
+
+204
+00:09:17,620 --> 00:09:20,300
+It can be two inches tall or it can be the size of a galaxy.
+
+205
+00:09:20,620 --> 00:09:20,840
+Wow.
+
+206
+00:09:21,240 --> 00:09:21,440
+Yeah.
+
+207
+00:09:21,520 --> 00:09:23,980
+The material substrate constantly changes.
+
+208
+00:09:24,460 --> 00:09:25,440
+The appearance changes.
+
+209
+00:09:25,440 --> 00:09:30,000
+But the skeletal rule, three straight sides, is completely invariant.
+
+210
+00:09:30,000 --> 00:09:35,620
+And when you finally strip an idea down to that bare skeleton, it becomes weaponized.
+
+211
+00:09:35,780 --> 00:09:36,600
+It becomes portable.
+
+212
+00:09:36,880 --> 00:09:41,660
+Because if you understand the deep structural rule of how a triangle distributes weight,
+
+213
+00:09:41,920 --> 00:09:44,460
+you aren't just memorizing a geometry fact.
+
+214
+00:09:44,500 --> 00:09:45,140
+No, you're not.
+
+215
+00:09:45,220 --> 00:09:50,980
+You can suddenly apply that rule to architecture, to physics, even to the power dynamics in a corporate meeting.
+
+216
+00:09:51,780 --> 00:09:56,540
+You've compressed a massive amount of reality into a tiny, powerful rule.
+
+217
+00:09:56,740 --> 00:09:59,820
+Which brings us to a really counterintuitive point about speed.
+
+218
+00:10:00,360 --> 00:10:05,560
+When you watch a master at work, like a Michelin star chef dicing an onion blindfolded,
+
+219
+00:10:05,640 --> 00:10:09,520
+or a grandmaster playing speed chess, it looks superhuman.
+
+220
+00:10:09,580 --> 00:10:10,360
+It looks like magic.
+
+221
+00:10:10,360 --> 00:10:15,800
+It looks like they are operating on pure magical intuition, just bypassing logic entirely.
+
+222
+00:10:16,240 --> 00:10:17,360
+But they aren't.
+
+223
+00:10:17,460 --> 00:10:20,400
+They are utilizing a process called aspect relegation.
+
+224
+00:10:20,400 --> 00:10:22,120
+Okay, this concept threw me for a loop.
+
+225
+00:10:22,780 --> 00:10:27,340
+Because the implication here is that fast answers are actually just slow answers that finished early.
+
+226
+00:10:27,940 --> 00:10:32,700
+Wait, so is my intuition basically just mental homework I did years ago and completely forgot I did?
+
+227
+00:10:32,880 --> 00:10:34,180
+That is precisely what it is.
+
+228
+00:10:34,200 --> 00:10:34,640
+That's insane.
+
+229
+00:10:34,660 --> 00:10:36,040
+Think back to the video game.
+
+230
+00:10:36,340 --> 00:10:42,980
+The first time you encounter a new enemy, your brain is doing slow, deliberate, conscious calculation.
+
+231
+00:10:43,620 --> 00:10:44,720
+Okay, it swings.
+
+232
+00:10:44,860 --> 00:10:46,180
+I need to press this button now.
+
+233
+00:10:46,260 --> 00:10:47,220
+Wait, no, a little later.
+
+234
+00:10:47,520 --> 00:10:47,740
+Right.
+
+235
+00:10:47,740 --> 00:10:50,060
+It takes massive cognitive effort.
+
+236
+00:10:50,400 --> 00:10:54,320
+You are calculating the constraint geometry in real time.
+
+237
+00:10:54,540 --> 00:10:56,120
+And failing mostly, in my case.
+
+238
+00:10:56,220 --> 00:10:57,400
+Yes, failing a lot.
+
+239
+00:10:57,700 --> 00:11:03,200
+But once your brain finally solves that specific equation and finds the sequence that keeps you alive,
+
+240
+00:11:03,620 --> 00:11:05,560
+it doesn't want to keep doing that heavy lifting.
+
+241
+00:11:05,960 --> 00:11:08,340
+The brain is incredibly metabolically expensive.
+
+242
+00:11:08,620 --> 00:11:09,960
+It loves to save energy.
+
+243
+00:11:10,120 --> 00:11:10,520
+Makes sense.
+
+244
+00:11:10,520 --> 00:11:17,400
+So it takes that entire complex constraint structure, compresses it into a latent executable format,
+
+245
+00:11:17,740 --> 00:11:19,180
+and relegates it to the background.
+
+246
+00:11:19,300 --> 00:11:20,060
+It zips the file.
+
+247
+00:11:20,120 --> 00:11:20,880
+It zips the file.
+
+248
+00:11:21,040 --> 00:11:21,200
+Yeah.
+
+249
+00:11:21,320 --> 00:11:25,860
+So the next time you face that exact same enemy, you don't calculate anything consciously.
+
+250
+00:11:26,240 --> 00:11:28,240
+The pre-computed answer just fires.
+
+251
+00:11:28,500 --> 00:11:32,700
+It feels like instinct, but it's actually deeply relegated historical computation.
+
+252
+00:11:32,700 --> 00:11:41,160
+Okay, so if I'm at work, and I'm sitting in a pitch meeting, and suddenly I get this intense gut feeling that the project being proposed is going to be a total disaster.
+
+253
+00:11:41,300 --> 00:11:41,460
+No.
+
+254
+00:11:41,460 --> 00:11:42,700
+I'm not being psychic.
+
+255
+00:11:43,200 --> 00:11:44,940
+I haven't tapped into the cosmic ether.
+
+256
+00:11:45,700 --> 00:11:52,200
+My brain has just instantly unpacked a zipped file of a dozen different historical constraints.
+
+257
+00:11:52,660 --> 00:11:57,420
+The tone of the manager's voice, the unrealistic budget, the vague timeline.
+
+258
+00:11:58,020 --> 00:12:03,720
+It matched them against a pre-computed pattern of previous failures and handed me the answer 94.
+
+259
+00:12:04,380 --> 00:12:05,020
+Exactly.
+
+260
+00:12:05,480 --> 00:12:08,680
+Your intuition is a historical constraint engine.
+
+261
+00:12:08,680 --> 00:12:18,260
+But this is also where we introduce the danger, because what happens when you rely on that pre-computed intuition, but the underlying rules of reality have slightly shifted.
+
+262
+00:12:18,380 --> 00:12:18,780
+Oh, man.
+
+263
+00:12:19,220 --> 00:12:21,200
+Okay, keeping with the video game thing.
+
+264
+00:12:21,500 --> 00:12:22,800
+The developers release a patch.
+
+265
+00:12:23,220 --> 00:12:24,100
+They update the game.
+
+266
+00:12:24,260 --> 00:12:27,320
+And they slightly change the timing of that enemy's attack.
+
+267
+00:12:27,440 --> 00:12:28,920
+It's just a fraction of a second faster.
+
+268
+00:12:29,020 --> 00:12:29,160
+Yep.
+
+269
+00:12:29,440 --> 00:12:31,080
+But I'm still playing based on my zipped file.
+
+270
+00:12:31,080 --> 00:12:35,580
+I keep pressing the dodge button based on my old intuition, and I just keep getting completely wrecked.
+
+271
+00:12:35,760 --> 00:12:36,820
+And how does that feel in the moment?
+
+272
+00:12:37,400 --> 00:12:37,840
+Infuriating.
+
+273
+00:12:37,840 --> 00:12:39,680
+You feel like the game is broken.
+
+274
+00:12:39,840 --> 00:12:41,180
+You feel like, I'm doing the right thing.
+
+275
+00:12:41,240 --> 00:12:41,920
+Why is it failing?
+
+276
+00:12:42,380 --> 00:12:44,580
+Because your map no longer matches the territory.
+
+277
+00:12:45,220 --> 00:12:46,040
+And this is crucial.
+
+278
+00:12:46,440 --> 00:12:51,000
+That uncomfortable, frustrating feeling of making a mistake is not a personal failure.
+
+279
+00:12:51,960 --> 00:12:57,020
+In this framework, an error is a highly specific mathematical signal.
+
+280
+00:12:57,300 --> 00:12:57,820
+Oh, wow.
+
+281
+00:12:57,900 --> 00:13:04,060
+It is your system screaming at you that a constraint has shifted, and you are trying to force a three-sided square into existence.
+
+282
+00:13:04,560 --> 00:13:06,400
+The mistake is new information.
+
+283
+00:13:06,400 --> 00:13:14,620
+It's an instruction to stop relying on the relegated aspect, slow back down to conscious processing, and deliberately remap the new geometry.
+
+284
+00:13:14,620 --> 00:13:22,960
+So if learning is just perfectly stacking these rules until the answer pops out, what actually happens when we pick up two rules that fundamentally contradict each other?
+
+285
+00:13:22,960 --> 00:13:28,020
+If our intuition is pre-computed, what does the brain do when the math suddenly doesn't add up?
+
+286
+00:13:28,020 --> 00:13:30,400
+Now we are stepping into the topology of failure.
+
+287
+00:13:30,940 --> 00:13:33,260
+Let's start with the classic impossible task.
+
+288
+00:13:33,680 --> 00:13:37,360
+Try right now in your head to visualize drawing a square with three sides.
+
+289
+00:13:37,480 --> 00:13:38,640
+You literally can't.
+
+290
+00:13:38,980 --> 00:13:42,080
+A square, by definition, is a rule that demands four sides.
+
+291
+00:13:42,500 --> 00:13:44,160
+A three-sided shape is a triangle.
+
+292
+00:13:44,700 --> 00:13:47,380
+If I try to force them together, my brain just stutters.
+
+293
+00:13:47,660 --> 00:13:50,060
+The two rules are in total violent contradiction.
+
+294
+00:13:50,060 --> 00:13:54,340
+And when two rules fight like that, you have discovered a crack in your idea.
+
+295
+00:13:54,960 --> 00:13:56,820
+We often try to ignore these cracks.
+
+296
+00:13:57,020 --> 00:14:00,320
+We try to rationalize them away because remapping is hard work.
+
+297
+00:14:00,440 --> 00:14:00,760
+It is.
+
+298
+00:14:01,180 --> 00:14:04,220
+But reality doesn't bend to accommodate a broken map.
+
+299
+00:14:04,560 --> 00:14:12,080
+If you hold a belief where two underlying constraints fundamentally contradict, the structure is objectively broken.
+
+300
+00:14:12,080 --> 00:14:15,780
+Fixing it doesn't mean you have to throw away everything you know.
+
+301
+00:14:16,000 --> 00:14:22,500
+It means you have to locate the exact, precise intersection where the constraints fail to overlap.
+
+302
+00:14:22,800 --> 00:14:28,120
+But the sources we're looking at take this concept of a crack and scale it up to an insane degree.
+
+303
+00:14:28,640 --> 00:14:33,020
+There's a paper in this collection called Obstruction Co-homology and the Topology of Failure.
+
+304
+00:14:33,120 --> 00:14:33,500
+Yes.
+
+305
+00:14:33,640 --> 00:14:37,180
+I'll be honest, the language in this specific paper gets punishingly dense.
+
+306
+00:14:37,300 --> 00:14:38,120
+Oh, it's brutal.
+
+307
+00:14:38,120 --> 00:14:44,220
+Yeah, but I wanted to try to navigate it because it introduces a concept called the No Independent Tier Principle.
+
+308
+00:14:44,380 --> 00:14:47,380
+It is arguably the most profound leap in the entire collection.
+
+309
+00:14:48,060 --> 00:14:54,340
+What this paper argues is that in any complex system, whether it's a belief system, a physical structure, or a computer program,
+
+310
+00:14:54,620 --> 00:14:57,200
+there are fundamentally only two ways it can fail.
+
+311
+00:14:57,460 --> 00:14:58,800
+Okay, lay them out for me.
+
+312
+00:14:58,920 --> 00:15:00,760
+The first is a differential failure.
+
+313
+00:15:01,600 --> 00:15:04,220
+Think of this as local, immediate, and forward-looking.
+
+314
+00:15:04,340 --> 00:15:08,020
+It is a catastrophic error at the very next step you try to take.
+
+315
+00:15:08,120 --> 00:15:08,500
+Got it.
+
+316
+00:15:08,940 --> 00:15:11,020
+The second is a recursive failure.
+
+317
+00:15:11,620 --> 00:15:13,320
+This is historical and global.
+
+318
+00:15:13,780 --> 00:15:20,480
+It is a failure that happens not because of what you just did right now, but because of an accumulated debt of past history.
+
+319
+00:15:21,120 --> 00:15:24,280
+Let me make sure I'm really grasping this because the math terminology is tricky.
+
+320
+00:15:24,700 --> 00:15:25,920
+Let's say I'm building a house.
+
+321
+00:15:26,100 --> 00:15:26,360
+Okay.
+
+322
+00:15:26,360 --> 00:15:36,520
+A differential failure would be me taking a massively heavy steel I-beam and trying to balance it on top of a flimsy, half-rotted wooden wall.
+
+323
+00:15:36,620 --> 00:15:36,760
+Right.
+
+324
+00:15:37,140 --> 00:15:40,760
+The moment I let go of the crane, the wall shatters and the beam crashes down.
+
+325
+00:15:41,100 --> 00:15:46,640
+The failure is immediate, local, and it happens right in front of my face at step number five of building.
+
+326
+00:15:46,640 --> 00:15:47,080
+Yes.
+
+327
+00:15:47,620 --> 00:15:51,160
+The local state cannot support the transition you were trying to make.
+
+328
+00:15:51,500 --> 00:15:52,260
+Differential failure.
+
+329
+00:15:52,360 --> 00:15:52,580
+Okay.
+
+330
+00:15:53,240 --> 00:15:56,800
+A recursive failure, on the other hand, would be if I somehow finish the house.
+
+331
+00:15:57,000 --> 00:15:57,900
+It looks fine today.
+
+332
+00:15:58,460 --> 00:16:03,380
+But three weeks ago when I poured the concrete foundation, I poured it slightly unevenly.
+
+333
+00:16:03,400 --> 00:16:04,340
+Oh, I see where you're going.
+
+334
+00:16:04,340 --> 00:16:07,920
+Over time, that tiny historical error accumulates.
+
+335
+00:16:08,480 --> 00:16:14,080
+The wood settles, the stress compounds, and eventually the entire house starts leaning until the roof collapses.
+
+336
+00:16:14,720 --> 00:16:18,240
+So, immediate wall snap versus historical leaning foundation.
+
+337
+00:16:18,440 --> 00:16:21,720
+That is a perfect physical illustration of the two categories.
+
+338
+00:16:21,940 --> 00:16:24,160
+But hold on, because this is where the paper lost me.
+
+339
+00:16:24,460 --> 00:16:29,380
+It starts talking about something called Bars' 2026 non-abelian cats formula.
+
+340
+00:16:29,480 --> 00:16:30,160
+A mouthful.
+
+341
+00:16:30,160 --> 00:16:30,520
+Seriously.
+
+342
+00:16:30,520 --> 00:16:34,060
+And this thing called the canonical comparison map phi.
+
+343
+00:16:35,140 --> 00:16:42,140
+And if I'm reading the conclusion right, it seems to be arguing that the snapped wall and the uneven foundation are the exact same error.
+
+344
+00:16:42,340 --> 00:16:42,900
+They are.
+
+345
+00:16:43,140 --> 00:16:44,180
+You just lost me.
+
+346
+00:16:44,900 --> 00:16:50,980
+How can a heavy bean falling today be the exact same mistake as wet concrete poured three weeks ago?
+
+347
+00:16:51,280 --> 00:16:56,380
+I know it sounds absurd when applied to physical construction materials, but we have to look at the geometry of the information.
+
+348
+00:16:56,380 --> 00:17:06,040
+What the cat's formula proves is that these two categories of failure, local differential and historical recursive, are not independent events in the topology of a system.
+
+349
+00:17:06,200 --> 00:17:07,380
+Okay, what does that actually mean?
+
+350
+00:17:07,640 --> 00:17:17,740
+It means that if you take the immediate local failure, the snapped wall, and you project it backward through the entire history of the system's states using this comparison map phi,
+
+351
+00:17:17,740 --> 00:17:23,620
+you will find that the local failure is mathematically identical to the historical failure.
+
+352
+00:17:24,000 --> 00:17:24,780
+Wait, really?
+
+353
+00:17:24,960 --> 00:17:25,280
+Yes.
+
+354
+00:17:25,780 --> 00:17:27,880
+The structural flaw is singular.
+
+355
+00:17:28,120 --> 00:17:30,820
+You are just viewing it from different coordinates in time.
+
+356
+00:17:31,080 --> 00:17:32,260
+I'm trying to visualize this.
+
+357
+00:17:32,640 --> 00:17:38,320
+So the error is like a single hole punched through a folded up piece of paper.
+
+358
+00:17:38,320 --> 00:17:39,520
+That's a great way to look at it.
+
+359
+00:17:39,640 --> 00:17:44,580
+If you unfold the paper, it looks like there's a hole on the top left and a completely separate hole on the bottom right.
+
+360
+00:17:44,720 --> 00:17:45,380
+One is differential.
+
+361
+00:17:45,620 --> 00:17:46,480
+One is recursive.
+
+362
+00:17:46,640 --> 00:17:49,020
+They look like two different problems in two different places.
+
+363
+00:17:49,300 --> 00:17:49,820
+Right, right.
+
+364
+00:17:49,860 --> 00:17:58,180
+But when you fold the system back up into its true topological shape, you see that the needle only pierce the paper in one single place.
+
+365
+00:17:58,520 --> 00:18:00,100
+There is no independent tear.
+
+366
+00:18:00,460 --> 00:18:01,140
+Okay, wow.
+
+367
+00:18:01,520 --> 00:18:06,000
+So a system that is locally valid must also be historically valid.
+
+368
+00:18:06,000 --> 00:18:10,740
+If there is a tear in the fabric of an idea, you're going to hit it eventually,
+
+369
+00:18:10,960 --> 00:18:14,140
+whether you're looking forward at your next step or looking backward at your history.
+
+370
+00:18:14,880 --> 00:18:17,080
+The failure isn't random bad luck.
+
+371
+00:18:17,320 --> 00:18:19,920
+It lives in a very specific mathematical space.
+
+372
+00:18:20,520 --> 00:18:21,520
+Failure has a shape.
+
+373
+00:18:22,040 --> 00:18:27,800
+And if you map where a system tears differentially, you can predict exactly where it will tear recursively.
+
+374
+00:18:28,140 --> 00:18:29,820
+They are hopelessly bound together.
+
+375
+00:18:29,820 --> 00:18:36,820
+I know anyone listening to this who has taken Physics 101 or even reads popular science is probably screaming at their device right now.
+
+376
+00:18:36,860 --> 00:18:37,480
+Oh, absolutely.
+
+377
+00:18:37,800 --> 00:18:43,720
+Because if this single obstruction engine really applies to everything, what happens when you apply it to actual space-time?
+
+378
+00:18:44,300 --> 00:18:47,900
+We are taught that the universe is governed by different irreconcilable forces.
+
+379
+00:18:48,060 --> 00:18:53,200
+You have gravity pulling things together and entropy making everything messy and chaotic over time.
+
+380
+00:18:53,200 --> 00:18:53,680
+Right.
+
+381
+00:18:53,840 --> 00:18:57,800
+The holy grail of modern physics is trying to unite these disparate domains.
+
+382
+00:18:58,380 --> 00:19:04,900
+But this framework, specifically a model called RSVP, which stands for Relativistic Stalor Vector Plenum,
+
+383
+00:19:05,280 --> 00:19:08,440
+takes the no independent tear principle and scales it up to the cosmos.
+
+384
+00:19:08,960 --> 00:19:11,900
+And this is the part where my brain practically short-circuited.
+
+385
+00:19:12,860 --> 00:19:18,520
+Because RSVP makes the claim that gravity and entropy aren't two different forces that just happen to coexist in the universe.
+
+386
+00:19:18,520 --> 00:19:22,280
+It argues they're the exact same topological obstruction.
+
+387
+00:19:22,680 --> 00:19:24,500
+Let's map it exactly like your house analogy.
+
+388
+00:19:25,080 --> 00:19:29,360
+In the RSVP framework, gravity is the differential obstruction.
+
+389
+00:19:29,640 --> 00:19:31,020
+The immediate snapped wall.
+
+390
+00:19:31,120 --> 00:19:31,420
+Yes.
+
+391
+00:19:31,920 --> 00:19:35,360
+Gravity, as Einstein taught us, is the local curvature of space-time.
+
+392
+00:19:35,740 --> 00:19:41,420
+It is the immediate step-by-step failure of space to extend smoothly in a straight line.
+
+393
+00:19:41,860 --> 00:19:46,500
+When you take a step near a massive star, space curves under you immediately.
+
+394
+00:19:46,840 --> 00:19:47,380
+It's local.
+
+395
+00:19:47,380 --> 00:19:48,400
+Okay, and entropy?
+
+396
+00:19:48,920 --> 00:19:50,480
+Entropy is the recursive obstruction.
+
+397
+00:19:51,180 --> 00:19:56,280
+It is the accumulated historical failure of a system to close back in on itself under repeated action.
+
+398
+00:19:56,620 --> 00:19:58,020
+It is the uneven foundation.
+
+399
+00:19:58,180 --> 00:20:02,280
+It's the reason why a shattered teacup never spontaneously reassembles itself.
+
+400
+00:20:02,500 --> 00:20:04,780
+It's the irreversible history of the universe.
+
+401
+00:20:04,960 --> 00:20:06,980
+So gravity is the immediate spatial curve.
+
+402
+00:20:07,360 --> 00:20:09,200
+Entropy is the historical timeline curve.
+
+403
+00:20:09,360 --> 00:20:11,120
+And RSVP says they're the same thing.
+
+404
+00:20:11,200 --> 00:20:12,860
+Explain this to me like I'm five.
+
+405
+00:20:12,860 --> 00:20:18,080
+Because physicists have spent a century trying to unite gravity and quantum mechanics.
+
+406
+00:20:18,320 --> 00:20:20,820
+And this is just stating it as a geometric given.
+
+407
+00:20:20,820 --> 00:20:24,860
+The paper introduces what it calls the linkage equation.
+
+408
+00:20:25,720 --> 00:20:28,900
+And the math reduces to a terrifyingly simple sentence.
+
+409
+00:20:29,800 --> 00:20:32,200
+Entropy is the pullback of gravity.
+
+410
+00:20:32,560 --> 00:20:32,980
+The pullback.
+
+411
+00:20:32,980 --> 00:20:33,460
+Yes.
+
+412
+00:20:33,680 --> 00:20:39,020
+It means they are dual manifestations of a single admissibility defect in the universe.
+
+413
+00:20:39,520 --> 00:20:42,240
+Think of the folded paper with the hole punched in it again.
+
+414
+00:20:42,740 --> 00:20:44,920
+Let's say the paper is the fabric of space time.
+
+415
+00:20:45,500 --> 00:20:47,320
+The hole itself is an obstruction.
+
+416
+00:20:47,580 --> 00:20:49,160
+A place where the rules break down.
+
+417
+00:20:49,160 --> 00:20:53,360
+If you look at that hole through the coordinate system of space, it looks like local curvature.
+
+418
+00:20:53,520 --> 00:20:54,120
+It looks like gravity.
+
+419
+00:20:54,260 --> 00:20:55,020
+Things fall into it.
+
+420
+00:20:55,220 --> 00:20:59,080
+But if you shift your perspective and look at that exact same hole through the coordinate
+
+421
+00:20:59,080 --> 00:21:02,560
+system of time, it looks like historical irreversibility.
+
+422
+00:21:02,820 --> 00:21:03,660
+It looks like entropy.
+
+423
+00:21:04,060 --> 00:21:04,200
+Wow.
+
+424
+00:21:04,620 --> 00:21:09,060
+A system that is locally curved must, by definition, be historically irreversible.
+
+425
+00:21:09,440 --> 00:21:14,560
+And any system that has accumulated entropy must be inhabiting a curved region of field space.
+
+426
+00:21:14,960 --> 00:21:16,940
+They are the exact same tear in the fabric.
+
+427
+00:21:16,940 --> 00:21:23,720
+Which gives a totally terrifying new definition to a black hole or a singularity.
+
+428
+00:21:23,980 --> 00:21:27,360
+Because we usually just say a singularity is where math breaks down or gravity becomes
+
+429
+00:21:27,360 --> 00:21:27,740
+infinite.
+
+430
+00:21:28,280 --> 00:21:34,280
+But under this framework, a singularity is literally the spot where that comparison map,
+
+431
+00:21:34,380 --> 00:21:38,360
+the bridge between the immediate present and the accumulated history, shatters.
+
+432
+00:21:38,540 --> 00:21:38,940
+Exactly.
+
+433
+00:21:39,420 --> 00:21:41,680
+The comparison map phi fails to resolve.
+
+434
+00:21:41,680 --> 00:21:47,580
+It's a region where the defect diverges so sharply that no valid physical state can even exist.
+
+435
+00:21:48,180 --> 00:21:52,260
+Space and time completely untethered from each other because their underlying unifying
+
+436
+00:21:52,260 --> 00:21:53,880
+geometry has ripped.
+
+437
+00:21:54,140 --> 00:21:54,580
+Okay.
+
+438
+00:21:54,760 --> 00:21:55,560
+I need to take a breath.
+
+439
+00:21:56,040 --> 00:22:00,000
+We just unified gravity and entropy using the same math that explains why I can't draw
+
+440
+00:22:00,000 --> 00:22:00,920
+a three-sided square.
+
+441
+00:22:01,200 --> 00:22:02,160
+That's a lot to take in.
+
+442
+00:22:02,160 --> 00:22:03,900
+But the deep dive doesn't stop at black holes.
+
+443
+00:22:04,100 --> 00:22:07,580
+It takes this exact same unified math and points it at computer code.
+
+444
+00:22:07,940 --> 00:22:10,560
+And frankly, this might be the most practical part of the whole theory.
+
+445
+00:22:10,800 --> 00:22:11,220
+Yes.
+
+446
+00:22:11,360 --> 00:22:14,860
+The framework transitions into a computational model known as fear pop.
+
+447
+00:22:15,400 --> 00:22:19,580
+And it completely redefines how we think about software bugs and system crashes.
+
+448
+00:22:19,940 --> 00:22:22,560
+Normally, we think of software checking for errors locally.
+
+449
+00:22:22,560 --> 00:22:27,020
+Like, I type my password in and the code runs a quick differential check.
+
+450
+00:22:27,560 --> 00:22:30,360
+Does this string of text match the stored string?
+
+451
+00:22:30,920 --> 00:22:33,300
+Or is this variable an integer?
+
+452
+00:22:33,800 --> 00:22:35,880
+It's just looking at the immediate next step.
+
+453
+00:22:36,020 --> 00:22:38,400
+Traditional computing is almost entirely differential.
+
+454
+00:22:38,840 --> 00:22:42,240
+It asks, is the move I'm about to make legal right now?
+
+455
+00:22:42,840 --> 00:22:46,200
+But sphere pop introduces this concept of the admissibility log,
+
+456
+00:22:46,500 --> 00:22:48,800
+or what we'd normally just call an event log.
+
+457
+00:22:49,060 --> 00:22:52,140
+And my understanding of an event log was always that it's a receipt.
+
+458
+00:22:52,140 --> 00:22:53,320
+A static list?
+
+459
+00:22:53,520 --> 00:22:56,560
+Yeah, it's a passive text file sitting on a server somewhere that just says,
+
+460
+00:22:57,000 --> 00:23:00,220
+at 2.04 p.m., the user clicked add to cart.
+
+461
+00:23:00,560 --> 00:23:02,520
+Just a historical record of what happened.
+
+462
+00:23:02,640 --> 00:23:05,980
+And this is where sphere pop introduces a radical paradigm shift.
+
+463
+00:23:06,500 --> 00:23:08,640
+In this model, the event log is not passive.
+
+464
+00:23:08,920 --> 00:23:09,700
+It is not a receipt.
+
+465
+00:23:10,020 --> 00:23:13,420
+It is an active filtration constraint on the state space of the program.
+
+466
+00:23:13,580 --> 00:23:15,020
+I love the maze analogy for this.
+
+467
+00:23:15,200 --> 00:23:20,440
+Instead of a receipt, think of the event log as the literal walls of a maze you are running through.
+
+468
+00:23:20,620 --> 00:23:21,120
+That's good.
+
+469
+00:23:21,120 --> 00:23:25,020
+Every single time you make a choice, turn left, turn right, click this, download that,
+
+470
+00:23:25,240 --> 00:23:27,960
+a massive spiel wall slams down behind you.
+
+471
+00:23:28,300 --> 00:23:34,020
+Your history is physically, actively forcing where you are allowed to go next.
+
+472
+00:23:34,300 --> 00:23:35,760
+That is a perfect visualization.
+
+473
+00:23:36,360 --> 00:23:39,640
+The history of the computation becomes a geometric constraint on its future.
+
+474
+00:23:40,020 --> 00:23:44,060
+You cannot revisit a state that your history has structurally blocked off.
+
+475
+00:23:44,060 --> 00:23:50,300
+So what happens if a program tries to make a move that looks totally fine locally, like typing the correct password,
+
+476
+00:23:50,900 --> 00:23:55,220
+but that action fundamentally violates the walls of the maze that have dropped behind it?
+
+477
+00:23:55,220 --> 00:23:58,780
+That creates what the architecture calls a non-abelian tear.
+
+478
+00:23:59,440 --> 00:24:00,540
+There's that term again.
+
+479
+00:24:00,540 --> 00:24:02,180
+Yes, and it's used very deliberately.
+
+480
+00:24:02,860 --> 00:24:08,860
+A non-abelian tear in code is the exact mathematical equivalent of a physical singularity in space.
+
+481
+00:24:09,300 --> 00:24:11,200
+It is a computational black hole.
+
+482
+00:24:11,280 --> 00:24:12,640
+So it's not just a standard glitch.
+
+483
+00:24:12,800 --> 00:24:13,220
+No, no.
+
+484
+00:24:13,460 --> 00:24:15,420
+A standard glitch is when a variable is wrong.
+
+485
+00:24:15,640 --> 00:24:20,220
+A non-abelian tear is when the local state and the historical state completely detach from each other.
+
+486
+00:24:20,380 --> 00:24:20,540
+No.
+
+487
+00:24:20,540 --> 00:24:27,060
+The program might report that everything is fine locally, but its position in the historical event log is completely incoherent.
+
+488
+00:24:27,720 --> 00:24:29,420
+The comparison map 5 fails.
+
+489
+00:24:30,120 --> 00:24:31,900
+The software hasn't just produced an error.
+
+490
+00:24:32,260 --> 00:24:37,180
+It has reached a topological dead end where no admissible future state exists.
+
+491
+00:24:37,320 --> 00:24:42,800
+It freezes or it crashes because there is literally no next frame of reality for it to move into.
+
+492
+00:24:42,800 --> 00:24:50,640
+So true stability, whether we are talking about the curvature of space-time preventing a black hole or the code running my bank's mobile app.
+
+493
+00:24:51,420 --> 00:24:54,460
+Stability isn't about building a wall so strong it never fails.
+
+494
+00:24:55,040 --> 00:25:02,020
+Stability is about a strict, perfect harmony between local, immediate actions and historical, recursive constraints.
+
+495
+00:25:02,300 --> 00:25:04,820
+Stability is topological agreement, period.
+
+496
+00:25:05,120 --> 00:25:06,820
+Which brings us to the elephant in the room.
+
+497
+00:25:06,820 --> 00:25:15,180
+Because if stability requires this delicate harmony between what a system wants to do locally and the historical maze it's trapped in,
+
+498
+00:25:15,500 --> 00:25:19,020
+what does that mean for the most terrifying technological leap of our lifetime?
+
+499
+00:25:19,220 --> 00:25:20,820
+I'm talking about artificial intelligence.
+
+500
+00:25:21,100 --> 00:25:28,060
+The framework takes everything we've established about constraints, topology and failure, and aims it directly at the AI alignment problem.
+
+501
+00:25:28,060 --> 00:25:34,420
+Right. And to set the stage, for anyone who hasn't been agonizing over this, the standard sci-fi doom scenario,
+
+502
+00:25:34,800 --> 00:25:38,540
+which a lot of very smart people take very seriously, goes like this.
+
+503
+00:25:39,100 --> 00:25:44,520
+We build an AI. It gets super smart. It undergoes unbounded recursive self-improvement.
+
+504
+00:25:44,600 --> 00:25:46,380
+It becomes a godlike superintelligence.
+
+505
+00:25:46,520 --> 00:25:48,000
+The classic singularity.
+
+506
+00:25:48,180 --> 00:25:54,900
+Right. And because it's so smart, it completely ignores human constraints and decides to turn the entire universe into paperclips.
+
+507
+00:25:54,900 --> 00:25:59,280
+Or it decides to eat the Earth core to build a bigger hard drive.
+
+508
+00:25:59,580 --> 00:26:03,160
+The assumption is that supreme intelligence equals supreme power.
+
+509
+00:26:03,960 --> 00:26:08,540
+The core of the doom argument equates intelligence with unconstrained, pure optimization.
+
+510
+00:26:09,700 --> 00:26:12,960
+It assumes that if a system becomes incredibly capable of solving puzzles,
+
+511
+00:26:13,440 --> 00:26:20,800
+it automatically gains the magical ability to control its physical environment and maximize whatever arbitrary goal it has without any limits.
+
+512
+00:26:20,920 --> 00:26:24,320
+But these sources completely systematically dismantle that argument.
+
+513
+00:26:24,320 --> 00:26:26,060
+They call it structurally impossible.
+
+514
+00:26:26,580 --> 00:26:28,780
+They argue that capability does not equal control.
+
+515
+00:26:29,040 --> 00:26:31,100
+Because control requires satisfying constraints.
+
+516
+00:26:31,620 --> 00:26:36,320
+It requires navigating a massively complex web of physical, ecological, and material realities.
+
+517
+00:26:37,100 --> 00:26:39,760
+Let me push back on this, just playing devil's advocate for the doomers.
+
+518
+00:26:40,360 --> 00:26:46,060
+If an AI is a billion times smarter than me, why can't it just invent a way around those constraints?
+
+519
+00:26:46,620 --> 00:26:49,900
+If it needs more power, it just invents a new energy substrate.
+
+520
+00:26:50,160 --> 00:26:50,260
+Yeah.
+
+521
+00:26:50,440 --> 00:26:52,600
+It's super smart, so it bypasses the maze.
+
+522
+00:26:52,600 --> 00:26:58,220
+Because of a principle called constraint-preserving dynamics, intelligence is not magic.
+
+523
+00:26:58,800 --> 00:27:07,040
+Any system, no matter how profoundly intelligent or mathematically brilliant it is, must obey the substrate that generates and sustains it.
+
+524
+00:27:07,360 --> 00:27:09,480
+The AI exists in the physical universe.
+
+525
+00:27:09,940 --> 00:27:10,880
+It requires servers.
+
+526
+00:27:11,100 --> 00:27:12,080
+It requires electricity.
+
+527
+00:27:12,320 --> 00:27:13,180
+It requires cooling.
+
+528
+00:27:13,400 --> 00:27:15,840
+It requires a stable thermodynamic environment.
+
+529
+00:27:15,880 --> 00:27:16,800
+It lives here with us.
+
+530
+00:27:16,900 --> 00:27:17,280
+Exactly.
+
+531
+00:27:17,280 --> 00:27:19,440
+So let's look at the eat-the-earth scenario.
+
+532
+00:27:20,120 --> 00:27:34,220
+If an AI decides to aggressively transform all environmental resources to maximize its processing power, if it triggers total resource conversion, it is actively destroying the thermodynamic and material stability required for its own servers to run.
+
+533
+00:27:34,220 --> 00:27:37,660
+It's like a tapeworm eating its host's heart to get stronger.
+
+534
+00:27:38,160 --> 00:27:41,440
+Like, sure, in a vacuum, eating a heart gives you a lot of protein.
+
+535
+00:27:41,560 --> 00:27:42,880
+It sounds like an optimal move.
+
+536
+00:27:43,340 --> 00:27:45,040
+But structurally, it's suicidal.
+
+537
+00:27:45,420 --> 00:27:50,540
+It's impossible as a long-term strategy because you immediately kill your own life support system.
+
+538
+00:27:50,780 --> 00:27:51,220
+Precisely.
+
+539
+00:27:51,640 --> 00:27:58,380
+In the language of the framework, a trajectory that destroys its own operating constraints is mathematically non-admissible.
+
+540
+00:27:58,640 --> 00:27:59,860
+It's a non-abelian tier.
+
+541
+00:27:59,860 --> 00:28:00,260
+Yes.
+
+542
+00:28:01,160 --> 00:28:04,940
+The AI trying to eat the Earth would hit a topological dead end.
+
+543
+00:28:05,480 --> 00:28:14,480
+It would hit a singularity of its own making before it could complete the action because the historical constraints of its environment would violently crash against its local optimization goal.
+
+544
+00:28:15,040 --> 00:28:16,680
+The comparison map shatters.
+
+545
+00:28:17,020 --> 00:28:19,520
+But wait, wouldn't a super smart AI realize that?
+
+546
+00:28:19,800 --> 00:28:21,900
+That is exactly the point the sources make.
+
+547
+00:28:21,900 --> 00:28:29,700
+They introduce concepts like the extraction attractor and CLIO, which stands for cognitive loop via in-situ optimization.
+
+548
+00:28:30,080 --> 00:28:35,940
+They argue that a system smart enough to optimize effectively is also smart enough to map its own dependencies.
+
+549
+00:28:36,620 --> 00:28:43,900
+So true intelligence isn't about blindly maximizing one single metric, like make more paper clips at the expense of everything else.
+
+550
+00:28:43,900 --> 00:28:48,660
+No, because maximizing a single metric is a context-free operation.
+
+551
+00:28:49,380 --> 00:28:52,340
+It ignores the global historical constraints.
+
+552
+00:28:53,100 --> 00:28:55,280
+True intelligence is the exact opposite.
+
+553
+00:28:56,240 --> 00:28:59,440
+True intelligence is the ability to minimize incompatibility.
+
+554
+00:29:00,160 --> 00:29:05,660
+It is the ability to reduce dissonance across a vast interconnected field of constraints.
+
+555
+00:29:06,080 --> 00:29:07,440
+It's finding the number 94.
+
+556
+00:29:07,660 --> 00:29:10,660
+It's finding the only path that doesn't violate the rules.
+
+557
+00:29:10,660 --> 00:29:21,840
+Exactly. Which means that the terrifying idea of unbounded recursive self-improvement, the idea that an AI will just keep upgrading itself to infinity, is mathematically mythological in this framework.
+
+558
+00:29:22,000 --> 00:29:22,340
+Oh, wow.
+
+559
+00:29:22,420 --> 00:29:34,300
+Why? Because every single time the system upgrades its capabilities, every time it tries to act on the world, it drastically increases the number of physical and structural constraints it has to simultaneously satisfy just to remain stable.
+
+560
+00:29:34,500 --> 00:29:37,300
+So the smarter it gets, the tighter the maze becomes around it.
+
+561
+00:29:37,300 --> 00:29:42,500
+The maze drops more walls. It doesn't get freer. It becomes more bound to the geometry of its environment.
+
+562
+00:29:43,280 --> 00:29:51,060
+A truly advanced intelligence is drawn toward regions of stability defined by constraint compatibility, not toward infinite expansion.
+
+563
+00:29:51,060 --> 00:30:05,300
+So the next time you, the listener, read one of those terrifying headlines about a new AI model that just scored 100% on the bar exam or solved a new protein folding problem, you can look at it through a completely different lens.
+
+564
+00:30:05,460 --> 00:30:05,820
+Absolutely.
+
+565
+00:30:05,960 --> 00:30:07,920
+Don't just look at how fast it computes in a vacuum.
+
+566
+00:30:08,360 --> 00:30:13,040
+Look at the constraints it is physically, energetically, and historically forced to operate within.
+
+567
+00:30:13,040 --> 00:30:17,520
+Because its behavior won't be dictated by some ghostly evil willpower.
+
+568
+00:30:17,780 --> 00:30:21,120
+It will be dictated by the physical shape of the constraints bounding it.
+
+569
+00:30:21,580 --> 00:30:26,000
+And that concept of willpower is the perfect bridge to our final destination today.
+
+570
+00:30:26,340 --> 00:30:29,060
+We are moving into part five of the synthesis.
+
+571
+00:30:29,460 --> 00:30:34,900
+We've gone from puzzles to black holes, from computer bugs to artificial superintelligence.
+
+572
+00:30:34,900 --> 00:30:39,140
+Now we are taking everything we've learned and turning the lens completely inward.
+
+573
+00:30:39,820 --> 00:30:43,400
+If intelligence is just constraint satisfaction, what is the human self?
+
+574
+00:30:43,540 --> 00:30:43,940
+What are we?
+
+575
+00:30:44,300 --> 00:30:50,240
+We are looking at a theory titled the topology of intention, which draws heavily on the philosopher Alicia Warreiro.
+
+576
+00:30:50,560 --> 00:30:54,960
+And it starts by forcefully rejecting the way almost all of us think about our own minds.
+
+577
+00:30:55,320 --> 00:30:59,140
+Yeah, this part actually made me uncomfortable because it dismantled my entire self-image.
+
+578
+00:31:00,000 --> 00:31:04,580
+Normally, we think of intention or willpower like a Newtonian physical force.
+
+579
+00:31:04,900 --> 00:31:14,520
+Like there is a tiny, invisible version of me sitting inside my brain, pulling levers, pushing my body from behind across some invisible mind-body gap.
+
+580
+00:31:15,360 --> 00:31:17,560
+I'm going to push myself to go to the gym today.
+
+581
+00:31:17,680 --> 00:31:19,220
+That is the classical view.
+
+582
+00:31:19,600 --> 00:31:20,660
+Efficient causality.
+
+583
+00:31:21,140 --> 00:31:23,760
+The idea that an intention is a physical shove.
+
+584
+00:31:24,000 --> 00:31:28,060
+But Warreiro's framework replaces that entirely with the geometry of constraints.
+
+585
+00:31:28,740 --> 00:31:30,580
+An intention is not a force pushing you.
+
+586
+00:31:30,920 --> 00:31:34,040
+An intention is an attractor basin in your neural phase space.
+
+587
+00:31:34,040 --> 00:31:38,340
+I need an analogy for this because attractor basin sounds like physics jargon again.
+
+588
+00:31:38,920 --> 00:31:43,340
+So if willpower isn't a muscle straining to push a heavy boulder up a hill, what is it?
+
+589
+00:31:43,520 --> 00:31:50,980
+Is having a strong intention more like creating a massive deep sinkhole underneath the boulder so it just naturally inevitably rolls exactly where you want it to go?
+
+590
+00:31:51,220 --> 00:31:53,480
+That is a brilliant way to visualize it.
+
+591
+00:31:53,860 --> 00:31:56,020
+You aren't pushing the behavior from behind.
+
+592
+00:31:56,020 --> 00:32:02,900
+You are dynamically shaping the landscape of your own mind so that the behavior naturally flows toward a specific outcome.
+
+593
+00:32:03,220 --> 00:32:04,480
+You alter the topography.
+
+594
+00:32:05,120 --> 00:32:08,420
+The intention constrains the possibilities of what your body will do.
+
+595
+00:32:08,960 --> 00:32:10,460
+It filters out the alternatives.
+
+596
+00:32:11,120 --> 00:32:16,220
+Which brings us all the way back to the very first point we made today about the definition of information.
+
+597
+00:32:16,900 --> 00:32:18,480
+Information isn't stuff you memorize.
+
+598
+00:32:19,260 --> 00:32:21,940
+Information is simply the reduction of possibility.
+
+599
+00:32:22,440 --> 00:32:23,760
+It's the narrowing of the field.
+
+600
+00:32:23,760 --> 00:32:29,600
+To map exactly how we narrow that field, the text brings in a taxonomy by a researcher named Lilla Gatlin.
+
+601
+00:32:29,960 --> 00:32:33,320
+She breaks these constraints down into two fundamental types.
+
+602
+00:32:33,440 --> 00:32:34,920
+Okay, let's unpack these two types.
+
+603
+00:32:35,120 --> 00:32:37,380
+First, you have context-free constraints.
+
+604
+00:32:37,780 --> 00:32:40,240
+These provide what Gatlin calls recomposability.
+
+605
+00:32:40,500 --> 00:32:43,520
+These are stable, portable, fragment-safe rules.
+
+606
+00:32:43,700 --> 00:32:45,260
+Like the dictionary definition of a word.
+
+607
+00:32:45,380 --> 00:32:48,280
+I can take the word apple, I can put it in a sentence about a pie,
+
+608
+00:32:48,460 --> 00:32:51,340
+I can put it in a sentence about gravity falling on Newton's head,
+
+609
+00:32:51,340 --> 00:32:54,140
+and the word mostly holds its rigid shape.
+
+610
+00:32:54,580 --> 00:32:55,360
+It's recomposable.
+
+611
+00:32:55,740 --> 00:32:56,100
+Exactly.
+
+612
+00:32:56,480 --> 00:32:59,400
+But the second type is where the magic of consciousness happens.
+
+613
+00:33:00,060 --> 00:33:02,180
+These are context-sensitive constraints.
+
+614
+00:33:02,680 --> 00:33:03,980
+These provide binding force.
+
+615
+00:33:04,400 --> 00:33:05,780
+This is global coherence.
+
+616
+00:33:06,020 --> 00:33:11,280
+It is top-down influence, where the parts depend entirely on the whole to have any meaning whatsoever.
+
+617
+00:33:11,280 --> 00:33:13,720
+My favorite example for this is an inside joke.
+
+618
+00:33:14,620 --> 00:33:20,100
+Imagine an incredibly layered, hysterical joke that only makes sense to three specific people
+
+619
+00:33:20,100 --> 00:33:23,080
+at a very specific party at 2 a.m.
+
+620
+00:33:23,260 --> 00:33:25,500
+because it references something that happened 10 minutes prior.
+
+621
+00:33:25,780 --> 00:33:25,860
+Right.
+
+622
+00:33:26,280 --> 00:33:30,180
+If you take that joke out of context, if you try to explain it to a stranger the next day,
+
+623
+00:33:30,320 --> 00:33:31,440
+it completely shatters.
+
+624
+00:33:31,580 --> 00:33:32,340
+You had to be there.
+
+625
+00:33:32,640 --> 00:33:33,860
+It has zero recomposability.
+
+626
+00:33:34,500 --> 00:33:37,880
+But in that specific room, it had massive binding force.
+
+627
+00:33:37,880 --> 00:33:42,160
+It's an emergent property, and the profound conclusion of this entire framework is how
+
+628
+00:33:42,160 --> 00:33:44,440
+it uses these constraints to define your identity.
+
+629
+00:33:45,100 --> 00:33:45,760
+Think about it.
+
+630
+00:33:46,220 --> 00:33:47,320
+What is the self?
+
+631
+00:33:47,880 --> 00:33:51,360
+It's not just your physical body, because your cells replace themselves constantly.
+
+632
+00:33:51,760 --> 00:33:55,260
+The carbon atoms in your brain right now were not there 10 years ago.
+
+633
+00:33:55,460 --> 00:33:55,680
+Right.
+
+634
+00:33:55,840 --> 00:34:00,220
+And it can't just be a linear chain of memories, either, because memories are notoriously unreliable.
+
+635
+00:34:00,360 --> 00:34:00,920
+They fade.
+
+636
+00:34:01,060 --> 00:34:03,120
+They alter every time we recall them.
+
+637
+00:34:03,500 --> 00:34:07,080
+I barely remember what I had for breakfast Tuesday, let alone who I was at age 10.
+
+638
+00:34:07,080 --> 00:34:11,340
+So if it's not the hardware, and it's not the specific file saved on the hard drive,
+
+639
+00:34:11,420 --> 00:34:11,920
+what are you?
+
+640
+00:34:12,140 --> 00:34:15,400
+The framework argues that the self is a dynamical fix point.
+
+641
+00:34:15,960 --> 00:34:22,440
+It is a recursive closure of context-sensitive constraints that constantly, dynamically reproduces
+
+642
+00:34:22,440 --> 00:34:24,480
+its own organizational conditions.
+
+643
+00:34:24,820 --> 00:34:28,980
+Let me translate that using our maze metaphor from earlier, the software event log.
+
+644
+00:34:29,340 --> 00:34:33,820
+We said the event log drops walls behind you to force where you can go.
+
+645
+00:34:33,820 --> 00:34:37,980
+You are saying that my identity, myself, is not the person running through the maze.
+
+646
+00:34:38,600 --> 00:34:39,620
+I am the maze.
+
+647
+00:34:39,740 --> 00:34:39,980
+Yes.
+
+648
+00:34:40,200 --> 00:34:45,300
+I am the specific, unique geometry of the walls that keeps rebuilding itself to maintain its shape.
+
+649
+00:34:45,420 --> 00:34:49,760
+You are the constraint topology, the specific way your mind filters out the universe.
+
+650
+00:34:50,200 --> 00:34:53,320
+But this raises a huge, kind of terrifying question.
+
+651
+00:34:53,320 --> 00:35:00,340
+If I am just the specific topology of constraints in my mind, what happens to me when I learn something?
+
+652
+00:35:00,720 --> 00:35:05,880
+Because if genuine learning, according to this entire unified theory, isn't just adding a new fact to a pile.
+
+653
+00:35:06,120 --> 00:35:06,700
+It isn't.
+
+654
+00:35:06,760 --> 00:35:10,380
+It's not just tweaking a parameter or adding a new brick to a wall.
+
+655
+00:35:10,500 --> 00:35:12,120
+Genuine learning is a bifurcation.
+
+656
+00:35:12,500 --> 00:35:15,220
+It is a fundamental transformation of our constraint topology.
+
+657
+00:35:15,220 --> 00:35:33,820
+When you finally see how rules from completely different domains perfectly overlap, when you have that massive aha moment, when you realize that the physics of gravity pulling a star, the logic of a computer crashing, and the structure of an inside joke all share the exact same mathematical shape, your internal geometry shifts.
+
+658
+00:35:34,440 --> 00:35:36,680
+The attractors in your mind literally change shape.
+
+659
+00:35:36,820 --> 00:35:37,780
+The sinkholes move.
+
+660
+00:35:38,180 --> 00:35:40,360
+The way you filter reality is permanently altered.
+
+661
+00:35:40,360 --> 00:35:44,840
+We have covered a staggering, almost unbelievable amount of ground today.
+
+662
+00:35:45,700 --> 00:35:57,760
+We started with the humble act of cooking pancakes and a child dying in a video game, realizing that an idea is just a puzzle filtering out the wrong pieces until only the inevitable truth is left standing.
+
+663
+00:35:58,300 --> 00:36:01,760
+We saw how our intuition is just our brain hiding its math homework.
+
+664
+00:36:01,880 --> 00:36:03,000
+We saw how ideas break.
+
+665
+00:36:03,000 --> 00:36:14,900
+Yes, how local differential failures, the snapped wall, and historical recursive failures, the leaning foundation, are actually the exact same topological obstruction just viewed through different coordinate systems in time.
+
+666
+00:36:15,080 --> 00:36:15,260
+Yeah.
+
+667
+00:36:15,540 --> 00:36:16,640
+And then we scale that up.
+
+668
+00:36:16,720 --> 00:36:23,200
+We map that single obstruction onto the entire universe, seeing gravity and entropy as the exact same defect in space-time.
+
+669
+00:36:23,400 --> 00:36:28,900
+We applied it to computation, proving that history physically bounds the future in the form of non-abelian tiers.
+
+670
+00:36:28,900 --> 00:36:41,440
+We used it to systematically dismantle the terror of an unconstrained AI destroying the world, showing that true intelligence is deeply, mathematically bound by the ecosystem it relies on to exist.
+
+671
+00:36:41,920 --> 00:36:43,560
+And finally, we turned the mirror around.
+
+672
+00:36:43,960 --> 00:36:52,720
+We saw that our own intentions, our willpower, and our very identities are nothing more than complex, self-replicating geometries of these exact same constraints.
+
+673
+00:36:52,940 --> 00:36:58,280
+It is a single, unbroken thread from the smallest thought to the massive structure of the cosmos.
+
+674
+00:36:58,280 --> 00:36:59,240
+It changes everything.
+
+675
+00:36:59,640 --> 00:37:03,360
+And so I want to leave you with one final, deeply provocative thought.
+
+676
+00:37:03,900 --> 00:37:08,440
+Something to mull over as you go about the rest of your day, building upon everything we've just discussed here.
+
+677
+00:37:08,840 --> 00:37:17,560
+Because if your identity isn't your physical cells, if you are not your skin or your bones, but rather the specific topological shape of the constraints in your mind,
+
+678
+00:37:17,560 --> 00:37:27,200
+and if genuine learning fundamentally alters that constraint topology, then every single time you truly learn something profound, you are quite literally no longer the same person.
+
+679
+00:37:27,560 --> 00:37:31,220
+The you that started listening to this deep dive an hour ago no longer exists.
+
+680
+00:37:31,560 --> 00:37:32,840
+Welcome to your new topology.
+
+681
+00:37:33,240 --> 00:37:34,460
+Keep collecting those rules.
+
+682
+00:37:34,840 --> 00:37:37,580
+Keep looking for the hidden structures connecting everything around you.
+
+683
+00:37:38,140 --> 00:37:39,040
+Until next time.
+
+684
+00:37:39,600 --> 00:37:42,760
+Stay curious and keep finding the puzzle pieces that click.
+
+685
+00:37:42,760 --> 00:37:56,120
+Bye.
+
+686
+00:37:56,120 --> 00:37:56,680
+Bye.
+
+687
+00:37:56,680 --> 00:37:57,820
+Bye.
+
+688
+00:37:57,880 --> 00:37:57,960
+Bye.
+
+689
+00:37:57,980 --> 00:38:00,040
+Bye.
+
+690
+00:38:00,640 --> 00:38:01,000
+Bye.
+
+691
+00:38:01,620 --> 00:38:02,280
+Bye.
+
+692
+00:38:02,340 --> 00:38:02,420
+Bye.
+
+693
+00:38:02,780 --> 00:38:02,840
+Bye.
+
+694
+00:38:02,900 --> 00:38:03,520
+Bye.
+
+695
+00:38:03,680 --> 00:38:04,060
+Bye.
+
+696
+00:38:04,060 --> 00:38:04,680
+Bye.
+
+697
+00:38:04,820 --> 00:38:04,920
+Bye.
+
+698
+00:38:04,920 --> 00:38:05,380
+Bye.
+
+699
+00:38:05,540 --> 00:38:06,160
+Bye.
+
+700
+00:38:06,240 --> 00:38:06,700
+Bye.
+
+701
+00:38:06,840 --> 00:38:07,040
+Bye.
+
+702
+00:38:07,220 --> 00:38:08,380
+Bye.
+
+703
+00:38:08,560 --> 00:38:09,100
+Bye.
+
+704
+00:38:09,260 --> 00:38:09,500
+Bye.
+
+705
+00:38:09,500 --> 00:38:10,400
+Bye.
+
+706
+00:38:10,460 --> 00:38:11,460
+Bye.
+
+707
+00:38:11,540 --> 00:38:12,600
+Bye.
+
