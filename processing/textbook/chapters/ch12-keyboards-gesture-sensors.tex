@@ -1,0 +1,197 @@
+% ============================================================
+%  chapters/ch12-keyboards-gesture-sensors.tex
+% ============================================================
+
+\chapter{Keyboards as Gesture Sensors}
+
+\chapterepigraph{%
+  Every key you press leaves a signature\\
+  in kinematic space that the text does not record.\\
+  The keyboard hears more than it reports.
+}{Flyxion, \textit{Semantic Infrastructure}}
+
+\sidenote{App.\,G for the\\full keyboard\\geometry\\formalism}
+
+The keyboard is the primary input device of the information age. It has
+been analyzed as a symbol source (by information theorists), as an
+ergonomic tool (by human factors engineers), and as a cultural artifact
+(by historians of technology). This chapter analyzes it as something
+different: a \emph{gesture sensor} — a device that samples the continuous
+kinematic behavior of a person's hands and reports a discrete projection
+of that behavior.
+
+\section{Typing as Coordinated Motor Behavior}
+
+A trained typist's hands move continuously, with overlapping finger
+activations, rhythmic patterns, and smooth inter-key transitions.
+The keyboard, however, reports only discrete events: key-down and key-up,
+time-stamped to millisecond precision.
+
+\begin{definition}{Typing Stream}{typing-stream}
+  A \emph{typing stream} is the sequence of keyboard events:
+  \[
+    T = \bigl((k_1, t_1^\text{down}, t_1^\text{up}),
+               (k_2, t_2^\text{down}, t_2^\text{up}), \ldots\bigr)
+  \]
+  where $k_i \in K$ is a key and $t_i^\text{down} < t_i^\text{up}$
+  are the key-press and key-release times.
+\end{definition}
+
+The typing stream is the \emph{projection} of the full kinematic
+hand trajectory onto the discrete key-event space. The projection
+discards:
+
+\begin{itemize}
+  \item Finger position between key presses (the flight phase),
+  \item Finger velocity and acceleration (the dynamics),
+  \item Inter-finger coordination (simultaneous movements),
+  \item Hand position and wrist posture,
+  \item Pressure beyond the binary press/release threshold.
+\end{itemize}
+
+\section{The Hidden Signal Beneath Text}
+
+The typing stream contains considerably more information than the
+text it produces, and the text contains considerably less than the
+typing stream.
+
+\begin{definition}{Keystroke Dynamics}{keystroke-dynamics}
+  The \emph{keystroke dynamics} of a typing session are the timing
+  features of the typing stream:
+  \begin{itemize}
+    \item \textbf{Dwell time:} $D_i = t_i^\text{up} - t_i^\text{down}$
+          (how long each key is held).
+    \item \textbf{Flight time:} $F_i = t_{i+1}^\text{down} - t_i^\text{up}$
+          (time between key releases and next key presses).
+    \item \textbf{Digraph latency:} $L_{ij} = t_j^\text{down} - t_i^\text{down}$
+          (time between successive key presses).
+    \item \textbf{Overlap duration:} $O_{ij} = \min(t_i^\text{up}, t_j^\text{up})
+          - t_j^\text{down}$ (duration of simultaneous key presses).
+  \end{itemize}
+\end{definition}
+
+These timing features are individual-specific, consistent across sessions,
+and robust to training. They constitute a \emph{biometric}: keystroke
+dynamics can identify individuals with accuracy comparable to fingerprinting.
+The text they produce contains none of this information.
+
+\begin{conceptaside}{Text as Information Bottleneck}
+  The conventional view of typing: person $\to$ text $\to$ reader.
+
+  The gesture view: person $\to$ kinematic stream $\to$ typing stream
+  $\to$ text $\to$ reader.
+
+  Each arrow is a lossy projection. The text at the end contains
+  only the symbolic content. The kinematic stream contains the
+  motor signature of the person. The typing stream is between them:
+  richer than text (it includes timing), poorer than kinematics
+  (it discards position).
+
+  Current AI language models are trained on text — the end of the
+  chain. They have no access to the kinematic or timing information.
+  This is why they cannot detect fatigue, emotion, or identity from
+  text alone: that information was discarded two projections upstream.
+\end{conceptaside}
+
+\section{Overlap, Pivots, and Release Structures}
+
+The most information-rich features of the typing stream are those
+that encode the coordination structure of the two hands.
+
+\begin{definition}{Key Overlap}{key-overlap}
+  Keys $k_i$ and $k_j$ \emph{overlap} if their press intervals intersect:
+  \[
+    [t_i^\text{down}, t_i^\text{up}] \cap [t_j^\text{down}, t_j^\text{up}]
+    \neq \emptyset.
+  \]
+  The \emph{overlap pattern} of a word is the set of overlapping key pairs.
+\end{definition}
+
+Overlap patterns are kinematically determined: which keys overlap depends
+on which fingers are used and how the transitions between them are timed.
+High-skilled typists show characteristic overlap patterns that low-skilled
+typists do not — the patterns are signatures of motor expertise.
+
+\begin{definition}{Typing Pivot}{typing-pivot}
+  A \emph{typing pivot} occurs at position $i$ in a word when the
+  typing changes hands:
+  \[
+    H(k_{i-1}) \neq H(k_i)
+  \]
+  where $H(k) \in \{L, R\}$ is the hand assignment.
+  Pivots are characterized by a brief acceleration (flight time
+  $F_i$ is typically shorter at pivots due to parallel hand preparation).
+\end{definition}
+
+\begin{definition}{Release Structure}{release-struct}
+  The \emph{release structure} of a word is the ordering of key-up events:
+  whether key $i$ is released before or after key $j$ is pressed.
+  Release structures encode the chunking of words into motor programs.
+\end{definition}
+
+\section{Inter-Hand Coordination}
+
+The deepest structure in typing kinematics is the coordination between
+the two hands. Because the two hands are semi-independent motor systems,
+their coordination creates rich temporal structure.
+
+\begin{definition}{Hand Coordination Profile}{hand-coord}
+  The \emph{hand coordination profile} of a typing session is the
+  function $\rho : K \times K \to \mathbb{R}$ where $\rho(k_i, k_j)$
+  is the average flight time from $k_i$ to $k_j$ across all occurrences.
+  Same-hand transitions have $\rho(k_i,k_j) > 0$; cross-hand transitions
+  tend to have smaller $\rho$ due to parallel preparation.
+\end{definition}
+
+The hand coordination profile is a complete characterization of the
+timing structure of a person's typing. Two typists producing the same
+text at the same overall speed can have radically different coordination
+profiles — reflecting different motor programs for the same symbolic output.
+
+\section{Keyboard Geometry Revisited}
+
+The keyboard geometry formalism of Appendix~G defines keys as vertices
+in a motor graph $\Gamma = (K, E)$. The typing stream is a walk on
+this graph. The walk's properties — edge traversal times, node dwell
+times, vertex degree sequences — encode the kinematic structure of
+the typing.
+
+\begin{theorem}{Keyboard Graph is a Gesture Sensor}{keyboard-sensor}
+  The keyboard graph $\Gamma$ and the typing stream $T$ together
+  determine the first-order kinematic structure of the typing gesture:
+  specifically, the digraph latency profile $\{L_{ij}\}$ and the
+  overlap pattern.
+\end{theorem}
+
+\begin{proof}
+  The digraph latency $L_{ij} = t_j^\text{down} - t_i^\text{down}$ is
+  directly available from $T$. The overlap pattern is determined by
+  comparing press/release intervals. Both are fully determined by $T$.
+  The keyboard graph $\Gamma$ provides the spatial embedding that
+  interprets the timing: knowing which keys are adjacent, which hand
+  they belong to, and their stretch costs allows the latencies to be
+  decomposed into flight phase, preparation, and keystroke components.
+\end{proof}
+
+\begin{exercise}
+  For the word ``semantic'', identify all key pairs that overlap
+  (assume standard QWERTY layout and 10-finger touch typing).
+  Where are the typing pivots? Describe the expected release structure.
+\end{exercise}
+
+\begin{exercise}
+  Define the \emph{typing entropy} of a word $w$ as the entropy of
+  the distribution of possible overlap patterns over skilled typists
+  of $w$. Is typing entropy higher for frequently typed words
+  or rare words? Explain intuitively why.
+\end{exercise}
+
+\begin{exercise}[title={Research}]
+  The digraph latency profile $\{L_{ij}\}$ is a matrix of size
+  $|K| \times |K|$. For standard QWERTY, $|K| \approx 47$.
+  This matrix has $\approx 2200$ entries, most of which are rarely
+  observed in practice. Propose a dimensionality-reduction technique
+  (PCA, manifold learning, or another method) that extracts the
+  dominant modes of variation in $\{L_{ij}\}$ across typists.
+  What do you expect the dominant modes to represent?
+\end{exercise}

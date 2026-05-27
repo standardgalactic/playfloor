@@ -1,0 +1,348 @@
+% ============================================================
+%  chapters/ch04-canonicalization.tex
+% ============================================================
+
+\chapter{Canonicalization and Equivalence}
+
+\chapterepigraph{%
+  Two paths that arrive at the same place\\
+  are equivalent as routes\\
+  but not as experiences.
+}{Flyxion, \textit{Semantic Infrastructure}}
+
+\sidenote{See App.\,A §A.4\\on equivalence\\relations; App.\,F\\on gesture\\canonicalization}
+
+The previous three chapters established the foundational primitives:
+accessibility (Chapter~1), containment (Chapter~2), and collapse
+(Chapter~3). This chapter addresses a subtler question: when are two
+different expressions, gestures, or trajectories the \emph{same thing}?
+
+Sameness is not as simple as it appears. Two arithmetic expressions may
+look different yet compute the same value. Two hand trajectories may take
+different paths yet produce the same letter. Two scientific theories may
+use different formalisms yet make the same predictions. In each case, a
+\emph{canonicalization} procedure identifies the equivalence class to which
+an object belongs — the unique representative of all the ways of being
+the same thing.
+
+% ── 4.1 ──────────────────────────────────────────────────────
+\section{Why Different Trajectories Represent the Same Object}
+
+Consider the number $12$. It can be represented as:
+\[
+  12, \quad 3 \times 4, \quad 2^2 \times 3, \quad 144/12,
+  \quad 13 - 1, \quad \sum_{k=1}^{3} k \cdot (5-k), \quad \ldots
+\]
+These are not twelve different numbers. They are twelve different
+\emph{trajectories} to the same number. The number $12$ is the equivalence
+class of all arithmetic expressions that evaluate to $12$.
+
+This observation, once made, reveals that the conventional picture of
+mathematics as a study of objects is misleading. Mathematics is primarily
+a study of \emph{equivalence classes of trajectories}. Numbers are not
+primitive objects; they are the fixed points of evaluation processes.
+
+\begin{definition}{Semantic Equivalence}{semantic-equiv}
+  Two expressions $e_1, e_2 \in \mathcal{E}$ are \emph{semantically
+  equivalent}, written $e_1 \equiv e_2$, if
+  $\mathrm{val}(e_1) = \mathrm{val}(e_2)$.
+  The \emph{equivalence class} of $e$ under $\equiv$ is
+  $[e]_\equiv = \{e' \in \mathcal{E} : e' \equiv e\}$.
+\end{definition}
+
+The key insight is that semantics — the mathematical concept of
+\emph{what something means} — is the study of these equivalence classes.
+Two expressions have the same meaning precisely when they belong to
+the same equivalence class. Meaning is the quotient of syntax by
+equivalence.
+
+% ── 4.2 ──────────────────────────────────────────────────────
+\section{Gesture Equivalence}
+
+The situation in gesture recognition is richer and more subtle than in
+arithmetic, because gesture equivalence is not a sharp mathematical
+relation — it is a \emph{graded} one.
+
+\begin{definition}{Motor Equivalence Class}{motor-equiv}
+  Two gesture trajectories $\gamma_1, \gamma_2 \in \gesturesp$ are
+  \emph{motor-equivalent}, written $\gamma_1 \sim_m \gamma_2$, if
+  they would be recognized as the same gesture by a competent observer
+  under normal conditions. The \emph{motor equivalence class}
+  $[\gamma]_m$ is the set of all trajectories equivalent to $\gamma$.
+\end{definition}
+
+The condition ``by a competent observer under normal conditions'' hides
+considerable complexity. What counts as equivalent varies by context,
+by the observer's expertise, by the ambient conditions (noise,
+urgency, modality). Gesture equivalence is therefore not a fixed
+mathematical relation but a \emph{family} of relations parametrized
+by context.
+
+\begin{remark}
+  This contextual dependence is not a defect in the theory — it is
+  the theory's most important feature. The same physical motion can
+  be classified as the letter ``A'' in English handwriting, as the
+  number ``4'' in another script, as a greeting gesture in yet another
+  context. The gesture does not have an intrinsic meaning independent
+  of context; it has meaning relative to a classification system.
+  This is precisely the fiber-bundle structure: the same base point
+  (physical motion) sits in different fibers depending on which
+  projection (classification system) is applied.
+\end{remark}
+
+% ── 4.3 ──────────────────────────────────────────────────────
+\section{Typing Equivalence}
+
+Typing provides a particularly clean example of motor equivalence, because
+the output space is discrete: every sequence of motor acts either produces
+a valid character or it does not. This discreteness makes the equivalence
+classes sharply defined.
+
+\begin{example}
+  The character ``a'' on a standard keyboard can be produced by:
+  \begin{itemize}
+    \item pressing the \texttt{A} key with the left pinky finger,
+    \item pressing it with the left ring finger (awkward but possible),
+    \item using an autocorrect expansion from ``aa'' to ``a'',
+    \item pasting from clipboard containing ``a'',
+    \item using a macro that types ``a''.
+  \end{itemize}
+  All five trajectories produce the same output character. They are
+  motor-equivalent in the sense of producing identical symbolic output,
+  but they are \emph{kinematically} very different: different fingers,
+  different hand positions, different motor programs, different cognitive
+  loads. The symbolic output ``a'' is the quotient that throws away
+  all this kinematic variation.
+\end{example}
+
+The Gesture Before Symbol thesis (Chapter~10) argues that this throwing-away
+is problematic. The kinematic variation that the discrete output discards
+contains real information — about the typist's skill, emotional state,
+attention, familiarity with the text, even identity (keystroke dynamics
+are a biometric). Recognizing the equivalence class as a quotient makes
+this information loss explicit and recoverable in principle.
+
+% ── 4.4 ──────────────────────────────────────────────────────
+\section{Mathematical Equivalence Classes}
+
+The notion of equivalence class is one of the most powerful tools in
+mathematics precisely because it makes the concept of ``sameness'' rigorous.
+
+\begin{definition}{Quotient Set}{quotient-set}
+  Given a set $X$ and an equivalence relation $\sim$ on $X$, the
+  \emph{quotient set} $X/{\sim}$ is the set of equivalence classes:
+  \[
+    X/{\sim} \;=\; \bigl\{ [x]_\sim \,:\, x \in X \bigr\}
+  \]
+  The \emph{projection} $\pi : X \to X/{\sim}$ sends $x \mapsto [x]_\sim$.
+\end{definition}
+
+The quotient construction appears throughout mathematics whenever we want
+to identify objects that ``look different but are the same.'' A few examples:
+
+\begin{itemize}
+  \item \textbf{Rational numbers:} $\mathbb{Q} = \mathbb{Z}^2 / {\sim}$
+        where $(p,q) \sim (p',q')$ iff $pq' = p'q$. The fraction
+        $\tfrac{2}{3}$ and $\tfrac{4}{6}$ are the same rational number
+        — they are in the same equivalence class.
+  \item \textbf{Topological spaces up to homeomorphism:} two topological
+        spaces are equivalent if there is a continuous bijection between
+        them with continuous inverse. The equivalence classes are
+        topological types: a coffee mug and a donut are in the same
+        class (both have genus 1).
+  \item \textbf{Programs up to observational equivalence:} two programs
+        are equivalent if they produce the same output for every input.
+        This is the appropriate equivalence for program optimization.
+  \item \textbf{Scientific theories up to empirical equivalence:}
+        two theories are equivalent if they make the same predictions
+        for all observable quantities. Underdetermination of theory
+        by evidence is the non-triviality of this equivalence relation.
+\end{itemize}
+
+In each case, the quotient set captures the \emph{intrinsic} structure
+while discarding irrelevant \emph{representational} variation.
+
+% ── 4.5 ──────────────────────────────────────────────────────
+\section{Canonical Forms}
+
+For practical computation, it is useful to pick a single distinguished
+representative from each equivalence class. This representative is the
+\emph{canonical form}.
+
+\begin{definition}{Canonical Form}{canonical-form}
+  A \emph{canonicalization function} for an equivalence relation $\sim$
+  on $X$ is a function $c : X \to X$ satisfying:
+  \begin{enumerate}
+    \item \textbf{Idempotence:} $c(c(x)) = c(x)$ for all $x \in X$.
+    \item \textbf{Equivalence-preservation:}
+          $x \sim y \Leftrightarrow c(x) = c(y)$.
+  \end{enumerate}
+  The \emph{canonical form} of $x$ is $c(x)$.
+\end{definition}
+
+The idempotence condition says: applying canonicalization twice is the same
+as applying it once. Once something is canonical, it stays canonical. This
+is the mathematical version of ``already in simplest form.''
+
+\begin{example}
+  For arithmetic expressions over integers:
+  $c(3 \times 4) = c(2^2 \times 3) = c(12) = 12$.
+  The canonical form is the fully evaluated integer. Evaluation is
+  canonicalization.
+\end{example}
+
+\begin{example}
+  For fractions: $c(p/q) = p'/q'$ where $\gcd(p',q') = 1$ and $q' > 0$.
+  The canonical form is the reduced fraction in lowest terms.
+\end{example}
+
+\begin{example}
+  For polynomials: $c(p)$ = coefficients written in decreasing degree
+  with zero coefficients suppressed. The canonical form is the standard
+  polynomial representation.
+\end{example}
+
+\begin{theorem}{Canonical Forms Classify}{canonical-classify}
+  If $c : X \to X$ is a canonicalization function for $\sim$, then
+  $X/{\sim} \cong c(X)$ (as sets). That is, the equivalence classes
+  are in bijection with the canonical forms.
+\end{theorem}
+
+\begin{proof}
+  Define $\phi : X/{\sim} \to c(X)$ by $\phi([x]) = c(x)$.
+  This is well-defined: if $x \sim y$ then $c(x) = c(y)$ by
+  equivalence-preservation. It is injective: if $c(x) = c(y)$
+  then $x \sim y$ (by the same property), so $[x] = [y]$.
+  It is surjective: for any $z \in c(X)$, $z = c(x)$ for some $x$,
+  and $\phi([x]) = c(x) = c(c(x)) = c(z) = z$ by idempotence.
+\end{proof}
+
+% ── 4.6 ──────────────────────────────────────────────────────
+\section{Fiber and Projection Viewpoints}
+
+The quotient construction has a dual interpretation in terms of fibers
+and projections, which is often geometrically illuminating.
+
+\begin{definition}{Fiber of a Canonical Form}{fiber-canonical}
+  Given a canonicalization $c : X \to X$, the \emph{fiber} over a
+  canonical form $z \in c(X)$ is
+  \[
+    c^{-1}(z) = \{x \in X : c(x) = z\}
+  \]
+  — the set of all expressions that canonicalize to $z$.
+\end{definition}
+
+The fiber $c^{-1}(12)$ contains all arithmetic expressions that evaluate
+to 12. The fiber $c^{-1}(\text{"a"})$ contains all motor sequences that
+produce the character ``a''. The fiber is the \emph{extension} of the
+canonical form: all the ways of being that thing.
+
+\begin{figure}[h]
+  \centering
+  \begin{tikzpicture}[scale=1.0]
+    \input{diagrams/fiber-projection-2d}
+  \end{tikzpicture}
+  \caption{Fiber and projection geometry. The expression space $X$ (top)
+    contains many expressions that canonicalize to the same value in $c(X)$
+    (bottom). The projection $c$ collapses each fiber to a point.
+    The fiber over the canonical form $z = 12$ contains all expressions
+    that evaluate to $12$: $(3 \times 4)$, $(2^2 \times 3)$, $(13-1)$,
+    and infinitely many others.}
+  \label{fig:fiber-projection}
+\end{figure}
+
+The fiber viewpoint makes the information-loss interpretation of
+canonicalization explicit (cf.\  Appendix~B). The canonical form retains
+only the equivalence class membership; the fiber contains all the
+additional information that was discarded.
+
+% ── 4.7 ──────────────────────────────────────────────────────
+\section{Canonicalization in the RSVP Framework}
+
+Within RSVP, canonicalization has a field-theoretic interpretation. The
+accessibility entropy $S$ measures the volume of admissible futures.
+A canonical form is a state of locally \emph{minimal} entropy within
+its equivalence class — the state that has already collapsed as much
+variation as possible.
+
+\begin{definition}{RSVP Canonical State}{rsvp-canonical}
+  A state $x \in X$ is \emph{RSVP-canonical} within its equivalence
+  class $[x]_\sim$ if it minimizes the constraint violation functional
+  $\kappa$ and is a local minimum of accessible future volume
+  variation:
+  \[
+    x_\text{can} = \arg\min_{y \sim x} \kappa(y).
+  \]
+\end{definition}
+
+Under accessibility relaxation dynamics (Appendix~J), all trajectories
+within an equivalence class converge to the canonical representative.
+The dynamics enforce canonicalization automatically: given enough time,
+equivalent states converge to their shared canonical form.
+
+\begin{remark}
+  This is why stable structures persist. A galaxy, an organism, a crystal,
+  a mathematical concept — all are RSVP-canonical states: local minima
+  of constraint violation within the equivalence class of states with
+  similar accessibility properties. They persist not because they are
+  special objects, but because they are the attractors of the
+  canonicalization dynamics.
+\end{remark}
+
+% ── 4.8 ──────────────────────────────────────────────────────
+\section{The Canonicalization Principle}
+
+The various forms of canonicalization discussed in this chapter — arithmetic
+evaluation, gesture recognition, typing, mathematical reduction, RSVP
+relaxation — are all instances of a single principle:
+
+\begin{namedthm}{The Canonicalization Principle}
+  Any system organized by equivalence classes has a natural dynamics:
+  the motion of equivalent states toward their shared canonical
+  representative. Stable structures are the canonical representatives
+  of their equivalence class under the ambient dynamics.
+\end{namedthm}
+
+This principle connects the first four chapters into a single coherent
+picture. Objects (Chapter~1) are equivalence classes of accessible
+trajectories. Boundaries (Chapter~2) define the admissible region within
+which canonical forms reside. Collapse (Chapter~3) is the mechanism by
+which equivalence classes are reduced to their representatives.
+Canonicalization (this chapter) is the principle that unifies the three:
+the persistent structure that remains when collapse is complete.
+
+% ── Exercises ────────────────────────────────────────────────
+\section*{Exercises}
+
+\begin{exercise}
+  Let $X = \{$all finite arithmetic expressions over $\mathbb{Z}\}$
+  with $e_1 \equiv e_2$ iff they evaluate to the same integer.
+  Show that $\equiv$ is an equivalence relation. Describe the
+  canonicalization function $c$ and verify that it satisfies
+  idempotence and equivalence-preservation.
+\end{exercise}
+
+\begin{exercise}
+  The rational numbers $\mathbb{Q}$ are defined as the quotient
+  $(\mathbb{Z} \times \mathbb{Z}^*)/{\sim}$ where $(p,q) \sim (p',q')$
+  iff $pq' = p'q$. Verify that $\sim$ is an equivalence relation.
+  Define the canonical form for fractions (reduced form). Show that
+  every equivalence class has exactly one canonical representative.
+\end{exercise}
+
+\begin{exercise}
+  In the RSVP framework, accessibility entropy $S(x) = \log \Omega(x)$
+  measures future volume. Argue (informally) why two states in the same
+  equivalence class — making the same predictions for all observables —
+  should have the same $S$ value. Under what circumstances might they
+  have different $S$ values?
+\end{exercise}
+
+\begin{exercise}[title={Open problem}]
+  Define a notion of \emph{canonical gesture} for handwriting that
+  is consistent with the motor equivalence relation $\sim_m$. What
+  properties should the canonical representative of $[\gamma]_m$
+  have? (Consider: minimum energy, minimum duration, maximum robustness
+  to perturbation.) Are these criteria consistent with each other?
+  If not, which should take precedence and why?
+\end{exercise}

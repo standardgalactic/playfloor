@@ -1,0 +1,314 @@
+\contentsline {chapter}{Preface}{xiii}{chapter*.3}%
+\contentsline {part}{I\hspace {1em}Foundations}{1}{part.1}%
+\contentsline {chapter}{\numberline {1}The World Before Objects}{3}{chapter.1}%
+\contentsline {section}{\numberline {1.1}Why Trajectories Are More Fundamental Than Things}{3}{section.1.1}%
+\contentsline {section}{\numberline {1.2}The Map–Territory Distinction}{4}{section.1.2}%
+\contentsline {section}{\numberline {1.3}Constraint Before Content}{5}{section.1.3}%
+\contentsline {section}{\numberline {1.4}Accessibility Before State}{6}{section.1.4}%
+\contentsline {chapter}{\numberline {2}Regions, Boundaries, and Collapse}{9}{chapter.2}%
+\contentsline {section}{\numberline {2.1}Containment as a Primitive Operation}{9}{section.2.1}%
+\contentsline {section}{\numberline {2.2}Nested Structures}{10}{section.2.2}%
+\contentsline {section}{\numberline {2.3}Recursive Evaluation}{11}{section.2.3}%
+\contentsline {section}{\numberline {2.4}Constraint Boundaries}{12}{section.2.4}%
+\contentsline {section}{\numberline {2.5}Why Collapse Appears in Logic, Computation, and Perception}{13}{section.2.5}%
+\contentsline {section}{\numberline {2.6}Boundaries as Information Generators}{14}{section.2.6}%
+\contentsline {chapter}{\numberline {3}Spherepop as Visual Computation}{17}{chapter.3}%
+\contentsline {section}{\numberline {3.1}Origins of Spherepop}{17}{section.3.1}%
+\contentsline {section}{\numberline {3.2}Nested Bubbles}{18}{section.3.2}%
+\contentsline {section}{\numberline {3.3}Reading Order}{19}{section.3.3}%
+\contentsline {section}{\numberline {3.4}The Pop Operator}{20}{section.3.4}%
+\contentsline {section}{\numberline {3.5}Collapse as Evaluation}{20}{section.3.5}%
+\contentsline {section}{\numberline {3.6}Visual Examples from Arithmetic}{21}{section.3.6}%
+\contentsline {section}{\numberline {3.7}Relationship to Lisp Trees and Expression Parsing}{22}{section.3.7}%
+\contentsline {section}{\numberline {3.8}Spherepop Beyond Arithmetic}{22}{section.3.8}%
+\contentsline {chapter}{\numberline {4}Canonicalization and Equivalence}{25}{chapter.4}%
+\contentsline {section}{\numberline {4.1}Why Different Trajectories Represent the Same Object}{25}{section.4.1}%
+\contentsline {section}{\numberline {4.2}Gesture Equivalence}{26}{section.4.2}%
+\contentsline {section}{\numberline {4.3}Typing Equivalence}{27}{section.4.3}%
+\contentsline {section}{\numberline {4.4}Mathematical Equivalence Classes}{27}{section.4.4}%
+\contentsline {section}{\numberline {4.5}Canonical Forms}{28}{section.4.5}%
+\contentsline {section}{\numberline {4.6}Fiber and Projection Viewpoints}{29}{section.4.6}%
+\contentsline {section}{\numberline {4.7}Canonicalization in the RSVP Framework}{30}{section.4.7}%
+\contentsline {section}{\numberline {4.8}The Canonicalization Principle}{31}{section.4.8}%
+\contentsline {part}{II\hspace {1em}Spherepop Calculus}{33}{part.2}%
+\contentsline {chapter}{\numberline {5}Basic Syntax}{35}{chapter.5}%
+\contentsline {section}{\numberline {5.1}Spheres}{35}{section.5.1}%
+\contentsline {section}{\numberline {5.2}Containment}{36}{section.5.2}%
+\contentsline {section}{\numberline {5.3}Operators}{36}{section.5.3}%
+\contentsline {section}{\numberline {5.4}Reading Conventions}{36}{section.5.4}%
+\contentsline {section}{\numberline {5.5}Bracket Notation}{37}{section.5.5}%
+\contentsline {section}{\numberline {5.6}Translation Between Symbolic and Spherepop Forms}{37}{section.5.6}%
+\contentsline {chapter}{\numberline {6}Evaluation Dynamics}{39}{chapter.6}%
+\contentsline {section}{\numberline {6.1}The Pop Operation}{39}{section.6.1}%
+\contentsline {section}{\numberline {6.2}Refusal}{39}{section.6.2}%
+\contentsline {section}{\numberline {6.3}Binding}{40}{section.6.3}%
+\contentsline {section}{\numberline {6.4}Collapse Operators}{41}{section.6.4}%
+\contentsline {section}{\numberline {6.5}Reduction Sequences}{42}{section.6.5}%
+\contentsline {section}{\numberline {6.6}Termination Conditions}{42}{section.6.6}%
+\contentsline {section}{\numberline {6.7}Confluence}{43}{section.6.7}%
+\contentsline {chapter}{\numberline {7}Geometry of Expressions}{45}{chapter.7}%
+\contentsline {section}{\numberline {7.1}Expressions as Topological Objects}{45}{section.7.1}%
+\contentsline {section}{\numberline {7.2}Nesting Depth as a Geometric Quantity}{45}{section.7.2}%
+\contentsline {section}{\numberline {7.3}Constraint Shells}{46}{section.7.3}%
+\contentsline {section}{\numberline {7.4}Evaluation Paths}{46}{section.7.4}%
+\contentsline {section}{\numberline {7.5}The Expression Manifold}{47}{section.7.5}%
+\contentsline {section}{\numberline {7.6}Visualization Techniques}{48}{section.7.6}%
+\contentsline {chapter}{\numberline {8}Semantic Renormalization}{51}{chapter.8}%
+\contentsline {section}{\numberline {8.1}The Collapse Operator Revisited}{51}{section.8.1}%
+\contentsline {section}{\numberline {8.2}Compression}{52}{section.8.2}%
+\contentsline {section}{\numberline {8.3}Abstraction}{52}{section.8.3}%
+\contentsline {section}{\numberline {8.4}Quotient Structures}{53}{section.8.4}%
+\contentsline {section}{\numberline {8.5}Relationship to Admissibility}{54}{section.8.5}%
+\contentsline {section}{\numberline {8.6}Connection to CLIO and Semantic Fields}{54}{section.8.6}%
+\contentsline {chapter}{\numberline {9}Action Histories and Spherepop Dynamics}{57}{chapter.9}%
+\contentsline {section}{\numberline {9.1}The Spherepop Lagrangian}{57}{section.9.1}%
+\contentsline {section}{\numberline {9.2}Action Histories}{58}{section.9.2}%
+\contentsline {section}{\numberline {9.3}Commitment Variables}{58}{section.9.3}%
+\contentsline {section}{\numberline {9.4}Remaining Freedom}{59}{section.9.4}%
+\contentsline {section}{\numberline {9.5}Accessibility Measures}{60}{section.9.5}%
+\contentsline {section}{\numberline {9.6}Connection to Decision Theory}{60}{section.9.6}%
+\contentsline {section}{\numberline {9.7}Connection to RSVP}{61}{section.9.7}%
+\contentsline {part}{III\hspace {1em}Gesture Before Symbol}{63}{part.3}%
+\contentsline {chapter}{\numberline {10}Gesture as Primary Reality}{65}{chapter.10}%
+\contentsline {section}{\numberline {10.1}Developmental Evidence}{65}{section.10.1}%
+\contentsline {section}{\numberline {10.2}The Gesture Manifold}{66}{section.10.2}%
+\contentsline {section}{\numberline {10.3}Motor Structure as the Substrate of Meaning}{67}{section.10.3}%
+\contentsline {section}{\numberline {10.4}Evolutionary Evidence}{68}{section.10.4}%
+\contentsline {chapter}{\numberline {11}Trajectories and Admissibility}{71}{chapter.11}%
+\contentsline {section}{\numberline {11.1}Gesture Manifolds}{71}{section.11.1}%
+\contentsline {section}{\numberline {11.2}Constraint Spaces on Trajectory Space}{72}{section.11.2}%
+\contentsline {section}{\numberline {11.3}Motor Equivalence Classes Revisited}{72}{section.11.3}%
+\contentsline {section}{\numberline {11.4}Canonical Gestures}{73}{section.11.4}%
+\contentsline {section}{\numberline {11.5}Accessibility of Gesture Continuations}{73}{section.11.5}%
+\contentsline {chapter}{\numberline {12}Keyboards as Gesture Sensors}{75}{chapter.12}%
+\contentsline {section}{\numberline {12.1}Typing as Coordinated Motor Behavior}{75}{section.12.1}%
+\contentsline {section}{\numberline {12.2}The Hidden Signal Beneath Text}{76}{section.12.2}%
+\contentsline {section}{\numberline {12.3}Overlap, Pivots, and Release Structures}{77}{section.12.3}%
+\contentsline {section}{\numberline {12.4}Inter-Hand Coordination}{77}{section.12.4}%
+\contentsline {section}{\numberline {12.5}Keyboard Geometry Revisited}{78}{section.12.5}%
+\contentsline {chapter}{\numberline {13}Gesture Reconstruction as Inverse Inference}{81}{chapter.13}%
+\contentsline {section}{\numberline {13.1}Why Classification is Insufficient}{81}{section.13.1}%
+\contentsline {section}{\numberline {13.2}Trajectory Reconstruction}{82}{section.13.2}%
+\contentsline {section}{\numberline {13.3}Embodied Semantics}{82}{section.13.3}%
+\contentsline {section}{\numberline {13.4}Constraint Multiplication}{83}{section.13.4}%
+\contentsline {section}{\numberline {13.5}Latent Intention}{84}{section.13.5}%
+\contentsline {section}{\numberline {13.6}The Inverse Inference Principle}{84}{section.13.6}%
+\contentsline {part}{IV\hspace {1em}Admissibility and Constraint Theory}{87}{part.4}%
+\contentsline {chapter}{\numberline {14}Accessibility Landscapes}{89}{chapter.14}%
+\contentsline {section}{\numberline {14.1}Admissible Futures}{89}{section.14.1}%
+\contentsline {section}{\numberline {14.2}Constraint Geometry}{90}{section.14.2}%
+\contentsline {section}{\numberline {14.3}Navigation Over Possibility Spaces}{90}{section.14.3}%
+\contentsline {section}{\numberline {14.4}Accessibility Wells, Peaks, and Ridges}{91}{section.14.4}%
+\contentsline {chapter}{\numberline {15}CLIO and Constraint-Leveraged Inference}{93}{chapter.15}%
+\contentsline {section}{\numberline {15.1}Constraint as Computation}{93}{section.15.1}%
+\contentsline {section}{\numberline {15.2}Sparse Projection}{94}{section.15.2}%
+\contentsline {section}{\numberline {15.3}Search Without Exhaustive Search}{94}{section.15.3}%
+\contentsline {chapter}{\numberline {16}Projection Engines}{97}{chapter.16}%
+\contentsline {section}{\numberline {16.1}Outputs as Projections}{97}{section.16.1}%
+\contentsline {section}{\numberline {16.2}Text as Projection}{98}{section.16.2}%
+\contentsline {section}{\numberline {16.3}Music as Projection}{98}{section.16.3}%
+\contentsline {section}{\numberline {16.4}Images as Projection}{98}{section.16.4}%
+\contentsline {section}{\numberline {16.5}Shared Latent Structures}{99}{section.16.5}%
+\contentsline {chapter}{\numberline {17}Sheaves, Fibers, and Gluing}{101}{chapter.17}%
+\contentsline {section}{\numberline {17.1}Local Consistency}{101}{section.17.1}%
+\contentsline {section}{\numberline {17.2}Global Coherence}{102}{section.17.2}%
+\contentsline {section}{\numberline {17.3}Knowledge Integration}{102}{section.17.3}%
+\contentsline {section}{\numberline {17.4}User-Independent Generalization}{102}{section.17.4}%
+\contentsline {part}{V\hspace {1em}RSVP and Cosmological Accessibility}{105}{part.5}%
+\contentsline {chapter}{\numberline {18}The Relativistic Scalar–Vector Plenum}{107}{chapter.18}%
+\contentsline {section}{\numberline {18.1}Historical Development}{107}{section.18.1}%
+\contentsline {section}{\numberline {18.2}Core Fields: $(\mitPhi , \mathbf {v}, S)$}{108}{section.18.2}%
+\contentsline {section}{\numberline {18.3}Entropy and Accessibility}{108}{section.18.3}%
+\contentsline {section}{\numberline {18.4}The RSVP Field Equations}{109}{section.18.4}%
+\contentsline {section}{\numberline {18.5}Lamphron–Lamphrodyne Dynamics}{109}{section.18.5}%
+\contentsline {chapter}{\numberline {19}Accessibility Relaxation}{111}{chapter.19}%
+\contentsline {section}{\numberline {19.1}Replacing Expansion}{111}{section.19.1}%
+\contentsline {section}{\numberline {19.2}Accessibility Gradients}{112}{section.19.2}%
+\contentsline {section}{\numberline {19.3}Entropic Smoothing}{113}{section.19.3}%
+\contentsline {section}{\numberline {19.4}Lamphron–Lamphrodyne Dynamics Revisited}{113}{section.19.4}%
+\contentsline {chapter}{\numberline {20}The Fall of Space}{115}{chapter.20}%
+\contentsline {section}{\numberline {20.1}Space as Relaxation}{115}{section.20.1}%
+\contentsline {section}{\numberline {20.2}Structure Without Expansion}{116}{section.20.2}%
+\contentsline {section}{\numberline {20.3}Constraint Descent}{116}{section.20.3}%
+\contentsline {section}{\numberline {20.4}Observable Consequences}{116}{section.20.4}%
+\contentsline {chapter}{\numberline {21}Cosmology as Accessibility Geometry}{119}{chapter.21}%
+\contentsline {section}{\numberline {21.1}Universes as Accessibility Landscapes}{119}{section.21.1}%
+\contentsline {section}{\numberline {21.2}The Hourglass and Logarithmic-Time Sketches}{119}{section.21.2}%
+\contentsline {section}{\numberline {21.3}Past and Future as Topological Sectors}{120}{section.21.3}%
+\contentsline {section}{\numberline {21.4}Heat Death as Accessibility Collapse}{121}{section.21.4}%
+\contentsline {part}{VI\hspace {1em}Consciousness and Semantic Fields}{125}{part.6}%
+\contentsline {chapter}{\numberline {22}Simulated Agency}{127}{chapter.22}%
+\contentsline {section}{\numberline {22.1}Projection-Based Consciousness}{127}{section.22.1}%
+\contentsline {section}{\numberline {22.2}Sparse Inference}{128}{section.22.2}%
+\contentsline {section}{\numberline {22.3}The IAD Correspondence}{129}{section.22.3}%
+\contentsline {section}{\numberline {22.4}Latent Worlds}{129}{section.22.4}%
+\contentsline {section}{\numberline {22.5}Consciousness as Accessibility Navigation}{130}{section.22.5}%
+\contentsline {chapter}{\numberline {23}Chain of Memory}{133}{chapter.23}%
+\contentsline {section}{\numberline {23.1}Memory as Constraint Preservation}{133}{section.23.1}%
+\contentsline {section}{\numberline {23.2}Trajectory Reconstruction}{134}{section.23.2}%
+\contentsline {section}{\numberline {23.3}Identity Over Time}{135}{section.23.3}%
+\contentsline {section}{\numberline {23.4}The Chain Operator}{136}{section.23.4}%
+\contentsline {section}{\numberline {23.5}Collective Memory and Semantic Infrastructure}{137}{section.23.5}%
+\contentsline {chapter}{\numberline {24}Meaning as Geometry}{139}{chapter.24}%
+\contentsline {section}{\numberline {24.1}Semantic Fields}{139}{section.24.1}%
+\contentsline {section}{\numberline {24.2}Qualia as Invariants}{140}{section.24.2}%
+\contentsline {section}{\numberline {24.3}Constraint Basins}{140}{section.24.3}%
+\contentsline {section}{\numberline {24.4}Coherence Structures}{141}{section.24.4}%
+\contentsline {section}{\numberline {24.5}Zero Ontology and Semantic Geometry}{142}{section.24.5}%
+\contentsline {part}{VII\hspace {1em}Infrastructure and Civilization}{145}{part.7}%
+\contentsline {chapter}{\numberline {25}Semantic Infrastructure}{147}{chapter.25}%
+\contentsline {section}{\numberline {25.1}Beyond Files and Folders}{147}{section.25.1}%
+\contentsline {section}{\numberline {25.2}Semantic Modules and Homotopy Merges}{148}{section.25.2}%
+\contentsline {section}{\numberline {25.3}Knowledge Evolution}{149}{section.25.3}%
+\contentsline {section}{\numberline {25.4}Semantic Version Control}{149}{section.25.4}%
+\contentsline {section}{\numberline {25.5}Obstruction Cohomology}{150}{section.25.5}%
+\contentsline {chapter}{\numberline {26}Xyloarchy and Living Systems}{153}{chapter.26}%
+\contentsline {section}{\numberline {26.1}Forest Intelligence}{153}{section.26.1}%
+\contentsline {section}{\numberline {26.2}The Mycorrhizal Network as Semantic Module System}{154}{section.26.2}%
+\contentsline {section}{\numberline {26.3}Paper Mills and Epistemic Ecology}{154}{section.26.3}%
+\contentsline {section}{\numberline {26.4}Cities as Organs}{155}{section.26.4}%
+\contentsline {section}{\numberline {26.5}Constraint Ecology}{156}{section.26.5}%
+\contentsline {chapter}{\numberline {27}Yarncrawler Systems}{159}{chapter.27}%
+\contentsline {section}{\numberline {27.1}Repair Networks}{159}{section.27.1}%
+\contentsline {section}{\numberline {27.2}Moving Infrastructure}{160}{section.27.2}%
+\contentsline {section}{\numberline {27.3}Adaptive Maintenance}{160}{section.27.3}%
+\contentsline {section}{\numberline {27.4}Stigmergic Planning}{161}{section.27.4}%
+\contentsline {section}{\numberline {27.5}Connection to Semantic Infrastructure}{162}{section.27.5}%
+\contentsline {part}{VIII\hspace {1em}Mathematical Foundations: Logic and Boolean Geometry}{165}{part.8}%
+\contentsline {chapter}{\numberline {28}Logic as Geometry: The Boolean Landscape}{167}{chapter.28}%
+\contentsline {section}{\numberline {28.1}The Curriculum Question}{167}{section.28.1}%
+\contentsline {section}{\numberline {28.2}The Space of Binary Connectives}{168}{section.28.2}%
+\contentsline {section}{\numberline {28.3}Logic as Accessibility Geometry}{169}{section.28.3}%
+\contentsline {section}{\numberline {28.4}The Penteract and Hypercube Splitting}{170}{section.28.4}%
+\contentsline {section}{\numberline {28.5}Seven Curricula, One Landscape}{170}{section.28.5}%
+\contentsline {part}{IX\hspace {1em}Symbols, Alphabets, and Compression}{173}{part.9}%
+\contentsline {chapter}{\numberline {29}From Gesture to Glyph}{175}{chapter.29}%
+\contentsline {section}{\numberline {29.1}How Movement Becomes Mark}{175}{section.29.1}%
+\contentsline {section}{\numberline {29.2}The Stabilization of Traces}{176}{section.29.2}%
+\contentsline {section}{\numberline {29.3}Why Writing Systems Emerge}{176}{section.29.3}%
+\contentsline {section}{\numberline {29.4}Gesture Fossilization}{177}{section.29.4}%
+\contentsline {chapter}{\numberline {30}The Geometry of Alphabets}{179}{chapter.30}%
+\contentsline {section}{\numberline {30.1}Letters as Compressed Shapes}{179}{section.30.1}%
+\contentsline {section}{\numberline {30.2}Symmetry, Rotation, Reflection}{180}{section.30.2}%
+\contentsline {section}{\numberline {30.3}Stroke Economy}{180}{section.30.3}%
+\contentsline {section}{\numberline {30.4}The Accessibility Landscape of Alphabets}{181}{section.30.4}%
+\contentsline {chapter}{\numberline {31}Orthographic Evolution}{183}{chapter.31}%
+\contentsline {section}{\numberline {31.1}Arabic: Cursive Optimization}{183}{section.31.1}%
+\contentsline {section}{\numberline {31.2}Latin: From Majuscule to Minuscule}{184}{section.31.2}%
+\contentsline {section}{\numberline {31.3}Greek, Coptic, and Constructed Scripts}{184}{section.31.3}%
+\contentsline {section}{\numberline {31.4}Constructed Scripts as Constraint Satisfaction}{184}{section.31.4}%
+\contentsline {section}{\numberline {31.5}Why Alphabets Drift Over Centuries}{185}{section.31.5}%
+\contentsline {chapter}{\numberline {32}Semantic Compression Through Writing}{187}{chapter.32}%
+\contentsline {section}{\numberline {32.1}Writing as a Storage Technology}{187}{section.32.1}%
+\contentsline {section}{\numberline {32.2}The Economics of Symbols}{188}{section.32.2}%
+\contentsline {section}{\numberline {32.3}Compression versus Expressiveness}{188}{section.32.3}%
+\contentsline {section}{\numberline {32.4}The Renormalization of Writing}{190}{section.32.4}%
+\contentsline {part}{X\hspace {1em}Navigation Through Knowledge}{193}{part.10}%
+\contentsline {chapter}{\numberline {33}Beyond Files and Folders}{195}{chapter.33}%
+\contentsline {section}{\numberline {33.1}The Limitations of Hierarchical Storage}{195}{section.33.1}%
+\contentsline {section}{\numberline {33.2}Knowledge as Terrain}{195}{section.33.2}%
+\contentsline {section}{\numberline {33.3}The Link as the Primary Object}{196}{section.33.3}%
+\contentsline {chapter}{\numberline {34}Semantic Zoom}{199}{chapter.34}%
+\contentsline {section}{\numberline {34.1}Scale-Dependent Representations}{199}{section.34.1}%
+\contentsline {section}{\numberline {34.2}Micro, Meso, and Macro Views}{200}{section.34.2}%
+\contentsline {section}{\numberline {34.3}Context-Sensitive Abstraction}{200}{section.34.3}%
+\contentsline {chapter}{\numberline {35}Knowledge Landscapes}{203}{chapter.35}%
+\contentsline {section}{\numberline {35.1}Browsing as Navigation}{203}{section.35.1}%
+\contentsline {section}{\numberline {35.2}Maps versus Indexes}{204}{section.35.2}%
+\contentsline {section}{\numberline {35.3}Exploration and Exploitation in Knowledge}{204}{section.35.3}%
+\contentsline {section}{\numberline {35.4}Semantic Terrain and Physical Terrain}{204}{section.35.4}%
+\contentsline {chapter}{\numberline {36}Interfaces as Cognitive Prosthetics}{207}{chapter.36}%
+\contentsline {section}{\numberline {36.1}Tools That Extend Memory}{207}{section.36.1}%
+\contentsline {section}{\numberline {36.2}Tools That Extend Attention}{208}{section.36.2}%
+\contentsline {section}{\numberline {36.3}Tools That Extend Reasoning}{208}{section.36.3}%
+\contentsline {part}{XI\hspace {1em}The Architecture of Learning}{211}{part.11}%
+\contentsline {chapter}{\numberline {37}Learning as Infrastructure}{213}{chapter.37}%
+\contentsline {section}{\numberline {37.1}Knowledge Accumulation}{213}{section.37.1}%
+\contentsline {section}{\numberline {37.2}Maintenance Costs}{214}{section.37.2}%
+\contentsline {section}{\numberline {37.3}Forgetting as Accessibility Pruning}{214}{section.37.3}%
+\contentsline {section}{\numberline {37.4}Reconstruction over Retention}{214}{section.37.4}%
+\contentsline {chapter}{\numberline {38}Exploration versus Exploitation}{217}{chapter.38}%
+\contentsline {section}{\numberline {38.1}Discovery}{217}{section.38.1}%
+\contentsline {section}{\numberline {38.2}Practice}{218}{section.38.2}%
+\contentsline {section}{\numberline {38.3}Mastery and Novelty}{218}{section.38.3}%
+\contentsline {chapter}{\numberline {39}Organizing a Mind}{221}{chapter.39}%
+\contentsline {section}{\numberline {39.1}Notes}{221}{section.39.1}%
+\contentsline {section}{\numberline {39.2}Memories}{222}{section.39.2}%
+\contentsline {section}{\numberline {39.3}Projects}{222}{section.39.3}%
+\contentsline {section}{\numberline {39.4}Archives}{223}{section.39.4}%
+\contentsline {chapter}{\numberline {40}Read–Evaluate–Print Loops}{225}{chapter.40}%
+\contentsline {section}{\numberline {40.1}Feedback Cycles in Learning}{225}{section.40.1}%
+\contentsline {section}{\numberline {40.2}Revision Systems}{226}{section.40.2}%
+\contentsline {section}{\numberline {40.3}Constraint-Guided Growth}{226}{section.40.3}%
+\contentsline {part}{XII\hspace {1em}Simulated Worlds}{229}{part.12}%
+\contentsline {chapter}{\numberline {41}Games as Cognitive Laboratories}{231}{chapter.41}%
+\contentsline {section}{\numberline {41.1}Why Games Teach}{231}{section.41.1}%
+\contentsline {section}{\numberline {41.2}Artificial Constraints as Epistemic Tools}{232}{section.41.2}%
+\contentsline {section}{\numberline {41.3}Exploration Under Rules}{232}{section.41.3}%
+\contentsline {chapter}{\numberline {42}Procedural Universes}{235}{chapter.42}%
+\contentsline {section}{\numberline {42.1}Generation}{235}{section.42.1}%
+\contentsline {section}{\numberline {42.2}Emergence}{235}{section.42.2}%
+\contentsline {section}{\numberline {42.3}Constraint Satisfaction in World Construction}{236}{section.42.3}%
+\contentsline {chapter}{\numberline {43}Virtual Ecology}{237}{chapter.43}%
+\contentsline {section}{\numberline {43.1}Agents and Resources}{237}{section.43.1}%
+\contentsline {section}{\numberline {43.2}Adaptation}{237}{section.43.2}%
+\contentsline {section}{\numberline {43.3}Civilizations}{238}{section.43.3}%
+\contentsline {chapter}{\numberline {44}The Universe as a Simulation Medium}{239}{chapter.44}%
+\contentsline {section}{\numberline {44.1}Not Simulation Theory}{239}{section.44.1}%
+\contentsline {section}{\numberline {44.2}Simulation as Epistemic Technique}{240}{section.44.2}%
+\contentsline {section}{\numberline {44.3}Building Worlds to Understand Worlds}{240}{section.44.3}%
+\contentsline {part}{XIII\hspace {1em}Universal Classification}{243}{part.13}%
+\contentsline {chapter}{\numberline {45}The Search for Shared Structure}{245}{chapter.45}%
+\contentsline {section}{\numberline {45.1}Patterns That Recur Across Domains}{245}{section.45.1}%
+\contentsline {section}{\numberline {45.2}Analogical Reasoning}{246}{section.45.2}%
+\contentsline {section}{\numberline {45.3}Cross-Disciplinary Transfer}{246}{section.45.3}%
+\contentsline {chapter}{\numberline {46}Morphological Taxonomy}{249}{chapter.46}%
+\contentsline {section}{\numberline {46.1}Shape, Function, Behavior, Constraint}{249}{section.46.1}%
+\contentsline {section}{\numberline {46.2}When Categories Fail}{250}{section.46.2}%
+\contentsline {section}{\numberline {46.3}Functional Classification}{250}{section.46.3}%
+\contentsline {chapter}{\numberline {47}Ontological Engineering}{253}{chapter.47}%
+\contentsline {section}{\numberline {47.1}Building Categories}{253}{section.47.1}%
+\contentsline {section}{\numberline {47.2}Revising Categories}{254}{section.47.2}%
+\contentsline {section}{\numberline {47.3}When Categories Fail and How to Fix Them}{254}{section.47.3}%
+\contentsline {chapter}{\numberline {48}The Sociology of Knowledge}{257}{chapter.48}%
+\contentsline {section}{\numberline {48.1}Scientific Institutions as Knowledge Infrastructure}{257}{section.48.1}%
+\contentsline {section}{\numberline {48.2}Classification Systems as Social Technologies}{257}{section.48.2}%
+\contentsline {section}{\numberline {48.3}Educational Structures as Accessibility Engineering}{258}{section.48.3}%
+\contentsline {section}{\numberline {48.4}Cultural Memory}{258}{section.48.4}%
+\contentsline {part}{XIV\hspace {1em}Civilization as Computation}{261}{part.14}%
+\contentsline {chapter}{\numberline {49}Collective Memory}{263}{chapter.49}%
+\contentsline {section}{\numberline {49.1}Libraries}{263}{section.49.1}%
+\contentsline {section}{\numberline {49.2}Archives}{264}{section.49.2}%
+\contentsline {section}{\numberline {49.3}The Internet as Collective Memory}{264}{section.49.3}%
+\contentsline {section}{\numberline {49.4}Civilizational Recall}{264}{section.49.4}%
+\contentsline {chapter}{\numberline {50}Educational Architecture}{267}{chapter.50}%
+\contentsline {section}{\numberline {50.1}Learning Environments}{267}{section.50.1}%
+\contentsline {section}{\numberline {50.2}Curricula}{268}{section.50.2}%
+\contentsline {section}{\numberline {50.3}Constraint-Guided Teaching}{269}{section.50.3}%
+\contentsline {chapter}{\numberline {51}Knowledge Ecosystems}{271}{chapter.51}%
+\contentsline {section}{\numberline {51.1}Researchers}{271}{section.51.1}%
+\contentsline {section}{\numberline {51.2}Institutions}{272}{section.51.2}%
+\contentsline {section}{\numberline {51.3}Information Flow}{272}{section.51.3}%
+\contentsline {section}{\numberline {51.4}Ecological Health Metrics}{272}{section.51.4}%
+\contentsline {chapter}{\numberline {52}Toward a Semantic Civilization}{275}{chapter.52}%
+\contentsline {section}{\numberline {52.1}Meaning-Centered Infrastructure}{275}{section.52.1}%
+\contentsline {section}{\numberline {52.2}Constraint-Aware Systems}{276}{section.52.2}%
+\contentsline {section}{\numberline {52.3}Human–AI Collaboration}{276}{section.52.3}%
+\contentsline {section}{\numberline {52.4}Future Directions}{277}{section.52.4}%
+\contentsline {section}{\numberline {52.5}The Last Collapse}{278}{section.52.5}%
+\contentsline {chapter}{Sets, Relations, and Constraint Spaces}{281}{appendix*.14}%
+\contentsline {chapter}{Projection Theory and Information Loss}{285}{appendix*.15}%
+\contentsline {chapter}{Spherepop Calculus}{289}{appendix*.16}%
+\contentsline {chapter}{Boolean Lattices and Logical Geometry}{293}{appendix*.18}%
+\contentsline {chapter}{Hypercubes and Dimensional Aggregation}{297}{appendix*.20}%
+\contentsline {chapter}{Gesture Manifolds and Canonicalization}{299}{appendix*.21}%
+\contentsline {chapter}{Keyboard Geometry and Motor Fields}{301}{appendix*.22}%
+\contentsline {chapter}{Admissibility and Constraint Closure}{303}{appendix*.23}%
+\contentsline {chapter}{Sheaf Theory and Semantic Coherence}{305}{appendix*.24}%
+\contentsline {chapter}{Accessibility Geometry}{307}{appendix*.25}%
+\contentsline {chapter}{The Relativistic Scalar–Vector Plenum}{309}{appendix*.26}%
+\contentsline {chapter}{Semantic Fields and Simulated Agency}{311}{appendix*.27}%
+\contentsline {chapter}{Semantic Infrastructure and Category Theory}{313}{appendix*.28}%
+\contentsline {chapter}{Learning Geometry and Curriculum Dynamics}{315}{appendix*.29}%
+\contentsline {chapter}{Civilization Dynamics and Collective Memory}{317}{appendix*.30}%
+\contentsline {chapter}{Bibliography}{319}{appendix*.31}%

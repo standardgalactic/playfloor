@@ -1,0 +1,66 @@
+\chapter{Physical Fields and Accessibility Dynamics}
+\index{accessibility fields}\index{field grammar}\index{accessibility skeleton}
+
+\section{The Central Asymmetry}
+
+A semantic system can be designed to attenuate. A physical system cannot. Its dynamics are whatever the field equations make them. This is the fundamental asymmetry between Chapters~6 and~7.
+
+\section{Field Grammars and Accessibility Trajectories}
+
+A \textbf{field configuration} is a tuple $F = (\Phi, \mathbf{v}, S)$ of fields on a domain. A \textbf{field grammar} $\mathcal{G} = (\mathcal{F}, \mathcal{T}, \mathcal{C})$ specifies the configuration space $\mathcal{F}$, transition operators $\mathcal{T}$, and admissibility constraints $\mathcal{C}$. An \textbf{accessibility trajectory} $(F_0, F_1, \ldots, F_T)$ has $F_{t+1} \in \mathrm{Succ}_\mathcal{C}(F_t)$.
+
+\section{Transition-Depth Interaction Decomposition: Diagnostic Question 1}
+
+For query $Q$ and reference $\gamma_0$, define $A_r^{Q,\gamma_0}(\gamma) = Q_r(\gamma) - Q_{r-1}(\gamma)$ by the same telescoping construction as Chapter~6. The decomposition $Q = \sum_r A_r^{Q,\gamma_0}$ is exact by finite depth. \textbf{Diagnostic Question 1: Affirmative, unconditional.}
+
+\section{Accessibility Stability: Diagnostic Question 2}
+
+Let $\mu$ be a measure on $\mathcal{F}$ and $\mathcal{A}_r(F) = \{F' : F' \text{ reachable in exactly }r\text{ transitions}\}$.
+
+\begin{definition}[$\alpha$-Contracting Field Grammar]
+$\mathcal{G}$ is \textbf{$\alpha$-contracting} if $\mu(\mathcal{A}_r(F)) \leq \alpha^r \mu(\mathcal{A}_0(F_0^{\mathrm{ref}}))$ for all $F$, $r$.
+\end{definition}
+
+\begin{theorem}[Accessibility Stability]
+\label{thm:accessibility-stability}
+For an $\alpha$-contracting grammar with $B_{\mathrm{eff}} \cdot \alpha < 1$ and $L$-Lipschitz queries:
+\[
+  |A_r^{Q,\gamma_0}| \leq L \cdot r \cdot (B_{\mathrm{eff}}\alpha)^r, \qquad \sum_{r>d} \sigma_r = O(d \cdot (B_{\mathrm{eff}}\alpha)^d).
+\]
+\end{theorem}
+
+\textbf{Diagnostic Question 2: Conditional on $\alpha$-contraction.}
+
+\section{Accessibility Skeleton Compression: Diagnostic Question 3}
+
+The \textbf{accessibility skeleton} $\mathcal{S}_{d_\pi}(F) = \bigcup_{r=0}^{d_\pi} \mathcal{A}_r(F)$ stores all reachable configurations through depth $d_\pi$. Two trajectories are $d_\pi$-equivalent iff their skeletons agree $\mu$-almost everywhere. For depth-$d_Q$ accessibility queries with $d_\pi \geq d_Q$: $\varepsilon_1 = 0$ exactly ($\mu$-a.e.). \textbf{Diagnostic Question 3: Affirmative, unconditional.}
+
+\section{Conditional Alignment and Three Outcomes}
+
+Under $\alpha$-contraction with $d_\pi = d_Q = d$: $E_{\mathrm{total}} = O(d(B_{\mathrm{eff}}\alpha)^d)$.
+
+The \textbf{Accessibility Relaxation Hypothesis} conjectures that RSVP field dynamics produce $\alpha$-contracting grammars through systematic decrease of the accessibility field $S$. Three outcomes:
+
+\textbf{Outcome A} (exponential contraction): Stability holds; full alignment achieved.
+
+\textbf{Outcome B} (polynomial contraction): Polynomial stability; alignment partial; reconstruction possible but slow.
+
+\textbf{Outcome C} (no contraction): Stability fails; $E_c$ non-convergent; structural impossibility.
+
+\section{Diagnostic Audit}
+
+\begin{center}\small
+\begin{tabular}{lll}
+\toprule
+Question & Status & Evidence \\
+\midrule
+Decomposition exact? & Yes, unconditional & Telescoping \\
+Stability summable? & Conditional (Outcome A/B) & Open empirical question \\
+Compression sufficient? & Yes, unconditional & Skeleton preservation \\
+Depths aligned? & Conditional (Outcome A/B) & Requires contraction \\
+Degeneracy avoided? & Requires verification & Measure-theoretic \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\textbf{Lesson:} Alignment can be engineered, but stability cannot be assumed.

@@ -1,0 +1,56 @@
+\chapter{Learning Systems and Algorithmic Histories}
+\index{learning systems}\index{polynomial sketch}
+
+\section{The Reconstruction Problem in Learning Systems}
+
+A machine-learning model is trained on a dataset of examples. When training ends, the parameters are fixed and the training history is discarded. The counterfactual question: what would the model have predicted had a particular training example been excluded?
+
+Retraining large models for every such question is computationally prohibitive. The question is whether the model's current parameters contain enough information to answer such counterfactual questions without retraining.
+
+\section{Interaction Decomposition: Diagnostic Question 1}
+
+Let $\mathcal{X} = \mathbb{R}^n$, where $x_i$ is a downweight on the $i$-th training example. The query is $Q(x) = g(f(x))$, the composition of the training map $f$ with a measurement $g$. The reference is $x_0 = \mathbf{1}$ (full unweighted training). The Taylor expansion around $x_0$ provides the interaction decomposition:
+\[
+  Q(x) = \sum_{r=0}^\infty T_r(x - x_0),
+\]
+where $T_r$ is the degree-$r$ homogeneous component. This decomposition is exact wherever $Q$ is smooth. \textbf{Diagnostic Question 1: Affirmative.}
+
+\section{Stability: Diagnostic Question 2}
+
+\begin{definition}[Gunn Stability \cite{Gunn2026}]
+There exist $C, c > 0$ such that $\|T_r\| \leq Ce^{-cr}$ for all $r \geq 0$.
+\end{definition}
+
+This says higher-order interactions among training examples decay exponentially. Setting $\sigma_r = Ce^{-cr}$ gives a summable stability sequence. \textbf{Diagnostic Question 2: Affirmative under Gunn's stability assumption} (empirically supported for small models; open for frontier scale).
+
+\section{Compression: Diagnostic Question 3}
+
+Gunn's polynomial sketch \cite{Gunn2026} evaluates $Q(x_0 + \zeta\psi)$ for random complex directions $\psi$, extracting random projections of the derivative tensors via forward-mode automatic differentiation over truncated polynomial rings. The sketch achieves $(d, O(\varepsilon))$-sufficiency with sketch dimension $O(\log(1/\delta)/\varepsilon^2)$.  \textbf{Diagnostic Question 3: Affirmative.}
+
+\section{Reconstruction and Alignment}
+
+By Theorem~\ref{thm:reconstruction}:
+\[
+  E_{\mathrm{total}} \leq \frac{Ce^{-cd}}{1-e^{-c}} + O(\varepsilon) + \varepsilon_0.
+\]
+The sketch achieves \textbf{alignment by coincidence}: designed for computational efficiency, it happens to preserve derivative structure calibrated to the stability sequence.
+
+\section{Diagnostic Audit}
+
+\begin{center}\small
+\begin{tabular}{lll}
+\toprule
+Question & Status & Evidence \\
+\midrule
+Decomposition exact? & Yes & Taylor series \\
+Stability summable? & Yes (Gunn) & $\|T_r\| \leq Ce^{-cr}$, small-model tests \\
+Compression sufficient? & Yes & Symmetric-subspace identity \\
+Depths aligned? & Yes & $d_\pi = d_Q = d$ \\
+Degeneracy avoided? & Yes & Well-separated sketch classes \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\section{Lesson}
+
+Reconstruction works not because the training history is stored, but because the query depends on it in a compressible way. The stability assumption is the load-bearing hypothesis. Open obligation: verify exponential derivative decay at frontier-model scale.

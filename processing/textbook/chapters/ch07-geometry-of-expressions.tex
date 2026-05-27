@@ -1,0 +1,197 @@
+% ============================================================
+%  chapters/ch07-geometry-of-expressions.tex
+% ============================================================
+
+\chapter{Geometry of Expressions}
+
+\chapterepigraph{%
+  An expression is not a string.\\
+  It is a shape in a space of shapes.
+}{Flyxion, \textit{Semantic Infrastructure}}
+
+\sidenote{Connects to\\App.\,E on\\hypercubes as\\expression spaces}
+
+The previous two chapters treated Spherepop syntactically (Chapter~5)
+and dynamically (Chapter~6). This chapter treats Spherepop
+\emph{geometrically}: expressions as points in a metric space, evaluation
+as motion through that space, and the structure of computation as the
+topology of reachable expression sets.
+
+\section{Expressions as Topological Objects}
+
+A Spherepop expression is not merely a syntactic object — it is a
+topological object with a natural metric. Two expressions are close
+if they differ in few places; distant if they differ substantially.
+
+\begin{definition}{Edit Distance}{edit-dist}
+  The \emph{edit distance} $d(E_1, E_2)$ between two Spherepop
+  expressions is the minimum number of atomic operations (insert a
+  sphere, delete a sphere, change a label) needed to transform
+  $E_1$ into $E_2$.
+\end{definition}
+
+The set of all Spherepop expressions over a fixed signature, equipped
+with edit distance, forms a metric space $(\mathcal{E}, d)$. Evaluation
+defines a trajectory through this space:
+\[
+  E_0 \xrightarrow{\text{pop}} E_1 \xrightarrow{\text{pop}} \cdots
+  \xrightarrow{\text{pop}} E_n.
+\]
+
+\section{Nesting Depth as a Geometric Quantity}
+
+Depth is the primary geometric invariant of a Spherepop expression.
+It measures the maximum containment level — the ``height'' of the
+expression in the nesting hierarchy.
+
+\begin{definition}{Expression Depth Profile}{depth-profile}
+  The \emph{depth profile} of an expression $E$ is the function
+  $\delta_E : \mathrm{nodes}(E) \to \mathbb{N}$ assigning depth to
+  each sphere node. The \emph{maximum depth} is
+  $D(E) = \max_{s} \delta_E(s)$.
+\end{definition}
+
+\begin{proposition}{Depth Decreases Under Evaluation}{depth-decrease}
+  If $E \to_\text{pop} E'$, then $D(E') \leq D(E)$, with equality only
+  when the popped redex was not the deepest sphere in $E$.
+\end{proposition}
+
+The depth profile describes the ``shape'' of an expression geometrically:
+a tall, narrow expression has high maximum depth and few wide branches;
+a flat, wide expression has low maximum depth and many branches at each
+level.
+
+\section{Constraint Shells}
+
+From the perspective of Chapters~1–2, a Spherepop expression is a
+system of nested constraint shells.
+
+\begin{definition}{Constraint Shell}{constraint-shell}
+  The \emph{constraint shell} at depth $k$ in expression $E$ is the
+  set of spheres at depth exactly $k$. The innermost shell (maximum
+  depth $D(E)$) contains the redexes; the outermost shell (depth 0)
+  contains the root.
+\end{definition}
+
+Each shell constrains the evaluation of spheres in all deeper shells:
+the operator at depth $k$ cannot apply until all depth-$k+1$ spheres
+in its content list have been evaluated. The constraint structure is
+therefore hierarchical — a tower of constraints, one per depth level.
+
+\begin{figure}[h]
+  \centering
+  \begin{tikzpicture}[scale=1.0]
+    \input{diagrams/expression-shells}
+  \end{tikzpicture}
+  \caption{Constraint shells in the Spherepop expression
+    $1 + (3 \times (2 \uparrow 2))$. Shell 0 (outermost, depth 0)
+    contains the $+$ operator. Shell 1 contains $\times$. Shell 2
+    (innermost) contains $\uparrow$ and the atoms $2, 2$. Evaluation
+    proceeds shell 2 $\to$ shell 1 $\to$ shell 0.}
+  \label{fig:expression-shells}
+\end{figure}
+
+\section{Evaluation Paths}
+
+An evaluation path is a sequence of expressions from an initial
+expression to its terminal form. The geometry of evaluation paths
+reveals the structure of the computation.
+
+\begin{definition}{Evaluation Path Length}{path-length}
+  The \emph{length} of an evaluation path from $E$ to $E'$ is the
+  number of pop steps. The \emph{shortest evaluation path} minimizes
+  the number of steps.
+\end{definition}
+
+\begin{proposition}{Shortest Path Bound}{shortest-path}
+  The length of the shortest evaluation path from $E$ to its terminal
+  form equals the number of non-atomic spheres in $E$.
+\end{proposition}
+
+\begin{proof}
+  Each pop step eliminates exactly one non-atomic sphere (replacing it
+  with an atomic value). Since each step reduces the non-atomic count
+  by exactly 1, and no step can be skipped in a valid evaluation, the
+  minimum path length equals the initial number of non-atomic spheres.
+\end{proof}
+
+\section{The Expression Manifold}
+
+At a higher level, the set of all expressions of a given depth and
+operator signature forms an \emph{expression manifold}: a structured
+space in which the geometry of evaluation can be studied globally.
+
+\begin{definition}{Expression Manifold}{expr-manifold}
+  For a fixed operator signature $(\Sigma_L, \mathrm{ar})$ and
+  maximum depth $D$, the \emph{expression manifold} $\mathcal{M}(D)$
+  is the metric space of all well-formed expressions of depth $\leq D$,
+  equipped with edit distance $d$.
+\end{definition}
+
+Evaluation defines a vector field on $\mathcal{M}(D)$: at each
+expression $E$, the ``pop vector'' points in the direction of $E$'s
+reduction (toward the terminal expression). The integral curves of
+this vector field are the evaluation paths.
+
+\begin{remark}
+  This makes the connection to RSVP explicit. In RSVP, the vector field
+  $\mathbf{v}$ drives the evolution of the scalar field $\Phi$. In the
+  expression manifold, the pop vector drives the evolution of the
+  expression. Spherepop evaluation \emph{is} a special case of RSVP
+  dynamics restricted to the discrete expression manifold.
+\end{remark}
+
+\section{Visualization Techniques}
+
+Several visualization techniques help make expression geometry tangible:
+
+\begin{enumerate}
+  \item \textbf{Depth coloring:} color each sphere by depth, from
+        cool colors at depth 0 to warm colors at maximum depth.
+        The resulting image shows the thermal structure of the
+        computation, with the ``hot'' innermost regions evaluating first.
+
+  \item \textbf{Evaluation animation:} animate the sequence of pop
+        steps, showing each sphere collapse in turn. The animation
+        makes the propagation of values outward through the expression
+        directly visible.
+
+  \item \textbf{Expression tree as landscape:} embed the expression
+        tree in 3D with depth as height. The landscape metaphor makes
+        evaluation a physical process: water flowing downhill, filling
+        valleys, eventually settling at the global minimum (the terminal
+        expression at depth 0).
+
+  \item \textbf{Constraint hypercube projection:} encode each expression
+        of depth $\leq D$ as a binary vector of length $|\mathcal{M}(D)|$
+        (one bit per possible sub-sphere, indicating presence or absence).
+        The expression manifold embeds in the hypercube $Q_n$ from
+        Appendix~E, and evaluation corresponds to motion toward a
+        designated corner.
+\end{enumerate}
+
+\begin{exercise}
+  Draw the expression tree for $(2 + 3) \times (4 + 1)$ as a
+  3D landscape with depth as height. Identify the ``valleys''
+  (innermost spheres) and describe the evaluation process as
+  water flowing to sea level.
+\end{exercise}
+
+\begin{exercise}
+  Two expressions $E_1$ and $E_2$ have the same depth profile if
+  $\delta_{E_1} = \delta_{E_2}$ up to relabeling. Define an
+  equivalence relation $\sim_\text{shape}$ on expressions that
+  identifies expressions with the same shape. What does $\mathcal{E}/{\sim_\text{shape}}$
+  look like? How many shape classes are there for depth $\leq 2$
+  with binary operators?
+\end{exercise}
+
+\begin{exercise}[title={Harder}]
+  Define a notion of \emph{expression curvature} that measures how
+  ``unbalanced'' an expression tree is (i.e., the degree to which
+  the depth profile is skewed to one side). Show that a perfectly
+  balanced binary expression tree of depth $D$ has curvature 0,
+  and that a completely left-leaning tree (every left child is a
+  subtree, every right child is an atom) has maximum curvature for
+  its depth.
+\end{exercise}

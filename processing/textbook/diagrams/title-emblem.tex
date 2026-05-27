@@ -1,0 +1,29 @@
+% title-emblem.tex — minimal RSVP emblem for title page
+  % Outer circle
+  \draw[RSVPaccent!70, thick] (0,0) circle (1.8cm);
+  \draw[RSVPaccent!40, thin] (0,0) ellipse (1.8cm and 0.45cm);
+
+  % Vector arrows
+  \foreach \angle in {0,60,120,180,240,300}{
+    \pgfmathsetmacro{\ex}{0.9*cos(\angle)}
+    \pgfmathsetmacro{\ey}{0.45*sin(\angle)}
+    \pgfmathsetmacro{\sx}{0.4*cos(\angle)}
+    \pgfmathsetmacro{\sy}{0.2*sin(\angle)}
+    \draw[-{Stealth[length=3pt]}, RSVPaccent, thick, opacity=0.8]
+      (\sx,\sy) -- (\ex,\ey);
+  }
+
+  % Inner core
+  \fill[RSVPdeep] (0,0) circle (0.42cm);
+  \node[white, font=\bfseries\small] at (0,0) {$\Phi$};
+
+  % S label
+  \node[white!80, font=\itshape\small] at (-0.15, 1.35) {$S$};
+  % v label
+  \node[RSVPaccent, font=\bfseries\small] at (1.1, 0.15) {$\mathbf{v}$};
+
+  % Wavy S lines (manual, no decoration)
+  \draw[white!60, thin, opacity=0.55]
+    (-1.4,0.7) .. controls (-0.7,0.85) and (0.7,0.55) .. (1.4,0.7);
+  \draw[white!40, very thin, opacity=0.35]
+    (-1.1,-0.5) .. controls (-0.5,-0.35) and (0.5,-0.65) .. (1.1,-0.5);

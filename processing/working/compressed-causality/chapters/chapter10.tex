@@ -1,0 +1,59 @@
+\chapter{The Five Diagnostic Questions as a Scientific Instrument}
+\index{diagnostic questions}\index{diagnostic audit}
+
+\section{From Theorems to Audits}
+
+The five diagnostic questions of Chapter~4 operate at three levels. As \emph{verification criteria}, they determine whether reconstruction is guaranteed. As a \emph{scientific workflow}, they determine why reconstruction works or fails. As a \emph{research program generator}, they determine what experiment, theorem, or measurement would resolve remaining uncertainty.
+
+The purpose of the audit is not to certify reconstruction. It is to identify the minimum evidence required to justify a reconstruction claim.
+
+\section{The Five-Question Audit Procedure}
+
+\textbf{Question 1: What is the interaction decomposition, and is it exact?}
+Specify $\mathcal{X}$, $x_0$, the interaction order, and the terms $I_r^{Q,x_0}$. A positive answer establishes that the query's dependence on the history can be analyzed at all.
+
+\textbf{Question 2: Is the stability sequence summable?}
+Specify $\{\sigma_r\}$ and the tail behavior. If not summable: \emph{stability failure} (structural). Report as a property of the trajectory space; consider alternative decompositions.
+
+\textbf{Question 3: Is the compression sufficient?}
+Specify $\pi$, $d_\pi$, and the sufficiency error $\varepsilon_1$. If large: \emph{sufficiency failure} (architectural). Redesign the compression.
+
+\textbf{Question 4: Are depths aligned?}
+Verify $d_\pi = d_Q$. If not: \emph{misalignment failure}. Adjust depth parameters.
+
+\textbf{Question 5: Does the equivalence relation avoid degeneracy?}
+Check whether $\sim_{d_\pi}$ collapses trajectories the query family distinguishes. If so: \emph{degeneracy failure}. Enrich the equivalence relation or measure structure.
+
+\section{The Diagnostic Audit Report}
+
+A complete audit produces a nine-component report:
+\begin{enumerate}
+  \item Trajectory Space Definition
+  \item Query Family Definition
+  \item Interaction Decomposition
+  \item Stability Analysis
+  \item Compression Architecture
+  \item Sufficiency Analysis
+  \item Alignment Analysis
+  \item Failure Classification
+  \item Open Empirical Obligations
+\end{enumerate}
+
+Component~9 is the most important: it converts vague uncertainty into concrete scientific questions.
+
+\section{Research Programs from Audit Gaps}
+
+Open obligations from the three verified domains:
+\begin{itemize}
+  \item \textbf{Learning systems:} Measure derivative tensor decay at frontier-model scale.
+  \item \textbf{Semantic systems:} Measure attenuation coefficients for natural-language inference grammars.
+  \item \textbf{Physical fields:} Determine whether accessible volume contracts exponentially, polynomially, or not at all under RSVP dynamics.
+\end{itemize}
+
+The framework transforms philosophical uncertainty about whether reconstruction is possible into empirical questions about specific measurable quantities.
+
+\section{Portability}
+
+The five-question audit is portable to any domain where counterfactual reconstruction from compressed representations is claimed or desired. It is modular, falsifiable, research-program-generating, and sensitive to epistemic levels (proved versus empirically supported versus hypothetical).
+
+The purpose of Part~Three has not been to prove that reconstruction succeeds. It has been to determine what evidence would be required to believe that it succeeds.

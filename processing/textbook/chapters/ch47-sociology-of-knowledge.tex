@@ -1,0 +1,106 @@
+\chapter{The Sociology of Knowledge}
+
+\chapterepigraph{%
+  Knowledge does not exist in minds alone.\\
+  It exists in the spaces between minds —\\
+  in institutions, in conversations,\\
+  in arguments that outlast the arguers.
+}{Flyxion, \textit{Semantic Infrastructure}}
+
+\sidenote{Connects to\\civilizational\\dynamics (App.\,O)\\and xyloarchy\\(Ch.\,26)}
+
+Chapter~46 developed ontological engineering as a design discipline.
+This chapter examines the social and institutional context in which
+knowledge is produced, organized, and transmitted — the sociology of
+knowledge.
+
+\section{Scientific Institutions as Knowledge Infrastructure}
+
+Scientific institutions — universities, journals, funding agencies,
+professional societies — are knowledge infrastructure in the sense of
+Chapter~25. They implement the five knowledge evolution operations
+(extension, correction, composition, abstraction, instantiation)
+at the collective level.
+
+\begin{definition}{Scientific Institution as Semantic Module}{sci-inst}
+  A \emph{scientific institution} functions as a semantic module
+  $(C_\text{inst}, A_\text{inst}, \partial C_\text{inst})$ where:
+  \begin{itemize}
+    \item $C_\text{inst}$ is the body of knowledge the institution
+          maintains (its curricula, standards, archives),
+    \item $A_\text{inst}$ is its methodological standards (what counts
+          as valid evidence, what counts as a valid argument),
+    \item $\partial C_\text{inst}$ is its interface with other
+          institutions and with the public.
+  \end{itemize}
+\end{definition}
+
+\section{Classification Systems as Social Technologies}
+
+Classification systems are not merely cognitive tools — they are social
+technologies that coordinate action across communities. The Linnaean
+taxonomy coordinates biological research globally. The Dewey Decimal
+System coordinates library organization. The periodic table coordinates
+chemistry.
+
+Each system embeds choices — which distinctions to draw, which to
+ignore — that reflect the social priorities of the community that
+created it. These choices are often invisible to later users who
+experience the classification as ``natural.''
+
+\section{Educational Structures as Accessibility Engineering}
+
+Educational systems are the primary mechanism by which civilizations
+transmit their accumulated constraint modifications to new generations.
+But they do more than transmit: they shape the accessibility landscape
+of the next generation's knowledge infrastructure.
+
+\begin{definition}{Curriculum as Accessibility Engineering}{curriculum-access}
+  A \emph{curriculum} is an accessibility engineering plan: a
+  sequence of constraint modifications $(\Delta\mathcal{C}_1,
+  \Delta\mathcal{C}_2, \ldots, \Delta\mathcal{C}_n)$ designed to
+  build a knowledge infrastructure with target accessibility
+  properties. A curriculum is \emph{good} if it maximizes the
+  accessibility entropy of the resulting infrastructure.
+\end{definition}
+
+\section{Cultural Memory}
+
+Cultural memory is the subset of civilizational memory (Chapter~23)
+that is encoded in symbolic form and transmitted through cultural
+practices rather than biological inheritance. It includes: stories,
+rituals, arts, legal codes, scientific traditions, and technical
+know-how.
+
+Cultural memory is more fragile than biological memory (which is
+redundantly encoded in millions of individuals) but more flexible
+(it can encode arbitrary constraint modifications, not just those
+relevant to survival and reproduction).
+
+\begin{namedthm}{The Cultural Memory Theorem}
+  The accessibility entropy of a civilization's knowledge base is
+  bounded above by the quality of its cultural memory mechanisms:
+  \[
+    S_\text{civ} \leq f(\text{transmission fidelity},
+    \text{storage redundancy}, \text{retrieval efficiency}).
+  \]
+  Civilizations with high-fidelity, redundant, efficient cultural
+  memory can accumulate more knowledge across generations than those
+  with low-fidelity, fragile, or inefficient memory.
+\end{namedthm}
+
+\begin{exercise}
+  Compare the cultural memory mechanisms of ancient oral traditions
+  (Homeric poetry, Vedic recitation) and modern digital archives.
+  For each mechanism, estimate transmission fidelity, storage
+  redundancy, and retrieval efficiency. Which is more robust to
+  catastrophe? Which supports more rapid knowledge evolution?
+\end{exercise}
+
+\begin{exercise}
+  The peer review system in science functions as a correction mechanism
+  in the knowledge infrastructure. Analyze its performance using the
+  REPL framework of Chapter~39. What is the loop latency? What is the
+  feedback accuracy? What are the systematic biases? How would you
+  redesign it to improve learning efficiency while maintaining accuracy?
+\end{exercise}

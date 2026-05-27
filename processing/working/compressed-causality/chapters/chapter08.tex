@@ -1,0 +1,67 @@
+\chapter{The Five Failure Modes}
+\index{failure modes}
+
+\section{Failure as Information}
+
+A reconstruction failure is not the absence of an explanation. It is itself an explanation. The framework classifies failures precisely---distinguishing architectural mistakes from structural limits of the trajectory space.
+
+The key distinction: \textbf{architectural failures} arise from design choices that can be improved. \textbf{Structural failures} arise from properties of the trajectory space that cannot be engineered away.
+
+\section{Stability Failure}
+\index{failure modes!stability}
+
+Stability failure occurs when the stability sequence $\{\sigma_r\}$ is not summable. The compressibility error $E_c = C_Q \sum_{r>d} \sigma_r$ does not converge to zero at any finite truncation order. This is a property of the trajectory space for the query family---no compression, however well-designed, can remedy it.
+
+\textbf{Examples.} Learning: derivative tensors fail to decay. Semantic: $B\alpha \geq 1$. Physical: Outcome C. Memory: trauma-related queries may exhibit this pattern.
+
+\textbf{Classification: Structural.}
+
+\section{Sufficiency Failure}
+\index{failure modes!sufficiency}
+
+Sufficiency failure occurs when $d_\pi < d_Q$: the compression retains less branch structure than the query requires. The reconstruction operator $F_{d_Q}$ cannot be well-defined because the compression collapses distinct trajectories that the query distinguishes.
+
+\textbf{Remedy: Increase $d_\pi$ until $d_\pi \geq d_Q$.} \textbf{Classification: Architectural.}
+
+\section{Approximation Failure}
+\index{failure modes!approximation}
+
+Approximation failure occurs when the query has significant interaction contributions at depths far exceeding any tractable truncation order. Even with perfect stability and sufficiency, $E_a$ remains large.
+
+\textbf{Remedy: Increase $d_Q$ or switch to a better-adapted approximation family.} \textbf{Classification: Architectural.}
+
+\section{Misalignment Failure}
+\index{failure modes!misalignment}
+
+Misalignment failure occurs when the compression preserves structure calibrated to a different mechanism than the stability sequence respects. Three forms: depth misalignment ($d_\pi < d_Q$), over-compression ($d_\pi > d_Q$), and structural misalignment (equivalence relation misoriented relative to stable directions).
+
+\textbf{Remedy: Redesign the compression around the stability mechanism.} \textbf{Classification: Architectural.}
+
+\section{Degeneracy Failure}
+\index{failure modes!degeneracy}\index{degeneracy!Type I}\index{degeneracy!Type II}
+
+Degeneracy failure is introduced by measure-theoretic compressions and has no analogue in discrete settings.
+
+\textbf{Type I (collapsing).} The compression identifies trajectories the query family treats as distinct. Information is destroyed. Examples: false memories, historical revisionism.
+
+\textbf{Type II (conditioning).} The compression formally achieves $\varepsilon_1 = 0$ but the reconstruction operator is ill-conditioned: small perturbations in query-distinguishable trajectories produce large reconstruction output changes. Examples: accessibility skeleton degeneracy, dark-sector parameter degeneracy in cosmology.
+
+\textbf{Remedy: Enrich the equivalence relation or measure structure.} \textbf{Classification: Structural-Architectural boundary.}
+
+\section{Architectural Versus Structural Failures}
+
+\begin{center}\small
+\begin{tabular}{lll}
+\toprule
+Failure Mode & Type & Remedy \\
+\midrule
+Stability failure & Structural & None at compression level \\
+Degeneracy (Type I/II) & Structural-Arch.\ boundary & Refine equivalence relation \\
+Sufficiency failure & Architectural & Redesign compression \\
+Approximation failure & Architectural & Better approximation family \\
+Misalignment failure & Architectural & Calibrate to stability mechanism \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\textbf{A reconstruction failure is not the absence of an explanation. It is itself an explanation.}

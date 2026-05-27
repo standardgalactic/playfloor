@@ -1,0 +1,115 @@
+\chapter{Knowledge Landscapes}
+
+\chapterepigraph{%
+  You cannot explore a map by reading its legend.\\
+  You explore it by traveling.\\
+  The same is true of knowledge.
+}{Flyxion, \textit{Semantic Infrastructure}}
+
+\sidenote{Synthesizes\\Chs.\,32--33 and\\App.\,J on\\accessibility\\geometry}
+
+This chapter synthesizes the terrain model of Chapter~32 and the zoom
+model of Chapter~33 into a unified theory of knowledge landscapes —
+the geographic metaphor made mathematically precise.
+
+\section{Browsing as Navigation}
+
+In a physical landscape, navigation involves: knowing your current position,
+knowing your destination, knowing the terrain between you and the destination,
+and choosing a path that balances speed, safety, and discovery.
+
+Knowledge browsing is the same process in semantic space. The current
+position is your current understanding; the destination is the concept
+you seek to understand; the terrain is the knowledge landscape; the path
+is the sequence of concepts visited en route.
+
+\begin{definition}{Knowledge Navigation}{knowledge-nav}
+  A \emph{knowledge navigation strategy} is a policy $\pi_K :
+  \mathcal{O}_K \to \mathcal{A}_K$ mapping current knowledge state
+  (what you currently understand) to the next concept to visit.
+  An \emph{accessibility-optimal strategy} maximizes the expected
+  accessibility entropy of the final knowledge state:
+  \[
+    \pi_K^* = \arg\max_{\pi_K} \mathbb{E}\bigl[S_K(k_T) \mid k_0, \pi_K\bigr]
+  \]
+  where $k_T$ is the knowledge state after $T$ navigation steps.
+\end{definition}
+
+\section{Maps versus Indexes}
+
+Two different metaphors have dominated knowledge organization: the
+\emph{map} (spatial arrangement of concepts by semantic proximity)
+and the \emph{index} (alphabetical list of concepts with pointers to
+content). Each has strengths and weaknesses.
+
+The map reveals structure: which concepts are near each other, which
+are far, which are at the center of a field and which at the periphery.
+It supports exploration — you can wander and discover unexpected
+neighbors. But maps are hard to update (a new discovery may require
+reshaping the entire landscape), and they are poor at precise retrieval
+(finding a specific fact requires geographic search).
+
+The index supports precise retrieval but hides structure. An index
+user looking up ``entropy'' finds multiple entries (thermodynamic,
+Shannon, topological) without knowing their relationships. The index
+does not reveal that thermodynamic and Shannon entropy are deeply related
+(connected by the same mathematics), that topological entropy generalizes
+both, or that all three connect to the accessibility entropy of this
+monograph.
+
+A knowledge landscape system requires both: the navigational richness
+of a map and the retrieval precision of an index, with each informing
+the other.
+
+\section{Exploration and Exploitation in Knowledge}
+
+The exploration-exploitation tradeoff (Chapter~37) applies directly
+to knowledge navigation.
+
+\begin{itemize}
+  \item \textbf{Exploration:} visiting unfamiliar concepts, building
+        new connections, expanding the accessible knowledge landscape.
+        High variance, potentially high reward.
+  \item \textbf{Exploitation:} deepening understanding of familiar
+        concepts, strengthening existing connections, refining current
+        knowledge. Low variance, reliable return.
+\end{itemize}
+
+The optimal strategy depends on the agent's current position in the
+knowledge landscape and their goals. An agent near an accessibility
+well (a dead end) should explore more; an agent near an accessibility
+peak (a productive hub) can afford to exploit.
+
+\section{Semantic Terrain and Physical Terrain}
+
+The analogy between semantic and physical terrain is not merely
+metaphorical — it is structural. Both are instances of the same
+underlying mathematical object: an accessibility landscape with
+gradient flow, wells, peaks, and ridges.
+
+The shared mathematics implies shared navigation strategies. Techniques
+developed for physical terrain navigation (A* search, potential fields,
+topological path planning) transfer to semantic terrain navigation.
+And insights from knowledge navigation (the value of hubs, the cost
+of dead ends, the utility of ridges) transfer back to physical terrain
+planning.
+
+This bidirectional transfer is an instance of the projection engine
+principle (Chapter~16): two apparently different domains are projections
+of the same underlying accessibility geometry.
+
+\begin{exercise}
+  Model the history of physics as a knowledge landscape. Identify the
+  three largest accessibility peaks (most productive hubs),
+  the three deepest accessibility wells (research programs that
+  dead-ended), and the three most important ridges
+  (connections between subfields that opened new directions).
+\end{exercise}
+
+\begin{exercise}
+  Design a ``semantic GPS'' system for academic research. Given a
+  current knowledge position (a set of papers the researcher has read)
+  and a destination (a research question), how would your system
+  plan a reading path through the knowledge landscape? What data
+  would it need?
+\end{exercise}

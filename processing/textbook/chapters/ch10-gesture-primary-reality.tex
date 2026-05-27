@@ -1,0 +1,217 @@
+% ============================================================
+%  chapters/ch10-gesture-primary-reality.tex
+% ============================================================
+
+\chapter{Gesture as Primary Reality}
+
+\chapterepigraph{%
+  The hand is already thinking before the symbol appears.\\
+  The trace precedes the glyph.
+}{Flyxion, \textit{Gesture Before Symbol}}
+
+\sidenote{See also:\\ Ch.\,12 on keyboards as gesture sensors;\\ Ch.\,28 on gesture-to-glyph}
+
+We have spent three parts building the formal machinery of constraint spaces,
+Spherepop collapse, and accessibility landscapes. This chapter turns to the
+question that prompted all of it: \emph{where does meaning come from?}
+
+The answer proposed here is gestural. Meaning does not originate in symbols.
+Symbols are \emph{compressions} of gestures — stable residues left by repeated
+motor acts in constrained environments. The symbol ``A'' is fossilized hand
+motion. The word ``grasp'' is a cognitive trace of the act of grasping.
+
+This is not a metaphor. It is, we argue, a claim with formal consequences.
+
+% ── 10.1 ─────────────────────────────────────────────────────
+\section{Developmental Evidence}
+
+\begin{historynote}
+  McNeill's longitudinal studies \autocite{mcneill1992} established that
+  gesture and speech co-originate in development. Children do not learn to
+  gesture and then attach words. Gesture and protolanguage co-emerge from the
+  same motor substrate. This finding was largely ignored by computational
+  linguistics for two decades.
+\end{historynote}
+
+In developmental sequence:
+\begin{enumerate}
+  \item \textbf{Reach-grasp} trajectories appear at 4–6 months — before any
+        intentional vocalization.
+  \item \textbf{Deictic pointing} emerges at 9–12 months — establishing shared
+        attention before shared reference.
+  \item \textbf{Iconic gestures} appear at 12–18 months, structurally
+        resembling the objects they indicate.
+  \item \textbf{Symbolic reference} consolidates at 18–24 months — built
+        on a gestural substrate already 12 months old.
+\end{enumerate}
+
+The implication is direct: symbolic reference is not the foundation. It is a
+\emph{late compression} of a richer gestural system.
+
+\begin{definition}{Gestural Substrate}{gestural-substrate}
+  The \emph{gestural substrate} $\gesturesp$ is the space of motor trajectories
+  $\gesture{t} : [0, T] \to \mathbb{R}^{3k}$ (for $k$ joints) equipped with:
+  \begin{itemize}
+    \item an admissibility structure $\admissible{\constraint}$ encoding
+          biomechanical constraints,
+    \item an equivalence relation $\sim$ identifying motor-equivalent trajectories,
+    \item a compression map $\kappa : \gesturesp/{\sim} \to \Sigma^*$ into a
+          symbol alphabet $\Sigma$.
+  \end{itemize}
+  A \emph{symbol} $s \in \Sigma^*$ is any element in the image of $\kappa$.
+  The fiber $\fiber{\kappa}{s}$ is the set of gestures that compress to $s$.
+\end{definition}
+
+\begin{remark}
+  The fiber $\fiber{\kappa}{s}$ is generically non-trivial: many gestures
+  produce the same symbol. This is not a defect but a feature — it is precisely
+  the robustness of symbolic communication. A child can write ``A'' in many
+  different ways, yet the symbol is recognized. The projection $\kappa$ throws
+  away all the variation in $\fiber{\kappa}{s}$.
+\end{remark}
+
+% ── 10.2 ─────────────────────────────────────────────────────
+\section{The Gesture Manifold}
+
+\begin{figure}[h]
+  \centering
+  \begin{tikzpicture}[scale=1.0]
+    \input{diagrams/gesture-manifold-3d}
+  \end{tikzpicture}
+  \caption{The gesture manifold $\gesturesp$ with three regions: the
+    admissible trajectory space $\Acc(\constraint)$ (outer shell), the
+    motor equivalence classes $[\gamma]_\sim$ (middle layer, shown as
+    vertical fibers), and the symbolic projection $\Sigma^*$ (the base,
+    projected downward). The compression map $\kappa$ collapses each fiber
+    to a single symbol.}
+  \label{fig:gesture-manifold}
+\end{figure}
+
+The gesture manifold has topological structure that symbols cannot capture.
+Consider the gesture for the letter ``O'': it can be traced clockwise or
+counterclockwise. Both map to the same symbol, but they are topologically
+distinct as trajectories — one is a loop oriented $+1$, the other $-1$.
+
+\begin{proposition}{Topological Loss Under Compression}{topo-loss}
+  Let $\kappa : \gesturesp/{\sim} \to \Sigma^*$ be a compression map with
+  non-trivial fibers. Then $\kappa$ necessarily loses topological invariants
+  of order $\geq 1$ (homotopy classes, winding numbers, orientation).
+\end{proposition}
+
+\begin{proof}
+  Since fibers are non-trivial, distinct homotopy classes of trajectories
+  can map to the same symbol. Homotopy is not definable in $\Sigma^*$
+  (a discrete set), so the map cannot be homotopy-class-preserving. The
+  same argument applies to winding numbers and orientation since $\Sigma^*$
+  carries no continuous structure.
+\end{proof}
+
+This proposition has a direct pedagogical implication. If we teach children
+symbols before gesture, we are teaching them to operate in the projected space
+$\Sigma^*$ while withholding information about the richer space $\gesturesp$
+from which symbols derive. We are, in effect, teaching the shadow before
+teaching the object.
+
+% ── 10.3 ─────────────────────────────────────────────────────
+\section{Motor Structure as the Substrate of Meaning}
+
+\begin{conceptaside}{The Compression Hierarchy}
+  There is a natural compression sequence running from motor acts to
+  cultural artifacts:
+  \[
+    \underbrace{\text{motor trajectory}}_{\gesturesp}
+    \;\xrightarrow{\kappa_1}\;
+    \underbrace{\text{gesture class}}_{\gesturesp/{\sim}}
+    \;\xrightarrow{\kappa_2}\;
+    \underbrace{\text{glyph}}_{\Sigma}
+    \;\xrightarrow{\kappa_3}\;
+    \underbrace{\text{word}}_{\Sigma^*}
+    \;\xrightarrow{\kappa_4}\;
+    \underbrace{\text{concept}}_{\mathcal{C}}
+  \]
+  Each arrow is a lossy projection. Information destroyed at each step is
+  not recovered at later steps. The \emph{fiber} at each level contains what
+  was discarded.
+
+  \medskip
+  The \textbf{Gesture Before Symbol} thesis holds that meaning lives
+  primarily in $\gesturesp$ and $\gesturesp/{\sim}$, not in $\Sigma^*$.
+  Current NLP systems operate almost exclusively at the $\Sigma^*$ level
+  and below — they have, in a precise sense, discarded the meaning while
+  keeping only the symbols.
+\end{conceptaside}
+
+The implications for artificial intelligence are substantial. A system that
+learns only from text has access only to $\kappa_3 \circ \kappa_4$ — the
+last two compressions. It sees word co-occurrences but not the motor
+equivalence classes that give words their gestural coherence. It knows that
+``grasp'' and ``grip'' are related but not \emph{why} — because both compress
+gesture classes involving finger flexion under load.
+
+\begin{warning}
+  This is not an argument that large language models have no understanding.
+  It is an argument that their understanding is \emph{systematically incomplete}
+  in a characterizable way: they are missing the sub-$\Sigma^*$ structure of
+  $\gesturesp$. The missing structure is not randomly distributed — it concerns
+  specifically: spatial reasoning, force and effort, affordance, embodied
+  metaphor, and temporal dynamics.
+\end{warning}
+
+% ── 10.4 ─────────────────────────────────────────────────────
+\section{Evolutionary Evidence}
+
+The priority of gesture over symbol is not only developmental — it appears in
+evolutionary sequence as well.
+
+\sidenote{Homo habilis:\\2.6–1.5 Ma}
+
+The hominin hand achieved its current precision grip proportions approximately
+2 million years ago with \textit{Homo habilis} — roughly 1.5 million years
+before any agreed evidence of symbolic behavior. For most of human evolution,
+the hand was the primary cognitive instrument.
+
+\begin{historynote}
+  Ibn Rushd (Averroës) argued in \textit{De Anima} that the hand is the
+  ``organ of organs'' — the instrument that makes all other instruments
+  possible. This anticipates the modern claim that tool use co-evolved with
+  language, with the hand as the shared substrate. In the RSVP framework,
+  the hand is the primary \emph{accessibility transducer}: it converts
+  internal constraint structures into external modifications of the world.
+\end{historynote}
+
+The trajectory from:
+
+\[
+  \text{grip} \;\to\; \text{tool use} \;\to\; \text{mark-making}
+  \;\to\; \text{glyph} \;\to\; \text{alphabet}
+\]
+
+is a compression sequence of exactly the form described in the previous
+section. Each transition discards variation while preserving a projective
+residue.
+
+% ── Exercises ─────────────────────────────────────────────────
+\section*{Exercises}
+
+\begin{exercise}
+  Let $\Sigma = \{0, 1\}$ and consider the compression map
+  $\kappa : \gesturesp \to \Sigma^*$ that maps a trajectory $\gamma$ to
+  its Morse encoding (dots and dashes based on duration of contact). What
+  information is in the fiber $\fiber{\kappa}{\texttt{SOS}}$? Describe
+  three distinct gestures that produce the same Morse sequence.
+\end{exercise}
+
+\begin{exercise}[title={Topological}]
+  Show that the space of all closed loops in $\mathbb{R}^2$ based at
+  the origin is not discrete (unlike $\Sigma^*$). What topological invariant
+  distinguishes the clockwise ``O'' from the counterclockwise ``O''?
+  Why does this invariant vanish under any map to a discrete set?
+\end{exercise}
+
+\begin{exercise}[title={Open problem}]
+  Construct a formal model of the compression map $\kappa_1 : \gesturesp \to
+  \gesturesp/{\sim}$ using the framework of Riemannian submersions. What
+  is the appropriate metric on $\gesturesp$ such that motor-equivalent
+  trajectories are at zero distance? Can this metric be learned from
+  kinematic data?
+\end{exercise}

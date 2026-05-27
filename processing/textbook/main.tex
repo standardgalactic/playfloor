@@ -1,0 +1,624 @@
+% ============================================================
+%  SEMANTIC INFRASTRUCTURE — Main Document
+%  Constraint, Projection, and Accessibility Across
+%  Computation, Cognition, and Cosmology
+%  Flyxion — LuaLaTeX template
+% ============================================================
+
+\documentclass[
+  12pt,
+  twoside,
+  openright,
+  a4paper
+]{book}
+
+% ── Core engine & encoding ──────────────────────────────────
+\usepackage{fontspec}
+\usepackage{luacode}
+\usepackage{microtype}
+\usepackage{amsmath, amssymb, amsthm}
+\usepackage{mathtools}
+\usepackage{unicode-math}
+
+% ── Fonts ───────────────────────────────────────────────────
+% Body: elegant serif with full math support
+\setmainfont{TeX Gyre Pagella}
+\setmathfont{Latin Modern Math}
+\setsansfont{TeX Gyre Heros}[Scale=MatchLowercase]
+\setmonofont{Latin Modern Mono}[Scale=MatchLowercase]
+
+% ── Page geometry ───────────────────────────────────────────
+\usepackage[
+  a4paper,
+  top=25mm,
+  bottom=30mm,
+  inner=30mm,
+  outer=20mm,
+  marginparwidth=15mm,
+  marginparsep=3mm,
+  headsep=8mm
+]{geometry}
+
+% ── Color palette ───────────────────────────────────────────
+\usepackage[dvipsnames, svgnames, table]{xcolor}
+
+% Core palette — deep teal + warm amber accent
+\definecolor{RSVPdeep}{HTML}{0D3349}     % deep ocean: primary headings
+\definecolor{RSVPmid}{HTML}{1A5276}      % mid teal: rules, accents
+\definecolor{RSVPlight}{HTML}{D6EAF8}    % pale teal: box backgrounds
+\definecolor{RSVPaccent}{HTML}{E67E22}   % amber: highlights, numbers
+\definecolor{RSVPwarm}{HTML}{FDF2E9}     % cream: definition backgrounds
+\definecolor{RSVPgray}{HTML}{F4F6F7}     % light gray: example backgrounds
+\definecolor{RSVPdark}{HTML}{1C2833}     % near-black: body text
+\definecolor{RSVPred}{HTML}{C0392B}      % alert red: warnings
+\definecolor{RSVPgreen}{HTML}{1E8449}    % forest green: proofs done
+\definecolor{RSVPpurple}{HTML}{6C3483}   % purple: conceptual asides
+
+% ── Headers & footers ───────────────────────────────────────
+\usepackage{fancyhdr}
+\setlength{\headheight}{24pt}  % fix fancyhdr warning
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[LE]{\small\color{RSVPmid}\scshape\leftmark}
+\fancyhead[RO]{\small\color{RSVPmid}\scshape\rightmark}
+\fancyfoot[LE,RO]{\color{RSVPaccent}\bfseries\thepage}
+\fancyfoot[CO,CE]{\small\color{RSVPmid!60} Semantic Infrastructure — Flyxion}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\headrule}{\hbox to\headwidth{\color{RSVPmid}\leaders\hrule height \headrulewidth\hfill}}
+
+% ── Chapter & section titling ───────────────────────────────
+\usepackage{titlesec}
+
+% Part title
+\titleformat{\part}[display]
+  {\centering\color{RSVPdeep}\Huge\bfseries}
+  {\color{RSVPaccent}\scshape\large Part \thepart}
+  {1em}
+  {}
+
+% Chapter title — clean display format
+\titleformat{\chapter}[display]
+  {\color{RSVPdeep}\huge\bfseries}
+  {%
+    \hfill
+    \colorbox{RSVPdeep}{\color{white}\fontsize{36}{36}\selectfont\quad\thechapter\quad}%
+  }
+  {0.5em}
+  {\rule{\linewidth}{1.5pt}\vspace{0.3em}\\}
+
+\titlespacing{\chapter}{0pt}{-20pt}{40pt}
+
+% Section
+\titleformat{\section}
+  {\color{RSVPdeep}\Large\bfseries}
+  {\color{RSVPaccent}\thesection}
+  {0.8em}{}
+
+% Subsection
+\titleformat{\subsection}
+  {\color{RSVPmid}\large\bfseries}
+  {\thesubsection}
+  {0.7em}{}
+
+% ── tcolorbox — all aside environments ──────────────────────
+\usepackage[most, hooks, skins, breakable]{tcolorbox}
+\tcbuselibrary{theorems, listings, skins}
+
+% ── Box styles ──────────────────────────────────────────────
+
+% 1. DEFINITION BOX
+\tcbset{
+  defstyle/.style={
+    enhanced,
+    breakable,
+    colback=RSVPwarm,
+    colframe=RSVPaccent,
+    coltitle=white,
+    fonttitle=\bfseries\sffamily,
+    attach boxed title to top left={yshift=-2mm, xshift=6mm},
+    boxed title style={
+      colback=RSVPaccent,
+      colframe=RSVPaccent,
+      sharp corners
+    },
+    sharp corners=south,
+    arc=4pt,
+    boxrule=0.8pt,
+    top=4mm,
+    left=4mm,
+    right=4mm,
+    bottom=4mm,
+  }
+}
+
+\newtcbtheorem[number within=chapter]{definition}{Definition}{
+  defstyle,
+  label type=definition
+}{def}
+
+% 2. THEOREM BOX
+\newtcbtheorem[number within=chapter]{theorem}{Theorem}{
+  enhanced,
+  breakable,
+  colback=RSVPlight,
+  colframe=RSVPdeep,
+  coltitle=white,
+  fonttitle=\bfseries\sffamily,
+  attach boxed title to top left={yshift=-2mm, xshift=6mm},
+  boxed title style={colback=RSVPdeep, sharp corners},
+  sharp corners=south,
+  arc=4pt,
+  boxrule=1pt,
+  top=4mm, left=4mm, right=4mm, bottom=4mm,
+}{thm}
+
+% 3. PROPOSITION
+\newtcbtheorem[number within=chapter]{proposition}{Proposition}{
+  enhanced, breakable,
+  colback=RSVPlight!60,
+  colframe=RSVPmid,
+  coltitle=white,
+  fonttitle=\bfseries\sffamily,
+  attach boxed title to top left={yshift=-2mm, xshift=6mm},
+  boxed title style={colback=RSVPmid, sharp corners},
+  sharp corners=south, arc=4pt, boxrule=0.8pt,
+  top=4mm, left=4mm, right=4mm, bottom=4mm,
+}{prop}
+
+% 4. EXAMPLE BOX
+\newtcolorbox{example}[1][]{
+  enhanced, breakable,
+  colback=RSVPgray,
+  colframe=RSVPmid!50,
+  coltitle=RSVPdeep,
+  fonttitle=\bfseries\sffamily,
+  title={Example},
+  attach boxed title to top left={yshift=-2mm, xshift=4mm},
+  boxed title style={colback=RSVPgray, colframe=RSVPmid!50},
+  arc=4pt, boxrule=0.5pt,
+  top=4mm, left=4mm, right=4mm, bottom=4mm,
+  #1
+}
+
+% 5. REMARK / ASIDE
+\newtcolorbox{remark}[1][]{
+  enhanced, breakable,
+  colback=white,
+  colframe=RSVPpurple,
+  borderline west={3pt}{0pt}{RSVPpurple},
+  sharp corners,
+  boxrule=0pt,
+  left=8mm, right=4mm, top=3mm, bottom=3mm,
+  fonttitle=\bfseries\sffamily\color{RSVPpurple},
+  title={$\star$ Remark},
+  attach title to upper={\\[1mm]},
+  #1
+}
+
+% 6. WARNING BOX
+\newtcolorbox{warning}[1][]{
+  enhanced, breakable,
+  colback=red!5,
+  colframe=RSVPred,
+  borderline west={4pt}{0pt}{RSVPred},
+  sharp corners, boxrule=0pt,
+  left=8mm, right=4mm, top=3mm, bottom=3mm,
+  fonttitle=\bfseries\sffamily\color{RSVPred},
+  title={⚠\  Warning},
+  attach title to upper={\\[1mm]},
+  #1
+}
+
+% 7. CONCEPTUAL ASIDE (wide margin-spanning box)
+\newtcolorbox{conceptaside}[2][]{
+  enhanced, breakable,
+  colback=RSVPpurple!8,
+  colframe=RSVPpurple!60,
+  coltitle=white,
+  fonttitle=\bfseries\sffamily,
+  title={Conceptual Aside: #2},
+  attach boxed title to top left={yshift=-2mm, xshift=6mm},
+  boxed title style={colback=RSVPpurple!80, sharp corners},
+  arc=6pt, boxrule=0.6pt,
+  top=5mm, left=5mm, right=5mm, bottom=5mm,
+  #1
+}
+
+% 8. HISTORICAL NOTE
+\newtcolorbox{historynote}[1][]{
+  enhanced, breakable,
+  colback=Sepia!8,
+  colframe=Sepia!50,
+  borderline west={3pt}{0pt}{Sepia!70},
+  sharp corners, boxrule=0pt,
+  left=8mm, right=4mm, top=3mm, bottom=3mm,
+  fonttitle=\bfseries\sffamily\color{Sepia!80},
+  title={Historical Note},
+  attach title to upper={\\[1mm]},
+  #1
+}
+
+% 9. PROOF environment (custom)
+\renewenvironment{proof}{%
+  \par\medskip
+  \noindent{\color{RSVPgreen}\bfseries\sffamily Proof.}\enspace\ignorespaces
+}{%
+  \hfill{\color{RSVPgreen}$\blacksquare$}\par\medskip
+}
+
+% 10. EXERCISE BOX
+\newtcolorbox{exercise}[1][]{
+  enhanced, breakable,
+  colback=RSVPaccent!8,
+  colframe=RSVPaccent,
+  coltitle=white,
+  fonttitle=\bfseries\sffamily,
+  title={Exercise},
+  attach boxed title to top right={yshift=-2mm, xshift=-6mm},
+  boxed title style={colback=RSVPaccent, sharp corners},
+  arc=4pt, boxrule=0.6pt,
+  top=4mm, left=4mm, right=4mm, bottom=4mm,
+  #1
+}
+
+% ── TikZ & 3D diagrams ──────────────────────────────────────
+\usepackage{tikz}
+\usepackage{tikz-3dplot}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+\usepackage{pgfplotstable}
+
+\usetikzlibrary{
+  calc, arrows.meta, decorations.pathmorphing,
+  decorations.markings, shapes.geometric, shapes.symbols,
+  fadings, shadings, shadows, patterns,
+  positioning, fit, matrix, mindmap, trees,
+  3d, perspective
+}
+
+% ── Listings / code ─────────────────────────────────────────
+\usepackage{listings}
+\lstset{
+  basicstyle=\small\ttfamily\color{RSVPdark},
+  keywordstyle=\color{RSVPdeep}\bfseries,
+  commentstyle=\color{RSVPmid!70}\itshape,
+  stringstyle=\color{RSVPaccent},
+  backgroundcolor=\color{RSVPgray},
+  frame=single, framerule=0.4pt,
+  rulecolor=\color{RSVPmid!40},
+  numbers=left, numberstyle=\tiny\color{RSVPmid!60},
+  breaklines=true, breakatwhitespace=true,
+  tabsize=2, captionpos=b
+}
+
+% ── Figures & captions ──────────────────────────────────────
+\usepackage{graphicx}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{float}
+\usepackage{wrapfig}
+
+\captionsetup{
+  font=small,
+  labelfont={bf, color=RSVPdeep},
+  labelsep=period,
+  format=hang
+}
+
+% ── Tables ──────────────────────────────────────────────────
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{multirow}
+\usepackage{array}
+
+% ── Typography extras ───────────────────────────────────────
+\usepackage{setspace}
+\setstretch{1.18}
+\usepackage{parskip}
+\setlength{\parskip}{6pt}
+\setlength{\parindent}{0pt}
+
+\usepackage{enumitem}
+\setlist[itemize]{leftmargin=*, label={\color{RSVPaccent}\textbullet}}
+\setlist[enumerate]{leftmargin=*, label={\color{RSVPdeep}\bfseries\arabic*.}}
+
+% ── Cross-references & links ────────────────────────────────
+\usepackage[
+  colorlinks=true,
+  linkcolor=RSVPmid,
+  citecolor=RSVPaccent,
+  urlcolor=RSVPmid,
+  bookmarksnumbered=true,
+  pdfauthor={Flyxion},
+  pdftitle={Semantic Infrastructure},
+  pdfsubject={Constraint, Projection, and Accessibility},
+]{hyperref}
+\usepackage{cleveref}
+\crefname{tcb@cnt@theorem}{Theorem}{Theorems}
+\crefname{tcb@cnt@definition}{Definition}{Definitions}
+\crefname{tcb@cnt@proposition}{Proposition}{Propositions}
+\Crefname{tcb@cnt@theorem}{Theorem}{Theorems}
+\Crefname{tcb@cnt@definition}{Definition}{Definitions}
+\Crefname{tcb@cnt@proposition}{Proposition}{Propositions}
+
+% ── Bibliography ────────────────────────────────────────────
+\usepackage[
+  backend=biber,
+  style=authoryear-comp,
+  sorting=nyt,
+  maxcitenames=2
+]{biblatex}
+\addbibresource{references.bib}
+
+% ── Index ───────────────────────────────────────────────────
+\usepackage{imakeidx}
+\makeindex[columns=2, title=Index]
+
+% ── Margin notes ────────────────────────────────────────────
+\usepackage{marginnote}
+\renewcommand{\marginfont}{\footnotesize\color{RSVPmid}\itshape}
+
+% ── Custom commands ─────────────────────────────────────────
+\input{styles/commands}
+
+% ════════════════════════════════════════════════════════════
+\begin{document}
+
+% ── Half-title ──────────────────────────────────────────────
+\begin{titlepage}
+  \pagecolor{RSVPdeep}
+  \color{white}
+  \vspace*{4cm}
+  \begin{center}
+    {\color{RSVPaccent}\rule{0.6\linewidth}{1.5pt}}\\[1.2em]
+    {\fontsize{36}{42}\selectfont\bfseries Semantic Infrastructure}\\[0.6em]
+    {\color{RSVPlight}\Large\itshape
+      Constraint, Projection, and Accessibility\\
+      Across Computation, Cognition, and Cosmology}\\[0.4em]
+    {\color{RSVPaccent!80}\small\itshape
+      Gesture~·~Symbol~·~Logic~·~Language~·~Learning~·~Civilization}\\[1.2em]
+    {\color{RSVPaccent}\rule{0.6\linewidth}{1.5pt}}\\[2em]
+    {\Large\scshape Flyxion}\\[0.4em]
+    {\color{RSVPlight!70}\normalsize Independent Researcher}\\[3cm]
+    {\small\color{RSVPlight!50} Draft --- \today}
+  \end{center}
+  \vfill
+  \begin{center}
+    {\color{RSVPaccent}\Large$(\Phi,\,\mathbf{v},\,S)$}
+  \end{center}
+\end{titlepage}
+\nopagecolor
+
+% ── Front matter ────────────────────────────────────────────
+\frontmatter
+\tableofcontents
+\listoffigures
+\input{chapters/preface}
+
+% ── Main matter ─────────────────────────────────────────────
+\mainmatter
+
+% ════════════════════════════════════════════════════════════
+\part{Foundations}
+% ════════════════════════════════════════════════════════════
+\input{chapters/ch01-world-before-objects}
+\input{chapters/ch02-regions-boundaries-collapse}
+\input{chapters/ch03-spherepop-visual-computation}
+\input{chapters/ch04-canonicalization}
+
+% ════════════════════════════════════════════════════════════
+\part{Spherepop Calculus}
+% ════════════════════════════════════════════════════════════
+\input{chapters/ch05-basic-syntax}
+\input{chapters/ch06-evaluation-dynamics}
+\input{chapters/ch07-geometry-of-expressions}
+\input{chapters/ch08-semantic-renormalization}
+\input{chapters/ch09-action-histories}
+
+% ════════════════════════════════════════════════════════════
+\part{Gesture Before Symbol}
+% ════════════════════════════════════════════════════════════
+\input{chapters/ch10-gesture-primary-reality}
+\input{chapters/ch11-trajectories-admissibility}
+\input{chapters/ch12-keyboards-gesture-sensors}
+\input{chapters/ch13-gesture-reconstruction}
+
+% ════════════════════════════════════════════════════════════
+\part{Admissibility and Constraint Theory}
+% ════════════════════════════════════════════════════════════
+\input{chapters/ch14-accessibility-landscapes}
+\input{chapters/ch15-clio-constraint-inference}
+\input{chapters/ch16-projection-engines}
+\input{chapters/ch17-sheaves-fibers-gluing}
+
+% ════════════════════════════════════════════════════════════
+\part{RSVP and Cosmological Accessibility}
+% ════════════════════════════════════════════════════════════
+\input{chapters/ch18-rsvp-plenum}
+\input{chapters/ch19-accessibility-relaxation}
+\input{chapters/ch20-fall-of-space}
+\input{chapters/ch21-cosmology-accessibility-geometry}
+
+% ════════════════════════════════════════════════════════════
+\part{Consciousness and Semantic Fields}
+% ════════════════════════════════════════════════════════════
+\input{chapters/ch22-simulated-agency}
+\input{chapters/ch23-chain-of-memory}
+\input{chapters/ch24-meaning-as-geometry}
+
+% ════════════════════════════════════════════════════════════
+\part{Infrastructure and Civilization}
+% ════════════════════════════════════════════════════════════
+\input{chapters/ch25-semantic-infrastructure}
+\input{chapters/ch26-xyloarchy-living-systems}
+\input{chapters/ch27-yarncrawler-systems}
+
+% ════════════════════════════════════════════════════════════
+\part{Mathematical Foundations: Logic and Boolean Geometry}
+% ════════════════════════════════════════════════════════════
+% Material: Boolean lattice, Hasse diagrams, hypercube
+% decompositions, logic-first curriculum
+\input{chapters/ch-logic-boolean-geometry}
+
+% ════════════════════════════════════════════════════════════
+\part{Symbols, Alphabets, and Compression}
+% ════════════════════════════════════════════════════════════
+\input{chapters/ch28-gesture-to-glyph}
+\input{chapters/ch29-geometry-of-alphabets}
+\input{chapters/ch30-orthographic-evolution}
+\input{chapters/ch31-semantic-compression-writing}
+
+% ════════════════════════════════════════════════════════════
+\part{Navigation Through Knowledge}
+% ════════════════════════════════════════════════════════════
+\input{chapters/ch32-beyond-files-folders}
+\input{chapters/ch33-semantic-zoom}
+\input{chapters/ch34-knowledge-landscapes}
+\input{chapters/ch35-interfaces-cognitive-prosthetics}
+
+% ════════════════════════════════════════════════════════════
+\part{The Architecture of Learning}
+% ════════════════════════════════════════════════════════════
+\input{chapters/ch36-learning-as-infrastructure}
+\input{chapters/ch37-exploration-exploitation}
+\input{chapters/ch38-organizing-a-mind}
+\input{chapters/ch39-repl-loops}
+
+% ════════════════════════════════════════════════════════════
+\part{Simulated Worlds}
+% ════════════════════════════════════════════════════════════
+\input{chapters/ch40-games-cognitive-laboratories}
+\input{chapters/ch41-procedural-universes}
+\input{chapters/ch42-virtual-ecology}
+\input{chapters/ch43-universe-simulation-medium}
+
+% ════════════════════════════════════════════════════════════
+\part{Universal Classification}
+% ════════════════════════════════════════════════════════════
+\input{chapters/ch44-search-for-shared-structure}
+\input{chapters/ch45-morphological-taxonomy}
+\input{chapters/ch46-ontological-engineering}
+\input{chapters/ch47-sociology-of-knowledge}
+
+% ════════════════════════════════════════════════════════════
+\part{Civilization as Computation}
+% ════════════════════════════════════════════════════════════
+\input{chapters/ch48-collective-memory}
+\input{chapters/ch49-educational-architecture}
+\input{chapters/ch50-knowledge-ecosystems}
+\input{chapters/ch51-toward-semantic-civilization}
+
+% ── Back matter ─────────────────────────────────────────────
+\backmatter
+
+% ════════════════════════════════════════════════════════════
+%  MATHEMATICAL APPENDICES  (A–O)
+%  Each appendix is a self-contained mathematical paper.
+%  The full texts are in chapters/app-*.tex
+% ════════════════════════════════════════════════════════════
+\appendix
+
+% A — Sets, Relations, and Constraint Spaces
+%     Core: (X, A, κ); constraint descent; quotient spaces;
+%     the Constraint–Projection principle
+\chapter{Sets, Relations, and Constraint Spaces}
+\input{chapters/app-a-constraint-spaces}
+
+% B — Projection Theory, Information Loss, and Surjective Geometry
+%     Fibers; information loss theorem; representation entropy;
+%     projection chains; surjective hypercubes; penteract
+\chapter{Projection Theory and Information Loss}
+\input{chapters/app-b-projection-theory}
+
+% C — Spherepop Calculus as Nested Constraint Evaluation
+%     Expression trees; complexity functional; pop operators;
+%     termination; confluence; quotient interpretation;
+%     renormalization; Spherepop Fundamental Theorem
+\chapter{Spherepop Calculus}
+\input{chapters/app-c-spherepop-calculus}
+
+% D — Boolean Lattices, Logical Geometry
+%     B₂ lattice; Hasse diagrams; Boolean hypercube Q₄;
+%     meet/join; tautology/contradiction; logic as geometry
+\chapter{Boolean Lattices and Logical Geometry}
+\input{chapters/app-d-boolean-lattices}
+
+% E — Hypercubes, Penteracts, and Dimensional Aggregation
+%     Q_n recursion; vertex/edge counts; Pythagorean diagonals;
+%     cubification; splittings; surjective hypercubes
+\chapter{Hypercubes and Dimensional Aggregation}
+\input{chapters/app-e-placeholder}
+
+% F — Gesture Manifolds and Canonicalization
+%     Path spaces; gesture equivalence; canonicalization;
+%     fiber structure; pivots; geodesics; Gesture–Symbol Theorem
+\chapter{Gesture Manifolds and Canonicalization}
+\input{chapters/app-f-placeholder}
+
+% G — Keyboard Geometry and Motor Fields
+%     Keyboard as geometric field; finger domains; stretch metrics;
+%     words as paths; overlap fields; QWERTY as field; homotopy
+\chapter{Keyboard Geometry and Motor Fields}
+\input{chapters/app-g-placeholder}
+
+% H — Admissibility Functionals and Constraint Closure
+%     Why projection ≠ validity; admissibility fields;
+%     closure operators; obstruction theory; CLIO interpretation;
+%     sheaf connections; Admissibility Principle
+\chapter{Admissibility and Constraint Closure}
+\input{chapters/app-h-placeholder}
+
+% I — Sheaf Theory, Gluing, and Semantic Coherence
+%     Presheaves; local sections; compatibility; sheaves;
+%     gluing theorem; obstructions; knowledge integration;
+%     civilization as sheaf; semantic infrastructure
+\chapter{Sheaf Theory and Semantic Coherence}
+\input{chapters/app-i-placeholder}
+
+% J — Accessibility Geometry, Entropy, and Reachable Futures
+%     Future sets; admissible futures; accessibility entropy;
+%     accessibility gradients/flows; wells/peaks/ridges;
+%     accessibility relaxation; Accessibility Theorem
+\chapter{Accessibility Geometry}
+\input{chapters/app-j-placeholder}
+
+% K — The RSVP Field Equations
+%     Field configuration space (Φ, v, S); conservation laws;
+%     accessibility-coupled transport; action functional;
+%     Euler–Lagrange; lamphron–lamphrodyne; RSVP Principle
+\chapter{The Relativistic Scalar–Vector Plenum}
+\input{chapters/app-k-placeholder}
+
+% L — Semantic Fields, Cognitive Dynamics, and Simulated Agency
+%     Semantic manifolds; thought trajectories; cognitive attractors;
+%     simulated agency; consciousness as accessibility navigation;
+%     semantic solitons; chain of memory
+\chapter{Semantic Fields and Simulated Agency}
+\input{chapters/app-l-placeholder}
+
+% M — Semantic Infrastructure, Category Theory, and Knowledge Composition
+%     Semantic category Sem; morphisms; monoidal structure;
+%     pushouts; merge theory; semantic conflicts; functorial translation;
+%     civilization as category; Knowledge Composition Theorem
+\chapter{Semantic Infrastructure and Category Theory}
+\input{chapters/app-m-placeholder}
+
+% N — Learning Geometry and Curriculum Dynamics
+%     Educational state spaces; prerequisite graphs; curriculum fields;
+%     geometry/algebra/logic/statistics-first trajectories;
+%     educational phase transitions; Curriculum Divergence Theorem
+\chapter{Learning Geometry and Curriculum Dynamics}
+\input{chapters/app-n-placeholder}
+
+% O — Civilization Dynamics and Collective Memory
+%     Civilizational state space; memory fields; transmission operators;
+%     infrastructure as accessibility storage; cultural solitons;
+%     distributed cognition; Civilizational Accessibility Theorem
+\chapter{Civilization Dynamics and Collective Memory}
+\input{chapters/app-o-placeholder}
+
+% ════════════════════════════════════════════════════════════
+\printbibliography[heading=bibintoc]
+\printindex
+
+\end{document}

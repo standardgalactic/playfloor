@@ -1,0 +1,160 @@
+% ============================================================
+%  Chapter 17
+% ============================================================
+
+\chapter{Sheaves, Fibers, and Gluing}
+
+\chapterepigraph{%
+  Local truth is not enough.\\
+  A patchwork of local truths must agree at the seams\\
+  before it becomes global truth.
+}{Flyxion, \textit{Semantic Infrastructure}}
+
+\sidenote{App.\,I gives\\the complete\\sheaf theory\\treatment}
+
+The previous chapters developed constraint theory (Chapter~14), inference
+(Chapter~15), and projection (Chapter~16) as local phenomena: properties
+of individual states, individual queries, individual outputs. This chapter
+asks the global question: when do locally consistent structures combine
+into a globally coherent whole?
+
+The mathematical language for this question is sheaf theory.
+
+\section{Local Consistency}
+
+A sheaf assigns data to each region of a space, together with restriction
+maps that say how data on larger regions constrains data on smaller regions.
+The key condition — the gluing condition — says that locally consistent
+data always determines a unique global datum.
+
+\begin{definition}{Local Consistency (informal)}{local-consistency}
+  Data on overlapping regions $U_i$ and $U_j$ are \emph{locally consistent}
+  if their restrictions to the overlap $U_i \cap U_j$ agree:
+  $s_i|_{U_i \cap U_j} = s_j|_{U_i \cap U_j}$.
+\end{definition}
+
+Local consistency is a necessary condition for global coherence, but
+not sufficient. A collection of locally consistent data may fail to
+determine a unique global datum — this is an \emph{obstruction}.
+
+\section{Global Coherence}
+
+The sheaf gluing theorem (Appendix~I, Theorem~\ref{thm:gluing-thm})
+establishes the condition under which local consistency implies global
+coherence. For a sheaf $F$, locally consistent sections on a cover
+$\{U_i\}$ of $U$ determine a unique global section $s \in F(U)$.
+
+\begin{example}
+  \textbf{Gesture recognition across sensors.} A camera observes the
+  spatial trajectory of the hand (local section on the visual domain).
+  A keyboard observes the timing of key activations (local section on
+  the timing domain). The two observations are locally consistent if
+  there exists a plausible hand trajectory that would produce both
+  the observed spatial path and the observed key timings. If such a
+  trajectory exists, the global section (the complete gesture) is
+  determined.
+\end{example}
+
+\section{Knowledge Integration}
+
+Sheaf theory provides the correct framework for the problem of knowledge
+integration: combining information from multiple sources into a coherent
+whole.
+
+\begin{definition}{Knowledge Sheaf}{knowledge-sheaf}
+  A \emph{knowledge sheaf} is a sheaf $F$ over a base space $B$ of
+  contexts (topics, domains, perspectives), where $F(U)$ is the set
+  of knowledge structures consistent with context $U$.
+\end{definition}
+
+Knowledge integration corresponds to finding global sections of the
+knowledge sheaf: consistent combinations of local knowledge across all
+contexts. Failures of knowledge integration — contradictions between
+domain experts, between theories, between cultural frameworks — are
+obstructions: failures of gluing.
+
+\section{User-Independent Generalization}
+
+\begin{example}[title={AI Hallucination as Cohomological Failure}]
+  Language models hallucinate when they generate local sections that are
+  individually coherent but globally contradictory — a failure of the
+  sheaf gluing axiom.
+
+  Consider an AI generating a biography with three local sections:
+  \begin{enumerate}
+    \item \emph{``The subject was born in 1980.''}\quad ($s_1 \in F(U_1)$)
+    \item \emph{``The subject won a gold medal at the 1992 Olympics.''}\quad ($s_2 \in F(U_2)$)
+    \item \emph{``The subject was 25 years old when they won their first medal.''}\quad ($s_3 \in F(U_3)$)
+  \end{enumerate}
+  Each section is individually plausible. But the overlap constraints fail:
+  $s_1|_{U_1 \cap U_2}$ requires age 12 in 1992; $s_3|_{U_2 \cap U_3}$
+  requires age 25 at first medal; these are incompatible. The system
+  interpolated smoothly over a \emph{cohomological hole} — a global
+  section that does not exist because the local sections cannot be glued.
+
+  The HYDRA framework proposes a stack-theoretic remedy: instead of
+  forcing a collapse to a single narrative, maintain a \emph{groupoid of
+  possibilities} — all locally consistent sections held simultaneously in
+  suspension. Only collapse to a global section when the entropy field
+  narrows enough to eliminate inconsistent branches. An AI built on this
+  principle would recognize the age contradiction and refuse to glue rather
+  than hallucinating a smooth but impossible biography.
+\end{example}
+
+
+One of the most important applications of sheaf theory in this framework
+is the problem of \emph{user-independent generalization}: building
+recognition systems that work for all users, not just those in the
+training set.
+
+\begin{definition}{User-Independent Sheaf}{user-indep}
+  A \emph{user-independent gesture recognition sheaf} is a sheaf
+  $F_\text{gesture}$ over the space of users, where $F_\text{gesture}(U)$
+  is the set of recognition functions that work for all users in $U$.
+\end{definition}
+
+User-independent generalization corresponds to finding a global section
+of $F_\text{gesture}$ — a single recognition function that works for
+all users simultaneously. This global section exists if and only if
+the local recognition functions (trained on subsets of users) are
+pairwise compatible on overlapping user groups.
+
+\begin{remark}
+  Traditional machine learning approaches this problem with regularization
+  and data augmentation — techniques that implicitly enforce local
+  consistency. Sheaf theory makes the condition explicit: a recognition
+  system generalizes to new users if and only if its behavior on known
+  users is a consistent local section of the gesture sheaf.
+\end{remark}
+
+\begin{namedthm}{The Gluing Principle for Knowledge}
+  Coherent global knowledge is not the union of local knowledge.
+  It is the gluing of locally consistent sections over an appropriate
+  sheaf. Every genuine synthesis — scientific, cultural, personal —
+  is a demonstration that locally consistent partial views can be
+  extended to a globally coherent whole. Every genuine contradiction
+  is an obstruction that prevents this extension.
+\end{namedthm}
+
+\begin{exercise}
+  Describe the knowledge sheaf for the problem of translating between
+  two languages. What is the base space? What are the local sections?
+  What would an obstruction look like (a local consistency failure)?
+\end{exercise}
+
+\begin{exercise}
+  In the IAD framework, the teacher's knowledge is a local section on
+  the ``easy'' region of the query space; the student's self-knowledge
+  is a local section on the ``hard'' region. When can these two local
+  sections be glued into a global section? What prevents gluing?
+  (Connect to the trust weight $\alpha$.)
+\end{exercise}
+
+\begin{exercise}[title={Mathematical}]
+  Define the first cohomology group $H^1(B, F)$ for a sheaf $F$ over
+  a base space $B$ as the obstruction to gluing. (Look up the Čech
+  cohomology construction.) What does a non-trivial $H^1$ mean for
+  knowledge integration? Give an example of a knowledge problem with
+  non-trivial $H^1$.
+\end{exercise}
+

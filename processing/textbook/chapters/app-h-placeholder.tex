@@ -1,0 +1,71 @@
+% Appendix H: Admissibility Functionals and Constraint Closure
+
+\section*{H.1 Introduction}
+
+Projection alone generates possibilities. A second structure is required
+to evaluate them. This structure is called \emph{admissibility}.
+
+\begin{tcolorbox}[enhanced, colback=RSVPdeep, colframe=RSVPdeep,
+  coltext=white, arc=6pt, boxrule=0pt, left=6mm, right=6mm, top=5mm, bottom=5mm]
+  Projection answers: \emph{What can be produced?}\\
+  Admissibility answers: \emph{What should be accepted?}
+\end{tcolorbox}
+
+\begin{definition}{Admissibility Functional}{adm-func}
+  An \emph{admissibility functional} is a map $A : X \to \mathbb{R}$.
+  Large values indicate coherence; small values indicate violation.
+  The \emph{admissible region} at threshold $\tau$ is
+  $\mathcal{A}_\tau = \{x : A(x) \geq \tau\}$.
+\end{definition}
+
+\begin{example}
+  With constraint violation $\kappa$, set $A(x) = e^{-\kappa(x)}$.
+  Then $\kappa = 0 \Rightarrow A = 1$; large violations imply $A \to 0$.
+\end{example}
+
+\begin{definition}{Local and Global Constraints}{local-global}
+  A \emph{local constraint} depends only on a neighborhood: $\kappa_L(x)$.
+  A \emph{global constraint} depends on an entire trajectory: $\kappa_G(\gamma)$.
+  Admissibility typically combines both: $A = A_L \cdot A_G$.
+\end{definition}
+
+\begin{definition}{Closure Operator}{closure-op}
+  A \emph{closure operator} is $\mathrm{Cl} : \mathcal{P}(X) \to \mathcal{P}(X)$
+  satisfying extensivity, idempotence, and monotonicity.
+  Closure adds whatever structure is required for coherence.
+\end{definition}
+
+\begin{definition}{Obstruction}{obstruction-adm}
+  An \emph{obstruction} is a quantity $\epsilon(x)$ measuring failure of
+  closure (missing assumptions, contradictions, broken references).
+  $A(x) = f(\epsilon(x))$; large obstructions imply low admissibility.
+\end{definition}
+
+\begin{definition}{Trajectory Admissibility}{traj-adm}
+  For $\gamma : [0,T] \to X$, define
+  $A(\gamma) = \int_0^T a(\gamma(t))\,dt$.
+\end{definition}
+
+\begin{definition}{Admissible Accessibility}{adm-access}
+  $\mathcal{N}(x) = \{y : A(y) \geq \tau\}$, with
+  $S_A(x) = \log |\mathcal{N}(x)|$.
+  This quantity becomes central in RSVP (Appendix~K).
+\end{definition}
+
+\begin{theorem}{Projection Does Not Determine Validity}{proj-not-valid}
+  Projection alone cannot determine validity. A second evaluation
+  structure — admissibility — is required.
+\end{theorem}
+\begin{proof}
+  There exist outputs satisfying projection while violating external
+  constraints; admissibility is the only mechanism to filter them.
+\end{proof}
+
+\begin{namedthm}{The Admissibility Principle}
+  Every intelligent system requires two distinct layers:
+  \emph{projection} $X \to Y$ (generating possibilities) and
+  \emph{admissibility} $A : Y \to \mathbb{R}$ (evaluating them).
+  Generation without admissibility produces chaos.
+  Admissibility without generation produces stagnation.
+  Intelligence emerges from their interaction.
+\end{namedthm}

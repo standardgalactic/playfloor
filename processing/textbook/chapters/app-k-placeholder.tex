@@ -1,0 +1,72 @@
+% Appendix K: The Relativistic Scalar-Vector Plenum
+
+\section*{K.1 Introduction}
+
+The objective of RSVP is to describe structure formation, persistence,
+cognition, semantics, and cosmology within a common mathematical framework.
+Instead of treating matter as fundamental, RSVP treats fields as fundamental.
+Instead of treating space as an empty container, RSVP treats it as a
+structured plenum. Instead of treating entropy as disorder, RSVP interprets
+entropy as accessibility.
+
+\begin{definition}{RSVP State}{rsvp-state}
+  The \emph{RSVP state} is $\Psi = (\Phi, \mathbf{v}, S)$ where:
+  $\Phi : M \to \mathbb{R}$ is scalar density,
+  $\mathbf{v}$ is vector flow, and $S : M \to \mathbb{R}$ is
+  accessibility entropy. All observable structures arise from interactions
+  among these three fields.
+\end{definition}
+
+\begin{definition}{Scalar Conservation}{scalar-cons}
+  $\frac{\partial \Phi}{\partial t} + \nabla \cdot (\Phi \mathbf{v}) = Q$.
+  When $Q = 0$, density is conserved.
+\end{definition}
+
+\begin{definition}{Accessibility-Coupled Transport}{acc-transport}
+  The accessibility flux:
+  $\mathbf{J} = \Phi \mathbf{v} + \lambda \Phi \nabla S$.
+  Accessibility acts as a generalized pressure, driving density
+  toward regions of high future accessibility.
+\end{definition}
+
+\begin{definition}{RSVP Field Equations}{rsvp-eqs}
+  The coupled evolution equations are:
+  \begin{align}
+    \frac{\partial \Phi}{\partial t} &= -\nabla \cdot (\Phi \mathbf{v} + \lambda\Phi\nabla S) + Q \\
+    \frac{\partial \mathbf{v}}{\partial t} + (\mathbf{v}\cdot\nabla)\mathbf{v} &=
+      -\nabla P + \nu\nabla^2\mathbf{v} + \gamma\nabla S \\
+    \frac{\partial S}{\partial t} &= D_S \nabla^2 S + R(\Phi,\mathbf{v},S)
+  \end{align}
+\end{definition}
+
+\begin{definition}{RSVP Action Functional}{rsvp-action}
+  \[
+    \mathcal{S} = \int \mathcal{L}\,d^4x, \qquad
+    \mathcal{L} = \tfrac{1}{2}|\partial\Phi|^2 + \tfrac{1}{2}|\nabla\times\mathbf{v}|^2
+    + \tfrac{1}{2}|\nabla S|^2 - V(\Phi,S) + \lambda\,\mathbf{v}\cdot\nabla S.
+  \]
+  The final coupling term links flow and accessibility. Euler–Lagrange
+  variation yields the field equations above.
+\end{definition}
+
+\begin{definition}{Lamphron and Lamphrodyne}{lamphron-def}
+  Let $\Lambda = \nabla S$ (the accessibility gradient field).
+  \emph{Lamphron} regions ($\lambda_+$) have high accessibility;
+  \emph{lamphrodyne} regions ($\lambda_-$) experience accessibility descent.
+  Structure emerges from their interaction.
+\end{definition}
+
+\begin{namedthm}{Accessibility Relaxation Hypothesis}
+  Large-scale evolution is driven not by expansion but by accessibility
+  relaxation. Systems evolve toward configurations reducing accessibility
+  gradients. The universe relaxes; it need not expand.
+\end{namedthm}
+
+\begin{namedthm}{The RSVP Principle}
+  Structure emerges wherever density, flow, and accessibility mutually
+  reinforce one another:
+  $(\Phi, \mathbf{v}, S) \longrightarrow \text{Structure}$.
+  Regions of concentrated density, coherent flow, and sustained
+  accessibility together generate persistent forms — whether physical,
+  cognitive, semantic, or civilizational.
+\end{namedthm}

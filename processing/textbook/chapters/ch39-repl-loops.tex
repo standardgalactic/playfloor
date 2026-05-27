@@ -1,0 +1,121 @@
+\chapter{Read–Evaluate–Print Loops}
+
+\chapterepigraph{%
+  The REPL is the purest form of learning:\\
+  propose, test, observe, revise.\\
+  All education is a REPL with a very slow clock.
+}{Flyxion, \textit{Semantic Infrastructure}}
+
+\sidenote{Connects to\\Spherepop\\evaluation\\dynamics (Ch.\,6)\\and constraint\\descent}
+
+The \emph{Read-Evaluate-Print Loop} (REPL) is a programming paradigm:
+the computer reads a statement, evaluates it, prints the result, and
+waits for the next statement. It makes computation interactive and
+incremental rather than batch-compiled.
+
+This chapter argues that the REPL is not a programming metaphor for
+learning — it is the fundamental structure of learning itself. All
+genuine learning is a REPL with varying loop parameters: different
+latencies, different feedback mechanisms, different output channels.
+
+\section{Feedback Cycles in Learning}
+
+Effective learning requires rapid, accurate feedback. The feedback
+cycle — propose something (a belief, an action, a model), observe
+the consequences, update the constraints accordingly — is the
+engine of constraint modification.
+
+\begin{definition}{Learning REPL}{learning-repl}
+  A \emph{learning REPL} is a feedback system $(P, E, O, U)$ where:
+  \begin{itemize}
+    \item $P$ is the \emph{proposer}: generates a hypothesis or action
+          from the current constraint set,
+    \item $E$ is the \emph{evaluator}: applies the hypothesis and
+          generates feedback,
+    \item $O$ is the \emph{observer}: processes the feedback into
+          a constraint modification $\Delta\mathcal{C}$,
+    \item $U$ is the \emph{updater}: applies $\Delta\mathcal{C}$
+          to the current constraint set.
+  \end{itemize}
+  The \emph{loop latency} $\tau$ is the time from proposal to
+  constraint update.
+\end{definition}
+
+The power of the REPL metaphor is that it makes loop latency explicit.
+Different learning modalities have different latencies:
+
+\begin{itemize}
+  \item \textbf{Programming REPL:} $\tau \approx$ milliseconds.
+  \item \textbf{Laboratory experiment:} $\tau \approx$ hours to weeks.
+  \item \textbf{Clinical trial:} $\tau \approx$ years.
+  \item \textbf{Societal experiment:} $\tau \approx$ decades.
+  \item \textbf{Evolutionary learning:} $\tau \approx$ generations.
+\end{itemize}
+
+Shorter latency produces faster constraint modification — faster learning.
+This is why programming is such an effective learning environment:
+the loop latency is so short that hundreds of hypothesis-test cycles
+can occur in an hour.
+
+\section{Revision Systems}
+
+Many learning systems have developed explicit revision mechanisms —
+structured processes for revisiting and updating earlier constraint
+modifications.
+
+\begin{itemize}
+  \item \textbf{Spaced repetition:} revisit concepts at increasing
+        intervals, calibrated to the forgetting curve. Optimizes
+        maintenance cost by timing reinforcement to just before
+        the constraint modification would decay below threshold.
+  \item \textbf{Peer review:} external evaluation of proposed
+        constraint modifications (papers, ideas, arguments) before
+        integration into the knowledge infrastructure. Reduces
+        the propagation of incorrect modifications.
+  \item \textbf{Version control:} explicit tracking of constraint
+        modification history, allowing rollback when a modification
+        proves incorrect.
+\end{itemize}
+
+\section{Constraint-Guided Growth}
+
+The most effective learning is not random exploration but
+\emph{constraint-guided growth}: the current constraint structure
+identifies which new constraints are most accessible (near the
+current knowledge infrastructure) and most valuable (high
+accessibility entropy contribution).
+
+\begin{namedthm}{The REPL Learning Principle}
+  Learning efficiency is maximized when:
+  (1) loop latency is minimized (feedback is fast),
+  (2) feedback accuracy is maximized (the evaluator is reliable),
+  (3) constraint modification is proportional to feedback strength
+  (appropriate learning rate), and
+  (4) proposed hypotheses are constraint-guided (near the current
+  accessibility boundary).
+  Systems satisfying all four conditions learn at the theoretical
+  maximum rate for their domain.
+\end{namedthm}
+
+\begin{exercise}
+  Design a REPL for learning a foreign language. What plays the role of
+  the proposer, evaluator, observer, and updater? What is the loop
+  latency? How would you minimize latency while maintaining feedback
+  accuracy?
+\end{exercise}
+
+\begin{exercise}
+  Science is a collective REPL. Identify the proposer (researchers),
+  evaluator (experiments, peer review), observer (the scientific
+  community), and updater (textbook revision, paradigm shifts).
+  Where are the longest latencies in this system? What reforms would
+  reduce them without sacrificing accuracy?
+\end{exercise}
+
+\begin{exercise}[title={Synthesis}]
+  The REPL, the Spherepop pop operator, and the constraint descent
+  flow all describe a similar process: proposals are evaluated,
+  constraint violations are reduced, and the system converges.
+  Write out the formal correspondence between these three systems.
+  What is the common abstract structure they all instantiate?
+\end{exercise}

@@ -1,0 +1,189 @@
+% ============================================================
+%  chapters/ch01-world-before-objects.tex
+% ============================================================
+
+\chapter{The World Before Objects}
+
+\chapterepigraph{%
+  The map is not the territory, but the territory is not\\
+  an object either — it is a field of accessible trajectories.
+}{Flyxion, \textit{Semantic Infrastructure}}
+
+\sidenote{RSVP: see Ch.\,18}
+
+This monograph begins not with things but with \emph{access}. The received view
+in both physics and computation treats objects as primitive: particles, states,
+data structures. We argue instead that \emph{accessibility landscapes} are the
+more fundamental substrate, and that objects emerge as \emph{stable projections}
+of constraint geometry.
+
+The key shift is from asking \emph{what exists} to asking \emph{what is
+reachable from here}.
+
+% ── 1.1 ──────────────────────────────────────────────────────
+\section{Why Trajectories Are More Fundamental Than Things}
+
+\begin{conceptaside}{The Accessibility Inversion}
+  Classical ontology asks: \emph{what things are there?} Accessibility
+  ontology asks: \emph{what transitions are available to a system in state
+  $q$ at time $t$?}
+
+  This is not a merely philosophical point. In the RSVP framework, the
+  scalar field $\Phifield$ encodes \emph{potential accessibility}, the
+  vector field $\vfield$ encodes \emph{directed flow toward accessible
+  states}, and the entropy $\Sfield$ measures the \emph{remaining freedom}
+  of the system. Objects — particles, thoughts, texts — are basins in this
+  landscape.
+\end{conceptaside}
+
+A trajectory through configuration space carries strictly more information than
+any instantaneous state description. The gesture literature \autocite{mcneill1992}
+makes this vivid: a pointing gesture cannot be decomposed into a sequence of
+hand-positions without losing its meaning. The \emph{arc} is the meaning.
+
+\begin{definition}{Trajectory}{trajectory}
+  Let $\mathcal{Q}$ be a configuration space with metric $g$. A
+  \emph{trajectory} is a smooth map
+  \[
+    \gamma : [0, T] \longrightarrow \mathcal{Q}
+  \]
+  satisfying the admissibility condition $\gamma(t) \in \admissible{\constraint(t)}$
+  for all $t \in [0,T]$, where $\constraint(t)$ is the active constraint set
+  at time $t$.
+\end{definition}
+
+\begin{remark}
+  The admissibility condition is the crucial clause. It is not enough that
+  $\gamma$ be smooth — it must remain \emph{within the accessible region} at
+  each instant. This is what distinguishes a gesture from arbitrary hand
+  motion. See Chapter~14 for the formal definition of admissibility.
+\end{remark}
+
+% ── 1.2 ──────────────────────────────────────────────────────
+\section{The Map–Territory Distinction}
+
+Alfred Korzybski's maxim is often quoted but rarely made precise. We offer
+a precise formulation in terms of projection:
+
+\begin{theorem}{Map–Territory Projection Theorem}{map-territory}
+  Let $\mathcal{T}$ be a territory (a topological space with accessibility
+  structure $\Acc$) and let $\mathcal{M}$ be a map (a representation space).
+  Any faithful map-making procedure is a continuous projection
+  \[
+    \proj : \mathcal{T} \longrightarrow \mathcal{M}
+  \]
+  with non-trivial fibers $\fiber{\proj}{m} \neq \{*\}$ for generic $m \in \mathcal{M}$.
+  Information not recovered from $\proj$ alone lives in the fiber.
+\end{theorem}
+
+\begin{proof}
+  Suppose $\proj$ were injective. Then the map would encode the territory
+  completely, contradicting the finite description length of any symbol system
+  relative to the continuous structure of $\mathcal{T}$. By the Löwenheim–Skolem
+  theorem applied to the first-order theory of $\mathcal{T}$, there exist
+  non-isomorphic models sharing the same map; these constitute the fiber.
+\end{proof}
+
+\begin{example}
+  GPS coordinates map Earth's surface to $\mathbb{R}^2$. The fiber over any
+  coordinate pair includes altitude, subsurface structure, biological activity —
+  all accessible from that location but invisible in the map.
+\end{example}
+
+% ── 1.3 ──────────────────────────────────────────────────────
+\section{Constraint Before Content}
+
+\begin{historynote}
+  The priority of constraint over content has deep roots. Ibn Sina's
+  distinction between \emph{mahiyyah} (quiddity) and \emph{wuj\=ud}
+  (existence) anticipates it: the essence of a thing is its constraint
+  structure, not its realized content. In the Latin tradition, Aquinas
+  transforms this into the act/potency distinction.
+\end{historynote}
+
+In modern terms: a program's type signature constrains its behavior before any
+value is computed. A physical field equation constrains accessible trajectories
+before any solution is specified. Grammar constrains utterances before any word
+is chosen. Content \emph{projects} from constraint.
+
+\sidedef{$\constraint$: constraint space}
+
+\begin{definition}{Constraint Space}{constraint-space}
+  A \emph{constraint space} $(\constraint, \leq)$ is a partially ordered set
+  of constraints, where $c_1 \leq c_2$ means $c_1$ is \emph{more restrictive}
+  than $c_2$. The \emph{accessibility set} at $c \in \constraint$ is
+  \[
+    \Acc(c) \;=\; \bigl\{ q \in \mathcal{Q} \;\big|\; q \text{ satisfies } c \bigr\}
+  \]
+  Constraint addition is set intersection: $\Acc(c_1 \wedge c_2) = \Acc(c_1) \cap \Acc(c_2)$.
+\end{definition}
+
+% ── 3D DIAGRAM: Constraint nesting ────────────────────────────
+\begin{figure}[h]
+  \centering
+  \begin{tikzpicture}[scale=1.0]
+    \input{diagrams/constraint-nesting-3d}
+  \end{tikzpicture}
+  \caption{Nested constraint spaces as concentric accessibility regions.
+    Outer region: $\Acc(c_1)$. Middle: $\Acc(c_1 \wedge c_2)$. Inner core:
+    $\Acc(c_1 \wedge c_2 \wedge c_3)$, the most constrained accessible set.
+    The RSVP scalar field $\Phifield$ attains its minimum at the core.}
+  \label{fig:constraint-nesting}
+\end{figure}
+
+% ── 1.4 ──────────────────────────────────────────────────────
+\section{Accessibility Before State}
+
+Classical state-based systems are deterministic: a state $q$ at time $t$
+determines the state at $t + \delta t$ via a transition function. But this
+assumes the transition function \emph{already exists} — that the dynamics are
+given. In the RSVP framework we ask: where does the transition function come
+from?
+
+\begin{warning}
+  State-based models smuggle accessibility assumptions into the transition
+  function without acknowledging them. When the function is undefined — at
+  phase transitions, at cognitive insight, at cosmological singularities —
+  the state-based model collapses to silence. Accessibility geometry provides
+  the right substrate for modeling these boundary cases.
+\end{warning}
+
+The RSVP answer is: transition functions \emph{are} accessibility gradients.
+The coupled field equations
+
+\begin{align}
+  \partial_t \Phifield &= -\gradient \cdot \vfield + \alpha \laplacian \Phifield
+    \label{eq:phi-dynamics}\\
+  \partial_t \vfield &= -(\vfield \cdot \gradient)\vfield - \gradient \Phifield
+    + \beta \laplacian \vfield
+    \label{eq:v-dynamics}\\
+  \partial_t \Sfield &= \sigma(\Phifield, \vfield) - \gamma \Sfield
+    \label{eq:s-dynamics}
+\end{align}
+
+define the \emph{accessibility relaxation dynamics}: the system flows toward
+states of higher admissibility under the current constraint structure.
+
+% ── Exercises ────────────────────────────────────────────────
+\section*{Exercises}
+
+\begin{exercise}
+  Let $\mathcal{Q} = \mathbb{R}^3$ and let $\constraint$ consist of a single
+  linear constraint $c : \mathbf{q} \cdot \mathbf{n} = 0$ for some unit normal
+  $\mathbf{n}$. Describe $\Acc(c)$ geometrically. What is $\Acc(c \wedge c')$
+  when $c'$ adds a second independent constraint?
+\end{exercise}
+
+\begin{exercise}
+  Formalize the GPS example from \cref{thm:map-territory} as a projection
+  $\proj : \mathbb{R}^3 \to \mathbb{R}^2$. Describe the fiber over a point
+  in $\mathbb{R}^2$. What additional structure (beyond the projection) would
+  be needed to recover altitude information?
+\end{exercise}
+
+\begin{exercise}[title={Harder}]
+  Show that the poset $(\constraint, \leq)$ with the operation
+  $c_1 \wedge c_2$ forms a semilattice. Under what conditions does it form
+  a complete lattice? What is the interpretation of the top element
+  $\top \in \constraint$ in terms of $\Acc$?
+\end{exercise}

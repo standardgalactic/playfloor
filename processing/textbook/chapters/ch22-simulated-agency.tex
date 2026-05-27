@@ -1,0 +1,218 @@
+% ============================================================
+%  chapters/ch22-simulated-agency.tex
+% ============================================================
+
+\chapter{Simulated Agency}
+
+\chapterepigraph{%
+  Consciousness is not the light that illuminates the room.\\
+  It is the process by which the room decides\\
+  which lights are worth keeping on.
+}{Flyxion, \textit{Semantic Infrastructure}}
+
+\sidenote{App.\,L for\\semantic fields\\and simulated\\agency; connects\\to IAD framework}
+
+Part~V ended with the universe as an accessibility landscape. Part~VI begins
+with the question that this raises immediately: what is it for a \emph{part}
+of the universe to model the \emph{rest} of the universe? What is it for a
+physical system to represent, predict, and act?
+
+This is the question of agency. And the central argument of this chapter
+is that agency — including conscious agency — is best understood not as a
+special substance or emergent property but as a \emph{projection-based
+inference process}: a system that constructs sparse internal simulations
+of its environment and navigates those simulations using accessibility
+gradients.
+
+\section{Projection-Based Consciousness}
+
+The projection framework of Appendix~B and Chapter~16 gives us the
+right starting point. An agent $A$ embedded in an environment $E$ has
+access not to $E$ directly but to a projection:
+\[
+  O = \Pi_A(E) \in \mathcal{O}_A
+\]
+where $\mathcal{O}_A$ is the agent's observation space. The agent's
+observation is always a fiber: many environmental states are consistent
+with any given observation.
+
+\begin{definition}{Projection-Based Agent}{proj-agent}
+  A \emph{projection-based agent} is a tuple $(E, \Pi_A, \hat{E}_A,
+  \mathcal{P}_A)$ where:
+  \begin{itemize}
+    \item $E$ is the environment state space,
+    \item $\Pi_A : E \to \mathcal{O}_A$ is the agent's observation
+          projection,
+    \item $\hat{E}_A$ is the agent's internal model space (simulations),
+    \item $\mathcal{P}_A : \mathcal{O}_A \to \Delta(\hat{E}_A)$ is the
+          agent's posterior map — assigning a distribution over internal
+          models to each observation.
+  \end{itemize}
+\end{definition}
+
+Consciousness, in this picture, is the process of maintaining and updating
+$\mathcal{P}_A$ — the distribution over internal simulations consistent
+with current observations. The agent is not directly conscious of $E$;
+it is conscious of its \emph{best current simulation} of $E$.
+
+\begin{conceptaside}{The Simulation Hypothesis Inverted}
+  The popular ``simulation hypothesis'' asks whether we might be living
+  in a simulation run by some external intelligence. The projection-based
+  view inverts this: every agent is \emph{already} living in a simulation
+  — specifically, the internal model $\hat{E}_A$ that its own cognitive
+  processes maintain. The question is not whether we live in a simulation
+  but how faithfully our internal simulation tracks the external environment.
+
+  This inversion has practical consequences. Hallucination, delusion,
+  and confabulation are not pathological departures from direct perception
+  — they are normal features of the simulation process when internal
+  models diverge from external states faster than they can be corrected.
+  Perception is always inference from projections; the question is how
+  well-constrained the inference is.
+\end{conceptaside}
+
+\section{Sparse Inference}
+
+A key feature of the projection-based framework is that internal models
+are necessarily \emph{sparse}: they cannot represent the full complexity
+of $E$, but only the features relevant to the agent's current goals and
+constraints.
+
+\begin{definition}{Sparse Internal Model}{sparse-model}
+  An internal model $\hat{e} \in \hat{E}_A$ is \emph{$k$-sparse} if it
+  specifies at most $k$ degrees of freedom of the environment, with all
+  other degrees left implicit (marginalized over). The \emph{sparsity
+  ratio} is $k / \dim(E)$.
+\end{definition}
+
+For a human agent, $\dim(E)$ is astronomical — every particle in the
+observable universe — while $k$ is of order $10^2$ to $10^4$ (the
+number of features we are consciously tracking at any moment). The
+sparsity ratio is essentially zero. We are always inferring an
+astronomically sparse sketch of reality.
+
+CLIO (Chapter~15) explains why this works: constraint structure allows
+sparse representations to be sufficient for decision-making. The agent
+does not need to know everything about $E$; it only needs to know which
+features of $E$ constrain its available actions and their consequences.
+
+\section{The IAD Correspondence}
+
+The Introspective Adversarial Distillation framework illuminates a key
+feature of mature agency: the transition from external-authority-driven
+to self-consistency-driven cognition.
+
+In the IAD framework, the trust weight $\alpha = P_{\text{teacher}}
+(y \mid x_{\text{adv}})^\beta$ modulates how much a student network
+defers to its teacher versus its own prior beliefs. When the teacher is
+reliable, $\alpha \approx 1$ and external authority dominates. When the
+teacher fails on the student's own adversarial examples, $\alpha \to 0$
+and self-consistency takes over.
+
+\begin{definition}{Cognitive Authority Transition}{auth-transition}
+  An agent undergoes a \emph{cognitive authority transition} when its
+  self-generated model $\hat{E}_A^{\text{self}}$ becomes more reliable
+  than its externally-provided model $\hat{E}_A^{\text{ext}}$ in some
+  region of its observation space.
+
+  In RSVP terms, the total flow is:
+  \[
+    \mathbf{v}_{\text{total}} = \alpha(x)\,\mathbf{v}_{\text{ext}}
+    + (1-\alpha(x))\,\mathbf{v}_{\text{self}}
+  \]
+  where $\alpha(x)$ is a local trust measure over the semantic manifold.
+\end{definition}
+
+This formalizes a deep observation about cognitive development. Children
+begin in a high-$\alpha$ regime — high deference to parents, teachers,
+and authority. As they develop their own models of the world through
+experience, $\alpha$ decreases in regions where their model outperforms
+the external authority's. Expertise is the accumulation of low-$\alpha$
+regions — domains where self-generated models dominate.
+
+\section{Latent Worlds}
+
+The most striking implication of projection-based consciousness is that
+the agent's experienced world is always a latent construct: a low-dimensional
+reconstruction of a high-dimensional reality, filtered through the agent's
+specific projection $\Pi_A$.
+
+\begin{definition}{Latent World}{latent-world}
+  The \emph{latent world} of agent $A$ at time $t$ is the distribution
+  $\mathcal{P}_A(O_t) \in \Delta(\hat{E}_A)$ over internal models
+  consistent with the current observation $O_t = \Pi_A(E_t)$.
+  The agent's \emph{experienced world} is the mode or expectation of
+  this distribution.
+\end{definition}
+
+Two agents with different projection maps $\Pi_A \neq \Pi_B$ will
+construct different latent worlds from the same environment $E$.
+This is not relativism — the environment $E$ is shared and objective —
+but it does imply that \emph{what is salient} differs systematically
+across agents with different sensory and cognitive projections.
+
+\begin{example}
+  A bat and a human share the same physical environment. The bat's
+  projection $\Pi_{\text{bat}}$ emphasizes high-frequency acoustic
+  structure; the human's projection $\Pi_{\text{human}}$ emphasizes
+  low-frequency visual structure. The bat's latent world contains
+  rich detail about insect wing-beat frequencies; the human's contains
+  rich detail about color and shape. Neither is more accurate — both
+  are faithful sparse reconstructions of different projections of the
+  same environment.
+\end{example}
+
+\section{Consciousness as Accessibility Navigation}
+
+The RSVP accessibility framework (Chapters~14, 21, Appendix~J) suggests
+a specific functional role for consciousness. Rather than being epiphenomenal
+or merely an observer, consciousness is the agent's accessibility navigation
+system: the process by which the agent moves through its latent world in
+ways that preserve and expand future admissible states.
+
+\begin{namedthm}{The Consciousness-as-Navigation Hypothesis}
+  Conscious processing preferentially explores regions of the agent's
+  latent world $\hat{E}_A$ that maximize the expected accessibility
+  entropy of the agent's future states:
+  \[
+    a^* = \arg\max_{a \in \mathcal{A}(x)} \mathbb{E}\bigl[S_A(x_{t+1})
+    \mid x_t = x, a_t = a\bigr]
+  \]
+  Consciousness is the computational substrate for this maximization.
+  Attention is the selection of features of $\hat{E}_A$ most relevant
+  to accessibility navigation.
+\end{namedthm}
+
+This is not a complete theory of consciousness — it says nothing about
+the phenomenal or subjective character of experience. But it offers a
+\emph{functional} definition that is both precise and testable: a system
+is conscious to the degree that it navigates its latent world using
+accessibility gradients rather than fixed reflex arcs.
+
+\begin{exercise}
+  Define a formal measure of ``consciousness'' for a projection-based
+  agent as the mutual information between the agent's action sequence
+  and its accessibility entropy trajectory. Show that reflex-arc agents
+  (agents with fixed stimulus-response maps) have zero mutual information
+  by this measure. What is the measure for an optimal accessibility-maximizing
+  agent?
+\end{exercise}
+
+\begin{exercise}
+  The IAD trust weight $\alpha(x)$ is locally computed — it depends on
+  the teacher's reliability at the specific query $x$. Extend this to
+  the cognitive authority transition: define a local trust measure
+  $\alpha_A(x)$ for a human agent over the semantic manifold $M_s$.
+  What observational data would allow $\alpha_A$ to be estimated from
+  behavior?
+\end{exercise}
+
+\begin{exercise}[title={Open problem}]
+  Pearce's zero ontology proposes that the universe has zero net
+  information content: $\sum_i \psi_i = 0$. If this is true, what
+  is the information content of a specific agent's latent world
+  $\hat{E}_A$? Can a zero-information universe contain non-zero
+  information latent worlds? (Hint: consider the relationship between
+  global information content and local conditional information content
+  relative to a specific projection.)
+\end{exercise}

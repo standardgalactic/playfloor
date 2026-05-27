@@ -1,0 +1,79 @@
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {1.1}{\ignorespaces Nested constraint spaces as concentric accessibility regions. Outer region: $\symcal {A}(c_1)$. Middle: $\symcal {A}(c_1 \wedge c_2)$. Inner core: $\symcal {A}(c_1 \wedge c_2 \wedge c_3)$, the most constrained accessible set. The RSVP scalar field $\mitPhi $ attains its minimum at the core.}}{5}{figure.caption.4}%
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {2.1}{\ignorespaces Constraint boundaries in a two-dimensional state space. The admissible region $A$ (shaded) is bounded by the constraint surface $\partial A$ (thick curve). Trajectories inside $A^\circ $ flow freely along the vector field $\mathbf {v}$. Near $\partial A$, the accessibility gradient $\nabla S$ curves trajectories inward. The collapse operator projects boundary-crossing trajectories back into $A$.}}{12}{figure.caption.5}%
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {3.1}{\ignorespaces Spherepop evaluation of $1 + 3 \times 2^2 = 13$. Each frame shows the expression after one pop. The innermost bubble collapses first, reducing depth at each step. The complexity functional $C(E)$ decreases $3 \to 2 \to 1 \to 0$.}}{19}{figure.caption.6}%
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {4.1}{\ignorespaces Fiber and projection geometry. The expression space $X$ (top) contains many expressions that canonicalize to the same value in $c(X)$ (bottom). The projection $c$ collapses each fiber to a point. The fiber over the canonical form $z = 12$ contains all expressions that evaluate to $12$: $(3 \times 4)$, $(2^2 \times 3)$, $(13-1)$, and infinitely many others.}}{30}{figure.caption.7}%
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {7.1}{\ignorespaces Constraint shells in the Spherepop expression $1 + (3 \times (2 \uparrow 2))$. Shell 0 (outermost, depth 0) contains the $+$ operator. Shell 1 contains $\times $. Shell 2 (innermost) contains $\uparrow $ and the atoms $2, 2$. Evaluation proceeds shell 2 $\to $ shell 1 $\to $ shell 0.}}{47}{figure.caption.8}%
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {8.1}{\ignorespaces The renormalization tower of Spherepop expressions. Each level integrates out one more layer of syntactic detail, replacing it with effective values. The bottom level contains only atoms: fully evaluated, maximally compressed expressions.}}{53}{figure.caption.9}%
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {9.1}{\ignorespaces Complexity $C(E_t)$ and accessibility entropy $S_t$ as functions of evaluation step $t$. Both decrease monotonically to zero at the terminal state. $C$ decreases by exactly 1 per step; $S$ decreases more smoothly, capturing the branching structure of the evaluation space.}}{60}{figure.caption.10}%
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {10.1}{\ignorespaces The gesture manifold $\symcal {G}$ with three regions: the admissible trajectory space $\symcal {A}(\symcal {C})$ (outer shell), the motor equivalence classes $[\mitgamma ]_\sim $ (middle layer, shown as vertical fibers), and the symbolic projection $\mitSigma ^*$ (the base, projected downward). The compression map $\mitkappa $ collapses each fiber to a single symbol.}}{66}{figure.caption.11}%
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {24.1}{\ignorespaces Constraint basins in the semantic manifold. Each basin (shaded region) surrounds an attractor (filled circle) corresponding to a concept. The accessibility gradient $\nabla S_s$ drives semantic states toward their nearest attractor. Basin boundaries (thick curves) are the separatrices of the gradient flow — the edges of meaning.}}{141}{figure.caption.12}%
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {28.1}{\ignorespaces The Hasse diagram of $B_2$: all 16 binary Boolean connectives ordered by truth-set inclusion. Bottom: contradiction ($\bot = 0000$). Top: tautology ($\top = 1111$). Highlighted amber path traces $\bot \to \mathrm {NOR} \to \neg A \to \mathrm {NAND} \to \top $. Highlighted purple path traces $\bot \to \mathrm {AND} \to \neg B \to \mathrm {OR} \to \top $.}}{169}{figure.caption.13}%
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {1}{\ignorespaces Spherepop evaluation of $1 + 3 \times 2^2$. Each step collapses an innermost sphere (nested region). The complexity functional $C(E)$ decreases monotonically: $3 \to 2 \to 1 \to 0$.}}{290}{figure.caption.17}%
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {2}{\ignorespaces Hasse diagram of the 16 binary Boolean connectives. Nodes are labeled by their 4-bit output pattern. Highlighted paths trace two chains from $\bot $ (0000) to $\top $ (1111): the amber path through $\mathrm {NOR} \to \neg A \to \mathrm {NAND}$, and the purple path through $\mathrm {AND} \to \neg B \to \mathrm {OR}$.}}{294}{figure.caption.19}%
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\addvspace {10\p@ }

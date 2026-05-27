@@ -1,0 +1,43 @@
+\chapter{The Fundamental Error Decomposition}
+\index{Fundamental Error Decomposition}
+
+\section{Why Reconstruction Fails}
+
+Every failure of counterfactual reconstruction from a compressed representation can be traced to one or more of three independent sources. A model's sketch captures only low-order derivative interactions; the query depends on high-order ones---compressibility failure. A compression discards syntactic structure; the query requires it---sufficiency failure. An accessibility skeleton is stored to depth three; the query requires depth seven---approximation failure, or insufficient compression depth.
+
+\section{The Three Error Sources}
+
+\textbf{Compressibility failure.} The query's sensitivity to the history does not decay with interaction order. No finite compression can capture the history's full influence on the query.
+
+\textbf{Sufficiency failure.} The compression discards information the query requires. The influence is in principle compressible, but the compression preserves the wrong structure.
+
+\textbf{Approximation failure.} The query cannot be represented accurately at the chosen truncation order, even when the history is compressible and the compression is sufficient.
+
+These three sources are independent: any one can occur while the others are absent.
+
+\section{The Fundamental Error Decomposition}
+
+\begin{definition}[Fundamental Error Decomposition]
+\index{Fundamental Error Decomposition}
+The total reconstruction error satisfies
+\[
+  E_{\mathrm{total}} = E_c + E_s + E_a
+\]
+where:
+\begin{itemize}
+  \item $E_c = C_Q \sum_{r>d} \sigma_r$ is the \textbf{compressibility error},
+  \item $E_s = \varepsilon_1$ is the \textbf{sufficiency error},
+  \item $E_a = \varepsilon_0$ is the \textbf{approximation error}.
+\end{itemize}
+Each term has an independent source and an independent remedy.
+\end{definition}
+
+\section{Three-Space Structure}
+
+The reconstruction problem operates across three distinct spaces. The \textbf{trajectory space} $\mathcal{X}$ is the ontological space of all possible histories. The \textbf{representation space} $\mathcal{M}$ is the epistemic space of compressed states. The \textbf{query space} $\mathbb{R}$ is the pragmatic space of answers.
+
+\section{Pure Failure Modes and Alignment}
+
+The three pure failure modes---stability, sufficiency, and approximation---correspond to the three error terms dominating in isolation. In practice, all three contribute simultaneously, and diagnosis requires identifying which dominates.
+
+An \textbf{aligned} compression is designed so that a single depth parameter $d$ simultaneously controls all three terms. This eliminates the three architectural failure modes by construction. Alignment is defined precisely in Chapter~4 and is the central design principle of Chapter~9.

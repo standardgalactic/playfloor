@@ -1,0 +1,103 @@
+% ============================================================
+%  Appendix D: Boolean Lattices and Logical Geometry
+% ============================================================
+
+\section*{D.1 Introduction}
+
+Boolean algebra is often introduced as a collection of operators:
+$\land, \lor, \neg, \to, \leftrightarrow$.
+This approach obscures the underlying geometry.
+Logical operators are not isolated symbols — they are points within a
+partially ordered space. The Hasse diagrams appearing throughout the monograph
+are projections of this deeper structure.
+
+\section*{D.2–D.4 Truth Functions and Encoding}
+
+\begin{definition}{Boolean Function on Two Variables}{bool-func}
+  A \emph{Boolean function on two variables} is a map
+  $f : \{0,1\}^2 \to \{0,1\}$.
+  Since there are four input states and two outputs for each,
+  there are $2^4 = 16$ distinct Boolean functions.
+\end{definition}
+
+Each function is encoded by its output column over the four input states
+$TT, TF, FT, FF$. Thus the space of connectives is $\{0,1\}^4 = Q_4$.
+
+\begin{definition}{Boolean Connective Space}{bool-connective}
+  The \emph{Boolean connective space} is $Q_4 = \{0,1\}^4$,
+  forming the vertex set of the four-dimensional hypercube.
+\end{definition}
+
+\section*{D.5 Partial Order}
+
+\begin{definition}{Truth Inclusion Order}{truth-order}
+  For Boolean functions $f, g$, define $f \leq g$ if $f(x) \leq g(x)$
+  for every input state $x$.
+\end{definition}
+
+\section*{D.7 The Boolean Lattice Theorem}
+
+\begin{theorem}{Boolean Lattice}{bool-lattice}
+  The space of two-variable Boolean functions forms a Boolean lattice.
+\end{theorem}
+
+\begin{proof}
+  $\{0,1\}^4 \cong \mathcal{P}(\{1,2,3,4\})$, with each output pattern
+  corresponding uniquely to a subset of input states. The power set forms a
+  Boolean lattice under inclusion.
+\end{proof}
+
+\begin{figure}[h]
+  \centering
+  \begin{tikzpicture}[scale=0.85]
+    \input{diagrams/boolean-hasse-lattice}
+  \end{tikzpicture}
+  \caption{Hasse diagram of the 16 binary Boolean connectives. Nodes are
+    labeled by their 4-bit output pattern. Highlighted paths trace two
+    chains from $\bot$ (0000) to $\top$ (1111): the amber path through
+    $\mathrm{NOR} \to \neg A \to \mathrm{NAND}$, and the purple path
+    through $\mathrm{AND} \to \neg B \to \mathrm{OR}$.}
+  \label{fig:hasse-appd}
+\end{figure}
+
+\section*{D.8–D.9 Meet, Join, and Complementation}
+
+The lattice possesses meet $f \wedge g$ (intersection of truth sets),
+join $f \vee g$ (union of truth sets), and complement $\neg f$ with
+$(\neg f)(x) = 1 - f(x)$. Thus $\neg(0110) = 1001$, so XOR and XNOR are
+complements.
+
+\section*{D.11 Logic as Geometry}
+
+\begin{definition}{Truth Region}{truth-region}
+  For a Boolean function $f$, its \emph{truth region} is
+  $R_f = \{x : f(x) = 1\}$.
+\end{definition}
+
+Contradiction $\cong$ empty region; tautology $\cong$ full space;
+implication $p \to q$ $\cong$ containment $R_p \subseteq R_q$.
+
+\begin{definition}{Logical Distance}{logical-dist}
+  The \emph{logical distance} between $f$ and $g$ is
+  $d(f,g) = \sum_i |f_i - g_i|$ (Hamming distance).
+\end{definition}
+
+\begin{theorem}{Geometry–Logic Correspondence}{geom-logic}
+  Every finite Boolean algebra admits a geometric realization as a
+  hypercube lattice.
+\end{theorem}
+
+\begin{proof}
+  A Boolean algebra on $n$ generators is isomorphic to
+  $\mathcal{P}(\{1,\ldots,n\}) \cong \{0,1\}^n = Q_n$.
+\end{proof}
+
+\begin{namedthm}{The Logic-as-Geometry Principle}
+  Logic is not merely symbolic manipulation. Logic is geometry in disguise.
+  AND, OR, NAND, XOR, and their kin are not isolated symbols — they are
+  vertices of a hypercube ordered by truth content.
+\end{namedthm}
+
+\medskip
+\textit{Appendix~E} extends this geometric perspective to hypercubes
+in arbitrary dimension.

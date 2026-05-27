@@ -1,0 +1,108 @@
+\chapter{Semantic Zoom}
+
+\chapterepigraph{%
+  Every level of description is correct.\\
+  The question is not which level is true\\
+  but which level is useful for the current question.
+}{Flyxion, \textit{Semantic Infrastructure}}
+
+\sidenote{Connects to\\renormalization\\tower (Ch.\,8)\\and constraint\\basins (Ch.\,24)}
+
+Chapter~32 argued for a terrain model of knowledge. This chapter develops
+the key feature of that terrain: its \emph{multi-scale structure}. The
+same knowledge can be viewed at different resolutions — from the
+fine-grained (individual propositions) to the coarse-grained (field-level
+summaries). Semantic zoom is the operation that moves between these
+resolutions.
+
+\section{Scale-Dependent Representations}
+
+Every domain of knowledge has a natural hierarchy of scales:
+
+\begin{itemize}
+  \item \textbf{Biology:} molecules $\to$ cells $\to$ tissues $\to$
+        organisms $\to$ populations $\to$ ecosystems.
+  \item \textbf{Physics:} quantum fields $\to$ particles $\to$ atoms
+        $\to$ materials $\to$ systems $\to$ cosmological structures.
+  \item \textbf{History:} events $\to$ episodes $\to$ periods $\to$
+        eras $\to$ civilizational arcs.
+  \item \textbf{Mathematics:} lemmas $\to$ theorems $\to$ theories
+        $\to$ fields $\to$ mathematical traditions.
+\end{itemize}
+
+Each scale has its own vocabulary, its own causal mechanisms, and its
+own productive questions. Confusing scales — asking cell-biology
+questions at the organism level, or organism-level questions at the
+ecosystem level — produces category errors.
+
+\begin{definition}{Semantic Zoom Operator}{sem-zoom}
+  A \emph{semantic zoom operator} is a family of projections
+  $\{\pi_s : K \to K_s\}_{s \geq 0}$ where $K_s$ is the representation
+  of knowledge $K$ at scale $s$. Zooming out ($s \to \infty$) is
+  renormalization: detail is integrated out, coarse features emerge.
+  Zooming in ($s \to 0$) is instantiation: abstract concepts are
+  given specific content.
+\end{definition}
+
+\section{Micro, Meso, and Macro Views}
+
+Three canonical scales appear repeatedly across domains:
+
+\begin{itemize}
+  \item \textbf{Micro:} the individual unit — atom, cell, event, lemma.
+        The level of direct observation and experiment.
+  \item \textbf{Meso:} the intermediate aggregate — molecule, tissue,
+        episode, theorem. The level where most scientific activity occurs.
+  \item \textbf{Macro:} the large-scale pattern — material, ecosystem,
+        era, field. The level where global constraints and tendencies
+        are visible.
+\end{itemize}
+
+Productive research typically moves between scales: a micro observation
+(an anomalous data point) motivates a meso hypothesis (a new mechanism),
+which predicts a macro pattern (a new large-scale regularity).
+
+\section{Context-Sensitive Abstraction}
+
+The appropriate scale for a representation depends on the question
+being asked. This is \emph{context-sensitive abstraction}: the same
+knowledge is represented at different scales depending on context.
+
+\begin{definition}{Context-Optimal Scale}{ctx-optimal-scale}
+  The \emph{context-optimal scale} for knowledge $K$ in context $C$
+  is:
+  \[
+    s^*(K, C) = \arg\max_s I(K_s; \mathcal{Q}_C)
+  \]
+  where $I(K_s; \mathcal{Q}_C)$ is the mutual information between
+  the scale-$s$ representation of $K$ and the set of questions
+  $\mathcal{Q}_C$ relevant in context $C$.
+\end{definition}
+
+Experts have well-calibrated $s^*$: they know which scale of description
+is appropriate for each question. Novices often operate at the wrong
+scale — too much detail when a summary is needed, too much abstraction
+when a specific example is needed.
+
+\begin{namedthm}{The Multi-Scale Principle}
+  Any knowledge system that must answer questions at multiple scales
+  requires explicit semantic zoom capabilities: mechanisms for moving
+  between scales efficiently, and for identifying the context-optimal
+  scale for each query. Systems optimized for a single scale sacrifice
+  performance at all other scales.
+\end{namedthm}
+
+\begin{exercise}
+  Take a topic you know well and write three descriptions of it at
+  three different scales (micro, meso, macro), each approximately
+  100 words. Identify what information is present at each scale and
+  absent at the others. What question is each scale best suited to answer?
+\end{exercise}
+
+\begin{exercise}
+  The internet is a micro-scale knowledge system: individual pages
+  are the primary unit, and large-scale structure must be inferred
+  (through search, navigation, link-following). Design a ``macro-layer''
+  for the internet that makes large-scale knowledge structure explicit.
+  What would its data model look like?
+\end{exercise}

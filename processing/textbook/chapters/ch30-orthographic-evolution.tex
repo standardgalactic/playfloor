@@ -1,0 +1,152 @@
+% Chapter 30: Orthographic Evolution
+\chapter{Orthographic Evolution}
+
+\chapterepigraph{%
+  Scripts do not drift randomly.\\
+  They drift toward efficiency, legibility, and the limits\\
+  of the human hand at the speed it is asked to move.
+}{Flyxion, \textit{Semantic Infrastructure}}
+
+\sidenote{Connects to\\gesture fossil-\\ization (Ch.\,28)\\and constraint\\descent (App.\,A)}
+
+Writing systems evolve. Over centuries and millennia, scripts transform
+in ways that are not random but are governed by systematic pressures:
+toward faster production, toward greater consistency, toward reduced
+ambiguity. This chapter examines orthographic evolution as a constraint
+descent process: scripts move toward configurations of lower constraint
+violation under the pressures of use.
+
+\section{Arabic: Cursive Optimization}
+
+Arabic script represents one of the most sophisticated solutions to
+the speed-distinctiveness tradeoff in the history of writing. Its
+cursive form — in which letters connect and change shape with position
+— is often presented as complex. The constraint-descent view reveals
+it as elegant.
+
+The four positional variants of each letter (isolated, initial, medial,
+final) are not arbitrary complications. They are the result of optimizing
+two competing constraints:
+\begin{enumerate}
+  \item \textbf{Connectivity:} cursive writing is faster than print
+        because the pen does not leave the surface between letters.
+  \item \textbf{Distinctiveness:} letters must remain distinguishable
+        despite deformation from the baseline form.
+\end{enumerate}
+
+The positional variants represent the four stable attractors in
+letter-shape space that satisfy both constraints simultaneously:
+connected to the preceding letter, connected to the following letter,
+connected to both, connected to neither.
+
+\section{Latin: From Majuscule to Minuscule}
+
+The Latin alphabet underwent a major transformation between the 4th and
+9th centuries CE: from all-capitals (majuscule) to mixed case (minuscule).
+This transition was driven by a single constraint: writing speed.
+
+Minuscule letters are faster to produce than majuscule for three reasons:
+\begin{itemize}
+  \item \textbf{Fewer strokes:} many minuscules require fewer pen lifts
+        than their majuscule equivalents.
+  \item \textbf{Shorter travel:} ascenders and descenders guide the pen
+        in a consistent vertical rhythm, reducing lateral travel.
+  \item \textbf{Ligatures:} minuscule letters connect naturally into
+        common clusters (st, ct, æ, œ), enabling cursive-like efficiency.
+\end{itemize}
+
+The majuscule-to-minuscule transition is a constraint descent: the
+constraint violation functional $\kappa_\text{speed}$ (time per word)
+decreased substantially with the new script.
+
+\section{Greek, Coptic, and Constructed Scripts}
+
+The Greek alphabet demonstrates the opposite of fossilization: active
+construction. When the Greeks adapted the Phoenician alphabet to write
+vowels (around 800 BCE), they were not merely adopting a system —
+they were engineering one. The letters they repurposed (aleph → alpha,
+he → epsilon, yod → iota) were chosen not for sound but for phonemic
+coverage: which Phoenician letters sounded most like Greek vowels?
+
+This is a constraint satisfaction problem: assign Phoenician letters
+to Greek phonemes such that the assignment minimizes perceptual
+distance between letter-name and phone, while maximizing coverage of
+the Greek phonemic inventory.
+
+The Coptic alphabet (derived from Greek to write Egyptian) similarly
+involved active engineering: Greek letters were supplemented with
+Demotic Egyptian characters for phonemes Greek did not possess.
+The Coptic designers solved a gap-filling constraint problem: extend
+the Greek basis to cover the full Coptic phonemic space with
+minimum additional symbols.
+
+\section{Constructed Scripts as Constraint Satisfaction}
+
+Deliberately constructed scripts — the Korean hangul (1443 CE),
+the Cherokee syllabary (1820s), the Canadian Aboriginal syllabics
+(1840s), and many others — provide natural experiments in orthographic
+design. Each was designed by one or a small number of inventors,
+making the design choices explicit.
+
+\begin{definition}{Constructed Script Optimality}{constructed-opt}
+  A \emph{constructed script} is \emph{optimal} for a language $L$ if
+  it minimizes total constraint violation:
+  \[
+    \kappa_\text{total} = w_1 \kappa_\text{completeness}
+    + w_2 \kappa_\text{distinctiveness}
+    + w_3 \kappa_\text{economy}
+    + w_4 \kappa_\text{learnability}
+  \]
+  where $w_1, w_2, w_3, w_4$ are weights reflecting the community's
+  priorities.
+\end{definition}
+
+Hangul is remarkable for its systematic design: consonants are based
+on the shape of the mouth and tongue during articulation (a form of
+phonetic iconicity), and syllable blocks are composed from consonants
+and vowels according to a regular spatial grammar. This achieves
+high learnability (the blocks encode phonetic structure) and high
+distinctiveness (the spatial arrangement provides additional cues).
+
+\section{Why Alphabets Drift Over Centuries}
+
+Even well-designed scripts drift. The drift follows predictable patterns:
+
+\begin{enumerate}
+  \item \textbf{Speed simplification:} strokes that can be omitted
+        without loss of distinctiveness are omitted. Features that
+        require pen lift are merged into continuous curves.
+  \item \textbf{Frequency adjustment:} common letters become simpler;
+        rare letters remain complex because the frequency-weighted
+        optimization favors common-letter efficiency.
+  \item \textbf{Distinctiveness pressure:} when confusion between letters
+        increases (due to simplification of one), the other is
+        elaborated or the simplified form acquires a diacritic.
+\end{enumerate}
+
+This is precisely constraint descent: the script evolves by locally
+reducing $\kappa_\text{total}$, with each generation of writers
+making small modifications that persist if they reduce the functional.
+
+\begin{exercise}
+  Track the evolution of the letter \textit{R} from Phoenician
+  \textit{resh} through Greek $\rho$ (rho) to Latin $R$.
+  At each stage, identify the constraint pressure that drove the change.
+  Express each transformation as a modification of the distinguishing
+  feature set $F(g)$.
+\end{exercise}
+
+\begin{exercise}
+  Korean hangul and the Cherokee syllabary were both designed to
+  maximize learnability for a specific community. Compare their
+  design strategies. What different constraints were the designers
+  optimizing for? Which is more learnable for a native speaker of each
+  language, and why?
+\end{exercise}
+
+\begin{exercise}[title={Design}]
+  Design an optimal writing system for a language with exactly 20
+  consonants and 5 vowels, using the constraint satisfaction framework.
+  Your alphabet should minimize $\kappa_\text{total}$ with weights
+  $w_1 = w_2 = w_3 = w_4 = 1/4$. What does your alphabet look like?
+\end{exercise}

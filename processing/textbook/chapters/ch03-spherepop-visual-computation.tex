@@ -1,0 +1,367 @@
+% ============================================================
+%  chapters/ch03-spherepop-visual-computation.tex
+% ============================================================
+
+\chapter{Spherepop as Visual Computation}
+
+\chapterepigraph{%
+  The parenthesis is a lie about space.\\
+  It claims to enclose what it only annotates.\\
+  The sphere actually encloses.
+}{Flyxion, \textit{Geometry, Cognition, and the Transparency of Computation}}
+
+\sidenote{App.\,C gives\\the full formal\\treatment}
+
+Standard mathematical notation is a historical accident. The bracket
+$(1 + (3 \times 2^2))$ encodes a spatial relationship — nesting — using
+a pair of punctuation marks that have no spatial extent. The notation is
+purely symbolic; it \emph{represents} containment without \emph{being}
+containment.
+
+Spherepop takes the spatial interpretation seriously. Expressions are
+regions. Containment is actual enclosure. Evaluation is collapse. The
+result is a notation system in which the \emph{picture} of an expression
+and the \emph{meaning} of an expression are the same thing.
+
+% ── 3.1 ──────────────────────────────────────────────────────
+\section{Origins of Spherepop}
+
+\begin{remark}
+  \textbf{The plenum interpretation of evaluation.}
+  Standard notation treats an expression as a string of symbols in
+  empty syntactic space. Spherepop treats it as a physical medium —
+  a structured plenum of nested constraint regions. This is not
+  merely aesthetic. In the relaxing-spring cosmology of Part~V,
+  the universe is itself a plenum (the lamphrodyne field) that
+  ``evaluates'' by reducing constraint violation: high-constraint
+  early states collapse toward lower-constraint equilibria, leaving
+  persistent structures as their residue. Spherepop evaluation is
+  the discrete, finite-depth version of this same dynamics.
+  The pop operator at the innermost sphere is the computational
+  analogue of a quantum event (Chapter~6) — irreversible, local,
+  and constraint-reducing.
+\end{remark}
+
+
+The Spherepop formalism arose from a dissatisfaction with the gap between
+expression and visualization. In conventional notation:
+
+\begin{itemize}
+  \item The tree structure of an expression must be \emph{inferred}
+        from flat text.
+  \item Precedence rules are \emph{remembered}, not \emph{seen}.
+  \item Evaluation order is \emph{computed mentally}, not perceived
+        directly.
+\end{itemize}
+
+A child learning arithmetic must perform three separate cognitive operations:
+parse the linear string into a tree, remember the precedence rules, and then
+evaluate bottom-up. Each of these is non-trivial. The notation makes
+computation harder than it needs to be.
+
+\begin{historynote}
+  Lisp (1958) was the first major programming language to make expression
+  trees visible in syntax. The expression $1 + 3 \times 4$ becomes
+  \texttt{(+ 1 (* 3 4))} in Lisp — a parenthesized tree that matches
+  the evaluation structure exactly. Lisp programmers sometimes call
+  their parentheses ``hugs'': each open paren hugs its contents.
+  Spherepop replaces the linear hugging with actual spatial enclosure,
+  taking Lisp's structural insight one step further into geometry.
+  The relationship between Spherepop and Lisp is roughly the relationship
+  between a map and a legend: Spherepop makes the spatial structure of
+  computation directly visible rather than encoding it symbolically.
+\end{historynote}
+
+% ── 3.2 ──────────────────────────────────────────────────────
+\section{Nested Bubbles}
+
+A Spherepop expression is a planar diagram of nested closed regions —
+\emph{bubbles}. Each bubble contains either:
+\begin{enumerate}
+  \item an atomic value (a number, variable, or constant), or
+  \item an operator together with its argument bubbles.
+\end{enumerate}
+
+The spatial containment \emph{is} the grouping. No parentheses are needed
+because the containment relation is directly visible.
+
+\begin{definition}{Spherepop Diagram}{sp-diagram}
+  A \emph{Spherepop diagram} is a planar embedding of a rooted ordered
+  tree into $\mathbb{R}^2$ such that:
+  \begin{itemize}
+    \item each node $v$ of the tree corresponds to a closed disk
+          $D_v \subset \mathbb{R}^2$,
+    \item if $u$ is the parent of $v$ in the tree, then $D_v \subset
+          D_u^\circ$ (strict interior),
+    \item sibling disks are pairwise disjoint:
+          $D_{v_1} \cap D_{v_2} = \emptyset$ for distinct siblings,
+    \item the label of node $v$ is written inside $D_v$ but outside
+          all children of $v$.
+  \end{itemize}
+\end{definition}
+
+\begin{figure}[h]
+  \centering
+  \begin{tikzpicture}[scale=0.72]
+    \input{diagrams/spherepop-eval-3d}
+  \end{tikzpicture}
+  \caption{Spherepop evaluation of $1 + 3 \times 2^2 = 13$.
+    Each frame shows the expression after one pop. The innermost
+    bubble collapses first, reducing depth at each step. The
+    complexity functional $C(E)$ decreases $3 \to 2 \to 1 \to 0$.}
+  \label{fig:sp-eval-ch3}
+\end{figure}
+
+% ── 3.3 ──────────────────────────────────────────────────────
+\section{Reading Order}
+
+A conventional mathematical expression is read left-to-right, with
+precedence rules overriding the linear order. A Spherepop diagram is
+read \emph{inside-out}: innermost bubbles are read first, outermost last.
+
+This reading order is not arbitrary. It is the \emph{only} reading order
+consistent with the semantics: you cannot evaluate an outer expression
+without first knowing the values of its inner arguments.
+
+\begin{proposition}{Unique Canonical Reading Order}{reading-order}
+  In any Spherepop diagram, inside-out reading (depth-first, innermost
+  first) is the unique reading order consistent with compositional
+  semantics.
+\end{proposition}
+
+\begin{proof}
+  This follows directly from Proposition~\ref{prop:depth-order} of
+  Chapter~2: in any containment-based evaluation system, outer regions
+  depend on the values of inner regions, so inner regions must be
+  evaluated first.
+\end{proof}
+
+The remarkable consequence is that Spherepop notation contains its own
+reading instructions. A child presented with a Spherepop diagram for
+the first time, and told only that ``inner bubbles evaluate first,'' has
+everything they need to compute any arithmetic expression correctly —
+without memorizing a single precedence rule.
+
+% ── 3.4 ──────────────────────────────────────────────────────
+\section{The Pop Operator}
+
+The fundamental operation of Spherepop evaluation is the \emph{pop}: the
+collapse of an innermost bubble to a single value.
+
+\begin{definition}{Pop}{pop-ch3}
+  A bubble $B$ is \emph{poppable} if it contains no child bubbles —
+  i.e., it is an innermost bubble containing only atoms and an operator.
+  The \emph{pop} of $B$ replaces $B$ with the result of applying its
+  operator to its atomic arguments.
+\end{definition}
+
+\begin{example}
+  In the diagram for $1 + (3 \times (2 \uparrow 2))$:
+  \begin{enumerate}
+    \item First pop: the innermost bubble $(2 \uparrow 2)$ pops to $4$.
+    \item Second pop: the bubble $(3 \times 4)$ pops to $12$.
+    \item Third pop: the outermost bubble $(1 + 12)$ pops to $13$.
+  \end{enumerate}
+  Three pops, three depth reductions, final result $13$.
+\end{example}
+
+The pop operator has two important special cases:
+
+\begin{definition}{Refuse and Bind}{refuse-bind}
+  A bubble \emph{refuses} when it cannot be popped — either because
+  it contains unbound variables, because its operator is undefined on
+  its arguments, or because a protection marker prevents evaluation.
+  A bubble is \emph{bound} when its free variables are assigned values,
+  enabling a previously refusing bubble to pop.
+\end{definition}
+
+Refusal is not failure — it is \emph{suspended evaluation}. A refusing
+bubble waits until the conditions for its pop are satisfied. This is the
+Spherepop model of a closure, a lazy value, or a blocked computation.
+
+% ── 3.5 ──────────────────────────────────────────────────────
+\section{Collapse as Evaluation}
+
+The full evaluation of a Spherepop diagram is a sequence of pops that
+reduces the diagram to a single atomic bubble. This process is
+\emph{collapse} in the topological sense: the nested structure contracts
+level by level until no further nesting remains.
+
+\begin{theorem}{Spherepop Completeness}{sp-completeness}
+  Every finite Spherepop diagram with no refusing bubbles and no
+  unbound variables collapses to a single atomic bubble in finitely
+  many pops.
+\end{theorem}
+
+\begin{proof}
+  By induction on the depth $d$ of the diagram. For $d = 0$, the
+  diagram is already atomic. For $d \geq 1$, at least one innermost
+  bubble exists (depth-$d$ bubble with no children). This bubble pops,
+  reducing depth by at least one. By induction the resulting depth-$(d-1)$
+  diagram eventually collapses.
+\end{proof}
+
+This theorem is why Spherepop evaluation terminates. The depth of a diagram
+is a natural number; each pop reduces it; natural numbers have no infinite
+descending chains.
+
+% ── 3.6 ──────────────────────────────────────────────────────
+\section{Visual Examples from Arithmetic}
+
+The power of Spherepop notation becomes clear in examples where conventional
+notation is genuinely confusing.
+
+\begin{example}[title={Order of operations}]
+  The expression $2 + 3 \times 4$ is ambiguous in natural language
+  (``two plus three, times four''? or ``two plus, three times four''?)
+  and requires precedence rules in conventional notation. In Spherepop,
+  the grouping is visible: if $\times$ is a smaller inner bubble and
+  $+$ is the outer bubble, then $3 \times 4 = 12$ pops first and
+  $2 + 12 = 14$ follows. The diagram is unambiguous without any rules.
+\end{example}
+
+\begin{example}[title={Nested exponentiation}]
+  Consider $2^{2^3}$. In conventional notation this is ambiguous:
+  is it $(2^2)^3 = 64$ or $2^{(2^3)} = 256$? In Spherepop, the
+  nesting is spatial: whichever exponentiation bubble contains the other
+  evaluates last. The conventional convention (right-to-left for towers)
+  corresponds to making the rightmost exponent the innermost bubble.
+\end{example}
+
+\begin{example}[title={Function composition}]
+  $f(g(h(x)))$ in Spherepop is three nested bubbles: $h(x)$ inside
+  $g(\cdot)$ inside $f(\cdot)$. The evaluation order — $h$ then $g$
+  then $f$ — is directly visible. The notation makes it impossible to
+  confuse $f \circ g \circ h$ with $h \circ g \circ f$.
+\end{example}
+
+% ── 3.7 ──────────────────────────────────────────────────────
+\section{Relationship to Lisp Trees and Expression Parsing}
+
+\sidenote{Lisp: McCarthy,\\1958; see also\\Church's $\lambda$-calculus,\\1932}
+
+Spherepop diagrams are visual renderings of the \emph{abstract syntax trees}
+(ASTs) that all programming language parsers construct internally. When a
+compiler parses $1 + 3 \times 4$, the first thing it does is build the tree:
+
+\medskip
+\begin{center}
+\begin{tikzpicture}[
+  level distance=1.2cm,
+  sibling distance=2.2cm,
+  every node/.style={circle, draw=RSVPdeep, fill=RSVPlight,
+    minimum size=7mm, font=\small}
+]
+\node {$+$}
+  child { node {$1$} }
+  child { node {$\times$}
+    child { node {$3$} }
+    child { node {$4$} }
+  };
+\end{tikzpicture}
+\end{center}
+\medskip
+
+A Spherepop diagram is this same tree, but rendered spatially: each internal
+node becomes a bubble enclosing its children. The tree structure is the same;
+only the rendering changes.
+
+This observation has a deep implication: \emph{every programming language
+with well-defined operator precedence already implicitly uses Spherepop
+evaluation}. The parser builds the tree; the evaluator collapses it
+depth-first. Spherepop makes this hidden structure visible.
+
+\begin{remark}
+  The relationship between Spherepop and conventional notation is exactly
+  the relationship between a subway map and a street map. The street map
+  shows the geography; the subway map shows the structure. Neither is
+  more correct. They serve different cognitive purposes. Conventional
+  notation is optimized for writing linearly (a typewriter constraint
+  inherited from print). Spherepop is optimized for visual understanding
+  of structure.
+\end{remark}
+
+% ── 3.8 ──────────────────────────────────────────────────────
+\section{Spherepop Beyond Arithmetic}
+
+The Spherepop formalism extends naturally beyond arithmetic to any domain
+organized by containment and evaluation.
+
+\begin{itemize}
+  \item \textbf{Logic:} propositions are bubbles; logical connectives
+        are operators; truth evaluation is collapse. The Hasse diagram
+        of Chapter~1 and Appendix~D is a Spherepop structure over the
+        Boolean lattice.
+  \item \textbf{Type theory:} types are constraint boundaries; terms
+        inhabit the interior; type-checking is evaluating whether a
+        term pops to an admissible value.
+  \item \textbf{Grammar:} syntactic constituents are bubbles; grammatical
+        rules are operators; parsing is the collapse of a word sequence
+        to a phrase structure tree.
+  \item \textbf{Biology:} cells are bubbles containing organelles;
+        organisms are bubbles containing cells; ecosystems are bubbles
+        containing organisms. Metabolism is evaluation; death is collapse
+        to a terminal state.
+  \item \textbf{Cosmology:} the universe in the RSVP framework is an
+        accessibility field; structures (galaxies, stars, planets, minds)
+        are nested pockets of concentrated density; evolution of the
+        universe is the progressive collapse of high-entropy regions
+        into stable low-entropy structures.
+\end{itemize}
+
+\begin{conceptaside}{The Universality of Nested Evaluation}
+  The claim that Spherepop generalizes to all these domains is not a
+  metaphor. It is a precise mathematical claim: all these systems are
+  constraint spaces $(X, A, \kappa)$ with nesting sequences and collapse
+  maps $\mathcal{K}$. The formal apparatus of Appendix~C applies to all
+  of them.
+
+  What varies between domains is not the mathematics but the
+  \emph{interpretation}: what counts as a bubble, what counts as an
+  operator, what counts as a pop, and what the admissible region $A$
+  is. The structure is universal; the semantics are domain-specific.
+
+  This is a general principle in mathematics: the same formal structure
+  appears in radically different domains because those domains are all
+  special cases of the same underlying abstraction. Group theory,
+  topology, category theory — each was discovered in a specific context
+  and turned out to be universal. Spherepop is, we argue, a similar
+  discovery: the formal structure of nested evaluation, found first in
+  arithmetic, is universal.
+\end{conceptaside}
+
+% ── Exercises ────────────────────────────────────────────────
+\section*{Exercises}
+
+\begin{exercise}
+  Draw the Spherepop diagram for each of the following expressions.
+  Then evaluate each by performing the pops in order, showing the
+  diagram after each pop.
+  \begin{enumerate}[label=(\alph*)]
+    \item $(2 + 3) \times (4 - 1)$
+    \item $2^{(3^2)}$
+    \item $\sqrt{(3^2 + 4^2)}$
+  \end{enumerate}
+\end{exercise}
+
+\begin{exercise}
+  A Spherepop diagram with $n$ poppable bubbles requires exactly $n$
+  pops to fully evaluate. Prove this. (Hint: show that each pop
+  removes exactly one internal node from the AST.)
+\end{exercise}
+
+\begin{exercise}
+  Formalize the claim that ``inner bubbles evaluate first'' is the
+  unique reading convention consistent with compositional semantics.
+  Specifically: define \emph{compositional semantics} for a Spherepop
+  diagram, and then prove that any reading order other than inside-out
+  produces undefined behavior for some diagram.
+\end{exercise}
+
+\begin{exercise}[title={Extension}]
+  Extend the Spherepop formalism to handle \emph{infinite} nesting
+  sequences — diagrams where some bubble contains infinitely many
+  sub-bubbles. What additional conditions are needed to guarantee
+  that evaluation terminates? Give an example of an infinite Spherepop
+  diagram that evaluates and one that does not.
+\end{exercise}

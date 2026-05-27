@@ -1,0 +1,214 @@
+% ============================================================
+%  chapters/ch-logic-boolean-geometry.tex
+%  Part VIII: Mathematical Foundations — Logic and Boolean Geometry
+% ============================================================
+
+\chapter{Logic as Geometry: The Boolean Landscape}
+
+\chapterepigraph{%
+  Logic is not the science of valid inference.\\
+  That is merely its application.\\
+  Logic is the geometry of truth.
+}{Flyxion, \textit{Semantic Infrastructure}}
+
+\sidenote{App.\,D and\\App.\,E give the\\complete formal\\treatment;\\ connects to\\Boolean lattice\\diagram (Fig.\,\ref{fig:hasse})}
+
+Part~VIII occupies an unusual position in the monograph. The material
+here — Boolean lattices, hypercube decompositions, the geometry of
+logical operators — was historically developed \emph{before} the
+frameworks of Parts~I–VII. But it is placed here because it can now
+be understood in its proper context: as a special case of the
+accessibility geometry developed in Part~IV, specialized to the
+discrete two-valued domain.
+
+Logical operators are not isolated symbols. They are points in a
+geometric space. Understanding them geometrically reveals structure
+that the symbolic presentation obscures.
+
+\section{The Curriculum Question}
+
+Before developing the geometry, we should address a pedagogical
+question that this chapter raises directly. The standard mathematics
+curriculum is \emph{algebra-first}: children encounter numbers,
+operations, equations, and functions before they encounter logic,
+set theory, or geometry as separate disciplines. Logic, if it appears
+at all, arrives late — as a chapter in a discrete mathematics course,
+or as the preamble to a proof-writing course.
+
+What would a \emph{logic-first} curriculum look like? And what kind
+of mathematical thinking would it produce?
+
+\begin{conceptaside}{Seven Mathematical Schools}
+  Consider seven possible entry points into mathematics, each
+  corresponding to a different primary mathematical object:
+  \begin{itemize}
+    \item \textbf{Geometry school:} space, shape, symmetry, transformation.
+    \item \textbf{Algebra school:} symbol, equation, structure, abstraction.
+    \item \textbf{Trigonometry school:} cycle, wave, angle, periodicity.
+    \item \textbf{Calculus school:} change, rate, accumulation, limit.
+    \item \textbf{Statistics school:} uncertainty, evidence, inference,
+          variation.
+    \item \textbf{Stoichiometry school:} conservation, transformation,
+          balance, reaction.
+    \item \textbf{Logic school:} truth, implication, consistency, proof.
+  \end{itemize}
+  Each school produces a different cognitive orientation. The logic-first
+  student learns to ask: \emph{what follows necessarily from what?}
+  The geometry-first student asks: \emph{what is the shape of this?}
+  The statistics-first student asks: \emph{what is the evidence for this?}
+  These orientations are complementary — the richest mathematical minds
+  move fluidly between them — but they are genuinely different.
+\end{conceptaside}
+
+\section{The Space of Binary Connectives}
+
+The starting point of Boolean geometry is the observation that there
+are exactly 16 binary connectives — 16 Boolean functions of two variables.
+These 16 functions form a geometric object: the four-dimensional hypercube
+$Q_4$.
+
+\begin{definition}{Binary Connective Space}{binary-connective}
+  The \emph{binary connective space} is $B_2 = \{0,1\}^4$, with each
+  vertex corresponding to one binary connective, labeled by its output
+  column over the four input states $TT, TF, FT, FF$.
+\end{definition}
+
+The familiar operators sit at specific vertices:
+\begin{align*}
+  \top &= 1111 & \bot &= 0000 \\
+  \mathrm{AND} &= 0001 & \mathrm{OR} &= 0111 \\
+  \mathrm{NAND} &= 1110 & \mathrm{NOR} &= 1000 \\
+  \mathrm{XOR} &= 0110 & \mathrm{XNOR} &= 1001
+\end{align*}
+
+The Hamming distance between vertices is their \emph{logical distance}:
+how many truth-value assignments they disagree on.
+
+\begin{figure}[ht]
+  \centering
+  \begin{tikzpicture}[scale=0.85]
+    \input{diagrams/boolean-hasse-lattice}
+  \end{tikzpicture}
+  \caption{The Hasse diagram of $B_2$: all 16 binary Boolean connectives
+    ordered by truth-set inclusion. Bottom: contradiction ($\bot = 0000$).
+    Top: tautology ($\top = 1111$). Highlighted amber path traces
+    $\bot \to \mathrm{NOR} \to \neg A \to \mathrm{NAND} \to \top$.
+    Highlighted purple path traces
+    $\bot \to \mathrm{AND} \to \neg B \to \mathrm{OR} \to \top$.}
+  \label{fig:hasse}
+\end{figure}
+
+\section{Logic as Accessibility Geometry}
+
+The Boolean lattice $B_2$ has a natural accessibility interpretation.
+Each connective $f \in B_2$ has an accessibility entropy:
+\[
+  S(f) = \log|R_f| = \log|\{x \in \{TT,TF,FT,FF\} : f(x) = 1\}|
+\]
+where $R_f$ is the truth region of $f$.
+
+\begin{itemize}
+  \item $S(\bot) = \log 0 = -\infty$ (contradiction: no true inputs)
+  \item $S(\mathrm{AND}) = \log 1 = 0$ (most restrictive non-contradiction)
+  \item $S(\mathrm{XOR}) = \log 2$ (two true inputs)
+  \item $S(\mathrm{OR}) = \log 3$ (three true inputs)
+  \item $S(\top) = \log 4$ (tautology: maximum accessibility)
+\end{itemize}
+
+The Hasse diagram is the accessibility landscape of the binary connective
+space. Moving upward in the diagram corresponds to increasing accessibility
+entropy. The accessibility gradient flow — the flow toward higher $S$ —
+runs from contradiction to tautology along the edges of the lattice.
+
+\begin{proposition}{Implication as Accessibility Ordering}{impl-access}
+  $p \to q$ (logical implication) holds if and only if
+  $S(p \wedge \cdot) \leq S(q \wedge \cdot)$ for all connectives:
+  $p$'s truth region is a subset of $q$'s. Implication is
+  accessibility containment.
+\end{proposition}
+
+\section{The Penteract and Hypercube Splitting}
+
+The binary connective space $B_2 = Q_4$ can be extended to three
+variables: $B_3 = Q_8$ with $2^8 = 256$ connectives. Visualizing $Q_8$
+directly is impossible, but it decomposes into two copies of $Q_4$:
+
+\[
+  Q_5 = Q_4 \times \{0,1\}
+\]
+
+This is the \emph{penteract}: five-dimensional hypercube, visualized as
+two tesseracts ($Q_4$) connected by matching edges. Each splitting
+corresponds to fixing one binary variable and examining the resulting
+four-variable space.
+
+There are five coordinate splittings of $Q_5$ (one per dimension),
+each revealing a different organizational principle of the space.
+No single visualization captures all five simultaneously — any projection
+into 2D discards information. This is the Boolean version of the
+information loss theorem (Appendix~B): the geometry of logic cannot
+be fully represented in any flat diagram.
+
+\section{Seven Curricula, One Landscape}
+
+Returning to the seven mathematical schools: each school produces a
+different entry point into the Boolean landscape.
+
+\begin{itemize}
+  \item The \textbf{geometry-first} student sees the Hasse diagram as a
+        polytope — a projection of a hypercube — and immediately asks
+        what happens in higher dimensions.
+  \item The \textbf{algebra-first} student sees a lattice with two
+        operations ($\wedge$, $\vee$) and a complement, and asks about
+        the algebraic axioms.
+  \item The \textbf{logic-first} student sees a space of connectives
+        ordered by implication and asks which paths correspond to
+        valid inference chains.
+  \item The \textbf{statistics-first} student sees each connective as
+        a binary classifier and asks which achieves highest accuracy
+        on which data distributions.
+  \item The \textbf{calculus-first} student sees the lattice as a
+        discrete gradient system and asks what the continuous limit looks like.
+\end{itemize}
+
+None of these perspectives is wrong. All of them reveal genuine structure
+in the object. The logical geometry of $B_2$ is rich enough to contain
+all five entry points simultaneously.
+
+This is the key pedagogical claim: starting from any of the seven schools,
+a sufficiently curious student will eventually discover the others.
+The accessibility landscape of mathematics is connected — every concept
+can be reached from every starting point — but the paths differ, and
+different paths develop different cognitive orientations.
+
+\begin{namedthm}{The Curriculum Equivalence Theorem}
+  All seven mathematical schools are connected in the accessibility
+  graph of mathematical concepts: from any starting concept, any other
+  concept can be reached by a finite chain of natural conceptual
+  extensions. The seven schools differ not in their ultimate destinations
+  but in the order of traversal and the depth of each concept encountered
+  along the way.
+\end{namedthm}
+
+\begin{exercise}
+  Compute the Hamming distance between all pairs of named connectives
+  ($\top, \bot, \mathrm{AND}, \mathrm{OR}, \mathrm{NAND}, \mathrm{NOR},
+  \mathrm{XOR}, \mathrm{XNOR}, \neg A, \neg B$). Which pair is most
+  logically similar (minimum distance)? Which is most dissimilar
+  (maximum distance)?
+\end{exercise}
+
+\begin{exercise}
+  The Boolean lattice $B_2$ has 16 elements. How many elements does
+  $B_3$ (three-variable connectives) have? How many edges does the
+  Hasse diagram of $B_3$ have? At what rate does the complexity of
+  the Boolean landscape grow with the number of variables?
+\end{exercise}
+
+\begin{exercise}[title={Pedagogical}]
+  Design a three-week logic-first mathematics curriculum for 10-year-olds.
+  What would be taught in week 1 (the Boolean lattice), week 2
+  (circuits and computation), and week 3 (connections to arithmetic)?
+  What algebraic concepts would students encounter naturally, without
+  being explicitly taught algebra?
+\end{exercise}

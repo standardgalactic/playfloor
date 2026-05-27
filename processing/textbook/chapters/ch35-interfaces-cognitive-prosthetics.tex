@@ -1,0 +1,107 @@
+\chapter{Interfaces as Cognitive Prosthetics}
+
+\chapterepigraph{%
+  A good interface does not translate your intentions into machine actions.\\
+  It extends the space of intentions you can have.
+}{Flyxion, \textit{Semantic Infrastructure}}
+
+\sidenote{Connects to\\projection-based\\consciousness (Ch.\,22)\\and constraint\\spaces}
+
+The previous three chapters developed the theory of knowledge navigation.
+This chapter examines the interfaces through which humans navigate:
+not as passive tools that execute commands but as cognitive prosthetics
+that extend the agent's projection structure.
+
+\section{Tools That Extend Memory}
+
+The constraint-preserving memory chain of Chapter~23 is biological:
+it lives in neural tissue and dies with the agent. External tools extend
+this chain into physical space, where it can survive the agent and be
+accessed by others.
+
+\begin{definition}{Memory Prosthetic}{memory-prosthetic}
+  A \emph{memory prosthetic} is any external artifact that encodes
+  constraint modifications $\Delta\mathcal{C}$ in a retrievable form.
+  Its effectiveness is measured by:
+  \begin{itemize}
+    \item \textbf{Encoding fidelity:} how accurately it represents
+          $\Delta\mathcal{C}$.
+    \item \textbf{Retrieval efficiency:} how quickly the encoded
+          constraint modification can be recovered and applied.
+    \item \textbf{Durability:} how long the encoding persists.
+    \item \textbf{Portability:} how easily the encoding can be
+          transferred to new contexts.
+  \end{itemize}
+\end{definition}
+
+Writing is the foundational memory prosthetic: high encoding fidelity,
+moderate retrieval efficiency (requires reading), high durability,
+high portability. Digital storage improves retrieval efficiency
+dramatically but at the cost of technological dependence: the encoding
+requires an interpreter (software, hardware) that may not persist.
+
+\section{Tools That Extend Attention}
+
+Attention is the agent's mechanism for allocating cognitive resources —
+for deciding which features of the current observation to process in
+depth. Interfaces that extend attention allow the agent to maintain
+focus on more features simultaneously, or to maintain focus for longer.
+
+\begin{definition}{Attention Prosthetic}{attention-prosthetic}
+  An \emph{attention prosthetic} is an interface that reduces the
+  cognitive cost of directing attention to specific features of the
+  environment. Its effectiveness is measured by:
+  \[
+    E_\text{att} = \frac{\Delta I_\text{attended}}{
+    \Delta \kappa_\text{cognitive}}
+  \]
+  — the increase in attended information per unit increase in cognitive
+  constraint violation (cognitive load).
+\end{definition}
+
+Good visualization tools are attention prosthetics: they make structure
+visible that would otherwise require sustained mental effort to construct.
+A good graph reveals in a glance what a table of numbers reveals only
+after minutes of computation.
+
+\section{Tools That Extend Reasoning}
+
+The most powerful cognitive prosthetics extend not just memory or
+attention but reasoning itself: they change what inferences are
+accessible, what concepts can be combined, what questions can be
+asked.
+
+Mathematical notation is the canonical example. A student who knows
+Arabic numerals and positional notation can perform calculations that
+a student who knows only Roman numerals cannot — not because they are
+smarter, but because the notation makes certain operations cognitively
+accessible that are inaccessible in the other system.
+
+\begin{namedthm}{The Cognitive Prosthetic Principle}
+  The cognitive prosthetics available to an agent determine the
+  accessible region of their cognitive landscape. The accessibility
+  entropy of an agent's cognitive state is:
+  \[
+    S_\text{cog}(A) = S_\text{bio}(A) + \sum_i S_\text{prosthetic}(P_i)
+  \]
+  — the sum of the agent's biological accessibility and the
+  accessibility contributed by each prosthetic $P_i$ in their toolkit.
+  Cognitive development is the acquisition of high-$S_\text{prosthetic}$
+  tools.
+\end{namedthm}
+
+\begin{exercise}
+  Evaluate the following tools as cognitive prosthetics: (a) a physical
+  notebook, (b) a spreadsheet, (c) a programming language,
+  (d) a diagram, (e) a conversational AI assistant. For each, estimate
+  $E_\text{att}$ and $S_\text{prosthetic}$ informally. Which extends
+  reasoning most? Which has the highest failure modes?
+\end{exercise}
+
+\begin{exercise}
+  The abacus and the calculator both extend arithmetic reasoning.
+  Compare them as cognitive prosthetics. Which has higher encoding
+  fidelity? Which has higher retrieval efficiency? Which produces
+  better long-term mathematical understanding? Explain the tradeoffs
+  using the framework of this chapter.
+\end{exercise}

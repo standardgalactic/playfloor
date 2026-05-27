@@ -1,0 +1,50 @@
+\chapter{Interaction Decompositions and Stability}
+\index{interaction decomposition}\index{stability sequence}
+
+\section{How Queries Depend on Histories}
+
+A query $Q : \mathcal{X} \to \mathbb{R}$ depends on the trajectory $x$ through its history. The central question is whether that dependence is concentrated at low \emph{interaction orders}---whether the influence of increasingly complex historical interactions decays. When it does, the history is compressible for this query.
+
+\section{Interaction Decompositions}
+
+Fix a reference trajectory $x_0 \in \mathcal{X}$. An \textbf{interaction decomposition} expresses each query as
+\[
+  Q(x) = \sum_{r=0}^{\infty} I_r^{Q,x_0}(x)
+\]
+where $I_r^{Q,x_0}(x)$ measures the contribution of $r$-th order interactions between $x$ and $x_0$.
+
+\begin{definition}[Stable Interaction Decomposition]
+\index{stable interaction decomposition}
+The decomposition is \textbf{stable} with stability sequence $\{\sigma_r\}$ if
+\[
+  |I_r^{Q,x_0}(x)| \leq C_Q \cdot \sigma_r
+\]
+for all $Q \in \mathcal{Q}$, all $x \in \mathcal{X}$, and all $r \geq 0$.
+\end{definition}
+
+The three verified domains instantiate interaction order differently: polynomial degree $r$ for learning systems, branch depth $r$ for semantic systems, and transition depth $r$ for physical field systems.
+
+\section{Stability Sequences and Tail Bounds}
+
+The crucial property of $\{\sigma_r\}$ is its tail behavior. If $\sum_{r>d} \sigma_r \to 0$ as $d \to \infty$, then truncating at order $d$ yields controlled compressibility error. Under exponential stability $\sigma_r \leq Ce^{-cr}$:
+\[
+  \sum_{r>d} \sigma_r \leq \frac{Ce^{-cd}}{1 - e^{-c}}.
+\]
+
+\section{Why Stability Holds}
+
+Three mechanisms produce stability in the verified domains:
+\begin{itemize}
+  \item \textbf{Derivative decay} in learning systems: higher-order partial derivatives of the training-to-output map decay exponentially.
+  \item \textbf{Branching attenuation} in semantic systems: admissibility constraints suppress admissible trajectory volume geometrically.
+  \item \textbf{Accessibility contraction} in physical field systems: accessible configuration volume contracts under admissible evolution.
+\end{itemize}
+The framework requires only that some mechanism produces the required decay, not any specific mechanism.
+
+\section{When Stability Fails}
+
+When $\{\sigma_r\}$ is not summable, $E_c$ does not decrease with $d$. This is a structural property of the trajectory space for the query family---not a computational limitation that a better algorithm could overcome. Stability failure is the first and most fundamental diagnostic question.
+
+\section{The Stability Hypothesis as a Scientific Claim}
+
+In the learning and semantic domains, stability is proved from structural properties. In physical field systems, stability is an empirical hypothesis. The framework specifies what the hypothesis claims, what evidence would confirm it, and what each possible outcome implies.

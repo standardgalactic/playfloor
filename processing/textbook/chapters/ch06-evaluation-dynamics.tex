@@ -1,0 +1,229 @@
+% ============================================================
+%  chapters/ch06-evaluation-dynamics.tex
+% ============================================================
+
+\chapter{Evaluation Dynamics}
+
+\chapterepigraph{%
+  Evaluation is not search.\\
+  It is descent along a gradient\\
+  that was always already there.
+}{Flyxion, \textit{Semantic Infrastructure}}
+
+\sidenote{App.\,C §C.6--C.10\\for formal proofs\\of termination\\and confluence}
+
+Chapter~5 defined the static syntax of Spherepop. This chapter defines
+the dynamics: how expressions change over time as they are evaluated.
+
+\section{The Pop Operation}
+
+The atomic unit of dynamics is the pop.
+
+\begin{definition}{Redex}{redex}
+  A sphere $s = \sphere{L, [c_1,\ldots,c_n]}$ in expression $E$ is
+  a \emph{redex} (reducible expression) if:
+  \begin{enumerate}
+    \item All contents $c_i$ are atomic (no content sphere contains
+          further spheres), and
+    \item The operator $L$ is defined on the values of $c_1,\ldots,c_n$.
+  \end{enumerate}
+  A redex is the innermost sphere ready to pop.
+\end{definition}
+
+\begin{definition}{Pop Step}{pop-step}
+  A \emph{pop step} replaces a redex
+  $s = \sphere{L, [c_1,\ldots,c_n]}$ with the atomic sphere
+  $\sphere{L(c_1,\ldots,c_n)}$, where $L(c_1,\ldots,c_n)$ is the
+  result of applying operator $L$ to the atomic values.
+  We write $E \to_\text{pop} E'$ when $E'$ is obtained from $E$
+  by one pop step.
+\end{definition}
+
+\section{Refusal}
+
+Not every innermost sphere can pop. Refusal is suspended evaluation.
+
+\begin{definition}{Refusal}{refusal}
+  A sphere $s$ \emph{refuses} when:
+  \begin{enumerate}
+    \item \textbf{Variable refusal:} $s$ contains a free variable
+          (unbound symbol). $s$ cannot pop until the variable is bound.
+    \item \textbf{Domain refusal:} $s$'s operator is undefined on
+          its current arguments (e.g., division by zero, $\sqrt{-1}$
+          in real arithmetic). $s$ cannot pop until the arguments
+          are modified.
+    \item \textbf{Protection:} $s$ carries a protection marker $\protect{}$
+          that prevents popping regardless of content.
+  \end{enumerate}
+  A refusing sphere is written $\refuse{}_s$, with subscript indicating
+  the reason.
+\end{definition}
+
+\begin{remark}
+  Refusal models lazy evaluation, closures, suspended computations, and
+  blocked threads. A refusing sphere is not an error — it is a sphere
+  waiting for its preconditions to be satisfied. Many functional
+  programming patterns (promises, futures, generators) are formalized
+  by refusal and the subsequent binding that resolves it.
+\end{remark}
+
+\section{Binding}
+
+\begin{definition}{Binding Step}{binding}
+  A \emph{binding step} assigns a value $v$ to a free variable $x$
+  throughout an expression $E$, written $E[x := v]$. After binding,
+  any sphere that was refusing due to $x$ may become a redex.
+\end{definition}
+
+\begin{example}
+  The sphere $\sphere{+, [x, \sphere{3}]}$ refuses because $x$ is free.
+  After binding $x := 5$, it becomes $\sphere{+, [\sphere{5}, \sphere{3}]}$,
+  which is a redex that pops to $\sphere{8}$.
+\end{example}
+
+\section{Collapse Operators}
+
+\begin{remark}
+  \textbf{The Spherepop operators in quantum context.} The four operators
+  Pop, Bind, Collapse, and Refuse acquire a striking interpretation when
+  applied to quantum measurement (the HYDRA/Spherepop connection):
+
+  \begin{itemize}
+    \item \textbf{Pop (Create):} an irreversible quantum event — the
+          moment a photon strikes a detector, puncturing the continuous
+          wavefunction with a discrete, permanent fact.
+    \item \textbf{Bind (Join):} correlation of two compatible quantum
+          events into a joint structure. The beginning of quantum geometry.
+    \item \textbf{Collapse (Identify):} grouping different causal
+          histories that lead to the same macroscopic outcome — the
+          many paths that produce the same measurement result.
+    \item \textbf{Refuse (Filter):} the topological filter that the RSVP
+          entropy field applies: any cluster of events that exceeds
+          the available trajectory volume, or that contradicts the
+          vector flow field, is simply refused. This is the dynamical
+          mechanism that replaces the Born rule — rather than an
+          appended postulate, measurement collapse follows from the
+          geometry of the accessibility landscape refusing inconsistent
+          branches.
+  \end{itemize}
+
+  In this reading, Schrödinger's equation is not the foundation of
+  quantum mechanics but its continuum limit: the smooth approximation
+  valid between irreversible events. The events (Pops) are primary;
+  the wavefunction is their residue.
+\end{remark}
+
+
+Beyond individual pops, Spherepop supports compound operations that
+collapse multiple levels simultaneously.
+
+\begin{definition}{Collapse Operator}{collapse-op}
+  A \emph{collapse operator} $\collapse{k}$ applied to an expression $E$
+  performs $k$ pop steps simultaneously, collapsing the $k$ deepest
+  levels. Formally:
+  \[
+    \collapse{k}(E) = E' \text{ where } E \to_\text{pop}^k E'.
+  \]
+\end{definition}
+
+Collapse operators are useful for describing batch evaluation — the
+behavior of a compiler that reduces an entire expression in one pass
+rather than step by step.
+
+\begin{definition}{Full Collapse}{full-collapse}
+  The \emph{full collapse} $\collapse{\infty}(E)$ is the unique terminal
+  expression reachable from $E$ by exhaustive popping (if it exists).
+\end{definition}
+
+\section{Reduction Sequences}
+
+\begin{definition}{Reduction Sequence}{reduction-seq}
+  A \emph{reduction sequence} from $E$ is a (possibly infinite) sequence
+  \[
+    E = E_0 \to_\text{pop} E_1 \to_\text{pop} E_2 \to_\text{pop} \cdots
+  \]
+  of pop steps. A reduction sequence \emph{terminates} at $E_n$ if
+  $E_n$ contains no redexes.
+\end{definition}
+
+\begin{theorem}{Termination for Arithmetic}{termination-arith}
+  Every finite, ground (variable-free), well-typed arithmetic Spherepop
+  expression has a terminating reduction sequence.
+\end{theorem}
+
+\begin{proof}
+  By strong induction on the depth $d(E)$. If $d(E) = 0$, $E$ is atomic
+  and already terminal. If $d(E) \geq 1$, some innermost sphere $s$ is
+  a redex (since $E$ is ground and well-typed). Popping $s$ strictly
+  reduces the number of non-atomic spheres. Since this count is
+  non-negative and integer-valued, the sequence terminates.
+\end{proof}
+
+\section{Termination Conditions}
+
+The termination theorem above requires three conditions that are worth
+examining:
+
+\begin{itemize}
+  \item \textbf{Finite:} infinite Spherepop diagrams (co-recursive
+        expressions) may not terminate. Streams, infinite lists, and
+        co-inductive data types require lazy evaluation and controlled
+        refusal.
+  \item \textbf{Ground:} free variables cause refusal. A variable-free
+        expression has no refusing spheres (assuming well-typedness)
+        and must terminate.
+  \item \textbf{Well-typed:} domain refusal (division by zero, etc.)
+        can prevent termination even in ground expressions.
+        Type safety rules out domain errors statically.
+\end{itemize}
+
+The interaction of these three conditions defines the boundary between
+\emph{total} computation (always terminates) and \emph{partial} computation
+(may not terminate). The Halting Problem is precisely the question of
+which Spherepop expressions have terminating reduction sequences — a
+question that is undecidable in general.
+
+\section{Confluence}
+
+A key property of Spherepop evaluation is that the choice of which
+redex to pop first does not affect the final result.
+
+\begin{theorem}{Confluence}{confluence-ch6}
+  For any Spherepop expression $E$ over a confluent operator set
+  (one where all operators are deterministic and total on their domain),
+  any two reduction sequences from $E$ reach the same terminal expression.
+\end{theorem}
+
+\begin{proof}[Sketch]
+  Any two redexes in $E$ are either nested (one is inside the other)
+  or disjoint (neither contains the other). If nested, the outer redex
+  depends on the inner, so they cannot both be redexes simultaneously —
+  the outer will only become a redex after the inner pops. If disjoint,
+  popping either one does not affect the other, so their pops commute.
+  By the Church–Rosser property for disjoint reductions, all sequences
+  reach the same terminal.
+\end{proof}
+
+Confluence means evaluation is \emph{deterministic in result} even when
+it is \emph{non-deterministic in strategy}. Different evaluation orders
+may take different numbers of steps, but they always arrive at the same place.
+
+\begin{exercise}
+  Give an example of a Spherepop expression with two distinct redexes
+  that can be popped in either order. Show that both orders reach the
+  same terminal expression, verifying confluence in this case.
+\end{exercise}
+
+\begin{exercise}
+  Define a Spherepop expression that refuses due to each of the three
+  reasons (variable, domain, protection). For each, describe what
+  additional step would resolve the refusal and allow evaluation
+  to continue.
+\end{exercise}
+
+\begin{exercise}[title={Harder}]
+  Construct a Spherepop expression that does not terminate. (Hint:
+  consider an operator that expands its arguments rather than reducing
+  them — analogous to the $\Omega$ combinator in the $\lambda$-calculus.)
+  What happens to the depth of the expression as evaluation proceeds?
+\end{exercise}

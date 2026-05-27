@@ -1,0 +1,134 @@
+% Chapter 29: The Geometry of Alphabets
+\chapter{The Geometry of Alphabets}
+
+\chapterepigraph{%
+  An alphabet is not a list.\\
+  It is a tiling of perceptual space\\
+  whose pieces must be large enough to distinguish\\
+  and small enough to learn.
+}{Flyxion, \textit{Semantic Infrastructure}}
+
+\sidenote{Connects to\\constraint basins\\(Ch.\,24) and\\the Boolean\\lattice (App.\,D)}
+
+A writing system imposes a geometric structure on the space of possible
+marks. The letters of an alphabet are not arbitrary — they are the result
+of an optimization process operating over centuries, selecting for marks
+that are perceptually distinct, motorically accessible, and spatially
+efficient.
+
+This chapter analyzes that structure using the accessibility and
+constraint frameworks developed in earlier parts.
+
+\section{Letters as Compressed Shapes}
+
+Every letter is a compression: it discards the continuous variation of
+handwriting and retains only the features necessary for identification.
+But what features are retained?
+
+\begin{definition}{Distinguishing Features of a Glyph}{glyph-features}
+  The \emph{distinguishing feature set} of a glyph $g$ is the minimal
+  set $F(g)$ of geometric properties such that $g$ is the unique glyph
+  in the alphabet with all properties in $F(g)$:
+  \[
+    F(g) = \arg\min_{F' \subseteq \mathcal{F}} |F'| \text{ s.t. }
+    \forall g' \neq g:\, F(g') \not\supseteq F'
+  \]
+  where $\mathcal{F}$ is the full space of geometric features.
+\end{definition}
+
+Different writing systems use different feature sets. The Latin alphabet
+relies heavily on: vertical strokes (I, l), horizontal strokes (E, F, H),
+diagonal strokes (A, V, W, X), curves (C, G, S, O), and enclosed regions
+(B, D, O, P, R). Arabic relies on: dot count, dot position, baseline
+connectivity, and curve direction. Chinese relies on: stroke count,
+stroke type, and spatial arrangement.
+
+\section{Symmetry, Rotation, Reflection}
+
+Many alphabets exploit or avoid visual symmetry systematically.
+
+\begin{proposition}{Symmetry Creates Confusion}{sym-confusion}
+  Glyphs that are related by rotation or reflection are easily confused.
+  If $g$ and $\rho(g)$ (where $\rho$ is a rotation or reflection) are
+  both in the alphabet, their constraint basins $\mathcal{B}(g)$ and
+  $\mathcal{B}(\rho(g))$ are adjacent in trace space, increasing
+  confusion probability.
+\end{proposition}
+
+This explains a persistent difficulty in reading acquisition: children
+confuse $b$ and $d$ (reflection), $p$ and $q$ (reflection), $b$ and $p$
+(rotation), $n$ and $u$ (rotation). These pairs are related by simple
+geometric transformations. A better-designed alphabet would maximize the
+distance between all pairs of letters under all natural transformations.
+
+The Arabic alphabet largely avoids this problem. Letters that share a
+base shape are distinguished by diacritics (dot count and position)
+rather than reflection or rotation, making the distinguishing feature
+more salient and less prone to transformation confusion.
+
+\section{Stroke Economy}
+
+Every additional stroke in a glyph increases the motor acquisition
+cost and the writing speed cost. The most economical alphabet uses
+the minimum number of strokes to maintain perceptual distinctiveness.
+
+\begin{definition}{Stroke Economy}{stroke-economy}
+  The \emph{stroke economy} of an alphabet $\mathcal{A}$ is:
+  \[
+    E(\mathcal{A}) = \frac{|\mathcal{A}|}{
+      \sum_{g \in \mathcal{A}} \text{strokes}(g)}
+  \]
+  — the number of letters per average stroke count. Higher economy
+  means more letters per stroke.
+\end{definition}
+
+The Latin alphabet has moderate stroke economy: most letters require
+2--4 strokes. Korean hangul has high stroke economy through its
+systematic block structure: basic strokes are combined in consistent
+patterns. Chinese characters have low stroke economy on average
+(many strokes per character) but high semantic economy (each character
+carries more meaning).
+
+\section{The Accessibility Landscape of Alphabets}
+
+An alphabet defines an accessibility landscape over the space of
+possible marks. Each letter is an attractor; its basin is the
+region of marks that readers will classify as that letter.
+
+A well-designed alphabet maximizes the minimum basin size (all letters
+are equally distinguishable) while minimizing the total feature complexity
+(letters are as simple as possible). This is a classical information-theoretic
+optimization, but with a geometric formulation.
+
+\begin{namedthm}{The Alphabet Optimization Principle}
+  An optimal alphabet $\mathcal{A}^*$ for a community with perceptual
+  variability $\sigma$ and motor precision $\mu$ maximizes:
+  \[
+    \mathcal{A}^* = \arg\max_{\mathcal{A}} \min_{g \neq g' \in \mathcal{A}}
+    d_\text{perc}(g, g') - \lambda \sum_{g \in \mathcal{A}} \text{complexity}(g)
+  \]
+  where $d_\text{perc}$ is perceptual distance and $\lambda$ trades
+  distinctiveness against simplicity. Observed alphabets approximate
+  this optimum, with the approximation improving over centuries of use.
+\end{namedthm}
+
+\begin{exercise}
+  For the ten most common English letters (E, T, A, O, I, N, S, H, R, D),
+  compute the pairwise Hamming distances in a simple feature space
+  (presence/absence of: vertical stroke, horizontal stroke, diagonal,
+  curve, enclosure, dot). Which pairs have minimum distance? Do these
+  predict the most common reading confusions?
+\end{exercise}
+
+\begin{exercise}
+  Design a minimal 26-letter alphabet that maximizes stroke economy
+  while maintaining perceptual distinctiveness. How many strokes per
+  letter does your alphabet average? Compare to the Latin alphabet.
+\end{exercise}
+
+\begin{exercise}[title={Cross-linguistic}]
+  Compare the distinguishing feature sets of Arabic, Hebrew, Greek,
+  and Latin scripts. Each developed from related Semitic origins.
+  What geometric features did each preserve and which did each innovate?
+  Can you identify a common ancestor feature set?
+\end{exercise}

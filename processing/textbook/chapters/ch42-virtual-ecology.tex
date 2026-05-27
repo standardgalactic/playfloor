@@ -1,0 +1,81 @@
+\chapter{Virtual Ecology}
+
+\chapterepigraph{%
+  A simulation that does not surprise you\\
+  is not a simulation.\\
+  It is a description.
+}{Flyxion, \textit{Semantic Infrastructure}}
+
+\sidenote{Connects to\\constraint ecology\\(Ch.\,26) and\\accessibility\\fields (App.\,J)}
+
+Chapter~41 developed procedural generation as constraint satisfaction.
+This chapter examines the emergent communities — virtual ecologies — that
+arise in richly constrained simulated environments, and what they reveal
+about real ecologies.
+
+\section{Agents and Resources}
+
+A virtual ecology begins with two primitive elements: agents (entities
+that act) and resources (quantities that agents consume and produce).
+The constraint structure governing their interaction determines what
+ecologies emerge.
+
+\begin{definition}{Virtual Ecology}{virtual-ecology}
+  A \emph{virtual ecology} is a dynamical system $(A, R, E, \kappa_E)$
+  where:
+  \begin{itemize}
+    \item $A = \{a_1, \ldots, a_n\}$ is a set of agents with strategies
+          $\pi_i : \mathcal{O}_i \to \mathcal{A}_i$,
+    \item $R = \{r_1, \ldots, r_m\}$ is a set of resources,
+    \item $E : A \times R \to \mathbb{R}$ is the exchange matrix
+          (how much of each resource each agent type consumes and
+          produces),
+    \item $\kappa_E$ is the ecological constraint functional
+          (resource levels must remain non-negative; population
+          levels must be non-negative).
+  \end{itemize}
+\end{definition}
+
+\section{Adaptation}
+
+In biological ecologies, adaptation occurs through evolution: agents
+with higher-fitness strategies reproduce more. In virtual ecologies,
+adaptation can be implemented directly: agent strategies update in
+response to outcomes.
+
+The accessibility framework gives a precise interpretation: adaptation
+is constraint descent in the strategy space. Agents move toward
+strategies that minimize their constraint violation (maximize survival
+and reproduction) given the current state of the ecology.
+
+\section{Civilizations}
+
+When virtual agents develop complex strategies — division of labor,
+trade, coordination, conflict — virtual civilizations emerge. The
+transition from ecology to civilization is a phase transition in the
+accessibility landscape: new basins appear (stable social structures)
+that were not present in the pre-civilizational ecology.
+
+\begin{namedthm}{The Civilization Emergence Theorem (Virtual)}
+  In a virtual ecology with sufficient agent capability (complex
+  strategies) and resource diversity (multiple resource types with
+  complementary advantages), civilization-like structures emerge
+  as accessibility attractors: stable configurations where specialization
+  and exchange reduce total constraint violation below what any single
+  agent strategy can achieve.
+\end{namedthm}
+
+\begin{exercise}
+  Describe the minimal virtual ecology that produces civilization-like
+  trade. What resource types are needed? What agent capabilities?
+  What constraint structure produces the emergence of specialization?
+\end{exercise}
+
+\begin{exercise}
+  Many virtual civilizations in games (Civilization, Crusader Kings,
+  Dwarf Fortress) exhibit ``emergent stories'' — narratives that arise
+  from the interaction of rules rather than being scripted. Using
+  the accessibility framework, explain what makes a game rich enough
+  to produce emergent stories. What structural property distinguishes
+  story-rich from story-poor games?
+\end{exercise}

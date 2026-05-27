@@ -1,0 +1,208 @@
+% ============================================================
+%  chapters/ch25-semantic-infrastructure.tex
+% ============================================================
+
+\chapter{Semantic Infrastructure}
+
+\chapterepigraph{%
+  Roads move matter.\\
+  Networks move signals.\\
+  Semantic infrastructure moves meaning.
+}{Flyxion, \textit{Semantic Infrastructure}}
+
+\sidenote{App.\,M for the\\full category-\\theoretic treatment}
+
+Part~VII begins. The previous parts developed the individual agent
+(Part~VI) and the physical universe (Part~V). Part~VII asks: what happens
+when agents compose into civilizations? What is the infrastructure through
+which meaning persists, accumulates, and evolves across generations?
+
+The answer requires going beyond both the individual agent framework of
+Part~VI and the field-theoretic framework of Part~V. The appropriate
+language is category theory: the study of composition.
+
+\section{Beyond Files and Folders}
+
+Contemporary digital infrastructure organizes information as files in
+folders — a spatial metaphor borrowed from physical paper filing.
+This metaphor was adequate for documents but is inadequate for knowledge.
+
+The limitations:
+
+\begin{itemize}
+  \item \textbf{No semantics:} a file system knows the name and location
+        of a document but nothing about its meaning. Documents about the
+        same topic can be anywhere; documents in the same folder can be
+        about anything.
+  \item \textbf{No composition:} files are concatenated, not composed.
+        Merging two research papers produces a combined file, not a
+        synthesized understanding.
+  \item \textbf{No versioning with meaning:} version control tracks
+        character-level changes but not conceptual evolution. A theorem
+        that is refactored has changed meaning; a theorem that is
+        merely reformatted has not. File-level diffs cannot distinguish
+        these.
+  \item \textbf{No provenance:} a fact's reliability depends on how it
+        was established and by whom. File systems record creation dates
+        but not epistemic genealogy.
+\end{itemize}
+
+\begin{definition}{Semantic Module}{semantic-module}
+  A \emph{semantic module} is a triple $(C, A, \partial C)$ where:
+  \begin{itemize}
+    \item $C$ is the \emph{content} (propositions, procedures, data),
+    \item $A$ is the \emph{admissibility structure} (what inferences
+          from $C$ are valid, what modifications preserve meaning),
+    \item $\partial C$ is the \emph{interface} (what the module exposes
+          to other modules — its public propositions and transformation
+          signatures).
+  \end{itemize}
+\end{definition}
+
+Semantic modules compose through their interfaces. Two modules can be
+merged if their interfaces are compatible. The result of merging is a
+new module whose content is the synthesis of both, whose admissibility
+structure is the intersection of both, and whose interface is the
+union of both.
+
+\section{Semantic Modules and Homotopy Merges}
+
+The categorical framework of Appendix~M formalizes composition as
+pushouts. But for knowledge, we need a richer notion: \emph{homotopy
+merges}, which identify not just syntactically identical structures
+but semantically equivalent ones.
+
+\begin{definition}{Homotopy Merge}{homotopy-merge}
+  Two semantic modules $(C_1, A_1, \partial C_1)$ and $(C_2, A_2,
+  \partial C_2)$ admit a \emph{homotopy merge} if there exists a
+  semantic equivalence $\phi : \partial C_1 \to \partial C_2$
+  (a homotopy equivalence in the category $\mathbf{Sem}$) between
+  their interfaces. The merged module is the pushout:
+  \[
+    (C_1, A_1, \partial C_1) \sqcup_\phi (C_2, A_2, \partial C_2)
+  \]
+  with interface $\partial C_1 \cup_\phi \partial C_2$.
+\end{definition}
+
+Homotopy merges allow modules developed independently to be combined
+even when their interfaces use different terminology or notation,
+provided there is a semantic translation between them. This is how
+interdisciplinary synthesis works: mathematics developed for physics
+is merged with mathematics developed for biology through a homotopy
+equivalence (a translation) between the two terminological systems.
+
+\begin{example}
+  The module of thermodynamics (entropy, temperature, heat flow) and
+  the module of information theory (Shannon entropy, mutual information,
+  channel capacity) admit a homotopy merge through the Boltzmann–Shannon
+  correspondence: $S = k_B \log W$ translates between the two interface
+  languages. The merged module contains both physical and informational
+  interpretations of entropy, allowing results from one domain to
+  transfer to the other.
+\end{example}
+
+\section{Knowledge Evolution}
+
+Knowledge is not static. It evolves through the following operations
+on the category $\mathbf{Sem}$:
+
+\begin{itemize}
+  \item \textbf{Extension:} adding new propositions to a module's content
+        while preserving its interface.
+  \item \textbf{Correction:} removing or modifying propositions that have
+        been found false, updating the admissibility structure.
+  \item \textbf{Composition:} merging two modules (homotopy merge).
+  \item \textbf{Abstraction:} forming a quotient module that exposes
+        only part of the interface while preserving the admissibility
+        structure.
+  \item \textbf{Instantiation:} binding abstract modules to specific cases.
+\end{itemize}
+
+These operations define a dynamics on $\mathbf{Sem}$ — a flow through
+the space of semantic modules. The RSVP accessibility field of
+Part~V can be interpreted over this space: high-accessibility regions
+contain modules with many potential extensions and compositions;
+low-accessibility regions contain modules that are nearly complete
+or dead ends.
+
+\section{Semantic Version Control}
+
+Traditional version control (Git, SVN) tracks character-level changes to
+files. Semantic version control tracks conceptual-level changes to modules.
+
+\begin{definition}{Semantic Version History}{sem-version}
+  A \emph{semantic version history} of module $M$ is a sequence
+  \[
+    M_0 \xrightarrow{e_1} M_1 \xrightarrow{e_2} M_2 \xrightarrow{e_3}
+    \cdots \xrightarrow{e_n} M_n
+  \]
+  where each $e_i$ is one of the operations (extension, correction,
+  composition, abstraction, instantiation) and each $M_i$ is a valid
+  semantic module. The \emph{semantic diff} between $M_i$ and $M_j$
+  is the minimal sequence of operations connecting them.
+\end{definition}
+
+Semantic version control makes knowledge evolution explicit and
+reversible. When a correction is made (a proposition removed), the
+version history records why and by whom. When modules are composed,
+the history records the homotopy equivalence used. The epistemic
+genealogy of any proposition is recoverable from the version history.
+
+\section{Obstruction Cohomology}
+
+Not all merges succeed. When two modules cannot be merged — when their
+admissibility structures are incompatible — there is an obstruction.
+The mathematical theory of obstructions is cohomology (Appendix~I).
+
+\begin{definition}{Semantic Obstruction}{sem-obstruction}
+  Two semantic modules $(C_1, A_1, \partial C_1)$ and $(C_2, A_2,
+  \partial C_2)$ have a \emph{semantic obstruction} if their
+  admissibility structures contradict each other: there exist
+  propositions $p_1 \in C_1$ and $p_2 \in C_2$ such that
+  $A_1 \models \neg p_2$ and $A_2 \models \neg p_1$.
+\end{definition}
+
+Obstructions correspond to genuine contradictions between knowledge
+systems — not mere terminological differences (which can be resolved by
+homotopy equivalence) but deep incompatibilities. The Copernican
+revolution involved an obstruction between the geocentric and
+heliocentric modules: the admissibility structure of the geocentric
+module (celestial spheres, divine ordering) entailed the falsity
+of the heliocentric module's central propositions.
+
+\begin{namedthm}{The Infrastructure Principle}
+  Semantic infrastructure is the engineering discipline that builds,
+  maintains, and extends the category $\mathbf{Sem}$ — the system
+  of semantic modules, their composition rules, their version histories,
+  and their obstruction structures. Its goal is to maximize the
+  accessibility entropy of the civilizational knowledge base:
+  \[
+    S_{\mathbf{Sem}} = \log \bigl|\{\text{admissible extensions of }
+    \mathbf{Sem}\}\bigr|.
+  \]
+  A civilization with high $S_{\mathbf{Sem}}$ has a flexible,
+  extensible knowledge base; one with low $S_{\mathbf{Sem}}$ has
+  a rigid, constrained one.
+\end{namedthm}
+
+\begin{exercise}
+  Define a metric on $\mathbf{Sem}$ (the category of semantic modules)
+  that measures how far two modules are from being mergeable. What
+  should such a metric measure? (Consider: number of obstruction pairs,
+  complexity of the homotopy equivalence needed, size of the interface
+  mismatch.)
+\end{exercise}
+
+\begin{exercise}
+  The Internet is often described as an information infrastructure.
+  In what ways does it fail to be a \emph{semantic} infrastructure?
+  Which of the five knowledge evolution operations does it support
+  well, and which does it support poorly?
+\end{exercise}
+
+\begin{exercise}[title={Constructive}]
+  Design a minimal semantic version control system for a single academic
+  paper. What constitutes a ``version''? What operations are allowed?
+  How would ``correction'' and ``composition'' be represented in
+  your system? What would the semantic diff look like?
+\end{exercise}

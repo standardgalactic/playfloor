@@ -1,0 +1,65 @@
+\chapter{Stability, Sufficiency, and the Reconstruction Theorem}
+\index{Reconstruction Theorem}\index{query sufficiency}\index{alignment}
+
+\section{Query Sufficiency}
+
+\begin{definition}[Query Sufficiency]
+\index{query sufficiency}
+A compression $\pi : \mathcal{X} \to \mathcal{M}$ is $(d, \varepsilon)$-\textbf{sufficient} for a query family $\mathcal{Q}$ if for every $Q \in \mathcal{Q}$ there exists a map $F_d : \mathcal{M} \to \mathbb{R}$ such that
+\[
+  |Q_d(x) - F_d(\pi(x))| \leq \varepsilon
+\]
+uniformly on $\mathcal{X}$, where $Q_d$ is the degree-$d$ approximation of $Q$.
+\end{definition}
+
+Sufficiency is a relational property of the compression, the query family, and the truncation order. A compression sufficient for one query family may be insufficient for another.
+
+\section{The Reconstruction Theorem}
+
+\begin{theorem}[Counterfactual Reconstruction]
+\index{Reconstruction Theorem}
+\label{thm:reconstruction}
+Let $\pi : \mathcal{X} \to \mathcal{M}$ be a compression and $\mathcal{Q}$ a query family. Assume:
+\begin{enumerate}
+  \item Each $Q \in \mathcal{Q}$ admits a degree-$d$ approximation $Q_d$ with $|Q - Q_d| \leq \varepsilon_0$.
+  \item $Q$ admits a stable interaction decomposition with stability sequence $\{\sigma_r\}$.
+  \item $\sum_{r>d} \sigma_r < \infty$.
+  \item $\pi$ is $(d, \varepsilon_1)$-sufficient for $\mathcal{Q}$.
+\end{enumerate}
+Then the reconstruction operator $\pi^+_Q := F_d$ satisfies
+\[
+  |Q(x) - (\pi^+_Q \circ \pi)(x)| \leq C_Q \sum_{r>d} \sigma_r + \varepsilon_1 + \varepsilon_0 = E_c + E_s + E_a.
+\]
+Under exponential stability, $E_c$ decays exponentially in $d$.
+\end{theorem}
+
+The proof is an error-bookkeeping argument: split $Q = Q_d + R_d$ (approximation), apply stability to bound $|Q - Q_d|$ (compressibility), apply sufficiency to bound $|Q_d - F_d \circ \pi|$, then apply the triangle inequality.
+
+\section{Alignment}
+
+\begin{definition}[Aligned Compression]
+\index{alignment}
+A compression $\pi$ is \textbf{aligned} with stability sequence $\{\sigma_r\}$ and query family $\mathcal{Q}$ if, when $d_\pi = d_Q = d$:
+\begin{enumerate}
+  \item $\pi$ is $(d, 0)$-sufficient for $\mathcal{Q}_d$ (exact sufficiency),
+  \item $E_a = O(\sum_{r>d} \sigma_r)$ (inherited approximation decay), and
+  \item $E_{\mathrm{total}} = O(\sum_{r>d} \sigma_r)$ (unified convergence).
+\end{enumerate}
+\end{definition}
+
+An aligned compression forgets exactly what stability says can be forgotten and preserves exactly what stability says matters. This eliminates all three architectural failure modes simultaneously.
+
+\section{The Five Diagnostic Questions}
+\index{diagnostic questions}
+
+The Reconstruction Theorem generates a complete diagnostic framework. For any system claiming counterfactual reconstruction:
+
+\begin{enumerate}
+  \item What is the interaction decomposition, and is it exact?
+  \item Is the stability sequence summable?
+  \item Is the compression $(d, \varepsilon_1)$-sufficient for the query family?
+  \item Are $d_\pi$ and $d_Q$ aligned?
+  \item Does the equivalence relation avoid degeneracy?
+\end{enumerate}
+
+A system that answers all five affirmatively, with quantitative bounds, has established its reconstruction claim rigorously. Part~Two instantiates this framework in three verified domains.

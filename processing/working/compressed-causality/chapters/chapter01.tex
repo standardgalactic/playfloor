@@ -1,0 +1,42 @@
+\chapter{Historical Dependence and Compression}
+\index{trajectory space}\index{compression operator}
+
+\section{The Problem of Incomplete Histories}
+
+Every record of the past is incomplete. This is not a limitation of current technology. It is the normal condition of any system that must act in the present on the basis of a history too large to store.
+
+A machine-learning model is trained on millions of examples. When training ends, the parameters are stored; the training trajectory is not. A person accumulates experiences across a lifetime, but memory is a compression of that history, not a recording. A physical system evolves through microscopic configurations that its present macrostate does not encode.
+
+In each case, a complex history has been replaced by a compressed representation, and questions persist about the history that was lost. What would the model have predicted had this training example been excluded? What would the person believe had certain experiences occurred differently? Which physical trajectories remain accessible from the present state?
+
+\section{Histories as Trajectories}
+
+A \textbf{trajectory space} $\mathcal{X}$ is the space of all possible histories of a system. A trajectory $x \in \mathcal{X}$ is a complete answer to the question: what actually happened? The trajectory space is therefore the space of alternative histories---the collection of all possible ways the system could have evolved.
+
+Three trajectory spaces appear throughout this book: training histories for machine-learning models (the first verified domain), semantic inference trajectories (the second), and field configuration trajectories (the third).
+
+\section{Compression as Projection}
+
+A \textbf{compression operator} is a map
+\[
+  \pi : \mathcal{X} \to \mathcal{M}
+\]
+from the trajectory space to a representation space $\mathcal{M}$. It partitions $\mathcal{X}$ into equivalence classes, called \textbf{fibers}:
+\[
+  [x]_\pi = \pi^{-1}(\pi(x)) = \{x' \in \mathcal{X} : \pi(x') = \pi(x)\}.
+\]
+The fiber $[x]_\pi$ is the set of all alternative histories the compression cannot distinguish from $x$. Two trajectories in the same fiber are indistinguishable given the compressed representation alone. The quotient space $\mathcal{X}/{\sim_\pi}$ is the ``remembered world''---the world of recoverable inquiry.
+
+\section{Queries and Counterfactual Questions}
+
+A \textbf{query} is a function $Q : \mathcal{X} \to \mathbb{R}$. A \textbf{query family} $\mathcal{Q}$ is a collection of related queries. Queries that ask about relationships between the actual trajectory and hypothetical alternatives are \textbf{counterfactual queries}. They are the central objects of this book.
+
+The query-relativity of reconstruction is a recurring theme: stability and sufficiency are always defined relative to a specific query family. There is no such thing as a history that is compressible in the abstract.
+
+\section{The Reconstruction Problem}
+
+The three-space structure is:
+\[
+  \mathcal{X} \xrightarrow{\pi} \mathcal{M}, \qquad Q : \mathcal{X} \to \mathbb{R}.
+\]
+The reconstruction problem asks: when does there exist a map $R : \mathcal{M} \to \mathbb{R}$ such that $R(\pi(x)) \approx Q(x)$ for all $x$? Chapter~2 introduces the framework for answering this question precisely.

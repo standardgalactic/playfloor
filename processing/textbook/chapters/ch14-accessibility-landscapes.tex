@@ -1,0 +1,159 @@
+% ============================================================
+%  chapters/ch14-accessibility-landscapes.tex
+% ============================================================
+
+\chapter{Accessibility Landscapes}
+
+\chapterepigraph{%
+  A landscape has peaks, valleys, and paths between them.\\
+  Intelligence is knowing which paths lead where.
+}{Flyxion, \textit{Semantic Infrastructure}}
+
+\sidenote{App.\,J gives the\\full formal\\treatment of\\accessibility\\geometry}
+
+Part IV begins the formal development of constraint theory and admissibility.
+This chapter introduces accessibility landscapes — the geometric representation
+of future possibility — as the central object of the framework.
+
+\section{Admissible Futures}
+
+From a given state $x$ at time $t$, some future states are reachable
+and some are not. Among those reachable, some are admissible (they satisfy
+all constraints) and some are not. The accessibility landscape is the
+function that maps each present state to the volume of its admissible futures.
+
+\begin{definition}{Admissible Future Set}{adm-future-set}
+  The \emph{admissible future set} from state $x$ over horizon $H$ is:
+  \[
+    \mathcal{A}_H(x) = \{y \in X : \exists\,\text{admissible path }
+    \gamma : x \rightsquigarrow y \text{ with } |\gamma| \leq H\}
+  \]
+  where admissibility of the path requires $\kappa(\gamma(t)) = 0$ for
+  all $t \in [0, |\gamma|]$.
+\end{definition}
+
+\begin{definition}{Accessibility Landscape}{access-landscape}
+  The \emph{accessibility landscape} is the function
+  $S_H : X \to \mathbb{R}_{\geq 0}$ defined by:
+  \[
+    S_H(x) = \log \mathrm{Vol}\bigl(\mathcal{A}_H(x)\bigr).
+  \]
+  Points with high $S_H$ have many admissible futures; points with low $S_H$
+  are near dead ends. The landscape $S_H$ is a scalar field over the
+  state space.
+\end{definition}
+
+\section{Constraint Geometry}
+
+The shape of the accessibility landscape is determined entirely by the
+constraint structure. Tight constraints create narrow valleys; loose
+constraints create broad plateaus.
+
+\begin{definition}{Constraint Tightness}{constraint-tightness}
+  The \emph{tightness} of a constraint $c$ at state $x$ is:
+  \[
+    \tau_c(x) = \frac{\|\nabla_x \kappa_c(x)\|}{\kappa_c(x) + \epsilon}
+  \]
+  for small $\epsilon > 0$. Large tightness indicates the constraint is
+  actively binding (small $\kappa_c$, large gradient).
+\end{definition}
+
+\begin{proposition}{Tightness Reduces Accessibility}{tightness-access}
+  For any state $x$ and active constraint $c$, increasing the tightness
+  $\tau_c(x)$ (holding all else fixed) decreases $S_H(x)$.
+\end{proposition}
+
+\begin{proof}[Sketch]
+  An active constraint eliminates the directions in its gradient direction
+  from the admissible future set. Higher tightness means the constraint
+  is more binding — it eliminates more of the local tangent space — reducing
+  the volume of admissible futures.
+\end{proof}
+
+\section{Navigation Over Possibility Spaces}
+
+The accessibility landscape provides a natural framework for \emph{navigation}:
+moving through state space in ways that preserve or increase future options.
+
+\begin{definition}{Accessibility-Preserving Path}{acc-preserving-path}
+  A path $\gamma : [0,T] \to X$ is \emph{accessibility-preserving} if
+  $S_H(\gamma(t))$ is non-decreasing in $t$.
+\end{definition}
+
+Accessibility-preserving paths move through state space in ways that
+keep future options open. They avoid dead ends, narrow canyons, and
+irreversible commitments. They represent \emph{flexible} strategies —
+strategies that maintain the ability to respond to new information.
+
+\begin{definition}{Accessibility Gradient Flow}{access-gradient-flow}
+  The \emph{accessibility gradient flow} is the dynamical system:
+  \[
+    \dot{x}(t) = \nabla_x S_H(x(t)).
+  \]
+  Trajectories of this flow always move in the direction of increasing
+  accessibility — toward states with more admissible futures.
+\end{definition}
+
+\begin{remark}
+  Accessibility gradient flow is not always the best strategy. Sometimes
+  the optimal path requires temporarily reducing accessibility (entering
+  a narrow canyon) to reach a high-accessibility plateau on the other side.
+  This is the mathematical version of the common observation that the
+  most flexible long-term strategies sometimes require short-term commitments.
+\end{remark}
+
+\section{Accessibility Wells, Peaks, and Ridges}
+
+The landscape $S_H$ has topological features that correspond to important
+structural properties of the underlying system.
+
+\begin{definition}{Landscape Features}{landscape-features}
+  \begin{itemize}
+    \item An \emph{accessibility well} is a local minimum of $S_H$:
+          a state with fewer admissible futures than all nearby states.
+          Wells are traps: systems that enter them tend to stay.
+    \item An \emph{accessibility peak} is a local maximum of $S_H$:
+          a state with more admissible futures than all nearby states.
+          Peaks are hubs: systems near them have the most flexibility.
+    \item An \emph{accessibility ridge} is a connected set of high-$S_H$
+          states: a corridor of flexibility connecting accessible regions.
+          Ridges are the highways of the possibility space.
+  \end{itemize}
+\end{definition}
+
+\begin{example}
+  In a career trajectory:
+  \begin{itemize}
+    \item A highly specialized technical skill is an accessibility well:
+          expertise is deep but narrow; few adjacent career paths exist.
+    \item A broad education in mathematics, writing, and programming is
+          an accessibility peak: many careers are open; the system
+          has maximum flexibility.
+    \item A sequence of jobs in related but broadening fields is a ridge:
+          each step maintains accessibility while moving toward
+          a destination.
+  \end{itemize}
+\end{example}
+
+\begin{exercise}
+  Define the \emph{escape time} from an accessibility well as the
+  expected number of steps needed to reach a state with $S_H$ above
+  a threshold $\tau$, starting from the well minimum. How does escape
+  time depend on the depth of the well (how much lower $S_H$ is at the
+  minimum than at the surrounding threshold)?
+\end{exercise}
+
+\begin{exercise}
+  Show that the gradient flow $\dot{x} = \nabla S_H(x)$ cannot escape
+  from an accessibility well (cannot reach a state with higher $S_H$
+  than the well entrance). What does this say about the limitations of
+  pure accessibility-gradient strategies?
+\end{exercise}
+
+\begin{exercise}[title={Cosmological}]
+  In the RSVP framework, structures (galaxies, stars, organisms) are
+  interpreted as accessibility wells in the cosmological accessibility
+  landscape. Explain why such structures are stable: once a galaxy forms,
+  why does it persist? Use the accessibility well interpretation rather
+  than conventional gravitational arguments.
+\end{exercise}

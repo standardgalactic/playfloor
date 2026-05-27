@@ -1,0 +1,110 @@
+% ============================================================
+%  styles/commands.tex
+%  Unified notation for Semantic Infrastructure monograph
+% ============================================================
+
+% ── RSVP field triple ───────────────────────────────────────
+\newcommand{\rsvp}{(\Phi,\,\mathbf{v},\,S)}        % full triple
+\newcommand{\rsvpfull}{\bigl(\Phi,\,\mathbf{v},\,S\bigr)}
+\newcommand{\Phifield}{\Phi}                         % scalar field
+\newcommand{\vfield}{\mathbf{v}}                     % vector field
+\newcommand{\Sfield}{S}                              % entropy field
+
+% ── Accessibility & admissibility ───────────────────────────
+\newcommand{\Acc}{\mathcal{A}}                       % accessibility set
+\newcommand{\Adm}{\mathbf{Adm}}                      % admissibility operator
+\newcommand{\proj}{\pi}                              % projection
+\newcommand{\Proj}{\Pi}                              % projection operator
+\newcommand{\fiber}[2]{#1^{-1}(#2)}                 % fiber over a point
+\newcommand{\constraint}{\mathcal{C}}                % constraint space
+\newcommand{\admissible}[1]{\mathrm{Adm}(#1)}
+
+% ── Spherepop notation ──────────────────────────────────────
+\newcommand{\pop}{\mathbin{\bullet}}                 % pop operator
+\newcommand{\sphere}[1]{\langle #1 \rangle}          % sphere containment
+\newcommand{\nest}[2]{\langle #1 \mid #2 \rangle}    % nested sphere
+\newcommand{\eval}[1]{\llbracket #1 \rrbracket}      % evaluation brackets
+\newcommand{\collapse}[1]{\downarrow\!#1}            % collapse operator
+\newcommand{\refuse}{\bot_{\mathrm{sp}}}             % refusal
+
+% ── CLIO ────────────────────────────────────────────────────
+\newcommand{\clio}{\textsf{CLIO}}
+\newcommand{\tartan}{\textsf{TARTAN}}
+\newcommand{\rsvpname}{\textsf{RSVP}}
+
+% ── Categorical notation ────────────────────────────────────
+\newcommand{\cat}[1]{\mathbf{#1}}                    % category
+\newcommand{\ob}[1]{\mathrm{Ob}(#1)}                 % objects
+\newcommand{\Hom}[3]{\mathrm{Hom}_{#1}(#2,#3)}      % hom-set
+\newcommand{\Nat}{\mathrm{Nat}}                      % natural transformations
+\newcommand{\fun}[2]{#1 \Rightarrow #2}              % functor arrow
+\newcommand{\sheaf}{\mathcal{F}}                     % sheaf
+\newcommand{\stalk}[2]{\mathcal{F}_{#2}}             % stalk at point
+
+% ── Geometry & manifolds ────────────────────────────────────
+\newcommand{\manifold}[1]{\mathcal{M}_{#1}}
+\newcommand{\tangent}[1]{T_{#1}}
+\newcommand{\cotangent}[1]{T^*_{#1}}
+\newcommand{\gradient}{\nabla}
+\newcommand{\divg}{\nabla \cdot}
+\newcommand{\curl}{\nabla \times}
+\newcommand{\laplacian}{\Delta}
+\newcommand{\dalembertian}{\square}
+
+% ── Entropy & thermodynamics ─────────────────────────────────
+\newcommand{\entropy}{S}
+\newcommand{\dS}{\mathrm{d}S}
+\newcommand{\lamphron}{\lambda_{\!+}}               % lamphron
+\newcommand{\lamphrodyne}{\lambda_{\!-}}            % lamphrodyne
+
+% ── Gesture & trajectory ────────────────────────────────────
+\newcommand{\gesture}[1]{\gamma_{#1}}                % gesture trajectory
+\newcommand{\gestureidx}{\mathcal{G}}           % gesture subscript (no arg)
+\newcommand{\gesturesp}{\mathcal{G}}                 % gesture space
+\newcommand{\motorclass}[1]{[#1]_{\sim}}             % motor equiv class
+\newcommand{\canonical}{\hat{\gamma}}                % canonical gesture
+
+% ── Action history ──────────────────────────────────────────
+\newcommand{\action}{\mathcal{S}}                    % action functional
+\newcommand{\history}{\mathcal{H}}                   % action history
+\newcommand{\commitment}{\kappa}                     % commitment variable
+\newcommand{\freedom}{\phi}                          % remaining freedom
+
+% ── Text shortcuts ──────────────────────────────────────────
+\newcommand{\ie}{\textit{i.e.},\ }
+\newcommand{\eg}{\textit{e.g.},\ }
+\newcommand{\cf}{\textit{cf.}\ }
+\newcommand{\viz}{\textit{viz.}\ }
+
+% ── Margin annotation ───────────────────────────────────────
+\newcommand{\sidenote}[1]{\marginnote{\footnotesize\color{RSVPmid}\itshape #1}}
+\newcommand{\sidedef}[1]{\marginnote{\footnotesize\color{RSVPaccent}\bfseries #1}}
+
+% ── Chapter epigraph ────────────────────────────────────────
+\newcommand{\chapterepigraph}[2]{%
+  \begin{flushright}
+    \begin{minipage}{0.55\linewidth}
+      \small\itshape #1\\[2pt]
+      \upshape\footnotesize\color{RSVPmid}--- #2
+    \end{minipage}
+  \end{flushright}
+  \vspace{1em}
+}
+
+% ── Named theorems convenience wrappers ─────────────────────
+% Usage: \begin{namedthm}{Accessibility Relaxation Theorem}
+\newenvironment{namedthm}[1]{%
+  \begin{tcolorbox}[
+    enhanced, breakable,
+    colback=RSVPlight,
+    colframe=RSVPdeep,
+    title={\bfseries\sffamily #1},
+    coltitle=white,
+    attach boxed title to top left={yshift=-2mm,xshift=6mm},
+    boxed title style={colback=RSVPdeep, sharp corners},
+    arc=4pt, boxrule=1pt,
+    top=4mm, left=4mm, right=4mm, bottom=4mm,
+  ]
+}{%
+  \end{tcolorbox}
+}

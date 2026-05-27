@@ -1,0 +1,40 @@
+% semantic-basins.tex — constraint basins in semantic manifold
+\tikzset{
+  attractor/.style={circle, fill=RSVPdeep, minimum size=7pt, inner sep=0},
+  basin/.style={fill opacity=0.2, draw opacity=0.8, thick},
+}
+  % Basin 1: "tree" concept (left)
+  \fill[RSVPmid, basin] (-2.2, 0) ellipse (1.3cm and 0.85cm);
+  \draw[RSVPmid, thick] (-2.2, 0) ellipse (1.3cm and 0.85cm);
+  \node[attractor] at (-2.2, 0) {};
+  \node[RSVPdeep, font=\small\itshape, below=6pt] at (-2.2, 0) {tree};
+
+  % Basin 2: "forest" concept (center-left, overlapping slightly)
+  \fill[RSVPaccent, basin] (-0.5, 0.3) ellipse (1.1cm and 0.7cm);
+  \draw[RSVPaccent, thick] (-0.5, 0.3) ellipse (1.1cm and 0.7cm);
+  \node[attractor, fill=RSVPaccent] at (-0.5, 0.3) {};
+  \node[RSVPaccent!80, font=\small\itshape, below=6pt] at (-0.5, 0.3) {forest};
+
+  % Basin 3: "network" concept (right)
+  \fill[RSVPpurple, basin] (1.8, -0.1) ellipse (1.2cm and 0.75cm);
+  \draw[RSVPpurple, thick] (1.8, -0.1) ellipse (1.2cm and 0.75cm);
+  \node[attractor, fill=RSVPpurple] at (1.8, -0.1) {};
+  \node[RSVPpurple, font=\small\itshape, below=6pt] at (1.8, -0.1) {network};
+
+  % Gradient flow arrows (inward toward attractors)
+  % toward tree
+  \draw[-{Stealth[length=3.5pt]}, RSVPmid!70, thin] (-3.2, 0.5) -- (-2.65, 0.2);
+  \draw[-{Stealth[length=3.5pt]}, RSVPmid!70, thin] (-3.0, -0.6) -- (-2.65, -0.2);
+  \draw[-{Stealth[length=3.5pt]}, RSVPmid!70, thin] (-1.5, 0.7) -- (-2.0, 0.3);
+  % toward forest
+  \draw[-{Stealth[length=3.5pt]}, RSVPaccent!70, thin] (-0.5, 1.5) -- (-0.5, 0.7);
+  \draw[-{Stealth[length=3.5pt]}, RSVPaccent!70, thin] (0.5, 1.0) -- (0.1, 0.6);
+  % toward network
+  \draw[-{Stealth[length=3.5pt]}, RSVPpurple!70, thin] (2.8, 0.5) -- (2.25, 0.15);
+  \draw[-{Stealth[length=3.5pt]}, RSVPpurple!70, thin] (2.6, -0.8) -- (2.2, -0.35);
+
+  % Basin boundary label
+  \node[RSVPdeep!60, font=\footnotesize\itshape] at (0.6, -1.3)
+    {constraint basin boundaries};
+  \node[RSVPmid!80, font=\footnotesize\itshape] at (-3.0, 1.2)
+    {$\nabla S_s$};

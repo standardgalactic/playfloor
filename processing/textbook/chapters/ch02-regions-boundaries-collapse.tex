@@ -1,0 +1,323 @@
+% ============================================================
+%  chapters/ch02-regions-boundaries-collapse.tex
+% ============================================================
+
+\chapter{Regions, Boundaries, and Collapse}
+
+\chapterepigraph{%
+  A boundary is not a wall between two things.\\
+  It is the definition of both things at once.
+}{Flyxion, \textit{Semantic Infrastructure}}
+
+\sidenote{See App.\,A for\\constraint spaces;\\ App.\,C for\\Spherepop collapse}
+
+The previous chapter established that accessibility precedes state, that
+trajectories are more fundamental than things. This chapter examines the
+second primitive operation from which everything else is built: \emph{containment}.
+
+Before symbols, before operators, before logic — there is the boundary. The
+inside and the outside. The contained and the containing. This observation
+is not merely geometric. It is the deep structure of computation, perception,
+and reasoning.
+
+% ── 2.1 ──────────────────────────────────────────────────────
+\section{Containment as a Primitive Operation}
+
+Consider how children first encounter mathematics. Not through equations.
+Through regions: \emph{this block is inside the box; that one is outside}. The
+inside/outside distinction precedes counting, precedes addition, precedes
+everything that adult mathematics calls fundamental. Containment is the
+first cognitive operation.
+
+\begin{definition}{Containment Relation}{containment}
+  Let $X$ be a topological space. A \emph{containment relation} on
+  $X$ is a binary relation $\subset$ on subsets of $X$ satisfying:
+  \begin{enumerate}
+    \item \textbf{Transitivity:} if $A \subset B$ and $B \subset C$
+          then $A \subset C$.
+    \item \textbf{Antisymmetry:} if $A \subset B$ and $B \subset A$
+          then $A = B$.
+    \item \textbf{Non-triviality:} there exist $A, B$ with
+          $A \subsetneq B$.
+  \end{enumerate}
+\end{definition}
+
+The third condition is what distinguishes a containment relation from a
+trivial one. The existence of proper containment — something genuinely
+inside something else — is the primitive productive operation. Everything
+in logic, computation, and language follows from this.
+
+\begin{historynote}
+  George Spencer-Brown's \textit{Laws of Form} (1969) derived all of Boolean
+  algebra from a single primitive: the \emph{mark}, which distinguishes an
+  inside from an outside. The mark creates a boundary; the boundary creates
+  two regions; all logical operations follow from the arrangement and crossing
+  of boundaries. Spencer-Brown showed that the fundamental operation of logic
+  is not AND or OR — it is \emph{distinction}. The Spherepop formalism can be
+  understood as a dynamical extension of this insight: not just distinctions,
+  but distinctions that \emph{collapse}.
+\end{historynote}
+
+% ── 2.2 ──────────────────────────────────────────────────────
+\section{Nested Structures}
+
+Containment becomes productive when it is \emph{iterated}. A region inside
+a region inside a region — this is the structure of nested evaluation, nested
+scope, nested context.
+
+\begin{definition}{Nesting Sequence}{nesting-seq}
+  A \emph{nesting sequence of depth $n$} is a chain
+  \[
+    A_1 \subsetneq A_2 \subsetneq \cdots \subsetneq A_n
+  \]
+  of proper containments. The \emph{depth} of an element $x \in A_1$
+  within $A_n$ is $n$.
+\end{definition}
+
+Depth is the key quantity. It measures how many boundary crossings lie between
+a point and the outermost context. In programming, depth is scope level.
+In logic, depth is quantifier nesting. In Spherepop, depth is evaluation
+priority: the innermost sphere collapses first.
+
+\begin{example}
+  In the arithmetic expression $1 + (3 \times 2^2)$, the subexpression
+  $2^2$ has depth 2 (inside the multiplication, inside the addition). The
+  multiplication $3 \times (\cdot)$ has depth 1. The addition has depth 0.
+  Spherepop evaluation collapses innermost regions first: depth 2 before
+  depth 1 before depth 0. This is not a convention — it is the \emph{only}
+  consistent order for a containment-based evaluation system.
+\end{example}
+
+\begin{proposition}{Depth Determines Evaluation Order}{depth-order}
+  In any containment-based evaluation system with the property that
+  outer regions depend on the values of inner regions, evaluation
+  must proceed from maximum depth toward minimum depth.
+\end{proposition}
+
+\begin{proof}
+  Suppose an outer region $A \supset B$ is evaluated before the inner
+  region $B$. Then the value of $A$ must reference $B$'s value, which
+  is not yet determined — a contradiction. Therefore $B$ must be
+  evaluated first.
+\end{proof}
+
+This simple observation is the entire theory of operator precedence,
+scope rules, lazy evaluation, and call-by-value versus call-by-name.
+All are special cases of depth-first evaluation in a containment hierarchy.
+
+% ── 2.3 ──────────────────────────────────────────────────────
+\section{Recursive Evaluation}
+
+Depth-first evaluation in a nesting sequence is inherently recursive. The
+evaluation of any region reduces to the evaluation of its interior.
+
+\begin{definition}{Recursive Evaluation}{recursive-eval}
+  Let $\mathcal{E}$ be a set of expressions with a valuation function
+  $\mathrm{val} : \mathcal{E} \to V$. The valuation is \emph{recursive}
+  if for any expression $e$ containing subexpressions $e_1, \ldots, e_n$:
+  \[
+    \mathrm{val}(e) = f(\mathrm{val}(e_1), \ldots, \mathrm{val}(e_n))
+  \]
+  for some combining function $f$ determined by $e$'s outermost operation.
+\end{definition}
+
+Recursion is not a programming technique. It is the mathematical structure
+of evaluation in any system organized by containment. The reason recursion
+feels powerful and natural — and the reason it sometimes feels dizzying —
+is that it is the native language of nested regions.
+
+\begin{conceptaside}{Recursion, Containment, and Self-Reference}
+  There is a profound relationship between containment, recursion, and
+  self-reference. A self-referential statement — ``this sentence is false''
+  — attempts to contain itself. It is a region that includes itself as
+  a subregion, violating antisymmetry of containment.
+
+  Gödel's incompleteness theorems can be understood as a rigorous version
+  of this observation: any sufficiently expressive formal system contains
+  statements that refer to their own provability status. The system attempts
+  to contain a description of itself within itself. The resulting
+  incompleteness is not a flaw — it is the mathematical consequence of
+  a sufficiently deep containment structure encountering its own boundary.
+
+  In RSVP terms: self-reference is the collapse of a region onto its own
+  accessibility set. The system attempts to be its own admissible future.
+  The result is either fixed-point (stable self-reference) or oscillation
+  (paradox).
+\end{conceptaside}
+
+% ── 2.4 ──────────────────────────────────────────────────────
+\section{Constraint Boundaries}
+
+Not all boundaries are walls. Some boundaries are \emph{constraint surfaces}
+— the boundary of the admissible region in a constraint space.
+
+Recall from Chapter~1 and Appendix~A that a constraint space is a triple
+$(X, A, \kappa)$ where $A = \kappa^{-1}(0)$ is the admissible set. The
+\emph{boundary} of this set:
+\[
+  \partial A = \overline{A} \setminus A^\circ
+\]
+is where constraint violations begin. Points inside $A^\circ$ satisfy all
+constraints; points outside $A$ violate them; points on $\partial A$ are
+at the exact threshold.
+
+\begin{definition}{Constraint Boundary}{constraint-boundary}
+  The \emph{constraint boundary} of a constraint space $(X, A, \kappa)$
+  is $\partial A$, the topological boundary of the admissible set.
+  The \emph{boundary gradient} at $p \in \partial A$ is $\nabla \kappa(p)$,
+  pointing in the direction of maximum constraint violation.
+\end{definition}
+
+The constraint boundary plays the same role that a physical boundary plays
+in classical mechanics: it is where dynamics change character. A trajectory
+inside $A^\circ$ moves freely; near $\partial A$ it bends; crossing $\partial A$
+violates the constraints. The system is reflected, refracted, or absorbed
+at the boundary depending on the dynamics.
+
+\begin{figure}[h]
+  \centering
+  \begin{tikzpicture}[scale=1.0]
+    \input{diagrams/constraint-boundary-2d}
+  \end{tikzpicture}
+  \caption{Constraint boundaries in a two-dimensional state space.
+    The admissible region $A$ (shaded) is bounded by the constraint
+    surface $\partial A$ (thick curve). Trajectories inside $A^\circ$
+    flow freely along the vector field $\mathbf{v}$. Near $\partial A$,
+    the accessibility gradient $\nabla S$ curves trajectories inward.
+    The collapse operator projects boundary-crossing trajectories
+    back into $A$.}
+  \label{fig:constraint-boundary}
+\end{figure}
+
+% ── 2.5 ──────────────────────────────────────────────────────
+\section{Why Collapse Appears in Logic, Computation, and Perception}
+
+The word \emph{collapse} appears throughout this monograph with a consistent
+technical meaning: the reduction of a nested region to a single value,
+collapsing the depth hierarchy at one level.
+
+But collapse appears throughout mathematics and physics with the same
+essential structure:
+
+\begin{itemize}
+  \item \textbf{Logical collapse:} a proof reduces a complex proposition
+        to True or False. The interior of the proof — all the intermediate
+        steps — collapses into a single bit.
+  \item \textbf{Computational collapse:} function evaluation reduces
+        a complex expression to a value. The call stack — all the nested
+        frames — collapses as it unwinds.
+  \item \textbf{Perceptual collapse:} visual processing reduces a
+        high-dimensional retinal image to an object recognition. The
+        hierarchy of features — edges, regions, parts, objects — collapses
+        into a label.
+  \item \textbf{Quantum collapse:} measurement reduces a superposition
+        of states to a definite outcome. The probability distribution
+        collapses to a point mass.
+  \item \textbf{Semantic collapse:} understanding reduces a complex
+        sentence to a meaning. The tree of syntactic dependencies collapses
+        into an interpretation.
+\end{itemize}
+
+\sidenote{See Ch.\,8 on\\semantic\\renormalization}
+
+These are not merely analogies. They share a common mathematical structure:
+a map from a high-dimensional structured space to a lower-dimensional
+value space, along the direction of decreasing depth.
+
+\begin{definition}{Collapse Map}{collapse-map}
+  Let $(X, A, \kappa)$ be a constraint space and let $\mathcal{N}(X)$
+  be the set of nesting sequences in $X$. A \emph{collapse map} is a
+  function
+  \[
+    \mathcal{K} : \mathcal{N}(X) \longrightarrow X
+  \]
+  satisfying $\mathcal{K}(A_1 \subsetneq \cdots \subsetneq A_n) \in A$
+  (the result is always admissible) and
+  $\kappa(\mathcal{K}(\cdot)) = 0$ (the result always satisfies all constraints).
+\end{definition}
+
+The collapse map is admissibility-preserving by construction. This is why
+evaluation, proof, and perception all produce outputs that \emph{make sense}:
+collapse maps are defined to land in the admissible region.
+
+\begin{theorem}{Collapse Reduces Depth}{collapse-depth}
+  Any collapse map $\mathcal{K}$ satisfies
+  $\mathrm{depth}(\mathcal{K}(\sigma)) < \mathrm{depth}(\sigma)$
+  for any non-trivial nesting sequence $\sigma$ of depth $\geq 1$.
+\end{theorem}
+
+\begin{proof}
+  A non-trivial nesting sequence has depth $n \geq 1$. By definition,
+  $\mathcal{K}(\sigma) \in X$ (a point, not a sequence). The depth of a
+  point in $X$ is 0. Therefore $\mathrm{depth}(\mathcal{K}(\sigma)) = 0 < n$.
+\end{proof}
+
+This theorem is the reason that computation \emph{terminates}: every collapse
+reduces depth by at least one, and depth is bounded below by zero.
+
+% ── 2.6 ──────────────────────────────────────────────────────
+\section{Boundaries as Information Generators}
+
+There is a perspective on boundaries that is easy to miss: a boundary does
+not divide two regions from each other — it \emph{defines} them both
+simultaneously. Before the boundary, there is undifferentiated space. After
+the boundary, there are two distinct regions with mutual complement structure.
+
+\begin{proposition}{Boundary Generates Distinction}{boundary-distinction}
+  Given a topological space $X$, every closed proper subset $B \subsetneq X$
+  generates a distinction: the pair $(B, X \setminus B)$ of complementary
+  regions. The information content of this distinction is
+  $I(B) = \log_2 \frac{\mu(X)}{\mu(B) \cdot \mu(X \setminus B)}$
+  for any probability measure $\mu$ on $X$.
+\end{proposition}
+
+This is why boundaries are computationally productive. A single boundary
+crossing — a single pop, in Spherepop terms — generates information. The
+inside and the outside become distinct. Their distinctness is what makes
+further computation possible.
+
+\begin{remark}
+  The perceptron — the fundamental unit of neural networks — is a boundary
+  generator. It draws a hyperplane through feature space, creating an inside
+  and an outside. The entire expressive power of deep networks is built
+  from iterated boundary generation. Universal approximation theorems
+  (Appendix~N) say: any continuous function can be approximated by
+  sufficiently many hyperplane boundaries. This is the same claim, in
+  computational language, as the claim that nested containment suffices
+  for all computation.
+\end{remark}
+
+% ── Exercises ────────────────────────────────────────────────
+\section*{Exercises}
+
+\begin{exercise}
+  Let $X = \{1, 2, 3, 4, 5\}$ and consider the nesting sequence
+  $\{3\} \subsetneq \{2,3,4\} \subsetneq X$.
+  What is the depth of each element of $X$? Define a collapse map
+  $\mathcal{K}$ that maps this nesting sequence to a single element
+  satisfying $\kappa = 0$ where $\kappa(x) = |x - 3|$.
+\end{exercise}
+
+\begin{exercise}
+  Formalize the claim that depth-first evaluation is the only consistent
+  order for containment-based evaluation. Specifically: suppose evaluation
+  proceeds by some other order (breadth-first, random). Construct an
+  expression for which this order produces an undefined or contradictory
+  result.
+\end{exercise}
+
+\begin{exercise}[title={Topological}]
+  The boundary $\partial A$ of a closed set $A$ satisfies
+  $\partial A = \overline{A} \cap \overline{X \setminus A}$. Prove that
+  $\partial A$ is always closed. Give an example where $A$ is open,
+  $A$ is closed, and $A$ is neither open nor closed, showing what
+  $\partial A$ looks like in each case.
+\end{exercise}
+
+\begin{exercise}[title={Open problem}]
+  Define an appropriate notion of \emph{collapse entropy}: the information
+  lost when a nesting sequence of depth $n$ is collapsed to a point.
+  Under what conditions is collapse entropy minimal? Does minimal-entropy
+  collapse correspond to any known computational strategy (memoization,
+  normal-form reduction, canonical representatives)?
+\end{exercise}

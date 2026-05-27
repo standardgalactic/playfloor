@@ -1,0 +1,59 @@
+% Appendix J: Accessibility Geometry, Entropy, and Reachable Futures
+
+\section*{J.1 Introduction}
+
+Traditional physics focuses on state. Traditional logic focuses on truth.
+Traditional computation focuses on output. Accessibility theory instead
+focuses on \emph{futures}. A state is characterized not merely by what it is,
+but by the set of admissible futures available to it.
+
+\begin{definition}{Future and Admissible Future Sets}{future-sets}
+  The \emph{future set} is $\mathcal{F}(x) = \{y : x \rightsquigarrow y\}$.
+  The \emph{admissible future set} is
+  $\mathcal{A}(x) = \{y \in \mathcal{F}(x) : A(y) \geq \tau\}$.
+  Reachability is not coherence; admissibility filters futures.
+\end{definition}
+
+\begin{definition}{Accessibility and Entropy}{access-entropy}
+  The \emph{accessibility} of a state is $\Omega(x) = \mathrm{Vol}(\mathcal{A}(x))$.
+  The \emph{accessibility entropy} is $S(x) = \log \Omega(x)$.
+  This generalizes statistical entropy: entropy becomes
+  \emph{logarithmic volume of admissible futures}, not merely disorder.
+\end{definition}
+
+\begin{definition}{Accessibility Flow}{access-flow}
+  $\frac{dx}{dt} = \nabla S(x)$.
+  Trajectories climb accessibility; states evolve toward regions
+  containing more admissible futures.
+\end{definition}
+
+\begin{definition}{Accessibility Structures}{access-structures}
+  An \emph{accessibility well} is a region where $S(x)$ decreases in all
+  directions (dead ends, traps, addictions, bureaucratic lock-in).
+  An \emph{accessibility peak} is a local maximum of $S$
+  (broad education, robust infrastructure, flexible institutions).
+  An \emph{accessibility ridge} is a connected region of sustained high $S$
+  (scientific paradigms, trade routes, semantic pathways).
+\end{definition}
+
+\begin{definition}{Accessibility Relaxation}{access-relaxation}
+  $\frac{dx}{dt} = -\nabla V(x) + \alpha \nabla S(x)$.
+  The competition between energetic and accessibility gradients produces
+  rich dynamics. This equation serves as the prototype for RSVP.
+\end{definition}
+
+\begin{theorem}{Every Constraint Induces an Accessibility Field}{access-field-thm}
+  Any constrained dynamical system induces an accessibility field.
+\end{theorem}
+\begin{proof}
+  Constraints determine admissible futures; the admissible future set
+  determines $\Omega(x)$; $S(x) = \log \Omega(x)$ defines the field.
+\end{proof}
+
+\begin{namedthm}{The Accessibility Principle}
+  The significance of a state is determined not merely by its present
+  structure but by the volume of coherent futures accessible from it.
+  Objects become future-generating structures. Knowledge becomes future
+  expansion. Learning becomes accessibility growth. Intelligence becomes
+  accessibility navigation. Meaning becomes accessibility preservation.
+\end{namedthm}

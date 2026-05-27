@@ -1,0 +1,204 @@
+% ============================================================
+%  chapters/ch27-yarncrawler-systems.tex
+% ============================================================
+
+\chapter{Yarncrawler Systems}
+
+\chapterepigraph{%
+  A city that repairs itself\\
+  is not merely convenient.\\
+  It is epistemically honest about its own entropy.
+}{Flyxion, \textit{Semantic Infrastructure}}
+
+\sidenote{Yarncrawler:\\adaptive repair\\network;\\ connects to\\App.\,O on\\civilization\\dynamics}
+
+Chapter~26 developed constraint ecology as the governing dynamics of
+living knowledge systems. This chapter extends the framework to the
+engineering question: how do we build systems that \emph{maintain}
+their constraint ecology over time — that repair entropy, adapt to
+change, and preserve accessibility without requiring centralized
+intervention?
+
+The Yarncrawler framework is the answer. It is a model of adaptive
+maintenance: distributed systems that move through their environment
+repairing, connecting, and reorganizing rather than building from scratch.
+
+\section{Repair Networks}
+
+Physical infrastructure degrades. Roads develop potholes; pipes corrode;
+cables fray. The conventional response is scheduled maintenance:
+periodic inspection and repair by specialized crews dispatched from
+central depots. This is a centralized, reactive, low-frequency approach.
+
+Yarncrawler systems propose an alternative: continuous, distributed,
+proactive maintenance by small autonomous agents that are always
+embedded in the infrastructure they maintain.
+
+\begin{definition}{Repair Network}{repair-network}
+  A \emph{repair network} is a tuple $(I, R, \tau_R, \kappa_I)$ where:
+  \begin{itemize}
+    \item $I$ is the infrastructure being maintained (a graph of
+          nodes and edges),
+    \item $R = \{r_1, \ldots, r_m\}$ is a collection of repair
+          agents (Yarncrawlers),
+    \item $\tau_R : I \times R \to I$ is the repair function
+          (how agent $r$ at location $\ell$ modifies $I$),
+    \item $\kappa_I : I \to \mathbb{R}_{\geq 0}$ is the
+          infrastructure constraint violation functional (how
+          degraded the infrastructure is at each point).
+  \end{itemize}
+\end{definition}
+
+The goal of the repair network is to minimize $\int_I \kappa_I\,d\mu$
+(total constraint violation) while each agent operates only with local
+information — it can only observe the state of its immediate neighborhood.
+
+\section{Moving Infrastructure}
+
+A key insight of the Yarncrawler framework is that infrastructure need
+not be static. The conventional picture separates the infrastructure
+(static: roads, buildings, pipes) from the agents that use it (dynamic:
+vehicles, people, water). The Yarncrawler picture blurs this distinction:
+the repair agents \emph{are} a component of the infrastructure, and they
+move.
+
+\begin{definition}{Moving Infrastructure}{moving-infra}
+  A \emph{moving infrastructure element} is an agent $r \in R$ that:
+  \begin{enumerate}
+    \item Provides infrastructure services (connectivity, resource
+          transport, information relay) as it moves,
+    \item Collects infrastructure state information (degradation level,
+          resource levels, congestion) as it passes through,
+    \item Modifies the infrastructure (repairs, reroutes, reinforces)
+          in response to observed state.
+  \end{enumerate}
+\end{definition}
+
+A Yarncrawler is a moving infrastructure element. As it traverses
+the city, road, or network, it simultaneously serves the functions of
+sensor, actor, and carrier. The repair is not a separate activity from
+the service — it is woven into the service.
+
+\section{Adaptive Maintenance}
+
+Standard maintenance is scheduled: it occurs at fixed intervals regardless
+of actual degradation state. Adaptive maintenance responds to the actual
+state of the infrastructure.
+
+\begin{definition}{Adaptive Maintenance Strategy}{adaptive-maint}
+  A \emph{adaptive maintenance strategy} for Yarncrawler $r$ is a
+  policy $\pi_r : \mathcal{O}_r \to \mathcal{A}_r$ mapping local
+  observations to actions, where:
+  \begin{itemize}
+    \item $\mathcal{O}_r$ includes the current degradation level
+          $\kappa_I(\ell_r)$ and neighboring degradation levels,
+    \item $\mathcal{A}_r$ includes movement actions (which direction
+          to move), repair actions (how much resource to expend on
+          current location), and relay actions (what information to
+          broadcast).
+  \end{itemize}
+  The strategy is \emph{accessibility-optimal} if $\pi_r$ maximizes
+  the expected accessibility entropy of the infrastructure:
+  \[
+    \pi_r^* = \arg\max_{\pi_r} \mathbb{E}\bigl[S_I(t+H) \mid
+    \mathcal{O}_r(t), \pi_r\bigr]
+  \]
+  over a horizon $H$.
+\end{definition}
+
+Accessibility-optimal maintenance prioritizes repairs that maximize
+future infrastructure flexibility — not simply the most degraded
+locations, but the locations where repair would most increase the
+admissible uses of the infrastructure.
+
+\section{Stigmergic Planning}
+
+Yarncrawlers coordinate not through central planning but through
+\emph{stigmergy}: indirect coordination through shared environment
+modification.
+
+\begin{definition}{Stigmergic Coordination}{stigmergy}
+  Yarncrawlers use \emph{stigmergic coordination} when:
+  \begin{enumerate}
+    \item Each agent modifies the environment as it acts
+          (by repairing, by leaving chemical/digital markers,
+          by updating shared maps),
+    \item Other agents' behavior is modified by these environmental
+          changes without direct communication,
+    \item The collective behavior that emerges is globally coherent
+          despite only local information being available to any agent.
+  \end{enumerate}
+\end{definition}
+
+Stigmergy is the coordination mechanism of ant colonies, termite
+mounds, slime molds, and Wikipedia. Each agent acts on local information;
+the environment records the aggregate effect; subsequent agents respond
+to the recorded aggregate. The environment serves as the coordination
+medium.
+
+In the Yarncrawler framework, the infrastructure itself is the stigmergic
+medium. Each repair leaves a trace (a physical trace — the repaired
+surface — and potentially a digital trace in a maintenance log).
+Other Yarncrawlers observe these traces and preferentially visit
+recently repaired versus never-visited versus frequently-visited locations,
+creating an emergent maintenance pattern that reflects the actual
+degradation dynamics of the infrastructure.
+
+\section{Connection to Semantic Infrastructure}
+
+The Yarncrawler framework extends naturally from physical infrastructure
+to semantic infrastructure (Chapter~25).
+
+In semantic infrastructure, the ``degradation'' of a knowledge module
+corresponds to:
+\begin{itemize}
+  \item Propositions becoming outdated (empirical facts changing),
+  \item Connections breaking (referenced modules being corrected
+        or retracted),
+  \item Terminology drifting (the meaning of terms shifting),
+  \item Accessibility decreasing (the module's potential extensions
+        shrinking as surrounding modules evolve without it).
+\end{itemize}
+
+Semantic Yarncrawlers are agents that continuously traverse the
+knowledge graph, identifying degraded connections, updating outdated
+propositions, resolving terminological drift, and maintaining the
+admissibility structures of modules. Large language models — if
+equipped with accurate models of their own uncertainty and
+well-designed update mechanisms — could serve as semantic Yarncrawlers.
+
+\begin{namedthm}{The Yarncrawler Principle}
+  Any complex system that must maintain coherence over time in a
+  changing environment requires distributed repair agents that:
+  (1) are always embedded in the system,
+  (2) act on local information,
+  (3) coordinate stigmergically through environmental modification,
+  (4) optimize for accessibility entropy rather than immediate performance.
+  Systems without Yarncrawlers accumulate constraint violations until
+  catastrophic repair or collapse becomes necessary.
+\end{namedthm}
+
+\begin{exercise}
+  Model a simple road repair network with 3 Yarncrawlers on a 10-node
+  graph. Define $\kappa_I$ as the age of each road segment since last
+  repair. Define a simple adaptive strategy $\pi_r$ and simulate the
+  dynamics. Compare total constraint violation over time to a scheduled
+  maintenance strategy that repairs each node at fixed intervals.
+\end{exercise}
+
+\begin{exercise}
+  Wikipedia can be modeled as a stigmergic semantic maintenance system.
+  Identify the Yarncrawler agents (human editors, bots), the environmental
+  modifications they make (edits, reversions, talk page comments),
+  and the stigmergic signals they leave (edit history, watchlists,
+  talk page flags). Where does this model succeed and where does it
+  break down?
+\end{exercise}
+
+\begin{exercise}[title={Design}]
+  Design a Yarncrawler system for a university library. What constitutes
+  ``degradation'' for a library's semantic infrastructure? What actions
+  can a Yarncrawler take? What stigmergic signals are available?
+  How does the system balance maintenance of existing collections
+  against acquisition of new materials?
+\end{exercise}

@@ -1,0 +1,240 @@
+% ============================================================
+%  chapters/ch24-meaning-as-geometry.tex
+% ============================================================
+
+\chapter{Meaning as Geometry}
+
+\chapterepigraph{%
+  Meaning is not what a symbol points to.\\
+  Meaning is the shape of the region\\
+  from which the symbol cannot escape.
+}{Flyxion, \textit{Semantic Infrastructure}}
+
+\sidenote{Connects to\\App.\,L §L.23\\and the RSVP\\semantic field\\equations}
+
+The previous two chapters developed the agent's internal world as a
+latent simulation (Chapter~22) and the temporal structure of that
+simulation as a memory chain (Chapter~23). This chapter asks: what is
+\emph{meaning} in this framework?
+
+The answer is geometric. Meaning is not a correspondence relation
+between symbols and objects (the referential theory), nor is it a
+use-pattern (the Wittgensteinian theory), nor is it a mental representation
+(the cognitive theory). It is a geometric structure in the accessibility
+landscape: the shape of the constraint basin that a semantic unit inhabits.
+
+\section{Semantic Fields}
+
+In the RSVP framework, meaning lives in a semantic manifold $M_s$ —
+the space of possible semantic states — equipped with an accessibility
+entropy field $S_s : M_s \to \mathbb{R}$ (Appendix~L).
+
+\begin{definition}{Semantic Field}{semantic-field}
+  The \emph{semantic field} of a symbol $\sigma$ is the region of the
+  semantic manifold $M_s$ consistent with $\sigma$:
+  \[
+    \mathcal{F}(\sigma) = \{m \in M_s : \Phi_s(\sigma, m) \geq \tau\}
+  \]
+  where $\Phi_s : \Sigma \times M_s \to [0,1]$ is the compatibility
+  function (how well semantic state $m$ is expressed by symbol $\sigma$)
+  and $\tau$ is a compatibility threshold.
+\end{definition}
+
+The semantic field is not a point but a region. The word ``tree'' has
+a semantic field that includes all semantic states involving tree-like
+things: oaks, concepts of trees, tree-shaped graphs, decision trees,
+family trees. The boundary of this field — where $\Phi_s(\sigma, m) = \tau$
+— is the edge of the symbol's meaning.
+
+\section{Qualia as Invariants}
+
+The hardest problem of consciousness is the problem of \emph{qualia}:
+why does red look like red? Why does pain feel like pain? Why is there
+``something it is like'' to experience these things?
+
+The geometric framework offers a partial answer. Qualia are not
+properties of the environment or of symbols — they are \emph{invariants
+of the agent's projection structure}.
+
+\begin{definition}{Quale as Projection Invariant}{quale-invariant}
+  A \emph{quale} associated with stimulus class $S$ is a property of
+  the agent's projection $\Pi_A$ that is invariant across all stimuli
+  in $S$: it is preserved by $\Pi_A$ for all $e \in S$ and varies
+  across different stimulus classes.
+  Formally, it is an element of the fiber $\ker(\Pi_A|_S)^\perp$ —
+  the component of the projection that distinguishes $S$ from other
+  classes.
+\end{definition}
+
+Red looks like red because the quale of redness is an invariant of the
+human visual projection $\Pi_{\text{human}}$ for wavelengths near 700nm.
+It is not a property of the wavelength itself — other projections (other
+species' visual systems) have different invariants for the same wavelength.
+The quale is the agent-specific structure that the projection extracts.
+
+\begin{remark}
+  This does not solve the hard problem — it relocates it. We still do
+  not know why projection invariants have subjective character at all.
+  But it does explain the \emph{structure} of qualia: why they are
+  stable (invariance under stimulus variation), agent-specific (depend
+  on $\Pi_A$), and incommunicable (fibers of projections are invisible
+  to other agents with different projections).
+\end{remark}
+
+\section{Constraint Basins}
+
+The most powerful geometric concept for meaning is the \emph{constraint
+basin}: the region of the accessibility landscape that a semantic state
+is drawn toward by the accessibility gradient flow.
+
+\begin{definition}{Constraint Basin}{constraint-basin}
+  The \emph{constraint basin} of a semantic attractor $m^* \in M_s$
+  is the set of initial states from which the accessibility gradient
+  flow converges to $m^*$:
+  \[
+    \mathcal{B}(m^*) = \{m \in M_s : \lim_{t\to\infty}
+    \phi_t(m) = m^*\}
+  \]
+  where $\phi_t$ is the flow of the accessibility gradient vector field
+  $\nabla S_s$.
+\end{definition}
+
+Words and concepts are attractors in the semantic manifold; their meanings
+are their constraint basins. The basin of the word ``tree'' is the set of
+all semantic states that, under the pressure of constraint satisfaction,
+converge to the tree-concept attractor. Words with overlapping basins
+are synonyms; words with nearby but non-overlapping basins are near-synonyms.
+
+\begin{figure}[h]
+  \centering
+  \begin{tikzpicture}[scale=1.2]
+    \input{diagrams/semantic-basins}
+  \end{tikzpicture}
+  \caption{Constraint basins in the semantic manifold. Each basin
+    (shaded region) surrounds an attractor (filled circle) corresponding
+    to a concept. The accessibility gradient $\nabla S_s$ drives semantic
+    states toward their nearest attractor. Basin boundaries (thick curves)
+    are the separatrices of the gradient flow — the edges of meaning.}
+  \label{fig:semantic-basins}
+\end{figure}
+
+\section{Coherence Structures}
+
+\begin{tcolorbox}[enhanced, breakable,
+  colback=RSVPpurple!8, colframe=RSVPpurple, arc=4pt, boxrule=0.6pt,
+  title={\bfseries\sffamily Technical Note: Whitney Stratification and Semantic Phase Transitions},
+  coltitle=white, attach boxed title to top left={yshift=-2mm,xshift=6mm},
+  boxed title style={colback=RSVPpurple,sharp corners},
+  top=4mm,left=4mm,right=4mm,bottom=4mm]
+
+The semantic manifold $M_s$ is not a smooth uniform space — it is
+\emph{stratified}: divided into zones (strata) where qualitatively
+different cognitive rules apply. Mathematical reasoning, spatial reasoning,
+emotional reasoning, and social reasoning occupy different strata.
+
+\textbf{Whitney's condition~B} governs crossing between strata.
+When a cognitive trajectory approaches the boundary between two strata,
+it must approach \emph{tangentially} — gliding along the edge, allowing
+the semantic structures of one regime to continuously map onto the other.
+A tangential crossing preserves coherence.
+
+A \emph{transversal} crossing — approaching the boundary head-on — produces
+a \emph{non-admissible phase transition}: catastrophic loss of semantic
+structure. In human terms: suddenly losing your train of thought when
+switching between two very different modes of reasoning. In AI terms:
+an incoherent output produced when the system jumps between logical strata
+without preserving the underlying geometry.
+
+The HYDRA TARTAN tiling architecture addresses this by decomposing the
+manifold into locally uniform tiles with \emph{annotated noise} at each
+boundary — an explicit measurement of residual variability that allows the
+system to recognize when it is near a stratum boundary and slow down
+accordingly, approaching tangentially rather than transversally.
+
+Practical consequence: the human experience of ``shifting gears'' between
+different types of thinking — from formal calculation to creative
+imagination — has a precise mathematical form. The discomfort or confusion
+of the gear-shift is the cognitive cost of approaching a stratum boundary
+non-tangentially. Good thinking involves learning the topography of one's
+own semantic manifold well enough to always cross boundaries tangentially.
+\end{tcolorbox}
+
+
+Meaning is not just the identity of individual concepts but the
+\emph{coherence structure} that holds multiple concepts together.
+
+\begin{definition}{Semantic Coherence Field}{sem-coherence}
+  The \emph{semantic coherence field} $C_s : M_s^n \to [0,1]$ measures
+  how well $n$ semantic states mutually support each other — how much
+  each state's activation reduces the constraint violation of the others.
+  High coherence corresponds to a cluster of mutually reinforcing concepts;
+  low coherence corresponds to a collection of unrelated or contradictory ones.
+\end{definition}
+
+A text has high coherence when its constituent concepts occupy a
+high-coherence region of $M_s^n$. Understanding a text is navigating
+to a region of high coherence. Confusion is occupying a low-coherence
+region and not finding a path to a higher one.
+
+This explains why metaphor works. A good metaphor maps two domains
+— whose concepts usually occupy distant regions of $M_s$ — onto a
+high-coherence configuration that illuminates both. ``An argument is
+a building'' is coherent because the structure-stability-foundation
+cluster of the building domain maps onto a high-coherence configuration
+with the claim-support-premises cluster of the argument domain.
+
+\section{Zero Ontology and Semantic Geometry}
+
+The zero ontology of Pearce (discussed in the preface to Part~VI)
+proposes that the universe has zero net information content. The
+semantic geometry framework offers an interesting perspective on this.
+
+If the universe is an accessibility landscape and meaning is the
+geometry of constraint basins, then the zero-information universe
+is one in which all constraint basins have zero depth — no concept
+has more gravitational pull than any other. This is not a universe
+of rich meaning but a universe of undifferentiated accessibility:
+maximum $S_s$ everywhere, minimum $\nabla S_s$.
+
+The formation of meaning — the deepening of constraint basins — is
+therefore equivalent to the decrease of global accessibility entropy:
+meaning is purchased at the cost of future possibility. A highly
+meaningful conceptual structure is a highly constrained one.
+
+\begin{namedthm}{The Meaning–Accessibility Tradeoff}
+  In any accessibility landscape, the emergence of stable semantic
+  attractors (concepts, meanings, values) corresponds to a decrease
+  in global accessibility entropy. There is a fundamental tradeoff:
+  \[
+    \text{Meaning depth} \;\propto\; -\Delta S_{\text{global}}.
+  \]
+  A universe with zero semantic content has maximum accessibility;
+  a universe with rich semantic structure has consumed much of its
+  accessibility in forming constraint basins.
+\end{namedthm}
+
+\begin{exercise}
+  Show that two words $\sigma_1, \sigma_2$ are synonyms in the
+  semantic field framework iff $\mathcal{F}(\sigma_1) \cap
+  \mathcal{F}(\sigma_2) \neq \emptyset$ and neither is a proper
+  subset of the other. What does a word being a proper subset of
+  another correspond to semantically?
+\end{exercise}
+
+\begin{exercise}
+  The constraint basin $\mathcal{B}(m^*)$ depends on the accessibility
+  gradient flow, which depends on the accessibility field $S_s$.
+  Different agents with different constraint structures will have
+  different flows and therefore different basins for the same attractor.
+  Formalize the claim that ``the same word means different things
+  to different people'' in these terms.
+\end{exercise}
+
+\begin{exercise}[title={Connecting frameworks}]
+  Pearce argues that ``nothing is difficult to define'' because any
+  specification of nothing already contains structure. Formalize this
+  in the constraint-basin framework: what is the constraint basin of
+  the concept ``nothing''? Is it empty, unbounded, or something else?
+  What does its shape tell us about why nothingness is philosophically
+  problematic?
+\end{exercise}

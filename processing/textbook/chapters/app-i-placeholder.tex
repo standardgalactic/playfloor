@@ -1,0 +1,74 @@
+% Appendix I: Sheaf Theory, Gluing, and Semantic Coherence
+
+\section*{I.1 Introduction}
+
+Many systems consist of multiple local views — scientific theories,
+distributed databases, gesture recognition systems, knowledge archives,
+civilizations, perception itself. Each subsystem possesses only partial
+information. The central question is:
+\emph{When do local truths combine into a global truth?}
+
+\begin{definition}{Presheaf}{presheaf}
+  A \emph{presheaf} $F$ on base space $B$ assigns a set $F(U)$ to each
+  open region $U \subseteq B$, together with restriction maps
+  $\rho_{UV} : F(U) \to F(V)$ whenever $V \subseteq U$.
+\end{definition}
+
+\begin{definition}{Local Section}{local-section}
+  A \emph{local section} is an element $s \in F(U)$, representing a
+  local interpretation, observation, or meaning.
+\end{definition}
+
+\begin{definition}{Compatibility}{compatibility}
+  Sections $s_U \in F(U)$ and $s_V \in F(V)$ are \emph{compatible} if
+  $s_U|_{U \cap V} = s_V|_{U \cap V}$.
+  Compatibility means the local stories do not contradict each other.
+\end{definition}
+
+\begin{definition}{Sheaf}{sheaf-def}
+  A presheaf $F$ is a \emph{sheaf} if: whenever $\{U_i\}$ covers $U$
+  and sections $s_i \in F(U_i)$ are pairwise compatible, there exists a
+  \emph{unique} global section $s \in F(U)$ with $s|_{U_i} = s_i$.
+\end{definition}
+
+\begin{theorem}{Gluing Theorem}{gluing-thm}
+  Compatible local information determines a unique global object.
+\end{theorem}
+\begin{proof}
+  This follows directly from the sheaf axiom: compatibility guarantees
+  existence; uniqueness guarantees coherence.
+\end{proof}
+
+\begin{definition}{Obstruction}{obstruction-sheaf}
+  An \emph{obstruction} is a failure of compatibility: contradictory
+  assumptions, inconsistent definitions, incompatible coordinate systems.
+  Obstructions prevent global coherence and appear as topological defects
+  in semantic space (impossible triangles, paradoxes, circular dependencies).
+\end{definition}
+
+\begin{example}
+  \textbf{Gesture recognition.} Camera ($U_1$), pressure sensor ($U_2$),
+  accelerometer ($U_3$) each produce a local section. Recognition is a
+  gluing problem; the complete gesture is the global section.
+\end{example}
+
+\begin{example}
+  \textbf{Semantic infrastructure.} Documents are sections; repositories
+  are covers; merges are gluing operations; conflicts are obstructions.
+  Version control becomes sheaf theory.
+\end{example}
+
+\begin{theorem}{Global Meaning via Gluing}{global-meaning}
+  Global meaning exists only when local meanings are mutually compatible.
+\end{theorem}
+\begin{proof}
+  A global section exists if and only if the sheaf gluing condition holds.
+  Failure of compatibility prevents construction of a global section.
+\end{proof}
+
+\begin{namedthm}{The Sheaf Principle}
+  Every coherent system consists of local sections, overlap regions,
+  restriction maps, compatibility conditions, and a global section.
+  Knowledge, memory, perception, language, science, and civilization
+  are all attempts to construct global sections from local observations.
+\end{namedthm}

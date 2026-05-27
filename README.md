@@ -1,8 +1,16 @@
 # Playfloor
 
+[Semantic Infrastructure](https://standardgalactic.github.io/playfloor/processing/semantic-infrastructure.pdf)
+
+* [Accessibility Geometry](https://standardgalactic.github.io/playfloor/processing/Accessibility_Geometry.pdf)
+
+![](semantic-infrastructure-notes.png)
+
 [The Dynamics of Learning](https://standardgalactic.github.io/playfloor/dynamics-of-learning.pdf)
 
 * [Audio Overviews](https://standardgalactic.github.io/playfloor/audio-overviews.html)
+
+[Admissible Trajectories](https://github.com/standardgalactic/playfloor/blob/main/processing/README.md)
 
 A retro-inspired digital oscilloscope and signal visualizer built entirely in a single HTML file using the Web Audio API and HTML5 Canvas.
 

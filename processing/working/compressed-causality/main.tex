@@ -1,0 +1,126 @@
+\documentclass[11pt, oneside, openany]{book}
+
+% Font and encoding
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{mathpazo}
+\usepackage{microtype}
+
+% Page geometry
+\usepackage[
+  top=1.25in,
+  bottom=1.25in,
+  inner=1.375in,
+  outer=1.125in,
+  includehead
+]{geometry}
+
+% Mathematics
+\usepackage{amsmath, amsthm, amssymb, mathtools}
+
+% Theorem environments
+\newtheorem{theorem}{Theorem}[chapter]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{lemma}[theorem]{Lemma}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{example}[theorem]{Example}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+
+% Cross-references
+\usepackage[hidelinks]{hyperref}
+
+% Bibliography (bibtex compatible)
+\usepackage{natbib}
+
+% Index
+\usepackage{makeidx}
+\makeindex
+
+% Headers
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[LE]{\small\itshape\leftmark}
+\fancyhead[RO]{\small\itshape\rightmark}
+\fancyfoot[C]{\small\thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+
+% Tables
+\usepackage{booktabs, array, longtable}
+
+% Notation
+\input{notation}
+
+% Title information
+\title{\textbf{Compressed Causality}\\[0.5em]
+  \large Stability, Projection, and the Geometry of Alternative Histories}
+\author{Flyxion}
+\date{2026}
+
+\begin{document}
+
+\frontmatter
+
+\maketitle
+\thispagestyle{empty}
+
+\vspace*{\fill}
+\begin{center}
+\textit{For every system that must act in the present\\
+on the basis of a history too large to store.}
+\end{center}
+\vspace*{\fill}
+\clearpage
+
+\input{preface}
+\input{readers-guide}
+\input{acknowledgments}
+\tableofcontents
+
+\mainmatter
+
+\part{Foundations}
+\index{Foundations}
+\input{chapters/chapter01}
+\input{chapters/chapter02}
+\input{chapters/chapter03}
+\input{chapters/chapter04}
+
+\part{Verified Domains}
+\index{Verified Domains}
+\input{chapters/chapter05}
+\input{chapters/chapter06}
+\input{chapters/chapter07}
+
+\part{Diagnostics}
+\index{Diagnostics}
+\input{chapters/chapter08}
+\input{chapters/chapter09}
+\input{chapters/chapter10}
+
+\part{Applications}
+\index{Applications}
+\input{chapters/chapter11}
+\input{chapters/chapter12}
+\input{chapters/chapter13}
+
+\part{Geometry of Alternative Histories}
+\index{Geometry of Alternative Histories}
+\input{chapters/chapter14}
+\input{chapters/chapter15}
+\input{chapters/chapter16}
+
+\appendix
+\input{appendices/appendix}
+
+\backmatter
+
+\bibliographystyle{plainnat}
+\bibliography{bibliography/references}
+
+\printindex
+
+\end{document}

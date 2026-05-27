@@ -1,0 +1,71 @@
+% Appendix G: Keyboard Geometry and Motor Fields
+
+\section*{G.1 Introduction}
+
+Conventional computer science treats a keyboard as a discrete symbol emitter.
+The gesture framework suggests a different interpretation: \emph{a keyboard
+is a geometric field through which hands navigate. Keys are landmarks.
+Words are trajectories. Typing is navigation.}
+
+\begin{definition}{Keyboard Geometry}{keyboard-geom}
+  A \emph{keyboard geometry} is an embedding $\iota : K \to \mathbb{R}^2$,
+  where $K = \{k_1, \ldots, k_n\}$ is the key set.
+\end{definition}
+
+\begin{definition}{Finger Assignment and Domains}{finger-assign}
+  The \emph{finger assignment map} is $F : K \to \{1,\ldots,8\}$.
+  The \emph{finger domain} of finger $i$ is $D_i = F^{-1}(i)$,
+  giving a partition $K = D_1 \cup \cdots \cup D_8$.
+\end{definition}
+
+\begin{definition}{Stretch Cost}{stretch-cost}
+  $\sigma(k) = d(\iota(k),\, h(F(k)))$, where $h(F(k))$ is the home
+  position of the responsible finger.
+\end{definition}
+
+\begin{definition}{Keyboard Graph}{keyboard-graph}
+  $\Gamma = (K,E)$ where $(k_i,k_j) \in E$ whenever a finger may
+  move directly between them. Typing is a path $\gamma \subseteq \Gamma$.
+\end{definition}
+
+\begin{definition}{Words as Paths}{words-paths}
+  A word $w = k_1 k_2 \cdots k_n$ defines a path
+  $\gamma_w = (k_1, k_2, \ldots, k_n)$ through $\Gamma$.
+\end{definition}
+
+\begin{definition}{Motor Energy of a Word}{motor-energy-word}
+  $E(w) = \sum_i d(k_i, k_{i+1})^2$.
+  A \emph{geodesic word} minimizes energy among equivalent spellings.
+\end{definition}
+
+\begin{definition}{Hand Alternation}{hand-alt}
+  With $H(k) \in \{L,R\}$, the \emph{alternation count} is
+  $A(w) = \sum_i \mathbf{1}[H(k_i) \neq H(k_{i+1})]$.
+  High alternation generally increases typing speed.
+\end{definition}
+
+\begin{definition}{Overlap Field}{overlap-field}
+  With $a_i(t)$ denoting key activation, $O(t) = \sum_{i<j} a_i(t) a_j(t)$.
+  This recovers chord-like information discarded by text systems.
+\end{definition}
+
+\begin{definition}{Keyboard Field}{keyboard-field}
+  The \emph{keyboard field} is
+  $\mathcal{K} = (K, \Gamma, \sigma, H, F)$ — a fully structured
+  geometric object, not merely a symbol table.
+\end{definition}
+
+\begin{theorem}{Keyboard Navigation Theorem}{keyboard-nav}
+  Every typed text corresponds to a path through a constrained motor graph.
+\end{theorem}
+\begin{proof}
+  Each symbol corresponds to a key (vertex of $\Gamma$); successive
+  symbols define successive vertices; text determines a path.
+\end{proof}
+
+\begin{namedthm}{Symbol Emergence in Keyboard Systems}
+  The traditional view: $\text{key} \to \text{symbol}$.
+  The geometric view: $\text{trajectory} \to \text{gesture} \to \text{symbol}$.
+  Words are not strings. They are routes. Typing is not symbol production.
+  It is constrained navigation through a motor field.
+\end{namedthm}

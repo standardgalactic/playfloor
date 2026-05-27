@@ -1,0 +1,99 @@
+\chapter{Games as Cognitive Laboratories}
+
+\chapterepigraph{%
+  A game is a system of pure constraint.\\
+  Its pieces have no meaning outside the rules.\\
+  Its meaning is entirely in the rules.\\
+  This is why play is the best teacher.
+}{Flyxion, \textit{Semantic Infrastructure}}
+
+\sidenote{Connects to\\REPL loops (Ch.\,39)\\and accessibility\\landscapes (Ch.\,14)}
+
+Part~XII examines simulated worlds. This chapter argues that games —
+from chess to complex simulations — are cognitive laboratories: designed
+environments that make the REPL of Chapter~39 maximally effective by
+providing immediate, accurate, unambiguous feedback within a well-defined
+constraint structure.
+
+\section{Why Games Teach}
+
+Games are effective learning environments for a precise reason: they
+implement high-quality REPLs. The four conditions of the REPL Learning
+Principle (Chapter~39) are satisfied:
+
+\begin{enumerate}
+  \item \textbf{Minimal latency:} feedback is immediate — you see the
+        result of your move at once.
+  \item \textbf{Maximum accuracy:} the rules are unambiguous — the game
+        state evolves deterministically (in most games).
+  \item \textbf{Proportional learning:} good moves are rewarded,
+        bad moves are penalized, intermediate moves get intermediate
+        outcomes.
+  \item \textbf{Constraint-guided exploration:} the rules define which
+        moves are available — exploration is bounded by the constraint
+        space.
+\end{enumerate}
+
+The result is that skills learned in games transfer (to the extent that
+the game's constraint structure is shared with the real-world domain).
+Chess players develop pattern recognition for strategic threats; medical
+simulation players develop diagnostic reasoning; Minecraft players develop
+spatial reasoning and resource management.
+
+\section{Artificial Constraints as Epistemic Tools}
+
+The constraints of a game are artificial: no physical law requires
+that bishops move diagonally. But artificial constraints are epistemically
+valuable precisely because they are \emph{clean}: they are fully specified,
+consistently applied, and free of the noise and ambiguity of real-world
+constraints.
+
+\begin{definition}{Artificial Constraint Space}{artificial-constraint}
+  An \emph{artificial constraint space} is a constraint space
+  $(X, A, \kappa)$ where:
+  \begin{itemize}
+    \item $X$ is a designed state space (positions in a game, choices
+          in a simulation),
+    \item $A$ is defined by explicit rules (legal moves, valid actions),
+    \item $\kappa$ measures rule violations (illegal moves penalized).
+  \end{itemize}
+  Artificial constraint spaces are valuable as learning environments
+  because $\kappa$ is computable, $A$ is precisely defined, and
+  feedback on $\kappa$ is immediate.
+\end{definition}
+
+\section{Exploration Under Rules}
+
+Games enforce exploration through their rule structures: you cannot
+learn chess by playing the same opening every game — the opponent's
+responses force you into unfamiliar positions, expanding your
+exploration of the game's accessibility landscape.
+
+This forced exploration is a feature, not a bug. The best games are
+those whose accessibility landscape is rich enough that exploration
+never exhausts it — chess has been played for 1500 years and new
+patterns are still being discovered.
+
+\begin{namedthm}{The Cognitive Laboratory Principle}
+  A game functions as a cognitive laboratory to the degree that
+  its constraint space is: (1) rich enough to contain the relevant
+  features of the target domain, (2) clean enough to provide
+  unambiguous feedback, and (3) bounded enough to make exploration
+  tractable. Games that satisfy all three are powerful cognitive
+  prosthetics for developing expertise in the target domain.
+\end{namedthm}
+
+\begin{exercise}
+  Analyze the game of Go as a cognitive laboratory for the domain of
+  strategic territorial competition. What features of real strategic
+  competition does Go's constraint structure capture? Which does it
+  omit? What skills learned in Go transfer to real strategic contexts?
+\end{exercise}
+
+\begin{exercise}
+  Design a game that functions as a cognitive laboratory for
+  learning the concept of accessibility landscapes. What would
+  the game state be? What would the rules (constraints) be?
+  How would the game teach players to navigate toward
+  accessibility peaks and avoid wells?
+\end{exercise}

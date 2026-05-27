@@ -1,0 +1,155 @@
+% ============================================================
+%  Chapter 15
+% ============================================================
+
+\chapter{CLIO and Constraint-Leveraged Inference}
+
+\chapterepigraph{%
+  Constraints are not obstacles to thought.\\
+  They are the medium in which thought becomes possible.
+}{Flyxion, \textit{Semantic Infrastructure}}
+
+\sidenote{App.\,H gives\\the formal\\admissibility\\theory}
+
+The previous chapter developed accessibility landscapes as geometric
+objects. This chapter introduces CLIO — Constraint-Leveraged Inference
+Optimization — the framework for using constraint structure to make
+inference tractable.
+
+\section{Constraint as Computation}
+
+The central claim of CLIO is counterintuitive: \emph{constraints
+accelerate computation rather than impeding it}.
+
+Without constraints, a search problem requires exploring an exponentially
+large space. With tight constraints, most of this space is immediately
+ruled out, and the search reduces to a small accessible region. The
+tighter the constraints, the smaller the search space, and the more
+efficient the inference.
+
+\begin{definition}{Constraint-Leveraged Inference}{clio-def}
+  \emph{Constraint-Leveraged Inference} (CLI) for a problem $(X, \mathcal{Q})$
+  (state space $X$, query $\mathcal{Q}$) with constraint space
+  $\mathcal{C} = (X, A, \kappa)$ is inference restricted to $A$:
+  \[
+    \mathrm{CLI}(\mathcal{Q}, \mathcal{C}) =
+    \arg\max_{x \in A} P(x | \mathcal{Q}).
+  \]
+  The optimization is over the admissible region $A$ only.
+\end{definition}
+
+The power of CLI comes from the fact that $|A| \ll |X|$ in typical
+problems. Medical diagnosis is an example: the space of all possible
+symptom patterns is enormous, but the space of symptom patterns
+consistent with known diseases (the admissible region) is much smaller.
+A doctor's diagnostic reasoning is, informally, CLI: they do not
+consider all possible diagnoses; they consider only those consistent
+with the presenting symptoms.
+
+\section{Sparse Projection}
+
+CLIO implements constraint-leveraged inference through \emph{sparse
+projection}: projecting the query into a space where most features
+are zero (ruled out by constraints) and only a sparse set of features
+are active.
+
+\begin{definition}{Sparse Projection}{sparse-proj}
+  A \emph{sparse projection} is a map $\pi : X \to \mathbb{R}^n$ such
+  that for most queries $\mathcal{Q}$, the projected query
+  $\pi(\mathcal{Q})$ has at most $k \ll n$ nonzero coordinates.
+  The \emph{sparsity ratio} is $k/n$.
+\end{definition}
+
+Constraint structure naturally induces sparse projections: if the
+admissible region $A$ is a low-dimensional manifold in $X$, then any
+projection of $A$ into a coordinate system aligned with the constraint
+directions will be sparse.
+
+\section{Search Without Exhaustive Search}
+
+\begin{example}[title={TCU Encoding: Constraint Restriction as Security}]
+  The RSVP security duality has a precise empirical demonstration in
+  analog optical neural networks. These systems use physical photonic
+  circuits rather than digital processors, and suffer from hardware
+  noise and low precision — which the orthodox engineering view treats
+  as defects to be suppressed.
+
+  The RSVP reinterpretation: noise and low precision are deliberate
+  \emph{constraint restrictions}. By narrowing the admissible trajectory
+  space (reducing $S$ locally), they eliminate the mathematical room
+  that an adversarial attacker requires.
+
+  Standard binary encoding gives attackers a \emph{gradient lever}:
+  flipping the most-significant bit of an 8-bit number changes the value
+  by 128, while flipping the least-significant bit changes it by 1.
+  An attacker can maximize damage with minimal effort by targeting the
+  highest-leverage bit.
+
+  \emph{Truncated Complementary Unary (TCU) encoding} removes this lever
+  entirely: every bit represents the same value, so no bit has more
+  adversarial leverage than any other. The admissibility radius shrinks
+  from $\mathcal{O}(2^{b-1})$ to $\mathcal{O}(1)$ — the mathematical
+  space for a single attack collapses by an exponential factor.
+
+  \textbf{Empirical result} on VGG-8/CIFAR-10:
+  \begin{itemize}
+    \item Clean baseline accuracy: $88\%$
+    \item After adversarial weight attack (unprotected): $13.52\%$
+    \item After RSVP-TCU defense: $86.73\%$ — near-full recovery
+    \item Memory overhead of the defense: $2.36\%$ (applied to the
+          $0.2\%$ most sensitive weights only)
+  \end{itemize}
+
+  This demonstrates the CLIO principle in hardware: by identifying the
+  topological choke points (the high-leverage weights) and restricting
+  their admissibility radius, the entire system's robustness is secured
+  at minimal cost. Constraint restriction is not a limitation — it is
+  precision targeted security.
+\end{example}
+
+
+The algorithmic consequence of sparse projection is that CLI can solve
+problems that naive exhaustive search cannot.
+
+\begin{theorem}{CLIO Complexity Bound}{clio-complexity}
+  If the admissible region $A$ has volume $\mathrm{Vol}(A) = \epsilon \cdot
+  \mathrm{Vol}(X)$ (a fraction $\epsilon$ of the full state space), then
+  CLI inference on $A$ requires time $O(\epsilon^{-1})$ less than
+  exhaustive search on $X$.
+\end{theorem}
+
+\begin{proof}[Sketch]
+  Exhaustive search visits all of $X$, taking time $O(\mathrm{Vol}(X))$.
+  CLI restricts to $A$, taking time $O(\mathrm{Vol}(A)) = O(\epsilon \cdot
+  \mathrm{Vol}(X))$. The ratio is $O(\epsilon^{-1})$.
+\end{proof}
+
+In practice, $\epsilon$ can be astronomically small. In a protein folding
+problem, the physically accessible conformations are a vanishingly small
+fraction of all geometrically possible conformations. In language generation,
+grammatically and semantically coherent sentences are a tiny fraction of
+all possible strings. CLIO exploits this to make inference tractable.
+
+\begin{exercise}
+  Apply CLIO to the problem of finding a route between two cities on
+  a road network. What is the full state space $X$? What constraints
+  define the admissible region $A$ (valid routes)? Estimate the sparsity
+  ratio $\epsilon$ for a road network with 1000 cities.
+\end{exercise}
+
+\begin{exercise}
+  In the RSVP framework, the accessibility entropy $S(x) = \log \mathrm{Vol}(A_x)$
+  measures the size of the admissible future set. Show that
+  CLI inference in a state with low accessibility entropy $S$ is faster
+  than in a state with high $S$. What does this say about the tradeoff
+  between flexibility (high $S$) and inferential efficiency (low $S$)?
+\end{exercise}
+
+\begin{exercise}[title={Adversarial}]
+  The IAD (Introspective Adversarial Distillation) framework from the
+  introduction assigns a trust weight $\alpha(x) \in [0,1]$ to each
+  query $x$. Reformulate this as a CLIO problem: what is the constraint
+  space? What does ``admissible'' mean in the context of teacher-student
+  inference? How does the sparsity ratio relate to the trust weight?
+\end{exercise}
+

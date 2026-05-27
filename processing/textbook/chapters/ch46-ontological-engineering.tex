@@ -1,0 +1,103 @@
+\chapter{Ontological Engineering}
+
+\chapterepigraph{%
+  An ontology is not a description of reality.\\
+  It is a bet on which distinctions matter.\\
+  Good ontologies make accurate bets.\\
+  Bad ontologies lose them quietly.
+}{Flyxion, \textit{Semantic Infrastructure}}
+
+\sidenote{Connects to\\semantic modules\\(Ch.\,25) and\\obstruction theory\\(App.\,I)}
+
+Classification (Chapter~45) produces taxonomies. Ontological engineering
+goes further: it designs the category systems themselves, making explicit
+choices about which distinctions to encode, which to elide, and how
+categories relate to each other. This chapter develops the theory of
+ontological engineering using the semantic module framework.
+
+\section{Building Categories}
+
+Every ontology is a system of semantic modules (Chapter~25): each category
+is a module with a content (what entities belong to it), an admissibility
+structure (what properties make something a member), and an interface
+(how the category relates to other categories).
+
+\begin{definition}{Ontological System}{ontological-system}
+  An \emph{ontological system} is a tuple $(\mathcal{C}, \mathcal{R},
+  \mathcal{A})$ where:
+  \begin{itemize}
+    \item $\mathcal{C} = \{C_1, \ldots, C_n\}$ is a set of categories
+          (semantic modules),
+    \item $\mathcal{R}$ is a set of relations between categories
+          (is-a, part-of, caused-by, associated-with),
+    \item $\mathcal{A}$ is the joint admissibility structure
+          (which combinations of category membership are consistent).
+  \end{itemize}
+\end{definition}
+
+\section{Revising Categories}
+
+Ontologies must be revised as knowledge evolves. Revision is not merely
+adding new categories — it may require restructuring existing ones,
+splitting overloaded categories, merging categories that were wrongly
+distinguished, or changing the underlying relations.
+
+\begin{definition}{Ontological Revision}{onto-revision}
+  An \emph{ontological revision} is a morphism $r : \mathcal{O}_1 \to
+  \mathcal{O}_2$ between ontological systems that: (1) is admissibility-
+  preserving (valid combinations in $\mathcal{O}_1$ remain valid in
+  $\mathcal{O}_2$), and (2) minimizes the disruption to existing
+  knowledge (minimal semantic distance between corresponding categories).
+\end{definition}
+
+The Copernican revision of astronomy is an ontological revision:
+the categories ``fixed Earth'' and ``moving Sun'' were replaced by
+``orbiting Earth'' and ``central Sun.'' The revision was valid
+(observational data remained consistent) and disruptive (the category
+structure changed fundamentally).
+
+\section{When Categories Fail and How to Fix Them}
+
+Ontological systems fail in predictable ways:
+
+\begin{itemize}
+  \item \textbf{Over-splitting:} two categories that should be one
+        (``heat'' and ``caloric'' before thermodynamics unified them).
+  \item \textbf{Under-splitting:} one category that should be two
+        (``atom'' before the discovery of the nucleus).
+  \item \textbf{Wrong relations:} correct categories, wrong relationships
+        (``evolution'' before the mechanism of natural selection).
+  \item \textbf{Missing categories:} the ontology lacks a category for
+        an important class of phenomena (``quantum field'' before
+        quantum field theory).
+\end{itemize}
+
+Each failure type has a signature in the accessibility landscape:
+over-splitting creates unnecessary wells; under-splitting hides
+peaks; wrong relations produce incorrect gradient flows; missing
+categories leave entire regions of the landscape unnamed and inaccessible.
+
+\begin{namedthm}{The Ontological Engineering Principle}
+  A good ontology minimizes total constraint violation across the
+  knowledge infrastructure it serves: it encodes the distinctions
+  that matter (reducing $\kappa$ for accurate prediction), ignores
+  the distinctions that don't (reducing maintenance cost), and
+  provides relations that support productive inference (maximizing
+  $S_{\mathbf{Sem}}$).
+\end{namedthm}
+
+\begin{exercise}
+  The ICD (International Classification of Diseases) is a medical
+  ontology used globally for clinical and epidemiological purposes.
+  Identify one case of over-splitting, one of under-splitting,
+  and one of wrong relations in the current version. For each,
+  propose a revision and analyze its accessibility consequences.
+\end{exercise}
+
+\begin{exercise}
+  Design a minimal ontology for the concept of ``intelligence.''
+  Your ontology should: (1) encompass biological and artificial
+  intelligence, (2) encode the key distinctions (general vs. narrow,
+  adaptive vs. fixed), and (3) be revision-friendly. What categories
+  and relations does it include? What potential failure modes does it have?
+\end{exercise}

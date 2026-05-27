@@ -1,0 +1,73 @@
+\chapter{The Geometry of Alternative Histories}
+\index{alternative histories}\index{fiber}\index{cone of recoverability}
+
+\section{What Is an Alternative History?}
+
+An alternative history is not merely a different sequence of events. It is a trajectory in $\mathcal{X}$ that occupies a specific position relative to the reference trajectory $x_0$, the query family $\mathcal{Q}$, the compression $\pi$, and the stability sequence $\{\sigma_r\}$. Its recoverability is a geometric property of its position in this structure.
+
+\section{The Three Spaces}
+
+The trajectory space $\mathcal{X}$ is the \emph{ontological space} of all possible histories. The representation space $\mathcal{M}$ is the \emph{epistemic space}. The query space $\mathbb{R}$ is the \emph{pragmatic space}. These are connected by:
+\[
+  \mathcal{X} \xrightarrow{\pi} \mathcal{M}, \qquad Q : \mathcal{X} \to \mathbb{R}.
+\]
+Reconstruction asks when there exists $R : \mathcal{M} \to \mathbb{R}$ making this diagram approximately commute.
+
+\section{Alternative Histories as Fibers}
+
+For each $m \in \mathcal{M}$, the \textbf{fiber}
+\[
+  \pi^{-1}(m) = \{x \in \mathcal{X} : \pi(x) = m\}
+\]
+is the set of all trajectories the compression cannot distinguish from any member of the class. The actual trajectory $x_0$ lies in the fiber $\pi^{-1}(\pi(x_0))$; every other element of that fiber is an alternative history consistent with the compressed state.
+
+\textbf{Alternative histories are not hypothetical trajectories outside knowledge. They are trajectories inside the fiber of what current knowledge permits.} Counterfactual reasoning is navigation within fibers.
+
+\section{Stability Shapes the Fiber}
+
+Without stability, fibers remain query-curved: different elements produce very different query answers. With stability, fibers become query-flat: the query answers of all trajectories within the same fiber converge as truncation depth $d$ increases.
+
+The Fiber Convergence Principle: stability does not eliminate alternative histories. It makes them query-convergent.
+
+\section{The Cone of Recoverability}
+\index{cone of recoverability}
+
+\begin{definition}[Cone of Recoverability]
+\[
+  C_\varepsilon(x_0, \pi, \mathcal{Q}) = \{x \in \mathcal{X} : |Q(x) - \pi^+_Q(\pi(x))| \leq \varepsilon \text{ for all } Q \in \mathcal{Q}\}.
+\]
+\end{definition}
+
+Under exponential stability (Outcome A): the cone is broad. Under polynomial stability (Outcome B): the cone is narrower. Under no stability (Outcome C): the cone collapses. The cone encodes the geometry of reconstruction for a given system.
+
+\section{The Geometry of Failure}
+
+\begin{itemize}
+  \item \textbf{Stability failure:} diverging fibers---the fiber is query-curved at every depth.
+  \item \textbf{Sufficiency failure:} query-crossing fibers---the fiber spans multiple query contours.
+  \item \textbf{Approximation failure:} fine-scale query curvature within the resolution of the compression.
+  \item \textbf{Misalignment:} misoriented projection---the null space is perpendicular to the stable directions.
+  \item \textbf{Degeneracy:} folded quotient---the fiber contains trajectories from widely separated regions of $\mathcal{X}$.
+\end{itemize}
+
+\section{A World That Can Remember}
+
+For memory to exist, for explanation to exist, for science to exist, four geometric conditions must hold:
+\begin{enumerate}
+  \item The trajectory space must be stable for the query family (fibers query-flat).
+  \item The projection must be sufficient (fibers do not cross query contours).
+  \item The projection must be aligned with the stability structure.
+  \item The equivalence relation must be well-conditioned for the query family.
+\end{enumerate}
+
+When all four hold, the world remembers. When any fails, memory is impaired in a specific, geometrically characterizable way.
+
+\section{The Geometry of Recoverable Pasts}
+
+The trajectory space $\mathcal{X}$ contains all histories the world might have had. The stability sequence $\{\sigma_r\}$ determines how rapidly alternative histories converge in query-relevant directions. The compression $\pi$ determines which distinctions survive. The fiber $\pi^{-1}(\pi(x_0))$ contains all alternative histories consistent with the present. The reconstruction operator $\pi^+_Q$ navigates the fiber. The cone $C_\varepsilon(x_0,\pi,\mathcal{Q})$ specifies which alternatives are recoverable.
+
+The central question of this book was never whether the past can be reconstructed. It was what kind of world would make reconstruction possible. The answer is now visible. A world can remember its past when its histories contract, its projections preserve the right distinctions, and its alternative trajectories converge in the directions that matter. The geometry of alternative histories is therefore the geometry of recoverable memory itself.
+
+\bigskip
+
+\begin{center}\textit{The world remembers.}\end{center}

@@ -1,0 +1,28 @@
+% constraint-nesting-3d.tex — nested accessibility regions (no pgfmath loops)
+  % Outer region Acc(c1)
+  \fill[RSVPlight, opacity=0.35] (0,0) ellipse (3.0cm and 1.55cm);
+  \draw[RSVPmid, thick] (0,0) ellipse (3.0cm and 1.55cm);
+  \node[RSVPmid, font=\small\itshape] at (2.6, 1.2) {$\Acc(c_1)$};
+
+  % Middle region Acc(c1 ∧ c2)
+  \fill[RSVPmid!20, opacity=0.5] (0,0) ellipse (1.85cm and 0.95cm);
+  \draw[RSVPdeep, thick] (0,0) ellipse (1.85cm and 0.95cm);
+  \node[RSVPdeep, font=\small\itshape] at (-2.5, 0.65)
+    {$\Acc(c_1 \wedge c_2)$};
+
+  % Inner core Acc(c1 ∧ c2 ∧ c3)
+  \fill[RSVPaccent, opacity=0.88] (0,0) circle (0.62cm);
+  \node[white, font=\bfseries\small] at (0,0) {$\min\Phi$};
+  \node[RSVPaccent, font=\scriptsize\itshape] at (0,-0.88)
+    {$\Acc(c_1 \wedge c_2 \wedge c_3)$};
+
+  % Hardcoded gradient arrows (6 directions, no \pgfmathsetmacro)
+  \draw[-{Stealth[length=4pt]},RSVPaccent!80,thick,opacity=0.75] (2.7,0) -- (0.72,0);
+  \draw[-{Stealth[length=4pt]},RSVPaccent!80,thick,opacity=0.75] (-2.7,0) -- (-0.72,0);
+  \draw[-{Stealth[length=4pt]},RSVPaccent!80,thick,opacity=0.75] (1.35,1.1) -- (0.36,0.3);
+  \draw[-{Stealth[length=4pt]},RSVPaccent!80,thick,opacity=0.75] (-1.35,1.1) -- (-0.36,0.3);
+  \draw[-{Stealth[length=4pt]},RSVPaccent!80,thick,opacity=0.75] (1.35,-1.1) -- (0.36,-0.3);
+  \draw[-{Stealth[length=4pt]},RSVPaccent!80,thick,opacity=0.75] (-1.35,-1.1) -- (-0.36,-0.3);
+
+  \node[RSVPaccent!75, font=\footnotesize\itshape] at (0,-1.9)
+    {$-\nabla\kappa$ (constraint descent)};

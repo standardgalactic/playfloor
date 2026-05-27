@@ -1,0 +1,136 @@
+% Chapter 28: From Gesture to Glyph
+\chapter{From Gesture to Glyph}
+
+\chapterepigraph{%
+  Writing did not begin when someone decided to record language.\\
+  It began when someone noticed that their hand\\
+  left marks that others could follow.
+}{Flyxion, \textit{Semantic Infrastructure}}
+
+\sidenote{Connects to\\App.\,F gesture\\manifolds;\\ Ch.\,10--13\\on gesture theory}
+
+Part~IX develops the theory of symbols, alphabets, and compression.
+This chapter examines the deepest transition in the history of human
+communication: the emergence of glyphs from gestures.
+
+The claim of the Gesture Before Symbol framework (Chapters~10--13) is
+that symbols are projections of gesture equivalence classes. Applied to
+writing, this becomes: glyphs are fossil gestures — motor trajectories
+whose temporal structure has been compressed into a static spatial mark.
+
+\section{How Movement Becomes Mark}
+
+The transition from gesture to mark is a projection in the strict
+sense of Appendix~B. The gesture $\gamma : [0,T] \to \mathbb{R}^3$
+is a trajectory through the hand's configuration space. The mark
+$m \in \mathbb{R}^2$ is its trace on a surface — a projection from
+the three-dimensional, temporal gesture to the two-dimensional, atemporal
+imprint.
+
+\begin{definition}{Trace Projection}{trace-proj}
+  The \emph{trace projection} of a writing gesture is the map
+  $\Pi_\text{trace} : \gesturesp \to \mathcal{M}$, where
+  $\mathcal{M}$ is the space of planar curves, defined by
+  $\Pi_\text{trace}(\gamma) = \{(\gamma_x(t), \gamma_y(t)) : t \in [0,T]\}$.
+  The trace discards timing, pressure variation, and the full
+  three-dimensional trajectory, retaining only the planar ink path.
+\end{definition}
+
+The fiber $\Pi_\text{trace}^{-1}(m)$ over a single mark $m$ is enormous:
+it contains all gestures that produce the same planar trace regardless of
+speed, pressure, pen tilt, or three-dimensional hand movement.
+What writing preserves is the \emph{shape} of the gesture; what it
+discards is the \emph{dynamics}.
+
+\section{The Stabilization of Traces}
+
+A single person making a single mark produces one trace. A culture
+making a particular mark repeatedly, across many individuals and
+occasions, produces a distribution over traces. The \emph{stable trace}
+— the canonical form that the culture recognizes — is an attractor
+in the space of traces: the mode of this distribution.
+
+\begin{definition}{Stable Glyph}{stable-glyph}
+  A \emph{stable glyph} is an attractor $g^* \in \mathcal{M}$ in the
+  trace space under the dynamics of cultural transmission. It satisfies:
+  (1) traces produced by competent writers converge to $g^*$, and
+  (2) the basin $\mathcal{B}(g^*)$ is large enough to include the
+  natural variation of all competent writers.
+\end{definition}
+
+A glyph is stable when its basin of attraction in trace space is
+large relative to the variation produced by the community. Letters
+whose basins are small — easily confused with neighboring attractors —
+are unstable and tend to be replaced or merged with neighboring letters
+in the course of script evolution.
+
+\section{Why Writing Systems Emerge}
+
+Writing systems do not emerge when humans develop the capacity to make
+marks — that capacity is ancient, predating \textit{Homo sapiens}.
+They emerge when two additional conditions are met:
+
+\begin{enumerate}
+  \item \textbf{Stable attractors:} the culture has developed a set of
+        stable glyphs whose basins are reliably accessible to all
+        community members.
+  \item \textbf{Compositional semantics:} sequences of glyphs are
+        assigned meanings that are not arbitrary — the meaning of a
+        sequence is computable from the meanings of its parts by
+        a systematic rule (syllabic, alphabetic, logographic).
+\end{enumerate}
+
+The first condition is a constraint on the accessibility landscape of
+trace space: enough stable attractors must exist, spread far enough
+apart, to distinguish the basic units of the language. The second
+condition is a constraint on the semantic infrastructure: the system
+of glyphs must implement a module with a composable interface.
+
+\section{Gesture Fossilization}
+
+Over centuries, glyphs drift from their gestural origins. The Phoenician
+letter \textit{aleph} began as a pictograph of an ox head; the Greek
+$\Alpha$ and Latin $A$ retain the shape but have lost all connection
+to the ox. The gesture that originally drew the ox head is now a
+standardized abstract form produced by culturally trained motor programs
+entirely unlike the original sketching motion.
+
+\begin{definition}{Gesture Fossilization}{gesture-fossil}
+  A glyph undergoes \emph{gesture fossilization} when:
+  \begin{enumerate}
+    \item The motor program for producing it is standardized to a fixed
+          sequence of strokes regardless of any representational intent,
+    \item The fiber $\Pi_\text{trace}^{-1}(g)$ has shrunk: fewer
+          gesture trajectories are recognized as producing $g$,
+    \item The connection to the original representational gesture is
+          no longer accessible to competent writers.
+  \end{enumerate}
+\end{definition}
+
+Fossilization is irreversible under normal conditions: a fossilized glyph
+cannot be ``unfossilized'' by historical knowledge alone. The motor
+program for writing $A$ has been overwritten by thousands of repetitions;
+the original ox-head gesture cannot be recovered by knowing that $A$
+derives from aleph.
+
+\begin{exercise}
+  The Chinese character for ``sun'' (日) began as a pictograph of a circle
+  with a dot (the sun's disk). Trace its evolution through oracle bone,
+  bronze, seal, and modern forms. At what point does fossilization occur?
+  What is the trace projection of the modern form versus the original?
+\end{exercise}
+
+\begin{exercise}
+  Arabic script is cursive — letters connect and change shape depending
+  on their position in a word (initial, medial, final, isolated).
+  Model this as a context-dependent trace projection: the same glyph
+  has different attractors depending on its position in the word.
+  What does this imply about the fiber structure of Arabic character recognition?
+\end{exercise}
+
+\begin{exercise}[title={Open problem}]
+  Can writing systems be designed that maximize the stability of their
+  glyphs while minimizing motor acquisition cost? Define both quantities
+  formally and propose an optimization criterion. What does the
+  optimal alphabet look like?
+\end{exercise}

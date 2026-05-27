@@ -1,0 +1,203 @@
+% ============================================================
+%  chapters/ch13-gesture-reconstruction.tex
+% ============================================================
+
+\chapter{Gesture Reconstruction as Inverse Inference}
+
+\chapterepigraph{%
+  Recognition is not classification.\\
+  Classification asks: which box?\\
+  Recognition asks: what happened?
+}{Flyxion, \textit{Semantic Infrastructure}}
+
+\sidenote{Connects to\\Bayesian inverse\\problems and\\App.\,F §F.14}
+
+Conventional gesture recognition systems are classifiers: given an input
+(a signal, an image, a sequence of keystrokes), output a label from a
+fixed vocabulary. This chapter argues that classification is the wrong
+model. The right model is \emph{inverse inference}: given an observation
+(a projection of the gesture), infer the most probable complete gesture
+that produced it.
+
+\section{Why Classification is Insufficient}
+
+Classification assumes a fixed set of possible outputs and assigns
+the input to the best-matching category. For gesture recognition,
+this means: given a hand motion, output the most likely character, word,
+or command from a predetermined vocabulary.
+
+The problem with classification is that it is \emph{domain-closed}: it
+can only recognize gestures in its training vocabulary. It cannot handle:
+
+\begin{itemize}
+  \item \textbf{Novel gestures:} gestures not in the training set,
+        including new words, technical terms, proper nouns.
+  \item \textbf{Degraded inputs:} gestures that are partially obscured,
+        interrupted, or produced under unusual conditions.
+  \item \textbf{Compositional meanings:} the meaning of a gesture
+        sequence is not always the concatenation of individual gesture
+        meanings (syntax matters).
+  \item \textbf{Continuous signals:} the boundary between gesture classes
+        is not sharp; classification forces a hard decision where
+        the underlying signal is continuous.
+\end{itemize}
+
+Inverse inference handles all of these naturally, because it reasons
+about the underlying gesture rather than the output category.
+
+\section{Trajectory Reconstruction}
+
+The core of inverse inference is trajectory reconstruction: given
+observed data $O$ (a projection of the gesture), find the distribution
+over complete gestures $\gamma$ that could have produced $O$.
+
+\begin{definition}{Trajectory Reconstruction Problem}{traj-reconstruct}
+  Given:
+  \begin{itemize}
+    \item Observation $O$ (projection of some unknown gesture),
+    \item Forward model $P(O | \gamma)$ (likelihood of observing $O$
+          given gesture $\gamma$),
+    \item Prior $P(\gamma)$ (distribution over gestures in the
+          admissible region).
+  \end{itemize}
+  The \emph{trajectory reconstruction} is the posterior distribution:
+  \[
+    P(\gamma | O) = \frac{P(O | \gamma) \cdot P(\gamma)}{P(O)}.
+  \]
+\end{definition}
+
+This is a Bayesian inverse problem. The prior $P(\gamma)$ encodes
+knowledge of the gesture manifold: admissible gestures have high
+prior probability; inadmissible gestures have zero prior probability.
+The likelihood $P(O | \gamma)$ encodes the projection model: how
+likely is observation $O$ given that the underlying gesture was $\gamma$?
+
+\begin{remark}
+  In the Spherepop framework, the prior $P(\gamma)$ is determined by the
+  accessibility entropy $S(\gamma)$: gestures in high-accessibility regions
+  of the gesture manifold are more probable a priori, because they have
+  more neighboring admissible gestures. The projection model
+  $P(O | \gamma)$ is the probabilistic version of the canonical
+  projection $\Phi \circ \hat{C}$ from Appendix~F.
+\end{remark}
+
+\section{Embodied Semantics}
+
+The trajectory reconstruction framework provides a rigorous formalization
+of \emph{embodied semantics}: the view that meaning is grounded in
+bodily experience and motor behavior, not in abstract symbol manipulation.
+
+\begin{definition}{Embodied Semantic Content}{embodied-sem}
+  The \emph{embodied semantic content} of a gesture $\gamma$ is
+  the posterior distribution $P(\gamma | O)$: the distribution over
+  all possible gestures (including their full kinematic details)
+  consistent with the observed projection $O$.
+\end{definition}
+
+The traditional symbol ``a'' has \emph{symbolic} semantic content:
+it refers to a category of objects, sounds, or characters. The embodied
+semantic content of the gesture that produced ``a'' includes all of this
+plus the kinematic signature of the producer: their hand size, writing
+style, emotional state, familiarity with the text, and motor history.
+
+Embodied semantics is richer than symbolic semantics. It is the difference
+between knowing that someone said ``hello'' and knowing \emph{how} they
+said it — tentatively, warmly, anxiously, routinely. The word is the same;
+the gesture is different; the embodied content is different.
+
+\section{Constraint Multiplication}
+
+Inverse inference becomes dramatically more powerful when multiple
+observations provide simultaneous constraints on the unknown gesture.
+
+\begin{definition}{Constraint Multiplication}{constraint-mult}
+  Given $n$ independent observations $O_1, \ldots, O_n$, each
+  constraining $\gamma$, the joint posterior is:
+  \[
+    P(\gamma | O_1, \ldots, O_n) \propto P(\gamma) \prod_{i=1}^n P(O_i | \gamma).
+  \]
+  Each additional observation \emph{multiplies} a constraint factor,
+  sharpening the posterior.
+\end{definition}
+
+Constraint multiplication is the mathematical reason why multi-modal
+sensing is powerful. A keyboard alone provides timing data but no spatial
+data. A camera alone provides spatial data but misses key timing. Together,
+they multiply constraints and dramatically narrow the posterior, making
+reconstruction possible where either alone would be ambiguous.
+
+\begin{example}
+  Consider reconstructing the gesture for typing the word ``constraint.''
+  \begin{itemize}
+    \item Typing stream alone: provides key sequence and timing. The
+          posterior over kinematic gestures is wide — many hand
+          configurations could produce this timing.
+    \item Camera alone: provides hand shape and position. The posterior
+          over typed words is wide — many words could be produced with
+          similar hand shapes.
+    \item Together: timing constrains the temporal structure; camera
+          constrains the spatial structure. Their product narrows
+          the posterior sharply, and reconstruction becomes precise.
+  \end{itemize}
+\end{example}
+
+\section{Latent Intention}
+
+The deepest application of inverse inference is the reconstruction of
+\emph{latent intention}: not just what gesture was made, but what the
+person was \emph{trying} to do.
+
+Intention is a higher-level description of the gesture — the goal that
+drove the motor behavior, which may be only partially achieved. A person
+trying to type ``receive'' who accidentally types ``recieve'' made a
+gesture consistent with their intention but not their intention's result.
+
+\begin{definition}{Latent Intention Model}{latent-intention}
+  The \emph{latent intention} is a hidden variable $I$ in a hierarchical
+  Bayesian model:
+  \[
+    P(O, \gamma, I) = P(O | \gamma) \cdot P(\gamma | I) \cdot P(I).
+  \]
+  Given observation $O$, the reconstructed intention is the marginal
+  posterior $P(I | O) = \int P(I | \gamma) P(\gamma | O)\,d\gamma$.
+\end{definition}
+
+Autocorrect systems that correct spelling errors are primitive
+implementations of latent intention reconstruction: they infer the
+intended word from the actually typed word. More sophisticated systems
+would infer the intended meaning from the intended word, allowing
+correction of semantically incorrect but syntactically valid text.
+
+\section{The Inverse Inference Principle}
+
+\begin{namedthm}{The Inverse Inference Principle}
+  Gesture recognition is not categorization from a fixed vocabulary.
+  It is probabilistic reconstruction of the complete kinematic event
+  that produced the observed projection. The recognized symbol is
+  the mode of the posterior distribution over gestures; the recognized
+  meaning is the mode of the posterior over intentions. Classification
+  is the special case where the posterior is sharply peaked at a single
+  gesture class.
+\end{namedthm}
+
+\begin{exercise}
+  Write out the full Bayesian inverse problem for reconstructing a
+  handwritten letter from a binarized (black/white) image. Define
+  $P(O | \gamma)$ and $P(\gamma)$ explicitly for this case.
+\end{exercise}
+
+\begin{exercise}
+  In the constraint multiplication formula, show that adding an
+  independent observation can never \emph{increase} the entropy
+  of the posterior (i.e., never makes reconstruction less precise).
+  Under what conditions does adding an observation leave the entropy
+  unchanged?
+\end{exercise}
+
+\begin{exercise}[title={Harder}]
+  The latent intention model introduces three levels: observation,
+  gesture, and intention. Extend this to a four-level model with
+  an additional ``goal'' layer above intention (what the person
+  is trying to achieve across multiple words or sentences).
+  What additional data would be needed to reconstruct goals?
+\end{exercise}

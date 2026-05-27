@@ -1,0 +1,127 @@
+\chapter{Organizing a Mind}
+
+\chapterepigraph{%
+  The mind is not a library.\\
+  It is a living city:\\
+  some districts thriving, some decaying,\\
+  connected by roads of varying reliability,\\
+  always under construction.
+}{Flyxion, \textit{Semantic Infrastructure}}
+
+\sidenote{Connects to\\Ch.\,23 memory\\chains and\\Ch.\,32 beyond\\files and folders}
+
+Having established what learning is (infrastructure construction),
+what its dynamic is (exploration-exploitation), and what tools extend
+it (cognitive prosthetics), this chapter turns to the practical question:
+how should a mind organize itself?
+
+\section{Notes}
+
+External notes are memory prosthetics (Chapter~35): they extend the
+biological memory chain into physical or digital space. But different
+note-taking systems implement different cognitive architectures.
+
+\begin{itemize}
+  \item \textbf{Linear notes} (sequential writing): implement a
+        1D memory chain. Easy to produce, hard to navigate. Good for
+        capturing temporal sequence (lecture notes, journal entries).
+  \item \textbf{Hierarchical notes} (outlines, nested folders):
+        implement a tree. Better than linear for structure, but imposes
+        a single categorization. The same problem as file systems:
+        concepts belong to multiple categories.
+  \item \textbf{Networked notes} (Zettelkasten, wiki-style):
+        implement a graph. Each note is a node; links are edges.
+        Supports the full topology of knowledge. Harder to maintain
+        but much richer in structure.
+  \item \textbf{Spatial notes} (mind maps, concept maps):
+        implement a geometric arrangement. Visual proximity encodes
+        semantic proximity. Supports intuitive navigation but
+        poor at precise retrieval.
+\end{itemize}
+
+The networked note system implements the knowledge landscape of
+Chapter~34: a graph of concepts linked by semantic relationships,
+navigable by following high-accessibility paths.
+
+\section{Memories}
+
+Memories, unlike notes, are not explicitly organized — they are
+implicitly organized by the constraint structure they form part of.
+But the agent can influence this organization through \emph{encoding
+strategies}: practices that increase the depth and connectivity of
+memory traces.
+
+\begin{definition}{Encoding Depth}{encoding-depth}
+  The \emph{encoding depth} of an experience $E$ is the number of
+  constraint modifications $|\Delta\mathcal{C}|$ it induces — how
+  many existing concepts are connected to and modified by the new
+  experience. Shallow encoding ($|\Delta\mathcal{C}|$ small) produces
+  weak, isolated memories; deep encoding produces strong, well-connected ones.
+\end{definition}
+
+Elaborative rehearsal (connecting new information to existing knowledge),
+self-explanation (articulating what a concept means in your own terms),
+and testing (attempting to retrieve and apply knowledge) all increase
+encoding depth. They increase $|\Delta\mathcal{C}|$ by forcing the
+new information into contact with existing constraint structures.
+
+\section{Projects}
+
+Projects are extended goal-directed activities that require sustained
+access to a specific subset of the knowledge infrastructure. Managing
+projects requires managing which parts of the knowledge infrastructure
+are currently active — which constraints are in working memory versus
+which are in long-term storage.
+
+\begin{definition}{Project as Cognitive Context}{project-context}
+  A \emph{project context} is a subset $\mathcal{C}_P \subset \mathcal{C}$
+  of the full constraint set, activated specifically for a project $P$.
+  The \emph{context switch cost} when moving between projects $P_1$
+  and $P_2$ is proportional to $|\mathcal{C}_{P_1} \setminus
+  \mathcal{C}_{P_2}|$ — the constraints that must be deactivated and
+  reactivated.
+\end{definition}
+
+This formalizes the cost of multitasking: each context switch requires
+deactivating one project's constraint context and reactivating another's.
+Deep work (sustained attention to a single project) minimizes context
+switch costs and allows the full constraint context to be active,
+enabling the most complex inferences.
+
+\section{Archives}
+
+Archives are the long-term storage tier of the personal knowledge
+infrastructure: the repository of constraint modifications that are
+important but not currently active. A well-maintained archive has:
+\begin{itemize}
+  \item High retrieval efficiency (quick access when needed),
+  \item Good index structure (easy to find relevant constraints),
+  \item Regular maintenance (constraints updated as knowledge evolves),
+  \item Appropriate decay management (important constraints retained,
+        trivial ones allowed to decay).
+\end{itemize}
+
+\begin{namedthm}{The Personal Knowledge Infrastructure Principle}
+  An agent's cognitive performance is bounded by the quality of their
+  personal knowledge infrastructure: notes (extended memory), encoding
+  practices (memory depth), project management (context efficiency),
+  and archive maintenance (long-term retention). Optimizing any one
+  tier in isolation is less effective than optimizing the interfaces
+  between tiers.
+\end{namedthm}
+
+\begin{exercise}
+  Audit your current personal knowledge infrastructure. For each tier
+  (notes, active memory, projects, archive), identify its current
+  implementation, its strengths, and its weakest point. Design one
+  specific improvement to the interface between two tiers.
+\end{exercise}
+
+\begin{exercise}
+  Compare two famous intellectual workers known for prolific output:
+  Charles Darwin (extensive notebooks, structured correspondence,
+  decades-long project management) and Nikola Tesla (claimed to
+  work almost entirely in mental simulation with minimal notes).
+  What does each approach imply about their personal knowledge
+  infrastructure? What are the failure modes of each?
+\end{exercise}

@@ -1,0 +1,97 @@
+\chapter{Notation, Glossary, and Framework Summary}
+
+\section{Notation Table}
+
+\begin{center}\small
+\begin{tabular}{lll}
+\toprule
+Symbol & Meaning & First appears \\
+\midrule
+$\mathcal{X}$ & Trajectory space & Ch.~1 \\
+$\mathcal{M}$ & Representation space & Ch.~1 \\
+$\mathbb{R}$ & Query space & Ch.~1 \\
+$\pi : \mathcal{X} \to \mathcal{M}$ & Compression (projection) operator & Ch.~1 \\
+$\sim_\pi$ & Equivalence relation induced by $\pi$ & Ch.~1 \\
+$[x]_\pi = \pi^{-1}(\pi(x))$ & Fiber (equivalence class) of $x$ & Ch.~1 \\
+$\pi^{-1}(m)$ & Fiber of compressed state $m$ & Ch.~16 \\
+$\mathcal{X}/{\sim_\pi}$ & Quotient space & Ch.~15 \\
+$Q : \mathcal{X} \to \mathbb{R}$ & Query function & Ch.~1 \\
+$\mathcal{Q}$ & Query family & Ch.~1 \\
+$Q_d$ & Degree-$d$ approximation of $Q$ & Ch.~2 \\
+$F_d : \mathcal{M} \to \mathbb{R}$ & Reconstruction operator & Ch.~2 \\
+$\pi^+_Q$ & Query-relative reconstruction operator & Ch.~2 \\
+$\pi^+$ & Moore--Penrose pseudoinverse & Ch.~15 \\
+$x_0, \gamma_0$ & Reference trajectory & Ch.~2 \\
+$I_r^{Q,x_0}$ & $r$-th interaction term & Ch.~3 \\
+$A_r^{Q,\gamma_0}$ & $r$-th accessibility interaction term & Ch.~7 \\
+$\{\sigma_r\}$ & Stability sequence & Ch.~3 \\
+$d_Q$ & Query truncation order & Ch.~4 \\
+$d_\pi$ & Compression depth & Ch.~4 \\
+$E_c$ & Compressibility error & Ch.~2 \\
+$E_s$ & Sufficiency error & Ch.~2 \\
+$E_a$ & Approximation error & Ch.~2 \\
+$E_{\mathrm{total}}$ & Total reconstruction error & Ch.~2 \\
+$B$ & Branching factor (discrete) & Ch.~6 \\
+$B_{\mathrm{eff}}$ & Effective branching factor (continuous) & Ch.~7 \\
+$\alpha$ & Attenuation / contraction parameter & Ch.~6 \\
+$\mu$ & Measure on field configuration space & Ch.~7 \\
+$\mathcal{A}_r(F)$ & Accessible $r$-neighborhood of $F$ & Ch.~7 \\
+$\mathcal{S}_{d_\pi}(F)$ & Accessibility skeleton & Ch.~7 \\
+$C_\varepsilon(x_0,\pi,\mathcal{Q})$ & Cone of recoverability & Ch.~16 \\
+$G = (S,R,C)$ & Semantic constraint grammar & Ch.~6 \\
+$\mathcal{G} = (\mathcal{F},\mathcal{T},\mathcal{C})$ & Field grammar & Ch.~7 \\
+$X_{\mathrm{sem}}, M_{\mathrm{sem}}$ & Semantic trajectory/representation spaces & Ch.~6 \\
+$X_{\mathrm{acc}}, M_{\mathrm{acc}}$ & Accessibility trajectory/representation spaces & Ch.~7 \\
+$\pi_{\mathrm{CLIO}}$ & CLIO compression operator & Ch.~6 \\
+$\pi_{\mathrm{acc}}$ & Accessibility skeleton compression & Ch.~7 \\
+$\triangle$ & Symmetric difference of sets & Ch.~7 \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\section{Key Definitions}
+
+\begin{description}
+\item[Fiber.] $\pi^{-1}(m) = \{x \in \mathcal{X} : \pi(x) = m\}$. The set of all alternative histories consistent with compressed state $m$. Counterfactual reasoning is navigation within fibers.
+
+\item[Query-flat fiber.] A fiber in which all elements produce approximately the same query answers: $\sup_{x,x' \in \pi^{-1}(m)} |Q(x) - Q(x')| \leq \varepsilon$. The geometric consequence of stability.
+
+\item[Cone of recoverability.] $C_\varepsilon(x_0,\pi,\mathcal{Q}) = \{x : |Q(x) - \pi^+_Q(\pi(x))| \leq \varepsilon\}$. Broad under exponential stability; narrow under polynomial; collapsed under no stability.
+
+\item[Aligned compression.] A compression whose equivalence classes coincide with the directions the stability sequence renders negligible. Collapses stable directions; preserves important directions. Eliminates all architectural failure modes.
+
+\item[Type I degeneracy.] Compression collapses trajectories the query family distinguishes. Information destroyed. Examples: false memories, revisionism.
+
+\item[Type II degeneracy.] Formal sufficiency ($\varepsilon_1 = 0$) but ill-conditioned reconstruction. Examples: accessibility skeleton on continuous spaces, dark-sector parameter degeneracy.
+\end{description}
+
+\section{Framework Summary: Eight Steps}
+
+\begin{enumerate}
+  \item Define the trajectory space $\mathcal{X}$ and reference $x_0$.
+  \item Define the interaction decomposition: specify $I_r^{Q,x_0}$ and verify exactness.
+  \item Verify stability: bound $|I_r^{Q,x_0}| \leq C_Q \sigma_r$ and check $\sum_{r>d} \sigma_r \to 0$.
+  \item Define the compression $\pi$ and depth $d_\pi$; identify the fiber structure.
+  \item Verify sufficiency: compute or bound $\varepsilon_1$.
+  \item Bound approximation error $\varepsilon_0$.
+  \item Check alignment: $d_\pi = d_Q$; all three error terms share the same decay rate.
+  \item Diagnose failure modes: which of the five failure types is active?
+\end{enumerate}
+
+\section{Domain Comparison}
+
+\begin{center}\small
+\begin{tabular}{llll}
+\toprule
+ & Ch.~5 (Learning) & Ch.~6 (Semantic) & Ch.~7 (Physical) \\
+\midrule
+Interaction order & Polynomial degree & Branch depth & Transition depth \\
+Stability mechanism & Derivative decay & $\alpha$-attenuation & $\alpha$-contraction \\
+Compression & Polynomial sketch & Branch tree & Accessibility skeleton \\
+Sufficiency error & $O(\varepsilon)$ & $0$ (exact) & $0$ ($\mu$-a.e.) \\
+Alignment type & By coincidence & By design & Under uncertainty \\
+Verified class & MicroGPT (empirical) & $B\alpha < 1$ & $B_{\mathrm{eff}}\alpha < 1$ \\
+Open question & Frontier stability & Natural-language attenuation & RSVP contraction \\
+\bottomrule
+\end{tabular}
+\end{center}

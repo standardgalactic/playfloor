@@ -1,0 +1,67 @@
+% Appendix M: Semantic Infrastructure, Category Theory, and Knowledge Composition
+
+\section*{M.1 Introduction}
+
+How do multiple cognitive systems interact? How do ideas combine? How do
+documents merge? How do repositories evolve? The central claim is:
+\emph{Knowledge is not fundamentally stored. Knowledge is composed.}
+The mathematical language of composition is category theory.
+
+\begin{definition}{Semantic Category}{sem-cat}
+  The \emph{semantic category} $\mathbf{Sem}$ consists of:
+  \emph{objects} (concepts, documents, theories, software modules) and
+  \emph{morphisms} $f : A \to B$ (translation, summarization, refinement,
+  compilation, abstraction). Composition satisfies associativity;
+  each object has an identity morphism.
+\end{definition}
+
+\begin{definition}{Semantic Merge via Pushout}{sem-merge}
+  Given modules $A$ and $B$ sharing interface $I$:
+  $A \leftarrow I \to B$, the \emph{merge} is the pushout
+  $P = A \sqcup_I B$. This formalizes document merging,
+  repository merging, and knowledge integration.
+\end{definition}
+
+\begin{definition}{Semantic Conflict}{sem-conflict}
+  A \emph{semantic conflict} occurs when no admissible pushout exists:
+  contradictory definitions, incompatible assumptions, conflicting ontologies.
+  Conflict becomes a mathematical obstruction.
+\end{definition}
+
+\begin{definition}{Admissible Merge}{adm-merge}
+  A merge is \emph{admissible} if $A(P) \geq \tau$.
+  Even if a pushout exists, the result may be incoherent;
+  admissibility filters poor merges.
+\end{definition}
+
+\begin{definition}{Semantic Functor}{sem-functor}
+  A \emph{semantic functor} $F : \mathbf{Sem}_1 \to \mathbf{Sem}_2$
+  preserves compositional structure, transporting meaning between domains
+  (mathematics~$\to$~software, theory~$\to$~simulation, gesture~$\to$~symbol).
+\end{definition}
+
+\begin{definition}{Version History}{version-hist}
+  A \emph{version history} is a morphism sequence
+  $V_0 \to V_1 \to V_2 \to \cdots$. History becomes categorical;
+  traditional version control is a special case.
+\end{definition}
+
+\begin{theorem}{Coherent Knowledge Systems are Categories}{knowledge-cat}
+  A coherent knowledge system is a category whose objects admit
+  admissible composition.
+\end{theorem}
+\begin{proof}
+  Objects alone are insufficient; morphisms provide transformation;
+  composition provides growth; admissibility guarantees coherence.
+\end{proof}
+
+\begin{namedthm}{The Semantic Infrastructure Principle}
+  Knowledge evolves through admissible composition:
+  \[
+    \text{Objects} \to \text{Morphisms} \to \text{Composition}
+    \to \text{Accessibility} \to \text{Civilization.}
+  \]
+  A civilization is not merely a population. It is a semantic
+  infrastructure that preserves, composes, and transmits accessibility
+  across generations.
+\end{namedthm}

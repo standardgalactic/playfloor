@@ -1,0 +1,120 @@
+% ============================================================
+%  Chapter 16
+% ============================================================
+
+\chapter{Projection Engines}
+
+\chapterepigraph{%
+  The same latent structure\\
+  can be heard as music,\\
+  seen as image,\\
+  read as text.\\
+  The engine is the same; the output is the choice.
+}{Flyxion, \textit{Semantic Infrastructure}}
+
+\sidenote{App.\,B for the\\formal projection\\theory; App.\,N\\for universal\\approximation}
+
+Chapter~15 showed how constraints reduce the search space for inference.
+This chapter examines the output side: how shared latent structures project
+into text, music, images, and behavior — and why the same underlying
+constraint geometry can appear in radically different surface forms.
+
+\section{Outputs as Projections}
+
+In the RSVP framework, any observable output is a projection of the
+underlying field configuration $(\Phi, \mathbf{v}, S)$ onto an
+observable space. Different output modalities correspond to different
+projections.
+
+\begin{definition}{Output Projection}{output-proj}
+  An \emph{output projection} is a map $\Pi_\text{out} : \mathcal{F} \to Y$
+  from the field configuration space $\mathcal{F}$ to an observable
+  output space $Y$. Different projection maps $\Pi_\text{out}$ define
+  different output modalities.
+\end{definition}
+
+The key insight is that $\mathcal{F}$ — the space of field configurations —
+is shared across all modalities. The differences between text, music,
+and images are differences in the projection, not differences in the
+underlying structure.
+
+\section{Text as Projection}
+
+Language is perhaps the most compressed of all projections. A sentence
+of $n$ words drawn from a vocabulary $V$ occupies a point in the discrete
+space $V^n$. The sentence's meaning, however, lives in the continuous
+semantic manifold $M_s$ of Chapter~23 (Appendix~L).
+
+The text projection $\Pi_\text{text} : M_s \to V^n$ maps semantic
+configurations to word sequences. This projection is enormously many-to-one:
+the fiber $\Pi_\text{text}^{-1}(w)$ over a sentence $w$ contains the
+entire equivalence class of semantic configurations that would be expressed
+by $w$. Synonymy, paraphrase, and translation are all manifestations of
+non-trivial fibers in the text projection.
+
+\section{Music as Projection}
+
+Music projects the same latent structure into a different observable space:
+time-frequency energy distributions, spectral sequences, rhythmic patterns.
+
+\begin{definition}{Musical Projection}{music-proj}
+  The \emph{musical projection} is $\Pi_\text{music} : M_s \to \mathcal{M}_\text{mus}$
+  where $\mathcal{M}_\text{mus}$ is the space of musical performances
+  (continuous waveforms, or symbolic scores, depending on level of analysis).
+\end{definition}
+
+The shared latent structure between text and music is most visible in
+their common organizational principles: narrative arc, tension and release,
+repetition and variation, hierarchical phrase structure. These are not
+metaphors — they are manifestations of the same accessibility geometry
+projected through different modalities.
+
+\section{Images as Projection}
+
+Visual images project the latent structure into two-dimensional spatial
+patterns. The projection $\Pi_\text{image} : \mathcal{F} \to \mathcal{I}$
+(where $\mathcal{I}$ is the space of images) has an interesting property:
+it tends to be more faithful than text or music projections, in the sense
+that natural images often have smaller fibers — there are fewer semantic
+configurations consistent with a given image than there are configurations
+consistent with a given sentence.
+
+This is why ``a picture is worth a thousand words'': the image projection
+retains more information than the text projection.
+
+\section{Shared Latent Structures}
+
+The deepest claim of the projection engine framework is that text,
+music, images, and behavior share a common latent space.
+
+\begin{namedthm}{The Projection Engine Principle}
+  Multiple observable modalities are different projections of the same
+  underlying accessibility geometry. Translation between modalities is
+  not conversion between different objects — it is comparison of different
+  projections of the same object. The universal structure is not the
+  text, not the music, not the image, but the field configuration
+  $(\Phi, \mathbf{v}, S)$ from which all are projected.
+\end{namedthm}
+
+\begin{exercise}
+  Identify three pairs of text and image that are ``projections of the
+  same thing'' — where the text and image share the same latent structure.
+  For each pair, describe what the shared latent structure is.
+  What information does each modality contain that the other lacks?
+\end{exercise}
+
+\begin{exercise}
+  Music is sometimes described as ``temporal'' and images as ``spatial.''
+  In the projection engine framework, is this distinction fundamental or
+  an artifact of the projection? Construct an argument that both modalities
+  project structures that are neither purely temporal nor purely spatial.
+\end{exercise}
+
+\begin{exercise}[title={Technical}]
+  Universal approximation theorems (Appendix~N) say that neural networks
+  can approximate any continuous function. Interpret this in terms of
+  projection engines: what is being approximated, and what is the
+  projection? What does ``sufficient depth'' mean in terms of the
+  accessibility landscape?
+\end{exercise}
+

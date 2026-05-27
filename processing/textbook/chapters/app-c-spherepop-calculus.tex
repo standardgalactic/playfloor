@@ -1,0 +1,129 @@
+% ============================================================
+%  chapters/app-c-spherepop-calculus.tex
+%  Appendix C: Spherepop Calculus as Nested Constraint Evaluation
+% ============================================================
+
+\section*{C.1 Introduction}
+
+The Spherepop formalism arose from a simple geometric observation. Ordinary
+symbolic notation represents hierarchy using brackets: $(1-(3\times 2^2))$.
+The brackets indicate evaluation order but possess no geometric interpretation.
+Spherepop replaces brackets by nested regions. Expressions become topological
+objects. Evaluation becomes the progressive collapse of nested constraint domains.
+
+% ── C.2–C.3 Expression Trees and Spherepop ────────────────────
+\section*{C.2 Expression Trees}
+
+\begin{definition}{Expression Tree}{exp-tree}
+  Let $\Sigma$ be a set of symbols (constants, variables, operators). An
+  \emph{expression tree} is a rooted tree $T = (V,E)$ whose leaves contain
+  constants or variables and whose internal nodes contain operators.
+\end{definition}
+
+\begin{figure}[h]
+  \centering
+  \begin{tikzpicture}[scale=0.72]
+    \input{diagrams/spherepop-eval-3d}
+  \end{tikzpicture}
+  \caption{Spherepop evaluation of $1 + 3 \times 2^2$. Each step collapses
+    an innermost sphere (nested region). The complexity functional $C(E)$
+    decreases monotonically: $3 \to 2 \to 1 \to 0$.}
+  \label{fig:spherepop-eval}
+\end{figure}
+
+\begin{proposition}{Embedding Existence}{embedding-exists}
+  Every finite expression tree admits a Spherepop embedding into nested
+  closed regions.
+\end{proposition}
+
+\begin{proof}
+  Proceed recursively. Embed the root as a region; embed each child as a
+  disjoint interior region; repeat until leaves. Finiteness ensures termination.
+\end{proof}
+
+% ── C.5–C.6 Complexity and Pop ────────────────────────────────
+\section*{C.5 The Complexity Functional}
+
+\begin{definition}{Complexity Functional}{complexity}
+  Let $E$ be an expression. Define $C(E)$ as the number of unresolved
+  operator nodes.
+\end{definition}
+
+\begin{proposition}{Evaluation Decreases Complexity}{eval-decreases}
+  Each evaluation step satisfies $C(E_{t+1}) = C(E_t) - 1$.
+\end{proposition}
+
+\begin{definition}{Pop Operator}{pop-def}
+  The \emph{pop operator} $P$ maps an expression $E$ to a reduced
+  expression $P(E)$ by eliminating one evaluation domain:
+  \[
+    P(2^2) = 4, \quad P(3 \times 4) = 12, \quad P(1 - 12) = -11.
+  \]
+\end{definition}
+
+% ── C.9–C.10 Termination and Confluence ──────────────────────
+\section*{C.9 Termination}
+
+\begin{theorem}{Spherepop Termination}{sp-termination}
+  Every finite arithmetic Spherepop expression terminates.
+\end{theorem}
+
+\begin{proof}
+  Each pop decreases $C(E)$ by one. Since $C(E) \geq 0$ and is
+  integer-valued, only finitely many decreases are possible.
+\end{proof}
+
+\section*{C.10 Confluence}
+
+\begin{theorem}{Spherepop Confluence}{sp-confluence}
+  Spherepop arithmetic is confluent whenever operator precedence is respected.
+\end{theorem}
+
+\begin{proof}
+  Arithmetic evaluation defines a unique value. Every legal reduction sequence
+  preserves semantic equivalence. Hence all legal paths terminate at the same value.
+\end{proof}
+
+% ── C.12–C.14 Constraint Descent and Renormalization ─────────
+\section*{C.12 Spherepop as Constraint Descent}
+
+Define $\kappa(E) = C(E)$ — the number of unresolved operations. Every pop
+satisfies $\kappa(P(E)) < \kappa(E)$. Thus Spherepop evaluation is precisely
+a constraint descent process (Appendix~A, Definition~\ref{def:constraint-descent}).
+
+\begin{remark}
+  This is the first major bridge between Spherepop and RSVP. Both are
+  relaxation systems. Both reduce constraint violation. Both seek admissible
+  configurations.
+\end{remark}
+
+\section*{C.14 Evaluation as Renormalization}
+
+\begin{definition}{Renormalizing Pop}{renorm-pop}
+  A \emph{renormalizing pop} is $R : M_i \to M_{i-1}$, replacing detailed
+  internal structure by an effective value. Example: $(3 \times 2^2)$
+  becomes $12$. The internal structure disappears; only effective behavior
+  remains. This resembles renormalization in statistical physics.
+\end{definition}
+
+% ── C.15 Fundamental Theorem ──────────────────────────────────
+\section*{C.15 The Spherepop Fundamental Theorem}
+
+\begin{theorem}{Spherepop Fundamental Theorem}{sp-fundamental}
+  Every finite Spherepop expression defines a terminating constraint-descent
+  flow whose terminal state is an equivalence-class representative in the
+  quotient space of semantic evaluation.
+\end{theorem}
+
+\begin{proof}
+  Termination follows from \cref{thm:sp-termination}.
+  Constraint descent follows from Proposition~\ref{prop:eval-decreases}.
+  The quotient construction: define $E_1 \sim E_2$ iff
+  $\mathrm{eval}(E_1) = \mathrm{eval}(E_2)$; the terminal value is
+  a representative of $[E]$ in the quotient.
+\end{proof}
+
+\medskip
+\noindent
+\textit{Appendix~D} will show that Boolean logic can be represented as a
+Spherepop system whose nested regions correspond to logical operators.

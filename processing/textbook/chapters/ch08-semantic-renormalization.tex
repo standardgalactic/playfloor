@@ -1,0 +1,225 @@
+% ============================================================
+%  chapters/ch08-semantic-renormalization.tex
+% ============================================================
+
+\chapter{Semantic Renormalization}
+
+\chapterepigraph{%
+  To understand is to forget the details\\
+  while preserving the structure.\\
+  Understanding is renormalization.
+}{Flyxion, \textit{Semantic Infrastructure}}
+
+\sidenote{Renormalization\\in physics:\\Wilson, 1971;\\ in logic:\\proof normalization}
+
+The previous chapters treated evaluation as reduction: each pop step
+removes one sphere, decreasing depth and complexity. This chapter examines
+evaluation from the opposite direction — not as \emph{destruction} of
+structure but as \emph{transformation} of structure. The relevant concept
+is renormalization.
+
+\section{The Collapse Operator Revisited}
+
+In physics, renormalization is a procedure for handling theories with
+infinitely many degrees of freedom by systematically integrating out
+short-distance behavior and replacing it with effective parameters.
+The key insight is that the result at long distances does not depend
+on the microscopic details — only on certain aggregate properties
+(coupling constants, anomalous dimensions) that survive the integration.
+
+Spherepop evaluation has an identical structure.
+
+\begin{definition}{Spherepop Renormalization}{sp-renorm}
+  A \emph{Spherepop renormalization step} at depth $k$ collapses all
+  spheres at depth $k$ simultaneously, replacing each with its evaluated
+  value. The result is an expression of depth $k-1$ in which the
+  depth-$k$ details have been integrated out.
+\end{definition}
+
+The depth-$k$ details (the specific sub-expressions that were collapsed)
+are gone after renormalization. Only their effective values — the atoms
+that replaced them — survive. The long-distance (low-depth) structure
+of the expression is unaffected.
+
+\section{Compression}
+
+Renormalization produces \emph{compression}: a shorter, simpler
+expression that computes the same thing as the original.
+
+\begin{definition}{Semantic Compression}{sem-compress}
+  An expression $E'$ is a \emph{semantic compression} of $E$ if:
+  \begin{enumerate}
+    \item $E' \equiv E$ (semantically equivalent: same terminal value),
+    \item $D(E') < D(E)$ or $|E'| < |E|$ (strictly simpler).
+  \end{enumerate}
+\end{definition}
+
+Every pop step is a semantic compression: the result has fewer spheres
+and lower depth, but the same value. Full evaluation is maximal
+compression: the terminal atomic sphere is the most compressed form
+possible.
+
+\begin{example}
+  Starting from $E = \langle{+}\,:\, 1,\, \langle{\times}\,:\,3,\,
+  \langle{\uparrow}\,:\,2,\,2\rangle\rangle\rangle$ (6 spheres, depth 2):
+  \begin{align*}
+    E &\to_\text{pop} \langle{+}\,:\, 1,\, \langle{\times}\,:\,3,\,4\rangle\rangle
+      & \text{(5 spheres, depth 1)}\\
+    &\to_\text{pop} \langle{+}\,:\, 1,\, 12\rangle
+      & \text{(3 spheres, depth 1)}\\
+    &\to_\text{pop} 13
+      & \text{(1 sphere, depth 0)}
+  \end{align*}
+  Three compressions; final form is maximally compressed.
+\end{example}
+
+\section{Abstraction}
+
+Renormalization in physics produces \emph{effective theories}: descriptions
+valid at a given scale that replace the microscopic theory with a coarser
+but computationally tractable model. Spherepop renormalization produces
+the same: \emph{abstractions}.
+
+\begin{definition}{Semantic Abstraction}{sem-abstract}
+  A \emph{semantic abstraction} is a named partial expression:
+  a sphere with a label $f$ that represents a complex sub-expression,
+  without expanding the sub-expression. In bracket notation:
+  $f$ (where $f$ is understood to expand to $\langle{+}\,:\,1,\,12\rangle$
+  if needed).
+\end{definition}
+
+Abstraction is deferred renormalization: we give a name to the
+result of a sub-computation without performing it. Functions, modules,
+classes, and APIs are all forms of semantic abstraction — they provide
+the \emph{interface} of a computation without revealing the
+\emph{implementation}.
+
+\begin{remark}
+  The power of abstraction lies precisely in what it hides. A function
+  $f(x) = x^2 + 2x + 1$ and a function $g(x) = (x+1)^2$ are
+  semantically equivalent ($f \equiv g$) but structurally different.
+  The abstracted form $h(x) = (x+1)^2$ is more compressed and reveals
+  the structure (a perfect square) that the expanded form hides. Good
+  abstractions choose the compressed representation that makes relevant
+  structure visible while hiding irrelevant detail.
+\end{remark}
+
+\section{Quotient Structures}
+
+Semantic renormalization produces quotient structures: the set of
+all expressions, quotiented by semantic equivalence, organized by
+their compression level.
+
+\begin{definition}{Renormalization Tower}{renorm-tower}
+  The \emph{renormalization tower} of an expression space $\mathcal{E}$
+  is the sequence of quotient spaces:
+  \[
+    \mathcal{E} = \mathcal{E}_0 \twoheadrightarrow \mathcal{E}_1
+    \twoheadrightarrow \cdots \twoheadrightarrow \mathcal{E}_n
+  \]
+  where $\mathcal{E}_k$ is the space of expressions of depth $\leq D-k$
+  (expressions with the first $k$ levels of detail collapsed), and each
+  arrow is a quotient projection.
+\end{definition}
+
+This tower is the Spherepop version of the renormalization group in
+physics: a sequence of effective theories, each coarser than the last,
+each valid at a different scale of detail.
+
+\begin{figure}[h]
+  \centering
+  \begin{tikzpicture}[
+    tower/.style={draw=RSVPdeep, thick, rounded corners=4pt,
+      minimum width=5.5cm, minimum height=0.8cm,
+      fill=RSVPlight, font=\small},
+    arrowstyle/.style={-{Stealth[length=6pt]}, RSVPaccent, thick}
+  ]
+    \node[tower] (E0) at (0, 3.6)
+      {$\mathcal{E}_0$: full expressions (depth $\leq D$)};
+    \node[tower] (E1) at (0, 2.4)
+      {$\mathcal{E}_1$: depth $\leq D{-}1$ (one level collapsed)};
+    \node[tower] (E2) at (0, 1.2)
+      {$\mathcal{E}_2$: depth $\leq D{-}2$ (two levels collapsed)};
+    \node[tower, fill=RSVPdeep, text=white] (En) at (0, 0.0)
+      {$\mathcal{E}_D$: atoms only (fully evaluated)};
+    \draw[arrowstyle] (E0) -- (E1)
+      node[midway, right=3pt, font=\footnotesize\itshape] {renormalize};
+    \draw[arrowstyle] (E1) -- (E2)
+      node[midway, right=3pt, font=\footnotesize\itshape] {renormalize};
+    \draw[arrowstyle, dashed] (E2) -- (En)
+      node[midway, right=3pt, font=\footnotesize\itshape] {$\cdots$};
+  \end{tikzpicture}
+  \caption{The renormalization tower of Spherepop expressions.
+    Each level integrates out one more layer of syntactic detail,
+    replacing it with effective values. The bottom level contains
+    only atoms: fully evaluated, maximally compressed expressions.}
+  \label{fig:renorm-tower}
+\end{figure}
+
+\section{Relationship to Admissibility}
+
+Renormalization and admissibility interact through the constraint structure.
+Each level of the renormalization tower has its own admissibility conditions:
+what counts as a well-formed expression of depth $\leq k$.
+
+\begin{proposition}{Admissibility is Renormalization-Stable}{adm-stable}
+  If $E$ is admissible (satisfies all syntactic and semantic constraints),
+  then any renormalization $R_k(E)$ is also admissible.
+\end{proposition}
+
+\begin{proof}
+  Renormalization replaces each sub-expression with its value.
+  Values are always well-typed atoms. Therefore the renormalized
+  expression satisfies all typing constraints. Semantic constraints
+  (e.g., the result is in the correct domain) are preserved because
+  the value is the actual evaluated result.
+\end{proof}
+
+\section{Connection to CLIO and Semantic Fields}
+
+The renormalization tower provides a natural interpretation for the
+CLIO (Constraint-Leveraged Inference Optimization) framework
+(Chapter~15, Appendix~H). CLIO uses constraint satisfaction to prune
+the search space. Renormalization tells us why this works:
+
+\begin{conceptaside}{Why Renormalization Enables Inference}
+  A naive inference system must consider all possible continuations of
+  a partial expression. This is exponential in the number of open positions.
+
+  Renormalization provides a shortcut: instead of exploring all
+  continuations in the full expression space $\mathcal{E}_0$, the system
+  works in the renormalized space $\mathcal{E}_k$ where the fine details
+  have been integrated out. The search space is exponentially smaller.
+
+  This is why CLIO — and why human experts — can solve problems that
+  brute-force search cannot. The expert has internalized the renormalization
+  of their domain: they work at the level of abstracted patterns rather
+  than raw details. The patterns are the fixed points of the renormalization
+  flow: the structures that survive repeated compression.
+
+  In terms of the RSVP fields: renormalized expressions correspond to
+  states of low $\kappa$ (constraint violation) and high $S$ (accessibility).
+  The renormalization flow is a gradient flow toward these states.
+\end{conceptaside}
+
+\begin{exercise}
+  Apply two levels of renormalization to the expression
+  $((2+3) \times (4+1)) + ((6-1) \times (1+1))$.
+  What expression results? What detail has been integrated out?
+\end{exercise}
+
+\begin{exercise}
+  Define ``semantic lossiness'' of a renormalization step as
+  $L_k = d(E, R_k(E))$ (edit distance between the original and
+  renormalized expression). Show that $L_k$ is monotonically
+  non-decreasing in $k$ (more renormalization = more lossiness).
+  When is $L_k = 0$?
+\end{exercise}
+
+\begin{exercise}[title={Algebraic}]
+  The renormalization tower is a sequence of surjections
+  $\mathcal{E}_0 \twoheadrightarrow \cdots \twoheadrightarrow \mathcal{E}_D$.
+  Show that this sequence forms an inverse system. What is the
+  inverse limit $\varprojlim \mathcal{E}_k$? (Hint: consider what
+  the inverse limit means in terms of ``infinitely detailed'' expressions.)
+\end{exercise}

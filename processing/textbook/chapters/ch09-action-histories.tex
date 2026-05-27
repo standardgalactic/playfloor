@@ -1,0 +1,272 @@
+% ============================================================
+%  chapters/ch09-action-histories.tex
+% ============================================================
+
+\chapter{Action Histories and Spherepop Dynamics}
+
+\chapterepigraph{%
+  The present moment is always the consequence\\
+  of everything that has already been decided.\\
+  Action history is the accumulation of constraint.
+}{Flyxion, \textit{Semantic Infrastructure}}
+
+\sidenote{Connects to\\decision theory,\\Lagrangian mechanics,\\and RSVP action\\(App.\,K §K.20)}
+
+The previous four chapters developed Spherepop as a static and kinematic
+system: expressions, their syntax, their evaluation, their geometry, their
+renormalization. This chapter introduces a dynamic structure that goes deeper:
+the \emph{action history} of a computation, and the variational principle
+that governs it.
+
+\section{The Spherepop Lagrangian}
+
+Classical mechanics describes particle trajectories as the extrema of
+an action functional:
+\[
+  \mathcal{S}[\gamma] = \int_0^T L(q, \dot{q})\,dt.
+\]
+The Euler–Lagrange equations then determine which trajectories are physical.
+
+Spherepop evaluation has an analogous structure. Rather than a particle
+moving through physical space, we have an expression evolving through
+expression space. Rather than kinetic energy minus potential energy,
+we have evaluation cost minus structural richness.
+
+\begin{definition}{Spherepop Lagrangian}{sp-lagrangian}
+  For a reduction sequence $\sigma = (E_0 \to E_1 \to \cdots \to E_n)$,
+  the \emph{Spherepop Lagrangian} is:
+  \[
+    L(E_t, \dot{E}_t) = C(E_t) - \lambda \cdot \mathrm{Acc}(E_t)
+  \]
+  where $C(E_t)$ is the complexity (number of non-atomic spheres),
+  $\mathrm{Acc}(E_t) = \log |\mathcal{A}(E_t)|$ is the accessibility
+  entropy, and $\lambda > 0$ is a tradeoff parameter.
+\end{definition}
+
+The action of the reduction sequence is:
+\[
+  \mathcal{S}[\sigma] = \sum_{t=0}^{n-1} L(E_t, \dot{E}_t).
+\]
+Evaluation minimizes this action: among all sequences reaching the
+terminal expression, evaluation by the innermost-first (depth-first)
+strategy minimizes $\mathcal{S}$.
+
+\section{Action Histories}
+
+The concept of an action history extends the variational picture.
+A computation does not exist only in the present moment — it carries the
+entire record of how it arrived at its current state.
+
+\begin{definition}{Action History}{action-history}
+  The \emph{action history} of an expression $E_t$ in a reduction
+  sequence is the sequence of all previous states and pop operations:
+  \[
+    \mathcal{H}_t = (E_0, p_0, E_1, p_1, \ldots, p_{t-1}, E_t)
+  \]
+  where $p_i$ denotes the pop operation at step $i$.
+\end{definition}
+
+The action history is the computational analog of the path integral
+in quantum mechanics. Just as the quantum amplitude for a particle to
+reach state $x$ at time $T$ is a sum over all paths from the initial
+state to $x$, the ``weight'' of a computation reaching expression $E_t$
+is determined by the action of all paths leading to it.
+
+\section{Commitment Variables}
+
+\begin{remark}
+  \textbf{The $0.73\,$Hz loop and action history.}
+  Cognitive neuroscience identifies a characteristic frequency near
+  $0.73\,$Hz in the aggregation of sensory inputs into conscious
+  perception — the rate at which the brain integrates distributed
+  neural activity into a unified temporal snapshot of the present moment.
+  In the action-history framework, this loop is the rate of
+  \emph{commitment}: each cycle converts a portion of remaining freedom
+  $F_t$ into committed past $\Gamma_t$. The $0.73\,$Hz rhythm is the
+  cognitive analogue of the cosmic entropy clock — the rate at which
+  the agent's future collapses into its past, one irreversible snapshot
+  at a time. An agent's ``present moment'' is the temporal resolution
+  of its commitment cycle, not a physical primitive.
+\end{remark}
+
+
+A key concept in action history theory is the \emph{commitment variable}:
+a choice made at some point in the evaluation that is now fixed and
+cannot be undone.
+
+\begin{definition}{Commitment Variable}{commitment-var}
+  A \emph{commitment} is a pop step $p_i$ in an action history
+  $\mathcal{H}_t$ (with $i < t$). Once committed, the popped sphere
+  is gone — the information it contained has been discarded. The
+  commitment is irreversible.
+  The \emph{commitment set} $\Gamma_t = \{p_0, p_1, \ldots, p_{t-1}\}$
+  is all decisions made up to time $t$.
+\end{definition}
+
+The commitment set accumulates throughout evaluation. Early commitments
+(deep pops) constrain the behavior of later, shallower pops. This
+is why evaluation order matters for efficiency even when it does not
+matter for correctness: different evaluation orders make different
+commitments at different times, and some commitment orders allow
+subsequent decisions to be made more efficiently.
+
+\section{Remaining Freedom}
+
+The complement of the commitment set is the \emph{remaining freedom}:
+the set of choices not yet made.
+
+\begin{definition}{Remaining Freedom}{remaining-freedom}
+  The \emph{remaining freedom} at time $t$ in an evaluation sequence
+  is the set of expressions reachable from $E_t$ by some evaluation
+  strategy:
+  \[
+    \mathcal{F}_t = \{E' : E_t \to_\text{pop}^* E'\}.
+  \]
+  The \emph{freedom measure} is $F_t = |\mathcal{F}_t|$.
+\end{definition}
+
+\begin{proposition}{Freedom Decreases with Commitment}{freedom-decrease}
+  For any evaluation sequence, $F_{t+1} \leq F_t$.
+\end{proposition}
+
+\begin{proof}
+  $\mathcal{F}_{t+1} \subseteq \mathcal{F}_t$: every expression reachable
+  from $E_{t+1}$ is also reachable from $E_t$ (via the additional pop
+  step $E_t \to E_{t+1}$). But $\mathcal{F}_{t+1}$ may exclude expressions
+  reachable from $E_t$ by a different pop step, so the containment
+  may be strict.
+\end{proof}
+
+This proposition formalizes a profound principle: \emph{computation
+consumes freedom}. Each pop step irrevocably narrows the future.
+This is the computational analog of the thermodynamic increase of
+entropy: the past grows larger; the future shrinks.
+
+\section{Accessibility Measures}
+
+The accessibility measures of Chapter~1 and Appendix~J apply directly
+to evaluation sequences. The accessibility entropy of an expression
+is the logarithm of its freedom measure:
+\[
+  S_t = \log F_t = \log |\mathcal{F}_t|.
+\]
+
+\begin{proposition}{Accessibility Entropy Decreases Under Evaluation}{access-decrease}
+  For any evaluation sequence, $S_{t+1} \leq S_t$.
+\end{proposition}
+
+This is the computational Second Law: evaluation is an irreversible
+process that consumes accessibility. The initial expression has maximal
+accessibility (many possible futures); the terminal atom has zero
+accessibility (no future — computation is complete).
+
+\begin{figure}[h]
+  \centering
+  \begin{tikzpicture}[scale=0.85]
+    % Axes
+    \draw[->, thick, RSVPdeep] (0,0) -- (6.5,0) node[right] {$t$ (steps)};
+    \draw[->, thick, RSVPdeep] (0,0) -- (0,4.5) node[above] {measure};
+    % C(E_t) — complexity, decreasing
+    \draw[RSVPaccent, very thick]
+      (0,4.0) -- (1,4.0) -- (1,3.2) -- (2,3.2) -- (2,2.3) --
+      (3,2.3) -- (3,1.4) -- (4,1.4) -- (4,0.5) -- (5,0.5) -- (5,0);
+    \node[RSVPaccent, font=\small\itshape] at (5.8, 2.0) {$C(E_t)$};
+    % S_t — accessibility entropy, also decreasing
+    \draw[RSVPmid, very thick, dashed]
+      (0,3.5) to[out=0,in=170] (2,2.6) to[out=-10,in=165] (4,1.0)
+      to[out=-15,in=175] (5,0);
+    \node[RSVPmid, font=\small\itshape] at (5.8, 1.2) {$S_t$};
+    % Labels
+    \foreach \x in {0,1,2,3,4,5}
+      \node[below, font=\tiny] at (\x,0) {$\x$};
+    \node[left, font=\tiny] at (0,4.0) {$n$};
+    \node[left, font=\tiny] at (0,0) {$0$};
+    \node[RSVPdeep, font=\footnotesize] at (2.5,-0.6) {pop step};
+  \end{tikzpicture}
+  \caption{Complexity $C(E_t)$ and accessibility entropy $S_t$ as
+    functions of evaluation step $t$. Both decrease monotonically
+    to zero at the terminal state. $C$ decreases by exactly 1 per
+    step; $S$ decreases more smoothly, capturing the branching
+    structure of the evaluation space.}
+  \label{fig:entropy-decrease}
+\end{figure}
+
+\section{Connection to Decision Theory}
+
+The action history formalism connects directly to decision theory under
+uncertainty. Consider a computation where some operators are stochastic:
+they produce different outputs with different probabilities. The evaluation
+then defines a probability tree, and the action history becomes a sample
+path through this tree.
+
+\begin{definition}{Stochastic Evaluation}{stoch-eval}
+  A \emph{stochastic Spherepop system} replaces deterministic operators
+  with probability distributions over outputs. The \emph{expected action}
+  of an evaluation strategy $\pi$ is:
+  \[
+    \mathbb{E}_\pi[\mathcal{S}] = \sum_\sigma P_\pi(\sigma) \cdot \mathcal{S}[\sigma]
+  \]
+  where the sum is over all possible reduction sequences $\sigma$.
+\end{definition}
+
+Optimal decision-making — choosing the evaluation strategy $\pi^*$ that
+minimizes expected action subject to accessibility constraints — is
+equivalent to solving a Markov decision process defined on the expression
+manifold.
+
+\section{Connection to RSVP}
+
+The action history formalism is the bridge between Spherepop and RSVP.
+In RSVP, the action functional is:
+\[
+  \mathcal{S}_\text{RSVP}[\Phi,\mathbf{v},S] =
+  \int \mathcal{L}(\Phi,\mathbf{v},S)\,d^4x
+\]
+(Appendix~K, Definition~K.20). The Spherepop Lagrangian $L(E_t)$ is
+the discrete analog of $\mathcal{L}$:
+
+\begin{itemize}
+  \item Complexity $C(E_t)$ $\leftrightarrow$ scalar density $\Phi$:
+        both measure the concentration of unresolved structure.
+  \item Pop operations $\leftrightarrow$ vector flow $\mathbf{v}$:
+        both describe directed motion through the state space.
+  \item Accessibility entropy $S_t$ $\leftrightarrow$ entropy field $S$:
+        both measure the volume of available futures.
+\end{itemize}
+
+The RSVP field equations (Appendix~K) are the continuous limit of the
+Spherepop action history: as the expression space becomes continuous
+and evaluations become infinitesimally small, the discrete action sum
+$\sum L(E_t)$ becomes the continuous action integral $\int \mathcal{L}\,d^4x$.
+
+\begin{namedthm}{Spherepop–RSVP Correspondence}
+  The Spherepop action history formalism is the discrete skeleton of
+  the RSVP field theory. Expressions correspond to field configurations;
+  evaluation sequences correspond to field trajectories; complexity
+  corresponds to scalar density; accessibility corresponds to entropy.
+  The two frameworks are related by a limiting process: RSVP is
+  the continuum limit of Spherepop dynamics.
+\end{namedthm}
+
+\begin{exercise}
+  Compute the action $\mathcal{S}[\sigma]$ for the evaluation
+  of $1 + (3 \times (2 \uparrow 2))$, using the Lagrangian
+  $L(E_t) = C(E_t) - S_t$ with $\lambda = 1$. Assume $S_0 = \log 6$,
+  $S_1 = \log 5$, $S_2 = \log 3$, $S_3 = 0$.
+\end{exercise}
+
+\begin{exercise}
+  The freedom measure $F_t = |\mathcal{F}_t|$ measures the number of
+  terminal expressions reachable from $E_t$. For a deterministic,
+  confluent operator set, show that $F_t = 1$ for all $t \geq 0$.
+  (What does this say about accessibility in fully deterministic
+  computation?)
+\end{exercise}
+
+\begin{exercise}[title={Open problem}]
+  Define an appropriate notion of \emph{Spherepop entropy production}:
+  the rate at which accessibility is consumed per pop step. For which
+  evaluation strategies is entropy production minimal? Does minimal
+  entropy production correspond to any known computational optimization
+  strategy?
+\end{exercise}

@@ -1,0 +1,57 @@
+% gesture-manifold-3d.tex — fiber projection (layered 2D)
+\tikzset{
+  fiber/.style={thin, opacity=0.6},
+}
+
+  % Top layer: gesture space G
+  \draw[RSVPdeep, thick, rounded corners=6pt]
+    (-3.5, 0.5) rectangle (3.5, 2.6);
+  \node[RSVPdeep, font=\small\scshape] at (-2.8, 2.35) {$\mathcal{G}$};
+
+  % Gesture points — cluster for A (amber)
+  \fill[RSVPaccent, opacity=0.85] (-2.8,1.8) circle (3pt);
+  \fill[RSVPaccent, opacity=0.85] (-2.0,2.1) circle (3pt);
+  \fill[RSVPaccent, opacity=0.85] (-1.4,1.6) circle (3pt);
+  % cluster for O (purple)
+  \fill[RSVPpurple, opacity=0.85] (-0.5,1.9) circle (3pt);
+  \fill[RSVPpurple, opacity=0.85] (0.1,2.2) circle (3pt);
+  % cluster for M (teal)
+  \fill[RSVPmid, opacity=0.85] (1.2,1.7) circle (3pt);
+  \fill[RSVPmid, opacity=0.85] (2.0,1.9) circle (3pt);
+  \fill[RSVPmid, opacity=0.85] (2.7,1.6) circle (3pt);
+
+  % Labels
+  \node[RSVPaccent, font=\tiny] at (-2.1, 1.05) {motor variants of A};
+  \node[RSVPpurple, font=\tiny] at (-0.2, 1.05) {variants of O};
+  \node[RSVPmid, font=\tiny] at (1.96, 1.05) {variants of M};
+
+  % Projection arrow
+  \draw[-{Stealth[length=7pt]}, RSVPdeep, very thick]
+    (0, 0.4) -- (0, -0.5)
+    node[midway, right=4pt, font=\small\itshape] {$\kappa$};
+
+  % Bottom layer: symbol space Σ*
+  \draw[RSVPdeep, thick, rounded corners=6pt]
+    (-3.5,-1.6) rectangle (3.5,-0.7);
+  \node[RSVPdeep, font=\small\scshape] at (-2.8,-0.82) {$\Sigma^*$};
+
+  \fill[RSVPaccent] (-2.1,-1.15) circle (4pt);
+  \node[RSVPdeep, font=\bfseries\small, below=2pt] at (-2.1,-1.15) {A};
+  \fill[RSVPpurple] (-0.2,-1.15) circle (4pt);
+  \node[RSVPdeep, font=\bfseries\small, below=2pt] at (-0.2,-1.15) {O};
+  \fill[RSVPmid] (1.9,-1.15) circle (4pt);
+  \node[RSVPdeep, font=\bfseries\small, below=2pt] at (1.9,-1.15) {M};
+
+  % Fiber lines (hardcoded, no foreach with color vars)
+  \draw[fiber, RSVPaccent!70] (-2.8,1.8) -- (-2.1,-0.7);
+  \draw[fiber, RSVPaccent!70] (-2.0,2.1) -- (-2.1,-0.7);
+  \draw[fiber, RSVPaccent!70] (-1.4,1.6) -- (-2.1,-0.7);
+  \draw[fiber, RSVPpurple!70] (-0.5,1.9) -- (-0.2,-0.7);
+  \draw[fiber, RSVPpurple!70] (0.1,2.2) -- (-0.2,-0.7);
+  \draw[fiber, RSVPmid!70] (1.2,1.7) -- (1.9,-0.7);
+  \draw[fiber, RSVPmid!70] (2.0,1.9) -- (1.9,-0.7);
+  \draw[fiber, RSVPmid!70] (2.7,1.6) -- (1.9,-0.7);
+
+  % Fiber annotation
+  \node[RSVPaccent!80, font=\footnotesize\itshape] at (-3.6, 2.5)
+    {$\kappa^{-1}(\texttt{A})$};

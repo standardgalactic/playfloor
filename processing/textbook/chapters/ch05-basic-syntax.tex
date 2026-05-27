@@ -1,0 +1,167 @@
+% ============================================================
+%  chapters/ch05-basic-syntax.tex
+% ============================================================
+
+\chapter{Basic Syntax}
+
+\chapterepigraph{%
+  A notation system is a theory of what matters.\\
+  What you can write, you can think.\\
+  What you cannot write, you must think around.
+}{Flyxion, \textit{Semantic Infrastructure}}
+
+\sidenote{App.\,C §C.2\\for formal\\expression trees}
+
+Part~I established the conceptual foundations: accessibility, containment,
+collapse, and canonicalization. Part~II develops the Spherepop calculus
+as a formal system. This chapter defines the syntax — the rules for forming
+well-formed Spherepop expressions — before moving to dynamics (evaluation)
+in Chapter~6, geometry (expression space) in Chapter~7, semantics
+(renormalization) in Chapter~8, and action histories in Chapter~9.
+
+\section{Spheres}
+
+The fundamental syntactic unit of Spherepop is the \emph{sphere} — a
+closed region that may contain other spheres or atomic content.
+
+\begin{definition}{Sphere}{sphere-def}
+  A \emph{sphere} is a pair $\sphere{L, C}$ where:
+  \begin{itemize}
+    \item $L$ is a \emph{label} drawn from an alphabet $\Sigma_L$
+          (operators, connectives, binders),
+    \item $C = [c_1, \ldots, c_n]$ is an ordered list of \emph{contents},
+          each of which is either an atom or a sphere.
+  \end{itemize}
+  A sphere with no contents is \emph{atomic} and written simply $\sphere{L}$.
+\end{definition}
+
+Atoms are the terminal symbols: numbers, variables, constants, truth values.
+Non-atomic spheres are the compound expressions: they carry an operator
+label and contain argument spheres.
+
+\section{Containment}
+
+The containment relation in Spherepop syntax mirrors the spatial containment
+of Chapter~2 exactly.
+
+\begin{definition}{Direct Containment}{direct-contain}
+  Sphere $s'$ is \emph{directly contained} in sphere $s$, written
+  $s' \prec s$, if $s'$ appears in the content list of $s$.
+  The \emph{containment relation} $\prec^*$ is the transitive closure
+  of $\prec$.
+\end{definition}
+
+\begin{definition}{Depth}{depth-def}
+  The \emph{depth} $d(s)$ of a sphere $s$ in a Spherepop expression $E$
+  is the number of spheres that properly contain $s$ in $E$:
+  \[
+    d(s) = |\{s' : s \prec^* s' \text{ and } s' \neq s\}|.
+  \]
+  The \emph{outermost} sphere has depth 0; spheres one level in have
+  depth 1; and so on.
+\end{definition}
+
+\section{Operators}
+
+Spherepop is parametric in the operator set. Different instantiations
+choose different alphabets.
+
+\begin{definition}{Operator Signature}{op-sig}
+  An \emph{operator signature} is a pair $(\Sigma_L, \mathrm{ar})$
+  where $\Sigma_L$ is a set of labels and
+  $\mathrm{ar} : \Sigma_L \to \mathbb{N} \cup \{\omega\}$
+  assigns an \emph{arity} to each label.
+  A sphere $\sphere{L, C}$ is \emph{well-formed} if $|C| = \mathrm{ar}(L)$
+  (or $|C|$ is arbitrary if $\mathrm{ar}(L) = \omega$).
+\end{definition}
+
+Standard arithmetic uses binary operators $\{+, -, \times, \div, \uparrow\}$
+with arity 2, and unary operators $\{-, \sqrt{\cdot}\}$ with arity 1.
+Spherepop logic uses $\{\land, \lor, \neg, \to\}$ with arities $\{2,2,1,2\}$.
+
+\section{Reading Conventions}
+
+A Spherepop expression is read in \emph{inside-out order}: innermost
+spheres are evaluated first, outermost last. Within a single sphere,
+contents are processed left-to-right. This gives a canonical traversal
+order: a post-order depth-first traversal of the expression tree.
+
+\begin{definition}{Canonical Traversal}{canonical-traversal}
+  The \emph{canonical traversal} $\tau(E)$ of a Spherepop expression $E$
+  is the post-order sequence of sphere labels encountered in a depth-first
+  left-to-right traversal of $E$'s expression tree.
+\end{definition}
+
+\begin{example}
+  For $E = \sphere{+, [\sphere{1}, \sphere{\times, [\sphere{3},
+  \sphere{\uparrow, [\sphere{2}, \sphere{2}]}]}]}$, the canonical
+  traversal is: $1, 3, 2, 2, \uparrow, \times, +$.
+  This is precisely the reverse Polish (postfix) notation for the
+  expression $1 + 3 \times 2^2$.
+\end{example}
+
+\section{Bracket Notation}
+
+For linear typesetting, Spherepop expressions are written in bracket
+notation: nested angle brackets replace the spatial bubbles.
+
+\begin{definition}{Bracket Notation}{bracket-notation}
+  The \emph{bracket notation} of a sphere $\sphere{L, [c_1,\ldots,c_n]}$
+  is the string $\langle L\, : c_1, \ldots, c_n\rangle$.
+  Atomic spheres $\sphere{L}$ are written as just $L$.
+\end{definition}
+
+\begin{example}
+  The expression $1 + 3 \times 2^2$ in bracket notation:
+  \[
+    \langle {+} \,:\, 1,\; \langle{\times}\,:\,3,\;
+    \langle{\uparrow}\,:\,2,\;2\rangle\rangle\rangle
+  \]
+  The nesting is explicit; no precedence rules are needed.
+\end{example}
+
+\section{Translation Between Symbolic and Spherepop Forms}
+
+Every conventional mathematical expression translates to a unique
+Spherepop expression via the following algorithm.
+
+\begin{definition}{Symbolic-to-Spherepop Translation}{translation}
+  Given a conventional expression $E_\text{sym}$:
+  \begin{enumerate}
+    \item Parse $E_\text{sym}$ into its abstract syntax tree $T$
+          using standard precedence and associativity rules.
+    \item Replace each internal node labeled $L$ with children
+          $c_1, \ldots, c_n$ by the sphere $\sphere{L, [c_1,\ldots,c_n]}$.
+    \item Replace each leaf labeled $a$ by the atomic sphere $\sphere{a}$.
+  \end{enumerate}
+  The result $E_\text{sp}$ is the unique Spherepop form of $E_\text{sym}$.
+\end{definition}
+
+The translation is unique because the AST is unique (given fixed
+precedence and associativity conventions). Different conventional
+notations for the same tree produce the same Spherepop form.
+
+\begin{exercise}
+  Translate the following into bracket notation and draw the Spherepop
+  diagram. Identify the depth of each sub-sphere.
+  \begin{enumerate}[label=(\alph*)]
+    \item $(a + b)(a - b)$
+    \item $\neg(p \land q) \to (\neg p \lor \neg q)$
+    \item $\int_0^\infty e^{-x^2}\,dx$ (treat $\int$, $e$, and ${}^2$
+          as operators with appropriate arities)
+  \end{enumerate}
+\end{exercise}
+
+\begin{exercise}
+  Show that the canonical traversal $\tau(E)$ of any Spherepop expression
+  $E$ is a valid postfix (reverse Polish) encoding of $E$. Describe
+  a stack machine that evaluates $\tau(E)$ directly.
+\end{exercise}
+
+\begin{exercise}[title={Design}]
+  Design a Spherepop operator signature for propositional modal logic,
+  adding operators $\Box$ (necessity, arity 1) and $\Diamond$
+  (possibility, arity 1). What is the Spherepop form of the formula
+  $\Box p \to \Diamond p$? How does the spatial representation
+  make the scope of modal operators visually clear?
+\end{exercise}

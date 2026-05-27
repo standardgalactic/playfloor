@@ -1,0 +1,74 @@
+% Appendix F: Gesture Manifolds, Canonicalization, and Motor Equivalence
+
+\section*{F.1 Introduction}
+
+The previous appendices studied states. Human action, however, is not
+fundamentally state-based — it is trajectory-based. A typed word is not
+a sequence of letters; it is a path through a space of possibilities.
+The central thesis is:
+\[
+  \text{Motor trajectory}
+  \;\xrightarrow{C}\;
+  \text{Canonical gesture}
+  \;\xrightarrow{\Phi}\;
+  \text{Symbol.}
+\]
+
+\begin{definition}{Gesture Path Space}{gesture-paths}
+  A \emph{gesture} is a continuous path $g : [0,T] \to X$, where $X$
+  encodes finger states, hand states, timing, pressure, and position.
+  The \emph{gesture space} is $G = \mathrm{Path}([0,T], X)$.
+\end{definition}
+
+\begin{definition}{Gesture Manifold}{gest-mfld}
+  A \emph{gesture manifold} is a smooth submanifold $M \subseteq G$.
+  Skill corresponds to confinement within specialized gesture manifolds.
+\end{definition}
+
+\begin{definition}{Gesture Equivalence}{gest-equiv}
+  $g_1 \sim g_2$ when they differ only by admissible perturbations
+  (timing jitter, small spatial deformation, execution noise).
+\end{definition}
+
+\begin{definition}{Canonicalization}{canon-op}
+  A \emph{canonicalization operator} is $C : G \to \hat{G}$ satisfying
+  $C(g_1) = C(g_2)$ whenever $g_1 \sim g_2$.
+  The \emph{canonical gesture space} is $\hat{G} = G/{\sim}$.
+\end{definition}
+
+\begin{definition}{Pivot}{pivot}
+  A \emph{pivot} occurs at $t_p$ when
+  $\dot{g}(t_p^-) \cdot \dot{g}(t_p^+) < 0$ (velocity reverses sign).
+  Pivots correspond to syllabic peaks, typing transitions, musical accents.
+\end{definition}
+
+\begin{definition}{Gesture Energy}{gest-energy}
+  $E(g) = \int_0^T \|\dot{g}(t)\|^2\,dt$.
+  Motor learning tends toward lower-energy representatives within
+  the same equivalence class.
+\end{definition}
+
+\begin{theorem}{Gesture Geodesics}{gest-geo}
+  Among all equivalent motions, the geodesic (energy-minimizing)
+  trajectory is most efficient. Repeated practice converges toward
+  geodesic representatives.
+\end{theorem}
+
+\begin{definition}{Symbolic Projection}{sym-proj}
+  A \emph{symbolic projection} is $\Phi : \hat{G} \to \Sigma$
+  assigning a symbol to each canonical gesture class.
+\end{definition}
+
+\begin{theorem}{Gesture–Symbol Theorem}{gest-sym}
+  Symbols are projections of gesture equivalence classes, not primitives.
+\end{theorem}
+\begin{proof}
+  Canonicalization produces $[g]$; projection assigns $\Phi([g])$.
+  Symbols arise from equivalence classes rather than individual trajectories.
+\end{proof}
+
+\begin{namedthm}{The Gesture Substrate Principle}
+  A symbol is not a primitive thing. It is a projection of a motor
+  equivalence class. Symbolic systems operate in the image of $\Phi$
+  while discarding the richer fiber structure of $\hat{G}$.
+\end{namedthm}

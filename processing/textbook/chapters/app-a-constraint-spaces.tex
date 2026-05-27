@@ -1,0 +1,168 @@
+% ============================================================
+%  chapters/app-a-constraint-spaces.tex
+%  Appendix A: Sets, Relations, and Constraint Spaces
+% ============================================================
+
+\section*{A.1 Introduction}
+
+Many structures developed throughout this monograph share a common pattern.
+One begins with a large space of possibilities, imposes constraints, identifies
+equivalent configurations, and studies the resulting admissible structures.
+Whether one is discussing logical operators, gesture recognition, keyboard
+motion, semantic inference, cosmological trajectories, or nested Spherepop
+expressions, the same mathematical architecture repeatedly appears.
+
+The purpose of this appendix is to formalize that architecture.
+
+\begin{tcolorbox}[enhanced, colback=RSVPdeep, colframe=RSVPdeep,
+  coltext=white, arc=6pt, boxrule=0pt,
+  left=6mm, right=6mm, top=5mm, bottom=5mm]
+  \textbf{Central thesis.} Structure is not fundamental.
+  Constraint is fundamental. Objects emerge as stable equivalence classes
+  within constrained spaces.
+\end{tcolorbox}
+
+% ── A.2 Constraint Spaces ─────────────────────────────────────
+\section*{A.2 Constraint Spaces}
+
+\begin{definition}{Constraint Space}{constraint-space-app}
+  A \emph{constraint space} is a triple $\mathcal{C} = (X, A, \kappa)$
+  consisting of:
+  \begin{itemize}
+    \item a \emph{state space} $X$,
+    \item an \emph{admissible subset} $A \subseteq X$,
+    \item a \emph{constraint functional}
+      $\kappa : X \to \mathbb{R}_{\geq 0}$
+  \end{itemize}
+  such that $A = \kappa^{-1}(0)$. States with $\kappa(x) = 0$ satisfy all
+  constraints; states with $\kappa(x) > 0$ violate one or more constraints.
+\end{definition}
+
+\begin{example}
+  \textbf{Arithmetic expressions.} Let
+  $X = \{ 1{+}2,\ (1{+}2),\ (3),\ 3,\ ((3)) \}$.
+  Define $\kappa(x)$ as the number of unevaluated arithmetic operations.
+  Then $\kappa(1{+}2) = 1$ while $\kappa(3) = 0$.
+  The admissible set consists precisely of fully reduced expressions.
+\end{example}
+
+\begin{example}
+  \textbf{Unit circle.} Let $X = \mathbb{R}^2$ and
+  $\kappa(x,y) = |x^2 + y^2 - 1|$.
+  Then $A = \{(x,y) \in \mathbb{R}^2 : x^2 + y^2 = 1\}$.
+\end{example}
+
+% ── A.3 Constraint Descent ────────────────────────────────────
+\section*{A.3 Constraint Descent}
+
+\begin{definition}{Constraint Descent Flow}{constraint-descent}
+  A \emph{constraint descent flow} is a dynamical system
+  \[
+    \frac{dx}{dt} = -\nabla\kappa(x).
+  \]
+\end{definition}
+
+\begin{proposition}{Monotone Descent}{monotone-descent}
+  Along a constraint descent flow, $\kappa(x(t))$ is nonincreasing.
+\end{proposition}
+
+\begin{proof}
+  Differentiate:
+  $\frac{d}{dt}\kappa(x(t)) = \nabla\kappa \cdot \frac{dx}{dt}$.
+  Substituting $\frac{dx}{dt} = -\nabla\kappa$ gives
+  $\frac{d}{dt}\kappa = -\|\nabla\kappa\|^2 \leq 0$.
+\end{proof}
+
+\begin{conceptaside}{Constraint Descent as a Unifying Principle}
+  This result appears throughout the monograph in many guises:
+  logical reduction, Spherepop evaluation, semantic refinement,
+  RSVP relaxation, optimization, and learning. All are instances of
+  constraint descent in appropriately defined spaces.
+\end{conceptaside}
+
+% ── A.4–A.5 Equivalence and Quotients ─────────────────────────
+\section*{A.4 Equivalence Relations}
+
+\begin{definition}{Equivalence Relation}{equiv-rel}
+  An \emph{equivalence relation} $\sim$ on $X$ satisfies reflexivity
+  ($x \sim x$), symmetry ($x \sim y \Rightarrow y \sim x$), and
+  transitivity ($x \sim y$, $y \sim z \Rightarrow x \sim z$).
+\end{definition}
+
+\begin{example}
+  Arithmetic evaluation induces $((3)) \sim (3) \sim 3$.
+  All denote the same value.
+\end{example}
+
+\begin{example}
+  In gesture recognition, two hand trajectories may differ microscopically
+  while producing the same letter: $g_1 \sim g_2$ whenever they correspond
+  to the same recognized symbol.
+\end{example}
+
+\section*{A.5 Quotient Spaces}
+
+\begin{definition}{Quotient Space}{quotient-space-app}
+  The \emph{quotient space} is
+  $X/{\sim} = \{[x] : x \in X\}$
+  where $[x] = \{y : y \sim x\}$.
+\end{definition}
+
+This is the mathematical foundation of symbolic compression, gesture
+canonicalization, semantic normalization, and Spherepop collapse operators.
+
+\begin{proposition}{Quotient Projection is Surjective}{quot-surj}
+  The quotient projection $\pi : X \to X/{\sim}$ defined by $\pi(x) = [x]$
+  is surjective.
+\end{proposition}
+
+\begin{proof}
+  For any $[a] \in X/{\sim}$, choosing $x = a$ gives $\pi(a) = [a]$.
+\end{proof}
+
+% ── A.7 Central Theorem ───────────────────────────────────────
+\section*{A.7 Objects as Equivalence Classes}
+
+\begin{theorem}{Symbolic Representation Theorem}{symbolic-rep}
+  Every symbolic system can be represented as an equivalence class within
+  a richer state space.
+\end{theorem}
+
+\begin{proof}
+  Let $S$ be a symbolic system. Construct a state space $X$ consisting of
+  all possible realizations of symbols. Define $x \sim y$ iff $x$ and $y$
+  represent the same symbol. Then equivalence classes $[x]$ correspond
+  exactly to symbolic objects, giving $S \cong X/{\sim}$.
+\end{proof}
+
+\begin{remark}
+  The letter ``A'' is not the ink. It is the equivalence class of all
+  acceptable realizations. A gesture is not a trajectory. It is the
+  equivalence class of trajectories recognized as equivalent.
+\end{remark}
+
+% ── A.8 Central Principle ─────────────────────────────────────
+\section*{A.8 The Constraint–Quotient Principle}
+
+\begin{namedthm}{Constraint–Quotient Principle}
+  Structure emerges from the interaction of (1) a possibility space $X$,
+  (2) constraints $\kappa$, (3) equivalence relations $\sim$, and
+  (4) projections $\pi$. The resulting object is $(X, \kappa, \sim, \pi)$.
+  Everything in this monograph may be viewed as a particular realization
+  of this architecture:
+  \[
+    \text{Constraint}
+    \;\to\;
+    \text{Equivalence}
+    \;\to\;
+    \text{Projection}
+    \;\to\;
+    \text{Structure.}
+  \]
+\end{namedthm}
+
+\medskip
+\noindent
+\textit{Appendix~B} will show how projection necessarily creates information
+loss. \textit{Appendix~C} will show that Spherepop evaluation is a
+constraint-descent process on expression trees.

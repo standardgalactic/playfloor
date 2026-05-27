@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admissible Trajectories</title>
+
+<style>
+*{box-sizing:border-box}
+
+html,body{
+  margin:0;
+  width:100%;
+  height:100%;
+  overflow:hidden;
+  background:#000;
+  color:#7cff7c;
+  font-family:monospace;
+  touch-action:manipulation;
+}
+
+body{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  flex-direction:column;
+  cursor:pointer;
+}
+
+body::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  z-index:500;
+  background:
+    repeating-linear-gradient(
+      to bottom,
+      rgba(255,255,255,.03) 0px,
+      rgba(255,255,255,.03) 1px,
+      transparent 2px,
+      transparent 5px
+    );
+  opacity:.13;
+}
+
+.title{
+  position:fixed;
+  top:18px;
+  width:94vw;
+  text-align:center;
+  font-size:14px;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  color:#00ff88;
+  text-shadow:0 0 10px #00ff66;
+  z-index:100;
+}
+
+.selector{
+  position:fixed;
+  top:50px;
+  display:flex;
+  gap:8px;
+  flex-wrap:wrap;
+  justify-content:center;
+  width:94vw;
+  z-index:120;
+  cursor:default;
+}
+
+.selector button{
+  background:#001400;
+  border:1px solid rgba(0,255,100,.55);
+  color:#7cff7c;
+  padding:7px 10px;
+  font-family:monospace;
+  font-size:10px;
+  letter-spacing:.08em;
+  cursor:pointer;
+}
+
+.selector button.active{
+  background:#003d1a;
+  color:#eaffea;
+  box-shadow:0 0 8px #00ff66 inset;
+}
+
+.status{
+  position:fixed;
+  top:90px;
+  opacity:.45;
+  font-size:10px;
+  letter-spacing:.14em;
+  z-index:120;
+}
+
+canvas{
+  width:min(360px,78vw);
+  height:min(360px,78vw);
+  border-radius:50%;
+  border:3px solid rgba(0,255,120,.46);
+  background:#000;
+  box-shadow:
+    0 0 55px rgba(0,255,120,.16) inset,
+    0 0 22px rgba(0,255,0,.55);
+  z-index:40;
+}
+
+.subs{
+  position:fixed;
+  bottom:24px;
+  width:min(620px,92vw);
+  min-height:2.5em;
+  padding:8px 12px;
+  text-align:center;
+  font-size:14px;
+  line-height:1.45;
+  color:#aaffaa;
+  text-shadow:0 0 6px #00ff66;
+  background:rgba(0,20,0,.36);
+  border:1px solid rgba(0,255,0,.22);
+  border-radius:6px;
+  pointer-events:none;
+  z-index:80;
+}
+
+@media(max-width:700px){
+  .title{top:14px;font-size:11px}
+  .selector{top:44px}
+  .selector button{font-size:8px;padding:6px 6px}
+  .status{top:92px;font-size:9px}
+  .subs{bottom:18px;font-size:13px}
+}
+</style>
+</head>
+
+<body>
+
+<div class="title" id="title">Admissible Trajectories</div>
+<div class="selector" id="selector"></div>
+<div class="status">TOUCH / CLICK ANYWHERE TO PLAY OR PAUSE</div>
+<canvas id="viz"></canvas>
+<div class="subs" id="subs"></div>
+
+<audio id="audio" preload="auto"></audio>
+
+<script>
+const tracks = [
+  {
+    file:"Admissible_Trajectories_and_the_Orphic_Egg.mp3",
+    vtt:"Admissible_Trajectories_and_the_Orphic_Egg.vtt",
+    label:"Orphic Egg",
+    title:"Admissible Trajectories and the Orphic Egg",
+    mode:"egg"
+  },
+  {
+    file:"The_universe_is_a_relaxing_spring.mp3",
+    vtt:"The_universe_is_a_relaxing_spring.vtt",
+    label:"Spring",
+    title:"The Universe Is a Relaxing Spring",
+    mode:"spring"
+  },
+  {
+    file:"Reality_is_an_Accessibility_Landscape.mp3",
+    vtt:"Reality_is_an_Accessibility_Landscape.vtt",
+    label:"Landscape",
+    title:"Reality Is an Accessibility Landscape",
+    mode:"landscape"
+  }
+];
+
+let trackIndex = 0;
+let mode = tracks[0].mode;
+
+const audio = document.getElementById("audio");
+const subs = document.getElementById("subs");
+const title = document.getElementById("title");
+const selector = document.getElementById("selector");
+
+let audioCtx;
+let analyser;
+let data;
+
+function initAudio(){
+  if(audioCtx) return;
+
+  audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+  analyser = audioCtx.createAnalyser();
+  analyser.fftSize = 2048;
+  analyser.smoothingTimeConstant = .88;
+
+  data = new Uint8Array(analyser.frequencyBinCount);
+
+  const source = audioCtx.createMediaElementSource(audio);
+  source.connect(analyser);
+  analyser.connect(audioCtx.destination);
+}
+
+function buildSelector(){
+  selector.innerHTML = "";
+
+  tracks.forEach((track,i)=>{
+    const button = document.createElement("button");
+    button.textContent = track.label;
+
+    button.onclick = async e=>{
+      e.stopPropagation();
+      initAudio();
+      if(audioCtx.state === "suspended") await audioCtx.resume();
+      await loadTrack(i,true);
+    };
+
+    selector.appendChild(button);
+  });
+}
+
+function updateButtons(){
+  [...selector.querySelectorAll("button")]
+    .forEach((button,i)=>{
+      button.classList.toggle("active",i===trackIndex);
+    });
+}
+
+async function loadTrack(i,autoplay=true){
+  trackIndex = ((i % tracks.length) + tracks.length) % tracks.length;
+
+  const track = tracks[trackIndex];
+
+  mode = track.mode;
+  title.textContent = track.title;
+
+  audio.src = track.file;
+  audio.load();
+
+  updateButtons();
+  await loadVTT(track.vtt);
+
+  if(autoplay){
+    try{ await audio.play(); }catch(e){}
+  }
+}
+
+audio.addEventListener("ended",()=>{
+  loadTrack(trackIndex+1,true);
+});
+
+document.body.onclick = async ()=>{
+  initAudio();
+
+  if(audioCtx.state === "suspended")
+    await audioCtx.resume();
+
+  if(audio.paused)
+    await audio.play();
+  else
+    audio.pause();
+};
+
+/* subtitles */
+
+let cues = [];
+
+async function loadVTT(url){
+  cues = [];
+  subs.textContent = "";
+
+  try{
+    const res = await fetch(url);
+    if(!res.ok){
+      console.warn("Missing VTT:",url);
+      return;
+    }
+
+    cues = parseVTT(await res.text());
+  }catch(e){
+    console.warn("VTT load failed:",e);
+  }
+}
+
+function parseVTT(text){
+  const blocks = text.replace(/\r/g,"").split(/\n{2,}/);
+  const out = [];
+
+  for(const block of blocks){
+    const lines = block.trim().split("\n");
+    const ts = lines.find(line=>line.includes("-->"));
+    if(!ts) continue;
+
+    const tsIndex = lines.indexOf(ts);
+    const [start,end] = ts.split("-->").map(x=>x.trim());
+
+    out.push({
+      start:parseTime(start),
+      end:parseTime(end),
+      text:lines.slice(tsIndex+1).join(" ")
+    });
+  }
+
+  return out;
+}
+
+function parseTime(t){
+  t = t.split(" ")[0].replace(",",".");
+  const p = t.split(":");
+
+  if(p.length === 3)
+    return (+p[0])*3600 + (+p[1])*60 + parseFloat(p[2]);
+
+  return (+p[0])*60 + parseFloat(p[1]);
+}
+
+audio.ontimeupdate = ()=>{
+  const t = audio.currentTime;
+  const cue = cues.find(c=>t>=c.start && t<c.end+.2);
+  subs.textContent = cue ? cue.text : "";
+};
+
+/* visualizer */
+
+const canvas = document.getElementById("viz");
+const ctx = canvas.getContext("2d");
+
+const W = 420;
+const H = 420;
+const cx = W/2;
+const cy = H/2;
+const R = W*.39;
+
+canvas.width = W;
+canvas.height = H;
+
+let frame = 0;
+let bass = 0;
+let mid = 0;
+let high = 0;
+
+function updateEnergy(){
+  if(!analyser) return;
+
+  analyser.getByteFrequencyData(data);
+
+  let b=0,m=0,h=0;
+
+  for(let i=0;i<36;i++) b += data[i];
+  for(let i=36;i<160;i++) m += data[i];
+  for(let i=160;i<data.length;i++) h += data[i];
+
+  b /= 36*255;
+  m /= 124*255;
+  h /= (data.length-160)*255;
+
+  bass += (b-bass)*.08;
+  mid += (m-mid)*.06;
+  high += (h-high)*.05;
+}
+
+function clearPortal(){
+  ctx.fillStyle = "rgba(0,5,0,.10)";
+  ctx.fillRect(0,0,W,H);
+
+  ctx.save();
+  ctx.beginPath();
+  ctx.arc(cx,cy,R,0,Math.PI*2);
+  ctx.clip();
+
+  const g = ctx.createRadialGradient(cx,cy,0,cx,cy,R);
+  g.addColorStop(0,"rgba(0,32,12,.26)");
+  g.addColorStop(.72,"rgba(0,8,0,.42)");
+  g.addColorStop(1,"rgba(0,0,0,.92)");
+
+  ctx.fillStyle = g;
+  ctx.fillRect(0,0,W,H);
+
+  drawStars();
+
+  ctx.restore();
+
+  ctx.beginPath();
+  ctx.arc(cx,cy,R,0,Math.PI*2);
+  ctx.strokeStyle = "rgba(124,255,196,.35)";
+  ctx.lineWidth = 3;
+  ctx.shadowBlur = 12;
+  ctx.shadowColor = "#00ff66";
+  ctx.stroke();
+  ctx.shadowBlur = 0;
+}
+
+function drawStars(){
+  ctx.fillStyle = "rgba(180,255,210,.18)";
+  for(let i=0;i<34;i++){
+    const x = ((Math.sin(i*91.7)*43758.5453)%1+1)%1;
+    const y = ((Math.sin(i*47.3+2)*19341.13)%1+1)%1;
+    const px = x*W;
+    const py = y*H;
+
+    const dx = px-cx;
+    const dy = py-cy;
+
+    if(dx*dx+dy*dy < R*R){
+      ctx.fillRect(px,py,1.5,1.5);
+    }
+  }
+}
+
+function drawEgg(){
+  const pulse = 1 + bass*.10 + Math.sin(frame*.018)*.025;
+  const crack = high*28 + Math.sin(frame*.02)*3;
+
+  ctx.save();
+  ctx.beginPath();
+  ctx.arc(cx,cy,R,0,Math.PI*2);
+  ctx.clip();
+
+  ctx.translate(cx,cy);
+  ctx.scale(.72*pulse,1.04*pulse);
+
+  ctx.beginPath();
+  ctx.ellipse(0,0,R*.55,R*.70,0,0,Math.PI*2);
+  ctx.strokeStyle = "rgba(170,255,210,.88)";
+  ctx.lineWidth = 8;
+  ctx.shadowBlur = 20;
+  ctx.shadowColor = "#00ff88";
+  ctx.stroke();
+
+  ctx.beginPath();
+  ctx.ellipse(0,0,R*.34,R*.45,0,0,Math.PI*2);
+  ctx.strokeStyle = "rgba(124,255,196,.35)";
+  ctx.lineWidth = 5;
+  ctx.stroke();
+
+  ctx.beginPath();
+  ctx.moveTo(-crack,-R*.55);
+  for(let y=-R*.55;y<=R*.55;y+=24){
+    const x = Math.sin(y*.09+frame*.04)*crack;
+    ctx.lineTo(x,y);
+  }
+  ctx.strokeStyle = "rgba(220,255,230,.72)";
+  ctx.lineWidth = 4 + high*5;
+  ctx.stroke();
+
+  ctx.restore();
+
+  drawHeavyTrace(.10);
+}
+
+function drawSpring(){
+  ctx.save();
+  ctx.beginPath();
+  ctx.arc(cx,cy,R,0,Math.PI*2);
+  ctx.clip();
+
+  ctx.translate(cx,cy);
+  ctx.rotate(-.48 + Math.sin(frame*.006)*.04);
+
+  const compression = 1 - bass*.20 + Math.sin(frame*.018)*.035;
+  const turns = 8;
+  const width = R*.95;
+  const height = R*.78*compression;
+
+  ctx.beginPath();
+
+  for(let i=0;i<=360;i++){
+    const p = i/360;
+    const x = -width/2 + p*width;
+    const y =
+      Math.sin(p*Math.PI*2*turns + frame*.035) *
+      height*.18 +
+      (p-.5)*height;
+
+    if(i===0) ctx.moveTo(x,y);
+    else ctx.lineTo(x,y);
+  }
+
+  ctx.strokeStyle = "rgba(170,255,210,.88)";
+  ctx.lineWidth = 10;
+  ctx.lineCap = "round";
+  ctx.shadowBlur = 18;
+  ctx.shadowColor = "#00ff88";
+  ctx.stroke();
+
+  ctx.beginPath();
+  ctx.moveTo(-width*.62,-height*.62);
+  ctx.lineTo(width*.62,height*.62);
+  ctx.strokeStyle = "rgba(124,255,196,.18)";
+  ctx.lineWidth = 5;
+  ctx.stroke();
+
+  ctx.restore();
+
+  drawHeavyTrace(.14);
+}
+
+function drawLandscape(){
+  ctx.save();
+  ctx.beginPath();
+  ctx.arc(cx,cy,R,0,Math.PI*2);
+  ctx.clip();
+
+  const nodes = [
+    {x:cx,       y:cy-R*.55},
+    {x:cx-R*.48, y:cy-R*.08},
+    {x:cx+R*.48, y:cy-R*.08},
+    {x:cx-R*.28, y:cy+R*.46},
+    {x:cx+R*.30, y:cy+R*.45}
+  ];
+
+  const edges = [
+    [0,1],[0,2],[1,3],[2,4],[1,2],[3,4],[0,4]
+  ];
+
+  for(let i=0;i<edges.length;i++){
+    const [a,b] = edges[i];
+    const n1 = nodes[a];
+    const n2 = nodes[b];
+    const glow = .18 + Math.max(0,Math.sin(frame*.018+i))*mid*.65;
+
+    ctx.beginPath();
+    ctx.moveTo(n1.x,n1.y);
+
+    const mx = (n1.x+n2.x)/2 + Math.sin(frame*.01+i)*18;
+    const my = (n1.y+n2.y)/2 + Math.cos(frame*.013+i)*18;
+
+    ctx.quadraticCurveTo(mx,my,n2.x,n2.y);
+
+    ctx.strokeStyle = `rgba(124,255,196,${glow})`;
+    ctx.lineWidth = 6;
+    ctx.shadowBlur = 14;
+    ctx.shadowColor = "#00ff88";
+    ctx.stroke();
+  }
+
+  for(const n of nodes){
+    ctx.beginPath();
+    ctx.arc(n.x,n.y,10+bass*10,0,Math.PI*2);
+    ctx.fillStyle = "rgba(170,255,210,.90)";
+    ctx.shadowBlur = 18;
+    ctx.shadowColor = "#00ff88";
+    ctx.fill();
+
+    ctx.beginPath();
+    ctx.arc(n.x,n.y,22+mid*18,0,Math.PI*2);
+    ctx.strokeStyle = "rgba(124,255,196,.25)";
+    ctx.lineWidth = 4;
+    ctx.stroke();
+  }
+
+  ctx.restore();
+
+  drawHeavyTrace(.18);
+}
+
+function drawHeavyTrace(lagBase){
+  if(!analyser) return;
+
+  analyser.getByteTimeDomainData(data);
+
+  const lag = Math.floor(data.length*(lagBase+mid*.08));
+
+  ctx.beginPath();
+
+  for(let i=0;i<data.length;i+=3){
+    const a = (data[i]-128)/128;
+    const b = (data[(i+lag)%data.length]-128)/128;
+
+    const x = cx + a*R*.58 + Math.sin(frame*.008)*10;
+    const y = cy + b*R*.48 + Math.cos(frame*.006)*8;
+
+    if(i===0) ctx.moveTo(x,y);
+    else ctx.lineTo(x,y);
+  }
+
+  ctx.strokeStyle = "rgba(124,255,196,.78)";
+  ctx.lineWidth = 5;
+  ctx.lineCap = "round";
+  ctx.shadowBlur = 18;
+  ctx.shadowColor = "#00ff66";
+  ctx.stroke();
+  ctx.shadowBlur = 0;
+}
+
+function draw(){
+  frame++;
+  updateEnergy();
+  clearPortal();
+
+  if(mode === "egg") drawEgg();
+  if(mode === "spring") drawSpring();
+  if(mode === "landscape") drawLandscape();
+
+  requestAnimationFrame(draw);
+}
+
+buildSelector();
+loadTrack(0,false);
+draw();
+</script>
+
+</body>
+</html>

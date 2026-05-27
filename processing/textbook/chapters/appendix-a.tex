@@ -1,0 +1,61 @@
+% ============================================================
+%  chapters/appendix-a.tex
+%  Spherepop Formalism — formal definitions and theorems
+% ============================================================
+
+\section*{Overview}
+
+This appendix collects the formal definitions underlying the Spherepop
+calculus developed in Chapters~5–9. References to main-text theorems
+are given where proofs are deferred.
+
+% ── A.1 Syntax ────────────────────────────────────────────────
+\section{Syntax}
+
+\begin{definition}{Spherepop Expression}{sp-expr}
+  The set $\mathcal{E}$ of \emph{Spherepop expressions} is defined
+  inductively:
+  \begin{enumerate}
+    \item Every \emph{atom} $a \in \mathcal{A}$ is an expression.
+    \item If $e_1, \ldots, e_n \in \mathcal{E}$, then
+          $\sphere{e_1, \ldots, e_n}$ is an expression
+          (a \emph{sphere} containing $e_1, \ldots, e_n$).
+    \item Every expression has a unique parse tree.
+  \end{enumerate}
+\end{definition}
+
+\begin{definition}{Nesting Depth}{nesting-depth}
+  The \emph{depth} $d : \mathcal{E} \to \mathbb{N}$ is defined by:
+  \[
+    d(a) = 0 \quad \text{for atoms},\qquad
+    d\bigl(\sphere{e_1,\ldots,e_n}\bigr) = 1 + \max_i d(e_i)
+  \]
+\end{definition}
+
+% ── A.2 Evaluation ───────────────────────────────────────────
+\section{Evaluation Dynamics}
+
+\begin{definition}{Pop Operator}{pop-op}
+  The \emph{pop operator} $\pop : \mathcal{E} \to \mathcal{E} \cup \{\refuse\}$
+  is defined by:
+  \[
+    \sphere{e_1, \ldots, e_n} \pop = \begin{cases}
+      e_1 \cdots e_n & \text{if the sphere is \emph{collapsible}} \\
+      \refuse        & \text{if the sphere \emph{refuses} (is protected)} \\
+    \end{cases}
+  \]
+  where collapsibility is determined by the active constraint set $\constraint$.
+\end{definition}
+
+\begin{theorem}{Church–Rosser for Spherepop}{church-rosser}
+  The evaluation relation $\to_{\mathrm{sp}}$ on $\mathcal{E}$ is
+  confluent: if $e \to^* e_1$ and $e \to^* e_2$, then there exists
+  $e'$ with $e_1 \to^* e'$ and $e_2 \to^* e'$.
+\end{theorem}
+
+\begin{proof}
+  By induction on the structure of $e$, using the fact that the pop
+  operator is deterministic on each sphere given a fixed $\constraint$.
+  The key step is showing that parallel reductions commute, which follows
+  from the spatial independence of non-overlapping spheres. \hfill$\square$
+\end{proof}

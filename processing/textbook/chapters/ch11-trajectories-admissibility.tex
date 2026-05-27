@@ -1,0 +1,158 @@
+% ============================================================
+%  chapters/ch11-trajectories-admissibility.tex
+% ============================================================
+
+\chapter{Trajectories and Admissibility}
+
+\chapterepigraph{%
+  A gesture that cannot be admitted\\
+  is not a gesture — it is noise.\\
+  Admissibility is what turns motion into meaning.
+}{Flyxion, \textit{Semantic Infrastructure}}
+
+\sidenote{App.\,F for gesture\\manifolds; App.\,H\\for admissibility\\functionals}
+
+Chapter~10 established that gestures are trajectories in constrained
+manifolds and that symbols are projections of gesture equivalence classes.
+This chapter develops the mathematical structure of the gesture manifold
+more carefully, focusing on the \emph{admissibility conditions} that
+separate meaningful gesture from random motion.
+
+\section{Gesture Manifolds}
+
+The gesture space $\gesturesp = \mathrm{Path}([0,T], X)$ of all possible
+hand trajectories is enormous — a function space of infinite dimension.
+Most of this space is physically inaccessible, kinematically impossible,
+or neurologically non-executable. The gesture manifold $M_{gestureidx} \subset
+\gesturesp$ is the small submanifold of trajectories that real hands can
+actually produce.
+
+\begin{definition}{Biomechanical Constraint Manifold}{biomech-mfld}
+  The \emph{biomechanical constraint manifold} $M_\text{bio} \subset
+  \gesturesp$ is the set of trajectories satisfying:
+  \begin{enumerate}
+    \item \textbf{Range:} each joint angle $\theta_i$ satisfies
+          $\theta_i^{\min} \leq \theta_i \leq \theta_i^{\max}$.
+    \item \textbf{Velocity:} angular velocity $|\dot{\theta}_i| \leq v_i^{\max}$.
+    \item \textbf{Coordination:} adjacent finger joints move in
+          coordinated patterns (flexion synergies, extension synergies).
+    \item \textbf{Continuity:} trajectories are smooth ($C^2$ at minimum).
+  \end{enumerate}
+\end{definition}
+
+Within $M_\text{bio}$ lies a further restriction: the \emph{skill
+manifold} $M_\text{skill} \subset M_\text{bio}$ of trajectories that
+a particular person, with their particular training and motor history,
+can execute reliably. A concert pianist's skill manifold includes
+trajectories that a novice's does not; a surgeon's includes trajectories
+that are biomechanically possible but not executable without years of
+practice.
+
+\section{Constraint Spaces on Trajectory Space}
+
+The admissibility framework of Chapter~1 and Appendix~H applies to
+trajectory spaces directly.
+
+\begin{definition}{Gesture Constraint Space}{gesture-constraint}
+  A \emph{gesture constraint space} is a triple
+  $\mathcal{C}_{gestureidx} = (\gesturesp, A_{gestureidx}, \kappa_{gestureidx})$
+  where the admissible region $A_{gestureidx} = \kappa_{gestureidx}^{-1}(0)$
+  is the set of gestures that satisfy all biomechanical, skill, and
+  contextual constraints.
+\end{definition}
+
+The constraint functional $\kappa_{gestureidx} : \gesturesp \to \mathbb{R}_{\geq 0}$
+measures total constraint violation. A typical decomposition:
+\[
+  \kappa_{gestureidx}(\gamma) = \kappa_\text{bio}(\gamma) + \kappa_\text{skill}(\gamma)
+  + \kappa_\text{context}(\gamma)
+\]
+where each term measures violation of biomechanical, skill, and contextual
+constraints respectively.
+
+\section{Motor Equivalence Classes Revisited}
+
+Two admissible gestures are motor-equivalent when they differ only within
+the fiber of the symbolic projection — when their difference is invisible
+at the symbolic output level.
+
+\begin{definition}{Admissible Motor Equivalence}{adm-motor-equiv}
+  Two gestures $\gamma_1, \gamma_2 \in A_{gestureidx}$ are
+  \emph{admissibly motor-equivalent}, written $\gamma_1 \approx_m \gamma_2$,
+  if $\Phi(\hat{C}(\gamma_1)) = \Phi(\hat{C}(\gamma_2))$ — they produce
+  the same symbolic output after canonicalization.
+\end{definition}
+
+The admissibility condition ensures we only identify gestures that are
+genuinely executable, not merely gestures that would produce the same
+symbol if they could be executed.
+
+\begin{example}
+  Writing the letter ``e'' with the dominant hand and the non-dominant
+  hand both produce the symbol ``e'', so $\gamma_R \approx_m \gamma_L$.
+  But $\gamma_L$ is often in the skill manifold for right-handed writers
+  only under unusual conditions — it is admissible but not in $M_\text{skill}$.
+  Admissibility conditions prevent us from identifying these as equivalent
+  in normal writing contexts.
+\end{example}
+
+\section{Canonical Gestures}
+
+The canonical gesture is the minimum-energy, maximum-reliability
+representative of an equivalence class.
+
+\begin{definition}{Canonical Gesture}{canonical-gesture}
+  The \emph{canonical gesture} $\hat{\gamma}$ for equivalence class
+  $[\gamma]_{\approx_m}$ is the solution to:
+  \[
+    \hat{\gamma} = \arg\min_{\gamma' \approx_m \gamma} E(\gamma')
+    \quad \text{subject to} \quad \gamma' \in A_{gestureidx}
+  \]
+  where $E(\gamma') = \int_0^T \|\dot{\gamma}'(t)\|^2\,dt$ is the
+  kinetic energy.
+\end{definition}
+
+\begin{theorem}{Canonical Gesture Existence}{canonical-existence}
+  Under mild regularity conditions on $A_{gestureidx}$
+  (weak compactness of the admissible set and lower semicontinuity of $E$),
+  every non-empty equivalence class has a canonical gesture.
+\end{theorem}
+
+\begin{proof}[Sketch]
+  By the direct method of the calculus of variations: the energy
+  functional $E$ is coercive and lower semicontinuous on the weakly
+  compact admissible set; therefore it attains its infimum.
+\end{proof}
+
+\section{Accessibility of Gesture Continuations}
+
+The accessibility entropy of a gesture $\gamma$ at time $t$ measures
+how many admissible continuations are available:
+\[
+  S(\gamma, t) = \log \mathrm{Vol}\bigl(\{\gamma' \in A_{gestureidx} :
+  \gamma'|_{[0,t]} = \gamma|_{[0,t]}\}\bigr).
+\]
+This measures the remaining freedom given the past trajectory — how
+many ways the gesture can continue.
+
+\begin{exercise}
+  Show that the accessibility entropy $S(\gamma, t)$ is non-increasing
+  in $t$ along any fixed trajectory $\gamma$. What does equality
+  $S(\gamma, t+\delta) = S(\gamma, t)$ imply about the gesture at time $t$?
+\end{exercise}
+
+\begin{exercise}
+  Define the \emph{gesture manifold curvature} at a point
+  $\gamma \in M_{gestureidx}$ as the second fundamental form of the
+  embedding $M_{gestureidx} \hookrightarrow \gesturesp$. Interpret
+  high curvature geometrically. What kind of gesture motions
+  correspond to regions of high curvature?
+\end{exercise}
+
+\begin{exercise}[title={Open problem}]
+  The canonical gesture minimizes kinetic energy among equivalent
+  gestures. Is this the same as maximizing reliability (probability
+  of correct recognition under noise)? If not, construct an example
+  where the minimum-energy gesture is less reliable than a higher-energy
+  alternative. What modified optimality criterion resolves the tension?
+\end{exercise}

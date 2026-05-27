@@ -1,0 +1,57 @@
+\contentsline {section}{\numberline {1}Overview and Thematic Universe}{2}{section.1}%
+\contentsline {section}{\numberline {2}Series I: Cosmic Expansion Instability}{3}{section.2}%
+\contentsline {subsection}{\numberline {2.1}Source Material and Scientific Foundation}{3}{subsection.2.1}%
+\contentsline {subsection}{\numberline {2.2}Issue Structure}{3}{subsection.2.2}%
+\contentsline {subsubsection}{\numberline {2.2.1}Issue 1: The Great Mistake}{3}{subsubsection.2.2.1}%
+\contentsline {subsubsection}{\numberline {2.2.2}Issue 2: The Saddle --- Our Unstable Beginning}{4}{subsubsection.2.2.2}%
+\contentsline {subsubsection}{\numberline {2.2.3}Issue 3: Enter the Plenum --- Space is Alive}{4}{subsubsection.2.2.3}%
+\contentsline {subsubsection}{\numberline {2.2.4}Issue 4: The Accessibility Landscape --- Distance Depends on the Terrain}{4}{subsubsection.2.2.4}%
+\contentsline {subsubsection}{\numberline {2.2.5}Issue 5: The Fall of Space --- Expansion is Relaxation}{4}{subsubsection.2.2.5}%
+\contentsline {subsubsection}{\numberline {2.2.6}Issue 6: The Depth-Two Secret --- The Universe is Finite-Level Determined}{5}{subsubsection.2.2.6}%
+\contentsline {subsubsection}{\numberline {2.2.7}Issue 7: The Smoking Gun --- Redshift and Rotation Have a Common Source}{5}{subsubsection.2.2.7}%
+\contentsline {subsubsection}{\numberline {2.2.8}Issue 8: The RSVP Universe --- A Cosmos That Relaxes Within Itself}{5}{subsubsection.2.2.8}%
+\contentsline {subsection}{\numberline {2.3}Visual Design}{5}{subsection.2.3}%
+\contentsline {subsection}{\numberline {2.4}Production Summary}{6}{subsection.2.4}%
+\contentsline {section}{\numberline {3}Series II: The Babylonian Tooth Worm Invocation}{7}{section.3}%
+\contentsline {subsection}{\numberline {3.1}Source Material}{7}{subsection.3.1}%
+\contentsline {subsection}{\numberline {3.2}Issue Structure}{7}{subsection.3.2}%
+\contentsline {subsubsection}{\numberline {3.2.1}Issue 1: The Birthchain of Creation}{7}{subsubsection.3.2.1}%
+\contentsline {subsubsection}{\numberline {3.2.2}Issue 2: The Worm's Complaint / The Complaint Before the Sun}{7}{subsubsection.3.2.2}%
+\contentsline {subsubsection}{\numberline {3.2.3}Issue 3: Rebellion in the Mouth of the World / Between Tooth and Gum}{7}{subsubsection.3.2.3}%
+\contentsline {subsubsection}{\numberline {3.2.4}Issue 4: The Accessibility War}{7}{subsubsection.3.2.4}%
+\contentsline {subsubsection}{\numberline {3.2.5}Issue 5: The House of Water}{8}{subsubsection.3.2.5}%
+\contentsline {subsubsection}{\numberline {3.2.6}Issue 6: The Tooth of Heaven}{8}{subsubsection.3.2.6}%
+\contentsline {subsubsection}{\numberline {3.2.7}Issue 7: The Trial of the Worm / The Trial of the Last Child}{8}{subsubsection.3.2.7}%
+\contentsline {subsubsection}{\numberline {3.2.8}Issue 8: The Secret of the Last Child}{8}{subsubsection.3.2.8}%
+\contentsline {subsection}{\numberline {3.3}Visual Design}{8}{subsection.3.3}%
+\contentsline {subsection}{\numberline {3.4}Production Summary}{9}{subsection.3.4}%
+\contentsline {section}{\numberline {4}Series III: Orphic Mystery Comics}{10}{section.4}%
+\contentsline {subsection}{\numberline {4.1}Source Material}{10}{subsection.4.1}%
+\contentsline {subsection}{\numberline {4.2}Concept and Tone}{10}{subsection.4.2}%
+\contentsline {subsection}{\numberline {4.3}Issue Structure}{10}{subsection.4.3}%
+\contentsline {subsubsection}{\numberline {4.3.1}Issues 1--2: Before the Egg / The Hatching}{10}{subsubsection.4.3.1}%
+\contentsline {subsubsection}{\numberline {4.3.2}Issue 3: The Birth of the Cosmos}{11}{subsubsection.4.3.2}%
+\contentsline {subsubsection}{\numberline {4.3.3}Issues 4 onwards: The Orphic Mysteries Proper}{11}{subsubsection.4.3.3}%
+\contentsline {subsection}{\numberline {4.4}Visual Design}{11}{subsection.4.4}%
+\contentsline {subsection}{\numberline {4.5}Production Summary}{11}{subsection.4.5}%
+\contentsline {section}{\numberline {5}Cross-Series Thematic Architecture}{12}{section.5}%
+\contentsline {subsection}{\numberline {5.1}The Three Creation Chains}{12}{subsection.5.1}%
+\contentsline {subsection}{\numberline {5.2}The Three Depth-Two Moments}{12}{subsection.5.2}%
+\contentsline {subsection}{\numberline {5.3}The Common Intuition}{12}{subsection.5.3}%
+\contentsline {section}{\numberline {6}Immediate Development Priorities}{13}{section.6}%
+\contentsline {subsubsection}{\numberline {6.0.1}Series I: Cosmic Expansion Instability}{13}{subsubsection.6.0.1}%
+\contentsline {subsubsection}{\numberline {6.0.2}Series II: The Babylonian Tooth Worm Invocation}{13}{subsubsection.6.0.2}%
+\contentsline {subsubsection}{\numberline {6.0.3}Series III: Orphic Mystery Comics}{13}{subsubsection.6.0.3}%
+\contentsline {subsubsection}{\numberline {6.0.4}Cross-Series}{13}{subsubsection.6.0.4}%
+\contentsline {section}{\numberline {7}Critical Reading and Refined Architecture}{14}{section.7}%
+\contentsline {subsection}{\numberline {7.1}The Boundary Motif: A Deeper Common Structure}{14}{subsection.7.1}%
+\contentsline {subsection}{\numberline {7.2}Reframing: Three Mythologies of Accessibility}{15}{subsection.7.2}%
+\contentsline {subsection}{\numberline {7.3}Series Strengths and Remaining Work}{15}{subsection.7.3}%
+\contentsline {subsection}{\numberline {7.4}Imprint Architecture}{16}{subsection.7.4}%
+\contentsline {subsection}{\numberline {7.5}The Spine}{16}{subsection.7.5}%
+\contentsline {section}{\numberline {8}Editorial Notes: Structural Interventions}{18}{section.8}%
+\contentsline {subsection}{\numberline {8.1}The Orphic Initiate}{18}{subsection.8.1}%
+\contentsline {subsection}{\numberline {8.2}The RSVP Detective}{18}{subsection.8.2}%
+\contentsline {subsection}{\numberline {8.3}The Silent Heraldic Page}{19}{subsection.8.3}%
+\contentsline {subsection}{\numberline {8.4}Production Sequence}{19}{subsection.8.4}%
+\contentsline {subsection}{\numberline {8.5}The Preferred Reading Order}{20}{subsection.8.5}%

@@ -1,0 +1,152 @@
+% ============================================================
+%  chapters/app-b-projection-theory.tex
+%  Appendix B: Projection Theory, Information Loss, Surjective Geometry
+% ============================================================
+
+\section*{B.1 Introduction}
+
+The previous appendix established that symbolic systems emerge through
+equivalence relations and quotient constructions. We now study the geometry
+of projection itself.
+
+\begin{tcolorbox}[enhanced, colback=RSVPdeep, colframe=RSVPdeep,
+  coltext=white, arc=6pt, boxrule=0pt, left=6mm, right=6mm, top=5mm, bottom=5mm]
+  \textbf{Central claim.} Every useful representation is necessarily
+  many-to-one. A representation that loses nothing is not a representation
+  at all.
+\end{tcolorbox}
+
+% ── B.2–B.3 Projections and Fibers ────────────────────────────
+\section*{B.2 Projections}
+
+\begin{definition}{Projection}{projection-app}
+  Let $X$ and $M$ be sets. A \emph{projection} is a function
+  $\pi : X \to M$. The space $X$ is the \emph{source space};
+  $M$ is the \emph{representation space}.
+\end{definition}
+
+\begin{example}
+  A camera image projects $\mathbb{R}^3 \to \mathbb{R}^2$.
+  Typing projects $G \to \Sigma$, where $G$ is finger-trajectory space
+  and $\Sigma$ is the alphabet. Logical evaluation projects
+  $\text{Formulae} \to \{T,F\}$.
+\end{example}
+
+\begin{definition}{Fiber}{fiber-app}
+  Given $m \in M$, the \emph{fiber over $m$} is
+  $F_m = \pi^{-1}(m) = \{x \in X : \pi(x) = m\}$.
+\end{definition}
+
+\begin{example}
+  For $\pi(x,y) = x$, the fiber over $m = 3$ is the entire vertical line
+  $F_3 = \{(3,y) : y \in \mathbb{R}\}$. The representation remembers only
+  $x = 3$; everything else is forgotten.
+\end{example}
+
+% ── B.4 Information Loss Theorem ──────────────────────────────
+\section*{B.4 The Information Loss Theorem}
+
+\begin{theorem}{Information Loss}{info-loss}
+  If $|X| > |M|$, then every surjective projection $\pi : X \to M$
+  loses information.
+\end{theorem}
+
+\begin{proof}
+  Suppose not. Then every point in $M$ would correspond to exactly one point
+  in $X$, making $\pi$ injective. An injective surjection satisfies
+  $|X| = |M|$, contradicting $|X| > |M|$.
+\end{proof}
+
+\begin{warning}
+  Compression is not an implementation detail. It is mathematically
+  unavoidable. Any projection from a richer space to a poorer one
+  necessarily discards information.
+\end{warning}
+
+% ── B.5–B.6 Entropy and Chains ────────────────────────────────
+\section*{B.5 Representation Entropy}
+
+\begin{definition}{Representation Entropy}{rep-entropy}
+  The \emph{representation entropy} of $m \in M$ is
+  $S(m) = \log |F_m|$.
+  Large fibers correspond to large uncertainty;
+  small fibers to precise representations.
+\end{definition}
+
+\begin{example}
+  Suppose 1000 different gestures produce the letter ``A''. Then
+  $S(\texttt{A}) = \log(1000)$. The representation ``A'' contains
+  less information than the original motion.
+\end{example}
+
+\section*{B.6 Projection Chains}
+
+\begin{definition}{Projection Chain}{proj-chain}
+  A \emph{projection chain} is
+  $X \to M_1 \to M_2 \to \cdots \to M_n$.
+\end{definition}
+
+A canonical example:
+\[
+  \text{trajectory} \;\to\; \text{gesture} \;\to\;
+  \text{letter} \;\to\; \text{word} \;\to\;
+  \text{sentence} \;\to\; \text{semantic category.}
+\]
+
+\begin{theorem}{Entropy Monotonicity}{entropy-mono}
+  Entropy cannot decrease along a projection chain.
+\end{theorem}
+
+\begin{proof}
+  Fibers can only grow under composition of projections. If
+  $\pi_2 \circ \pi_1$ is a composition, each final state inherits all
+  ambiguity from previous stages plus additional ambiguity introduced later.
+  Therefore $S_{n+1} \geq S_n$.
+\end{proof}
+
+% ── B.7–B.9 Surjective Hypercubes ────────────────────────────
+\section*{B.7 The Surjective Hypercube}
+
+\begin{definition}{Surjective Hypercube}{surj-hypercube}
+  Let $Q_n = \{0,1\}^n$. A \emph{surjective hypercube} is a pair
+  $(Q_n, \pi)$ where $\pi : Q_n \to Y$ is surjective.
+\end{definition}
+
+\begin{example}
+  Let $\pi(x_1,x_2,x_3,x_4) = (x_1,x_2)$. Then 16 states collapse to
+  4 states, each with 4 preimages: $Q_4 \to Q_2$.
+\end{example}
+
+\section*{B.8 Hypercube Splitting}
+
+\begin{definition}{Splitting Function}{splitting}
+  A \emph{splitting function} is $\sigma : Q_n \to \{0,1\}$, partitioning
+  the hypercube into $Q_n^+ = \sigma^{-1}(1)$ and $Q_n^- = \sigma^{-1}(0)$.
+\end{definition}
+
+Every Boolean decision creates a hypercube split. The penteract (Appendix~E)
+is a fibered pair $(Q_n^-, Q_n^+, \pi)$ where the lower cube represents
+detailed states, the upper cube compressed states, and the connecting fibers
+encode admissible lifts.
+
+% ── B.12 Fundamental Theorem ──────────────────────────────────
+\section*{B.12 The Fundamental Projection Principle}
+
+\begin{theorem}{Reality Partitioned by Representation}{reality-partition}
+  Every representation partitions reality into fibers.
+\end{theorem}
+
+\begin{proof}
+  Let $\pi : X \to M$. For every $m \in M$ define $F_m = \pi^{-1}(m)$.
+  The collection $\{F_m\}$ forms a partition of $X$.
+\end{proof}
+
+\begin{namedthm}{The Fiber Principle}
+  A letter is a fiber. A word is a fiber. A gesture is a fiber.
+  A concept is a fiber. A memory is a fiber. A scientific theory is a fiber.
+  Every representation is a partition imposed upon a richer reality.
+\end{namedthm}
+
+\medskip
+\textit{Appendix~C} will use this machinery to derive Spherepop evaluation as
+a constraint-reduction process on nested expression manifolds.

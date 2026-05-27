@@ -1,0 +1,96 @@
+\chapter{Morphological Taxonomy}
+
+\chapterepigraph{%
+  Classification is not the end of understanding.\\
+  It is the beginning.\\
+  A good classification reveals\\
+  why the things in one class\\
+  behave the way they do.
+}{Flyxion, \textit{Semantic Infrastructure}}
+
+\sidenote{Connects to\\canonical forms\\(Ch.\,4) and\\constraint spaces\\(App.\,A)}
+
+Chapter~44 examined structural recurrence — how the same structure
+appears across domains. This chapter examines the formal theory of
+classification itself: what makes a good taxonomy, how shapes and
+functions constrain each other, and how the constraint framework
+provides a principled basis for classification.
+
+\section{Shape, Function, Behavior, Constraint}
+
+Traditional classification schemes have emphasized shape (morphology),
+function (what something does), behavior (how it acts), and increasingly,
+genetic or compositional structure. Each reveals different aspects of
+the underlying reality.
+
+\begin{definition}{Morphological Equivalence Class}{morph-equiv}
+  Two systems $s_1, s_2$ belong to the same \emph{morphological
+  equivalence class} if there exists an isomorphism $\phi : s_1 \to s_2$
+  that preserves the relevant structural features (shape, topology,
+  connectivity, constraint structure). The equivalence class $[s]$ is
+  the morphological type.
+\end{definition}
+
+The ``relevant structural features'' depend on the classification goal.
+Anatomical classification preserves gross morphology (bone structure,
+organ arrangement). Functional classification preserves input-output
+behavior. Constraint classification preserves the constraint structure
+— which configurations are admissible and which are not.
+
+\section{When Categories Fail}
+
+Every classification system fails at boundaries. The species concept
+fails at ring species (populations that form a continuous chain with
+fertile hybridization but whose ends cannot interbreed). The
+country concept fails at disputed territories. The ``word'' concept
+fails at clitics, compounds, and phrasal idioms.
+
+\begin{definition}{Category Boundary Failure}{cat-boundary}
+  A classification system $\mathcal{T}$ exhibits \emph{boundary failure}
+  at item $x$ if: (1) $x$ partially satisfies the criteria for
+  category $C_1$ and partially satisfies the criteria for category $C_2$,
+  and (2) the criteria for $C_1$ and $C_2$ are jointly unsatisfiable
+  for any single item. The failure reveals that $\mathcal{T}$'s
+  categories are not constraint-closed.
+\end{definition}
+
+The resolution in each case is the same: recognize that the boundary
+case reveals a hidden dimension — a feature that the binary
+categorization was suppressing. Ring species reveal the temporal
+dimension of speciation; disputed territories reveal the political
+dimension of geography; clitics reveal the prosodic dimension of
+word structure.
+
+\section{Functional Classification}
+
+The RSVP framework suggests a classification principle that unifies
+shape, function, behavior, and constraint: classify by the accessibility
+landscape. Systems with similar accessibility landscapes — similar
+constraint structures, similar gradient flows, similar attractors —
+are in the same morphological class regardless of their physical substrate.
+
+\begin{namedthm}{The Functional Morphology Principle}
+  The deepest classification of a system is by its accessibility
+  landscape: the structure of its constraint space, admissible states,
+  and gradient flow. Systems that differ in physical substrate but
+  share an accessibility landscape are functionally equivalent and
+  will exhibit analogous behaviors under analogous perturbations.
+\end{namedthm}
+
+\begin{exercise}
+  The RSVP framework classifies physical, cognitive, and social systems
+  by their accessibility landscapes. Give one example of each pair:
+  (a) two physical systems with similar accessibility landscapes,
+  (b) two cognitive systems with similar accessibility landscapes,
+  (c) one physical and one cognitive system with similar accessibility
+  landscapes. For each pair, identify a specific behavior predicted
+  to be analogous.
+\end{exercise}
+
+\begin{exercise}
+  Propose a classification of mathematical proof strategies
+  (induction, contradiction, construction, pigeonhole, probabilistic
+  method, etc.) based on their constraint-space structure.
+  What is the admissible region for each strategy?
+  What accessibility landscape does each navigate?
+\end{exercise}

@@ -1,0 +1,135 @@
+\tikzset{
+  bubble/.style={circle, draw, thick, minimum size=7mm, inner sep=0},
+  poparrow/.style={-{Stealth[length=7pt]}, RSVPaccent, very thick},
+  steplab/.style={RSVPdeep, font=\small\bfseries\sffamily},
+  nodelab/.style={RSVPdeep, font=\footnotesize},
+  collapselab/.style={RSVPaccent!80, font=\footnotesize\itshape},
+}
+% ============================================================
+%  diagrams/spherepop-eval-3d.tex
+%  Spherepop evaluation sequence as nested 3D bubbles
+%  Shows: 1 + 3×2² evaluated step by step
+% ============================================================
+  bubble/.style={circle, draw, thick, minimum size=7mm, inner sep=0},
+  poparrow/.style={-{Stealth[length=7pt]}, RSVPaccent, very thick},
+  steplab/.style={RSVPdeep, font=\small\bfseries\sffamily},
+  nodelab/.style={RSVPdeep, font=\footnotesize},
+  collapselab/.style={RSVPaccent!80, font=\footnotesize\itshape},
+% ── STEP 0: Full nested expression 1 + 3×(2²) ──────────────
+\begin{scope}[xshift=0cm, yshift=0cm]
+  \node[steplab] at (0, 2.8) {Step 0: Initial expression};
+
+  % Outermost bubble (the + operation)
+  \draw[RSVPdeep, thick] (0,0) circle (2.4cm);
+  \node[nodelab] at (-1.3, 1.5) {$+$};
+
+  % Left atom: 1
+  \draw[RSVPmid, thick] (-1.2, 0) circle (0.55cm);
+  \node[nodelab] at (-1.2, 0) {$1$};
+
+  % Middle bubble: × operation
+  \draw[RSVPmid, thick] (0.8, 0) circle (1.4cm);
+  \node[nodelab] at (-0.1, 0.8) {$\times$};
+
+  % Left of ×: atom 3
+  \draw[RSVPpurple, thick] (0.1, 0) circle (0.45cm);
+  \node[nodelab] at (0.1, 0) {$3$};
+
+  % Right of ×: inner bubble for 2²
+  \draw[RSVPaccent, thick] (1.5, 0) circle (0.7cm);
+  \node[nodelab] at (1.3, 0.35) {\footnotesize$\hat{\phantom{.}}$};
+  % atom 2
+  \draw[RSVPaccent!70, thick] (1.25, -0.1) circle (0.28cm);
+  \node[font=\tiny] at (1.25,-0.1) {$2$};
+  % atom 2 (exponent)
+  \draw[RSVPaccent!70, thick] (1.7, 0.25) circle (0.22cm);
+  \node[font=\tiny] at (1.7,0.25) {$2$};
+
+  % Pop target indicator
+  \draw[RSVPaccent, dashed, thick, opacity=0.6]
+    (1.5, 0) circle (0.78cm);
+  \node[collapselab] at (1.5, -1.05) {pop here};
+\end{scope}
+
+% ── Arrow 1 ─────────────────────────────────────────────────
+\draw[poparrow] (2.8, 0) -- (4.2, 0)
+  node[midway, above, collapselab] {$\bullet_1$};
+
+% ── STEP 1: 2² evaluated → 4 ─────────────────────────────────
+\begin{scope}[xshift=5.2cm, yshift=0cm]
+  \node[steplab] at (0, 2.8) {Step 1: $2^2 \to 4$};
+
+  \draw[RSVPdeep, thick] (0,0) circle (2.4cm);
+  \node[nodelab] at (-1.3, 1.5) {$+$};
+
+  \draw[RSVPmid, thick] (-1.2, 0) circle (0.55cm);
+  \node[nodelab] at (-1.2, 0) {$1$};
+
+  \draw[RSVPmid, thick] (0.8, 0) circle (1.4cm);
+  \node[nodelab] at (-0.1, 0.8) {$\times$};
+
+  \draw[RSVPpurple, thick] (0.1, 0) circle (0.45cm);
+  \node[nodelab] at (0.1, 0) {$3$};
+
+  % 2² has been evaluated: now a single node = 4
+  \draw[RSVPaccent, very thick, fill=RSVPaccent!15] (1.5, 0) circle (0.5cm);
+  \node[nodelab, font=\small\bfseries] at (1.5, 0) {$4$};
+
+  % Pop next target: ×
+  \draw[RSVPaccent, dashed, thick, opacity=0.6]
+    (0.8, 0) circle (1.48cm);
+  \node[collapselab] at (0.8, -1.55) {pop here};
+\end{scope}
+
+% ── Arrow 2 ─────────────────────────────────────────────────
+\draw[poparrow] (8.0, 0) -- (9.4, 0)
+  node[midway, above, collapselab] {$\bullet_2$};
+
+% ── STEP 2: 3×4 → 12 ─────────────────────────────────────────
+\begin{scope}[xshift=10.4cm, yshift=0cm]
+  \node[steplab] at (0, 2.8) {Step 2: $3{\times}4 \to 12$};
+
+  \draw[RSVPdeep, thick] (0,0) circle (2.4cm);
+  \node[nodelab] at (-1.3, 1.5) {$+$};
+
+  \draw[RSVPmid, thick] (-1.2, 0) circle (0.55cm);
+  \node[nodelab] at (-1.2, 0) {$1$};
+
+  % 3×4 evaluated → 12
+  \draw[RSVPmid, very thick, fill=RSVPmid!15] (0.8, 0) circle (0.6cm);
+  \node[nodelab, font=\small\bfseries] at (0.8, 0) {$12$};
+
+  % Pop next: outer +
+  \draw[RSVPaccent, dashed, thick, opacity=0.6]
+    (0,0) circle (2.48cm);
+  \node[collapselab] at (0, -2.55) {pop here};
+\end{scope}
+
+% ── Arrow 3 (below, wrapping) ────────────────────────────────
+\draw[poparrow] (10.4, -3.1) -- (10.4, -4.0) -- (5.4, -4.0) -- (5.4, -3.2);
+\node[collapselab] at (7.9, -4.3) {$\bullet_3$};
+
+% ── STEP 3: 1+12 → 13 (final) ────────────────────────────────
+\begin{scope}[xshift=5.4cm, yshift=-6.4cm]
+  \node[steplab] at (0, 2.4) {Step 3: $1{+}12 \to 13$ \quad (collapsed)};
+
+  % Final result: single atom
+  \draw[RSVPdeep, very thick, fill=RSVPdeep!10] (0,0) circle (0.85cm);
+  \node[RSVPdeep, font=\Large\bfseries] at (0,0) {$13$};
+
+  \node[collapselab, font=\small] at (0, -1.2)
+    {evaluation complete — depth 0};
+\end{scope}
+
+% ── Depth legend ─────────────────────────────────────────────
+\begin{scope}[xshift=0cm, yshift=-5.5cm]
+  \node[draw=RSVPdeep!30, fill=RSVPgray, rounded corners=3pt,
+        inner sep=6pt, font=\scriptsize, anchor=north west] at (0,0) {
+    \begin{tabular}{ll}
+      \color{RSVPdeep}\rule{10pt}{1.5pt} & Outer sphere (depth 0–1)\\
+      \color{RSVPmid}\rule{10pt}{1.5pt}  & Mid sphere (depth 1–2)\\
+      \color{RSVPaccent}\rule{10pt}{1.5pt}& Inner sphere (depth 2–3)\\
+      $\bullet_n$ & Pop at step $n$
+    \end{tabular}
+  };
+\end{scope}

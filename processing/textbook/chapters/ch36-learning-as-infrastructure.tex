@@ -1,0 +1,104 @@
+\chapter{Learning as Infrastructure}
+
+\chapterepigraph{%
+  Learning is not filling a container.\\
+  It is building a city —\\
+  always half-finished, always expanding,\\
+  always requiring maintenance.
+}{Flyxion, \textit{Semantic Infrastructure}}
+
+\sidenote{Connects to\\App.\,N on\\learning geometry;\\ Ch.\,23 on\\memory chains}
+
+The accessibility framework gives us a precise way to understand learning:
+it is not information transfer (pouring knowledge from teacher to student)
+but \emph{infrastructure construction} (building the constraint structures
+that make new knowledge accessible).
+
+\section{Knowledge Accumulation}
+
+Learning accumulates constraint modifications into a personal knowledge
+infrastructure. Each new concept learned modifies the constraint set
+in ways that make some future concepts easier to learn (more accessible)
+and others harder (now inconsistent with established beliefs).
+
+\begin{definition}{Knowledge Infrastructure}{knowledge-infra}
+  An agent's \emph{knowledge infrastructure} at time $t$ is the pair
+  $(\mathcal{C}(t), S_K(t))$: the current constraint set and the
+  accessibility landscape it induces. The infrastructure determines
+  what new concepts can be learned (those with high $S_K$ relative to
+  the current constraint set) and at what cost.
+\end{definition}
+
+This explains why prerequisites matter. Learning calculus without algebra
+is difficult not because calculus is intrinsically harder, but because
+the accessibility of calculus concepts depends on the constraint
+structures that algebra builds. Algebra makes calculus accessible;
+without it, calculus concepts have near-zero accessibility in the
+learner's knowledge infrastructure.
+
+\section{Maintenance Costs}
+
+Knowledge, like physical infrastructure, requires maintenance. Concepts
+not visited decay (Chapter~23). Connections not reinforced weaken.
+Beliefs not updated drift from the current state of knowledge.
+
+The total maintenance cost of a knowledge infrastructure is:
+\[
+  \kappa_\text{maint}(\mathcal{C}, t) = \sum_{c \in \mathcal{C}}
+  \text{decay}(c, t) \cdot \text{importance}(c)
+\]
+where $\text{decay}(c, t)$ is the rate at which constraint $c$
+weakens without reinforcement. High-importance, high-decay constraints
+(foundational concepts in fast-moving fields) require frequent maintenance.
+
+\section{Forgetting as Accessibility Pruning}
+
+Forgetting is often viewed negatively — as failure of the memory system.
+The accessibility framework suggests a more nuanced view: forgetting is
+\emph{accessibility pruning}, the removal of low-value constraints to
+preserve the structural integrity of the knowledge infrastructure.
+
+\begin{proposition}{Adaptive Forgetting}{adaptive-forgetting}
+  In a knowledge infrastructure with finite maintenance capacity
+  $B$ (total cognitive budget), optimal forgetting drops constraints
+  $c$ with low $\text{value}(c) / \text{decay}(c)$ — those that
+  are costly to maintain relative to their contribution to $S_K$.
+\end{proposition}
+
+This explains why we forget details (high decay, low value) while
+retaining structure (low decay, high value). The structure of algebra
+persists even when specific problem solutions are forgotten; the
+structure enables reconstruction of details when needed.
+
+\section{Reconstruction over Retention}
+
+A mature knowledge infrastructure is not characterized by the retention
+of large volumes of information but by the ability to reconstruct
+needed information from structure. The expert mathematician who cannot
+recall a specific theorem can re-derive it; the expert physician who
+cannot recall a drug interaction can look it up and immediately integrate
+it with their existing knowledge.
+
+\begin{namedthm}{The Reconstruction Principle}
+  A robust knowledge infrastructure prioritizes the retention of
+  high-level constraint structures (schemas, frameworks, principles)
+  over the retention of specific facts. Facts are reconstructible
+  from structure; structure is not reconstructible from facts alone.
+  The value of learning a fact is proportional to its contribution
+  to structural constraint modifications.
+\end{namedthm}
+
+\begin{exercise}
+  You are designing a curriculum for a 10-year, full-time mathematics
+  education. Using the knowledge infrastructure model, what should
+  be the primary goal of years 1--3 (foundation), 4--7 (expansion),
+  and 8--10 (integration)? How does your design differ from a
+  typical university mathematics curriculum?
+\end{exercise}
+
+\begin{exercise}
+  Model the knowledge infrastructure of a first-year medical student
+  versus a 20-year experienced physician. What are the key structural
+  differences? Where does the physician's infrastructure support
+  reconstruction that the student's does not?
+\end{exercise}

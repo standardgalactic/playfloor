@@ -1,0 +1,92 @@
+% ============================================================
+%  diagrams/fiber-projection-2d.tex
+%  Fiber and projection: expression space onto canonical forms
+% ============================================================
+
+\tikzset{
+  fiber/.style={RSVPmid!60, thin, opacity=0.7},
+  projlabel/.style={font=\footnotesize\itshape, RSVPmid},
+  canlabel/.style={font=\footnotesize\bfseries, RSVPdeep},
+}
+
+  % ── Top layer: expression space X ─────────────────────────
+  \draw[RSVPdeep, thick, rounded corners=8pt]
+    (-4, 0.4) rectangle (4, 2.8);
+  \node[RSVPdeep, font=\small\scshape] at (-3.2, 2.5) {$X$};
+
+  % Expressions (scattered points)
+  \foreach \x/\y/\lbl in {
+    -3.0/1.8/{$3\times4$},
+    -1.8/2.2/{$2^2\!\times\!3$},
+    -0.5/1.6/{$13-1$},
+     0.5/2.3/{$\frac{36}{3}$},
+     1.6/1.7/{$144/12$},
+     3.0/2.1/{$\ldots$}
+  }{
+    \fill[RSVPaccent] (\x,\y) circle (2.5pt);
+    \node[font=\tiny, above=1pt] at (\x,\y) {\lbl};
+  }
+
+  % A separate cluster for "7"
+  \foreach \x/\y/\lbl in {
+    -3.2/0.8/{$3+4$},
+    -2.0/1.0/{$8-1$},
+    -1.2/0.7/{$7^1$}
+  }{
+    \fill[RSVPpurple] (\x,\y) circle (2.5pt);
+    \node[font=\tiny, above=1pt] at (\x,\y) {\lbl};
+  }
+
+  % A cluster for "5"
+  \foreach \x/\y/\lbl in {
+     2.0/0.8/{$2+3$},
+     2.8/1.1/{$10/2$},
+     3.2/0.6/{$5^1$}
+  }{
+    \fill[RSVPmid] (\x,\y) circle (2.5pt);
+    \node[font=\tiny, above=1pt] at (\x,\y) {\lbl};
+  }
+
+  % ── Projection arrow ──────────────────────────────────────
+  \draw[-{Stealth[length=8pt]}, RSVPdeep, very thick]
+    (0, 0.3) -- (0, -0.7)
+    node[midway, right=4pt, font=\small\itshape, RSVPdeep] {$c$};
+
+  % ── Bottom layer: canonical forms c(X) ────────────────────
+  \draw[RSVPdeep, thick, rounded corners=8pt]
+    (-4, -1.8) rectangle (4, -0.9);
+  \node[RSVPdeep, font=\small\scshape] at (-3.2, -1.0) {$c(X)$};
+
+  % Canonical points
+  \fill[RSVPpurple] (-2.5,-1.35) circle (3.5pt);
+  \node[canlabel, below=3pt] at (-2.5,-1.35) {$7$};
+
+  \fill[RSVPaccent] (0,-1.35) circle (3.5pt);
+  \node[canlabel, below=3pt] at (0,-1.35) {$12$};
+
+  \fill[RSVPmid] (2.5,-1.35) circle (3.5pt);
+  \node[canlabel, below=3pt] at (2.5,-1.35) {$5$};
+
+  % ── Fiber lines ───────────────────────────────────────────
+  % Fibers for 12 (amber cluster)
+  \foreach \x/\y in {-3.0/1.8, -1.8/2.2, -0.5/1.6, 0.5/2.3, 1.6/1.7, 3.0/2.1}{
+    \draw[fiber, RSVPaccent!70]
+      (\x,\y) .. controls (\x*0.5, 0.0) and (0, -0.5) .. (0,-0.9);
+  }
+  % Fibers for 7 (purple)
+  \foreach \x/\y in {-3.2/0.8, -2.0/1.0, -1.2/0.7}{
+    \draw[fiber, RSVPpurple!70]
+      (\x,\y) .. controls (\x*0.7, 0.0) and (-2.5,-0.6) .. (-2.5,-0.9);
+  }
+  % Fibers for 5 (teal)
+  \foreach \x/\y in {2.0/0.8, 2.8/1.1, 3.2/0.6}{
+    \draw[fiber, RSVPmid!70]
+      (\x,\y) .. controls (\x*0.7, 0.0) and (2.5,-0.6) .. (2.5,-0.9);
+  }
+
+  % ── Fiber label ───────────────────────────────────────────
+  \draw[RSVPaccent!50, thin, dashed]
+    (-3.2,0.35) -- (3.2,0.35) -- (3.2,2.85) -- (-3.2,2.85) -- cycle;
+  \node[RSVPaccent!80, font=\footnotesize\itshape] at (4.6, 1.6)
+    {$c^{-1}(12)$};
+  \draw[RSVPaccent!50, thin] (4.1,1.6) -- (3.3,1.6);

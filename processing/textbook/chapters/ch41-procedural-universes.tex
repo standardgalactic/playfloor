@@ -1,0 +1,80 @@
+\chapter{Procedural Universes}
+
+\chapterepigraph{%
+  A procedurally generated world is not a copy of the real world.\\
+  It is a theory of the real world:\\
+  a set of rules that produces worlds\\ like this one.
+}{Flyxion, \textit{Semantic Infrastructure}}
+
+\sidenote{Connects to\\RSVP field\\equations (Ch.\,18)\\and constraint\\ecology (Ch.\,26)}
+
+Procedural generation — the creation of content through algorithms
+rather than explicit design — is one of the most intellectually rich
+areas of game design and computer graphics. This chapter examines
+it through the lens of the accessibility framework.
+
+\section{Generation}
+
+A procedural generator is a constraint satisfaction system: given a
+set of high-level constraints (``generate a dungeon that is winnable,
+interesting, and of approximately level 5 difficulty''), it produces
+specific instantiations (a particular dungeon layout) that satisfy them.
+
+\begin{definition}{Procedural Generator}{proc-gen}
+  A \emph{procedural generator} is a map $G : \Theta \times \mathcal{R}
+  \to W$ where $\Theta$ is a parameter space (constraints), $\mathcal{R}$
+  is a randomness source (seeds), and $W$ is a space of worlds.
+  The generator is \emph{good} if: (1) all generated worlds satisfy
+  the constraints, and (2) the distribution over worlds is diverse
+  (high entropy given the constraints).
+\end{definition}
+
+\section{Emergence}
+
+The most interesting procedural worlds exhibit emergence: global
+structure that arises from local rules without being explicitly
+specified. Cellular automata (Conway's Game of Life), L-systems
+(plant growth), and agent-based simulations all produce emergent
+structures.
+
+Emergence is the procedural version of the RSVP accessibility
+relaxation: local constraint satisfaction rules (cells reproduce
+if they have 2--3 neighbors) produce global accessible patterns
+(gliders, oscillators, stable configurations) that persist because
+they are attractors in the accessibility landscape of the rule system.
+
+\section{Constraint Satisfaction in World Construction}
+
+The constraint satisfaction approach to procedural generation makes
+the accessibility framework explicit:
+
+\begin{itemize}
+  \item \textbf{High-level constraints:} the world must be habitable,
+        have a balanced ecosystem, have navigable terrain.
+  \item \textbf{Low-level generation:} tile placement, creature
+        population, resource distribution.
+  \item \textbf{Validation:} constraint violation check — does the
+        generated world satisfy the high-level constraints?
+  \item \textbf{Repair:} if not, modify the low-level generation
+        to reduce constraint violation (constraint descent).
+\end{itemize}
+
+This is the Spherepop evaluation of world construction: the high-level
+constraints are the outer spheres; the low-level details are the inner
+spheres; generation is evaluation (collapse) from inside out.
+
+\begin{exercise}
+  Describe the constraint space for generating a believable ecological
+  system: predator-prey relationships, carrying capacity, seasonal
+  variation, evolutionary pressure. What are the minimum constraints
+  needed to produce ecologically plausible behavior? What emergent
+  structures arise from these constraints?
+\end{exercise}
+
+\begin{exercise}
+  The No Man's Sky universe (18 quintillion planets) is procedurally
+  generated from a seed plus rules. Using the accessibility framework,
+  explain why many players found the universe ``empty'' despite its size.
+  What constraints were missing? What accessibility landscape would
+  a more engaging procedural universe require?
+\end{exercise}

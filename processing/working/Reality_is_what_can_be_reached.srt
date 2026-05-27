@@ -1,0 +1,1292 @@
+1
+00:00:00,080 --> 00:00:06,240
+usually when we think about space exploration right there's this uh this built-in expectation
+
+2
+00:00:06,240 --> 00:00:10,560
+of geography like drawing a map yeah totally you build a ship you calculate the trajectory
+
+3
+00:00:10,560 --> 00:00:16,160
+and you just draw a solid line from earth past mars straight on to whatever rock you're trying
+
+4
+00:00:16,160 --> 00:00:22,960
+to land on i mean it is a conquest of miles and kilometers it's clean measurable right and it gives
+
+5
+00:00:22,960 --> 00:00:29,120
+us a sense of control we really want the universe to be charted and you know bound by the familiar
+
+6
+00:00:29,120 --> 00:00:34,240
+laws of physics exactly you exert thrust you could conquer physical distance and boom you arrive
+
+7
+00:00:34,240 --> 00:00:41,280
+but then you step into the world of our deep dive today and uh that map is just worse than useless
+
+8
+00:00:41,280 --> 00:00:46,560
+it is fundamentally incompatible with the reality we're looking at oh absolutely incompatible we are
+
+9
+00:00:46,560 --> 00:00:53,360
+plunging into a cosmic landscape where the very concept of distance is well it's an illusion yeah
+
+10
+00:00:53,360 --> 00:01:00,160
+it requires us to completely dismantle how we perceive space time and honestly human connection
+
+11
+00:01:00,160 --> 00:01:05,200
+i mean we are talking about a paradigm shift that asks us to rethink the basic building blocks of
+
+12
+00:01:05,200 --> 00:01:10,960
+existence so to everyone joining us welcome i want you to just uh set the stage in your mind for a
+
+13
+00:01:10,960 --> 00:01:19,920
+second we are leaping forward to the year 2001 ce a very long time from now right imagine a future
+
+14
+00:01:19,920 --> 00:01:26,400
+so incredibly distant that our current solar system is just unrecognizable like earth's sun is now
+
+15
+00:01:26,400 --> 00:01:33,120
+referred to in historical archives simply as sol the cold sun which is such a wild name for it it
+
+16
+00:01:33,120 --> 00:01:39,440
+really is and out in the orbit of jupiter its moon europa has undergone this cataclysmic physical
+
+17
+00:01:39,440 --> 00:01:45,760
+transformation it is no longer a frozen moon it has literally ignited it is a brand new star the sheer
+
+18
+00:01:45,760 --> 00:01:50,640
+scale of that cosmological change really sets a tone for everything that follows i mean we aren't
+
+19
+00:01:50,640 --> 00:01:54,640
+just dealing with a new location here no not at all we're dealing with an entirely new celestial
+
+20
+00:01:54,640 --> 00:01:59,920
+mechanics and our source material for this exploration is just brilliant we are looking at
+
+21
+00:01:59,920 --> 00:02:04,720
+excerpts from the inaugural issue of a visionary comic book it's called the call from ankara
+
+22
+00:02:04,720 --> 00:02:10,800
+published by flixion comics yes such a gorgeous book if you glance at the cover you know it looks like
+
+23
+00:02:10,800 --> 00:02:19,200
+a pulpy glorious vintage cosmic adventure you've got the square-jawed astronaut glowing alien landscape
+
+24
+00:02:19,200 --> 00:02:25,760
+swirling nebulae classic sci-fi stuff right but do not let the sequential art fool you this is a
+
+25
+00:02:25,760 --> 00:02:32,640
+profoundly dense philosophical text just uh disguised as sequential art i feel like the comic medium is
+
+26
+00:02:32,640 --> 00:02:40,320
+so often underestimated but the marriage of text and visual art here is just essential oh 100 the
+
+27
+00:02:40,320 --> 00:02:46,400
+concepts being presented are so abstract that the visual representation like the literal drawing of
+
+28
+00:02:46,400 --> 00:02:51,760
+these ideas is the only way to truly anchor them for the reader the art really does as much heavy
+
+29
+00:02:51,760 --> 00:02:57,600
+lifting as the dialogue so true and the mission of our deep dive today isn't just to like recap a
+
+30
+00:02:57,600 --> 00:03:02,480
+sci-fi plot we're going to unpack the radical concepts this comic introduces and there are a lot of
+
+31
+00:03:02,480 --> 00:03:09,120
+them so many we're talking about how an entire civilization might abandon spoken words for shapes of light
+
+32
+00:03:09,120 --> 00:03:14,480
+we're going to look at how physical geography can be entirely replaced by the concept of accessibility
+
+33
+00:03:14,480 --> 00:03:20,240
+that's the part that really blew my mind same and perhaps most wildly how our daily choices
+
+34
+00:03:20,240 --> 00:03:25,200
+literally build the physical architecture of our reality it's a text that asks us to examine the
+
+35
+00:03:25,200 --> 00:03:30,160
+foundational assumptions of human civilization everything from how we construct our cities to
+
+36
+00:03:30,160 --> 00:03:36,240
+how we process our own regrets yeah so let's set the scene we follow our protagonist this renowned
+
+37
+00:03:36,240 --> 00:03:44,000
+astronaut named theseus and he is sent from earth to explore this new star angira which uh used to
+
+38
+00:03:44,000 --> 00:03:50,240
+be europa right uscopa as the old probes used to call it exactly and the text tells us humanity has
+
+39
+00:03:50,240 --> 00:03:56,000
+been busy we've colonized jupiter's other major moons ganymede and callisto we're expanding we are
+
+40
+00:03:56,000 --> 00:04:01,520
+but since the year 2010 every single probe sent to anchor has been mysteriously destroyed on approach like
+
+41
+00:04:01,520 --> 00:04:09,040
+smashed to pieces and now in 2001 ce theseus is the very first human to land successfully that 18 000
+
+42
+00:04:09,040 --> 00:04:14,480
+year gap is just a crucial detail i mean for millennia anchor has been an impenetrable fortress of
+
+43
+00:04:14,480 --> 00:04:20,560
+mystery right yeah actively rejecting humanity's attempts to even observe it exactly a society dealing
+
+44
+00:04:20,560 --> 00:04:28,880
+with 18 000 years of silence from a neighboring celestial body would be driven by a desperate almost paranoid
+
+45
+00:04:28,880 --> 00:04:34,640
+need to understand it okay so let's unpack this theseus steps off his hyper advanced ship expecting
+
+46
+00:04:34,640 --> 00:04:41,600
+to find some hostile heavily armed alien empire like with laser cannons aimed at the sky yeah he's
+
+47
+00:04:41,600 --> 00:04:47,520
+expecting the people who shot down our probes exactly but what he actually finds forces us to completely
+
+48
+00:04:47,520 --> 00:04:53,520
+rewire how we understand the universe well to really appreciate the shock of his discovery we have
+
+49
+00:04:53,520 --> 00:04:58,640
+to look at what theseus brings with him he is the pinnacle of human achievement the ultimate astronaut
+
+50
+00:04:58,640 --> 00:05:03,600
+right and the text explicitly points out that he carries something called the beta zero mechanism
+
+51
+00:05:03,600 --> 00:05:10,320
+oh man the beta zero mechanism the comic describes it as a self-improving technological singularity
+
+52
+00:05:10,960 --> 00:05:17,040
+with a logic powered by a rare and obscure alpha crystal it's a mouthful it is just the name sounds
+
+53
+00:05:17,040 --> 00:05:21,920
+like the ultimate trump card it's an ai that constantly upgrades itself i assume the alpha crystal is
+
+54
+00:05:21,920 --> 00:05:28,000
+like some sort of infinitely dense computational core the comic leaves the exact physics
+
+55
+00:05:28,640 --> 00:05:34,960
+of the alpha crystal ambiguous but its function is very clear the beta zero mechanism represents the
+
+56
+00:05:34,960 --> 00:05:42,240
+absolute apex of human ideology so it's like our entire philosophy packed into a machine exactly it is
+
+57
+00:05:42,240 --> 00:05:49,680
+the logical conclusion of our current technological trajectory it's this relentless machine driven
+
+58
+00:05:49,680 --> 00:05:56,240
+algorithmic perfection wow it is a tool designed to calculate predict and ultimately dominate the
+
+59
+00:05:56,240 --> 00:06:02,240
+environment by processing infinite data points yeah i mean it is the ultimate expression of control okay
+
+60
+00:06:02,240 --> 00:06:09,120
+so he lands with this ultimate control device and he encounters the locals the anchorans and visually
+
+61
+00:06:09,120 --> 00:06:14,800
+they are striking so beautiful flowing tendril-like limbs wearing what look like ornate almost ceremonial
+
+62
+00:06:14,800 --> 00:06:19,120
+robes they don't look like cyborgs or tech lords not at all and i'm struggling with the contradiction
+
+63
+00:06:19,120 --> 00:06:24,080
+here because on page four the text nets they have evolved into a primitive civilization holding a
+
+64
+00:06:24,080 --> 00:06:29,760
+mythology that saul the cold sun is actually their brother condemned to march across the sky for a
+
+65
+00:06:29,760 --> 00:06:35,760
+crime but wait they literally live on a moon that somehow turned itself into a star and they've been
+
+66
+00:06:35,760 --> 00:06:43,600
+flawlessly batting our billion dollar space probes out of the sky for 18 000 years it seems completely
+
+67
+00:06:43,600 --> 00:06:50,160
+contradictory right how can they possibly be primitive are we misinterpreting the word primitive or is the
+
+68
+00:06:50,160 --> 00:06:56,960
+comet contradicting itself no it is an intentional brilliant contradiction the comic is forcing the
+
+69
+00:06:56,960 --> 00:07:03,440
+reader to completely redefine the word primitive okay how so well from the perspective of the beta zero
+
+70
+00:07:03,440 --> 00:07:09,440
+mechanism from the perspective of an earth that measures progress in microchips and colonial expansion
+
+71
+00:07:09,440 --> 00:07:14,720
+they are primitive because they lack mechanical infrastructure right they don't have factories or server
+
+72
+00:07:14,720 --> 00:07:21,600
+farms or launch pads but the text uses primitive not to mean backwards but rather primordial or
+
+73
+00:07:21,600 --> 00:07:26,720
+fundamental fundamental like they've gone past the need for the machinery exactly i mean think about
+
+74
+00:07:26,720 --> 00:07:32,000
+it human technology is about building a tool to interact with the universe for us we build a
+
+75
+00:07:32,000 --> 00:07:38,880
+telescope to see far we build a ship to travel fast we insert a middleman yes a middleman between
+
+76
+00:07:38,880 --> 00:07:45,200
+ourselves and reality the anchor ends have bypassed mechanical tech entirely their advancement is
+
+77
+00:07:45,200 --> 00:07:50,000
+organic and philosophical so they don't build machines to interact with reality they interact
+
+78
+00:07:50,000 --> 00:07:55,600
+with the reality directly the suggestion is that their past advancements led them to realize that
+
+79
+00:07:55,600 --> 00:08:02,640
+technology as we understand it is actually a barrier man that flips the classic sci-fi trope entirely on its
+
+80
+00:08:02,640 --> 00:08:08,560
+head usually the highly equipped earth astronaut meets the indigenous alien and the astronaut has all the
+
+81
+00:08:08,560 --> 00:08:14,960
+answers or at least the superior firepower right but here theseus's hyper-advanced ai is virtually
+
+82
+00:08:14,960 --> 00:08:20,640
+useless it's just spinning its wheels because the beta zero mechanism is built to solve problems of physics
+
+83
+00:08:20,640 --> 00:08:26,000
+and engineering it is like a world-class chess engine you can calculate a billion moves a second
+
+84
+00:08:26,000 --> 00:08:31,680
+but Ankara isn't a chess board exactly it's a jazz band yeah the ai is failing because it's looking for
+
+85
+00:08:31,680 --> 00:08:37,280
+rigid mathematical rules to exploit in an environment that requires emotional improvisation
+
+86
+00:08:37,280 --> 00:08:44,160
+and well philosophical alignment it is a completely incompatible paradigm and the reason theses this
+
+87
+00:08:44,160 --> 00:08:50,480
+technology can't grasp the Ankara is because his tech is built for a universe of maps it relies on
+
+88
+00:08:50,480 --> 00:08:56,880
+coordinates spatial coordinates yes but the Ankara don't believe in distance at all they believe in access
+
+89
+00:08:56,880 --> 00:09:02,720
+which brings us to the actual physical environment of Ankara yes the environment is key because the comic
+
+90
+00:09:02,720 --> 00:09:09,200
+paints a picture of a world that physically resists being conquered it's not solid ground is it no the
+
+91
+00:09:09,200 --> 00:09:17,920
+comic provides a very specific readout Ankara is 3472 kilometers in diameter with a low gravity of 0.16g
+
+92
+00:09:17,920 --> 00:09:23,680
+pretty small and light right and the surface is 78 percent ocean averaging a freezing negative 43 degrees
+
+93
+00:09:23,680 --> 00:09:30,960
+celsius its composition includes silicates bio crystals and unknown conductive minerals a dark freezing liquid
+
+94
+00:09:30,960 --> 00:09:36,400
+world just filled with conductive materials those physical attributes are so vital for the world
+
+95
+00:09:36,400 --> 00:09:41,840
+building i mean a liquid world with low gravity creates an environment where boundaries are inherently
+
+96
+00:09:41,840 --> 00:09:47,920
+fluid that makes sense think about earth we have solid ground tectonic plates mountains we have rigid
+
+97
+00:09:47,920 --> 00:09:52,880
+geographical barriers that dictate where we can go and where we can draw borders but you can't draw a
+
+98
+00:09:52,880 --> 00:10:00,400
+border on water exactly on a world that is nearly 80 percent liquid mobility and connection are naturally the
+
+99
+00:10:00,400 --> 00:10:06,880
+defining characteristics of existence the environment itself resists the concept of a permanent drawn
+
+100
+00:10:06,880 --> 00:10:13,360
+border because you literally can't carve a line in the water which perfectly sets up the comics defining
+
+101
+00:10:13,360 --> 00:10:18,560
+quote i mean this is the thesis statement of the entire issue so good the comic says in bold letters
+
+102
+00:10:18,560 --> 00:10:25,360
+across this gorgeous splash page reality is not what exists it is what can be reached let's just sit with
+
+103
+00:10:25,360 --> 00:10:30,720
+that for a second all right reality is not what exists it is what can be reached it completely
+
+104
+00:10:30,720 --> 00:10:35,920
+challenges the objective nature of the universe the text contrasts two ways to build a world right
+
+105
+00:10:36,560 --> 00:10:42,240
+on one side earth earth uses the geometry of distance right we build roads we draw borders we
+
+106
+00:10:42,240 --> 00:10:48,160
+create literal physical paths to get from point a to point b for earth distance is primary space is the
+
+107
+00:10:48,160 --> 00:10:54,640
+obstacle exactly but anchor it uses the geometry of access here trajectories through possibility
+
+108
+00:10:54,640 --> 00:11:00,800
+determine what is real for them relation is primary it is a shift from a spatial reality
+
+109
+00:11:00,800 --> 00:11:06,960
+to a relational reality on earth a mountain exists whether you can climb it or not you know yeah it's
+
+110
+00:11:06,960 --> 00:11:14,160
+just there it occupies physical space independently of your relationship to it but on anchor existence is
+
+111
+00:11:14,160 --> 00:11:20,960
+defined by your ability to interact with something wait really yes if there is no relational path
+
+112
+00:11:20,960 --> 00:11:28,080
+between you and an object or a place that object literally does not exist in your reality so what
+
+113
+00:11:28,080 --> 00:11:32,240
+does this all mean in practice let me try this analogy on you because it reminds me of the internet
+
+114
+00:11:32,240 --> 00:11:38,000
+that's an interesting angle right because on the web a web page isn't thousands of miles away it's not
+
+115
+00:11:38,000 --> 00:11:44,000
+located north or south it's either accessible via a hyperlink or it's locked behind a password
+
+116
+00:11:44,000 --> 00:11:48,480
+that is a perfect way to look at it you don't get in your car and travel to a website you align
+
+117
+00:11:48,480 --> 00:11:53,600
+your permissions your credentials to gain access to it the anchor ins are living like that but in
+
+118
+00:11:53,600 --> 00:11:59,360
+actual physical three-dimensional space taking your internet analogy a step further in a digital
+
+119
+00:11:59,360 --> 00:12:05,840
+network spatial proximity is entirely irrelevant two servers could be next to each other in a rack
+
+120
+00:12:05,840 --> 00:12:10,160
+but if they aren't networked they are universes apart they might as well not exist to each other
+
+121
+00:12:10,160 --> 00:12:15,760
+exactly what matters is the accessibility gradient which is the term the comic heavily utilizes
+
+122
+00:12:15,760 --> 00:12:21,760
+accessibility gradients right possibilities and connections flow like currents the stronger the
+
+123
+00:12:21,760 --> 00:12:27,840
+philosophical or relational alignment between two nodes the easier the flow of access the text makes
+
+124
+00:12:27,840 --> 00:12:34,560
+this explicit too doesn't it it says on earth you travel to arrive on ankyra you align to become
+
+125
+00:12:34,560 --> 00:12:39,920
+eligible yes if you want to reach a destination on earth you expend physical energy to cross the
+
+126
+00:12:39,920 --> 00:12:47,920
+physical distance walking driving flying but on ankyra to reach a destination you must philosophically
+
+127
+00:12:47,920 --> 00:12:53,680
+internally align with the nature of that place you must become eligible to experience it that is wild
+
+128
+00:12:53,680 --> 00:12:59,440
+their entire society isn't based on land ownership or who have the fastest jet or the biggest military
+
+129
+00:12:59,440 --> 00:13:05,680
+it's based entirely on relational compatibility but think about how potentially terrifying a society
+
+130
+00:13:05,680 --> 00:13:12,080
+based on accessibility gradients would be i mean if you don't philosophically align with a place
+
+131
+00:13:12,080 --> 00:13:19,840
+or even a person they don't physically exist for you it implies a reality that is deeply subjective
+
+132
+00:13:20,400 --> 00:13:26,080
+and incredibly isolated if you fail to maintain connection yeah i didn't even think about the isolation
+
+133
+00:13:26,080 --> 00:13:32,640
+right if you harbor hostility in a space that requires peace for access you wouldn't just be
+
+134
+00:13:32,640 --> 00:13:37,360
+asked to leave you literally could not enter that space it wouldn't manifest for you which totally
+
+135
+00:13:37,360 --> 00:13:43,840
+explains why 18 000 years of earth probes were destroyed yes they weren't being shot down by alien lasers
+
+136
+00:13:43,840 --> 00:13:49,200
+the probes were built on the geometry of distance they were trying to mathematically cross a physical gap
+
+137
+00:13:49,200 --> 00:13:55,040
+to a place that requires relational alignment they suffered an ontological failure an ontological failure
+
+138
+00:13:55,040 --> 00:14:01,440
+right ontology is the philosophical study of being of what it means to exist the probes didn't suffer
+
+139
+00:14:01,440 --> 00:14:06,560
+a mechanical breakdown they suffered a failure of existence they were trying to exist in a universe
+
+140
+00:14:06,560 --> 00:14:12,720
+whose laws said they could not be there they were trying to forcefully enter a password protected server by
+
+141
+00:14:12,720 --> 00:14:18,640
+like smashing a hammer against the monitor smashing a hammer against the monitor that is such a good image
+
+142
+00:14:18,640 --> 00:14:24,640
+an ontological failure a machine crashing into the incompatibility of its own existence exactly
+
+143
+00:14:24,640 --> 00:14:31,200
+because distance doesn't exist movement requires alignment and because movement requires alignment
+
+144
+00:14:31,200 --> 00:14:35,760
+their language has to function in a completely different way i mean you can't just shout across
+
+145
+00:14:35,760 --> 00:14:41,840
+a room if the room only exists because of how you relate to it language on acura cannot simply be
+
+146
+00:14:41,840 --> 00:14:47,840
+descriptive it has to be constructive when theseus first tries to speak to them you know to map their
+
+147
+00:14:47,840 --> 00:14:54,240
+language using the beta zero mechanism they tell him straight up we do not exchange words we exchange
+
+148
+00:14:54,240 --> 00:15:00,960
+futures such a powerful line they don't use sound waves they speak in shapes of light the text describes
+
+149
+00:15:00,960 --> 00:15:06,480
+an anchor in thought not as a sound but as a nest of possibilities the visual representation here is
+
+150
+00:15:06,480 --> 00:15:12,160
+stunning too the comic shows these intricate glowing overlapping geometric patterns floating between
+
+151
+00:15:12,160 --> 00:15:17,440
+the anchor ends tendrils yeah like mandalas made of pure light constantly shifting exactly and the
+
+152
+00:15:17,440 --> 00:15:23,520
+mechanics of how a conversation works are laid out step by step they call communicating making a scope a
+
+153
+00:15:23,520 --> 00:15:30,560
+scope yeah before an action is taken everything is open it's a vast field of potential but an action
+
+154
+00:15:30,560 --> 00:15:38,160
+or a statement is a commitment and the text says this commitment cleaves possibilities when you make a
+
+155
+00:15:38,160 --> 00:15:45,280
+choice you create a scope like a literal glowing bubble of reality yeah it's a bubble and as you
+
+156
+00:15:45,280 --> 00:15:51,760
+make more choices you create nested scopes bubbles within bubbles eventually this process forms a history
+
+157
+00:15:51,760 --> 00:15:58,080
+that becomes authoritative the word choice of cleaves is so deliberate to cleave means both to split apart
+
+158
+00:15:58,080 --> 00:16:03,520
+and to stick together it is a contronym oh i love that when an anchorin makes a choice they split away all the
+
+159
+00:16:03,520 --> 00:16:09,120
+other futures they could have chosen and simultaneously bind themselves to the reality they just created
+
+160
+00:16:09,120 --> 00:16:14,800
+here's where it gets really interesting for me are they literally blowing bubbles of reality with
+
+161
+00:16:14,800 --> 00:16:20,160
+every single choice they make like is every casual conversation essentially a physical construction
+
+162
+00:16:20,160 --> 00:16:27,920
+project fundamentally yes because remember their core rule relation is primary meaning isn't abstract
+
+163
+00:16:27,920 --> 00:16:35,280
+for them right the text says meaning is made by going somewhere not by pointing on earth words are
+
+164
+00:16:35,280 --> 00:16:40,560
+pointers if i say the word apple the sound coming out of my mouth isn't the fruit it just points to the
+
+165
+00:16:40,560 --> 00:16:46,080
+concept of the fruit yeah it's just a symbol but for the anchorins communication is the thing itself
+
+166
+00:16:46,080 --> 00:16:53,360
+they're scope weavers the comic says they grow spheres as others grow buildings each pop of a sphere each
+
+167
+00:16:53,360 --> 00:16:59,040
+decision is a deed that permanently changes what can ever be it's physical architecture our words on
+
+168
+00:16:59,040 --> 00:17:04,240
+earth represent things but anchor in communication actually weaves the physical fabric of their
+
+169
+00:17:04,240 --> 00:17:10,400
+dimension it demands a level of responsibility that is almost unfathomable to humans every time they
+
+170
+00:17:10,400 --> 00:17:16,320
+communicate they are collapsing quantum potentials into a shared physical architecture that sounds exhausting
+
+171
+00:17:16,320 --> 00:17:22,160
+honestly it really does they aren't just talking they are agreeing on the parameters of the
+
+172
+00:17:22,160 --> 00:17:27,120
+reality they are going to inhabit together because their language immediately physicalizes as
+
+173
+00:17:27,120 --> 00:17:34,320
+boundaries they cannot live in static buildings i mean a concrete wall is a permanent decision and they
+
+174
+00:17:34,320 --> 00:17:41,120
+live in fluid possibilities right concrete is distance geometry so instead of pouring concrete they build
+
+175
+00:17:41,120 --> 00:17:47,920
+cities out of these linguistic agreements we get to see this in the breathtaking two-page spread of the
+
+176
+00:17:47,920 --> 00:17:53,760
+the capital of anchor the city of scopes the text notes the capital is not built on the surface instead
+
+177
+00:17:53,760 --> 00:18:01,280
+it is built in access visually it is depicted as a dizzying array of glowing floating spheres hovering over
+
+178
+00:18:01,280 --> 00:18:07,920
+the dark ocean they call them sphere pop structures or more poetically tomorrow's mathematics tomorrow's
+
+179
+00:18:07,920 --> 00:18:15,200
+mathematics it's a city without a foundation a network of glowing orbs suspended not by gravity or pylons
+
+180
+00:18:15,200 --> 00:18:20,480
+but by the strength of their relational bonds the walkways are fascinating too the bridges between
+
+181
+00:18:20,480 --> 00:18:27,440
+these massive spheres only exist if two spheres agree to share a portion of their accessibility the comic says
+
+182
+00:18:27,440 --> 00:18:34,160
+bridges do not span space they span relationship if the inhabitants of one sphere fundamentally disagree with
+
+183
+00:18:34,160 --> 00:18:41,200
+another the bridge literally evaporates it is the ultimate manifestation of the geometry of access
+
+184
+00:18:41,200 --> 00:18:47,840
+a neighborhood only exists if the neighbors actively choose to remain connected the comic breaks down the
+
+185
+00:18:47,840 --> 00:18:54,160
+exact physics of this city too it outlines the laws of containment which govern every single sphere the
+
+186
+00:18:54,160 --> 00:18:59,760
+four laws yes let's walk through these because there are four laws first is inclusion what is allowed
+
+187
+00:18:59,760 --> 00:19:05,680
+inside second is exclusion what is left out right third is binding what must hold together and fourth
+
+188
+00:19:05,680 --> 00:19:12,400
+is collapse what is resolved irreversibly these four laws operate like the architectural code of ankara
+
+189
+00:19:13,280 --> 00:19:19,360
+but instead of dictating how much weight a steel beam can hold they dignate the philosophical integrity
+
+190
+00:19:19,360 --> 00:19:25,200
+of a space i want to understand how these laws are actually enforced though let's say two anchorans want
+
+191
+00:19:25,200 --> 00:19:31,920
+to build a bridge between their spheres how do they mutually agree on binding it requires deep consensus and what
+
+192
+00:19:31,920 --> 00:19:39,200
+happens if they fail the comic says violating the laws doesn't get you arrested it causes you to create
+
+193
+00:19:39,200 --> 00:19:45,600
+incoherence what is the physical sensation of creating incoherence do you just slip right through the floor of the
+
+194
+00:19:45,600 --> 00:19:53,200
+bubble let's create a scenario imagine a sphere whose law of inclusion requires absolute transparency and
+
+195
+00:19:53,200 --> 00:20:00,320
+honesty that is the foundational physics of that room okay so honesty is gravity there exactly yeah if you enter that
+
+196
+00:20:00,320 --> 00:20:06,560
+sphere and attempt deception you aren't breaking a legal statute you are violating the structural
+
+197
+00:20:06,560 --> 00:20:12,720
+integrity of the environment wow creating incoherence means your personal frequency your relational
+
+198
+00:20:12,720 --> 00:20:18,400
+alignment no longer matches the room so to bring this down to earth think about a dinner party
+
+199
+00:20:18,400 --> 00:20:23,680
+you're at a table everyone is having a deep wonderful conversation there's a shared vibe a relational
+
+200
+00:20:23,680 --> 00:20:29,680
+access yeah good fire then someone brings up a wildly inappropriate hostile topic instantly the air gets
+
+201
+00:20:29,680 --> 00:20:35,520
+sucked out of the room the vibe dies in our world it's just awkward but on Ankara on Ankara if you do
+
+202
+00:20:35,520 --> 00:20:41,120
+that the floor literally drops out from under you you would find yourself expelled from that scope
+
+203
+00:20:42,080 --> 00:20:47,840
+the environment would reject your presence because you failed the law of binding you broke what must hold
+
+204
+00:20:47,840 --> 00:20:53,440
+together it forces a radically intentional way of living on earth i can passively sit in a room
+
+205
+00:20:53,440 --> 00:20:59,520
+completely ignore my surroundings scroll on my phone and the room stays there the walls don't care the walls
+
+206
+00:20:59,520 --> 00:21:06,080
+don't care if i'm paying attention but on Ankara to be inside a sphere means you must actively sustain
+
+207
+00:21:06,080 --> 00:21:11,920
+the rules of its existence it is a society that demands hyper presence there is no passive existence
+
+208
+00:21:12,720 --> 00:21:18,400
+constant relational consent is required to keep the floor beneath your feet that is just so intense it
+
+209
+00:21:18,400 --> 00:21:24,880
+requires an exhaustion of empathy and focus that human beings are simply not conditioned for we rely on the
+
+210
+00:21:24,880 --> 00:21:30,880
+permanence of objects specifically so we can let our minds wander if every action permanently collapses a
+
+211
+00:21:30,880 --> 00:21:37,360
+possibility and builds a sphere and every single choice is an irreversible architectural pillar how do they
+
+212
+00:21:37,360 --> 00:21:43,680
+handle mistakes that is the million dollar question like how do they process regret because that much
+
+213
+00:21:43,680 --> 00:21:50,400
+permanence would crush a human being this brings theseus to what the text calls the highest honor an
+
+214
+00:21:50,400 --> 00:21:57,120
+anchor in can grant a guest this section shifts from the macro level physics of their society to the
+
+215
+00:21:57,120 --> 00:22:03,840
+deeply intimate psychology of memory it explores how a species that weaves reality handles the weed of
+
+216
+00:22:03,840 --> 00:22:10,080
+its own history theseus is granted access to the hall of nested histories we move from the glowing city of
+
+217
+00:22:10,080 --> 00:22:16,080
+spheres into what is called the memory ocean such a beautiful shift in scenery on earth the past is
+
+218
+00:22:16,080 --> 00:22:22,320
+sort as data it's in a book or it's a file on a hard drive it is static but on ankara the past remains
+
+219
+00:22:22,320 --> 00:22:27,680
+physically navigable a physically navigable past they don't just remember history they can surf the
+
+220
+00:22:27,680 --> 00:22:33,200
+currents of it the comic describes the social as composed of living memory it is made of the currents of
+
+221
+00:22:33,200 --> 00:22:38,080
+every single choice ever made by an anchor in every single choice and the archivists here aren't
+
+222
+00:22:38,080 --> 00:22:44,000
+librarians stamping books the archivists are the currents themselves massive fluid beings rising out of the
+
+223
+00:22:44,000 --> 00:22:50,400
+water it's so poetic the text explicitly states that the brave the foolish the kind and the cruel are all
+
+224
+00:22:50,400 --> 00:22:58,000
+preserved here and it gives this beautiful caveat not to be judged but to be understood not to be judged
+
+225
+00:22:58,560 --> 00:23:04,320
+but to be understood when we look at history on earth we almost always view it through a lens of judgment
+
+226
+00:23:04,880 --> 00:23:12,240
+good guys bad guys exactly we categorize it into good and bad right and wrong we build monuments to the victories
+
+227
+00:23:12,240 --> 00:23:18,720
+and try to bury or rewrite the shame but in the memory ocean every choice is preserved neutrally
+
+228
+00:23:18,720 --> 00:23:23,840
+as a structural component of the present because you can't build a false floor in a reality based on
+
+229
+00:23:23,840 --> 00:23:29,920
+relational truth every choice even the bad ones is a load-bearing pillar in the geometry of their
+
+230
+00:23:29,920 --> 00:23:37,120
+society the memory ocean operates on the principle of consequence not chaos a choice whether kind or cruel
+
+231
+00:23:37,120 --> 00:23:41,920
+created a ripple that shaped the accessibility gradients of today so you can't just undo it to judge
+
+232
+00:23:41,920 --> 00:23:46,080
+it and try to erase it would be to pull a thread that unravels the fabric of their current reality
+
+233
+00:23:46,080 --> 00:23:50,480
+you must understand the current to know why the ocean flows the way it does we get to see this
+
+234
+00:23:50,480 --> 00:23:57,600
+deeply personal moment for theseus too our hardened technologically supreme astronaut is wading
+
+235
+00:23:57,600 --> 00:24:04,480
+through this cosmic ocean of glowing currents and he finds his own current his own past yeah the comic
+
+236
+00:24:04,480 --> 00:24:09,920
+shows him looking into a sphere of water inside it he sees himself as a young boy sitting in his
+
+237
+00:24:09,920 --> 00:24:16,560
+childhood bedroom playing with a toy spaceship such a vulnerable image and the text notes you remember
+
+238
+00:24:16,560 --> 00:24:23,360
+not as data but as a place you once were and still are and still are that phrase suggests that time on
+
+239
+00:24:23,360 --> 00:24:28,480
+anchor isn't linear the past hasn't been destroyed to make way for the present it's still happening
+
+240
+00:24:28,480 --> 00:24:34,560
+somewhere it still exists simultaneously simply in a different gradient of access theseus isn't watching
+
+241
+00:24:34,560 --> 00:24:39,520
+a recording of his childhood he is relationally overlapping with that exact moment in space time
+
+242
+00:24:40,080 --> 00:24:45,360
+i want to throw this out to you because this really struck me think about how we view our own regrets
+
+243
+00:24:45,360 --> 00:24:51,440
+our mistakes our trauma it's usually pretty negative right if we could physically stand in them like a room
+
+244
+00:24:51,440 --> 00:24:56,400
+without the crushing weight of judgment just to purely understand the path we didn't take
+
+245
+00:24:57,040 --> 00:25:03,120
+would that heal us or would it completely paralyze us i think for humans conditioned to the geometry of
+
+246
+00:25:03,120 --> 00:25:07,520
+distance where we literally try to put distance between ourselves and our past it might be
+
+247
+00:25:07,520 --> 00:25:13,280
+paralyzing because we want to run from it exactly we use distance as a coping mechanism we move away
+
+248
+00:25:13,280 --> 00:25:20,960
+we let time pass time heals all wounds because time creates distance but the anchor ins view time
+
+249
+00:25:20,960 --> 00:25:27,600
+not as a vanishing line behind them but as an ever-expanding ocean beneath them wow by removing moral judgment
+
+250
+00:25:27,600 --> 00:25:33,440
+from a memory and replacing it with pure navigable understanding they achieve a level of empathy
+
+251
+00:25:33,440 --> 00:25:37,760
+that earth struggles to conceptualize because they just accept it they understand that every wrong
+
+252
+00:25:37,760 --> 00:25:43,600
+choice was simply a path taken that constrained future possibilities it's physics to them not sin
+
+253
+00:25:43,600 --> 00:25:50,400
+physics not sin i love that by viewing their entire history as consequence not chaos they are never running
+
+254
+00:25:50,400 --> 00:25:56,000
+from their past they are continually building on top of it and integrating the past is exactly what
+
+255
+00:25:56,000 --> 00:26:01,760
+prepares them to face the future which brings us to the climax of the issue once theseus understands
+
+256
+00:26:01,760 --> 00:26:07,760
+how they physically hold on to the past without judgment he is taken by the anchor ins to what they
+
+257
+00:26:07,760 --> 00:26:13,520
+call the last accessible future the comic explains that the anchor ins do not predict the future which
+
+258
+00:26:13,520 --> 00:26:20,000
+makes sense because predicting implies a fixed timeline that you are just traveling toward traveling distance again
+
+259
+00:26:20,000 --> 00:26:27,440
+exactly instead they declare we constrain their ultimate philosophy is revealed here the text states
+
+260
+00:26:27,440 --> 00:26:33,200
+they do not seek to control the future they do not build empires they build access they do not build
+
+261
+00:26:33,200 --> 00:26:39,840
+empires that is a direct piercing critique of the earth civilization that sent these oh heavily earth
+
+262
+00:26:39,840 --> 00:26:45,760
+built colonies on ganymede and callisto earth builds empires earth wants to control the future by dominating
+
+263
+00:26:45,760 --> 00:26:51,760
+the present space the artwork in this final sequence is mind-blowing we see this convergence of billions
+
+264
+00:26:51,760 --> 00:26:57,440
+of glowing trajectories radiating from countless choices like a massive cosmic neural network of light
+
+265
+00:26:57,440 --> 00:27:04,400
+the anchor ins explain that all these possibilities converge not to erase difference but to remember
+
+266
+00:27:04,400 --> 00:27:11,200
+that difference can still be chosen think about that an empire converges by erasing difference
+
+267
+00:27:11,200 --> 00:27:18,560
+you conquer a people you assimilate them you force them to speak your language use your maps and adopt
+
+268
+00:27:18,560 --> 00:27:23,520
+your technology you flatten everything out you reduce the variables to maintain control but the anchor ins
+
+269
+00:27:23,520 --> 00:27:30,160
+do the exact opposite they weave these massive complex structures of access specifically to ensure
+
+270
+00:27:30,160 --> 00:27:35,600
+that a multitude of choices remains available they want the variables they aren't pruning the tree to make
+
+271
+00:27:35,600 --> 00:27:40,960
+it look a certain way they are farming possibilities they understand that a robust reality
+
+272
+00:27:40,960 --> 00:27:47,920
+requires maximum relational potential to control the future is to limit it right to constrain it means
+
+273
+00:27:47,920 --> 00:27:53,280
+to carefully manage the branches so the tree can grow as vast diverse and healthy as possible the
+
+274
+00:27:53,280 --> 00:27:58,880
+conclusion of the story is deeply subversive for a space exploration comic feces returns to earth
+
+275
+00:27:59,440 --> 00:28:06,880
+but he comes back empty-handed nothing to show for it no new laser weapon no crates of conductive minerals
+
+276
+00:28:06,880 --> 00:28:11,440
+he doesn't even have empirical proof that the anchor ins exist in the way we understand existence
+
+277
+00:28:11,440 --> 00:28:16,480
+because the beta zero mechanism couldn't record them it just failed he brings back only what the comet
+
+278
+00:28:16,480 --> 00:28:23,440
+calls a map of the possible he returns with the heavy realization of a true explorer who has found something
+
+279
+00:28:23,440 --> 00:28:31,840
+sacred and realizes it must be protected the very last panel shows theseus looking out at his own people
+
+280
+00:28:31,840 --> 00:28:38,800
+he sees humanity equipped with all their beta zero singularities and their colonial ambitions yeah
+
+281
+00:28:38,800 --> 00:28:43,760
+and he realizes they are not ready for this knowledge the comic ends on his internal monologue
+
+282
+00:28:44,320 --> 00:28:51,120
+not yet it's a tragic but necessary conclusion i have to ask though why aren't we ready look at humanity in
+
+283
+00:28:51,120 --> 00:28:57,440
+the year 2001 we've colonized jupiter's moons we have harnessed self-improving ai we have mastered our
+
+284
+00:28:57,440 --> 00:29:02,320
+physical domain we think we're ready right why does he keep this map of the possibles from us
+
+285
+00:29:02,320 --> 00:29:07,600
+because humanity is still operating entirely on the geometry of distance we still view the universe
+
+286
+00:29:07,600 --> 00:29:13,040
+as something to conquer we're still measuring we measure our success by how much space we dominate
+
+287
+00:29:13,040 --> 00:29:19,120
+we plant flags on ganymede we extract resources from callisto we're playing the same colonial game
+
+288
+00:29:19,120 --> 00:29:25,200
+just on a larger interstellar board now imagine giving a civilization that still thinks in terms of
+
+289
+00:29:25,200 --> 00:29:33,920
+conquest the power to literally weave reality through choice imagine giving earth the anchor
+
+290
+00:29:33,920 --> 00:29:39,760
+and technology of the scope oh that would be bad if humanity could instantly manifest reality based on
+
+291
+00:29:39,760 --> 00:29:45,520
+their will we wouldn't use it to preserve meaningful difference we would weaponize it we absolutely
+
+292
+00:29:45,520 --> 00:29:50,320
+would we would use it to permanently lock in our dominance we would build impenetrable spheres of
+
+293
+00:29:50,320 --> 00:29:55,600
+exclusion to keep out anyone who didn't serve the empire we would use the geometry and access to
+
+294
+00:29:55,600 --> 00:30:01,600
+build the ultimate prison the anchor ends survive and thrive precisely because they do not conquer
+
+295
+00:30:01,600 --> 00:30:06,480
+they connect they use their immense power to maintain the fragility of choice they preserve it
+
+296
+00:30:06,480 --> 00:30:13,280
+humanity in 2001 ce is still too terrified of losing control to ever survive in a reality where control
+
+297
+00:30:13,280 --> 00:30:18,320
+must be surrendered to mutual alignment that completely reframes the beta zero mechanism for me
+
+298
+00:30:18,320 --> 00:30:25,200
+the anchorans probably looked at that self-improving ai and sought for what it was the ultimate tool
+
+299
+00:30:25,200 --> 00:30:31,200
+of paranoia a paranoid machine for a paranoid species a machine built to calculate every variable so
+
+300
+00:30:31,200 --> 00:30:38,240
+humanity never has to risk true vulnerability it is armor against the unknown and anchor is entirely
+
+301
+00:30:38,240 --> 00:30:44,080
+built on embracing the unknown what an incredible piece of source material to take the visual language of a
+
+302
+00:30:44,080 --> 00:30:50,240
+vintage cosmic adventure and use it to dismantle the foundations of imperialism architecture language
+
+303
+00:30:50,240 --> 00:30:56,160
+and memory it asks us to look at the fabric of our interactions and realize that every word every
+
+304
+00:30:56,160 --> 00:31:02,400
+choice is architectural as we wrap up this deep dive let's briefly recap we started with an astronaut sent to
+
+305
+00:31:02,400 --> 00:31:08,800
+explore a mysterious star but instead of conquering physical distance theseus discovered a civilization built on
+
+306
+00:31:08,800 --> 00:31:14,640
+relational access a complete flip we explored how the anchor and speak in shapes of light weaving the
+
+307
+00:31:14,640 --> 00:31:20,400
+physical architecture of their world through choices we navigated the memory ocean where history is an
+
+308
+00:31:20,400 --> 00:31:26,400
+active physical space of understanding rather than a static record of judgment my favorite part and
+
+309
+00:31:26,400 --> 00:31:33,760
+finally we saw how a society that values connection over conquest builds a future that preserves difference
+
+310
+00:31:33,760 --> 00:31:41,120
+rather than erasing it a profound shift from distance to access from pointing to becoming for those of
+
+311
+00:31:41,120 --> 00:31:46,720
+you who are completely hooked on this universe the comic teases the next issue at the very end the yarn
+
+312
+00:31:46,720 --> 00:31:53,040
+crawlers of titan if it's anything like on crow we are in for another massive philosophical upheaval i am
+
+313
+00:31:53,040 --> 00:32:00,160
+so eager to see how they tackle titan the implications for sociology and physics alone are staggering i want to leave you
+
+314
+00:32:00,160 --> 00:32:05,200
+the listener with a final provocative thought a challenge to take with you today based purely on
+
+315
+00:32:05,200 --> 00:32:10,080
+the physics of anchora love a good challenge take a look at your own daily life through those anchor
+
+316
+00:32:10,080 --> 00:32:15,040
+in laws of containment what spheres are you currently building with your words your attitudes and your
+
+317
+00:32:15,040 --> 00:32:21,440
+actions that's a deep question are your daily choices based on the earth-like desire to conquer your
+
+318
+00:32:21,440 --> 00:32:27,600
+schedule control outcomes and push away what you don't like or are you creating spaces of accessibility that
+
+319
+00:32:27,600 --> 00:32:32,800
+actually preserve meaningful choices for yourself and the people around you what is allowed inside
+
+320
+00:32:32,800 --> 00:32:37,600
+your sphere today and what are you actively leaving out beautifully said think about that the next time
+
+321
+00:32:37,600 --> 00:32:42,560
+you look up at the night sky the stars might just be dots on a map to us right now separated by
+
+322
+00:32:42,560 --> 00:32:48,000
+unimaginable distance but maybe the space between us isn't measured in miles at all maybe it's just
+
+323
+00:32:48,000 --> 00:32:58,000
+waiting for us to align
+

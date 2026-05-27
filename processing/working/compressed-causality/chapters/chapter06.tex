@@ -1,0 +1,70 @@
+\chapter{Semantic Systems and Constraint Grammars}
+\index{semantic systems}\index{CLIO compression}\index{constraint grammar}
+
+\section{The Reconstruction Problem in Semantic Systems}
+
+A reasoning system moves through a space of beliefs and inferences governed by admissibility constraints. Its current state is the result of a trajectory through that space that cannot be fully recovered from the state alone. Counterfactual questions: what would the system conclude had a premise been changed? Had a constraint been relaxed?
+
+\section{Semantic Trajectory Spaces}
+
+A \textbf{semantic state space} $S$ is a finite set of admissible configurations. A \textbf{constraint grammar} $G = (S, R, C)$ specifies a transition relation $R \subseteq S \times S$ and admissibility constraints $C$. The \textbf{admissible successor operator} is
+\[
+  \mathrm{Succ}_C(s) = \{s' \in S : (s, s') \in R \text{ and } C \text{ permits } (s,s')\}.
+\]
+The branching factor $B = \max_{s} |\mathrm{Succ}_C(s)|$. A \textbf{semantic trajectory} $(s_0, s_1, \ldots, s_T)$ with $s_{t+1} \in \mathrm{Succ}_C(s_t)$ forms the semantic trajectory space $X_{\mathrm{sem}}$.
+
+\section{Branch-Depth Interaction Decomposition: Diagnostic Question 1}
+
+For query $Q$ and reference $x_0$, define $Q_r(x)$ as the restriction to trajectories diverging from $x_0$ at depth $\leq r$, with $Q_{-1} \equiv 0$. The \textbf{branch-depth interaction term} is $I_r^{Q,x_0}(x) = Q_r(x) - Q_{r-1}(x)$. The decomposition $Q = \sum_r I_r^{Q,x_0}$ is exact by telescoping. \textbf{Diagnostic Question 1: Affirmative.}
+
+\section{Semantic Stability: Diagnostic Question 2}
+
+A grammar is $\alpha$-\textbf{attenuating} if $N_r \leq (B\alpha)^r$ for all $r$, where $N_r$ is the number of admissible trajectories diverging from $x_0$ at depth $r$.
+
+\begin{theorem}[Semantic Stability]
+\label{thm:semantic-stability}
+For an $\alpha$-attenuating grammar with $B\alpha < 1$ and queries bounded by $M$:
+\[
+  |I_r^{Q,x_0}(x)| \leq M(B\alpha)^r, \qquad \sum_{r>d} \sigma_r \leq \frac{M(B\alpha)^d}{1-B\alpha}.
+\]
+\end{theorem}
+
+\textbf{Diagnostic Question 2: Affirmative for $\alpha$-attenuating grammars.}
+
+\section{CLIO Compression: Diagnostic Question 3}
+
+The \textbf{CLIO operator} $\pi_{\mathrm{CLIO}}$ stores the branch tree $T_{d_\pi}(x)$ through depth $d_\pi$. Two trajectories are $d_\pi$-equivalent iff their branch trees agree. For $Q \in \mathcal{Q}_{d_Q}$ (depth-$d_Q$ queries) with $d_\pi \geq d_Q$: $\varepsilon_1 = 0$ exactly. \textbf{Diagnostic Question 3: Affirmative, exactly.}
+
+\section{The Alignment Theorem}
+
+\begin{theorem}[Stability--Sufficiency Alignment]
+\label{thm:semantic-alignment}
+Under Theorem~\ref{thm:semantic-stability} with $d_\pi = d_Q = d$:
+\[
+  E_s = 0, \quad E_c \leq \frac{M(B\alpha)^d}{1-B\alpha}, \quad E_a \leq \frac{M(B\alpha)^d}{1-B\alpha}, \quad E_{\mathrm{total}} = O((B\alpha)^d).
+\]
+\end{theorem}
+
+CLIO achieves \textbf{alignment by design}: the branch-tree equivalence relation is explicitly calibrated to the stability structure. Sufficiency is not an independent obstruction.
+
+\section{BNF and Specification Independence}
+
+BNF grammars provide implementation-independent specifications of semantic trajectory spaces. Attenuation is a property of the grammar's production rules, verifiable before any implementation is built. This mirrors the framework's emphasis on specification-level diagnostics.
+
+\section{Diagnostic Audit}
+
+\begin{center}\small
+\begin{tabular}{lll}
+\toprule
+Question & Status & Evidence \\
+\midrule
+Decomposition exact? & Yes & Telescoping \\
+Stability summable? & Yes (verified class) & $B\alpha < 1$ \\
+Compression sufficient? & Yes, $\varepsilon_1 = 0$ & Branch-tree preservation \\
+Depths aligned? & Yes & Alignment theorem \\
+Degeneracy avoided? & Yes (verified class) & Tree equivalence \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\textbf{Lesson:} Stability is discovered; alignment can be engineered.

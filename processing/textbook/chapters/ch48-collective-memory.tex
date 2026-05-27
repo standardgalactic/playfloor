@@ -1,0 +1,113 @@
+\chapter{Collective Memory}
+
+\chapterepigraph{%
+  Libraries are not storage.\\
+  They are metabolic organs:\\
+  they process, transform, and regenerate\\
+  the civilization's knowledge.
+}{Flyxion, \textit{Semantic Infrastructure}}
+
+\sidenote{Connects to\\App.\,O on\\civilizational\\dynamics and\\Ch.\,23 memory\\chains}
+
+Part~XIV, the final part of the monograph, begins here. This chapter
+examines collective memory — the mechanisms by which civilizations
+store and retrieve accumulated constraint modifications — as the
+foundation for all the chapters that follow.
+
+\section{Libraries}
+
+A library is a physical instantiation of part of the civilizational
+memory chain. It stores encoded constraint modifications (books,
+manuscripts, digital records) and provides mechanisms for retrieving
+and applying them.
+
+\begin{definition}{Library as Semantic Infrastructure}{library-sem-infra}
+  A \emph{library} is a semantic infrastructure $(\mathcal{M},
+  \mathcal{I}, \mathcal{R}, \mathcal{U})$ where:
+  \begin{itemize}
+    \item $\mathcal{M}$ is the collection (encoded constraint modifications),
+    \item $\mathcal{I}$ is the index (retrieval structure),
+    \item $\mathcal{R}$ is the reference system (links between items),
+    \item $\mathcal{U}$ is the update mechanism (acquisitions, withdrawals,
+          corrections).
+  \end{itemize}
+  Its quality is measured by the accessibility entropy it provides
+  to its users: $S_\text{lib} = \log|\text{retrievable items relevant
+  to current query}|$.
+\end{definition}
+
+The destruction of libraries — Alexandria, Baghdad, the Maya codices —
+represents irreversible constraint loss: modifications that could have
+been applied to future knowledge infrastructure, removed from
+the civilizational memory chain.
+
+\section{Archives}
+
+Archives differ from libraries in their primary function: where libraries
+support active knowledge use, archives support historical reconstruction.
+The archive preserves the \emph{history} of constraint modifications,
+not just their current state — the version history of the civilizational
+knowledge infrastructure.
+
+\begin{definition}{Archive as Version History}{archive-version}
+  An \emph{archive} is a versioned semantic infrastructure that
+  records not just current constraint modifications but the sequence
+  of modifications that produced them. It supports reconstruction of
+  past knowledge states: given the archive up to time $t_0$, reconstruct
+  the constraint set $\mathcal{C}(t_0)$.
+\end{definition}
+
+\section{The Internet as Collective Memory}
+
+The Internet is the most extensive collective memory system in human
+history. It stores an enormous fraction of currently-produced text,
+image, audio, and video, and makes it available with low retrieval
+latency globally.
+
+But the Internet is a poor archive: content disappears (link rot),
+context is lost (pages update without versioning), and
+quality filtering is minimal (high-quality and low-quality content
+are stored with equal fidelity). It is better described as a
+collective working memory than a collective long-term memory.
+
+\section{Civilizational Recall}
+
+\begin{definition}{Civilizational Recall}{civ-recall}
+  A civilization's \emph{recall capacity} is the probability that
+  a constraint modification stored at time $t_0$ can be retrieved
+  and applied at time $t_1 > t_0$:
+  \[
+    \text{Recall}(t_0, t_1) = P(\mathcal{C}(t_1) \ni c \mid
+    c \in \mathcal{C}(t_0))
+  \]
+  This depends on transmission fidelity, storage redundancy,
+  retrieval efficiency, and the interval $t_1 - t_0$.
+\end{definition}
+
+High civilizational recall requires redundant storage (multiple copies),
+high-fidelity transmission (accurate copying), efficient indexing
+(fast retrieval), and active maintenance (preventing decay).
+
+\begin{namedthm}{The Collective Memory Accessibility Principle}
+  A civilization's accessible future is bounded by its collective memory:
+  the constraints it can draw on to navigate future challenges are limited
+  to those stored in accessible, retrievable form. Civilizational
+  accessibility entropy is proportional to collective memory quality.
+\end{namedthm}
+
+\begin{exercise}
+  The Internet Archive (archive.org) preserves web pages but faces
+  challenges: storage costs, copyright disputes, content selection.
+  Using the collective memory framework, design a principled
+  selection policy for a universal digital archive with limited
+  storage. What should be preserved and what should be allowed to decay?
+\end{exercise}
+
+\begin{exercise}
+  Indigenous oral traditions have preserved ecological knowledge
+  (plant properties, weather patterns, migration routes) over
+  thousands of years with high fidelity. Analyze the mechanisms
+  that achieve this fidelity. What does modern information infrastructure
+  lack that oral traditions possess? What does it possess that
+  oral traditions lack?
+\end{exercise}

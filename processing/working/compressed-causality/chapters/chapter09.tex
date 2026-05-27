@@ -1,0 +1,36 @@
+\chapter{Alignment as a Design Principle}
+\index{alignment}
+
+\section{From Failure Classification to Failure Prevention}
+
+Chapter~8 classified reconstruction failures. The natural follow-up: can compression architectures be built so that the architectural failures never arise?
+
+\begin{definition}[Aligned Compression Architecture]
+\index{alignment}
+A compression $\pi$ is \textbf{aligned} with stability sequence $\{\sigma_r\}$ and query family $\mathcal{Q}$ if, with $d_\pi = d_Q = d$:
+\begin{enumerate}
+  \item $\pi$ is $(d, 0)$-sufficient for $\mathcal{Q}_d$.
+  \item $E_a = O(\sum_{r>d} \sigma_r)$.
+  \item $E_{\mathrm{total}} = O(\sum_{r>d} \sigma_r)$.
+\end{enumerate}
+\end{definition}
+
+Alignment transfers complexity from query time to design time. An aligned architecture performs the difficult work before the query arrives.
+
+\section{Three Notions of Alignment}
+
+\textbf{Alignment by coincidence (learning systems).} The polynomial sketch was designed for computational efficiency. It achieves alignment because the symmetric-subspace identity happens to preserve derivative structure calibrated to Gunn stability.
+
+\textbf{Alignment by design (semantic systems).} CLIO was explicitly designed so that branch-tree preservation matches the stability structure of $\alpha$-attenuating grammars. Sufficiency is exact by construction.
+
+\textbf{Alignment under uncertainty (physical fields).} Accessibility skeleton compression is designed to align with hypothesized $\alpha$-contraction. Sufficiency is guaranteed unconditionally; alignment of $E_c$ and $E_a$ is conditional on the Accessibility Relaxation Hypothesis.
+
+\section{The Economics of Alignment}
+
+An unaligned compression forces each query to pay its own complexity cost. An aligned compression pre-pays the complexity cost once, during construction. The larger the query family and the more frequently queries are asked, the more valuable this investment becomes.
+
+\section{The Design Principle}
+
+Identify the stability mechanism of the trajectory space. Calibrate the compression's equivalence relation to the equivalence classes that the stability mechanism respects. The query approximation family should be defined by dependence on the same equivalence classes. When the stability mechanism is known, this produces alignment by design. When hypothesized, it produces alignment under uncertainty.
+
+\textbf{An aligned compression architecture is one that performs the difficult work before the query arrives.}

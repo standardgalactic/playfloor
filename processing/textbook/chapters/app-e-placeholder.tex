@@ -1,0 +1,57 @@
+% Appendix E: Hypercubes, Penteracts, and Dimensional Aggregation
+
+\section*{E.1 Introduction}
+
+The hypercube appears in Boolean logic, gesture spaces, accessibility landscapes,
+semantic manifolds, projection theory, curriculum structures, and combinatorial
+state spaces throughout this monograph. The central idea is simple:
+\emph{every new independent binary distinction introduces a new dimension.}
+
+\begin{definition}{$n$-Cube Recursion}{n-cube}
+  $Q_1 = \{0,1\}$ and $Q_{n+1} = Q_n \times \{0,1\}$.
+\end{definition}
+
+\begin{theorem}{Vertex Count}{vertex-count}
+  $Q_n$ contains $2^n$ vertices.
+\end{theorem}
+\begin{proof}Each of $n$ coordinates has two values.\end{proof}
+
+\begin{theorem}{Edge Count}{edge-count}
+  $Q_n$ contains $n \cdot 2^{n-1}$ edges.
+\end{theorem}
+\begin{proof}Each vertex has $n$ incident edges; divide by 2 to avoid double-counting.\end{proof}
+
+\begin{proposition}{Diagonal Length}{diagonal}
+  The longest diagonal of the unit $n$-cube has length $\sqrt{n}$.
+\end{proposition}
+\begin{proof}Distance from $(0,\ldots,0)$ to $(1,\ldots,1)$ is $\sqrt{n}$.\end{proof}
+
+\begin{definition}{Cubification}{cubify}
+  The \emph{cubification operator} is $\mathcal{C}(X) = X \times \{0,1\}$,
+  giving $Q_n = \mathcal{C}^n(Q_0)$. This formalizes \emph{lineify},
+  \emph{squarify}, \emph{cubify}, \emph{tesseractify}.
+\end{definition}
+
+\begin{theorem}{Canonical Splitting}{canonical-split}
+  Every $n$-cube decomposes into two $(n{-}1)$-cubes. An $n$-cube admits
+  $n$ independent coordinate splittings.
+\end{theorem}
+\begin{proof}Partition by any coordinate $x_i \in \{0,1\}$.\end{proof}
+
+\begin{definition}{Surjective Hypercube}{surj-hc}
+  A pair $(Q_n, \pi)$ where $\pi : Q_n \to Y$ is surjective.
+  Multiple vertices project to the same represented state; their preimages
+  form fibers encoding admissible lifts.
+\end{definition}
+
+\begin{theorem}{Dimensional Aggregation}{dim-agg}
+  Every finite system of $n$ independent binary distinctions has a natural
+  representation as $Q_n$.
+\end{theorem}
+\begin{proof}Each distinction contributes one coordinate; states are binary
+strings in $\{0,1\}^n$.\end{proof}
+
+\begin{namedthm}{The Hypercube Ubiquity Principle}
+  Whenever a system is built from independent choices, constraints,
+  propositions, classifications, or decisions, a hypercube lies beneath it.
+\end{namedthm}
