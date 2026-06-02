@@ -1,0 +1,147 @@
+\contentsline {chapter}{Abstract}{i}{chapter*.1}%
+\contentsline {part}{I\hspace {1em}The Phenomenon}{1}{part.1}%
+\contentsline {chapter}{\numberline {1}What Collapse Looks Like}{2}{chapter.1}%
+\contentsline {section}{\numberline {1.1}Representational Systems and Their Failures}{2}{section.1.1}%
+\contentsline {section}{\numberline {1.2}Operator Sensitivity as the First Diagnostic}{2}{section.1.2}%
+\contentsline {section}{\numberline {1.3}The Phenomenology of Collapse Events}{3}{section.1.3}%
+\contentsline {section}{\numberline {1.4}Collapse as a Signal}{4}{section.1.4}%
+\contentsline {chapter}{\numberline {2}Existing Frameworks and Their Limits}{5}{chapter.2}%
+\contentsline {section}{\numberline {2.1}Embedding-Based Accounts}{5}{section.2.1}%
+\contentsline {section}{\numberline {2.2}Modal Logic Approaches}{5}{section.2.2}%
+\contentsline {section}{\numberline {2.3}The Regress Problem}{6}{section.2.3}%
+\contentsline {section}{\numberline {2.4}The Inversion: Constraints Before Representations}{7}{section.2.4}%
+\contentsline {part}{II\hspace {1em}The Geometry}{8}{part.2}%
+\contentsline {chapter}{\numberline {3}The Admissibility Manifold}{9}{chapter.3}%
+\contentsline {section}{\numberline {3.1}Semantic Trajectories as the Primary Objects}{9}{section.3.1}%
+\contentsline {section}{\numberline {3.2}The Admissible Continuation Space}{9}{section.3.2}%
+\contentsline {section}{\numberline {3.3}Local Charts from Admissibility Profiles}{10}{section.3.3}%
+\contentsline {section}{\numberline {3.4}Regularity Conditions}{11}{section.3.4}%
+\contentsline {section}{\numberline {3.5}Bottlenecks, Constraints, and Degeneracies}{11}{section.3.5}%
+\contentsline {chapter}{\numberline {4}Tangent Spaces and Admissibility Flows}{13}{chapter.4}%
+\contentsline {section}{\numberline {4.1}Statistical Tangent Vectors}{13}{section.4.1}%
+\contentsline {section}{\numberline {4.2}Score Functions as Natural Coordinates}{14}{section.4.2}%
+\contentsline {section}{\numberline {4.3}The Fisher Inner Product}{14}{section.4.3}%
+\contentsline {section}{\numberline {4.4}Uniqueness of the Fisher Metric}{15}{section.4.4}%
+\contentsline {section}{\numberline {4.5}Semantic Interpretation of Admissibility Flows}{16}{section.4.5}%
+\contentsline {chapter}{\numberline {5}Admissibility Geodesics}{17}{chapter.5}%
+\contentsline {section}{\numberline {5.1}The Geodesic Energy Functional}{17}{section.5.1}%
+\contentsline {section}{\numberline {5.2}The Geodesic Equation}{18}{section.5.2}%
+\contentsline {section}{\numberline {5.3}Fisher Geodesic Distance}{18}{section.5.3}%
+\contentsline {section}{\numberline {5.4}Semantic Interpretation: Geodesics as Minimal Deformation}{19}{section.5.4}%
+\contentsline {section}{\numberline {5.5}Bottleneck Deflection and Escape Velocity}{19}{section.5.5}%
+\contentsline {chapter}{\numberline {6}Volume Growth and Accessibility Geometry}{20}{chapter.6}%
+\contentsline {section}{\numberline {6.1}Fisher Balls and Accessibility Volume}{20}{section.6.1}%
+\contentsline {section}{\numberline {6.2}Comparison Geometry: The Bishop-Gromov Theorem}{21}{section.6.2}%
+\contentsline {section}{\numberline {6.3}Curvature and Accessibility Volume}{21}{section.6.3}%
+\contentsline {section}{\numberline {6.4}Semantic Bottlenecks as Volume Suppression}{22}{section.6.4}%
+\contentsline {chapter}{\numberline {7}The Fisher Information Metric}{23}{chapter.7}%
+\contentsline {section}{\numberline {7.1}Why the Hessian Fails}{23}{section.7.1}%
+\contentsline {section}{\numberline {7.2}The Fisher Information Metric}{23}{section.7.2}%
+\contentsline {section}{\numberline {7.3}Derivation from Infinitesimal Admissibility Divergence}{24}{section.7.3}%
+\contentsline {section}{\numberline {7.4}Positive Semi-Definiteness and Its Semantic Meaning}{25}{section.7.4}%
+\contentsline {section}{\numberline {7.5}Connection to Information Geometry}{26}{section.7.5}%
+\contentsline {section}{\numberline {7.6}Curvature of the Admissibility Manifold}{26}{section.7.6}%
+\contentsline {chapter}{\numberline {8}Projections and the Vertical-Horizontal Decomposition}{28}{chapter.8}%
+\contentsline {section}{\numberline {8.1}Representations as Projections}{28}{section.8.1}%
+\contentsline {section}{\numberline {8.2}The Vertical-Horizontal Decomposition}{28}{section.8.2}%
+\contentsline {section}{\numberline {8.3}Projected Sectional Curvature}{29}{section.8.3}%
+\contentsline {section}{\numberline {8.4}The O'Neill Tensors and Collapse-Driving Curvature}{30}{section.8.4}%
+\contentsline {section}{\numberline {8.5}The Fiber as a Hidden Variable}{31}{section.8.5}%
+\contentsline {part}{III\hspace {1em}The Theorem}{32}{part.3}%
+\contentsline {chapter}{\numberline {9}The Representational Mixing Functional}{33}{chapter.9}%
+\contentsline {section}{\numberline {9.1}Beyond Operator-Specific Leakage}{33}{section.9.1}%
+\contentsline {section}{\numberline {9.2}Definition of the Mixing Functional}{33}{section.9.2}%
+\contentsline {section}{\numberline {9.3}Existing Diagnostics as Special Cases}{34}{section.9.3}%
+\contentsline {section}{\numberline {9.4}Regularity Conditions on the Functional}{35}{section.9.4}%
+\contentsline {chapter}{\numberline {10}The Projection-Collapse Principle}{36}{chapter.10}%
+\contentsline {section}{\numberline {10.1}Fiber Divergence: The Bridge Between Curvature and Leakage}{36}{section.10.1}%
+\contentsline {section}{\numberline {10.2}The Curvature-Divergence Inequality}{37}{section.10.2}%
+\contentsline {section}{\numberline {10.3}Statement: Weak Form}{38}{section.10.3}%
+\contentsline {section}{\numberline {10.4}Proof of the Weak Form}{38}{section.10.4}%
+\contentsline {section}{\numberline {10.5}Statement: Strong Form}{39}{section.10.5}%
+\contentsline {section}{\numberline {10.6}The Regularity Conditions and Their Semantic Content}{40}{section.10.6}%
+\contentsline {section}{\numberline {10.7}Interpretive Consequences}{40}{section.10.7}%
+\contentsline {part}{IV\hspace {1em}The Inverse Problem}{42}{part.4}%
+\contentsline {chapter}{\numberline {11}Collapse as Geometric Tomography}{43}{chapter.11}%
+\contentsline {section}{\numberline {11.1}The Inverse Problem Formulated}{43}{section.11.1}%
+\contentsline {section}{\numberline {11.2}Analogy with Geometric Tomography}{43}{section.11.2}%
+\contentsline {section}{\numberline {11.3}Resolution Limits and the Cramér-Rao Bound}{44}{section.11.3}%
+\contentsline {section}{\numberline {11.4}What Can and Cannot Be Recovered}{44}{section.11.4}%
+\contentsline {section}{\numberline {11.5}The Reconstruction Operator}{45}{section.11.5}%
+\contentsline {chapter}{\numberline {12}Spectral Reconstruction Theory}{47}{chapter.12}%
+\contentsline {section}{\numberline {12.1}The Linearized Forward Operator}{47}{section.12.1}%
+\contentsline {section}{\numberline {12.2}Singular Value Decomposition}{48}{section.12.2}%
+\contentsline {section}{\numberline {12.3}Curvature Recovery via Truncated SVD}{48}{section.12.3}%
+\contentsline {section}{\numberline {12.4}Tikhonov Regularization}{49}{section.12.4}%
+\contentsline {section}{\numberline {12.5}The Singular Value Spectrum as Semantic Resolution Limit}{50}{section.12.5}%
+\contentsline {section}{\numberline {12.6}Triplet Measurements as Curvature Probes}{50}{section.12.6}%
+\contentsline {section}{\numberline {12.7}Entropy Measurements as Curvature Integrals}{51}{section.12.7}%
+\contentsline {section}{\numberline {12.8}Perturbation Experiments as Tangent Vector Probes}{52}{section.12.8}%
+\contentsline {section}{\numberline {12.9}Combining Probes: Toward Tomographic Reconstruction}{52}{section.12.9}%
+\contentsline {chapter}{\numberline {13}Connection to Reentrant Value Field Theory}{53}{chapter.13}%
+\contentsline {section}{\numberline {13.1}Bohlen's Framework and the Admissibility Manifold}{53}{section.13.1}%
+\contentsline {section}{\numberline {13.2}The Small-Gain Condition as a Collapse Surface}{53}{section.13.2}%
+\contentsline {section}{\numberline {13.3}The Lyapunov-Krasovskii Functional as Admissibility Density}{54}{section.13.3}%
+\contentsline {section}{\numberline {13.4}Blueprint Admissibility as Constraint Geometry}{55}{section.13.4}%
+\contentsline {chapter}{\numberline {14}Semantic Field Theory}{56}{chapter.14}%
+\contentsline {section}{\numberline {14.1}From Diagnostics to Dynamics}{56}{section.14.1}%
+\contentsline {section}{\numberline {14.2}RSVP as a Field-Theoretic Framework}{56}{section.14.2}%
+\contentsline {section}{\numberline {14.3}Meaning as a Field-Theoretic Invariant}{59}{section.14.3}%
+\contentsline {chapter}{\numberline {15}Variational RSVP Geometry}{60}{chapter.15}%
+\contentsline {section}{\numberline {15.1}The Admissibility Action}{60}{section.15.1}%
+\contentsline {section}{\numberline {15.2}Euler-Lagrange Equations: The Admissibility Field Equation}{61}{section.15.2}%
+\contentsline {section}{\numberline {15.3}The Mexican-Hat Potential and Semantic Phase Transitions}{61}{section.15.3}%
+\contentsline {section}{\numberline {15.4}Fisher-RSVP Correspondence: The Metric from the Action}{62}{section.15.4}%
+\contentsline {section}{\numberline {15.5}Curvature Evolution Under RSVP Dynamics}{63}{section.15.5}%
+\contentsline {chapter}{\numberline {16}Persistent Admissibility Topology}{64}{chapter.16}%
+\contentsline {section}{\numberline {16.1}The Admissibility Filtration}{64}{section.16.1}%
+\contentsline {section}{\numberline {16.2}Homology of the Admissibility Filtration}{65}{section.16.2}%
+\contentsline {section}{\numberline {16.3}Persistence Diagrams}{65}{section.16.3}%
+\contentsline {section}{\numberline {16.4}Topological Bottlenecks and Disconnected Basins}{66}{section.16.4}%
+\contentsline {section}{\numberline {16.5}Semantic Topological Invariants}{66}{section.16.5}%
+\contentsline {part}{V\hspace {1em}Architecture and Infrastructure}{68}{part.5}%
+\contentsline {chapter}{\numberline {17}Constraint-First Semantic Architectures}{69}{chapter.17}%
+\contentsline {section}{\numberline {17.1}The Design Inversion}{69}{section.17.1}%
+\contentsline {section}{\numberline {17.2}Admissibility Filtering as a Primitive Operation}{70}{section.17.2}%
+\contentsline {section}{\numberline {17.3}Typed Representations and Projection Discipline}{70}{section.17.3}%
+\contentsline {chapter}{\numberline {18}Diagnostics, Auditing, and Certification}{72}{chapter.18}%
+\contentsline {section}{\numberline {18.1}The Diagnostic Hierarchy}{72}{section.18.1}%
+\contentsline {section}{\numberline {18.2}Collapse Graphs as Audit Artifacts}{72}{section.18.2}%
+\contentsline {section}{\numberline {18.3}Certification via Proof Obligations}{73}{section.18.3}%
+\contentsline {part}{VI\hspace {1em}Foundations and Consequences}{74}{part.6}%
+\contentsline {chapter}{\numberline {19}Accessibility Fields, Trajectories, and Semantic Action}{75}{chapter.19}%
+\contentsline {section}{\numberline {19.1}Accessibility Fields}{75}{section.19.1}%
+\contentsline {section}{\numberline {19.2}Accessibility Entropy}{76}{section.19.2}%
+\contentsline {section}{\numberline {19.3}Trajectory Primacy and Semantic Equivalence}{76}{section.19.3}%
+\contentsline {section}{\numberline {19.4}Constraint Basins and Semantic Objects}{77}{section.19.4}%
+\contentsline {section}{\numberline {19.5}Semantic Renormalization}{78}{section.19.5}%
+\contentsline {section}{\numberline {19.6}The Semantic Action Functional}{79}{section.19.6}%
+\contentsline {chapter}{\numberline {20}Intellectual Foundations and Related Frameworks}{81}{chapter.20}%
+\contentsline {section}{\numberline {20.1}Information Geometry}{81}{section.20.1}%
+\contentsline {section}{\numberline {20.2}Riemannian Geometry and Submersion Theory}{82}{section.20.2}%
+\contentsline {section}{\numberline {20.3}Optimal Transport}{82}{section.20.3}%
+\contentsline {section}{\numberline {20.4}Information Bottlenecks and Compression}{83}{section.20.4}%
+\contentsline {section}{\numberline {20.5}Topological Data Analysis}{83}{section.20.5}%
+\contentsline {section}{\numberline {20.6}Geometric Deep Learning}{83}{section.20.6}%
+\contentsline {section}{\numberline {20.7}Constraint-Based Accounts of Cognition}{84}{section.20.7}%
+\contentsline {section}{\numberline {20.8}Variational Field Theory}{84}{section.20.8}%
+\contentsline {section}{\numberline {20.9}Process Philosophy and Structural Ontology}{85}{section.20.9}%
+\contentsline {section}{\numberline {20.10}Positioning Relative to Existing Frameworks}{85}{section.20.10}%
+\contentsline {section}{\numberline {20.11}The Ontological Status of Admissibility}{86}{section.20.11}%
+\contentsline {section}{\numberline {20.12}Kinematics and Dynamics of Admissibility}{87}{section.20.12}%
+\contentsline {section}{\numberline {20.13}Semantic Event Horizons}{88}{section.20.13}%
+\contentsline {section}{\numberline {20.14}Discrete Admissibility Geometry}{89}{section.20.14}%
+\contentsline {section}{\numberline {20.15}Meaning Without Representation}{91}{section.20.15}%
+\contentsline {section}{\numberline {20.16}The Chinese Room Revisited}{91}{section.20.16}%
+\contentsline {section}{\numberline {20.17}Indexicality and the Admissibility Manifold}{92}{section.20.17}%
+\contentsline {chapter}{\numberline {21}Open Problems}{93}{chapter.21}%
+\contentsline {section}{\numberline {21.1}Foundational Problems}{93}{section.21.1}%
+\contentsline {section}{\numberline {21.2}Geometric Problems}{93}{section.21.2}%
+\contentsline {section}{\numberline {21.3}Dynamical Problems}{94}{section.21.3}%
+\contentsline {section}{\numberline {21.4}Computational Problems}{94}{section.21.4}%
+\contentsline {chapter}{Conclusion}{96}{chapter*.3}%
+\contentsline {chapter}{\numberline {A}Information Geometry: Background and Notation}{97}{appendix.A}%
+\contentsline {chapter}{\numberline {B}Differential Geometry: Curvature and Submersions}{98}{appendix.B}%
+\contentsline {chapter}{\numberline {C}The O'Neill Formulas}{99}{appendix.C}%
+\contentsline {chapter}{\numberline {D}Proof Details for the Weak Form}{101}{appendix.D}%
+\contentsline {chapter}{\numberline {E}Connection to RSVP Field Theory}{102}{appendix.E}%

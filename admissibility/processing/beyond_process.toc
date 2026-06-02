@@ -1,0 +1,27 @@
+\contentsline {section}{\numberline {1}Introduction: The Debate Between Being and Becoming}{6}{section.1}%
+\contentsline {section}{\numberline {2}The Ontological Hierarchy}{7}{section.2}%
+\contentsline {section}{\numberline {3}Projection, Fibers, and Information Loss}{8}{section.3}%
+\contentsline {section}{\numberline {4}Entropy as Degeneracy Under Projection}{9}{section.4}%
+\contentsline {section}{\numberline {5}Spherepop: Evaluation as Geometric Collapse}{10}{section.5}%
+\contentsline {section}{\numberline {6}Gesture as Primary Substrate}{11}{section.6}%
+\contentsline {section}{\numberline {7}Admissibility Theory and CLIO}{11}{section.7}%
+\contentsline {section}{\numberline {8}RSVP: Cosmology as Accessibility Field Theory}{12}{section.8}%
+\contentsline {section}{\numberline {9}Stigmergy, Ising Models, and Cellular Automata}{13}{section.9}%
+\contentsline {section}{\numberline {10}Beyond Process Philosophy}{15}{section.10}%
+\contentsline {section}{\numberline {11}MEM|8: Cognitive Runtime for Constraint-First Theory}{16}{section.11}%
+\contentsline {subsection}{\numberline {11.1}Framing: The Processor--Language Relationship}{17}{subsection.11.1}%
+\contentsline {subsection}{\numberline {11.2}Wave Interference as the Natural Representation of Overlapping Constraint Fields}{17}{subsection.11.2}%
+\contentsline {subsection}{\numberline {11.3}Temporal Decay as Entropy Increase Under Weakening Reconstruction Constraints}{18}{subsection.11.3}%
+\contentsline {subsection}{\numberline {11.4}Reactive Layers as a Stratified Admissibility Stack}{19}{subsection.11.4}%
+\contentsline {subsection}{\numberline {11.5}The Custodian as Curvature Control on the Accessibility Manifold}{20}{subsection.11.5}%
+\contentsline {subsection}{\numberline {11.6}The \texttt {.m8} Format as File-Level Semantic Projection}{21}{subsection.11.6}%
+\contentsline {subsection}{\numberline {11.7}The Master Derivation}{21}{subsection.11.7}%
+\contentsline {subsection}{\numberline {11.8}Critical Assessment}{23}{subsection.11.8}%
+\contentsline {subsection}{\numberline {11.9}Distributed Mixture-of-Experts as Accessibility Compression}{23}{subsection.11.9}%
+\contentsline {paragraph}{The conventional model as process ontology.}{23}{section*.2}%
+\contentsline {paragraph}{The block distribution as accessibility field.}{24}{section*.3}%
+\contentsline {paragraph}{The Map-Territory Theorem in a working model.}{24}{section*.4}%
+\contentsline {paragraph}{Memory as coreset storage, not route storage.}{25}{section*.5}%
+\contentsline {paragraph}{Top-$p$ as CLIO in expert space.}{25}{section*.6}%
+\contentsline {section}{\numberline {12}The Implementation Tower}{26}{section.12}%
+\contentsline {section}{\numberline {13}Conclusion: Everything Navigates}{27}{section.13}%

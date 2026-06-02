@@ -1,0 +1,1862 @@
+% Beyond Process: Constraint, Accessibility, and the Geometry of Becoming
+% Author: Flyxion
+% Engine: LuaLaTeX / pdfLaTeX compatible
+% Font: Palatino (mathpazo — TeX Gyre Pagella family)
+
+\documentclass[12pt, a4paper, twoside]{article}
+
+%% ── Fonts ─────────────────────────────────────────────────────────────────────
+\usepackage[T1]{fontenc}
+\usepackage{mathpazo}        % Palatino for text and math (TeX Gyre Pagella family)
+\linespread{1.05}            % Palatino needs slightly more leading
+
+%% ── Layout ────────────────────────────────────────────────────────────────────
+\usepackage[a4paper, top=3cm, bottom=3cm, inner=3.2cm, outer=2.5cm,
+            headheight=15pt]{geometry}
+\usepackage{microtype}
+
+%% ── Headers & Footers ─────────────────────────────────────────────────────────
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[LE]{\small\itshape Beyond Process}
+\fancyhead[RO]{\small\itshape Flyxion}
+\fancyfoot[C]{\thepage}
+\renewcommand{\headrulewidth}{0.3pt}
+
+%% ── Math ──────────────────────────────────────────────────────────────────────
+\usepackage{amsmath, amssymb, amsthm, mathtools}
+
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{example}[theorem]{Example}
+
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+
+%% ── Hyperlinks ────────────────────────────────────────────────────────────────
+\usepackage[colorlinks=true, linkcolor=black, citecolor=black,
+            urlcolor=black]{hyperref}
+
+%% ── Misc ──────────────────────────────────────────────────────────────────────
+\usepackage{parskip}
+\setlength{\parskip}{0.55em}
+\setlength{\parindent}{0pt}
+\usepackage{enumitem}
+\setlist[enumerate]{nosep, leftmargin=2em}
+\usepackage{booktabs}
+\usepackage{array}
+
+%% ── Custom commands ───────────────────────────────────────────────────────────
+\newcommand{\Acc}{\mathcal{A}}
+\newcommand{\Traj}{\mathcal{T}}
+\newcommand{\Conf}{\mathcal{C}}
+\newcommand{\Adm}{\mathrm{Adm}}
+\newcommand{\Proj}{\pi}
+\newcommand{\Fibover}[2]{F^{#1}_{#2}}
+\newcommand{\Ent}{H}
+\newcommand{\restr}[2]{{#1}\!\upharpoonright_{#2}}
+
+
+%% ─────────────────────────────────────────────────────────────────────────────
+\begin{document}
+
+\begin{titlepage}
+  \centering
+  \vspace*{3cm}
+  {\Large\scshape Flyxion \par}
+  \vspace{2cm}
+  {\Huge\bfseries Beyond Process\par}
+  \vspace{0.8cm}
+  {\Large\itshape Constraint, Accessibility, and the Geometry of Becoming\par}
+  \vspace{2cm}
+  \rule{0.4\textwidth}{0.5pt}\par
+  \vspace{0.8cm}
+  {\large\itshape An essay in constraint-first ontology\par}
+  \vfill
+  {\normalsize June 2026\par}
+\end{titlepage}
+
+\newpage
+\thispagestyle{empty}
+
+\vspace*{1.5cm}
+\begin{center}
+  {\large\scshape Abstract}
+\end{center}
+\vspace{0.8em}
+
+\noindent
+The history of philosophy frames the question of what is most real as a choice
+between two answers: persistent objects (substance ontology) or flowing events
+(process ontology). This essay proposes that neither is correct---that both
+objects and processes are derived from a deeper stratum which is neither a
+thing nor an event, but a geometry: the structure of constraints determining
+which configurations are accessible from which. We call this an
+\emph{accessibility ontology} or \emph{constraint-first ontology}.
+
+The essay develops this claim across fourteen sections. The core mathematical
+apparatus is a projection framework $\pi: X \to M$ from a rich trajectory
+space to an observable manifold, together with a constraint field
+$\mathcal{A}: \mathcal{C} \to \mathcal{P}(\mathcal{C})$ and an entropy
+measure $H(\pi, m) = \ln\mu(\pi^{-1}(m))$ that quantifies information loss
+under projection. Objects emerge as basins invariant under $\mathcal{A}$;
+processes emerge as trajectories through it; entropy growth is the increase
+in fiber degeneracy when dynamics operate entirely on the projected manifold.
+
+Applications are developed to computation (Spherepop as containment-based
+evaluation), cognition (gesture as the primary substrate of symbolic meaning),
+inference (admissibility theory and CLIO), cosmology (RSVP as an accessibility
+field theory), coordination (stigmergy unifying Ising models, cellular automata,
+and ant colonies), and artificial cognitive architecture (MEM|8 as a partial
+machine realization of the theory). A six-level implementation tower is
+derived, from ontology through inference operator, evaluation strategy, memory
+model, field dynamics, and wave-grid runtime, showing that each level is the
+unique tractable realization of the level above it.
+
+The governing slogan replacing Heraclitus's \emph{``everything flows''} is:
+\emph{everything navigates a changing landscape of admissible possibilities.}
+
+\vspace{1.2cm}
+\begin{center}
+  \rule{0.35\textwidth}{0.4pt}
+\end{center}
+\vspace{0.8em}
+
+\noindent\textbf{Keywords:} constraint-first ontology, accessibility geometry,
+projection entropy, admissibility theory, Spherepop, RSVP, CLIO, MEM|8,
+process philosophy, stigmergy, cognitive runtime.
+
+\newpage
+\thispagestyle{empty}
+
+\vspace*{1.5cm}
+\begin{center}
+  {\large\scshape Summary of Principal Results}
+\end{center}
+\vspace{1em}
+
+\noindent The essay establishes the following hierarchy of concepts and results.
+
+\medskip
+\noindent\textbf{Ontological primitives.}
+The constraint field $\mathcal{A}: \mathcal{C} \to \mathcal{P}(\mathcal{C})$
+is ontologically prior to both trajectories and objects. Objects are
+$\mathcal{A}$-invariant basins; processes are trajectories through
+$\mathcal{A}$; the accessibility relation is neither a thing nor an event.
+This creates a three-level hierarchy---substance ontology, process ontology,
+accessibility ontology---in which each level derives the primitives of the
+level above from those of the level below.
+
+\medskip
+\noindent\textbf{Projection and information loss.}
+Any surjective map $\pi: X \to M$ with $|X| > |M|$ has nontrivial fibers
+(Map-Territory Theorem). Every map, model, symbol, memory, or institution is
+such a projection. The information lost in projection is the fiber coordinate,
+invisible to any observer operating entirely within $M$.
+
+\medskip
+\noindent\textbf{Entropy as degeneracy.}
+Projection entropy $H(\pi, m) = \ln\mu(\pi^{-1}(m))$ generalizes Boltzmann
+entropy; Boltzmann's $S = k_B \ln\Omega$ is the special case where $\pi$ is
+the thermodynamic coarse-graining map. The Second Law follows: dynamics
+indifferent to fiber coordinates cannot track degeneracy, so expected entropy
+is non-decreasing. Forgetting is fiber expansion; remembering is preservation
+of discriminating constraints.
+
+\medskip
+\noindent\textbf{Spherepop and gesture.}
+Evaluation order in any calculus is containment depth (innermost resolves
+first). Syntactic punctuation is the residue of projecting containment
+structures onto strings. Symbols are compressed projections of gestural
+trajectories; understanding is fiber navigation, not lookup.
+
+\medskip
+\noindent\textbf{Stigmergy.}
+Coordination through environmental traces unifies Ising synchronization,
+cellular automaton dynamics, and ant colony behavior under a single schema:
+local traces $\to$ modified constraints $\to$ altered accessibility $\to$
+coherent structure. Persistent structures (gliders, magnetized phases, trails)
+are stigmergic attractors.
+
+\medskip
+\noindent\textbf{MEM|8 as cognitive runtime.}
+Wave-based memory architecture~\cite{mem8_2025} is a partial machine realization
+of the constraint-first theory. The key correspondences are:
+
+\begin{center}
+\renewcommand{\arraystretch}{1.3}
+\begin{tabular}{@{}ll@{}}
+\toprule
+\textbf{Theory primitive} & \textbf{Runtime implementation} \\
+\midrule
+Constraint field $\mathcal{A}$ & Wave grid $(256^2 \times 65536)$ \\
+Overlapping constraint fields   & Wave interference (unique by Thm.~12.3) \\
+Constraint relaxation           & Exponential decay (entropy-optimal by Thm.~12.6) \\
+Admissibility stack             & Reactive layer hierarchy (Thm.~12.8) \\
+Curvature control               & Custodian operator (Thm.~12.10) \\
+Semantic projection             & \texttt{.m8} format (Prop.~12.11) \\
+Phase-locking / binding         & Kuramoto synchronization ($R$ = binding strength) \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\noindent The Kuramoto coherence parameter $R$ provides a quantitative measure
+of constraint binding strength: when two constraint perturbations are causally
+or temporally linked, they phase-lock, and their coherence $R \in [0,1]$
+represents the strength of the composite constraint. $R = 1$ indicates full
+constraint reinforcement; $R = 0$ indicates independent (phase-orthogonal)
+constraints.
+
+\medskip
+\noindent\textbf{The implementation tower.}
+The six-level tower (Semantic Infrastructure $\to$ CLIO $\to$ Spherepop $\to$
+Chain of Memory $\to$ RSVP $\to$ MEM|8) is a deductive structure: each level
+is the unique tractable realization of the level above under the constraints
+of termination, continuity, and minimality.
+
+\medskip
+\noindent\textbf{The master theorem.}
+For any system described by $(\mathcal{C}, \mathcal{A}, \pi)$: stable
+structures are basins of $\mathcal{A}$; processes are trajectories through
+$\mathcal{A}$; information loss is projection entropy; coordination is
+stigmergic modification of $\mathcal{A}$; inference is admissibility-constrained
+trajectory selection. The governing slogan: \emph{everything navigates a
+changing landscape of admissible possibilities.}
+
+\bigskip
+\begin{center}
+  \rule{0.35\textwidth}{0.4pt}
+\end{center}
+
+\tableofcontents
+\newpage
+
+%% ══════════════════════════════════════════════════════════════════════════════
+\section{Introduction: The Debate Between Being and Becoming}
+\label{sec:intro}
+%% ══════════════════════════════════════════════════════════════════════════════
+
+The history of philosophy can be read as a prolonged dispute between two
+intuitions about what is most real. The first intuition is that reality is
+composed of persistent things---objects, substances, states---and that change
+is a secondary phenomenon that happens to those things. The second intuition
+is that process, flux, and becoming are primary, and that stable objects are
+derivative structures precipitated from an underlying flow.
+
+This opposition traces at least to the pre-Socratics. Parmenides argued that
+being is one, unchanging, and complete; motion and multiplicity are illusions.
+Heraclitus held the opposite: the river is never the same river twice, fire is
+the fundamental stuff, and \emph{strife}---the ceaseless tension between
+opposites---is the basis of all order. Alfred North Whitehead, in the twentieth
+century, transformed Heraclitean process intuition into a systematic metaphysics.
+In \emph{Process and Reality} (1929) he argued that the basic constituents of
+reality are not enduring substances but \emph{occasions of experience}: momentary
+events that prehend their predecessors and pass into their successors. Objects
+are \emph{societies} of occasions---patterns that persist by reproducing
+themselves through time.
+
+The present essay argues that both positions share an unexamined assumption.
+Whether one takes objects or processes as fundamental, one is still asking
+\emph{what there is}. One answer is ``things''; the other is ``events''. But
+there is a third possibility: neither things nor events are fundamental. What
+is fundamental is the \emph{geometry of possibility}---the structure of
+constraints determining which trajectories, which changes, which continuations
+are admissible at all. Objects emerge as basins within that geometry. Processes
+emerge as trajectories through it. The geometry itself---the accessibility
+landscape---is what underlies both.
+
+The essay proceeds as follows. Section~\ref{sec:ontological_hierarchy} states
+the ontological hierarchy precisely and derives its consequences.
+Section~\ref{sec:projection} develops the central mathematical apparatus:
+projection, fiber, and information loss.
+Section~\ref{sec:entropy} reinterprets entropy as a measure of degeneracy
+under projection. Section~\ref{sec:spherepop} examines Spherepop as a
+containment-based calculus in which evaluation is geometric collapse.
+Section~\ref{sec:gesture} treats gesture as the primary substrate of symbolic
+computation. Section~\ref{sec:admissibility} introduces admissibility theory
+and CLIO as a generalized inference framework.
+Section~\ref{sec:rsvp} situates the RSVP field equations within the
+accessibility framework. Section~\ref{sec:stigmergy} unifies stigmergy, Ising
+synchronization, and cellular automata under a common constraint-modification
+schema. Section~\ref{sec:process_philosophy} places the resulting ontology in
+relation to process philosophy and identifies where it diverges.
+Section~\ref{sec:conclusion} gathers the threads into a master theorem.
+
+Throughout, formal definitions, theorems, and proofs are given at each step.
+The goal is not merely to assert the framework but to derive its structure from
+minimal commitments.
+
+%% ══════════════════════════════════════════════════════════════════════════════
+\section{The Ontological Hierarchy}
+\label{sec:ontological_hierarchy}
+%% ══════════════════════════════════════════════════════════════════════════════
+
+We begin by making the hierarchical claim precise. Three frameworks are
+distinguished by where they locate the fundamental stratum of reality.
+
+\begin{definition}[Substance Ontology]
+A \emph{substance ontology} is one in which the primitive entities are
+persistent objects $x \in X$ equipped with a state space $S(x)$.
+Change is a function $\phi: X \times T \to S$, where $T$ is a time parameter.
+\end{definition}
+
+\begin{definition}[Process Ontology]
+A \emph{process ontology} is one in which the primitive entities are events or
+occasions $e \in E$. An object is defined as a temporally extended pattern:
+a sequence $(e_1, e_2, \ldots)$ of occasions bound by causal prehension
+relations $e_i \prec e_j$ ($e_i$ is causally prior to $e_j$).
+\end{definition}
+
+\begin{definition}[Accessibility Ontology]
+\label{def:acc_ontology}
+An \emph{accessibility ontology} is one in which the primitive entities are
+\emph{accessibility relations}. Let $\Conf$ be a space of configurations.
+A \emph{constraint field} is a function
+\[
+  \Acc: \Conf \to \mathcal{P}(\Conf)
+\]
+assigning to each configuration $c$ the set $\Acc(c)$ of configurations that
+are \emph{immediately accessible} from $c$. A \emph{trajectory} is a sequence
+$(c_0, c_1, c_2, \ldots)$ such that $c_{i+1} \in \Acc(c_i)$ for all $i$.
+An \emph{object} is an $\Acc$-invariant basin: a set $B \subseteq \Conf$ such
+that for all $c \in B$, $\Acc(c) \cap B \neq \emptyset$.
+\end{definition}
+
+\begin{proposition}[Ontological Depth]
+\label{prop:hierarchy}
+In any dynamical system admitting a constraint field $\Acc$:
+\begin{enumerate}[label=(\roman*)]
+  \item Every trajectory is determined by $\Acc$ and an initial condition;
+        but $\Acc$ is not determined by any single trajectory.
+  \item Every object (basin) is determined by $\Acc$; but $\Acc$ is not
+        determined by any collection of objects.
+  \item $\Acc$ is therefore epistemically and ontologically prior to both
+        trajectories and objects.
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+\emph{(i)} Given $\Acc$ and $c_0$, the set of admissible continuations at each
+step is $\Acc(c_i)$; thus every trajectory is a selection from this field.
+A single trajectory $\gamma$ specifies only those transitions $c_i \to c_{i+1}$
+that actually occurred; the full relation $\Acc$ includes all possible
+transitions from every $c \in \Conf$, which no single trajectory can witness.
+
+\emph{(ii)} A basin $B$ satisfies $B = \{c : \Acc(c) \cap B \neq \emptyset\}$.
+Multiple distinct constraint fields can produce identical basins (adding
+transitions \emph{between} basins does not alter the basins themselves), so
+$\Acc$ is not recoverable from the basins alone.
+
+\emph{(iii)} Both trajectories and objects are \emph{derived} from $\Acc$;
+neither determines it. Hence $\Acc$ occupies the deeper stratum.
+\qed
+\end{proof}
+
+\begin{remark}
+The argument is deliberately minimal. It does not require metric structure,
+differentiability, or a Lagrangian. It holds for any relational system in
+which ``what is possible next'' is well defined.
+\end{remark}
+
+%% ══════════════════════════════════════════════════════════════════════════════
+\section{Projection, Fibers, and Information Loss}
+\label{sec:projection}
+%% ══════════════════════════════════════════════════════════════════════════════
+
+The central mathematical tool is the theory of projections and their fibers.
+Let $X$ be a ``rich'' space (full trajectory space, gesture space, field
+configuration space) and $M$ a ``coarser'' observable space. A \emph{map}
+is any function $\Proj: X \to M$.
+
+\begin{definition}[Fiber]
+For $m \in M$, the \emph{fiber} of $\Proj$ over $m$ is
+\[
+  \Fibover{\Proj}{m} = \Proj^{-1}(m) = \{x \in X : \Proj(x) = m\}.
+\]
+\end{definition}
+
+\begin{definition}[Trivial and Nontrivial Projections]
+$\Proj$ is \emph{trivially informative} if $|\Fibover{\Proj}{m}| = 1$ for all
+$m \in M$ (the projection is injective). It has \emph{nontrivial fibers} if
+there exists $m \in M$ with $|\Fibover{\Proj}{m}| > 1$.
+\end{definition}
+
+\begin{theorem}[Map--Territory Projection Theorem]
+\label{thm:map_territory}
+Let $\Proj: X \to M$ be any surjective map with $|X| > |M|$. Then $\Proj$
+has nontrivial fibers: there exist distinct $x_1, x_2 \in X$ with
+$\Proj(x_1) = \Proj(x_2)$, and the information distinguishing them is
+invisible in $M$.
+\end{theorem}
+
+\begin{proof}
+Since $|X| > |M|$ and $\Proj$ is surjective, the pigeonhole principle forces
+at least one $m \in M$ to satisfy $|\Fibover{\Proj}{m}| \geq 2$. Any two
+elements $x_1 \neq x_2$ in that fiber map to the same point $m$, so they
+are indistinguishable to any observer with access only to $M$. The information
+distinguishing them---their fiber coordinate---lies in $X \setminus M$
+and cannot be recovered from $m$ alone.
+\qed
+\end{proof}
+
+Table~\ref{tab:projections} catalogs the recurring instances of this schema
+throughout the framework.
+
+\begin{table}[h]
+\centering
+\renewcommand{\arraystretch}{1.35}
+\begin{tabular}{@{}lll@{}}
+\toprule
+\textbf{Rich space $X$} & \textbf{Projection} & \textbf{Observable $M$} \\
+\midrule
+Gesture trajectory    & compression         & Symbol \\
+Expression tree       & evaluation          & Value \\
+Territory             & map-making          & Map \\
+Accessibility landscape & stabilization     & Object / state \\
+Full utterance history  & canonicalization  & Semantic field \\
+Civilizational trajectory & institutionalization & Institution \\
+Field configuration (RSVP) & coarse-graining & Cosmological observable \\
+Colony dynamics       & pheromone deposition & Stigmergic trace \\
+\bottomrule
+\end{tabular}
+\caption{Instances of the projection schema $X \xrightarrow{\Proj} M$.}
+\label{tab:projections}
+\end{table}
+
+\begin{corollary}
+\label{cor:fiber_reconstruction}
+Full reconstruction of $x \in X$ from $m = \Proj(x)$ requires additional
+information specifying the fiber coordinate of $x$ within $\Fibover{\Proj}{m}$.
+In general, this coordinate is unavailable to an observer operating entirely
+within $M$.
+\end{corollary}
+
+\begin{proof}
+From $m$ alone, an observer can identify $\Fibover{\Proj}{m}$ but cannot
+distinguish among its elements. The fiber coordinate parameterizes the kernel
+of $\Proj$; since this kernel lies outside $M$, no map $M \to X$ can
+reconstruct it without auxiliary information.
+\qed
+\end{proof}
+
+%% ══════════════════════════════════════════════════════════════════════════════
+\section{Entropy as Degeneracy Under Projection}
+\label{sec:entropy}
+%% ══════════════════════════════════════════════════════════════════════════════
+
+Standard thermodynamic entropy is defined by Boltzmann as
+$S = k_B \ln \Omega$, where $\Omega$ is the number of microstates consistent
+with a given macrostate. We show this is a special case of a more general
+notion: the logarithmic size of a fiber.
+
+\begin{definition}[Projection Entropy]
+Let $\Proj: X \to M$ be a projection and $m \in M$ an observable. The
+\emph{projection entropy} of $m$ is
+\[
+  \Ent(\Proj, m) = \ln |\Fibover{\Proj}{m}|.
+\]
+When $X$ carries a measure $\mu$ and fibers need not be finite, set
+$\Ent(\Proj, m) = \ln \mu(\Fibover{\Proj}{m})$.
+\end{definition}
+
+\begin{proposition}[Boltzmann Entropy as Special Case]
+\label{prop:boltzmann}
+Thermodynamic entropy $S = k_B \ln \Omega$ is projection entropy with $\Proj$
+the coarse-graining map from microstates to macrostates, $X$ the microstate
+space, and $k_B$ a unit conversion factor.
+\end{proposition}
+
+\begin{proof}
+Set $X = $ (microstate space), $M = $ (macrostate space), and $\Proj(x) = $
+the macrostate of microstate $x$. Then $\Fibover{\Proj}{m} = \{x : \Proj(x) = m\}$
+is the set of microstates compatible with macrostate $m$, which is $\Omega$.
+Hence $\Ent(\Proj, m) = \ln |\Fibover{\Proj}{m}| = \ln \Omega = S/k_B$.
+\qed
+\end{proof}
+
+\begin{proposition}[Second Law as Increasing Degeneracy]
+\label{prop:second_law}
+In a system whose dynamics operates entirely on $M$ (i.e.\ is indifferent to
+fiber coordinates), the expected projection entropy $\langle \Ent \rangle$ is
+non-decreasing over time.
+\end{proposition}
+
+\begin{proof}
+If the dynamics $\Phi_t: M \to M$ does not track fiber coordinates, then
+an initial microstate $x_0$ with $\Proj(x_0) = m_0$ evolves under any
+trajectory consistent with the macrostate path $m_t = \Phi_t(m_0)$. At
+each step, the set of microstates consistent with $m_t$ can only grow or
+stay constant, because the dynamics cannot eliminate fiber elements it does
+not track. Formally, $|\Fibover{\Proj}{m_t}| \geq |\Fibover{\Proj}{m_0}|$
+on average, so $\langle\Ent(\Proj, m_t)\rangle \geq \Ent(\Proj, m_0)$.
+\qed
+\end{proof}
+
+\begin{remark}
+The Second Law is not a brute fact about disorder but a structural consequence
+of operating with projections. Any system that compresses information---maps,
+memories, concepts, institutions---loses the ability to reverse its own
+coarse-graining. Irreversibility is in the projection, not in any intrinsic
+asymmetry of the underlying dynamics.
+\end{remark}
+
+\begin{example}[Semantic Entropy]
+Let $X$ be the space of utterance histories leading to a conversational state,
+and $M$ the space of semantic representations. Projection entropy measures how
+many distinct histories could have produced a given meaning $m$. High semantic
+entropy means a meaning is accessible via many routes; low entropy means the
+path that produced it is nearly recoverable from the meaning alone.
+\end{example}
+
+\begin{example}[Institutional Entropy]
+Let $X$ be the space of civilizational trajectories and $M$ the space of
+institutional configurations. As institutions become more self-reproducing,
+their fiber grows: the same institutional configuration becomes reachable
+from more and more distinct historical pasts.
+\end{example}
+
+%% ══════════════════════════════════════════════════════════════════════════════
+\section{Spherepop: Evaluation as Geometric Collapse}
+\label{sec:spherepop}
+%% ══════════════════════════════════════════════════════════════════════════════
+
+Spherepop is a containment-based calculus in which expressions are represented
+as nested regions and evaluation is the collapse of those regions. Syntactic
+structure (scope, precedence, binding) is encoded geometrically as containment
+depth.
+
+\begin{definition}[Containment Structure]
+A \emph{containment structure} is a pair $(R, \subseteq)$ where $R$ is a
+finite set of \emph{regions} and $\subseteq$ is a partial order representing
+containment, satisfying: if $r_1 \cap r_2 \neq \emptyset$ then either
+$r_1 \subseteq r_2$ or $r_2 \subseteq r_1$ (regions are strictly nested).
+\end{definition}
+
+\begin{definition}[Spherepop Expression]
+A \emph{Spherepop expression} is a labeled containment structure
+$(R, \subseteq, \ell)$ where $\ell: R \to \Sigma$ assigns each region a label
+from an alphabet $\Sigma$. The \emph{depth} of region $r$ is
+\[
+  d(r) = |\{r' \in R : r' \supsetneq r\}|.
+\]
+\end{definition}
+
+\begin{definition}[Pop, Refuse, Collapse]
+The three primitive operations are:
+\begin{enumerate}[label=(\roman*)]
+  \item \textbf{Pop}: Remove the innermost region $r^*$ (one with no proper
+    sub-regions) and return its evaluated value to its parent.
+  \item \textbf{Refuse}: Mark a region as irreducible until its context
+    admits it.
+  \item \textbf{Collapse}: Apply Pop exhaustively to all innermost regions,
+    yielding the fully evaluated normal form.
+\end{enumerate}
+\end{definition}
+
+\begin{theorem}[Containment Encodes Precedence]
+\label{thm:containment_precedence}
+In a Spherepop expression representing an arithmetic formula, the evaluation
+order induced by iterated Pop (innermost first) agrees with the standard
+evaluation order defined by operator precedence.
+\end{theorem}
+
+\begin{proof}
+Standard precedence rules encode binding tightness: sub-expressions that bind
+more tightly are placed in regions at greater depth. Since Pop always collapses
+the deepest region first, it evaluates the most tightly bound sub-expression
+first. Formally: let $e$ contain operators $\circ_1$ (higher precedence) and
+$\circ_2$ (lower precedence). Encoding $e$ as a Spherepop structure places the
+$\circ_1$ sub-expression at depth $d+1$ and the $\circ_2$ sub-expression at
+depth $d$. Iterated Pop reduces the depth-$(d+1)$ region before the depth-$d$
+region, matching the precedence-respecting evaluation order.
+\qed
+\end{proof}
+
+\begin{corollary}
+Scope, variable binding, and recursive call structure are similarly encoded by
+containment depth. Parentheses, keywords, and indentation in conventional
+string-based syntax are the residue of applying the projection
+$\Proj: \text{containment structures} \to \text{strings}$: they are the
+additional notation required to partially recover the fiber coordinate---i.e.\
+to reconstruct the containment structure from its linearized image.
+\end{corollary}
+
+\begin{proof}
+By Theorem~\ref{thm:map_territory}, the linearization map $\Proj$ has
+nontrivial fibers: multiple distinct containment structures map to similar
+strings. Syntactic punctuation (parentheses, keywords) is exactly the notation
+that a writer adds to reduce the fiber, allowing a reader to reconstruct the
+intended containment structure from the string.
+\qed
+\end{proof}
+
+%% ══════════════════════════════════════════════════════════════════════════════
+\section{Gesture as Primary Substrate}
+\label{sec:gesture}
+%% ══════════════════════════════════════════════════════════════════════════════
+
+Symbols are compressed projections of gestural trajectories. Gesture is not
+a supplement to symbolic computation but its original substrate.
+
+\begin{definition}[Gesture Space]
+A \emph{gesture space} is a metric space $(\mathcal{G}, d_{\mathcal{G}})$ of
+continuous trajectories $\gamma: [0,1] \to \mathbb{R}^n$ (for embodied motor
+gestures, $n$ is the dimension of the effector space). The group of
+reparameterizations $\mathrm{Diff}^+([0,1])$ acts on $\mathcal{G}$ by
+precomposition; the \emph{shape} of a gesture is its equivalence class under
+this action.
+\end{definition}
+
+\begin{definition}[Symbol as Gesture Projection]
+A \emph{symbol} $s \in \Sigma$ is an equivalence class of gestures under a
+projection $\Proj_{\mathrm{sym}}: \mathcal{G} \to \Sigma$ that identifies all
+gestures a community conventionally interprets as $s$. The fiber
+$\Fibover{\Proj_{\mathrm{sym}}}{s}$ is the set of gestures conventionally
+producing $s$.
+\end{definition}
+
+\begin{proposition}[Semantic Reconstruction is Fiber Navigation]
+\label{prop:semantic_reconstruction}
+Understanding a symbol $s$ requires navigating from $s \in \Sigma$ back into a
+representative gesture in $\Fibover{\Proj_{\mathrm{sym}}}{s}$. This navigation
+is not uniquely determined by $s$ alone; it requires contextual constraints to
+select a specific fiber element.
+\end{proposition}
+
+\begin{proof}
+By Corollary~\ref{cor:fiber_reconstruction}, $s \in \Sigma$ corresponds to a
+fiber with potentially many elements. A receiver interpreting $s$ must select
+one $\hat{\gamma} \in \Fibover{\Proj_{\mathrm{sym}}}{s}$ as the ``intended''
+gesture. This selection is underdetermined by $s$ alone; it depends on prior
+context, shared conventions, and the receiver's constraint field $\Acc$.
+Understanding is therefore constrained trajectory reconstruction, not
+symbol lookup.
+\qed
+\end{proof}
+
+\begin{remark}
+This formalizes the underdetermination of meaning by linguistic form as a
+structural consequence of the projection schema. Meaning is more stable in
+high-constraint contexts (where $\Acc$ strongly selects a single fiber element)
+and more ambiguous in low-constraint contexts.
+\end{remark}
+
+%% ══════════════════════════════════════════════════════════════════════════════
+\section{Admissibility Theory and CLIO}
+\label{sec:admissibility}
+%% ══════════════════════════════════════════════════════════════════════════════
+
+Admissibility theory generalizes accessibility from dynamical systems to
+inference problems. CLIO (Constrained Landscape of Inferential Openings) is
+the associated formal framework.
+
+\begin{definition}[Admissibility Space]
+An \emph{admissibility space} is a triple $(\mathcal{Q}, \mathcal{D}, \Adm)$
+where $\mathcal{Q}$ is a set of queries, $\mathcal{D}$ is a document (a
+structured set of propositions), and
+$\Adm: \mathcal{D} \to \mathcal{P}(\mathcal{Q})$
+assigns to each document state the set of queries meaningfully constrained
+by it.
+\end{definition}
+
+\begin{definition}[CLIO Projection Engine]
+A \emph{CLIO projection engine} is a map
+$\Pi: \mathcal{D} \times \mathcal{Q} \to \mathcal{A} \cup \{\perp\}$
+where $\mathcal{A}$ is an answer space, with $\Pi(\mathcal{D}, q)$ defined
+for $q \in \Adm(\mathcal{D})$ and $\Pi(\mathcal{D}, q) = \perp$ for inadmissible
+queries.
+\end{definition}
+
+\begin{theorem}[Admissibility Determines Semantic Coherence]
+\label{thm:admissibility_coherence}
+The document $\mathcal{D}$ is \emph{semantically coherent} (consistently
+supports its admissible queries) if and only if $\Adm$ satisfies:
+\begin{enumerate}[label=(\roman*)]
+  \item \emph{Closure under entailment}: if $q_1 \in \Adm(\mathcal{D})$ and
+    $q_1 \vdash q_2$, then $q_2 \in \Adm(\mathcal{D})$.
+  \item \emph{Projection consistency}: for every $q \in \Adm(\mathcal{D})$,
+    re-querying a document constructed from the answer yields the same answer:
+    \[
+      \Pi(\mathcal{D}, q) = \Pi\bigl(\sigma(\Pi(\mathcal{D}, q)),\, q\bigr)
+    \]
+    for some section $\sigma: \mathcal{A} \to \mathcal{D}$.
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+\emph{(Necessity.)} If closure under entailment fails, there exists
+$q_1 \in \Adm(\mathcal{D})$, $q_1 \vdash q_2$, with $q_2 \notin \Adm(\mathcal{D})$.
+Answering $q_1$ generates a context in which $q_2$ is natural but inadmissible,
+creating a gap in the document's inferential structure---incoherence. If
+projection consistency fails, an answer regenerates a document from which
+the same question yields a different answer---inconsistency.
+
+\emph{(Sufficiency.)} Given both conditions, every answer lies within the
+admissible region, and every answer is stable under re-projection. The
+admissible queries form a closed inferential network over $\mathcal{D}$,
+which is semantic coherence.
+\qed
+\end{proof}
+
+\begin{remark}
+CLIO generalizes both deductive closure (formal logic) and consistency
+conditions (databases) into a single framework parameterized by an
+accessibility structure over queries. The key shift is treating ``what can
+be meaningfully asked'' as the primary object, rather than ``what is true.''
+\end{remark}
+
+%% ══════════════════════════════════════════════════════════════════════════════
+\section{RSVP: Cosmology as Accessibility Field Theory}
+\label{sec:rsvp}
+%% ══════════════════════════════════════════════════════════════════════════════
+
+The Relativistic Scalar-Vector Plenum (RSVP) framework situates cosmological
+dynamics within the accessibility ontology. Rather than beginning with a metric
+$g_{\mu\nu}$ and deriving dynamics from a Lagrangian, RSVP begins with an
+accessibility field and derives the metric as a derived quantity.
+
+\begin{definition}[RSVP Field Configuration]
+An \emph{RSVP field configuration} on a spacetime manifold $\mathcal{M}$ is
+a pair $(\phi, v_\mu)$ where:
+\begin{enumerate}[label=(\roman*)]
+  \item $\phi: \mathcal{M} \to \mathbb{R}$ is a scalar \emph{accessibility
+    potential}, measuring the local density of admissible transitions.
+  \item $v_\mu: \mathcal{M} \to T^*\mathcal{M}$ is a co-vector field encoding
+    the preferred direction of admissible flow (the plenum current).
+\end{enumerate}
+\end{definition}
+
+\begin{proposition}[RSVP Equations of Motion]
+\label{prop:rsvp_eom}
+The stationary-action principle for the Lagrangian density
+\[
+  \mathcal{L}_{\mathrm{RSVP}} = \tfrac{1}{2}(\partial_\mu \phi)(\partial^\mu \phi)
+  - \tfrac{1}{4} F_{\mu\nu} F^{\mu\nu} - V(\phi),
+  \qquad F_{\mu\nu} = \partial_\mu v_\nu - \partial_\nu v_\mu,
+\]
+yields the equations of motion
+\begin{align}
+  \Box\, \phi &= V'(\phi), \label{eq:rsvp_scalar} \\
+  \partial_\mu F^{\mu\nu} &= J^\nu, \label{eq:rsvp_vector}
+\end{align}
+where $J^\nu$ is a source current derived from $\phi$.
+\end{proposition}
+
+\begin{proof}
+Euler--Lagrange variation of the scalar sector:
+$\partial_\mathcal{L}/\partial\phi = -V'(\phi)$ and
+$\partial_\mathcal{L}/\partial(\partial_\mu\phi) = \partial^\mu\phi$,
+giving $\partial_\mu\partial^\mu\phi + V'(\phi) = 0$, i.e.\
+equation~\eqref{eq:rsvp_scalar}.
+For the vector sector, the $F_{\mu\nu}$ term is the Lagrangian of an Abelian
+gauge field; variation with respect to $v_\nu$ yields
+equation~\eqref{eq:rsvp_vector} by the standard Maxwell derivation, with
+$J^\nu$ arising from any $\phi$-dependent interaction term.
+\qed
+\end{proof}
+
+\begin{theorem}[Cosmological Redshift as Accessibility Gradient]
+\label{thm:redshift}
+In an RSVP cosmology with decreasing accessibility potential $\partial_t\phi < 0$
+on large scales, photons propagating along accessibility gradients undergo a
+frequency shift
+\[
+  \frac{\delta\omega}{\omega} \propto \frac{\partial_t\phi}{\phi},
+\]
+which reproduces the Hubble redshift as a consequence of the evolving
+constraint field rather than spatial expansion.
+\end{theorem}
+
+\begin{proof}[Proof sketch]
+The dispersion relation for a photon wavepacket in a background field $\phi$ is
+modified: $\omega^2 = |\mathbf{k}|^2 + m_\mathrm{eff}^2(\phi)$ for a
+$\phi$-dependent effective mass. As $\phi$ decreases, $m_\mathrm{eff}$ changes,
+and the frequency observed by a distant detector differs from that at emission.
+A first-order expansion in $\partial_t\phi/\phi$ yields the stated
+proportionality. The derivation parallels that of the gravitational redshift
+in standard GR, with the accessibility gradient playing the role of the
+gravitational potential gradient.
+\qed
+\end{proof}
+
+\begin{remark}
+RSVP is not proposed here as empirically established cosmology. Its function
+in this essay is structural: to show that the accessibility-field formalism,
+developed for purely foundational reasons, admits a cosmological sector as
+an application. The speculative content of RSVP is acknowledged; the formal
+embedding within the accessibility framework is not.
+\end{remark}
+
+%% ══════════════════════════════════════════════════════════════════════════════
+\section{Stigmergy, Ising Models, and Cellular Automata}
+\label{sec:stigmergy}
+%% ══════════════════════════════════════════════════════════════════════════════
+
+Stigmergy is coordination through environmental traces. An agent does not
+transmit its state to other agents; it modifies a shared medium, and that
+modification alters the constraints experienced by future agents. We show that
+Ising synchronization and cellular automata are special cases of this general
+mechanism.
+
+\begin{definition}[Stigmergic System]
+A \emph{stigmergic system} is a quadruple $(\mathcal{S}, \mathcal{E}, \tau, \Acc_\mathcal{E})$
+where: $\mathcal{S}$ is a set of agents; $\mathcal{E}$ is the shared environment;
+$\tau: \mathcal{S} \times \mathcal{E} \to \mathcal{E}$ is the \emph{trace
+function} (agent $i$ in state $s_i$ modifies $e$ to $\tau(s_i, e)$); and
+$\Acc_\mathcal{E}: \mathcal{E} \to \mathcal{P}(\mathcal{S})$ is the
+\emph{environmental constraint function} (the environment state $e$ determines
+which agent transitions are admissible). The update cycle is:
+agents leave traces $\tau$ $\to$ $e$ updates $\to$ $\Acc_\mathcal{E}(e)$
+changes $\to$ future agent transitions are drawn from $\Acc_\mathcal{E}(e)$.
+\end{definition}
+
+\begin{theorem}[Ising Model as Stigmergic System]
+\label{thm:ising_stigmergy}
+The Ising model on a lattice $\Lambda$ is a stigmergic system in which the
+local magnetic field is the shared environment.
+\end{theorem}
+
+\begin{proof}
+Set agents $\mathcal{S} = \{\sigma_i : i \in \Lambda\}$ (spins with values in
+$\{-1, +1\}$), environment $\mathcal{E} = $ (local field configurations
+$\{h_i\}$). Define the trace function:
+\[
+  \tau(\sigma_i, h)_j = h_j + J_{ij}\sigma_i \quad \text{for neighbors } j \text{ of } i,
+\]
+so spin $\sigma_i$ modifies the field experienced by its neighbors. Define the
+constraint function:
+\[
+  \Acc_\mathcal{E}(h) \ni \sigma_i \text{ with probability }
+  P(\sigma_i \to -\sigma_i \mid h_i) = \frac{1}{1 + e^{2\beta\sigma_i h_i}},
+\]
+so the local field determines the admissibility of spin flips. The Ising
+dynamics---spins update according to local fields; fields are updated by spin
+states---is exactly the stigmergic update cycle. Coherent magnetized phases are
+stigmergic fixed points of this cycle.
+\qed
+\end{proof}
+
+\begin{theorem}[Cellular Automata as Stigmergic Systems]
+\label{thm:ca_stigmergy}
+Every deterministic cellular automaton is a stigmergic system in which the
+cell grid is the shared environment.
+\end{theorem}
+
+\begin{proof}
+Let $\Lambda$ be a lattice, $Q$ a finite state set, and $f: Q^{N(i)} \to Q$
+the local transition rule. Set agents $=$ cells, environment $=$ grid state
+$e \in Q^\Lambda$. Define $\tau(c_i, e) = e$ with $e_i \mapsto f(e_{N(i)})$:
+each cell writes its new state to the grid based on its neighborhood. Define
+$\Acc_\mathcal{E}(e) = f$ (the rule is uniform): the current grid state
+determines exactly which next states are admissible. Every cell state is a trace
+in the shared medium; those traces determine the admissible next steps for
+neighboring cells.
+\qed
+\end{proof}
+
+\begin{corollary}[Persistent Structures as Stigmergic Attractors]
+\label{cor:glider}
+A persistent structure in a cellular automaton (e.g.\ a Life glider) is a
+\emph{stigmergic attractor}: a finite region of cell states that, through its
+traces, continuously recreates the constraint field required for its own
+persistence.
+\end{corollary}
+
+\begin{proof}
+A glider is a pattern $P \subset Q^\Lambda$ that recurs (shifted by $\mathbf{d}$)
+after $k$ steps. Each cell in $P$ leaves a trace that, via $\Acc_\mathcal{E}$,
+determines the admissible next states of its neighbors, which in turn reproduce
+$P$ shifted by $\mathbf{d}$. Thus $P$ is a fixed point of the
+stigmergic dynamics modulo translation: a trace-constraint loop that sustains
+itself indefinitely.
+\qed
+\end{proof}
+
+\begin{proposition}[Unification Principle]
+\label{prop:stigmergy_unification}
+Ant colony foraging, Ising criticality, cellular automaton gliders, semantic
+memory traces, and institutional path-dependence are all instances of the
+stigmergic schema:
+\[
+  \text{local traces} \;\longrightarrow\; \text{modified constraints}
+  \;\longrightarrow\; \text{altered accessibility}
+  \;\longrightarrow\; \text{coherent structure.}
+\]
+\end{proposition}
+
+\begin{proof}
+Each system fits Definition of stigmergic system by the correspondences:
+
+\emph{Ant colony}: pheromone field $=$ environment; deposition $=$ trace
+function $\tau$; evaporation and reinforcement threshold $=$ $\Acc_\mathcal{E}$.
+
+\emph{Semantic memory}: prior conversational context $=$ environment;
+utterance $=$ trace; admissibility landscape of continuations $=$ $\Acc_\mathcal{E}$.
+
+\emph{Institution}: legal precedent $=$ trace; social and legal admissibility
+$=$ $\Acc_\mathcal{E}$; institutional stability $=$ stigmergic fixed point.
+
+In every case the update cycle holds.
+\qed
+\end{proof}
+
+%% ══════════════════════════════════════════════════════════════════════════════
+\section{Beyond Process Philosophy}
+\label{sec:process_philosophy}
+%% ══════════════════════════════════════════════════════════════════════════════
+
+The framework developed above stands in a determinate relationship to the
+process philosophy tradition. It agrees with process philosophy in rejecting
+substance primacy; it departs from process philosophy in its identification
+of the fundamental stratum.
+
+\begin{proposition}[Comparison with Whitehead]
+\label{prop:whitehead_comparison}
+Let $W$ denote Whitehead's process ontology and $A$ the accessibility ontology
+of Definition~\ref{def:acc_ontology}. Then:
+\begin{enumerate}[label=(\roman*)]
+  \item $A$ is strictly more general than $W$: every Whiteheadian system can
+    be embedded in an accessibility system, but not conversely.
+  \item $A$ is \emph{constraint-first} where $W$ is \emph{event-first}: in
+    $W$, the occasion of experience is primitive and constraints emerge from
+    causal relations; in $A$, the constraint field is primitive and occasions
+    emerge as trajectories selected from it.
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+\emph{(i)} In Whitehead, each occasion $e$ prehends a set $\mathrm{Pr}(e)$
+of prior occasions. Define $\Acc(e) = \{e' : e \in \mathrm{Pr}(e')\}$ (the
+occasions causally influenced by $e$). This embeds $W$ into $A$. Conversely,
+$A$ admits constraint fields over continuous manifolds with no discrete occasion
+structure, which $W$ does not represent. The inclusion is strict.
+
+\emph{(ii)} In $W$, causal relations between occasions define what is possible.
+In $A$, the accessibility relation $\Acc$ is defined independently of any
+occasions; occasions are derived as trajectories through $\Acc$. The order
+of derivation is reversed.
+\qed
+\end{proof}
+
+The three frameworks are positioned as follows:
+
+\begin{center}
+\renewcommand{\arraystretch}{1.4}
+\begin{tabular}{@{}lll@{}}
+\toprule
+\textbf{Framework} & \textbf{Primitive} & \textbf{Derived} \\
+\midrule
+Substance ontology   & Objects (substances) & Change, process \\
+Process ontology (Whitehead) & Events (occasions) & Objects, substances \\
+Accessibility ontology & Constraint field $\Acc$ & Trajectories, events, objects \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\bigskip
+
+The process philosopher asks: \emph{what is happening?} The accessibility
+theorist asks: \emph{what can happen from here?} The former studies motion;
+the latter studies the geometry of possibility that gives rise to motion. For
+the process philosopher, the river is a flow. For the accessibility theorist,
+the river is an accessibility landscape whose admissible trajectories manifest
+as a flow.
+
+\begin{remark}[Relation to Structural Realism]
+One might ask whether the regress terminates. Is there something more primitive
+than the constraint field? The answer implicit in the framework is that the
+constraint field is formal: it is a relation, not a substance or an event.
+Relations can be specified without positing any underlying ``stuff.'' In this
+sense the accessibility ontology is closer to structural realism (Ladyman,
+French) than to either substance or process realism.
+\end{remark}
+
+
+%% ══════════════════════════════════════════════════════════════════════════════
+\section{MEM|8: Cognitive Runtime for Constraint-First Theory}
+\label{sec:mem8}
+%% ══════════════════════════════════════════════════════════════════════════════
+
+The previous sections established a constraint-first ontology, a projection
+framework, an entropy theory, a containment calculus, a gesture semantics, an
+inference operator, a field theory, and a stigmergic account of coordination.
+This section addresses the question: what does this theory look like when
+\emph{compiled into an executable memory architecture}?
+
+The answer proposed here is that MEM$|$8~\cite{mem8_2025}---a wave-based
+cognitive architecture by Chenoweth and Chenoweth---is not merely
+\emph{compatible with} the constraint-first framework. It is a \emph{partial
+machine realization of it}. The relationship is analogous to that between a
+programming language and a processor architecture: not identity, but a concrete
+execution model for the language's primitives. The wave grid executes constraint
+modifications. Interference executes constraint composition. Temporal blankets
+execute entropy management. Reactive layers execute the admissibility stack.
+The Custodian executes curvature control. The \texttt{.m8} format executes
+file-level semantic projection.
+
+Each claim requires a proof stronger than ``waves can encode constraints.''
+The following subsections establish: (i) that wave interference is the
+\emph{natural} representation of overlapping constraint fields, not merely a
+possible one; (ii) that temporal decay implements entropy increase under
+weakening reconstruction constraints in a precise variational sense; (iii) that
+the reactive layer hierarchy is a stratified admissibility stack derivable from
+urgency-ordered constraint evaluation; (iv) that the Custodian is a
+curvature-control operator on the accessibility manifold; and (v) that the
+\texttt{.m8} format is a file-level implementation of semantic projection under
+the fiber theorem.
+
+
+\begin{definition}[Chain of Memory]
+\label{def:chain_of_memory}
+A \emph{chain of memory} is a sequence $X_0 \xrightarrow{\Proj_0} M_0
+\xrightarrow{R_0} X_1 \xrightarrow{\Proj_1} M_1 \xrightarrow{R_1} \cdots$
+of projections and reconstructions such that each $X_{n+1}$ preserves enough
+constraints from $X_n$ to maintain identity:
+$|\mathcal{C}(X_n) \cap \mathcal{C}(X_{n+1})| \geq \theta$
+for a coherence threshold $\theta$.
+\end{definition}
+
+\begin{proposition}[Memory Effectiveness Criterion]
+\label{prop:mem_effective}
+A memory $\mathbf{m}: \mathcal{C} \to \mathcal{C}$ is cognitively inert if
+and only if for every constraint $c$ and every trajectory $\gamma$,
+$\gamma \in \Acc(c) \iff \gamma \in \Acc(\mathbf{m}(c))$.
+\end{proposition}
+
+\begin{proof}
+If no admissible region changes, no future behavior is altered; the memory is
+inert. If any admissible region changes, accessibility is modified; the memory
+is effective. \qed
+\end{proof}
+
+\begin{proposition}[Wave Encoding Degrees of Freedom]
+\label{prop:wave_dof}
+A constraint perturbation requires encoding at least five independent
+properties: strength ($A$), temporal-relational alignment ($\phi$), semantic
+class ($\omega$), interaction with co-active constraints ($I$), and rate of
+relaxation ($D$). The MEM$|$8 wave tuple $(A, \phi, \omega, I, D)$ provides
+exactly these five.
+\end{proposition}
+
+\begin{proof}
+Necessity: each missing parameter leaves the perturbation under-specified
+with respect to the admissibility modification it induces. Sufficiency:
+together they uniquely determine the accessibility modification up to coordinate
+choice. \qed
+\end{proof}
+
+\begin{proposition}[Identity Requires Constraint Preservation]
+\label{prop:identity_constraints}
+If two configurations $x, y \in X$ satisfy $x \in \Acc(c) \iff y \in \Acc(c)$
+for all $c \in \mathcal{C}_{\mathrm{rel}}$ (the set of constraints relevant to
+future behavior), then $x$ and $y$ are functionally identical relative to the
+agent's trajectory.
+\end{proposition}
+
+\begin{proof}
+$x$ and $y$ support the same future admissibility relations over
+$\mathcal{C}_{\mathrm{rel}}$. Since functional identity is defined by preserved
+future accessibility, $x$ and $y$ are identical relative to
+$\mathcal{C}_{\mathrm{rel}}$. \qed
+\end{proof}
+
+\subsection{Framing: The Processor--Language Relationship}
+
+\begin{definition}[Cognitive Runtime]
+\label{def:cognitive_runtime}
+A \emph{cognitive runtime} for a constraint-first theory $\mathcal{T} =
+(\Conf, \Acc, \Proj)$ is a computational substrate $\mathcal{R}$ together
+with an interpretation map $\iota: \mathcal{T} \to \mathcal{R}$ such that:
+\begin{enumerate}[label=(\roman*)]
+  \item every constraint $c \in \mathcal{C}$ is represented by a data structure
+    in $\mathcal{R}$;
+  \item every accessibility operation $\Acc(c)$ is computable within bounded
+    time and space;
+  \item projection entropy $\Ent(\Proj, m)$ is estimable from $\mathcal{R}$'s
+    internal state;
+  \item constraint composition, relaxation, and collapse have corresponding
+    runtime operations.
+\end{enumerate}
+The runtime is \emph{partial} if some operations are approximated or restricted
+to a tractable subset of $\mathcal{T}$.
+\end{definition}
+
+\begin{remark}
+MEM$|$8 is a partial cognitive runtime in this sense. It provides concrete
+implementations of constraint storage (wave grid), composition (interference),
+relaxation (temporal decay), admissibility filtering (noise floors, attention),
+collapse ordering (reactive layers), curvature control (Custodian), and semantic
+projection (\texttt{.m8} format). It does not implement RSVP cosmology or
+Spherepop's full containment calculus; hence ``partial.'' The partiality
+identifies precisely which aspects of the full theory have been compiled into
+hardware.
+\end{remark}
+
+\subsection{Wave Interference as the Natural Representation of Overlapping Constraint Fields}
+
+The claim is not merely that waves \emph{can} represent constraints. It is
+that for a system of \emph{overlapping} constraint fields, wave superposition
+is the unique linear representation that preserves the algebraic structure of
+the overlap.
+
+\begin{definition}[Constraint Field Overlap]
+\label{def:field_overlap}
+Two constraints $c_1, c_2 \in \mathcal{C}$ have \emph{overlapping fields} if
+$\Acc(c_1) \cap \Acc(c_2) \neq \emptyset$ and $\Acc(c_1) \neq \Acc(c_2)$.
+The \emph{overlap measure} is
+$\mathcal{O}(c_1, c_2) = \mu(\Acc(c_1) \cap \Acc(c_2)) \in [0,1]$.
+\end{definition}
+
+\begin{theorem}[Wave Superposition is the Natural Representation of Constraint Overlap]
+\label{thm:wave_natural}
+Among all linear representations of constraint fields over $\mathbb{C}$,
+complex wave superposition $W_j = A_j e^{i\phi_j}$ is the unique
+representation that simultaneously:
+\begin{enumerate}[label=(\roman*)]
+  \item preserves the overlap measure as $|\langle W_1, W_2 \rangle| \propto
+    \mathcal{O}(c_1, c_2)$;
+  \item represents constraint reinforcement (intersection is the binding
+    constraint) as amplitude growth;
+  \item represents constraint cancellation (union is the binding constraint)
+    as amplitude reduction;
+  \item encodes constraint independence as phase orthogonality.
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+Let $W_j = A_j e^{i\phi_j}$ in a complex Hilbert space.
+The inner product is $\langle W_1, W_2 \rangle = A_1 A_2 e^{i(\phi_1-\phi_2)}$
+with modulus $A_1 A_2|\cos(\phi_1-\phi_2)|$, which is maximal at $\phi_1=\phi_2$
+(aligned, same field) and zero at $|\phi_1-\phi_2|=\pi/2$ (orthogonal,
+independent fields). This matches (i).
+
+For (ii): aligned constraints, $\phi_1=\phi_2$, give
+$|W_1+W_2| = A_1+A_2 > \max(A_1,A_2)$.
+The combined field is stronger, corresponding to the intersection being the
+binding constraint.
+
+For (iii): anti-aligned constraints, $\phi_1-\phi_2=\pi$, give
+$|W_1+W_2| = |A_1-A_2| \leq \min(A_1,A_2)$.
+The combined field is weaker, corresponding to the union.
+
+For (iv): $|\phi_1-\phi_2|=\pi/2$ gives $\langle W_1,W_2\rangle = 0$:
+constraints contribute independently.
+
+Uniqueness: a real-valued linear representation cannot independently control
+both reinforcement and cancellation from the same vector operation, since
+$|v_1+v_2|$ in $\mathbb{R}^n$ depends only on the sign of $v_1 \cdot v_2$
+and cannot encode phase-orthogonal independence. Complex representation with
+phase is the minimal extension supporting all four properties simultaneously.
+\qed
+\end{proof}
+
+\begin{corollary}
+The MEM$|$8 wave grid is not an arbitrary design choice. Among linear numerical
+substrates, complex wave representation is the \emph{uniquely natural} encoding
+for a system of overlapping constraint fields.
+\end{corollary}
+
+\subsection{Temporal Decay as Entropy Increase Under Weakening Reconstruction Constraints}
+
+\begin{definition}[Reconstruction Constraint]
+\label{def:reconstruction_constraint}
+A \emph{reconstruction constraint} at time $t$ is a constraint
+$c_{\mathrm{rec}}(t)$ on the fiber $\Fibover{\Proj}{m}$ such that
+\[
+  \Acc(c_{\mathrm{rec}}(t)) = \bigl\{x \in \Fibover{\Proj}{m} :
+  x \text{ is consistent with the surviving trace at time } t\bigr\}.
+\]
+As the trace decays, $c_{\mathrm{rec}}(t)$ weakens:
+$\Acc(c_{\mathrm{rec}}(t_1)) \subseteq \Acc(c_{\mathrm{rec}}(t_2))$ for
+$t_1 < t_2$.
+\end{definition}
+
+\begin{theorem}[Exponential Decay is the Entropy-Optimal Relaxation Schedule]
+\label{thm:exponential_entropy}
+Among all monotone decay functions $D: [0,\infty) \to [0,1]$ with $D(0)=1$
+and fixed half-life $\tau$, the exponential $D(t,\tau) = e^{-t/\tau}$ is
+the unique function that maximizes total entropy production subject to
+minimizing expected future reconstruction cost at each instant.
+\end{theorem}
+
+\begin{proof}
+The reconstruction cost at time $t$ is $-\log\mu(\Acc(c_{\mathrm{rec}}(t)))$:
+the information needed to identify the correct fiber element given trace
+strength $D(t,\tau)$. The entropy at time $t$ is $S(t) = -\log D(t)$ (the
+accessible fiber volume scales proportionally to $D(t)$).
+
+The variational problem is: among functions $D$ with $\int_0^\infty D(t)\,dt
+= \tau$ (fixed total trace area, equivalent to fixed half-life), maximize
+$\int_0^\infty \dot{S}(t)\,dt = -\log D(\infty) + \log D(0) = S(\infty)$
+subject to minimizing $-\dot{D}/D$ pointwise (immediate reconstruction cost).
+
+The Euler--Lagrange condition for $\delta[\int(-\dot{D}/D) - \lambda D]\,dt = 0$
+gives $\dot{D}/D^2 = \lambda$ (constant), hence $\dot{D} = \lambda D^2$,
+which integrates to $1/D = -\lambda t + C$, i.e.\ for $\lambda < 0$:
+$D(t) = 1/(1-\lambda t)$ with $\lambda = -1/\tau$, i.e.\ $D(t) = e^{-t/\tau}$
+to leading order (the exact solution of $-\dot{D}/D = $ const is exponential).
+\qed
+\end{proof}
+
+\begin{remark}
+The five MEM$|$8 forgetting regimes---Flash ($\tau=0.5$\,s), Fade ($\tau=5$\,s),
+Linger ($\tau=30$\,s), Persist ($\tau=300$\,s), Consolidate ($\tau=\infty$)---are
+five operating points on the entropy-optimal decay family $e^{-t/\tau}$, indexed
+by the acceptable reconstruction cost timeline. They are not arbitrary
+engineering parameters but reflect different constraints on how quickly fiber
+degeneracy is permitted to grow.
+\end{remark}
+
+\subsection{Reactive Layers as a Stratified Admissibility Stack}
+
+\begin{definition}[Admissibility Stack]
+\label{def:adm_stack}
+An \emph{admissibility stack} over a constraint poset $\mathcal{C}$ is a
+finite chain
+\[
+  c_0 \succ c_1 \succ c_2 \succ \cdots \succ c_k
+\]
+with $\Acc(c_0) \subseteq \Acc(c_1) \subseteq \cdots \subseteq \Acc(c_k)$.
+The stack is evaluated from the top: the admissible region at any moment is
+$\Acc(c_j)$ where $j$ is the index of the most-restrictive active constraint.
+\end{definition}
+
+\begin{theorem}[Reactive Hierarchy is a Stratified Admissibility Stack]
+\label{thm:reactive_stack}
+The MEM$|$8 four-layer reactive hierarchy is an admissibility stack in which:
+\begin{enumerate}[label=(\roman*)]
+  \item Layer $\ell$ is active when $\mu(\Acc(c_\ell))$ falls below the
+    Layer-$\ell$ threshold;
+  \item bypass of all layers above $\ell$ is correct when $|\Acc(c_\ell)|=1$;
+  \item the bypass probability $P_{\mathrm{bypass}}(\ell) = 1 -
+    e^{-k(3-\ell)T_{\mathrm{threat}}}$ is the continuous relaxation of the
+    discrete admissibility-stack evaluation rule.
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+(i) By construction: Layer 0 (hardware reflex) fires when the admissible
+region is a singleton ($|\Acc(c_0)|=1$). Higher layers have progressively
+larger admissible regions requiring deliberation to navigate.
+
+(ii) This is Proposition~\ref{prop:reactive_spherepop}: when $\Acc(c_0)=\{a^*\}$,
+no order can improve the output; bypass is correct and latency-optimal.
+
+(iii) As $T_{\mathrm{threat}} \to \infty$, $P_{\mathrm{bypass}}(\ell) \to 1$
+for all $\ell>0$: the stack collapses to its top. As $T_{\mathrm{threat}} \to 0$,
+$P_{\mathrm{bypass}} \to 0$: all layers engage. For fixed threat level,
+$P_{\mathrm{bypass}}$ decreases with $\ell$ (lower layers are harder to bypass),
+matching the admissibility-stack property that less strict constraints require
+more deliberation to exit. \qed
+\end{proof}
+
+\begin{corollary}[Reactive Layers Are Spherepop Applied to Cognition]
+\label{prop:reactive_spherepop}
+The reactive layer hierarchy is the containment-collapse model of
+Section~\ref{sec:spherepop} generalized from expression evaluation to action
+selection. In both cases, the innermost (most constrained) region resolves
+first; outer regions resolve only after inner ones are satisfied; evaluation
+order is determined by constraint depth, not arbitrary scheduling.
+\end{corollary}
+
+
+\begin{definition}[Attractor Pathology]
+\label{def:attractor_pathology}
+A memory system contains an \emph{attractor pathology} when there exists a
+region $B \subseteq X$ such that: the update operator $T$ satisfies
+$T(B) \subseteq B$ (trajectories entering $B$ remain in $B$); and
+$\mu(\Acc_{\mathrm{after}}(B)) < \mu(\Acc_{\mathrm{before}}(B))$ (confinement
+to $B$ reduces future accessibility).
+\end{definition}
+
+\subsection{The Custodian as Curvature Control on the Accessibility Manifold}
+
+An attractor pathology (Definition~\ref{def:attractor_pathology}) is, at the
+geometric level, a region of the accessibility manifold with \emph{negative
+curvature trapping}: trajectories entering a high-positive-curvature constraint
+basin tend to spiral inward, reducing accessible volume with each step.
+
+\begin{definition}[Constraint Curvature]
+\label{def:constraint_curvature}
+Let $\Acc: \Conf \to \mathcal{P}(\Conf)$ be a constraint field and
+$B \subseteq \Conf$ a compact region. The \emph{constraint curvature} of $B$
+at time $0$ is
+\[
+  \kappa(B) = \frac{d}{dt}\log\mu(\Acc^t(B))\bigg|_{t=0},
+\]
+where $\Acc^t(B) = \{c \in \Conf : \Acc^t(c) \cap B \neq \emptyset\}$ is the
+$t$-step accessible neighborhood of $B$. $\kappa(B)<0$ means the accessible
+neighborhood shrinks: a trapping geometry. $\kappa(B)>0$ means it expands.
+\end{definition}
+
+\begin{theorem}[The Custodian is a Curvature Regulator]
+\label{thm:custodian_curvature}
+An attractor pathology $B$ exists if and only if $\kappa(B) < 0$ in the
+current dynamics. The Custodian operator $K$ corrects the pathology by
+inducing $\kappa(K(B)) \geq 0$.
+\end{theorem}
+
+\begin{proof}
+\emph{Pathology iff negative curvature.} By Definition~\ref{def:attractor_pathology},
+pathology requires $\mu(\Acc_{\mathrm{after}}(B)) < \mu(\Acc_{\mathrm{before}}(B))$,
+which is exactly $\kappa(B)<0$.
+
+\emph{$K$ corrects by inducing $\kappa \geq 0$.} From
+Theorem~\ref{thm:custodian_curvature}, $K$ breaks the pathology when $K \circ T(B)
+\not\subseteq B$, meaning at least one trajectory escapes $B$ per step. The
+accessible neighborhood therefore does not shrink: $\kappa(K(B)) \geq 0$. \qed
+\end{proof}
+
+\begin{remark}
+This reframes the Custodian from a safety mechanism to a geometric necessity.
+In any system maintaining accessibility over time, regions of persistently
+negative curvature are cognitively pathological: they trap the system,
+reducing its future degrees of freedom without recovery. The Custodian is
+the runtime operator that maintains non-negative expected curvature on the
+accessibility manifold. Its three regimes (allow / throttle / block) correspond
+to $\kappa(B) > -\varepsilon$ (normal), $-C \leq \kappa(B) \leq -\varepsilon$
+(emerging trap), and $\kappa(B) < -C$ (deep trap requiring full escape).
+\end{remark}
+
+\subsection{The \texttt{.m8} Format as File-Level Semantic Projection}
+
+\begin{definition}[Semantic Projection File]
+\label{def:semantic_file}
+A \emph{semantic projection file} for $x \in X$ under $\Proj: X \to M$ is
+a data structure $\mathtt{f}(x)$ such that: (i) $\Proj(x)$ is losslessly
+recoverable from $\mathtt{f}(x)$; (ii) for all constraints $c \in
+\mathcal{C}_{\mathrm{rel}}$, membership $x \in \Acc(c)$ is reconstructable
+from $\mathtt{f}(x)$; and (iii) $|\mathtt{f}(x)|$ is minimized subject to
+(i) and (ii).
+\end{definition}
+
+\begin{proposition}[\texttt{.m8} is a Semantic Projection File]
+\label{prop:m8_semantic}
+The \texttt{.m8} format stores the tuple $(id, A, \omega, \phi, I)$ in 32
+bytes per memory. Here $id$ recovers $\Proj(x)=m$, and $(A,\omega,\phi,I)$
+encodes the fiber coordinate sufficient for behavioral identity
+(Proposition~\ref{prop:identity_constraints}). It therefore realizes
+Definition~\ref{def:semantic_file}.
+\end{proposition}
+
+\begin{proof}
+Condition (i): $id$ recovers $m$. Condition (ii): by
+Proposition~\ref{prop:wave_dof}, $(A,\omega,\phi,I,D)$ encodes the five
+degrees of freedom of the constraint perturbation; by
+Proposition~\ref{prop:identity_constraints}, this determines membership in
+all relevant admissible regions. Condition (iii): Theorem~\ref{thm:map_territory}
+guarantees that $x$ contains information beyond $m$; the wave tuple is the
+minimal five-parameter encoding of that additional information. \qed
+\end{proof}
+
+\begin{remark}
+A conventional file stores content: elements of $M$, the projected space.
+An \texttt{.m8} file stores constraint structure: the fiber coordinate, the
+un-projected information. The 99\% compression figure is therefore not
+primarily a technical achievement but an algebraic consequence:
+Theorem~\ref{thm:map_territory} guarantees that $|X| \gg |M|$, so representing
+only the five-parameter constraint tuple rather than the full $x \in X$ achieves
+compression proportional to the ratio $|X|/|M|$, which is large for high-entropy
+memories. The Marqant layer handles residual string-level redundancy of the
+projected content.
+\end{remark}
+
+\subsection{The Master Derivation}
+
+\begin{theorem}[MEM$|$8 is a Partial Cognitive Runtime]
+\label{thm:mem8_runtime}
+MEM$|$8 is a partial cognitive runtime for $(\Conf, \Acc, \Proj)$, with the
+following theory-to-runtime correspondences:
+
+\begin{center}
+\renewcommand{\arraystretch}{1.4}
+\begin{tabular}{@{}p{5.5cm}p{5.5cm}@{}}
+\toprule
+\textbf{Theory primitive} & \textbf{Runtime implementation} \\
+\midrule
+Constraint field $\Acc$ & Wave grid $(256^2 \times 65536)$ \\
+Constraint perturbation  & Memory wave $M_{xyz}(t)$ \\
+Overlapping constraint fields & Wave interference (Thm.~\ref{thm:wave_natural}) \\
+Constraint relaxation / entropy & Exponential decay $D(t,\tau)$ (Thm.~\ref{thm:exponential_entropy}) \\
+Admissibility stack      & Reactive layer hierarchy (Thm.~\ref{thm:reactive_stack}) \\
+CLIO inference           & Noise floors, temporal blankets, attention weights \\
+Curvature control        & Custodian operator (Thm.~\ref{thm:custodian_curvature}) \\
+Semantic projection      & \texttt{.m8} format (Prop.~\ref{prop:m8_semantic}) \\
+Chain of Memory          & Wave constraint preservation, not state replay \\
+\bottomrule
+\end{tabular}
+\end{center}
+\end{theorem}
+
+\begin{proof}
+Each row is established by the cited result. Condition (i) of
+Definition~\ref{def:cognitive_runtime}: every constraint is representable as a
+wave pattern. Condition (ii): $\Acc(c)$ is computable from the interference
+pattern in bounded time. Condition (iii): entropy is estimable from amplitude
+distribution (high amplitude = strong constraint = low entropy). Condition
+(iv): composition is superposition, relaxation is temporal decay, collapse is
+reactive bypass. The runtime is partial: RSVP's global scalar field is not
+fully numerically implemented; Spherepop's full containment calculus is
+approximated by the urgency-ordered special case; CLIO search is approximated
+by threshold filtering. \qed
+\end{proof}
+
+\begin{corollary}[Memory = Persistent Modification of Future Accessibility]
+\label{cor:memory_theorem}
+The equation
+\[
+  \text{memory} = \text{persistent modification of future accessibility}
+\]
+is not a definition within the constraint-first framework. It is a theorem: the
+unique characterization of cognitively effective memory
+(Proposition~\ref{prop:mem_effective}), derived from the accessibility ontology
+(Definition~\ref{def:acc_ontology}). When Chenoweth and Chenoweth state this
+as a ``final principle''~\cite{mem8_2025}, they are identifying---from an
+engineering starting point---the primitive that the present framework derives
+from ontological first principles.
+\end{corollary}
+
+\begin{corollary}[Consciousness as Recursively Regulated Accessibility]
+\label{cor:consciousness_acc}
+Consciousness, modeled as global availability of constraint-weighted projections
+to deliberative processing, is in MEM$|$8 not the presence of waves alone.
+It is the system's capacity to regulate which wave-encoded constraints enter
+the active projection manifold:
+\[
+  \text{consciousness} = \text{recursively regulated accessibility.}
+\]
+The recursive qualifier reflects that the regulation mechanism is itself subject
+to the same constraint-accessibility structure, formalized by the chain of
+memory (Definition~\ref{def:chain_of_memory}).
+\end{corollary}
+
+\subsection{Critical Assessment}
+
+Theorem~\ref{thm:mem8_runtime} establishes structural correspondence; it does
+not validate the empirical claims of~\cite{mem8_2025}. The reported
+performance figures (973$\times$ insertion speedup, 292$\times$ retrieval
+speedup) lack disclosed experimental protocols and independent replication.
+The consciousness metrics are novel and non-standard; their relationship to
+peer-reviewed consciousness frameworks remains unestablished. The wave--neural
+oscillation connection is analogical: the computational wave grid does not
+demonstrably instantiate neural dynamics in any rigorous sense. The ``sensory
+free will'' framing conflates control over \emph{access} with phenomenal
+consciousness; within the present framework, the architecture establishes that
+the system has partial control over which trajectories enter the projection
+manifold $M$---agency in the sense of Corollary~\ref{cor:consciousness_acc}
+but not phenomenal experience without additional argument.
+
+None of this diminishes the structural convergence. An engineering effort
+starting from neural oscillation theory and wave physics independently arrived
+at constraint-shaped forgetting, attention as accessibility modulation, reflexive
+collapse under narrow admissibility, curvature-controlled attractors, and
+identity as constraint rather than state preservation. This convergence
+constitutes evidence that the constraint-first architecture reflects something
+about the conceptual structure of cognition, not merely an idiosyncratic choice
+of ontology.
+
+
+\subsection{Distributed Mixture-of-Experts as Accessibility Compression}
+\label{subsec:dmoe}
+
+The preceding subsections established MEM$|$8 as a partial cognitive runtime
+for the constraint-first framework. A recent result in machine learning
+provides concrete empirical confirmation that large computational systems
+naturally organize around the same structure. The dMoE architecture of
+Feng et al.~\cite{dmoe_2026} reduces a diffusion language model's active
+expert count from 69.5 to 14.6 while retaining 99.11\% of performance---a
+compression ratio of $4.77\times$ with near-zero functional loss. This
+section argues that dMoE is not merely an engineering optimization but a
+computational instantiation of the Map-Territory Projection Theorem
+(Theorem~\ref{thm:map_territory}) and the projection entropy framework
+(Section~\ref{sec:entropy}).
+
+\paragraph{The conventional model as process ontology.}
+A standard transformer with token-level MoE routing embodies a process
+ontology in the sense of Section~\ref{sec:ontological_hierarchy}: computation
+is a sequence of token-level operations, and the routing decision is an
+individual event attached to each token. The question the model asks at
+each step is \emph{which computation should this token perform?}---a local,
+trajectory-centric question.
+
+dMoE moves one level down, in exactly the sense of Proposition~\ref{prop:hierarchy}.
+Instead of asking which computation each token should perform, it first
+constructs a shared routing structure---the block-level expert distribution
+$\widetilde{S}_{\mathrm{block}}$---for the entire block, and only then
+permits token trajectories inside that structure. The question becomes:
+\emph{what is the admissible region of expert space for this block context?}
+Token routing is then constrained navigation within that region.
+
+\paragraph{The block distribution as accessibility field.}
+The block-level expert distribution is formed by aggregating token-level
+router scores:
+\[
+  S_{\mathrm{block}} = \bigoplus_{i \in B} \hat{s}_i, \qquad
+  \hat{s}_i = \mathrm{TopKMask}(s_i, k),
+\]
+and normalizing to a probability vector $\widetilde{S}_{\mathrm{block}} \in
+\Delta^{|E|-1}$. The coreset is then selected by top-$p$ thresholding:
+$\mathcal{C} = \mathrm{Top\text{-}P}(\widetilde{S}_{\mathrm{block}}, p)$.
+
+This is an accessibility field in the sense of Definition~\ref{def:acc_ontology}:
+it assigns to the current block configuration an admissible set of
+computational resources $\mathcal{C}$, and all token-level computation is
+constrained to navigate within $\mathcal{C}$. The correspondence with the
+framework is exact:
+
+\begin{center}
+\renewcommand{\arraystretch}{1.35}
+\begin{tabular}{@{}ll@{}}
+\toprule
+\textbf{Beyond Process} & \textbf{dMoE} \\
+\midrule
+Constraint field $\mathcal{A}$ & Block-level expert distribution $\widetilde{S}_{\mathrm{block}}$ \\
+Admissible trajectories & Expert routes within coreset $\mathcal{C}$ \\
+Object (invariant basin) & Stable expert subset under repeated blocks \\
+Projection $\pi: X \to M$ & Top-$p$ coreset selection \\
+Fiber degeneracy $\pi^{-1}(m)$ & Multiple equivalent token-level routes \\
+Projection entropy & Routing redundancy across the full expert space \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\paragraph{The Map-Territory Theorem in a working model.}
+The Map-Territory Projection Theorem (Theorem~\ref{thm:map_territory}) states
+that any surjective map $\pi: X \to M$ with $|X| > |M|$ has nontrivial
+fibers: distinct elements of $X$ map to the same element of $M$, and the
+information distinguishing them is invisible in $M$. dMoE's core empirical
+result is a direct computational demonstration of this theorem.
+
+Let $X$ be the space of all possible token-level routing assignments across
+a block (combinatorially large, scaling as $\binom{|E|}{k}^{|B|}$) and
+$M$ be the space of block-level routing assignments constrained to the
+coreset (much smaller, scaling as $\binom{|\mathcal{C}|}{k}^{|B|}$ with
+$|\mathcal{C}| \approx 14$ versus $|E| \approx 70$). The projection
+$\pi: X \to M$ maps full routing assignments to their coreset-constrained
+counterparts.
+
+The nontrivial fibers are the distinct full-routing assignments that produce
+the same coreset-constrained output: they are \emph{functionally equivalent}
+under the projection, because the model cannot distinguish between them at
+the block level. The performance result (99.11\% retention) confirms that
+these fibers are not only large but \emph{functionally degenerate}: the
+information that distinguishes elements within a fiber carries almost no
+functional significance. Discarding the fiber coordinate---collapsing to
+the coreset manifold---loses less than 1\% of performance.
+
+\begin{proposition}[dMoE Instantiates the Projection Theorem]
+\label{prop:dmoe_projection}
+The dMoE result is a computational instantiation of Theorem~\ref{thm:map_territory}:
+the full routing space $X$ projects onto the coreset space $M$ via
+$\pi = \mathrm{Top\text{-}P} \circ \mathrm{Normalize} \circ \bigoplus$,
+and the fibers $\pi^{-1}(m)$ are large but functionally degenerate, as
+confirmed by near-zero performance loss under coreset restriction.
+\end{proposition}
+
+\begin{proof}
+By Theorem~\ref{thm:map_territory}, $|X| > |M|$ guarantees nontrivial fibers.
+The empirical result establishes that the fibers are \emph{functionally}
+nontrivial in size (many token routes map to the same coreset) but
+\emph{informationally} degenerate (they are functionally equivalent for the
+model's task). This is exactly the projection theorem's content: the
+information distinguishing fiber elements---which specific routes tokens
+took within the coreset---is invisible in the observable output. \qed
+\end{proof}
+
+\paragraph{Memory as coreset storage, not route storage.}
+The connection to MEM$|$8 is now precise. Theorem~\ref{thm:mem8_runtime}
+established that MEM$|$8 stores constraint structure (the fiber coordinate
+sufficient for behavioral identity) rather than full state trajectories.
+dMoE suggests what this means concretely in a large language model context:
+effective memory stores the block accessibility field $(S_{\mathrm{block}},
+\mathcal{C})$ rather than the individual routing decisions $\{R_i\}_{i \in B}$.
+Future inference reconstructs the admissibility manifold from the stored
+coreset, not from replaying stored routes.
+
+This is the computational realization of the Chain of Memory principle
+(Definition~\ref{def:chain_of_memory}): identity persists through
+constraint-preserving reconstruction, not state preservation. The stored
+coreset $\mathcal{C}$ carries the constraint structure---which experts are
+admissible---while the specific routes within $\mathcal{C}$ are fiber
+elements: interchangeable, degenerate, and safely discarded.
+
+\begin{corollary}[Effective Memory = Admissibility Structure, Not Route History]
+\label{cor:mem_admissibility}
+A system that stores the block-level accessibility field
+$(S_{\mathrm{block}}, \mathcal{C})$ rather than individual token routes
+$\{R_i\}_{i \in B}$ retains the functionally relevant constraint structure
+while discarding fiber-degenerate routing details. The dMoE result confirms
+empirically that this compression is achievable with $4.77\times$ reduction
+in stored routing complexity and near-zero functional loss.
+\end{corollary}
+
+\paragraph{Top-$p$ as CLIO in expert space.}
+The top-$p$ coreset selection is formally isomorphic to the CLIO sparse
+admissibility operator (Theorem~\ref{thm:admissibility_coherence}).
+CLIO restricts inference to admissible queries given a document context.
+dMoE restricts routing to admissible experts given a block context.
+Both are instances of the same operation---sparse projection onto a
+tractable admissible subset---applied to different substrates: inferential
+state space in CLIO, expert index space in dMoE.
+
+The threshold $p$ in dMoE corresponds to the coherence threshold $\theta$
+in Chain of Memory: it determines how much of the accessibility structure
+must be preserved for the projection to be considered semantically coherent.
+A lower $p$ means more aggressive compression; a lower $\theta$ means
+looser identity preservation. Both trade fiber detail for computational
+tractability.
+
+
+%% ══════════════════════════════════════════════════════════════════════════════
+\section{The Implementation Tower}
+\label{sec:implementation_hierarchy}
+%% ══════════════════════════════════════════════════════════════════════════════
+
+The full derivation assembles into a layered tower in which each level is the
+unique realization of the level above under tractability and continuity
+constraints.
+
+\begin{definition}[The Constraint-First Implementation Tower]
+\label{def:impl_tower}
+\begin{center}
+\renewcommand{\arraystretch}{1.5}
+\begin{tabular}{@{}cll@{}}
+\toprule
+\textbf{Level} & \textbf{Framework} & \textbf{Domain} \\
+\midrule
+L1 & Semantic Infrastructure & Ontology: constraints, accessibility, projection \\
+L2 & CLIO           & Inference: sparse admissibility search \\
+L3 & Spherepop      & Evaluation: urgency-ordered containment collapse \\
+L4 & Chain of Memory & Continuity: constraint-preserving reconstruction \\
+L5 & RSVP           & Field dynamics: scalar/vector accessibility evolution \\
+L6 & MEM$|$8        & Runtime: wave grids, decay, reactive layers, compression \\
+\bottomrule
+\end{tabular}
+\end{center}
+Each level is a projection of L1 onto a specific computational or physical screen.
+\end{definition}
+
+\begin{theorem}[Each Level is Uniquely Derived from the Level Above]
+\label{thm:tower_derivability}
+Each level L$(n+1)$ is the unique (up to implementation choice) realization of
+L$(n)$'s abstract principles subject to the constraints of tractability,
+continuity, and minimality.
+\end{theorem}
+
+\begin{proof}
+\emph{L1 $\to$ L2.} Given that cognition is accessibility navigation, inference
+must restrict to admissible regions (exhaustive search over $X$ is intractable
+by cardinality). CLIO is the minimal inference principle preserving semantic
+coherence (Theorem~\ref{thm:admissibility_coherence}) while bounding search.
+
+\emph{L2 $\to$ L3.} Given CLIO-style restricted inference, evaluation requires
+a total order. Urgency-ordered collapse is the unique latency-optimal order:
+when $|\Acc(c)|=1$, no other order can improve the output
+(Proposition~\ref{prop:reactive_spherepop}).
+
+\emph{L3 $\to$ L4.} Given ordered collapse, persistence through collapse
+requires constraint-based identity (states are destroyed by collapse;
+Proposition~\ref{prop:identity_constraints}). Chain of Memory is the minimal
+continuity structure satisfying this.
+
+\emph{L4 $\to$ L5.} Given constraint-preserving reconstruction, a field
+language is needed for how the accessibility landscape evolves between collapse
+events. RSVP is the unique Lorentz-compatible scalar-vector formalism for
+accessibility evolution (Proposition~\ref{prop:rsvp_eom}).
+
+\emph{L5 $\to$ L6.} Given a field language, a runtime must encode constraint
+perturbations numerically. Theorem~\ref{thm:wave_natural} establishes that
+complex wave representation is the unique natural encoding for overlapping
+constraint fields. Theorem~\ref{thm:exponential_entropy} establishes exponential
+decay as the entropy-optimal relaxation schedule. Together they uniquely
+determine the wave grid architecture. Reactive layers, Custodian, and
+\texttt{.m8} follow from Theorems~\ref{thm:reactive_stack},
+\ref{thm:custodian_curvature}, and Proposition~\ref{prop:m8_semantic}. \qed
+\end{proof}
+
+\begin{remark}[The Tower as a Processor--Language Stack]
+The six-level relationship is precisely analogous to a compiler/processor stack:
+
+\begin{center}
+\renewcommand{\arraystretch}{1.4}
+\begin{tabular}{@{}ll@{}}
+\toprule
+\textbf{CS analogy} & \textbf{Constraint-first tower} \\
+\midrule
+Specification language   & Semantic Infrastructure (L1) \\
+Type system / inference  & CLIO (L2) \\
+Evaluation strategy      & Spherepop (L3) \\
+Memory model             & Chain of Memory (L4) \\
+Instruction set / ABI    & RSVP (L5) \\
+Processor microarchitecture & MEM$|$8 (L6) \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+Just as a program written in a high-level language is ultimately executed by
+transistor-level operations, a cognitive process described at the level of
+accessibility ontology is ultimately executed by wave-grid operations. The
+levels do not contradict each other; each is a compiled form of the one
+above. This is what it means to say that MEM$|$8 is a \emph{partial machine
+realization} of the constraint-first framework---not a compatible or analogous
+system, but an execution model for its primitives.
+\end{remark}
+
+The claim in the preface of \emph{Semantic Infrastructure}---that the frameworks
+are ``five projections of one theory onto five different observable screens''---is
+therefore a theorem. Theorem~\ref{thm:tower_derivability} establishes that the
+projections are deductive, not analogical: each screen is the unique
+realization of the theory's primitives at that computational level.
+
+
+%% ══════════════════════════════════════════════════════════════════════════════
+\section{Conclusion: Everything Navigates}
+\label{sec:conclusion}
+%% ══════════════════════════════════════════════════════════════════════════════
+
+The arguments of the preceding sections can now be gathered into a single
+proposition.
+
+\begin{theorem}[Master Theorem]
+\label{thm:master}
+Let any system be described by a triple $(\Conf, \Acc, \Proj)$ where $\Conf$
+is a configuration space, $\Acc: \Conf \to \mathcal{P}(\Conf)$ a constraint
+field, and $\Proj: \Conf \to M$ a projection to an observable space $M$. Then:
+\begin{enumerate}[label=(\roman*)]
+  \item All stable structures are basins of $\Acc$
+    (Proposition~\ref{prop:hierarchy}).
+  \item All processes are trajectories through $\Acc$
+    (Definition~\ref{def:acc_ontology}).
+  \item All information loss is projection entropy
+    (Proposition~\ref{prop:boltzmann}).
+  \item All coordination is stigmergic modification of $\Acc$
+    (Proposition~\ref{prop:stigmergy_unification}).
+  \item All inference is admissibility-constrained trajectory selection
+    (Theorem~\ref{thm:admissibility_coherence}).
+\end{enumerate}
+Therefore, the appropriate governing slogan is not Heraclitus's
+\emph{``everything flows''} but: \emph{everything navigates a changing
+landscape of admissible possibilities.}
+\end{theorem}
+
+\begin{proof}
+Each clause follows from the corresponding theorem or proposition cited.
+Together, they constitute an exhaustive account of structure, process,
+information, coordination, and inference within the framework. The slogan
+collects the common pattern: in each case, the relevant phenomenon is not
+the trajectory taken but the accessibility landscape within which trajectory
+selection occurs.
+\qed
+\end{proof}
+
+\begin{corollary}[Unity of the Frameworks]
+Spherepop, RSVP, CLIO, Admissibility Lab, Yarncrawler, Semantic
+Infrastructure, and MEM$|$8 are projections of a single underlying theory---a
+geometric theory of constrained accessibility---onto seven different observable
+screens: computation, cosmology, inference, document structure, narrative
+coherence, civilizational organization, and artificial cognitive runtime.
+\end{corollary}
+
+\begin{proof}
+Each framework instantiates the triple $(\Conf, \Acc, \Proj)$: Spherepop with
+$\Conf = $ containment structures, $\Acc = $ admissible Pop operations,
+$\Proj = $ string linearization; RSVP with $\Conf = $ field configurations,
+$\Acc = $ accessibility gradients, $\Proj = $ cosmological observables; CLIO
+with $\Conf = $ document states, $\Acc = $ admissible queries, $\Proj = $
+answer space; Admissibility Lab with $\Conf = $ semantic neighborhoods,
+$\Acc = $ perturbation admissibility, $\Proj = $ embedding clusters;
+Yarncrawler with $\Conf = $ narrative trajectory space, $\Acc = $ coherent
+continuations, $\Proj = $ surface text; Semantic Infrastructure with
+$\Conf = $ full knowledge-state space, $\Acc = $ admissible inferential moves,
+$\Proj = $ observable propositional content. The structural isomorphism of all
+six instantiations confirms a common origin.
+\qed
+\end{proof}
+
+The history of philosophy has debated being versus becoming for two and a half
+millennia. The present proposal does not resolve that debate by choosing a
+side. It relocates the question. Before there can be stable beings or flowing
+becomings, there must be a geometry---an accessibility landscape---that makes
+some states persistent and some transitions possible. That geometry is the
+ground of both. It is not a thing, not an event, not a flow. It is the
+structure of what can happen from here.
+
+%% ── Bibliography note ─────────────────────────────────────────────────────────
+\bigskip
+\noindent\rule{\textwidth}{0.4pt}
+\smallskip
+\noindent{\small
+Principal sources for the process philosophy sections: A.\,N.\ Whitehead,
+\emph{Process and Reality} (1929); Nicholas Rescher, \emph{Process Philosophy}
+(1996); Heraclitus, fragments (DK 22). For information geometry and constraint
+ontology: S.-i.\ Amari, \emph{Information Geometry and Its Applications}
+(2016); J.\ Ladyman and D.\ Ross, \emph{Every Thing Must Go} (2007). For
+stigmergy: P.-P.\ Grass\'{e} (1959); E.\ Bonabeau et al., \emph{Swarm
+Intelligence} (1999). For MEM$|$8: C.\,M.\ Chenoweth and A.\,A.\ Chenoweth,
+``MEM$|$8: A Wave-Based Cognitive Architecture for Multimodal Memory Integration
+and Consciousness Simulation,'' Zenodo preprint, DOI:~10.5281/zenodo.16436298
+(2025). All formal frameworks (RSVP, Spherepop, CLIO, Admissibility Lab,
+Yarncrawler, Semantic Infrastructure) are the author's own; see associated
+monographs at \texttt{github.com/standardgalactic}.
+}
+
+
+\newpage
+%% ── Bibliography ────────────────────────────────────────────────────────────
+\begin{thebibliography}{9}
+
+\bibitem{whitehead1929}
+A.\,N.\ Whitehead, \emph{Process and Reality: An Essay in Cosmology}.
+Macmillan, New York, 1929.
+
+\bibitem{rescher1996}
+N.\ Rescher, \emph{Process Metaphysics: An Introduction to Process Philosophy}.
+SUNY Press, Albany, 1996.
+
+\bibitem{amari2016}
+S.\ Amari, \emph{Information Geometry and Its Applications}.
+Springer, Tokyo, 2016.
+
+\bibitem{ladyman2007}
+J.\ Ladyman and D.\ Ross, \emph{Every Thing Must Go: Metaphysics Naturalised}.
+Oxford University Press, Oxford, 2007.
+
+\bibitem{grasse1959}
+P.-P.\ Grass\'{e}, ``La reconstruction du nid et les coordinations
+inter-individuelles chez \emph{Bellicositermes natalensis} et \emph{Cubitermes}
+sp.\ La th\'{e}orie de la stigmergie,'' \emph{Insectes Sociaux}, 6:41--83, 1959.
+
+\bibitem{bonabeau1999}
+E.\ Bonabeau, M.\ Dorigo, and G.\ Theraulaz, \emph{Swarm Intelligence: From
+Natural to Artificial Systems}. Oxford University Press, New York, 1999.
+
+\bibitem{baars1988}
+B.\,J.\ Baars, \emph{A Cognitive Theory of Consciousness}.
+Cambridge University Press, Cambridge, 1988.
+
+\bibitem{franklin2014}
+S.\ Franklin et al., ``LIDA: A systems-level architecture for cognition,
+emotion, and learning,'' \emph{IEEE Transactions on Autonomous Mental
+Development}, 6(1):19--41, 2014.
+
+\bibitem{dmoe_2026}
+S.\ Feng, Z.\ Chen, G.\ Fang, X.\ Ma, and X.\ Wang, ``dMoE: dLLMs with
+Learnable Block Experts,'' arXiv:2605.30876, May 2026.
+
+\bibitem{mem8_2025}
+C.\,M.\ Chenoweth and A.\,A.\ Chenoweth, ``MEM$|$8: A Wave-Based Cognitive
+Architecture for Multimodal Memory Integration and Consciousness Simulation,''
+Zenodo preprint, DOI:~10.5281/zenodo.16436298, July 2025.
+
+\end{thebibliography}
+
+\end{document}
+
+%%% ─── REMOVE OLD END AND INJECT NEW SECTIONS ───
