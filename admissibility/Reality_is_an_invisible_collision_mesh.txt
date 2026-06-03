@@ -532,7 +532,7 @@ For you listening, it's that famous computer grid simulation where little square
 or white based on a few very simple rules about how many neighbors they have.
 Right.
 You start it up, and suddenly you get these incredibly complex moving patterns called gliders that
-seem to act like living creatures flying across the screen.
+seem to act like living creatures Flyxion across the screen.
 Yes, the gliders.
 The essay points out a profound truth about them.
 A glider isn't an object moving across a screen.

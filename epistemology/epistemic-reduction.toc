@@ -1,0 +1,95 @@
+\contentsline {chapter}{Preface}{3}{chapter*.2}%
+\contentsline {part}{I\hspace {1em}Anderson's Epistemological System}{4}{part.1}%
+\contentsline {chapter}{\numberline {1}Intelligence, Understanding, and Reasoning}{5}{chapter.1}%
+\contentsline {section}{\numberline {1.1}The Central Decomposition}{5}{section.1.1}%
+\contentsline {section}{\numberline {1.2}Properties of the Two Faculties}{5}{section.1.2}%
+\contentsline {section}{\numberline {1.3}The Priority Thesis}{6}{section.1.3}%
+\contentsline {chapter}{\numberline {2}Models, Reductionism, and the Pathology of Projection}{7}{chapter.2}%
+\contentsline {section}{\numberline {2.1}What a Model Is}{7}{section.2.1}%
+\contentsline {section}{\numberline {2.2}The Model--Projection Correspondence}{8}{section.2.2}%
+\contentsline {section}{\numberline {2.3}Compression, Utility, and the Utility Threshold}{8}{section.2.3}%
+\contentsline {section}{\numberline {2.4}The Pathology: Projection Supremacy}{8}{section.2.4}%
+\contentsline {section}{\numberline {2.5}Why Models Cannot Produce Understanding}{9}{section.2.5}%
+\contentsline {chapter}{\numberline {3}Holism, Epistemic Reduction, and Bizarre Domains}{11}{chapter.3}%
+\contentsline {section}{\numberline {3.1}Bizarre Domains}{11}{section.3.1}%
+\contentsline {section}{\numberline {3.2}Salience and the Uphill River}{13}{section.3.2}%
+\contentsline {chapter}{\numberline {4}Corpus Congruence, Machine Understanding, and the AGI Myth}{14}{chapter.4}%
+\contentsline {part}{II\hspace {1em}Geometric Machinery}{15}{part.2}%
+\contentsline {chapter}{\numberline {5}Trajectory Spaces and the Admissibility Operator}{16}{chapter.5}%
+\contentsline {section}{\numberline {5.1}Two Settings}{16}{section.5.1}%
+\contentsline {chapter}{\numberline {6}The Admissibility Quotient and Representational Manifolds}{18}{chapter.6}%
+\contentsline {section}{\numberline {6.1}Two Notions of Admissibility-Preserving Projection}{18}{section.6.1}%
+\contentsline {section}{\numberline {6.2}The Quotient Construction}{19}{section.6.2}%
+\contentsline {section}{\numberline {6.3}The Universal Property and Information Minimality}{19}{section.6.3}%
+\contentsline {section}{\numberline {6.4}Entropy Preservation as Necessary Condition}{20}{section.6.4}%
+\contentsline {chapter}{\numberline {7}Salience, Novelty, and the Familiarity Potential}{21}{chapter.7}%
+\contentsline {section}{\numberline {7.1}Formal Salience (Metric Setting)}{21}{section.7.1}%
+\contentsline {section}{\numberline {7.2}Differential Salience (Smooth RSVP Setting)}{21}{section.7.2}%
+\contentsline {section}{\numberline {7.3}The Smoothed Familiarity Potential}{21}{section.7.3}%
+\contentsline {part}{III\hspace {1em}Anderson's Epistemology as Theorem}{23}{part.3}%
+\contentsline {chapter}{\numberline {8}The Priority of Understanding}{24}{chapter.8}%
+\contentsline {chapter}{\numberline {9}The Identification Theorem: Understanding is the Quotient Construction}{25}{chapter.9}%
+\contentsline {section}{\numberline {9.1}The Philosophical Gap}{25}{section.9.1}%
+\contentsline {section}{\numberline {9.2}Anderson's Inventory of Understanding}{26}{section.9.2}%
+\contentsline {section}{\numberline {9.3}The Identification Theorem}{26}{section.9.3}%
+\contentsline {section}{\numberline {9.4}What the Identification Establishes}{27}{section.9.4}%
+\contentsline {section}{\numberline {9.5}What the Identification Does Not Establish}{28}{section.9.5}%
+\contentsline {chapter}{\numberline {10}The Anderson Projection Theorem}{29}{chapter.10}%
+\contentsline {chapter}{\numberline {11}The CLIO Operator and Corpus-Driven Learning}{31}{chapter.11}%
+\contentsline {section}{\numberline {11.1}The CLIO Functional}{31}{section.11.1}%
+\contentsline {chapter}{\numberline {12}Admissibility-Compatible Learning and Local Extension Stability}{32}{chapter.12}%
+\contentsline {section}{\numberline {12.1}Formalization of Learning}{32}{section.12.1}%
+\contentsline {section}{\numberline {12.2}Local Extension Stability}{32}{section.12.2}%
+\contentsline {chapter}{\numberline {13}Why Deep Learning Works: Approximate Admissibility Reduction}{34}{chapter.13}%
+\contentsline {section}{\numberline {13.1}Anderson's Claim}{34}{section.13.1}%
+\contentsline {section}{\numberline {13.2}Deep Learning as Sequential Partial Quotient}{34}{section.13.2}%
+\contentsline {section}{\numberline {13.3}Why Deep Learning Must Be Deep: A Derived Theorem}{35}{section.13.3}%
+\contentsline {section}{\numberline {13.4}Deep Learning Converges to the Admissibility Quotient}{35}{section.13.4}%
+\contentsline {section}{\numberline {13.5}What Deep Learning Cannot Do}{36}{section.13.5}%
+\contentsline {chapter}{\numberline {14}Brittleness, Projection Supremacy, and Holistic Robustness}{38}{chapter.14}%
+\contentsline {section}{\numberline {14.1}Interpretive Attractors and Epistemic Identity}{38}{section.14.1}%
+\contentsline {section}{\numberline {14.2}Communities as Shared Corpora}{39}{section.14.2}%
+\contentsline {section}{\numberline {14.3}Projection Capture and Epistemic Rigidity}{40}{section.14.3}%
+\contentsline {chapter}{\numberline {15}Corpus Congruence as Potential Field}{42}{chapter.15}%
+\contentsline {part}{IV\hspace {1em}Extensions and Applications}{43}{part.4}%
+\contentsline {chapter}{\numberline {16}Artificial Intuition as Learned Projection}{44}{chapter.16}%
+\contentsline {section}{\numberline {16.1}The 2007 Framework and Its Central Claim}{44}{section.16.1}%
+\contentsline {section}{\numberline {16.2}Artificial Intuition Defined}{44}{section.16.2}%
+\contentsline {section}{\numberline {16.3}Intuitive States and Admissibility Neighborhoods}{45}{section.16.3}%
+\contentsline {section}{\numberline {16.4}Prediction as Admissibility Estimation}{45}{section.16.4}%
+\contentsline {section}{\numberline {16.5}The Nested Prediction Hierarchy and Emergent Semantics}{46}{section.16.5}%
+\contentsline {section}{\numberline {16.6}The Theory-Free Learning Theorem}{46}{section.16.6}%
+\contentsline {section}{\numberline {16.7}Prediction Generates the Quotient Hierarchy}{47}{section.16.7}%
+\contentsline {section}{\numberline {16.8}Ambiguity, Interpretation Bundles, and Premature Collapse}{48}{section.16.8}%
+\contentsline {section}{\numberline {16.9}Robustness and Reliability as Emergent Properties}{48}{section.16.9}%
+\contentsline {section}{\numberline {16.10}The Artificial Intuition Variational Principle}{49}{section.16.10}%
+\contentsline {chapter}{\numberline {17}The Calvin--Anderson--Feyerabend Lineage}{50}{chapter.17}%
+\contentsline {section}{\numberline {17.1}Overview}{50}{section.17.1}%
+\contentsline {section}{\numberline {17.2}William Calvin: The Uphill Direction}{50}{section.17.2}%
+\contentsline {subsection}{\numberline {17.2.1}The Biological Problem}{50}{subsection.17.2.1}%
+\contentsline {subsection}{\numberline {17.2.2}The Mathematical Realization}{51}{subsection.17.2.2}%
+\contentsline {section}{\numberline {17.3}Monica Anderson: The Mechanism and the Epistemological Turn}{51}{section.17.3}%
+\contentsline {subsection}{\numberline {17.3.1}The AI Engineering Context}{51}{subsection.17.3.1}%
+\contentsline {subsection}{\numberline {17.3.2}Epistemic Reduction as Pre-Scientific}{52}{subsection.17.3.2}%
+\contentsline {subsection}{\numberline {17.3.3}The 2012 Inflection as Experimental Confirmation}{52}{subsection.17.3.3}%
+\contentsline {section}{\numberline {17.4}Paul Feyerabend: The Warning Against Premature Closure}{52}{section.17.4}%
+\contentsline {subsection}{\numberline {17.4.1}The Problem with Method}{52}{subsection.17.4.1}%
+\contentsline {subsection}{\numberline {17.4.2}The Impossibility Result}{53}{subsection.17.4.2}%
+\contentsline {subsection}{\numberline {17.4.3}Anderson and Feyerabend as Complements}{53}{subsection.17.4.3}%
+\contentsline {section}{\numberline {17.5}Three Approaches to the Same Constraint}{53}{section.17.5}%
+\contentsline {section}{\numberline {17.6}Anderson: The Mechanism}{54}{section.17.6}%
+\contentsline {section}{\numberline {17.7}Feyerabend: The Warning Against Premature Projection}{54}{section.17.7}%
+\contentsline {section}{\numberline {17.8}The Admissible Discovery Principle}{55}{section.17.8}%
+\contentsline {chapter}{\numberline {18}TARTAN, the Wisdom Salon, and Collective Reduction}{56}{chapter.18}%
+\contentsline {section}{\numberline {18.1}The Wisdom Salon as Distributed Epistemic Reduction}{56}{section.18.1}%
+\contentsline {section}{\numberline {18.2}Sheaf-Theoretic Formalization}{56}{section.18.2}%
+\contentsline {chapter}{\numberline {19}Connections}{58}{chapter.19}%
+\contentsline {section}{\numberline {19.1}Anderson and Kahneman}{58}{section.19.1}%
+\contentsline {section}{\numberline {19.2}Anderson and the Frame Problem}{58}{section.19.2}%
+\contentsline {section}{\numberline {19.3}Anderson and the Author's Prior Work}{58}{section.19.3}%
+\contentsline {section}{\numberline {19.4}The Yoneda Connection}{58}{section.19.4}%
+\contentsline {chapter}{Conclusion}{60}{chapter*.3}%
+\contentsline {chapter}{\numberline {A}Glossary}{62}{appendix.A}%
+\contentsline {chapter}{\numberline {B}Notation Reference}{64}{appendix.B}%
+\contentsline {chapter}{\numberline {C}Summary of Main Results}{65}{appendix.C}%
+\contentsline {chapter}{Bibliography}{69}{appendix*.4}%

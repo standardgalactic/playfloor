@@ -84,7 +84,7 @@ We're pulling from a really provocative book that just came out this year,
 
 22
 00:01:01,080 --> 00:01:05,240
-2026, written by an independent researcher going by the name Flixian.
+2026, written by an independent researcher going by the name Flyxion.
 
 23
 00:01:05,740 --> 00:01:07,160
@@ -120,7 +120,7 @@ A huge mouthful.
 
 31
 00:01:21,260 --> 00:01:26,240
-But right there in the preface, Flixian drops this absolute bombshell of a thesis,
+But right there in the preface, Flyxion drops this absolute bombshell of a thesis,
 
 32
 00:01:26,420 --> 00:01:27,840
@@ -192,7 +192,7 @@ And for you listening today, our mission isn't just to talk about some abstract 
 
 49
 00:02:14,580 --> 00:02:22,220
-Flixian's book is a very deliberate, step-by-step roadmap building toward a highly specific,
+Flyxion's book is a very deliberate, step-by-step roadmap building toward a highly specific,
 
 50
 00:02:22,620 --> 00:02:25,240
@@ -256,7 +256,7 @@ In a lot of ways, yeah, that is exactly what this is.
 
 65
 00:03:03,780 --> 00:03:07,620
-But Flixian makes it super clear that if you want to understand how those three ingredients behave
+But Flyxion makes it super clear that if you want to understand how those three ingredients behave
 
 66
 00:03:07,620 --> 00:03:10,640
@@ -328,7 +328,7 @@ Yeah.
 
 83
 00:03:59,440 --> 00:04:04,060
-And Flixian pulls this beautiful quote from the mathematician G.H. Hardy to set this up.
+And Flyxion pulls this beautiful quote from the mathematician G.H. Hardy to set this up.
 
 84
 00:04:04,120 --> 00:04:04,560
@@ -364,7 +364,7 @@ To make an argument permanent, you need an ironclad proof.
 
 92
 00:04:25,180 --> 00:04:30,240
-Infliction spends an enormous amount of time up front dissecting one specific technique,
+Flyxion spends an enormous amount of time up front dissecting one specific technique,
 
 93
 00:04:30,580 --> 00:04:31,960
@@ -600,7 +600,7 @@ Yes.
 
 151
 00:07:13,680 --> 00:07:20,060
-So Fliction is showing us that mathematical induction is the exact same structure as a physical field evolving over time.
+So Flyxion is showing us that mathematical induction is the exact same structure as a physical field evolving over time.
 
 152
 00:07:20,680 --> 00:07:25,920
@@ -668,7 +668,7 @@ But induction isn't the only tool we get.
 
 168
 00:08:16,360 --> 00:08:19,580
-Fliction walks us through other architectural tools for building truth.
+Flyxion walks us through other architectural tools for building truth.
 
 169
 00:08:20,140 --> 00:08:24,440
@@ -768,7 +768,7 @@ It's such a powerful method.
 
 193
 00:09:37,420 --> 00:09:47,620
-But honestly, as elegant as those proofs are, my absolute favorite part of this whole foundational logic section is when fliction demonstrates the power of a single counterexample.
+But honestly, as elegant as those proofs are, my absolute favorite part of this whole foundational logic section is when Flyxion demonstrates the power of a single counterexample.
 
 194
 00:09:47,720 --> 00:09:51,360
@@ -920,7 +920,7 @@ One failed domino stops the whole chain.
 
 231
 00:11:13,160 --> 00:11:16,980
-And Flixxion uses this not just to, you know, teach us caution, but to illustrate a really
+And Flyxion uses this not just to, you know, teach us caution, but to illustrate a really
 
 232
 00:11:16,980 --> 00:11:19,340
@@ -928,7 +928,7 @@ profound divide in how we approach systems.
 
 233
 00:11:19,980 --> 00:11:25,040
-It is the difference between true structural proof and what Flixxion calls wishful continuation.
+It is the difference between true structural proof and what Flyxion calls wishful continuation.
 
 234
 00:11:25,280 --> 00:11:25,940
@@ -992,7 +992,7 @@ We move into set theory.
 
 249
 00:12:07,440 --> 00:12:10,040
-And Flixxion makes a really provocative claim here.
+And Flyxion makes a really provocative claim here.
 
 250
 00:12:10,680 --> 00:12:16,500
@@ -1228,7 +1228,7 @@ The red pile is an equivalence class.
 
 308
 00:14:52,580 --> 00:14:54,720
-Infliction points out a crucial theorem here.
+Flyxion points out a crucial theorem here.
 
 309
 00:14:55,320 --> 00:14:56,520
@@ -1488,7 +1488,7 @@ Now, apply this to the relativistic Staler Vector Plenum.
 
 373
 00:18:15,780 --> 00:18:18,280
-Why does Flixson care about kernels and quotients?
+Why does Flyxion care about kernels and quotients?
 
 374
 00:18:18,420 --> 00:18:19,960
@@ -1568,7 +1568,7 @@ It really is.
 
 393
 00:19:07,380 --> 00:19:16,520
-But before we leave set theory entirely, there is one more foundational concept Flitchin brings up that we absolutely have to talk about.
+But before we leave set theory entirely, there is one more foundational concept Flyxion brings up that we absolutely have to talk about.
 
 394
 00:19:17,240 --> 00:19:18,000
@@ -1784,7 +1784,7 @@ It defines the absolute boundaries of what mathematical spaces can actually hold
 
 447
 00:21:53,180 --> 00:21:56,640
-And that perfectly sets up the next major phase of Flixian's roadmap.
+And that perfectly sets up the next major phase of Flyxion's roadmap.
 
 448
 00:21:57,000 --> 00:21:58,500
@@ -1840,7 +1840,7 @@ They are not handed down by nature.
 
 461
 00:22:31,480 --> 00:22:35,060
-Flixian shows us that humanity actively built them, piece by piece,
+Flyxion shows us that humanity actively built them, piece by piece,
 
 462
 00:22:35,420 --> 00:22:37,960
@@ -2224,7 +2224,7 @@ But I have to ask the physicist's question.
 
 557
 00:26:29,980 --> 00:26:33,080
-Why does fliction care if the math has microscopic holes?
+Why does Flyxion care if the math has microscopic holes?
 
 558
 00:26:33,420 --> 00:26:36,180
@@ -2296,7 +2296,7 @@ Yeah.
 
 575
 00:27:23,400 --> 00:27:29,880
-And Fletcher notes that analysis was invented because human intuition about limits is just dangerously unreliable.
+And Flyxion notes that analysis was invented because human intuition about limits is just dangerously unreliable.
 
 576
 00:27:30,000 --> 00:27:30,560
@@ -2412,7 +2412,7 @@ It is airtight.
 
 604
 00:29:05,000 --> 00:29:12,280
-And within analysis, Flicksheen zeros in on a very specific theorem, theorem 4.1, the intermediate value theorem.
+And within analysis, Flyxion zeros in on a very specific theorem, theorem 4.1, the intermediate value theorem.
 
 605
 00:29:12,480 --> 00:29:14,060
@@ -2444,7 +2444,7 @@ A toddler understands walking up a hill.
 
 612
 00:29:42,460 --> 00:29:48,540
-Why is Flicksheen, in a book about advanced relativistic fields, dedicating precious ink to something so trivial?
+Why is Flyxion, in a book about advanced relativistic fields, dedicating precious ink to something so trivial?
 
 613
 00:29:48,540 --> 00:29:51,320
@@ -2452,7 +2452,7 @@ It seems trivial when you think of a car on a hill.
 
 614
 00:29:51,760 --> 00:29:56,180
-But remember, Flicksheen is setting up the structural mechanics of the RSVP framework.
+But remember, Flyxion is setting up the structural mechanics of the RSVP framework.
 
 615
 00:29:56,780 --> 00:29:59,920
@@ -2536,7 +2536,7 @@ The structure dictates the reality.
 
 635
 00:31:01,840 --> 00:31:06,060
-And just to generalize this, fliction ends this phase by introducing metric spaces.
+And just to generalize this, Flyxion ends this phase by introducing metric spaces.
 
 636
 00:31:06,500 --> 00:31:11,560
@@ -2624,7 +2624,7 @@ We dive into chapter six, linear algebra.
 
 657
 00:32:22,420 --> 00:32:25,280
-And I laughed out loud at the, quote, fliction attributes here.
+And I laughed out loud at the, quote, Flyxion attributes here.
 
 658
 00:32:25,680 --> 00:32:27,800
@@ -2732,7 +2732,7 @@ Yeah.
 
 684
 00:33:41,840 --> 00:33:44,860
-But Flixson sees something much deeper hiding in this equation, doesn't it?
+But Flyxion sees something much deeper hiding in this equation, doesn't it?
 
 685
 00:33:44,880 --> 00:33:45,520
@@ -2740,7 +2740,7 @@ Oh, absolutely.
 
 686
 00:33:46,060 --> 00:33:56,000
-What is truly fascinating here is that Flixson explicitly frames Rank Nullity not just as an algebra identity, but as an information conservation law.
+What is truly fascinating here is that Flyxion explicitly frames Rank Nullity not just as an algebra identity, but as an information conservation law.
 
 687
 00:33:56,180 --> 00:33:57,300
@@ -2828,7 +2828,7 @@ A vector represents a direction and a magnitude.
 
 708
 00:35:16,980 --> 00:35:23,800
-In the RSVP framework, Flickiewen says vectors represent directions of flow, a velocity field, little v.
+In the RSVP framework, Flyxion says vectors represent directions of flow, a velocity field, little v.
 
 709
 00:35:24,260 --> 00:35:25,780
@@ -2984,7 +2984,7 @@ But to manipulate these forms,
 
 747
 00:37:09,700 --> 00:37:14,880
-fliction introduces a very specific mathematical operation, the wedge product.
+Flyxion introduces a very specific mathematical operation, the wedge product.
 
 748
 00:37:15,220 --> 00:37:18,340
@@ -3256,7 +3256,7 @@ It provides RSVP with a rigorous language for true invariance.
 
 815
 00:41:16,300 --> 00:41:17,900
-Remember Fliction's opening thesis.
+Remember Flyxion's opening thesis.
 
 816
 00:41:18,320 --> 00:41:21,460
@@ -3324,7 +3324,7 @@ We spend so much time arguing about which model is right, and category theory ju
 
 832
 00:42:19,880 --> 00:42:22,480
-Which brings us to the final stretch of Fliction's roadmap.
+Which brings us to the final stretch of Flyxion's roadmap.
 
 833
 00:42:22,920 --> 00:42:26,600
@@ -3380,7 +3380,7 @@ We are left with the purest, most raw form of space imaginable.
 
 846
 00:43:01,260 --> 00:43:05,640
-Fliction states it plainly, topology is the study of admissibility before measurement.
+Flyxion states it plainly, topology is the study of admissibility before measurement.
 
 847
 00:43:05,940 --> 00:43:07,260
@@ -3392,7 +3392,7 @@ Usually, topology is taught with the coffee mug and donut analogy, you know, the
 
 849
 00:43:14,080 --> 00:43:18,440
-But Fliction teaches it as the master rulebook for what actions are allowed to happen.
+But Flyxion teaches it as the master rulebook for what actions are allowed to happen.
 
 850
 00:43:18,700 --> 00:43:21,680
@@ -3400,7 +3400,7 @@ Let's break down exactly how topology writes those rules.
 
 851
 00:43:22,080 --> 00:43:24,620
-Fliction outlines the five questions of topology.
+Flyxion outlines the five questions of topology.
 
 852
 00:43:25,000 --> 00:43:28,460
@@ -3628,7 +3628,7 @@ Because for anyone listening, especially if you felt intimidated by the math at 
 
 908
 00:47:00,040 --> 00:47:04,080
-I want you to see the magnificent architecture of what Flixion has built here.
+I want you to see the magnificent architecture of what Flyxion has built here.
 
 909
 00:47:04,160 --> 00:47:07,480
@@ -3676,7 +3676,7 @@ And finally, we stripped away the rulers to find topology, the raw, unfiltered l
 
 920
 00:47:53,480 --> 00:48:06,840
-And every single one of those theorems, every analogy, every logical step points relentlessly to the ultimate destination of Flixion's roadmap, the RSVP framework.
+And every single one of those theorems, every analogy, every logical step points relentlessly to the ultimate destination of Flyxion's roadmap, the RSVP framework.
 
 921
 00:48:06,840 --> 00:48:17,120
@@ -3704,7 +3704,7 @@ And as we wrap up this deep dive, I want to leave you, the listener, with a fina
 
 927
 00:48:31,340 --> 00:48:36,980
-It's a thought drawn right from the preface of Flixion's book, touching on something we discussed at the very beginning with the prime numbers.
+It's a thought drawn right from the preface of Flyxion's book, touching on something we discussed at the very beginning with the prime numbers.
 
 928
 00:48:37,400 --> 00:48:41,420
@@ -3804,7 +3804,7 @@ We assume math is just counting apples.
 
 952
 00:50:03,940 --> 00:50:09,760
-Fliction shows us that the universe is only confusing if we focus on the content, the apples, the decoration.
+Flyxion shows us that the universe is only confusing if we focus on the content, the apples, the decoration.
 
 953
 00:50:09,760 --> 00:50:19,600

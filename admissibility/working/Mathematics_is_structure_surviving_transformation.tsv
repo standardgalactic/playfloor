@@ -20,7 +20,7 @@ start	end	text
 50800	51240	Exactly.
 51620	56380	And that is exactly the rabbit hole we are jumping into for today's Deep Dive.
 56380	60600	We're pulling from a really provocative book that just came out this year,
-61080	65240	2026, written by an independent researcher going by the name Flixian.
+61080	65240	2026, written by an independent researcher going by the name Flyxion.
 65740	67160	Which is a cool name, honestly.
 67560	68140	It is, yeah.
 68340	71080	And the title alone tells you you're in for a ride.
@@ -29,7 +29,7 @@ start	end	text
 74860	79380	a mathematical roadmap toward the study of structure-preserving transformations and field theory.
 79480	80220	Quite a mouthful.
 80220	81140	A huge mouthful.
-81260	86240	But right there in the preface, Flixian drops this absolute bombshell of a thesis,
+81260	86240	But right there in the preface, Flyxion drops this absolute bombshell of a thesis,
 86420	87840	and I want you listening to really hear this.
 88140	88300	Quote,
 89100	92560	Mathematics is the study of structures that survive their own transformations.
@@ -47,7 +47,7 @@ start	end	text
 123640	128380	That surviving core, that thing that absolutely refuses to break when you twist the universe around it,
 128700	129740	that is the actual math.
 130080	134580	And for you listening today, our mission isn't just to talk about some abstract philosophy.
-134580	142220	Flixian's book is a very deliberate, step-by-step roadmap building toward a highly specific,
+134580	142220	Flyxion's book is a very deliberate, step-by-step roadmap building toward a highly specific,
 142620	145240	very real destination in advanced physics.
 145320	147420	Right, which is the RSVP framework.
 147500	148540	Yes, the RSVP.
@@ -63,7 +63,7 @@ start	end	text
 176040	179520	Okay, so it sounds like the three raw ingredients you'd need if you were trying to, like,
 179820	181060	bake a universe from scratch.
 181340	183720	In a lot of ways, yeah, that is exactly what this is.
-183780	187620	But Flixian makes it super clear that if you want to understand how those three ingredients behave
+183780	187620	But Flyxion makes it super clear that if you want to understand how those three ingredients behave
 187620	190640	to create reality, you can't just start doing high school algebra.
 190640	194780	You have to completely unlearn how you think about structure.
 194780	199300	You have to ask one central dieting question for this entire deep dive.
@@ -81,7 +81,7 @@ start	end	text
 233260	236100	Because mathematical truth doesn't just float out there in the ether.
 236380	238640	It is actively built through rigorous proof.
 238800	239040	Yeah.
-239440	244060	And Flixian pulls this beautiful quote from the mathematician G.H. Hardy to set this up.
+239440	244060	And Flyxion pulls this beautiful quote from the mathematician G.H. Hardy to set this up.
 244120	244560	I love this.
 244720	245300	Hardy said,
 246100	249360	A mathematician, like a painter or a poet, is a maker of patterns.
@@ -90,7 +90,7 @@ start	end	text
 254740	255420	It is.
 255840	259960	Because math is a language of arguments, not just a static dictionary of facts.
 259960	264140	To make an argument permanent, you need an ironclad proof.
-265180	270240	Infliction spends an enormous amount of time up front dissecting one specific technique,
+265180	270240	Flyxion spends an enormous amount of time up front dissecting one specific technique,
 270580	271960	which is mathematical induction.
 272240	276300	Which, I mean, might seem a bit odd to someone picking up a book on advanced field theory, right?
 276400	277580	Yeah, I thought so too.
@@ -149,7 +149,7 @@ start	end	text
 430940	432080	That's your boundary condition.
 432180	432780	The first tip.
 432780	433180	Yes.
-433680	440060	So Fliction is showing us that mathematical induction is the exact same structure as a physical field evolving over time.
+433680	440060	So Flyxion is showing us that mathematical induction is the exact same structure as a physical field evolving over time.
 440680	445920	Global validity follows from a local propagation rule plus a boundary condition.
 446040	446640	That's wow.
 446700	449180	And this pops up everywhere in advanced math.
@@ -166,7 +166,7 @@ start	end	text
 488900	492660	We are basically establishing the rules for how time and space actually unfold.
 492860	493360	Exactly.
 493740	495720	But induction isn't the only tool we get.
-496360	499580	Fliction walks us through other architectural tools for building truth.
+496360	499580	Flyxion walks us through other architectural tools for building truth.
 500140	504440	Like there is proof by contrapositive, which I always found incredibly clever.
 504440	510080	Oh, it's a fantastic way to approach a problem when the direct route is just completely blocked.
 510080	511720	Yeah, the logic goes like this.
@@ -191,7 +191,7 @@ start	end	text
 571060	574100	Therefore, the square root of 2 cannot be a neat fraction.
 574440	575400	It must be irrational.
 575660	577080	It's such a powerful method.
-577420	587620	But honestly, as elegant as those proofs are, my absolute favorite part of this whole foundational logic section is when fliction demonstrates the power of a single counterexample.
+577420	587620	But honestly, as elegant as those proofs are, my absolute favorite part of this whole foundational logic section is when Flyxion demonstrates the power of a single counterexample.
 587720	591360	Ah, yeah, I know exactly which one you were going to bring up, the polynomial formula.
 591360	591840	Yes.
 592200	592860	Oh, man.
@@ -229,9 +229,9 @@ start	end	text
 664780	667680	The entire universal claim just shatters in an instant.
 668040	670200	All it took was one single counterexample.
 670580	672420	One failed domino stops the whole chain.
-673160	676980	And Flixxion uses this not just to, you know, teach us caution, but to illustrate a really
+673160	676980	And Flyxion uses this not just to, you know, teach us caution, but to illustrate a really
 676980	679340	profound divide in how we approach systems.
-679980	685040	It is the difference between true structural proof and what Flixxion calls wishful continuation.
+679980	685040	It is the difference between true structural proof and what Flyxion calls wishful continuation.
 685280	685940	Wishful continuation.
 685940	689500	Yeah, you saw primes 40 times in a row and you just wished it would continue.
 690100	691380	But desire isn't structure.
@@ -247,7 +247,7 @@ start	end	text
 721520	725240	Which requires us to leave the comfortable world of absolute identity.
 725440	725600	Right.
 725680	726660	We move into set theory.
-727440	730040	And Flixxion makes a really provocative claim here.
+727440	730040	And Flyxion makes a really provocative claim here.
 730680	736500	To do the kind of advanced math required for the RSVP field theory, we actually have to
 736500	738980	abandon the concept of strict equality.
 739380	742140	Yeah, because strict equality is incredibly fragile.
@@ -306,7 +306,7 @@ start	end	text
 881040	885280	All the red things in one pile, all the blue things in another, all the black things in a third.
 885780	889960	What you have just done is created quotient sets or equivalence classes.
 890360	892160	The red pile is an equivalence class.
-892580	894720	Infliction points out a crucial theorem here.
+892580	894720	Flyxion points out a crucial theorem here.
 895320	896520	Theorem 2.1.
 897160	899340	Equivalence classes partition a set.
 899340	901700	Meaning, they divide the room perfectly.
@@ -371,7 +371,7 @@ start	end	text
 1082580	1085780	G modulo, the kernel, is isomorphic to the image.
 1086340	1091600	The original space, partitioned by what you cannot see, is structurally identical to the output.
 1092260	1095400	Now, apply this to the relativistic Staler Vector Plenum.
-1095780	1098280	Why does Flixson care about kernels and quotients?
+1095780	1098280	Why does Flyxion care about kernels and quotients?
 1098420	1099960	Wow, I'm starting to see it.
 1100400	1102320	If we are trying to observe a universe.
 1102320	1103040	Exactly.
@@ -391,7 +391,7 @@ start	end	text
 1141100	1145320	And algebra proves that the shadow is just the universe with the hidden bits quotiented away.
 1145400	1146260	It's profound.
 1146700	1147380	It really is.
-1147380	1156520	But before we leave set theory entirely, there is one more foundational concept Flitchin brings up that we absolutely have to talk about.
+1147380	1156520	But before we leave set theory entirely, there is one more foundational concept Flyxion brings up that we absolutely have to talk about.
 1157240	1158000	Cantor's theorem.
 1158760	1163200	Because if we're talking about these spaces and sets, we need to know how big they can get.
 1163420	1167820	And George Cantor proved that the answer is larger than you can possibly imagine.
@@ -445,7 +445,7 @@ start	end	text
 1298420	1303340	It totally shattered mathematics at the time because it proves that there are always deeper,
 1303340	1308280	larger layers of reality that cannot be mapped one-to-one with what we already know.
 1308680	1312800	It defines the absolute boundaries of what mathematical spaces can actually hold.
-1313180	1316640	And that perfectly sets up the next major phase of Flixian's roadmap.
+1313180	1316640	And that perfectly sets up the next major phase of Flyxion's roadmap.
 1317000	1318500	I mean, we've learned how logic works.
 1318620	1320780	We've learned how to group things into equivalence classes.
 1321220	1322420	We know about infinities.
@@ -459,7 +459,7 @@ start	end	text
 1341760	1342800	Building the continuum.
 1342800	1348460	The integers, the fractions, the decimals you use to balance your checkbook.
 1348760	1350660	They are not handed down by nature.
-1351480	1355060	Flixian shows us that humanity actively built them, piece by piece,
+1351480	1355060	Flyxion shows us that humanity actively built them, piece by piece,
 1355420	1357960	using the exact quotient tools we just learned about.
 1358080	1360280	It is a remarkable construction project.
 1360420	1361280	Let's trace the steps.
@@ -555,7 +555,7 @@ start	end	text
 1586260	1587400	The continuum is solid.
 1587620	1587740	Right.
 1587860	1589460	But I have to ask the physicist's question.
-1589980	1593080	Why does fliction care if the math has microscopic holes?
+1589980	1593080	Why does Flyxion care if the math has microscopic holes?
 1593420	1596180	How does that actually impact a scalar vector plenum?
 1596340	1599060	Because field theory is entirely based on limits.
 1599680	1602900	In the RSVP framework, a field evolves over time.
@@ -573,7 +573,7 @@ start	end	text
 1635260	1638200	The math has to be solid so the physics doesn't fall through the floor.
 1638660	1643100	And this leads us directly into real analysis, the study of these limits.
 1643200	1643400	Yeah.
-1643400	1649880	And Fletcher notes that analysis was invented because human intuition about limits is just dangerously unreliable.
+1643400	1649880	And Flyxion notes that analysis was invented because human intuition about limits is just dangerously unreliable.
 1650000	1650560	Oh, totally.
 1650560	1653420	We can't just wave our hands and say, oh, the numbers get super tiny.
 1653640	1655620	We have to prove it rigidly.
@@ -602,7 +602,7 @@ start	end	text
 1739240	1741200	No intuition needed.
 1741340	1743600	Just an infinite game of tightening the target.
 1743720	1744460	It is airtight.
-1745000	1752280	And within analysis, Flicksheen zeros in on a very specific theorem, theorem 4.1, the intermediate value theorem.
+1745000	1752280	And within analysis, Flyxion zeros in on a very specific theorem, theorem 4.1, the intermediate value theorem.
 1752480	1754060	Now, I have to push back on this one.
 1754480	1764640	I read this section, and the theorem basically says, if you have a continuous function, and it goes from a negative value to a positive value, it absolutely must hit zero somewhere in between.
 1764720	1765180	That is correct.
@@ -610,9 +610,9 @@ start	end	text
 1768140	1775220	I mean, if I am driving out of Death Valley, which is below sea level, and I drive up to a mountain peak, I cannot teleport.
 1775840	1779860	At some specific instant, my tires must have been exactly at sea level.
 1780220	1781960	A toddler understands walking up a hill.
-1782460	1788540	Why is Flicksheen, in a book about advanced relativistic fields, dedicating precious ink to something so trivial?
+1782460	1788540	Why is Flyxion, in a book about advanced relativistic fields, dedicating precious ink to something so trivial?
 1788540	1791320	It seems trivial when you think of a car on a hill.
-1791760	1796180	But remember, Flicksheen is setting up the structural mechanics of the RSVP framework.
+1791760	1796180	But remember, Flyxion is setting up the structural mechanics of the RSVP framework.
 1796780	1799920	Think about what the intermediate value theorem is forcing to happen.
 1800240	1802760	It is illustrating a massive physical principle.
 1803540	1805680	Continuity forces transition interfaces.
@@ -633,7 +633,7 @@ start	end	text
 1849200	1849660	Oh, wow.
 1850020	1858440	Okay, so the obvious hill is actually the mathematical mechanism that creates physical boundaries, like the surface of a liquid or the edge of a magnetic domain.
 1858440	1860800	The structure dictates the reality.
-1861840	1866060	And just to generalize this, fliction ends this phase by introducing metric spaces.
+1861840	1866060	And just to generalize this, Flyxion ends this phase by introducing metric spaces.
 1866500	1871560	This is where we take the idea of distance and we just rip it away from the rigid XY coordinates we learned in high school.
 1871760	1877000	Because coordinates are just artificial grids we overlay on the universe, the universe doesn't have an X-axis painted on it.
 1877080	1877500	Right, right.
@@ -655,7 +655,7 @@ start	end	text
 1929960	1932440	We are moving from the space to the actions within it.
 1932660	1939060	We are entering phase two, algebraic structure, specifically the mathematics of transformation, conservation, and flux.
 1939060	1941940	We dive into chapter six, linear algebra.
-1942420	1945280	And I laughed out loud at the, quote, fliction attributes here.
+1942420	1945280	And I laughed out loud at the, quote, Flyxion attributes here.
 1945680	1947800	Linear algebra is what you do when you have no choice.
 1948060	1949720	Every physicist knows that feeling.
 1950120	1956380	When a nonlinear problem gets too hard, you just zoom in close enough until it looks flat and linear, just so you can actually calculate something.
@@ -682,9 +682,9 @@ start	end	text
 2016900	2019360	Or image, 3 equals 1 plus 2.
 2019680	2021080	It's a basic algebra equation.
 2021280	2021560	Yeah.
-2021840	2024860	But Flixson sees something much deeper hiding in this equation, doesn't it?
+2021840	2024860	But Flyxion sees something much deeper hiding in this equation, doesn't it?
 2024880	2025520	Oh, absolutely.
-2026060	2036000	What is truly fascinating here is that Flixson explicitly frames Rank Nullity not just as an algebra identity, but as an information conservation law.
+2026060	2036000	What is truly fascinating here is that Flyxion explicitly frames Rank Nullity not just as an algebra identity, but as an information conservation law.
 2036180	2037300	Conservation of information.
 2037300	2037680	Yes.
 2037860	2038620	Think of it physically.
@@ -706,7 +706,7 @@ start	end	text
 2107460	2112200	And the elements of the dual space aren't vectors, they are linear functionals, covectors.
 2112480	2113880	Let's try to explain this mechanically.
 2114020	2116800	A vector represents a direction and a magnitude.
-2116980	2123800	In the RSVP framework, Flickiewen says vectors represent directions of flow, a velocity field, little v.
+2116980	2123800	In the RSVP framework, Flyxion says vectors represent directions of flow, a velocity field, little v.
 2124260	2125780	Imagine water rushing down a river.
 2126020	2128580	The vector tells you which way the water is moving and how fast.
 2129020	2129240	Right.
@@ -745,7 +745,7 @@ start	end	text
 2218060	2221840	And this pairing concept generalizes into something called differential forms,
 2222060	2226980	which are the absolute core language for integrating over complex surfaces or manifolds.
 2227680	2229200	But to manipulate these forms,
-2229700	2234880	fliction introduces a very specific mathematical operation, the wedge product.
+2229700	2234880	Flyxion introduces a very specific mathematical operation, the wedge product.
 2235220	2238340	And the defining feature of the wedge product is something called antisymmetry.
 2238760	2239940	Antisymmetry is critical.
 2239940	2242000	If you have two forms, alpha and beta,
@@ -813,7 +813,7 @@ start	end	text
 2466460	2468320	They are the same object wearing different clothes.
 2468320	2472100	So how does that help the relativistic scalar vector plenum?
 2472260	2475940	It provides RSVP with a rigorous language for true invariance.
-2476300	2477900	Remember Fliction's opening thesis.
+2476300	2477900	Remember Flyxion's opening thesis.
 2478320	2481460	Mathematics is the study of structures that survive transformation.
 2481740	2481940	Right.
 2482080	2483180	Constraint before content.
@@ -830,7 +830,7 @@ start	end	text
 2525820	2528840	The structure survives the transformation of human perspective.
 2529120	2530560	That is deeply satisfying.
 2530560	2539560	We spend so much time arguing about which model is right, and category theory just smiles and says if it preserves the structure, they are all reflections of the same truth.
-2539880	2542480	Which brings us to the final stretch of Fliction's roadmap.
+2539880	2542480	Which brings us to the final stretch of Flyxion's roadmap.
 2542920	2546600	The absolute bedrock required to launch the RSVP theory.
 2546920	2548140	We enter the final phase.
 2548240	2549220	Phase three of the text.
@@ -844,12 +844,12 @@ start	end	text
 2574400	2575860	That is so hard to picture.
 2576040	2577160	Space without distance.
 2577440	2581260	We are left with the purest, most raw form of space imaginable.
-2581260	2585640	Fliction states it plainly, topology is the study of admissibility before measurement.
+2581260	2585640	Flyxion states it plainly, topology is the study of admissibility before measurement.
 2585940	2587260	Which is such a profound reframing.
 2588120	2593640	Usually, topology is taught with the coffee mug and donut analogy, you know, the study of shapes stretching like rubber.
-2594080	2598440	But Fliction teaches it as the master rulebook for what actions are allowed to happen.
+2594080	2598440	But Flyxion teaches it as the master rulebook for what actions are allowed to happen.
 2598700	2601680	Let's break down exactly how topology writes those rules.
-2602080	2604620	Fliction outlines the five questions of topology.
+2602080	2604620	Flyxion outlines the five questions of topology.
 2605000	2608460	These questions act as the ultimate filter for the RSVP fields.
 2608960	2611040	Let's walk through the three most critical ones.
 2611540	2612860	The first question is accessibility.
@@ -906,7 +906,7 @@ start	end	text
 2809340	2810780	The structure creates the reality.
 2811180	2814760	Let's zoom all the way out and look at the path we just walked today.
 2815440	2819500	Because for anyone listening, especially if you felt intimidated by the math at the start,
-2820040	2824080	I want you to see the magnificent architecture of what Flixion has built here.
+2820040	2824080	I want you to see the magnificent architecture of what Flyxion has built here.
 2824160	2827480	It has been a deliberate, meticulous ascent.
 2827480	2828600	We didn't start with numbers.
 2829040	2832860	We started by building the very concept of truth using mathematical induction.
@@ -918,14 +918,14 @@ start	end	text
 2857940	2861660	We tracked the conservation of reality using matrices and rank nullity.
 2861980	2866800	We watched category theory guarantee that structural truth is invariant no matter how we look at it.
 2867160	2873480	And finally, we stripped away the rulers to find topology, the raw, unfiltered landscape of what is allowed and what is forbidden.
-2873480	2886840	And every single one of those theorems, every analogy, every logical step points relentlessly to the ultimate destination of Flixion's roadmap, the RSVP framework.
+2873480	2886840	And every single one of those theorems, every analogy, every logical step points relentlessly to the ultimate destination of Flyxion's roadmap, the RSVP framework.
 2886840	2897120	The relativistic scalar vector plenum, a universe governed by that simple triple of fields operating in a reality organized entirely around topological constraints.
 2897860	2902840	It is the ultimate mathematical proof that transformation truly precedes content.
 2903320	2905080	It changes the way you look at everything, doesn't it?
 2905180	2905820	It really does.
 2905860	2906720	You can't unsee it.
 2907200	2911340	And as we wrap up this deep dive, I want to leave you, the listener, with a final thought.
-2911340	2916980	It's a thought drawn right from the preface of Flixion's book, touching on something we discussed at the very beginning with the prime numbers.
+2911340	2916980	It's a thought drawn right from the preface of Flyxion's book, touching on something we discussed at the very beginning with the prime numbers.
 2917400	2921420	It's a mathematical concept, but I haven't been able to stop applying it to everyday life.
 2921620	2923220	The distinction between continuations.
 2923440	2923660	Yes.
@@ -950,7 +950,7 @@ start	end	text
 2997080	2997480	Exactly.
 2998080	3000660	At the start of this hour, we talk about the illusion of numbers.
 3001060	3003100	We assume math is just counting apples.
-3003940	3009760	Fliction shows us that the universe is only confusing if we focus on the content, the apples, the decoration.
+3003940	3009760	Flyxion shows us that the universe is only confusing if we focus on the content, the apples, the decoration.
 3009760	3019600	But when we strip it all back, when we focus on the constraints, the underlying structure surviving transformation, suddenly the entire universe becomes beautifully logically clear.
 3019600	3021900	Thank you so much for joining us on this deep dive.
 3022020	3023400	Keep questioning the structures around you.

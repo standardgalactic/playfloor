@@ -44,7 +44,7 @@ Which is a fascinating detail in its own right, honestly.
 
 12
 00:01:12,020 --> 00:01:22,760
-Yeah. Authored by an independent researcher known simply as Fliction. The title is, let me read it here, Semantic Infrastructure. Constraint, Projection, and Accessibility.
+Yeah. Authored by an independent researcher known simply as Flyxion. The title is, let me read it here, Semantic Infrastructure. Constraint, Projection, and Accessibility.
 
 13
 00:01:22,760 --> 00:01:39,840
@@ -88,7 +88,7 @@ Yeah, obviously. It's a cup.
 
 23
 00:02:18,960 --> 00:02:29,320
-Right. But Fliction demands that we discard that noun-based worldview entirely. We have to embrace a universe defined not by things, but by verbs.
+Right. But Flyxion demands that we discard that noun-based worldview entirely. We have to embrace a universe defined not by things, but by verbs.
 
 24
 00:02:29,780 --> 00:02:30,140
@@ -180,7 +180,7 @@ It is highly advantageous for a hungry primate to perceive an apple as a solid s
 
 46
 00:03:55,940 --> 00:04:01,660
-But in the framework Fliction presents in Chapter 1, that apple is not a discrete noun.
+But in the framework Flyxion presents in Chapter 1, that apple is not a discrete noun.
 
 47
 00:04:01,920 --> 00:04:02,580
@@ -456,7 +456,7 @@ Topologically, they are the exact same shape.
 
 115
 00:08:55,520 --> 00:09:01,120
-And fliction is applying this topological thinking to how meaning and information are structured.
+And Flyxion is applying this topological thinking to how meaning and information are structured.
 
 116
 00:09:01,120 --> 00:09:06,100
@@ -492,7 +492,7 @@ The intuitive view is that boundaries divide things that already exist.
 
 124
 00:09:29,880 --> 00:09:31,740
-But fliction argues the inverse.
+But Flyxion argues the inverse.
 
 125
 00:09:32,520 --> 00:09:34,060
@@ -592,7 +592,7 @@ And the mechanical failure of self-reference is one of the most difficult concep
 
 149
 00:10:58,980 --> 00:11:01,220
-But Flicksheen frames it geometrically.
+But Flyxion frames it geometrically.
 
 150
 00:11:01,800 --> 00:11:04,480
@@ -672,7 +672,7 @@ A system cannot prove its own consistency without stepping outside of itself.
 
 169
 00:12:04,760 --> 00:12:09,940
-And in Flicksheen's topology, this is a system attempting to contain a complete description
+And in Flyxion's topology, this is a system attempting to contain a complete description
 
 170
 00:12:09,940 --> 00:12:12,280
@@ -1052,7 +1052,7 @@ Yeah.
 
 264
 00:17:11,040 --> 00:17:14,200
-This is where fliction strips away the illusion of objects again.
+This is where Flyxion strips away the illusion of objects again.
 
 265
 00:17:14,880 --> 00:17:17,100
@@ -1096,7 +1096,7 @@ They look different on the mountainside, but their inevitable collapse destinati
 
 275
 00:17:54,600 --> 00:17:59,900
-And Flixian boldly scales this mathematical principle up to physical reality.
+And Flyxion boldly scales this mathematical principle up to physical reality.
 
 276
 00:17:59,900 --> 00:18:03,300
@@ -1228,7 +1228,7 @@ Exactly.
 
 308
 00:20:01,140 --> 00:20:05,900
-I mean, you literally consume what Fliction calls accessibility entropy.
+I mean, you literally consume what Flyxion calls accessibility entropy.
 
 309
 00:20:06,180 --> 00:20:06,440
@@ -1304,7 +1304,7 @@ The mind generates, the body merely executes.
 
 327
 00:21:30,160 --> 00:21:32,960
-But fliction completely inverts this hierarchy.
+But Flyxion completely inverts this hierarchy.
 
 328
 00:21:32,960 --> 00:21:39,880
@@ -1412,7 +1412,7 @@ The keyboard throws all the physical richness away to force my action into a can
 
 354
 00:23:24,740 --> 00:23:28,220
-And Fliction points out that human communication is deeply impoverished by this.
+And Flyxion points out that human communication is deeply impoverished by this.
 
 355
 00:23:28,280 --> 00:23:28,660
@@ -1684,7 +1684,7 @@ Therefore, the universe is constantly degrading from order into chaos.
 
 422
 00:28:11,500 --> 00:28:17,420
-But Fliction argues that defining entropy as messiness is a fundamental category error.
+But Flyxion argues that defining entropy as messiness is a fundamental category error.
 
 423
 00:28:17,420 --> 00:28:17,860
@@ -1708,7 +1708,7 @@ Meaning, it's a measure of how many different possible futures a system can choo
 
 428
 00:28:36,480 --> 00:28:41,820
-Infliction's formulation of the second law states that accessibility must continually decrease.
+Flyxion's formulation of the second law states that accessibility must continually decrease.
 
 429
 00:28:41,920 --> 00:28:42,920
@@ -2084,7 +2084,7 @@ They refuse to glue into a global sheesh.
 
 522
 00:34:44,000 --> 00:34:53,140
-This successful gluing of local data is the very foundation of what Fliction defines as consciousness in chapters 22 to 24.
+This successful gluing of local data is the very foundation of what Flyxion defines as consciousness in chapters 22 to 24.
 
 523
 00:34:53,540 --> 00:35:02,360
@@ -2140,7 +2140,7 @@ Right.
 
 536
 00:35:55,160 --> 00:36:00,580
-But in Fliction's framework, identity over time is a constraint-preserving process.
+But in Flyxion's framework, identity over time is a constraint-preserving process.
 
 537
 00:36:01,120 --> 00:36:03,400
@@ -2172,7 +2172,7 @@ If I look up the word apple in a dictionary, it gives me a text description.
 
 544
 00:36:25,780 --> 00:36:29,020
-But Fliction says meaning is the shape of the constraint basin.
+But Flyxion says meaning is the shape of the constraint basin.
 
 545
 00:36:29,120 --> 00:36:31,260
@@ -2256,7 +2256,7 @@ A peneract is a five-dimensional hypercube.
 
 565
 00:37:22,080 --> 00:37:29,720
-Fliction utilizes this massive 5D geometric shape to spatially map all of Boolean logic.
+Flyxion utilizes this massive 5D geometric shape to spatially map all of Boolean logic.
 
 566
 00:37:30,140 --> 00:37:36,160
@@ -2312,7 +2312,7 @@ It's a top-down tree-like structure.
 
 579
 00:38:51,420 --> 00:38:58,120
-Fliction proposes replacing this with xylorarchy, a term that roughly translates to forest intelligence.
+Flyxion proposes replacing this with xylorarchy, a term that roughly translates to forest intelligence.
 
 580
 00:38:58,320 --> 00:38:59,360
@@ -2516,7 +2516,7 @@ It's a rapid cycle of input and output.
 
 630
 00:43:54,220 --> 00:43:59,640
-But Fliction strips this out of software engineering and elevates it to a universal cognitive principle.
+But Flyxion strips this out of software engineering and elevates it to a universal cognitive principle.
 
 631
 00:44:00,380 --> 00:44:04,680
@@ -2700,7 +2700,7 @@ We have sprinted through an incredibly dense interconnected theory that ties tog
 
 676
 00:47:09,500 --> 00:47:21,000
-If we connect this to the bigger picture, stepping back to look at the massive geometric landscape Flickshin has painted, the foundational thesis of the manuscript can be distilled into one unifying truth.
+If we connect this to the bigger picture, stepping back to look at the massive geometric landscape Flyxion has painted, the foundational thesis of the manuscript can be distilled into one unifying truth.
 
 677
 00:47:21,160 --> 00:47:22,460

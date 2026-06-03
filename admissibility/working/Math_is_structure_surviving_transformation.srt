@@ -96,7 +96,7 @@ Which brings us perfectly to our sources for today's deep dive.
 
 25
 00:01:06,500 --> 00:01:14,560
-We are exploring a really highly anticipated 2026 independent text by an author named Fliction.
+We are exploring a really highly anticipated 2026 independent text by an author named Flyxion.
 
 26
 00:01:14,880 --> 00:01:16,360
@@ -140,7 +140,7 @@ Very dry.
 
 36
 00:01:43,800 --> 00:01:45,240
-And not what Fliction is doing at all.
+And not what Flyxion is doing at all.
 
 37
 00:01:45,300 --> 00:01:45,560
@@ -168,7 +168,7 @@ Exactly.
 
 43
 00:02:03,140 --> 00:02:10,600
-We are driving toward a destination in Fliction's text called the RSVP Framework, the Relativistic Scalar Vector Plenum.
+We are driving toward a destination in Flyxion's text called the RSVP Framework, the Relativistic Scalar Vector Plenum.
 
 44
 00:02:10,600 --> 00:02:15,380
@@ -240,7 +240,7 @@ Exactly.
 
 61
 00:02:55,160 --> 00:03:02,300
-Fliction is drawing a line in the sand regarding how we construct reality, how we make decisions, how we build businesses or systems.
+Flyxion is drawing a line in the sand regarding how we construct reality, how we make decisions, how we build businesses or systems.
 
 62
 00:03:02,700 --> 00:03:08,360
@@ -296,7 +296,7 @@ You only allow a transformation when the underlying architecture explicitly perm
 
 75
 00:03:46,760 --> 00:03:49,040
-Fliction uses a really formal term for this, right?
+Flyxion uses a really formal term for this, right?
 
 76
 00:03:49,460 --> 00:03:49,940
@@ -512,7 +512,7 @@ You have to agree on the rules of proof before you can prove a space is continuo
 
 129
 00:06:29,400 --> 00:06:32,760
-Infliction grounds this in propositions and predicates.
+Flyxion grounds this in propositions and predicates.
 
 130
 00:06:32,900 --> 00:06:34,500
@@ -568,7 +568,7 @@ Until you assign a specific value to X.
 
 143
 00:06:59,020 --> 00:07:05,820
-So from those basic atomic units, fliction introduces theorem 1.1, which is mathematical induction.
+So from those basic atomic units, Flyxion introduces theorem 1.1, which is mathematical induction.
 
 144
 00:07:06,420 --> 00:07:12,980
@@ -760,7 +760,7 @@ Because sometimes the math is just too messy, right?
 
 191
 00:09:38,660 --> 00:09:43,240
-This is where Flixson brings up proof by contrapositive and proof by contradiction.
+This is where Flyxion brings up proof by contrapositive and proof by contradiction.
 
 192
 00:09:43,620 --> 00:09:43,760
@@ -856,7 +856,7 @@ And you just blindly walk down that logical path until the structure of reality 
 
 215
 00:10:54,340 --> 00:11:00,940
-I love how Flixian illustrates this using the classic proof that the square root of 2 is irrational.
+I love how Flyxion illustrates this using the classic proof that the square root of 2 is irrational.
 
 216
 00:11:01,340 --> 00:11:02,660
@@ -996,7 +996,7 @@ But mathematical reality is completely indifferent to our observed patterns.
 
 250
 00:12:59,740 --> 00:13:04,320
-Infliction provides a truly devastating counterexample to empirical trust.
+Flyxion provides a truly devastating counterexample to empirical trust.
 
 251
 00:13:04,620 --> 00:13:05,780
@@ -1228,7 +1228,7 @@ It is a deliberate, strategic loss of information.
 
 308
 00:15:46,200 --> 00:15:54,260
-And to formalize this, Flixia outlines the three axioms an equivalence relation has to satisfy to be mathematically valid.
+And to formalize this, Flyxion outlines the three axioms an equivalence relation has to satisfy to be mathematically valid.
 
 309
 00:15:54,260 --> 00:15:54,540
@@ -1680,7 +1680,7 @@ Analysis replaces that intuition with the epsilon-delta discipline.
 
 421
 00:22:26,520 --> 00:22:29,900
-Definition 4.1, Infliction's text.
+Definition 4.1, Flyxion's text.
 
 422
 00:22:30,680 --> 00:22:34,780
@@ -1756,7 +1756,7 @@ If you draw a line from below the x-axis to above it without lifting your pen, y
 
 440
 00:23:49,240 --> 00:23:51,580
-But fliction demands structural proof.
+But Flyxion demands structural proof.
 
 441
 00:23:51,740 --> 00:23:53,280
@@ -1916,7 +1916,7 @@ And to ensure these constraints aren't just artifacts of how we map our space,
 
 480
 00:25:57,420 --> 00:25:59,960
-Fliction introduces metric spaces in Chapter 5.
+Flyxion introduces metric spaces in Chapter 5.
 
 481
 00:26:00,200 --> 00:26:02,640
@@ -2088,7 +2088,7 @@ plus the dimension of what is collapsed to zero, the kernel.
 
 523
 00:28:09,620 --> 00:28:15,240
-To really grasp this, we have to look at how Flixian sketches the proof using basis vectors.
+To really grasp this, we have to look at how Flyxion sketches the proof using basis vectors.
 
 524
 00:28:15,480 --> 00:28:16,320
@@ -2332,7 +2332,7 @@ In the physical model, you get the actual rate of energy change.
 
 584
 00:31:25,320 --> 00:31:31,040
-In Fliction's RSVP framework, the vector field, V, is the velocity or flow of the plenum,
+In Flyxion's RSVP framework, the vector field, V, is the velocity or flow of the plenum,
 
 585
 00:31:31,460 --> 00:31:34,340
@@ -2356,7 +2356,7 @@ It does.
 
 590
 00:31:41,360 --> 00:31:45,440
-And to manage these interactions in higher dimensions, Fliction introduces the wedge product,
+And to manage these interactions in higher dimensions, Flyxion introduces the wedge product,
 
 591
 00:31:45,680 --> 00:31:47,480
@@ -2440,7 +2440,7 @@ and oriented gradients.
 
 611
 00:32:51,160 --> 00:32:57,680
-But here, entering phase two of the text, Flitchian executes a massive perspective shift.
+But here, entering phase two of the text, Flyxion executes a massive perspective shift.
 
 612
 00:32:57,680 --> 00:32:59,280
@@ -2532,7 +2532,7 @@ And we must prove that this quotient map is well-defined.
 
 634
 00:34:07,060 --> 00:34:10,480
-This is a critical step in the proof sketch Fliction provides.
+This is a critical step in the proof sketch Flyxion provides.
 
 635
 00:34:10,660 --> 00:34:10,980
@@ -2604,11 +2604,11 @@ the active structure of the original group.
 
 652
 00:34:58,840 --> 00:34:59,840
-Infliction.
+Flyxion.
 
 653
 00:34:59,840 --> 00:35:03,320
-Infliction explicitly ties this to the RSVP field theory.
+Flyxion explicitly ties this to the RSVP field theory.
 
 654
 00:35:03,320 --> 00:35:05,820
@@ -2832,7 +2832,7 @@ Just openness, continuity, and connectedness.
 
 709
 00:38:13,360 --> 00:38:18,920
-Fliction reframes topology with a phrase that perfectly encapsulates the entire text.
+Flyxion reframes topology with a phrase that perfectly encapsulates the entire text.
 
 710
 00:38:18,920 --> 00:38:22,200
@@ -2928,7 +2928,7 @@ That's exactly what it is.
 
 733
 00:39:15,300 --> 00:39:21,920
-And fliction breaks the rules of this subway map down into the five questions of topology.
+And Flyxion breaks the rules of this subway map down into the five questions of topology.
 
 734
 00:39:21,920 --> 00:39:26,300
@@ -3080,7 +3080,7 @@ or entropy doesn't just diverge to infinity.
 
 771
 00:41:07,300 --> 00:41:11,300
-And when you assemble all of these layers, you witness the full architecture of Flixian's
+And when you assemble all of these layers, you witness the full architecture of Flyxion's
 
 772
 00:41:11,300 --> 00:41:12,300

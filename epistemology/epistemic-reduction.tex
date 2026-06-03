@@ -1,0 +1,3105 @@
+% ============================================================
+%  Epistemic Reduction and Admissible Projection
+%  Anderson's Epistemology as a Theorem of RSVP Field Theory
+%
+%  Author : Flyxion
+%  Engine : LuaLaTeX
+%  Font   : TeX Gyre Pagella
+% ============================================================
+
+\documentclass[12pt, a4paper, oneside]{book}
+
+% ── Engines & Fonts ─────────────────────────────────────────
+\usepackage{fontspec}
+\setmainfont{TeX Gyre Pagella}
+\usepackage{microtype}
+
+% ── Mathematics ─────────────────────────────────────────────
+\usepackage{amsmath, amsthm, amssymb, mathtools}
+\usepackage{thmtools}
+
+% ── Page Geometry ───────────────────────────────────────────
+\usepackage[
+  top=30mm, bottom=30mm,
+  left=32mm, right=32mm,
+  headheight=15pt
+]{geometry}
+
+% ── Headers & Footers ───────────────────────────────────────
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\small\itshape\leftmark}
+\fancyhead[R]{\small\thepage}
+\renewcommand{\headrulewidth}{0.3pt}
+
+% ── Section Styling ─────────────────────────────────────────
+\usepackage{titlesec}
+\titleformat{\chapter}[display]
+  {\normalfont\Large\scshape}
+  {\chaptertitlename\ \thechapter}{1em}
+  {\Huge\bfseries}
+\titlespacing*{\chapter}{0pt}{40pt}{30pt}
+
+% ── Hyperlinks ──────────────────────────────────────────────
+\usepackage[
+  colorlinks=true,
+  linkcolor=black,
+  citecolor=black,
+  urlcolor=black
+]{hyperref}
+
+% ── Theorem Environments ────────────────────────────────────
+\declaretheoremstyle[
+  headfont=\normalfont\bfseries,
+  bodyfont=\normalfont\itshape,
+  spaceabove=10pt, spacebelow=6pt
+]{thmstyle}
+
+\declaretheoremstyle[
+  headfont=\normalfont\bfseries,
+  bodyfont=\normalfont,
+  spaceabove=10pt, spacebelow=6pt
+]{defstyle}
+
+\declaretheoremstyle[
+  headfont=\normalfont\itshape,
+  bodyfont=\normalfont,
+  spaceabove=6pt, spacebelow=4pt
+]{rmkstyle}
+
+\declaretheoremstyle[
+  headfont=\normalfont\bfseries,
+  bodyfont=\normalfont\itshape,
+  spaceabove=10pt, spacebelow=6pt,
+  headpunct={.}
+]{conjstyle}
+
+\declaretheorem[style=thmstyle,   numberwithin=chapter]{theorem}
+\declaretheorem[style=thmstyle,   sibling=theorem]{proposition}
+\declaretheorem[style=thmstyle,   sibling=theorem]{lemma}
+\declaretheorem[style=thmstyle,   sibling=theorem]{corollary}
+\declaretheorem[style=defstyle,   sibling=theorem]{definition}
+\declaretheorem[style=defstyle,   sibling=theorem]{example}
+\declaretheorem[style=rmkstyle,   sibling=theorem]{remark}
+\declaretheorem[style=conjstyle,  sibling=theorem]{conjecture}
+
+% ── Custom Operators & Macros ───────────────────────────────
+\newcommand{\Adm}{\mathcal{A}}
+\newcommand{\X}{\mathcal{X}}
+\newcommand{\M}{\mathcal{M}}
+\newcommand{\C}{\mathcal{C}}
+\newcommand{\proj}{\pi}
+\newcommand{\projA}{\pi_{\!\Adm}}
+\newcommand{\dH}{d_H}
+\newcommand{\SA}{{\sim_{\!\Adm}}}
+\newcommand{\Nov}{\mathrm{Nov}}
+\newcommand{\CC}{\mathrm{CC}}
+\newcommand{\Ent}{S}
+\newcommand{\phiCe}{\phi_{\C}^{\varepsilon}}
+\newcommand{\vel}{\mathbf{v}}
+\DeclareMathOperator{\argmin}{arg\,min}
+\DeclareMathOperator{\colim}{colim}
+
+% ── Miscellaneous ───────────────────────────────────────────
+\usepackage{csquotes}
+\usepackage{booktabs}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{epigraph}
+\setlength{\epigraphwidth}{0.60\textwidth}
+\renewcommand{\epigraphflush}{flushleft}
+
+% ============================================================
+\begin{document}
+
+\begin{titlepage}
+  \begin{center}
+    \vspace*{36mm}
+    {\Huge\bfseries\scshape Epistemic Reduction\\[8pt]
+    and Admissible Projection}\\[14pt]
+    {\Large Anderson's Epistemology as a Theorem\\[4pt]
+    of RSVP Field Theory}\\[44mm]
+    {\large Flyxion}\\[8pt]
+    {\normalsize Independent Researcher}\\[64mm]
+    {\small Standard Galactic Edition}
+  \end{center}
+\end{titlepage}
+
+\thispagestyle{empty}
+\vspace*{\fill}
+\noindent
+Copyright \textcopyright\ Flyxion. All rights reserved.
+No part of this monograph may be reproduced without attribution.\\[6pt]
+\noindent
+Monica Anderson's original texts are cited and quoted with full attribution.
+The formal developments, theorems, and RSVP machinery are original
+contributions of the present author.\\[6pt]
+\noindent
+Typeset with Lua\LaTeX\ using TeX Gyre Pagella.
+\clearpage
+
+\tableofcontents
+\clearpage
+
+% ============================================================
+\chapter*{Preface}
+\addcontentsline{toc}{chapter}{Preface}
+\markboth{Preface}{Preface}
+
+\epigraph{%
+  You cannot Reason about that which you do not Understand.%
+}{\textit{Monica Anderson}}
+
+This monograph has a precise thesis: Monica Anderson's epistemological
+program is derivable from the geometry of admissible projection and
+RSVP field theory, not merely compatible with it.
+
+The derivation proceeds through the admissibility quotient construction.
+Once a trajectory space $\X$ and a continuous admissibility operator
+$\Adm$ are in hand, Anderson's distinction between Understanding and
+Reasoning emerges automatically as the difference between constructing
+and operating within a representational manifold. Her Priority Thesis is
+a structural tautology about the dependency between projections and
+operators-on-projections. Her Salience criterion becomes admissibility
+sensitivity. Her Corpus Congruence becomes the level-set structure of
+a smoothed familiarity potential field. Her critique of classical AI
+becomes the Projection Supremacy Failure Theorem. Her Wisdom Salon
+becomes a sheaf-theoretic colimit whose global section is guaranteed
+by the descent axiom. Calvin's uphill river becomes a monotone chain
+of admissibility quotients with decreasing mutual information.
+
+None of these require Anderson's framework as an assumption.
+
+The monograph is mathematically candid about the status of each result.
+Six categories of claim appear. Theorems are proved from the stated
+hypotheses. Propositions are theorems with lighter hypotheses or shorter
+proofs. Lemmas are auxiliary results used in other proofs. Corollaries
+follow immediately from preceding results. Conjectures are plausible
+claims for which a proof route is described but not completed; they are
+explicitly labelled and the missing ingredients are identified. Remarks
+interpret and contextualize.
+
+The principal remaining conjectural element is the bounded curvature
+characterization of admissibility-compatible learning: the Local
+Extension Stability Theorem provides a genuine one-directional result,
+but the biconditional that the previous draft asserted has been
+downgraded to a conjecture pending further geometric development.
+Readers who find the conjecture interesting will find the missing
+ingredients identified clearly in Chapter~\ref{ch:learning}.
+
+Anderson is named in the subtitle as an intellectual predecessor. This
+monograph provides the proofs she did not supply, with the honesty
+their subject requires.
+
+\clearpage
+
+% ============================================================
+\part{Anderson's Epistemological System}
+
+\chapter{Intelligence, Understanding, and Reasoning}
+\label{ch:intelligence}
+
+\epigraph{%
+  Intelligence = Understanding + Reasoning.%
+}{\textit{Monica Anderson, \emph{Why AI Works}}}
+
+\section{The Central Decomposition}
+
+Anderson's framework opens with a functional decomposition of
+intelligence into two irreducible faculties. Understanding is
+subconscious, intuitive, model-free, holistic, expensive, and fallible
+in a characteristic way: its errors are graceful near-misses rather than
+catastrophic failures at arbitrary inputs. Reasoning is conscious,
+logical, model-based, cheap per inference step, and conditionally
+infallible given correct input within a specified model space.
+
+The central structural claim, stated explicitly by Anderson and repeated
+in multiple forms, is that Understanding is \emph{prior to} Reasoning.
+One cannot reason about a domain one has not yet understood. The converse
+does not hold. This asymmetry Anderson calls the Priority Thesis.
+Part~III derives it as Theorem~\ref{thm:priority}.
+
+\section{Properties of the Two Faculties}
+
+Understanding is subconscious (no introspective access to its operation),
+intuitive (rapid and parallel, answering without deliberation), model-free
+(no a priori symbolic representation of the problem domain), holistic
+(context is taken as a whole), expensive (the majority of a brain's
+processing budget), and fallible. Reasoning is conscious, sequential,
+model-based, cheap per inference step, and conditionally infallible.
+The guarantee is real but narrow: it applies only inside the model space
+from which context has been deliberately stripped.
+
+Anderson draws on Kahneman's System~1 / System~2 distinction but diverges
+in one important respect. Kahneman treats the two systems as interacting
+processes within a single cognitive architecture. Anderson treats them as
+requiring fundamentally different computational paradigms with different
+failure modes.
+
+\section{The Priority Thesis}
+
+\begin{proposition}[Anderson's Priority Thesis, informal]
+\label{prop:priority-informal}
+Understanding is strictly prior to Reasoning. Understanding does not
+presuppose Reasoning. Reasoning presupposes Understanding.
+\end{proposition}
+
+This generates three consequences for AI methodology. First, any
+architecture that attempts to produce understanding through symbolic
+reasoning inverts the dependency. Second, twentieth-century AI (build a
+model, reason over it) attacked the second step while bypassing the first.
+Third, the correct question about AI architecture is epistemological.
+
+Part~III proves Proposition~\ref{prop:priority-informal} as Theorem~\ref{thm:priority}.
+
+% ──────────────────────────────────────────────────────────────
+\chapter{Models, Reductionism, and the Pathology of Projection}
+\label{ch:models}
+
+\epigraph{%
+  Model Based Problem Solving is the greatest invention our species
+  has ever made.%
+}{\textit{Monica Anderson, \emph{Our Greatest Invention}}}
+
+\section{What a Model Is}
+
+\begin{definition}[Model, after Anderson]
+A Model is a simplification of reality produced by discarding context
+in order to make a fragment of the world tractable to formal
+manipulation. Models include scientific theories, equations, statistical
+models, computer programs, and naive personal simplifications.
+\end{definition}
+
+\begin{definition}[Reductionism, after Anderson]
+Reductionism is the use of Models.
+\end{definition}
+
+Models are the most productive intellectual tools humanity has produced.
+A Model stripped of all domain-specific detail can be applied
+by anyone trained in it, independently of whether they have any direct
+experience with the original problem context.
+Newton's $F = MA$ works in every context in which mass, force, and
+acceleration are well-defined precisely because every other detail has been
+discarded. The scientific enterprise of the past four centuries is largely
+a library of such reusable compressions.
+
+To create a Model is to perform a compression. The scientist surveys a
+domain, identifies the features that determine the phenomenon of interest,
+discards the rest, and publishes the result as a context-free representation
+that others can apply without repeating the original investigation.
+Anderson's central observation is that this compression is not a
+description of a process internal to science.
+It is a pre-scientific operation that science presupposes.
+The decision about which features to retain and which to discard must
+be made by an agent who already understands the domain at a level that
+precedes the Model.
+The Model is the output of Understanding, not its vehicle.
+
+\section{The Model--Projection Correspondence}
+
+The relationship between Anderson's Models and the formal machinery of
+Part~II is exact rather than metaphorical.
+
+\begin{proposition}[Models are Projections]
+\label{prop:models-are-projections}
+In the framework of Part~II, a Model in Anderson's sense corresponds to a
+projection $\proj : \X \to \M$ from a trajectory space $\X$ to a
+representational manifold $\M$.
+The act of Model creation is the act of specifying $\proj$.
+The context-free content of the Model is the structure of $\M$.
+The discarded context is the information in the fibers $\proj^{-1}(m)$
+for each $m \in \M$.
+\end{proposition}
+
+This correspondence makes Anderson's claims about Models testable as
+claims about projections. Model reusability becomes the claim that $\M$
+supports correct reasoning independently of which $x \in \proj^{-1}(m)$
+was the original input. Model applicability becomes the claim that
+$\proj^{-1}(\M)$ covers the region of $\X$ where the Model is being used.
+Model failure becomes the claim that the input $x$ lies in
+$\X \setminus \proj^{-1}(\M)$.
+
+\section{Compression, Utility, and the Utility Threshold}
+
+The compression effected by a Model is not a loss but a gain, under the
+right conditions. A Model that compresses a $10^6$-dimensional state
+space to a three-parameter equation does not impoverish the analyst;
+it enables the analyst to solve problems that would be computationally
+impossible without the compression. The utility of a Model is precisely
+a function of its compression ratio together with the accuracy of the
+admissibility structure it preserves.
+
+\begin{definition}[Model Utility]
+\label{def:model-utility}
+The utility of a projection $\proj : \X \to \M$ for a class of tasks
+$\mathcal{T}$ is the product of its compression (the reduction in
+representational complexity $C(\X) - C(\M)$) and its admissibility
+fidelity (the degree to which $\Adm_\M(\proj(x))$ approximates
+$\proj(\Adm(x))$ for $x$ drawn from the task distribution).
+A Model is useful when high compression and high admissibility fidelity
+can be achieved simultaneously.
+\end{definition}
+
+The scientific enterprise can be understood as the sustained search for
+projections with high utility: cases where the world happens to admit
+compressions that preserve enough admissibility structure to support
+reliable inference and action. Physics is the discipline where such
+compressions are most available. The life sciences, social sciences, and
+natural language are domains where they are most difficult to find,
+which is why those fields resist the kind of mathematical formalization
+that has been so productive in physics.
+
+\section{The Pathology: Projection Supremacy}
+
+The pathology Anderson calls Reductionism is not the use of Models.
+It is a specific failure mode that occurs when Models are mistaken
+for the reality they compress.
+Anderson's target is not compression as such but the cognitive error of
+treating the projection as complete: acting as though $\M = \X$.
+
+This error has a precise name in the framework of Part~II:
+Projection Supremacy (Definition~\ref{def:projsupremacy}).
+A system in a state of Projection Supremacy applies its reasoning
+operator $R : \M \to \M$ to inputs $x$ with non-zero projection error
+$\dH(\Adm(x), \Adm_\M(\proj(x))) > 0$, without any mechanism for
+detecting or compensating for this error.
+
+The error is not that the system has a Model.
+The error is that the system has no representation of the gap between
+the Model and the world.
+
+\begin{proposition}[The Model--Projection Supremacy Chain]
+\label{prop:mps-chain}
+The following sequence describes the generation and eventual failure of
+a Reductionist cognitive system.
+\begin{enumerate}
+  \item \textbf{Model creation.} A scientist performs Epistemic Reduction:
+    $\proj : \X \to \M$ is constructed, discarding non-salient features.
+    The result is a useful compression with well-defined applicability
+    conditions.
+  \item \textbf{Institutionalization.} The Model is published,
+    taught, and applied. Users learn $R : \M \to \M$ (the reasoning
+    procedures of the field) without learning the construction of
+    $\proj$. The original Understanding that produced the Model
+    is separated from the Model itself.
+  \item \textbf{Scope inflation.} The Model is applied in contexts
+    increasingly distant from its original derivation. The applicability
+    conditions are either unknown to the users or disregarded.
+    The projection error $\dH(\Adm(x), \Adm_\M(\proj(x)))$ grows.
+  \item \textbf{Projection Supremacy.} The system has no representation
+    of the projection error. It applies $R$ uniformly, producing
+    confident outputs even in regions where $\proj^{-1}(\M)$ does not
+    cover $x$.
+  \item \textbf{Brittleness.} Catastrophic failure occurs at the edges
+    of competence by Theorem~\ref{thm:brittleness}. The failure is
+    unmodulated because the system has no internal signal for the
+    growing discrepancy between $\M$ and $\X$.
+\end{enumerate}
+\end{proposition}
+
+\begin{remark}
+Proposition~\ref{prop:mps-chain} is not a theorem; it is a phenomenological
+description of a pattern that Proposition~\ref{prop:barrier} and
+Theorem~\ref{thm:brittleness} together explain.
+The sequence makes the transition from Anderson's critique of
+classical AI to the RSVP formal treatment legible: Anderson is describing
+the middle three steps of the chain (institutionalization, scope inflation,
+Projection Supremacy) in operational terms.
+The RSVP framework provides the geometry that explains why the fifth
+step is structurally inevitable once the fourth is in place.
+\end{remark}
+
+\section{Why Models Cannot Produce Understanding}
+
+Anderson's argument that Models cannot produce Understanding is the
+circularity corollary stated below.
+But in the expanded framework above, a more precise version can be given.
+
+\begin{proposition}[Irreducibility Barrier]
+\label{prop:barrier}
+There exists a class of problem domains, which Anderson calls
+Bizarre Domains, in which no projection $\proj : \X \to \M$ can be
+simultaneously tractable ($\dim \M \ll \dim \X$) and admissibility-faithful
+(projection error below any fixed threshold), because the admissible
+future structure of $\X$ is not well-approximated by any low-dimensional
+quotient. Reductionist methods are structurally blocked in these domains.
+\end{proposition}
+
+\begin{proof}[Proof sketch]
+A domain is Bizarre in Anderson's sense when the phenomena of interest
+are emergent: they depend on the entire configuration of the system and
+not on any low-dimensional projection of it. Formally, this means the
+equivalence classes of $\SA$ are singletons or near-singletons:
+almost every state has a unique admissible future set. In this case the
+admissibility quotient $\M_0 = \X/\SA$ is essentially isomorphic to $\X$
+itself, and no compression of substantial ratio is admissibility-faithful.
+\end{proof}
+
+\begin{corollary}[Model-Based AI Circularity]
+\label{cor:circularity}
+Any AI architecture that attempts to produce Understanding through
+hand-crafted Models is self-defeating. Understanding is the construction
+of $\proj : \X \to \M$. A hand-crafted Model is a fixed $\proj$,
+specified in advance of the data. By Theorem~\ref{thm:feyerabend},
+any feature discarded by this fixed $\proj$ cannot become salient
+through reasoning operations internal to $\M$.
+The architecture can therefore never discover admissibility-relevant
+features that its designers did not already know mattered.
+\end{corollary}
+
+\begin{remark}
+The corollary is stronger than a circularity argument.
+It is an impossibility result: a hand-crafted Model not only fails to
+generate Understanding for the features it retains; it structurally
+prevents the discovery of salience for the features it discards.
+This is the information-theoretic content of Anderson's claim that
+``models cannot create understanding'': not only is there a circular
+dependency, but the projection forecloses the discovery of its own
+inadequacy.
+\end{remark}
+
+% ──────────────────────────────────────────────────────────────
+\chapter{Holism, Epistemic Reduction, and Bizarre Domains}
+\label{ch:holism}
+
+\epigraph{%
+  Holism is the avoidance of Models.%
+}{\textit{Monica Anderson, \emph{Two Dirty Words}}}
+
+\begin{definition}[Holism, after Anderson]
+Holism is the meta-strategic avoidance of a priori Models of the problem
+domain. A Holistic system operates directly in the problem domain without
+first constructing a symbolic representation.
+\end{definition}
+
+\begin{definition}[Epistemic Reduction, after Anderson]
+Epistemic Reduction is the operation that discovers higher-level
+abstractions in lower-level data by discarding everything recognized as
+irrelevant at the current level of understanding.
+\end{definition}
+
+\begin{definition}[Salience, after Anderson]
+A feature of an input state is salient if its retention is necessary for
+the current cognitive task. Salience is task-relative, context-sensitive,
+and level-specific.
+\end{definition}
+
+Salience cannot be evaluated at the level of the feature itself:
+evaluating salience requires a higher-level context that already knows
+what the task demands. This is why deep architectures are necessary ---
+the salience of a low-level feature can only be determined from a
+higher-level perspective the low-level layer does not yet possess.
+
+\section{Bizarre Domains}
+
+Anderson's 2007 \emph{Artificial Intuition} introduced a taxonomy of
+problem domains that resist Logic-based analysis. She called these
+\emph{Bizarre Domains}, adopting a term from Stephen Kercel, and
+identified four categories of obstructing properties: Chaos, Holism,
+Ambiguity, and Emergence. A Bizarre Domain, in Anderson's definition,
+contains at least one instance of each.
+
+The taxonomy has often been read as a list of difficulties.
+In the admissibility geometry of Parts~II and~III, it is something more
+precise: a classification of the distinct ways in which projections fail.
+
+\begin{proposition}[Bizarre Domains as Projection Failure Modes]
+\label{prop:bizarre-domains}
+Anderson's four categories of Bizarre Domain properties correspond to
+four distinct failure modes of admissibility-preserving projection.
+
+\begin{enumerate}
+  \item \textbf{Chaos} (sensitive dependence on initial conditions):
+    the admissible future cone $\Adm(x)$ varies discontinuously with
+    $x$, so nearby states may have radically different admissible
+    futures. A projection $\proj$ that is continuous on $\X$ cannot
+    preserve discontinuous admissibility structure; projection error
+    $\dH(\Adm(x), \Adm_\M(\proj(x)))$ grows rapidly outside the
+    training distribution. Formally: the admissibility equivalence
+    relation $\SA$ has dense singleton classes, and the quotient
+    $\M_0 \approx \X$ is uncompressible.
+
+  \item \textbf{Holism} (irreducibility, context-dependence):
+    the admissible future cone $\Adm(x)$ depends on the full state
+    $x \in \X$ rather than on any low-dimensional projection of it.
+    Any projection $\proj : \X \to \M$ with $\dim \M \ll \dim \X$
+    necessarily violates admissibility preservation: the fiber
+    $\proj^{-1}(\proj(x))$ contains states with distinct admissible
+    futures. By Proposition~\ref{prop:barrier}, the domain is Bizarre
+    in Anderson's holistic sense precisely when $\M_0 \approx \X$.
+
+  \item \textbf{Ambiguity} (multiple valid interpretations):
+    multiple admissible continuations coexist from a single state.
+    The admissible future cone $\Adm(x)$ is not a singleton: there
+    are genuine forks in the accessible trajectory space. A
+    Logic-based system, designed around unique correct answers, is
+    structurally incapable of representing $|\Adm(x)| > 1$; it must
+    prematurely collapse the ambiguity. Anderson's prescription
+    (maintain multiple interpretations in parallel) corresponds to
+    preserving the full measure $\mu(\Adm(x))$ rather than selecting
+    a single element.
+
+  \item \textbf{Emergence} (system-level properties not recoverable
+    from components): the admissibility operator $\Adm$ is not
+    decomposable into component-wise admissibility operators.
+    If $x = (x_1, \ldots, x_n)$, then $\Adm(x) \neq \Adm_1(x_1)
+    \times \cdots \times \Adm_n(x_n)$; the accessible futures of the
+    system cannot be computed from the accessible futures of its parts.
+    This is the formal version of the claim that emergent properties
+    ``disappear when the system is taken apart.''
+\end{enumerate}
+\end{proposition}
+
+\begin{remark}
+The four categories are not independent in Anderson's taxonomy: she
+notes they tend to co-occur in the domains where intelligence is most
+needed. In the admissibility framework this is also expected: a domain
+that is genuinely holistic (failure mode~2) will also tend to exhibit
+sensitive dependence (failure mode~1) because the global context that
+determines admissibility can be disrupted by small local changes.
+The failure modes interact because they all have a common source:
+the non-decomposability of the admissibility operator.
+
+Anderson's diagnosis --- that Logic-based AI fails in Bizarre Domains
+while Holistic methods succeed --- is now a corollary of the geometry.
+Logic-based AI imposes a fixed projection before encountering the data.
+In Bizarre Domains, no fixed projection can preserve admissibility
+(failure modes~1 and~2) or represent the full structure of accessible
+futures (failure modes~3 and~4). Holistic methods defer the projection
+and learn it from the data, approximating the admissibility quotient
+rather than imposing a hand-authored one.
+\end{remark}
+
+\section{Salience and the Uphill River}
+
+Anderson adopts William Calvin's image of a river flowing uphill to
+characterize the directionality of Reduction. Physical causation flows
+downhill: from simpler descriptions to their consequences. Reduction flows
+uphill: from low-level data to high-level categories that did not exist
+before the reduction discovered them. In Part~III, the uphill river is
+identified with the admissibility quotient construction, and formalized
+as a monotone chain of quotient spaces in the Recursive Abstraction
+Theorem (Theorem~\ref{thm:recursive-abstraction}).
+
+The Bizarre Domain taxonomy now gives the uphill river a precise
+thermodynamic interpretation. A domain is Bizarre when the accessible
+future cone is not compressible. Moving uphill through the quotient
+hierarchy is the only strategy that can reduce representational
+complexity while preserving what matters, because any premature
+compression violates admissibility in at least one of the four modes.
+The river flows uphill precisely because the structure of accessible
+futures only becomes compressible at higher levels of abstraction.
+
+% ──────────────────────────────────────────────────────────────
+\chapter{Corpus Congruence, Machine Understanding, and the AGI Myth}
+\label{ch:corpus-informal}
+
+\begin{definition}[Corpus Congruence, after Anderson]
+A Holistic system Understands an input to the degree that the input is
+congruent with the system's training corpus.
+\end{definition}
+
+Anderson's core epistemological constraints:
+
+\begin{enumerate}
+\item \textit{You can only learn what you almost already know.}
+  (Patrick Winston.) New inputs must be adjacent to existing representations.
+\item \textit{All intelligences are fallible.}
+\item \textit{To detect novelty you must recognize everything familiar.}
+\item \textit{You cannot Reason about what you do not Understand.}
+\item \textit{You are known by the company you keep.}
+  (Anderson's gloss on the Yoneda Lemma.)
+\end{enumerate}
+
+\begin{definition}[Artificial General Learner]
+An Artificial General Learner is a system capable of learning to perform
+competently across wide problem domains through data exposure, without
+requiring antecedent domain-specific Understanding encoded as programs.
+\end{definition}
+
+% ============================================================
+\part{Geometric Machinery}
+
+\chapter{Trajectory Spaces and the Admissibility Operator}
+\label{ch:trajspaces}
+
+\section{Two Settings}
+
+The monograph operates in two settings, which must be kept distinct.
+
+\textbf{Metric setting.} $(\X, d_\X)$ is a compact metric space.
+The admissibility operator assigns compact subsets of $\X$, equipped
+with the Hausdorff metric. Salience, the quotient construction, and
+universality results live here. No Riemannian structure is assumed.
+
+\textbf{Smooth RSVP setting.} $\X$ additionally carries a Riemannian
+metric $g$ and a reference measure $\mu$, and $\Adm(x)$ is a measurable
+subset varying smoothly with $x$. The accessibility entropy field, its
+gradient, Hessian computations, and the familiarity potential live here.
+Statements using $\nabla$, $\nabla^2$, or differential geometry apply
+only in this setting.
+
+\begin{definition}[Trajectory Space]
+\label{def:trajspace}
+A trajectory space $(\X, d_\X)$ is a compact metric space whose points
+$x \in \X$ are complete state histories of an agent embedded in its
+environment up to the current moment.
+\end{definition}
+
+\begin{definition}[Admissibility Operator]
+\label{def:admissibility}
+An admissibility operator is a map $\Adm : \X \to 2^\X$ assigning to
+each state $x$ a compact subset $\Adm(x) \subseteq \X$ of states
+accessible under the dynamical constraints of the agent-environment
+system. The operator is \emph{Hausdorff-continuous} if $x \mapsto \Adm(x)$
+is continuous in the Hausdorff metric $\dH$.
+\end{definition}
+
+\begin{definition}[Accessibility Entropy (smooth RSVP setting)]
+\label{def:entropy}
+Let $\mu$ be a reference measure on $\X$.
+The accessibility entropy field is
+\[
+  \Ent : \X \to \mathbb{R}, \qquad \Ent(x) = \log \mu\bigl(\Adm(x)\bigr),
+\]
+defined wherever $\mu(\Adm(x)) > 0$.
+\end{definition}
+
+\begin{definition}[Admissibility Equivalence]
+\label{def:admeq}
+$x \SA y$ iff $\Adm(x) = \Adm(y)$ as subsets of $\X$.
+\end{definition}
+
+\begin{lemma}[Closure of the Equivalence Relation]
+\label{lem:closed}
+In the metric setting, if $\Adm$ is Hausdorff-continuous then $\SA$ is
+a closed equivalence relation on $\X$.
+\end{lemma}
+
+\begin{proof}
+Let $(x_n, y_n) \to (x,y)$ with $\Adm(x_n) = \Adm(y_n)$ for all $n$.
+Hausdorff-continuity gives $\Adm(x) = \lim_n \Adm(x_n) = \lim_n \Adm(y_n)
+= \Adm(y)$, so $x \SA y$.
+\end{proof}
+
+% ──────────────────────────────────────────────────────────────
+\chapter{The Admissibility Quotient and Representational Manifolds}
+\label{ch:quotient}
+
+\section{Two Notions of Admissibility-Preserving Projection}
+
+The admissibility operator $\Adm(x)$ returns a subset of $\X$, while
+the induced operator on a quotient or codomain returns a subset of that
+space. These cannot be compared as sets; an induced admissibility must
+be defined explicitly before any preservation condition can be stated.
+
+\begin{definition}[Induced Admissibility]
+\label{def:induced-adm}
+Given a surjection $\proj : \X \to \M$ and the admissibility operator
+$\Adm$ on $\X$, define the induced admissibility operator on $\M$ by
+\[
+  \Adm_\M(\proj(x)) \;:=\; \proj\bigl(\Adm(x)\bigr) \;\subseteq\; \M.
+\]
+This is well-defined whenever $\proj(x) = \proj(y)$ implies
+$\proj(\Adm(x)) = \proj(\Adm(y))$.
+\end{definition}
+
+\begin{definition}[Admissibility-Preserving and Exact Minimal Projections]
+\label{def:proj-types}
+Let $\proj : \X \to \M$ be a continuous surjection with induced
+admissibility as in Definition~\ref{def:induced-adm}.
+
+\begin{enumerate}
+\item $\proj$ is \emph{admissibility-preserving} if for all $x \in \X$:
+  \[
+    \proj\bigl(\Adm(x)\bigr) = \Adm_\M\bigl(\proj(x)\bigr).
+  \]
+  This asserts commutation with admissible dynamics. The projection may
+  still separate states with identical admissible futures (retaining
+  irrelevant information).
+
+\item $\proj$ is \emph{exact minimal admissibility-preserving} if
+  additionally:
+  \[
+    \proj(x) = \proj(y) \;\iff\; \Adm(x) = \Adm(y).
+  \]
+  This collapses states if and only if they share identical admissible
+  future sets.
+\end{enumerate}
+\end{definition}
+
+\begin{remark}
+The distinction is essential for the universal property theorem and the
+information minimality theorem. An admissibility-preserving projection in
+sense~(1) may carry arbitrary additional information about $x$ beyond its
+admissibility class. The theorems that follow state their hypotheses
+explicitly to avoid conflating these two notions.
+\end{remark}
+
+\section{The Quotient Construction}
+
+\begin{theorem}[Existence of the Admissibility Quotient]
+\label{thm:quotient}
+In the metric setting, suppose $(\X, d_\X)$ is compact Hausdorff and
+$\Adm$ is Hausdorff-continuous. Then:
+\begin{enumerate}
+  \item The quotient space $\M_0 = \X/\SA$ is compact Hausdorff.
+  \item There exists a unique continuous surjection
+    $\projA : \X \to \M_0$ satisfying
+    \[
+      \projA(x) = \projA(y) \;\iff\; \Adm(x) = \Adm(y).
+    \]
+  \item $\projA$ is exact minimal admissibility-preserving, with induced
+    admissibility $\Adm_{\M_0}([x]) := \projA(\Adm(x))$.
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+By Lemma~\ref{lem:closed}, $\SA$ is a closed equivalence relation.
+A closed equivalence relation on a compact Hausdorff space yields a
+compact Hausdorff quotient (standard quotient topology). The canonical
+projection $\projA : x \mapsto [x]$ is continuous, surjective, and
+satisfies $\projA(x) = \projA(y)$ iff $[x] = [y]$ iff $\Adm(x) = \Adm(y)$
+by definition of $\SA$. The induced admissibility is well-defined on
+equivalence classes since $[x] = [y]$ implies $\Adm(x) = \Adm(y)$
+implies $\projA(\Adm(x)) = \projA(\Adm(y))$.
+\end{proof}
+
+\section{The Universal Property and Information Minimality}
+
+\begin{theorem}[Universal Property of the Admissibility Quotient]
+\label{thm:minimal}
+Let $\proj : \X \to \M$ be exact minimal admissibility-preserving.
+Then there exists a unique continuous injection $\phi : \M_0 \to \M$
+with $\proj = \phi \circ \projA$.
+\end{theorem}
+
+\begin{proof}
+Define $\phi([x]) := \proj(x)$. Since $\proj$ is exact minimal, $[x] = [y]$
+iff $\Adm(x) = \Adm(y)$ iff $\proj(x) = \proj(y)$, so $\phi$ is
+well-defined and injective. Continuity follows from the quotient topology.
+Uniqueness follows from surjectivity of $\projA$.
+\end{proof}
+
+\begin{theorem}[Information Minimality of the Admissibility Quotient]
+\label{thm:info-minimal}
+Let $C(\M) = I(\X;\M)$ denote the mutual information between $\X$ and
+its projected image. For every exact minimal admissibility-preserving
+projection $\proj : \X \to \M$:
+\[
+  I(\X;\M) = I(\X;\M_0).
+\]
+Hence the admissibility quotient is the unique information-minimal
+representation up to isomorphism among exact minimal
+admissibility-preserving projections.
+\end{theorem}
+
+\begin{proof}
+By Theorem~\ref{thm:minimal}, $\proj = \phi \circ \projA$ with $\phi$
+injective. The data processing inequality gives $I(\X;\M) \leq I(\X;\X) $,
+while the exact minimal condition means $\proj$ preserves all and only
+the admissibility-class distinctions. Since $\phi$ is injective,
+$I(\X;\M) = I(\X;\M_0)$: neither information is created by $\phi$ nor
+is any admissibility-relevant information lost. Any representation with
+strictly less information would fail to separate some pair of states
+with distinct admissible futures, violating exact minimality.
+\end{proof}
+
+\begin{remark}
+The previous draft titled this the ``Optimal Reduction'' theorem and
+proved it as a complexity minimization. The information-theoretic
+formulation is stronger and cleaner. What is established is not that the
+quotient achieves a minimum among a class of candidates but that all
+exact minimal projections carry exactly the same information, making the
+quotient the canonical representative of this unique information class.
+The theorem is therefore better understood as a uniqueness result than an
+optimization result.
+\end{remark}
+
+\section{Entropy Preservation as Necessary Condition}
+
+\begin{proposition}[Entropy Preservation as Necessary Condition]
+\label{prop:entropy-necessary}
+In the smooth RSVP setting, if $\proj : \X \to \M$ is admissibility-pre\-ser\-ving
+in the sense of Definition~\ref{def:proj-types}(1), then
+\[
+  \Ent(x) = \Ent(\proj(x)) \qquad \text{for all } x \in \X.
+\]
+The converse holds only under the additional assumption that admissible
+future cones are uniquely determined by their measure within each
+admissibility class.
+\end{proposition}
+
+\begin{proof}
+Forward: admissibility preservation implies $\mu(\Adm(x)) =
+\mu(\Adm_\M(\proj(x)))$, hence $\Ent(x) = \Ent(\proj(x))$.
+
+Converse failure: two compact sets $A, B \subset \X$ with $\mu(A) = \mu(B)$
+but $A \neq B$ furnish a counterexample. A projection mapping $x$ to a
+point whose induced admissible set is $B$ when $\Adm(x) = A$ preserves
+entropy but not admissibility. Such sets exist generically.
+
+Converse under additional assumption: if within each $\SA$-class the
+admissible future cone is the unique compact set realizing its
+$\mu$-measure, then entropy equality implies set equality.
+\end{proof}
+
+% ──────────────────────────────────────────────────────────────
+\chapter{Salience, Novelty, and the Familiarity Potential}
+\label{ch:salience}
+
+\section{Formal Salience (Metric Setting)}
+
+\begin{theorem}[Salience--Admissibility Equivalence]
+\label{thm:salience}
+Let $D_f : \X \to \X_f$ be the deletion operator removing feature $f$.
+In the metric setting, $f$ is salient iff
+\[
+  \Adm(x) \neq \Adm(D_f(x)) \qquad \text{for some } x \in \X.
+\]
+\end{theorem}
+
+\begin{proof}
+If $f$ is not salient, removing it does not affect any admissible future
+cone, so $\Adm(x) = \Adm(D_f(x))$ for all $x$, and $f$ may be discarded
+without changing any admissibility class. Conversely, if $\Adm(x) \neq
+\Adm(D_f(x))$ for some $x$, then $x$ and $D_f(x)$ lie in different
+$\SA$-classes. Any exact minimal admissibility-preserving projection must
+distinguish them, so $f$ cannot be discarded.
+\end{proof}
+
+\section{Differential Salience (Smooth RSVP Setting)}
+
+\begin{proposition}[Salience as Entropy Gradient]
+\label{prop:entropy-grad}
+In the smooth RSVP setting, if $\Adm(x)$ varies smoothly with $x$ and
+$\Ent$ is differentiable, then the differential criterion
+\[
+  \nabla_f \Ent(x) \neq 0
+\]
+is a computable proxy for salience of feature $f$ at $x$.
+\end{proposition}
+
+\begin{remark}
+This is a proxy, not an equivalence. Zero entropy gradient does not imply
+non-salience, because equal entropy does not imply equal admissible future
+sets (Proposition~\ref{prop:entropy-necessary}). The set-theoretic
+criterion of Theorem~\ref{thm:salience} is primary; the gradient version
+is available and useful in the smooth setting.
+\end{remark}
+
+\section{The Smoothed Familiarity Potential}
+
+\begin{definition}[Smoothed Familiarity Potential]
+\label{def:familiarity}
+Let $\C \subset \X$ be compact and $\varepsilon > 0$. Define
+\[
+  \phiCe(x) = -\log\bigl(\varepsilon + d(x,\C)\bigr),
+\]
+where $d(x,\C) = \inf_{c \in \C} d_\X(x,c)$. The parameter $\varepsilon$
+prevents the singularity at corpus points where $d(x,\C) = 0$.
+The function $\phiCe$ is finite and Lipschitz on all of $\X$ for any
+$\varepsilon > 0$.
+\end{definition}
+
+\begin{definition}[Corpus Congruence and Novelty]
+\label{def:corpus-formal}
+\[
+  \CC^\varepsilon(x) = e^{-d(x,\C)/(\varepsilon + d(x,\C))},
+  \qquad
+  \Nov^\varepsilon(x) = 1 - \CC^\varepsilon(x).
+\]
+\end{definition}
+
+\begin{proposition}[Gradient of the Familiarity Potential]
+\label{prop:gradient}
+In the smooth RSVP setting, suppose $d(\,\cdot\,,\C)$ is differentiable
+at $x$ with unique nearest corpus point $c^*(x) = P_\C(x)$. Then
+\[
+  \nabla \phiCe(x)
+  = -\frac{\nabla d(x,\C)}{\varepsilon + d(x,\C)}.
+\]
+On a Riemannian manifold with Euclidean local coordinates at $x$, where
+$\nabla d(x,\C) = (x - c^*(x))\,/\,d(x,\C)$ (the unit vector toward
+$c^*(x)$), this reduces to
+\[
+  \nabla \phiCe(x)
+  = -\frac{x - c^*(x)}{(\varepsilon + d(x,\C))\,d(x,\C)}.
+\]
+The gradient points toward the corpus and defines the inferential flow
+field $\vel = \nabla \phiCe$ in the RSVP framework.
+\end{proposition}
+
+\begin{proof}
+Apply the chain rule to $\phiCe = -\log(\varepsilon + d(\,\cdot\,,\C))$:
+\[
+  \nabla \phiCe = -\frac{1}{\varepsilon + d(x,\C)}\,\nabla d(x,\C).
+\]
+On a Riemannian manifold, when $x \notin \C$ and $c^*(x)$ is unique,
+the gradient of the distance function is the unit-speed geodesic
+direction from $x$ toward $c^*(x)$, i.e.,
+$\nabla d(x,\C) = \exp_x^{-1}(c^*(x))\,/\,d(x,\C)$.
+In Euclidean local coordinates this is $(x - c^*(x))/d(x,\C)$.
+Substituting yields the stated formula.
+\end{proof}
+
+\begin{remark}
+The general formula $\nabla \phiCe = -\nabla d(\,\cdot\,,\C)\,/\,(\varepsilon + d(\,\cdot\,,\C))$
+is valid on any Riemannian manifold wherever the distance function is
+differentiable. The Euclidean simplification in local coordinates holds
+when the exponential map at $x$ is approximately isometric, which is
+guaranteed in a sufficiently small neighborhood of any point by the
+definition of a Riemannian manifold.
+\end{remark}
+
+% ============================================================
+\part{Anderson's Epistemology as Theorem}
+
+\chapter{The Priority of Understanding}
+\label{ch:priority}
+
+\begin{theorem}[Priority of Understanding]
+\label{thm:priority}
+Let $(\X, \Adm)$ be a trajectory space with admissibility operator.
+Define Understanding as the construction of $\proj : \X \to \M$, and
+Reasoning as an operator $R : \M \to \M$. Then:
+\begin{enumerate}
+  \item Reasoning requires a prior Understanding: without $\proj$, the
+    domain $\M$ of $R$ does not exist.
+  \item Understanding does not require Reasoning: the construction of
+    $\projA : \X \to \M_0$ requires only $\X$ and $\Adm$.
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+For~(1): $R$ acts on $\M$. $\M$ is the codomain of $\proj$. Without a
+prior $\proj$, $\M$ is undefined and $R$ cannot be specified.
+
+For~(2): The admissibility quotient $\M_0$ is constructed from $\X$ and
+$\SA \subset \X \times \X$, which is determined by $\Adm$. No operator
+on any manifold is presupposed. The manifold $\M_0$ is produced by the
+construction, not provided as input.
+\end{proof}
+
+\begin{remark}
+Anderson: ``You cannot Reason about that which you do not Understand.''
+Theorem~\ref{thm:priority} shows this is a structural fact about the
+logical dependency between projections and operators-on-projections.
+The proof is almost trivial once the objects are correctly defined ---
+which is itself evidence that Anderson's Priority Thesis is not a
+contingent empirical claim but a tautology of the correct depth.
+\end{remark}
+
+% ──────────────────────────────────────────────────────────────
+\chapter{The Identification Theorem: Understanding is the Quotient Construction}
+\label{ch:identification}
+
+\epigraph{%
+  Intuitive means that the system can very quickly provide solutions
+  to very complex problems but those solutions may not be correct every time.%
+}{\textit{Monica Anderson, \emph{Why AI Works}}}
+
+\section{The Philosophical Gap}
+
+Theorem~\ref{thm:priority} establishes that Reasoning requires a prior
+Understanding in the structural sense: a reasoning operator $R : \M \to \M$
+presupposes the existence of $\M$, which presupposes the construction of
+a projection $\proj : \X \to \M$.
+A mathematician will accept this.
+A philosopher may respond: the theorem shows that \emph{some}
+representational construction must precede reasoning; it does not show
+that Anderson's Understanding is \emph{identical} to the admissibility
+quotient construction rather than merely a special case of it, or a
+process that produces the quotient as a byproduct, or something
+altogether different that has the same structural dependency.
+
+The gap between
+\[
+  \text{Understanding} \supseteq \text{construction of admissibility classes}
+\]
+and
+\[
+  \text{Understanding} = \text{construction of admissibility classes}
+\]
+is the gap this chapter closes.
+
+The strategy is not definitional. We do not simply declare that
+Understanding means the quotient construction. Instead we inventory
+every operation Anderson attributes to Understanding, and prove that
+each is a property of the admissibility quotient and its associated
+fields. If Anderson's Understanding does everything the quotient
+construction does, and nothing the quotient construction does not do,
+then the identification is established empirically within the framework.
+
+\section{Anderson's Inventory of Understanding}
+
+Anderson attributes the following operations to Understanding across her
+collected writings, including the 2007 \emph{Artificial Intuition} site
+and the later \emph{Little Pills} essays. The 2007 site adds the
+specific mechanism of prediction (understood as admissibility estimation),
+the nested prediction hierarchy that produces emergent semantics, and the
+robustness and reliability properties. These are incorporated in the
+Identification Theorem below.
+
+\begin{enumerate}
+  \item \textbf{Salience detection.} Understanding determines what is
+    relevant in an input and what can be discarded.
+  \item \textbf{Corpus congruence.} Understanding measures how similar
+    a new input is to prior experience.
+  \item \textbf{Novelty recognition.} Understanding detects when an
+    input falls outside prior experience.
+  \item \textbf{Abstraction formation.} Understanding moves from
+    low-level data to high-level categories.
+  \item \textbf{Graceful degradation.} Understanding fails smoothly at
+    the edges of competence rather than catastrophically.
+  \item \textbf{Model-free operation.} Understanding operates without
+    a priori symbolic representations of the problem domain.
+  \item \textbf{Corpus-driven improvement.} Understanding improves with
+    more exposure to examples.
+  \item \textbf{Priority over Reasoning.} Understanding is a
+    precondition for Reasoning but not vice versa.
+\end{enumerate}
+
+The Identification Theorem establishes that each of these corresponds to
+a property of the admissibility quotient construction.
+
+\section{The Identification Theorem}
+
+\begin{theorem}[The Identification Theorem]
+\label{thm:identification}
+In the metric and smooth RSVP settings, the admissibility quotient
+construction $\projA : \X \to \M_0 = \X/\SA$ realizes every operation
+Anderson attributes to Understanding. Specifically:
+\begin{enumerate}
+  \item \textbf{Salience detection is admissibility sensitivity.}
+    The features retained by $\projA$ are exactly the salient features:
+    those whose deletion changes some admissible future cone.
+    (Theorem~\ref{thm:salience} and Corollary~\ref{cor:salience-derived}.)
+  \item \textbf{Corpus congruence is familiarity potential level-set structure.}
+    The degree to which $\projA$ assigns similar representations to
+    similar inputs is measured by $\CC^\varepsilon(x) = e^{-d(x,\C)/(\varepsilon+d(x,\C))}$,
+    the level-set structure of the smoothed familiarity potential
+    $\phiCe$.
+  \item \textbf{Novelty recognition is departure from the corpus manifold.}
+    The system detects novelty as $\Nov^\varepsilon(x) = 1 - \CC^\varepsilon(x)$,
+    the distance from the projected input to the learned portion of $\M_0$.
+  \item \textbf{Abstraction formation is the quotient construction itself.}
+    The move from rich trajectory space $\X$ to the compressed quotient
+    $\M_0$ is exactly the formation of abstract categories from sensory
+    particulars: states sharing admissible futures are collapsed to a
+    single abstract representative.
+  \item \textbf{Graceful degradation is continuity of the familiarity
+    potential.}
+    Since $\phiCe$ is Lipschitz on $\X$, the system's confidence
+    (measured by $\CC^\varepsilon$) degrades continuously as inputs
+    move away from the corpus. There is no sharp boundary between
+    competence and incompetence.
+    (Proposition~\ref{prop:graceful}.)
+  \item \textbf{Model-free operation is that $\projA$ is learned, not
+    hand-authored.}
+    The admissibility quotient is determined entirely by $(\X, \Adm)$.
+    No a priori symbolic representation of the domain is assumed.
+    CLIO approximates it from data without requiring a human-specified
+    model.
+    (Theorem~\ref{thm:clio-convergence}.)
+  \item \textbf{Corpus-driven improvement is CLIO convergence.}
+    As corpus size increases, the empirical CLIO minimizer converges in
+    probability to $\projA$, realizing Anderson's observation that
+    continued learning mainly corrects corner-case misunderstandings.
+    (Theorem~\ref{thm:clio-convergence}.)
+  \item \textbf{Priority over Reasoning is structural dependency.}
+    The reasoning operator $R : \M_0 \to \M_0$ cannot be specified
+    before $\M_0$ exists, and $\M_0$ is produced by $\projA$.
+    (Theorem~\ref{thm:priority}.)
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+Each item is a reference to a previously established result.
+Items~(1), (6), (7), and (8) are proved theorems.
+Items~(2) and (3) are consequences of Definition~\ref{def:corpus-formal}
+and Proposition~\ref{prop:gradient}.
+Item~(4) is the definition of the quotient: two states are collapsed iff
+their admissible futures agree, which is precisely the formation of an
+abstract category from instances.
+Item~(5) follows from the Lipschitz property of $\phiCe$: for any
+$\varepsilon > 0$, $|\phiCe(x) - \phiCe(y)| \leq \|x - y\| / \varepsilon$,
+so $\CC^\varepsilon$ varies continuously.
+\end{proof}
+
+\section{What the Identification Establishes}
+
+Theorem~\ref{thm:identification} does not claim that Anderson had the
+admissibility quotient in mind. It claims something stronger and more
+useful: that every operation she attributes to Understanding, described
+in informal epistemological language developed independently of this
+framework, turns out to be a property of the admissibility quotient
+construction that would have been built from the requirements of
+admissible dynamics alone.
+
+This is the sense in which Anderson's framework is derived rather than
+merely translated. She arrived at the correct operational characterization
+of a mathematical object she did not have the tools to construct. The
+identification is not imposed on her ideas from outside; it is
+extracted from them by asking what mathematical structure would realize
+each property she attributes to Understanding.
+
+\section{What the Identification Does Not Establish}
+
+The identification is not a proof that the brain implements the
+admissibility quotient, or that any specific neural architecture does so.
+It is a proof that Anderson's informal characterization of Understanding
+is extensionally equivalent to the quotient construction within this
+framework. Whether the brain is best modeled by this framework is a
+separate empirical question that the theorem does not address.
+
+Similarly, the identification does not preclude other mathematical
+formalizations of Understanding that are also consistent with Anderson's
+characterization. The admissibility quotient construction is sufficient
+to realize all of Anderson's attributed properties; whether it is
+necessary is the subject of Conjecture~\ref{conj:curvature} and further
+work on the geometry of learning.
+
+% ──────────────────────────────────────────────────────────────
+\chapter{The Anderson Projection Theorem}
+\label{ch:andersonthm}
+
+\begin{theorem}[The Anderson Projection Theorem]
+\label{thm:anderson}
+In the metric setting, let $(\X, \Adm)$ be a trajectory space with
+Hausdorff-continuous admissibility operator. The following are equivalent.
+\begin{enumerate}
+  \item A projection $\proj : \X \to \M$ performs Anderson's Epistemic
+    Reduction: it retains exactly those distinctions between states
+    relevant to admissible futures and discards all others.
+  \item $\proj$ is exact minimal admissibility-preserving:
+    $\proj(x) = \proj(y)$ iff $\Adm(x) = \Adm(y)$.
+  \item $\proj$ factors through the admissibility quotient as a
+    homeomorphism: $\proj = \phi \circ \projA$ for some homeomorphism
+    $\phi : \M_0 \to \M$.
+  \item The features discarded by $\proj$ are exactly the non-salient
+    features: those whose deletion leaves every admissible future cone
+    unchanged.
+\end{enumerate}
+Moreover, in the smooth RSVP setting, each of~(1)--(4) implies
+entropy preservation: $\Ent(x) = \Ent(\proj(x))$ for all $x$.
+Entropy preservation alone does not imply any of~(1)--(4).
+\end{theorem}
+
+\begin{proof}
+$(1) \Leftrightarrow (4)$: Anderson's Reduction retains the salient and
+discards the non-salient. By Theorem~\ref{thm:salience}, non-salient
+features are exactly those whose deletion leaves every admissible future
+cone unchanged. So (1) holds iff $\proj$ discards exactly those features,
+which is (4).
+
+$(2) \Leftrightarrow (4)$: Exact minimal admissibility-preservation means
+$\proj$ collapses $x$ and $y$ iff $\Adm(x) = \Adm(y)$. This collapses
+exactly the distinctions between states with identical admissible futures,
+retaining exactly the salience-relevant distinctions, which is (4).
+
+$(2) \Rightarrow (3)$: By Theorem~\ref{thm:minimal}, $\proj$ factors
+through $\projA$ via an injection $\phi$. Since $\proj$ is surjective,
+$\phi$ is bijective, hence a homeomorphism by compactness of $\M_0$.
+
+$(3) \Rightarrow (2)$: If $\proj = \phi \circ \projA$ with $\phi$ a
+homeomorphism, then $\proj(x) = \proj(y)$ iff $\projA(x) = \projA(y)$
+iff $\Adm(x) = \Adm(y)$.
+
+Entropy preservation: follows from Proposition~\ref{prop:entropy-necessary},
+since exact minimal admissibility-preservation implies admissibility
+preservation in sense~(1) of Definition~\ref{def:proj-types}. Converse
+failure is the content of Proposition~\ref{prop:entropy-necessary}.
+\end{proof}
+
+\begin{corollary}[Salience Criterion Derived]
+Anderson's instruction that Reduction retains the salient and discards
+the non-salient is equivalent to requiring that Reduction is an exact
+minimal admissibility-preserving projection.
+\end{corollary}
+
+\begin{remark}
+A feature matters in Anderson's sense precisely because it bends the
+admissible future space. Salience is not psychological; it is geometric.
+The theorem says that Epistemic Reduction, admissibility-preservation,
+factoring through the quotient, and salience-filtering are four
+characterizations of the same mathematical object.
+\end{remark}
+
+% ──────────────────────────────────────────────────────────────
+\chapter{The CLIO Operator and Corpus-Driven Learning}
+\label{ch:clio}
+
+\section{The CLIO Functional}
+
+\begin{definition}[CLIO Reduction Functional]
+\label{def:clio}
+The CLIO reduction functional is
+\[
+  L_{\mathrm{CLIO}}[\proj]
+  = L_{\mathrm{task}}(\proj)
+  + \lambda\, \mathbb{E}_{x \sim \C}\bigl[\dH\bigl(\Adm(x),\,
+    \Adm_\M(\proj(x))\bigr)\bigr]
+  + \mu\, I(\X;\M),
+\]
+where $L_{\mathrm{task}}$ is task-specific performance loss,
+the second term is the empirical admissibility loss, and $\lambda,\mu>0$
+are regularization parameters.
+\end{definition}
+
+\begin{theorem}[CLIO Consistency, Conditional Form]
+\label{thm:clio-convergence}
+Assume:
+\begin{enumerate}
+  \item[(C1)] The hypothesis class $\Pi$ of candidate projections is
+    compact in a suitable function space topology.
+  \item[(C2)] The CLIO loss satisfies uniform convergence over $\Pi$:
+    empirical loss converges uniformly to population loss as
+    $|\C_n| \to \infty$.
+  \item[(C3)] The admissibility quotient projection $\projA$ is
+    identifiable as the unique population minimizer of $L_{\mathrm{CLIO}}$
+    within $\Pi$.
+\end{enumerate}
+Then $\proj_n^* := \argmin_{\proj \in \Pi} L_{\mathrm{CLIO}}[\proj]$
+over $\C_n$ converges in probability to $\projA$ as $n \to \infty$.
+\end{theorem}
+
+\begin{proof}
+Under (C1) and (C2), any sequence of empirical minimizers has population
+risk converging to the minimum (standard M-estimation). Under (C3), the
+unique population minimizer is $\projA$, so convergence in probability
+follows by the well-specification argument.
+\end{proof}
+
+\begin{remark}
+Conditions (C1)--(C3) are non-trivial. Condition~(C1) is a model
+complexity constraint. Condition~(C2) is a uniform law of large numbers
+that holds under standard covering number bounds. Condition~(C3) requires
+that CLIO uniquely identifies the admissibility quotient, which depends on
+adequate corpus coverage of $\X$. These conditions cannot be assumed
+automatically and must be verified application by application.
+\end{remark}
+
+% ──────────────────────────────────────────────────────────────
+\chapter{Admissibility-Compatible Learning and Local Extension Stability}
+\label{ch:learning}
+
+\section{Formalization of Learning}
+
+The admissibility quotient is initially constructed from a fixed $\X$ and
+$\Adm$. Learning corresponds to incorporating a novel trajectory $u \in \X$
+into the corpus, which updates the projection to cover the new equivalence
+class $[u]$.
+
+\begin{definition}[Learning Extension Operator]
+\label{def:learning-ext}
+Let $\M_0 = \X/\SA$ be the admissibility quotient and $u \in \X$ a novel
+input not previously represented in the corpus. Define the learning
+extension operator
+\[
+  L_u : \M_0 \;\longrightarrow\; \M_0',
+\]
+where $\M_0' = (\X \cup \{u\})/\SA'$ is the admissibility quotient after
+incorporating $u$, and $\SA'$ is the induced equivalence relation on the
+extended trajectory space.
+\end{definition}
+
+\begin{definition}[Admissibility-Compatible Learning]
+\label{def:adm-compat-learning}
+The learning extension $L_u$ is \emph{admissibility-compatible} if
+$\M_0'$ is diffeomorphic to a smooth extension of $\M_0$ as a Riemannian
+manifold. That is, there exists an open embedding $\iota : \M_0
+\hookrightarrow \M_0'$ such that $L_u \circ \iota$ is the identity on
+the original quotient, and the smooth structure of $\M_0'$ restricts to
+that of $\M_0$ on $\iota(\M_0)$.
+\end{definition}
+
+\section{Local Extension Stability}
+
+\begin{theorem}[Local Extension Stability]
+\label{thm:local-extension}
+In the smooth RSVP setting, suppose $\Ent \in C^2(\M_0)$ and let
+$m_u = \projA(u) \in \M_0'$ be the projected location of the novel
+input. If
+\[
+  \sup_{m \in U}\, \|\nabla^2 \Ent(m)\| < K_{\max}
+\]
+for some open neighborhood $U$ of $m_u$ in $\M_0'$, then the learning
+extension $L_u$ produces a locally stable deformation of admissibility
+structure: for all $h$ in the tangent space at $m_u$,
+\[
+  \bigl|\Ent(m_u + h) - \Ent(m_u)\bigr|
+  \;\leq\;
+  \|\nabla \Ent(m_u)\|\,\|h\|
+  + \tfrac{1}{2}\, K_{\max}\,\|h\|^2.
+\]
+In particular, the admissibility geometry varies continuously near
+$m_u$ and the learning extension introduces no singularity in $\Ent$.
+\end{theorem}
+
+\begin{proof}
+The bound follows directly from Taylor's theorem applied to $\Ent \in C^2$
+at $m_u$:
+\[
+  \Ent(m_u + h)
+  = \Ent(m_u)
+  + \nabla \Ent(m_u) \cdot h
+  + \tfrac{1}{2}\, h^T (\nabla^2 \Ent)(\xi)\, h
+\]
+for some $\xi$ on the segment from $m_u$ to $m_u + h$, which lies in $U$
+for $\|h\|$ sufficiently small. The operator norm bound
+$\|(\nabla^2 \Ent)(\xi)\| < K_{\max}$ gives
+$|h^T (\nabla^2 \Ent)(\xi) h| \leq K_{\max}\|h\|^2$,
+and the stated inequality follows by the triangle inequality.
+\end{proof}
+
+\begin{remark}
+Theorem~\ref{thm:local-extension} is a genuine one-directional result:
+bounded curvature near $m_u$ implies locally stable deformation. The
+converse --- that locally stable deformation requires bounded curvature
+--- is not proved here and is expected to be false in full generality,
+since other geometric quantities (torsion, higher-order terms) may
+compensate for large Hessian in special cases.
+\end{remark}
+
+\begin{conjecture}[Curvature--Admissibility Threshold]
+\label{conj:curvature}
+Admissibility-compatible learning in the sense of
+Definition~\ref{def:adm-compat-learning} holds if and only if the
+Hessian of $\Ent$ is bounded by a threshold $K_{\max}$ determined by
+the global geometry of $\M_0$.
+
+The missing ingredient for a proof in the forward direction is a result
+showing that unbounded Hessian necessarily produces a singularity (rather
+than merely large but finite deformation) in the admissibility structure.
+The missing ingredient for the converse is a characterization of the
+conditions under which large Hessian is avoidable through reparametrization.
+\end{conjecture}
+
+\begin{corollary}[Winston's Condition, Conditional]
+\label{cor:winston}
+Under the hypotheses of Theorem~\ref{thm:local-extension}, Patrick
+Winston's aphorism ``you can only learn what you almost already know''
+follows in the following sense: learning extension is locally stable when
+the novel input projects to a region of $\M_0$ with bounded curvature
+in $\Ent$, i.e., when the new equivalence class is geometrically
+accessible from the existing manifold structure.
+\end{corollary}
+
+% ──────────────────────────────────────────────────────────────
+\chapter{Why Deep Learning Works: Approximate Admissibility Reduction}
+\label{ch:deeplearning}
+
+\epigraph{%
+  Deep Learning Performs Epistemic Reduction.%
+}{\textit{Monica Anderson, \emph{Why Deep Learning Works}}}
+
+\section{Anderson's Claim}
+
+Anderson argued repeatedly that the success of deep learning after 2012
+is explained by the fact that deep neural networks perform Epistemic
+Reduction autonomously, without requiring a human agent to first
+understand and encode the domain. She further argued that the reason
+deep networks must be deep is that Reduction must be performed
+hierarchically: a feature can only be identified as salient or
+non-salient at the level of abstraction where its relevance becomes
+apparent, and this level is not available until lower levels have
+already performed their reductions.
+
+This chapter shows that these claims follow as theorems from the
+framework developed in Parts~II and III, given a standard account of
+what deep learning does computationally.
+
+\section{Deep Learning as Sequential Partial Quotient}
+
+\begin{definition}[Layer-wise Projection]
+\label{def:layerwise}
+A deep neural network with $L$ layers computes a composition of
+projections
+\[
+  \X = \X^{(0)}
+  \;\xrightarrow{\proj^{(1)}}\;
+  \X^{(1)}
+  \;\xrightarrow{\proj^{(2)}}\;
+  \cdots
+  \;\xrightarrow{\proj^{(L)}}\;
+  \X^{(L)},
+\]
+where each $\proj^{(\ell)} : \X^{(\ell-1)} \to \X^{(\ell)}$ is a
+parametric map (a layer) and the composition
+$\proj = \proj^{(L)} \circ \cdots \circ \proj^{(1)}$
+is the full network projection.
+\end{definition}
+
+\begin{proposition}[Layered Reduction as Sequential Partial Quotient]
+\label{prop:layered-reduction}
+Each layer $\proj^{(\ell)}$ performs a partial admissibility quotient:
+it maps states that are indistinguishable at abstraction level $\ell$
+(given the representations available at level $\ell-1$) to the same
+output, while preserving distinctions that are admissibility-relevant
+at that level. The full network projection approximates the global
+admissibility quotient $\projA : \X \to \M_0$.
+\end{proposition}
+
+\begin{remark}
+Proposition~\ref{prop:layered-reduction} is an interpretive claim, not
+a theorem from the preceding machinery. It identifies the computational
+function of each layer with a step in the admissibility quotient
+hierarchy of Theorem~\ref{thm:recursive-abstraction}. The precise
+conditions under which a trained layer implements a partial admissibility
+quotient depend on the training objective, architecture, and data
+distribution, and are not derived here. The proposition frames the
+relationship between deep learning and the quotient hierarchy; the
+CLIO Convergence Theorem (Theorem~\ref{thm:clio-convergence}) makes the
+convergence claim precise under stated conditions.
+\end{remark}
+
+\section{Why Deep Learning Must Be Deep: A Derived Theorem}
+
+\begin{theorem}[Depth is Necessary for Multi-Level Salience]
+\label{thm:depth-necessary}
+In the metric setting, suppose the admissibility quotient hierarchy
+$\X_0 \to \X_1 \to \cdots \to \X_N$ has depth $N > 1$: the sequence
+does not stabilize after one step.
+Then no single-layer projection $\proj : \X \to \M$ can simultaneously
+achieve the salience-filtering performed by the full hierarchy.
+\end{theorem}
+
+\begin{proof}
+By Theorem~\ref{thm:recursive-abstraction}, the hierarchy satisfies
+$I(\X_{n+1}) \leq I(\X_n)$ with equality iff the $\SA_n$-classes are
+all singletons (no compression at level $n$). If the hierarchy has depth
+$N > 1$, there exist features $f$ that are salient at level $k > 1$ but
+not at level $0$: features whose admissibility-sensitivity is only
+revealed after lower-level reductions have been applied.
+
+A single-layer projection $\proj : \X \to \M$ operates at level $0$.
+By Theorem~\ref{thm:feyerabend}, any feature discarded by $\proj$ cannot
+become salient through operations internal to $\M$. Features that are
+non-salient at level $0$ but salient at level $k > 1$ would therefore
+be discarded by $\proj$ and could never be identified. The single-layer
+projection therefore cannot achieve the salience-filtering that requires
+recognition at level $k$.
+\end{proof}
+
+\begin{remark}
+Theorem~\ref{thm:depth-necessary} is the formal version of Anderson's
+claim that ``Deep Learning is deep because you can only do Reduction by
+discarding the irrelevant if you Understand what is relevant and
+irrelevant at each different level of Abstraction.'' The theorem shows
+this is not an architectural preference but a logical necessity: when
+the admissibility quotient hierarchy has non-trivial depth, a single
+compression step cannot replicate its filtering. Depth is structurally
+required.
+\end{remark}
+
+\section{Deep Learning Converges to the Admissibility Quotient}
+
+The central synthesis theorem combines the CLIO Convergence result with
+the layer-wise structure of deep networks.
+
+\begin{theorem}[Deep Learning as Approximate Admissibility Reduction]
+\label{thm:dl-convergence}
+Under the conditions of Theorem~\ref{thm:clio-convergence} and the
+layer-wise architecture of Definition~\ref{def:layerwise}, the full
+network projection $\proj_n$ trained on corpus $\C_n$ satisfies:
+\[
+  \proj_n \;\xrightarrow{p}\; \projA \qquad \text{as } |\C_n| \to \infty,
+\]
+where $\projA$ is the admissibility quotient projection.
+Deep learning is therefore a numerical approximation to the admissibility
+quotient, carried out by hierarchical partial reduction across layers.
+\end{theorem}
+
+\begin{proof}
+The full network projection $\proj_n$ is the composition
+$\proj^{(L)}_n \circ \cdots \circ \proj^{(1)}_n$. Under the conditions
+(C1)--(C3) of Theorem~\ref{thm:clio-convergence}, the empirical CLIO
+minimizer over the corpus $\C_n$ converges in probability to $\projA$.
+Since $\proj_n$ is the CLIO minimizer within the layer-wise hypothesis
+class, the convergence follows from Theorem~\ref{thm:clio-convergence}
+applied to this class.
+\end{proof}
+
+\begin{remark}
+Theorem~\ref{thm:dl-convergence} is the most important bridge in the
+monograph between Anderson's informal epistemology and contemporary AI.
+Anderson argued that deep learning succeeds because it performs
+Epistemic Reduction. The theorem makes this precise: under CLIO
+consistency conditions, the learned network projection converges to the
+admissibility quotient --- the unique information-minimal
+admissibility-preserving representation of the domain.
+
+Deep learning succeeds not because it finds a good heuristic for the
+task but because, given sufficient data and an adequate architecture,
+it approximates the canonical compression that the geometry of the
+domain demands. The data processing inequality ensures this cannot be
+beaten by any fixed-architecture system; the CLIO functional ensures
+that the network is rewarded for admissibility preservation; and the
+convergence theorem ensures that the approximation improves with data.
+
+Anderson's claim --- that understanding is what deep learning provides
+and symbolic AI cannot --- is now a theorem: deep learning converges to
+the admissibility quotient, which is the exact mathematical object that
+Anderson's Understanding requires.
+\end{remark}
+
+\section{What Deep Learning Cannot Do}
+
+The convergence result has a natural boundary. Deep learning approximates
+the admissibility quotient of the domain from which the corpus is drawn.
+It does not construct an admissibility quotient for problems outside this
+domain, for problems requiring extrapolation beyond the corpus manifold,
+or for problems whose admissibility structure changes faster than the
+corpus can track.
+
+\begin{corollary}[Generalization Boundary]
+\label{cor:gen-boundary}
+Under the conditions of Theorem~\ref{thm:dl-convergence}, the learned
+projection $\proj_n$ converges to $\projA$ within the corpus-covered
+region of $\X$. For inputs $x$ with $\Nov^\varepsilon(x)$ close to one
+(far from the corpus manifold), the projection error
+$\dH(\Adm(x), \Adm_{\M}(\proj_n(x)))$ may be large.
+The system's behavior in this region is governed by the smoothed
+familiarity potential $\phiCe$: it will generalize in the direction of
+the nearest corpus region, but with increasing error as corpus distance
+grows.
+\end{corollary}
+
+\begin{remark}
+Corollary~\ref{cor:gen-boundary} formalizes why large language models
+and deep networks can perform impressively within their training
+distribution while failing unexpectedly on inputs that are semantically
+novel. The failure is not a flaw in deep learning per se; it is a direct
+consequence of what deep learning is: an approximation to the admissibility
+quotient of the training distribution. Inputs outside that distribution
+are handled by the familiarity potential, which provides a continuous
+signal of distance from the learned manifold but makes no guarantees
+about admissibility preservation at large distances.
+\end{remark}
+
+% ──────────────────────────────────────────────────────────────
+\chapter{Brittleness, Projection Supremacy, and Holistic Robustness}
+\label{ch:brittleness}
+
+\begin{definition}[Projection Supremacy]
+\label{def:projsupremacy}
+A cognitive system exhibits Projection Supremacy if it applies $R : \M \to \M$
+in contexts where $\dH(\Adm(x), \Adm_\M(\proj(x))) > 0$ without
+detecting or compensating for this error.
+\end{definition}
+
+\begin{theorem}[Brittleness from Projection Supremacy]
+\label{thm:brittleness}
+A system exhibiting Projection Supremacy produces unmodulated errors for
+inputs $x$ with $\dH(\Adm(x), \Adm_\M(\proj(x))) > 0$, because it has
+no internal signal for confidence degradation.
+\end{theorem}
+
+\begin{proof}
+Where projection error is zero, the system's responses are calibrated
+to the correct admissible future set. Where error is positive, the system
+applies $R$ to an incorrect admissible future representation. Projection
+Supremacy means the system has no variable representing the discrepancy;
+therefore no mechanism modulates its confidence or output distribution.
+Errors are unmodulated by the degree of projection failure.
+\end{proof}
+
+\begin{remark}
+This formalizes Anderson's observation that classical AI systems work in
+the laboratory but fail spectacularly at the edges of competence: the
+hand-crafted model is treated as complete, so graceful degradation is
+structurally impossible.
+\end{remark}
+
+\begin{proposition}[Holistic Graceful Degradation]
+\label{prop:graceful}
+A Holistic system with smoothed familiarity potential $\phiCe$ degrades
+gracefully at the edges of competence: for inputs with large
+$\Nov^\varepsilon(x)$, the gradient $\nabla \phiCe(x)$ provides a
+continuous signal of distance from the corpus, enabling modulation of
+the output distribution.
+\end{proposition}
+
+\section{Interpretive Attractors and Epistemic Identity}
+\label{sec:interp-attractors}
+
+A recurring feature of cognition is that understanding rarely exists as
+an isolated collection of propositions. Instead, it tends to organize
+itself into coherent interpretive frameworks through which new
+experiences are filtered and evaluated. This phenomenon has a natural
+formalization in admissibility geometry.
+
+\begin{definition}[Interpretive Attractor]
+\label{def:interpretive-attractor}
+An \emph{interpretive attractor} is a compact region $F \subseteq \M_0$
+of the admissibility quotient satisfying two conditions:
+\begin{enumerate}
+  \item \textbf{Internal accessibility:} For $m, m' \in F$, the
+    transition $m \to m'$ lies in $\Adm_{\M_0}(m)$, so movement within
+    $F$ is admissible.
+  \item \textbf{Boundary asymmetry:} Transitions from $F$ to
+    $\M_0 \setminus F$ have significantly higher cost (in terms of
+    admissibility loss or familiarity potential) than transitions
+    within $F$:
+    \[
+      \inf_{m \in F,\, m' \notin F}
+        \dH\bigl(\Adm_{\M_0}(m),\, \{m'\}\bigr)
+      \;\gg\;
+      \sup_{m, m' \in F}
+        \dH\bigl(\Adm_{\M_0}(m),\, \{m'\}\bigr).
+    \]
+\end{enumerate}
+An interpretive framework is a cognitive system whose learned projection
+$\proj_n$ maps a large fraction of the corpus into a single interpretive
+attractor $F$.
+\end{definition}
+
+\begin{proposition}[Interpretive Frameworks as Self-Reinforcing Projections]
+\label{prop:framework-selfreinforce}
+In the smooth RSVP setting, if a system's projection $\proj_n$ is
+concentrated in an interpretive attractor $F$, then new inputs $u$ with
+$\proj_n(u) \in F$ increase $\CC^\varepsilon(u)$ and reinforce the
+existing manifold structure, while inputs $u$ with $\proj_n(u) \notin F$
+generate a gradient $\nabla \phiCe(u)$ pointing toward $F$ rather than
+toward the true corpus region. The attractor therefore becomes
+self-reinforcing: new experience is assimilated into the existing
+framework rather than expanding the projection.
+\end{proposition}
+
+\begin{remark}
+Proposition~\ref{prop:framework-selfreinforce} does not imply
+irrationality. It is a natural consequence of epistemic reduction.
+Any system that compresses experience into a tractable representation
+must privilege certain distinctions over others. Once a projection has
+been learned, new observations are interpreted through that projection.
+Understanding therefore produces not merely representations of reality
+but stable \emph{modes of seeing} reality. These modes are what
+Anderson's epistemology means by frameworks: not theories in the
+formal sense but attractors in the admissibility manifold that organize
+incoming experience before it reaches the level of explicit reasoning.
+\end{remark}
+
+\section{Communities as Shared Corpora}
+\label{sec:community-corpora}
+
+Corpus Congruence is typically discussed at the level of individual
+systems. But many of the most powerful forms of understanding arise
+collectively. The admissibility framework extends naturally to this case.
+
+\begin{definition}[Distributed Corpus]
+\label{def:distributed-corpus}
+A \emph{distributed corpus} is a collection $\{\C_i\}_{i \in I}$ of
+individual corpora maintained by agents $i \in I$, together with an
+exchange process $\mathcal{E} : \C_i \times \C_j \to \C_i'$ by which
+agents modify their corpora through interaction with others.
+The \emph{community corpus} is the aggregate $\C = \bigcup_i \C_i$.
+\end{definition}
+
+\begin{proposition}[Community Semantic Manifold]
+\label{prop:community-manifold}
+Under repeated exchange, agents in a community converge toward a
+shared admissibility quotient $\M_{\mathrm{comm}} = \C/\SA_{\C}$,
+the admissibility quotient of the community corpus. Agents who share
+more exchange time develop closer familiarity potentials $\phiCe_i$
+and therefore more closely aligned salience structures.
+\end{proposition}
+
+\begin{remark}
+This observation explains why individuals who encounter identical external
+events may arrive at radically different conclusions. The difference need
+not arise from logical disagreement. It arises because the events are
+projected through different familiarity potentials $\phiCe_i$, placing
+them at different locations within distinct community manifolds. An event
+that is highly familiar within one community's quotient manifold may be
+novel within another's, producing different salience evaluations,
+different interpretation bundles, and therefore different responses.
+
+Understanding is therefore not merely personal. It is a collective
+geometric structure maintained through continual interaction among many
+learners. The community corpus is the aggregate object; the community
+semantic manifold is its admissibility quotient; and social communication
+is the exchange process that keeps the distributed corpus coherent over
+time.
+\end{remark}
+
+\section{Projection Capture and Epistemic Rigidity}
+\label{sec:projection-capture}
+
+The success of a projection can become the source of its own failure.
+This section formalizes a phenomenon that extends Projection Supremacy
+from a static condition to a dynamic one.
+
+\begin{definition}[Projection Capture]
+\label{def:projection-capture}
+A system exhibits \emph{projection capture} when the learned projection
+$\proj_n$ has become insulated from revision: the CLIO update gradient
+$\nabla L_{\mathrm{CLIO}}[\proj_n]$ is suppressed to near zero by the
+system's own confidence structure, so that even inputs with large
+$\Nov^\varepsilon(x)$ do not produce meaningful updates to $\proj_n$.
+\end{definition}
+
+\begin{proposition}[Projection Capture as Dynamic Projection Supremacy]
+\label{prop:capture-dynamic}
+Projection capture is the dynamic analogue of Projection Supremacy.
+Projection Supremacy (Definition~\ref{def:projsupremacy}) is a static
+condition: the system applies $R$ without detecting projection error.
+Projection capture is a process condition: the system has lost the
+ability to \emph{update} $\proj$ even when projection error is present,
+because the familiarity signal $\CC^\varepsilon(x)$ has been saturated
+by prior reinforcement within the interpretive attractor.
+\end{proposition}
+
+\begin{proof}
+By Definition~\ref{def:projection-capture}, the CLIO update gradient is
+suppressed. This means that inputs with positive projection error
+$\dH(\Adm(x), \Adm_\M(\proj(x))) > 0$ fail to drive $\proj$ toward
+$\projA$. The system therefore persists in a state of Projection
+Supremacy across all inputs in the attractor's basin of influence,
+satisfying Definition~\ref{def:projsupremacy} dynamically rather than
+by initial construction.
+\end{proof}
+
+\begin{remark}
+Projection capture differs from ordinary error. An incorrect belief can
+be corrected within an existing manifold by operations $R : \M \to \M$.
+Projection capture occurs when the manifold itself becomes insulated
+from revision: new admissibility structures cannot become salient
+because they are discarded by a projection that has become self-sealing.
+By Theorem~\ref{thm:feyerabend} (Feyerabend--Anderson Constraint),
+features discarded by a fixed projection cannot be recovered through
+internal operations. Projection capture is precisely the condition where
+a formerly learned projection has become, in functional terms,
+indistinguishable from a fixed one.
+
+The health of an epistemic system therefore depends not only on the
+quality of its current projection but on its capacity to revise that
+projection when new admissibility structures become visible. This is the
+formal content of the Admissible Discovery Principle
+(Definition~\ref{def:adp}): the projection must remain open to revision
+until the data is sufficient to determine which features are genuinely
+admissibility-sensitive. Projection capture is the violation of this
+principle by a system whose prior successes have insulated it from the
+data it most needs.
+\end{remark}
+
+% ──────────────────────────────────────────────────────────────
+\chapter{Corpus Congruence as Potential Field}
+\label{ch:potential}
+
+\begin{proposition}[Potential Subsumes Similarity]
+$\CC^\varepsilon(x)$ is monotonically related to distance from $\C$:
+large when $x$ is near $\C$, small when far. The level sets of $\phiCe$
+recover Anderson's similarity ordering; the gradient $\nabla\phiCe$
+adds the directional structure needed for inference as a dynamical process.
+\end{proposition}
+
+\begin{remark}
+Anderson's original Corpus Congruence is a similarity measure. The
+potential field formulation enriches this: the corpus defines a potential
+landscape over $\X$, and $\nabla \phiCe$ is the RSVP inferential flow
+field $\vel$. The system does not merely compare inputs against stored
+examples; it moves through a semantic potential landscape generated by
+the corpus. The level-set structure recovers Anderson's ordering, and the
+gradient structure models inference as a dynamical process.
+\end{remark}
+
+% ============================================================
+\part{Extensions and Applications}
+
+% ──────────────────────────────────────────────────────────────
+\chapter{Artificial Intuition as Learned Projection}
+\label{ch:artificial-intuition}
+
+\epigraph{%
+  Intuition operates on events, not theories.%
+}{\textit{Monica Anderson, \emph{Artificial Intuition}, 2007}}
+
+\section{The 2007 Framework and Its Central Claim}
+
+Anderson's 2007 \emph{Artificial Intuition} website introduced the core
+epistemological programme that her later \emph{Little Pills} essays
+refined. Its central claim is compressed in the sentence that opens this
+chapter: intuition operates on events, not theories.
+
+Read literally, the claim is incomplete. A system that operates on events
+must have some internal structure to do so usefully. Anderson acknowledges
+this elsewhere, discussing world models, semantics, and concept hierarchies.
+The apparent contradiction dissolves with the correct gloss: Intuition is
+\emph{pre-theoretical} rather than theory-free. A logical system begins
+with an explicit symbolic model and derives consequences. An intuitive
+system begins with admissibility structure --- correlations, precedents,
+accessible future cones --- and only later develops abstractions from that
+structure. The representational manifold appears at the end, not the
+beginning. This is precisely the ordering captured by the admissibility
+quotient construction and formalized as the Priority Theorem
+(Theorem~\ref{thm:priority}).
+
+\section{Artificial Intuition Defined}
+
+\begin{definition}[Artificial Intuition]
+\label{def:artificial-intuition}
+Artificial Intuition is the process of approximating the admissibility
+quotient projection $\projA : \X \to \M_0$ from experience alone, without
+first specifying a symbolic theory of the domain:
+\[
+  \text{Artificial Intuition}
+  \;=\;
+  \text{approximation of } \projA : \X \to \M_0
+  \text{ from corpus } \C \subset \X.
+\]
+No symbolic theory appears in the construction.
+\end{definition}
+
+\begin{remark}
+Definition~\ref{def:artificial-intuition} does not define the cognitive
+phenomenon of human intuition. It defines what Anderson's programme was
+constructing: a system that learns from events, produces semantics and
+prediction, and does so without explicit models. Each of those informal
+properties is a consequence of corpus-driven admissibility quotient
+approximation.
+\end{remark}
+
+\section{Intuitive States and Admissibility Neighborhoods}
+
+\begin{definition}[Intuitive State]
+\label{def:intuitive-state}
+An \emph{intuitive state} at $x \in \X$ is a probability measure
+$I_x \in \mathcal{P}(\X)$ supported primarily on the admissibility
+neighborhood of $x$:
+\[
+  \operatorname{supp}(I_x)
+  \;\subseteq\;
+  \bigl\{
+    y \in \X : \dH\bigl(\Adm(x), \Adm(y)\bigr) < \varepsilon
+  \bigr\}.
+\]
+An intuitive state stores neighborhoods in admissibility geometry,
+not rules or propositions.
+\end{definition}
+
+\begin{remark}
+Anderson writes that intuition ``tracks events'' and stores
+``correlations between preceding and consequent events.'' In admissibility
+geometry, a correlation between events $e$ and $e'$ is the statement
+that $e' \in \Adm(e)$, or more generally that $d_\X(e', \Adm(e))$ is
+small. An intuitive state is a probability measure over the admissibility
+cone, weighted by prior frequency of occurrence in the corpus.
+\end{remark}
+
+\section{Prediction as Admissibility Estimation}
+
+Anderson's 2007 site opens by arguing that ``the purpose of Intelligence
+is Prediction.'' This is often read as point forecasting of the next
+state. The admissibility reinterpretation is more precise and more
+powerful.
+
+\begin{definition}[Prediction in the Admissibility Framework]
+\label{def:prediction}
+A predictor $\hat{\Adm} : \X \to 2^\X$ approximates the true
+admissibility operator $\Adm$. Prediction quality is measured by:
+\[
+  L_P = \mathbb{E}_x\bigl[\dH\bigl(\hat{\Adm}(x), \Adm(x)\bigr)\bigr].
+\]
+Intelligence is the ability to maintain a low-error estimate of $\Adm$:
+to minimize $L_P$.
+\end{definition}
+
+\begin{remark}
+This reinterpretation explains several features of Anderson's discussion.
+Why does she emphasize ambiguity? Because multiple admissible futures
+must be tracked, not just the most likely one. Why robustness? Because
+the admissibility cone must be estimated from incomplete observations.
+Why does prediction connect to semantics? Because higher-level semantic
+categories are exactly the equivalence classes of the admissibility
+quotient: states sharing the same accessible future structure.
+\end{remark}
+
+\section{The Nested Prediction Hierarchy and Emergent Semantics}
+
+Anderson argues that semantics emerges from nested predictions:
+lower-level predictions are predicted by higher-level predictors,
+and this cascading structure produces semantic categories. In the
+admissibility framework this is the recursive quotient hierarchy of
+Theorem~\ref{thm:recursive-abstraction}.
+
+\begin{definition}[Nested Prediction Hierarchy]
+\label{def:nested-prediction}
+Define $\X_0 = \X$ and $\Adm_0 = \Adm$. Recursively:
+\[
+  \X_{k+1} = \X_k / \SA_k, \qquad
+  \Adm_{k+1} : \X_{k+1} \to 2^{\X_{k+1}} \text{ induced}.
+\]
+The sequence $(\X_k, \Adm_k)_{k \geq 0}$ is the nested prediction
+hierarchy; semantics emerges as repeated quotienting.
+\end{definition}
+
+\begin{proposition}[Emergent Semantics as Admissibility Attractors]
+\label{prop:emergent-semantics}
+A semantic category at level $k$ is a stable region $S \subseteq \X_k$
+satisfying:
+\[
+  \forall x, y \in S : \quad \dH\bigl(\Adm_k(x), \Adm_k(y)\bigr) < \varepsilon.
+\]
+Semantic categories are not primitives. They are admissibility attractors:
+regions of the quotient manifold where the accessible future structure is
+approximately constant. Words, concepts, objects, social roles, and
+abstractions are all admissibility attractors at appropriate levels.
+\end{proposition}
+
+\begin{remark}
+Anderson writes that meaning ``is an emergent property of the sentence,
+the paragraph, the rules of language, the topic under discussion, and the
+shared world model of the writer and the reader.'' Meaning is not located
+in components but in the admissibility structure that spans them. The
+shared world model is the shared admissibility operator; semantics is
+agreement on accessible futures.
+\end{remark}
+
+\section{The Theory-Free Learning Theorem}
+
+\begin{theorem}[Theory-Free Learning Theorem]
+\label{thm:theory-free}
+Under the conditions of Theorem~\ref{thm:clio-convergence}, empirical
+projections $\proj_n$ learned from a growing corpus $\C_n$ satisfy:
+\[
+  \proj_n \;\xrightarrow{p}\; \projA \qquad \text{as } |\C_n| \to \infty,
+\]
+without specifying any symbolic theory of the domain.
+\end{theorem}
+
+\begin{proof}
+This is Theorem~\ref{thm:clio-convergence} under the observation that
+$L_{\mathrm{CLIO}}$ requires no symbolic domain theory: only a corpus
+$\C_n \subset \X$, a task loss, and empirical admissibility statistics.
+No grammar, ontology, or rule system appears as input.
+\end{proof}
+
+\begin{remark}
+Theorem~\ref{thm:theory-free} formalizes Anderson's claim that
+``Intuition learns directly from events.'' The CLIO operator produces
+an approximation to the admissibility quotient from event co-occurrence
+statistics alone. There is no theory-in, quotient-out step; the quotient
+emerges from the data. This is the mathematical content of Anderson's
+claim that Intuition is pre-theoretical: the representational manifold
+is produced by the learning process, not provided as prior knowledge.
+\end{remark}
+
+\section{Prediction Generates the Quotient Hierarchy}
+\label{sec:prediction-generates}
+
+The deepest synthesis between Anderson's 2007 Artificial Intuition
+programme and the RSVP framework is the following theorem: prediction
+itself generates the admissibility quotient hierarchy. Understanding is
+not an independent faculty that happens to resemble prediction; it
+\emph{is} the stable equivalence structure that emerges from repeated
+prediction.
+
+\begin{definition}[Prediction Profile]
+\label{def:prediction-profile}
+The \emph{prediction profile} of a state $x \in \X$ with respect to a
+predictor $\hat{\Adm} : \X \to 2^\X$ is the predicted accessible future
+cone $\hat{\Adm}(x)$.
+Two states $x, y \in \X$ are \emph{prediction-equivalent} if their
+prediction profiles converge asymptotically as prediction improves:
+\[
+  x \;\sim_P\; y
+  \;\iff\;
+  \lim_{n \to \infty} \dH\bigl(\hat{\Adm}_n(x), \hat{\Adm}_n(y)\bigr)
+  = 0,
+\]
+where $\hat{\Adm}_n$ is the predictor trained on corpus $\C_n$.
+\end{definition}
+
+\begin{theorem}[Semantic Emergence by Prediction Quotients]
+\label{thm:semantic-emergence}
+Under the conditions of Theorem~\ref{thm:clio-convergence}, the
+prediction-equivalence relation $\sim_P$ converges in probability to
+the admissibility equivalence $\SA$ as $|\C_n| \to \infty$.
+Consequently:
+\begin{enumerate}
+  \item The prediction quotient $\X/\!\sim_P$ converges to the
+    admissibility quotient $\M_0 = \X/\SA$.
+  \item Every stable semantic category --- a region of $\M_0$ where
+    the accessible future structure is approximately constant
+    (Proposition~\ref{prop:emergent-semantics}) --- is an attractor
+    of the prediction-equivalence dynamics.
+  \item Semantics = Stable Equivalence Classes of Prediction.
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+By Theorem~\ref{thm:clio-convergence}, $\hat{\Adm}_n(x) \to \Adm(x)$
+in probability for all $x$ as $|\C_n| \to \infty$ (under conditions
+C1--C3). Therefore $\dH(\hat{\Adm}_n(x), \hat{\Adm}_n(y)) \to
+\dH(\Adm(x), \Adm(y))$ in probability. The prediction-equivalence
+$x \sim_P y$ holds (in the limit) iff $\dH(\Adm(x), \Adm(y)) = 0$,
+which is exactly $x \SA y$ (Definition~\ref{def:admeq}). Thus
+$\sim_P \to \SA$ in probability, and the prediction quotient converges
+to $\M_0$. Item~(2) follows from Proposition~\ref{prop:emergent-semantics}:
+stable regions of $\M_0$ are exactly those where $\Adm$ is approximately
+constant, which is where prediction profiles stabilize. Item~(3)
+restates items~(1) and~(2) in Anderson's language.
+\end{proof}
+
+\begin{remark}
+Theorem~\ref{thm:semantic-emergence} establishes the deepest link in the
+monograph between Anderson's epistemology and the RSVP framework.
+Anderson's claim that semantics emerges from nested prediction is not
+merely analogically connected to the admissibility quotient hierarchy:
+it is mathematically equivalent to it, under CLIO consistency conditions.
+The full implication chain is now derivable within the framework:
+\[
+  \text{Prediction} \;\Longrightarrow\;
+  \text{Semantics} \;\Longrightarrow\;
+  \text{Understanding} \;\Longrightarrow\;
+  \text{Reasoning}.
+\]
+The first arrow is Theorem~\ref{thm:semantic-emergence}: stable
+prediction equivalence classes are the semantic manifold $\M_0$.
+The second arrow is the Identification Theorem
+(Theorem~\ref{thm:identification}): the admissibility quotient
+construction realizes every operation Anderson attributes to
+Understanding.
+The third arrow is the Priority Theorem (Theorem~\ref{thm:priority}):
+Reasoning is an operator on $\M_0$, which Understanding constructs.
+Anderson proposed this ordering in 2007. The present framework proves it.
+\end{remark}
+
+% ──────────────────────────────────────────────────────────────
+\section{Ambiguity, Interpretation Bundles, and Premature Collapse}
+
+\begin{definition}[Interpretation Bundle]
+\label{def:interp-bundle}
+The \emph{interpretation bundle} at observation $x$ is a probability
+measure over the quotient manifold:
+\[
+  \rho_x = \sum_i w_i \,\delta_{m_i}, \quad
+  m_i \in \M_0, \quad \sum_i w_i = 1, \quad w_i \geq 0.
+\]
+Each $m_i = [x_i]$ is an admissibility class compatible with the
+observation; $w_i$ is its posterior probability given the evidence.
+Interpretation collapse occurs when $H(\rho_x) < H_{\min}$; until
+then, the full distribution is maintained.
+\end{definition}
+
+\begin{proposition}[Premature Collapse as Projection Supremacy]
+\label{prop:premature-collapse}
+Prematurely collapsing $\rho_x$ to a single $\delta_{m_j}$ is an
+instance of Projection Supremacy on the interpretation layer:
+the system treats one admissibility class as complete, discarding
+the remaining $\sum_{i \neq j} w_i$ of the admissibility structure.
+By Theorem~\ref{thm:brittleness}, this produces unmodulated errors
+when the true state does not lie in class $[x_j]$.
+\end{proposition}
+
+\begin{remark}
+Anderson's claim that ``brittleness in AI is the dual of overconfidence
+in human Intuition'' is now a corollary of
+Theorem~\ref{thm:brittleness} and
+Proposition~\ref{prop:premature-collapse}. Logic-based systems and
+overconfident humans both prematurely collapse interpretation bundles.
+The result is identical: unmodulated errors at the edges of competence.
+\end{remark}
+
+\section{Robustness and Reliability as Emergent Properties}
+
+Anderson identifies robustness (tolerance of erroneous input) and
+reliability (tolerance of internal errors) as two aspects of the same
+mechanism.
+
+\begin{proposition}[Robustness from Continuous Familiarity Potential]
+\label{prop:robustness}
+The smoothed familiarity potential $\phiCe$ is Lipschitz on all of $\X$,
+so $\CC^\varepsilon(x)$ varies continuously with $x$. Small perturbations
+to the input --- whether from noisy observations or internal computation
+errors --- produce small changes in the system's confidence measure.
+The system degrades continuously rather than catastrophically.
+\end{proposition}
+
+\begin{remark}
+The reason robustness and reliability are ``the same mechanism'' in
+Anderson's framework is that both arise from the continuous structure of
+the admissibility geometry. Internal errors are perturbations to $x$ in
+the computation graph; input errors are perturbations to $x$ in the
+observation. In both cases the smoothed familiarity potential provides a
+continuous confidence signal, and the CLIO-trained projection degrades
+gracefully.
+\end{remark}
+
+\section{The Artificial Intuition Variational Principle}
+
+\begin{theorem}[Artificial Intuition Variational Principle]
+\label{thm:ai-variational}
+The Artificial Intuition programme is the solution to:
+\[
+  \proj^*
+  = \argmin_{\proj \;\text{exact minimal}}\, C(\M)
+  \quad \text{subject to} \quad
+  \mathbb{E}_x\bigl[\dH\bigl(\Adm(x), \Adm_\M(\proj(x))\bigr)\bigr]
+  < \varepsilon.
+\]
+By Theorem~\ref{thm:info-minimal}, the unique solution is
+$\projA : \X \to \M_0$. This variational principle subsumes all of
+Anderson's named properties of Artificial Intuition:
+theory-free operation (no symbolic model in the problem),
+prediction (minimizing $L_P$ is equivalent to minimizing admissibility
+error), semantics (the solution $\M_0$ is the semantic space of
+Proposition~\ref{prop:emergent-semantics}), ambiguity tolerance
+(the interpretation bundle is well-defined on $\M_0$), novelty
+(departure from $\C \subset \X$ measured by $\Nov^\varepsilon$),
+robustness (continuity of $\phiCe$ gives graceful degradation), and
+corpus-driven improvement ($\proj_n \to \projA$ as $|\C_n| \to \infty$).
+\end{theorem}
+
+\begin{proof}
+The variational statement is Theorem~\ref{thm:info-minimal} restated
+as an optimization. Each subsumption claim follows from the relevant
+proposition or theorem cited above.
+\end{proof}
+
+\begin{remark}
+The most important sentence in Anderson's 2007 writing may not be
+``Intelligence is Prediction'' but ``Intuition operates on events, not
+theories,'' because that sentence is closest to the content of the
+Priority Theorem: the trajectory space and admissibility operator exist
+and determine the quotient before any reasoning on that quotient is
+possible. Anderson was describing the ordering
+$\X \to \M_0 \to R : \M_0 \to \M_0$ in the only language available to
+her at the time. The variational principle above is the mathematical
+expression of the same ordering.
+\end{remark}
+
+% ──────────────────────────────────────────────────────────────
+\chapter{The Calvin--Anderson--Feyerabend Lineage}
+\label{ch:lineage}
+
+\epigraph{%
+  Science was created to stop people from overrating correlations
+  and jumping to erroneous conclusions on scant evidence\ldots
+  But now we suddenly have Machine Learning that performs cognitive
+  tasks at useful levels using exactly a Holistic Stance.%
+}{\textit{Monica Anderson, \emph{The Red Pill of Machine Learning}}}
+
+\section{Overview}
+
+The admissibility quotient construction did not arrive without
+intellectual predecessors. Three thinkers identified different aspects
+of the same underlying geometric constraint: William Calvin from cortical
+biology, Monica Anderson from AI engineering, and Paul Feyerabend from
+the philosophy of science. None of them had the mathematical framework.
+Each identified one face of a structure that the admissibility quotient
+makes precise.
+
+\section{William Calvin: The Uphill Direction}
+
+\subsection{The Biological Problem}
+
+William Calvin's investigation concerns the relationship between the
+physical substrate of cognition and the phenomenology of thought.
+The brain is a physical system governed by electrochemical gradients,
+synaptic weights, and local connectivity: low-level descriptions that
+concern the implementation of cognition, not its content.
+
+The puzzle Calvin poses is directionality. Physical causation flows
+from current states to future states, from simpler descriptions to their
+consequences. Yet cognition extracts higher-order structure from
+lower-order sensory streams: from pixels to edges to objects to scenes
+to meanings. This is movement in the opposite direction --- a river
+flowing uphill.
+
+The metaphor is precise. A river flows downhill because gravity selects
+the direction of least resistance in physical space. The uphill flow of
+cognition is driven by something else. Calvin's answer, drawing on
+Gerald Edelman's Neural Darwinism, is selection: repeated competitive
+reinforcement of neural groups that consistently produce useful
+reductions of their input.
+
+\subsection{The Mathematical Realization}
+
+In the present framework, Calvin's uphill river is the construction of
+the admissibility quotient hierarchy. At each level, the admissibility
+quotient collapses states that are indistinguishable from the perspective
+of accessible futures at that level, producing a coarser space with less
+information and a higher-level representational vocabulary.
+
+\begin{proposition}[Calvin's River as Quotient Hierarchy]
+\label{prop:calvin-river}
+The recursive abstraction sequence $\X_0 \to \X_1 \to \X_2 \to \cdots$
+of Theorem~\ref{thm:recursive-abstraction} is the formal realization of
+Calvin's uphill river. Each quotient map moves from a richer, more
+particular space to a coarser, more abstract space. The river flows
+uphill because each step preserves exactly the distinctions relevant to
+accessible futures and discards the rest.
+\end{proposition}
+
+The selectionist mechanism Calvin proposes is the biological correlate
+of the CLIO operator: neural groups making admissibility-relevant
+distinctions are reinforced; those that do not are suppressed. Over time
+the population of active representations converges toward the
+admissibility quotient of the organism's environment.
+
+\begin{proposition}[Stabilization of the Quotient Hierarchy]
+\label{prop:stabilization}
+If $\X$ is compact and $\Adm$ is Hausdorff-continuous, the sequence
+$(I(\X_n))_{n \geq 0}$ is non-negative and non-increasing, hence
+convergent. The projective limit $\X_\infty = \varprojlim \X_n$ exists
+as a compact Hausdorff space, and every remaining distinction in
+$\X_\infty$ is admissibility-relevant.
+\end{proposition}
+
+\begin{proof}
+Non-increase: Theorem~\ref{thm:recursive-abstraction}.
+Non-negativity: mutual information is non-negative.
+Convergence: monotone convergence theorem.
+Existence of projective limit: projective limits of compact Hausdorff
+spaces along continuous surjections exist and are compact Hausdorff
+(Tychonoff and the universal property of projective limits).
+\end{proof}
+
+\section{Monica Anderson: The Mechanism and the Epistemological Turn}
+
+\subsection{The AI Engineering Context}
+
+Anderson developed her framework while trying to build systems that
+understand natural language. Every available method required a human
+to first understand the language and encode that understanding as a
+program --- creating the circularity corollary: the thing the system was
+supposed to produce was required as input to its construction.
+
+Her solution was to abandon pre-specified Models entirely. If corpus
+exposure produces Understanding in humans, there is no principled reason
+it cannot do so in machines, provided the learning mechanism is
+appropriate. This is the engineering origin of the Holism definition:
+not a metaphysical commitment but a practical consequence of the
+circularity diagnosis.
+
+\subsection{Epistemic Reduction as Pre-Scientific}
+
+Anderson's central philosophical contribution is recognizing that
+Epistemic Reduction operates at a level more fundamental than science.
+Science uses Reduction but cannot theorize it from within, because the
+operation that produces models is not itself a model.
+
+In the present framework, Anderson's pre-scientific Reduction is the
+admissibility quotient construction. It is pre-scientific in exactly
+her sense: derivable from the admissibility operator alone, without
+reference to scientific methodology, formal languages, or a priori domain
+knowledge. The admissibility quotient exists independently of whether
+any scientist has studied the domain.
+
+\subsection{The 2012 Inflection as Experimental Confirmation}
+
+Anderson identified the 2012 deep learning inflection as experimental
+evidence for her framework. Before 2012, dominant AI required
+human-specified Models. After 2012, systems learning from corpus
+exposure outperformed model-based systems across multiple domains.
+
+Theorem~\ref{thm:dl-convergence} makes this experimental observation
+into a theorem: given sufficient data and a CLIO-consistent objective,
+a learned system converges in probability to the admissibility quotient.
+The 2012 inflection is the moment when corpus sizes and architectures
+became adequate for this convergence to produce practically useful
+results. Anderson was not merely right about what happened. She was
+right about why, and the present framework makes that ``why'' precise.
+
+\section{Paul Feyerabend: The Warning Against Premature Closure}
+
+\subsection{The Problem with Method}
+
+Feyerabend's \emph{Against Method} is commonly read as arguing that
+science has no rational method. His actual target is more specific:
+no fixed method can remain adequate as science develops, because
+scientific discovery frequently requires recognizing phenomena that fall
+outside the current method's field of view. A method powerful today may
+become a prison tomorrow. Its power causes institutionalization as the
+only permissible approach, and problems it cannot solve become invisible.
+
+Feyerabend's examples --- Galileo against Aristotle, wave mechanics,
+continental drift --- are cases where progress required violating a
+methodological rule or retaining a hypothesis against apparently decisive
+refutation. In each case the rule was a projection: a fixed decision
+about which features were relevant, institutionalized to the point where
+its implicit assumptions were invisible.
+
+\subsection{The Impossibility Result}
+
+Theorem~\ref{thm:feyerabend} is the precise statement of Feyerabend's
+insight: a fixed projection cannot make discarded features salient
+through internal operations on the codomain. This is not a sociological
+claim but an information-theoretic impossibility. The information is
+absent from $\M$, and no endomorphism of $\M$ can reconstruct it.
+
+The Aristotelian framework was a projection that discarded features of
+motion that Galilean mechanics required. Within the Aristotelian
+projection, those features were not merely unnoticed; they were not
+representable. No operation internal to Aristotelian mechanics could
+make them visible. Only a change of projection --- a new compression ---
+could reveal them.
+
+\subsection{Anderson and Feyerabend as Complements}
+
+Anderson asks: how should cognitive systems be built so they can
+discover their own salience structure? Answer: defer the projection until
+the corpus determines it. Feyerabend asks: why do methodological
+constraints sometimes prevent scientific progress? Answer: because they
+are projections, and premature projections prevent the discovery of
+features visible only at levels the current projection cannot reach.
+
+Both arguments are instances of the Admissible Discovery Principle
+(Definition~\ref{def:adp}). RSVP provides the unifying geometry:
+premature projection reduces the admissible exploration volume, preventing
+discovery of features whose salience is only revealed at admissibility
+levels that the premature projection cannot reach.
+
+\section{Three Approaches to the Same Constraint}
+
+\begin{theorem}[Recursive Abstraction Theorem]
+\label{thm:recursive-abstraction}
+In the metric setting, define a sequence of trajectory spaces by
+$\X_0 = \X$ and
+\[
+  \X_{n+1} = \X_n \big/\!\SA_n,
+\]
+where $x \SA_n y$ iff $\Adm_n(x) = \Adm_n(y)$ and $\Adm_n$ is the
+admissibility operator at level $n$, with $\Adm_{n+1}$ induced by the
+quotient. Then:
+\begin{enumerate}
+  \item Each $\X_{n+1}$ is a quotient of $\X_n$: there is a canonical
+    continuous surjection $\projA^{(n)} : \X_n \to \X_{n+1}$.
+  \item The mutual information is monotonically non-increasing:
+    \[
+      I(\X_{n+1}) \;\leq\; I(\X_n).
+    \]
+  \item The sequence $(\X_n)_{n \geq 0}$ forms a projective system of
+    compact Hausdorff spaces.
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+For~(1): each $\X_{n+1}$ is the admissibility quotient of $\X_n$ by
+Theorem~\ref{thm:quotient} applied at level $n$.
+
+For~(2): $\projA^{(n)} : \X_n \to \X_{n+1}$ is a surjective quotient
+map. The data processing inequality for quotient maps states that mutual
+information cannot increase under a surjection, since $\X_{n+1}$ is a
+function of $\X_n$. Therefore $I(\X_{n+1}) \leq I(\X_n)$.
+
+For~(3): the compatible family of surjections $\projA^{(n)}$ satisfies
+the compatibility condition $\projA^{(m)} = \projA^{(n)} \circ \cdots
+\circ \projA^{(m-1)}$ for $m > n$, which is the projective system
+condition.
+\end{proof}
+
+\begin{remark}
+Theorem~\ref{thm:recursive-abstraction} gives a formal meaning to
+Calvin's metaphor. Physical causation moves forward in state space;
+abstraction moves upward through a hierarchy of quotient spaces with
+decreasing mutual information. At each level, the admissibility quotient
+discards the distinctions that do not matter for accessible futures at
+that level. The river flows uphill because each quotient stage produces
+a strictly coarser space that retains strictly less information while
+preserving the admissibility structure relevant at that level.
+\end{remark}
+
+\section{Anderson: The Mechanism}
+
+Anderson's contribution is to name and characterize the mechanism that
+performs the uphill construction. Epistemic Reduction is the exact
+minimal admissibility-preserving projection from $\X$ to $\M$.
+The Anderson Projection Theorem establishes that this is the admissibility
+quotient, and the Recursive Abstraction Theorem gives it depth structure:
+deep learning is deep because Reduction must be performed at multiple
+levels of the hierarchy, each level discarding what it can recognize as
+irrelevant, and passing the rest upward.
+
+\section{Feyerabend: The Warning Against Premature Projection}
+
+Paul Feyerabend's argument in \emph{Against Method} is that no fixed
+methodology can account for actual scientific discovery, because
+methodological rules are projections and premature projections exclude
+phenomena that have not yet been identified as salient.
+
+\begin{theorem}[Feyerabend--Anderson Constraint Theorem]
+\label{thm:feyerabend}
+Let $\proj : \X \to \M$ be a fixed projection. Any feature $f$ not
+encoded in $\M$ (i.e., discarded by $\proj$) cannot become salient
+through operations $R : \M \to \M$ internal to $\M$.
+\end{theorem}
+
+\begin{proof}
+Operations internal to $\M$ are endomorphisms of $\M$. If $f$ has been
+discarded by $\proj$, then $f$ carries no information in $\M$. No
+sequence $R_1 \circ \cdots \circ R_n : \M \to \M$ can reconstruct
+information absent from $\M$, since each $R_i$ maps $\M$ to $\M$.
+\end{proof}
+
+\begin{remark}
+Theorem~\ref{thm:feyerabend} is essentially an information-theoretic
+impossibility result: information discarded by a projection cannot be
+reconstructed by endomorphisms on the codomain. It is arguably the most
+defensible formalization of Feyerabend's complaint in the document, and
+it is independent of RSVP. The problem is not method as such but
+Projection Supremacy applied too early: fixing a projection before the
+corpus is sufficient to determine which features are admissibility-sensitive.
+\end{remark}
+
+\section{The Admissible Discovery Principle}
+
+\begin{definition}[Admissible Discovery Principle]
+\label{def:adp}
+A system satisfies the Admissible Discovery Principle if it defers
+commitment to a representational manifold until the corpus is sufficient
+to determine which features are admissibility-sensitive, rather than
+fixing a projection in advance of the data.
+\end{definition}
+
+\noindent Calvin's uphill river is the search for the admissibility
+quotient at each level of the recursive hierarchy. Anderson's Epistemic
+Reduction is its construction at each level. Feyerabend's anarchism is
+the warning not to freeze any level prematurely. RSVP provides the
+geometric optimization problem that unifies all three.
+
+% ──────────────────────────────────────────────────────────────
+\chapter{TARTAN, the Wisdom Salon, and Collective Reduction}
+\label{ch:tartan}
+
+\section{The Wisdom Salon as Distributed Epistemic Reduction}
+
+Anderson's Wisdom Salon protocol implements distributed Epistemic
+Reduction. Each table performs a local reduction of a complex question
+to a compressed semantic residue (a Grain of Wisdom). The residue passes
+to adjacent tables as boundary data. The harvest assembles local
+reductions into a global understanding.
+
+\section{Sheaf-Theoretic Formalization}
+
+\begin{definition}[Admissibility Presheaf]
+\label{def:presheaf}
+Let $B$ be the social-epistemic base space covered by open sets
+$\{U_i\}$ (conversational contexts). Define the admissibility presheaf
+$\mathscr{A}$ by assigning to each $U_i$ the set $\mathscr{A}(U_i)$ of
+admissibility-preserving semantic reductions on $U_i$, with restriction
+maps $\rho_{ij} : \mathscr{A}(U_i) \to \mathscr{A}(U_i \cap U_j)$
+given by restriction of reductions to the overlap.
+\end{definition}
+
+\begin{definition}[Conversational Tile and Grain of Wisdom]
+A tile $T_i$ computes a local section $s_i \in \mathscr{A}(U_i)$:
+a local admissibility-preserving reduction of the conversational fragment
+over $U_i$. A Grain of Wisdom is the compressed residue $G_i = s_i(U_i)$.
+\end{definition}
+
+\begin{theorem}[TARTAN Descent Theorem]
+\label{thm:tartan}
+If:
+\begin{enumerate}
+  \item[(D1)] Local reductions agree on overlaps:
+    $s_i|_{U_i \cap U_j} = s_j|_{U_i \cap U_j}$ for all $i, j$; and
+  \item[(D2)] The admissibility presheaf $\mathscr{A}$ satisfies the
+    sheaf axioms (locality and gluing);
+\end{enumerate}
+then there exists a unique global section $s \in \mathscr{A}(B)$
+such that $s|_{U_i} = s_i$ for all $i$, and
+\[
+  \colim_{i}\, s_i \;\cong\; s.
+\]
+\end{theorem}
+
+\begin{proof}
+Under (D2), the sheaf gluing axiom directly gives existence and
+uniqueness of a global section compatible with all local sections that
+agree on overlaps. Condition~(D1) is precisely the overlap-consistency
+hypothesis of the gluing axiom. The colimit identification follows from
+the universal property of the colimit and the uniqueness of the global
+section.
+\end{proof}
+
+\begin{remark}
+The previous draft stated that the colimit of local quotients
+``approximates the global admissibility quotient.'' That claim is
+stronger than what was established: a colimit of local quotients need
+not equal a quotient of the global space in general.
+Theorem~\ref{thm:tartan} replaces the approximation language with a
+precise condition: when the admissibility presheaf is a genuine sheaf
+and local reductions are consistent on overlaps, the colimit is
+isomorphic to the unique global section guaranteed by the gluing axiom.
+The sheaf condition (D2) is the non-trivial hypothesis; verifying it in
+a given application requires checking that local admissibility reductions
+restrict and extend consistently.
+\end{remark}
+
+\begin{proposition}[Good Ideas are Stable Sections]
+\label{prop:goodideas}
+A Grain $G$ with low holonomy (content remaining consistent after
+parallel transport across $B$) appears in the global section $s$.
+A Grain with high holonomy (conflicting when transported into different
+conversational contexts) fails the gluing condition~(D1) and does not
+appear in $s$.
+\end{proposition}
+
+\begin{remark}
+Proposition~\ref{prop:goodideas} formalizes Anderson's observation about
+the filtering power of the World Caf\'{e} Protocol. The filtering power
+comes from transport stability, not voting. Wisdom is what survives
+parallel transport.
+\end{remark}
+
+% ──────────────────────────────────────────────────────────────
+\chapter{Connections}
+\label{ch:connections}
+
+\section{Anderson and Kahneman}
+
+System~1 in Kahneman's framework corresponds to the CLIO approximation
+of the admissibility quotient: rapid, parallel, below conscious access,
+improving with practice. System~2 corresponds to $R : \M \to \M$:
+sequential, deliberate, operating inside the manifold produced by
+System~1. Theorem~\ref{thm:priority} is the formal version of
+Kahneman's observation that System~2 depends on System~1 outputs.
+
+\section{Anderson and the Frame Problem}
+
+The Frame Problem asks how a cognitive system specifies what remains
+unchanged after an action. In admissibility geometry this is the problem
+of computing $\Adm(x')$ from $\Adm(x)$ after a transition $x \to x'$:
+which admissible futures survive a state change. A system with a correct
+admissibility operator solves it automatically: unchanged admissible
+futures appear in both sets.
+
+\section{Anderson and the Author's Prior Work}
+
+The author's \emph{Beyond Prediction Error} develops admissibility-based
+ecological cognition from dynamical starting points. \emph{Function
+Survives Collapse} develops admissibility preservation through secure
+computation, biological regulation, and typographic systems. Both converge
+on the same principle: cognition is not prediction but the maintenance of
+viable futures under projection. Anderson's Epistemic Reduction is the
+epistemological face; the admissibility quotient is its geometric face.
+
+\section{The Yoneda Connection}
+
+Anderson's aphorism ``you are known by the company you keep'' is her gloss
+on the Yoneda Lemma: a mathematical object is fully determined by its
+relationships to all other objects. In the manifold setting, the identity
+of $[x] \in \M_0$ is fully determined by $\Adm_{\M_0}([x]) =
+\projA(\Adm(x))$. Corpus Congruence is the empirical approximation of
+this Yoneda representation via the smoothed familiarity potential.
+
+% ============================================================
+\chapter*{Conclusion}
+\addcontentsline{toc}{chapter}{Conclusion}
+
+The thesis of this monograph is that Monica Anderson's epistemological
+program is derivable from the geometry of admissible projection, not
+merely compatible with it. The programme spans two decades of Anderson's
+writing, from the 2007 \emph{Artificial Intuition} site through the
+\emph{Little Pills} essays, and the present monograph covers both.
+
+The framework rests on the admissibility quotient construction. Given a
+compact Hausdorff trajectory space $\X$ and a Hausdorff-continuous
+admissibility operator $\Adm$, the quotient $\M_0 = \X/\SA$ exists as a
+compact Hausdorff space and is the unique information-minimal
+admissibility-preserving representation of $\X$ among exact minimal
+projections. This is established by the Existence Theorem, the Universal
+Property, and the Information Minimality Theorem.
+
+From this construction, Anderson's entire epistemological program follows
+as a series of theorems and corollaries. The Identification Theorem
+(Theorem~\ref{thm:identification}) establishes the most philosophically
+important result: every operation Anderson attributes to Understanding ---
+salience detection, corpus congruence, novelty recognition, abstraction
+formation, graceful degradation, model-free operation, corpus-driven
+improvement, and priority over Reasoning --- is realized by a property
+of the admissibility quotient and its associated fields. The
+identification is not imposed on Anderson's ideas from outside; it is
+extracted from them by asking what mathematical structure would realize
+each property she attributes to Understanding. The answer, in each case,
+is the admissibility quotient or one of its associated fields.
+
+The Anderson Projection Theorem establishes the four-way equivalence
+between Epistemic Reduction, exact minimal admissibility-preserving
+projection, factoring through the quotient, and salience-filtering.
+The Priority Theorem derives Anderson's most famous claim as a structural
+tautology. The Brittleness Theorem explains classical AI failure as
+Projection Supremacy. The Deep Learning Convergence Theorem derives
+Anderson's claim about why deep learning works: under CLIO consistency
+conditions, learned network projections converge in probability to the
+admissibility quotient.
+
+The Artificial Intuition chapter (Chapter~\ref{ch:artificial-intuition})
+addresses the 2007 framework directly and provides the chapter that was
+previously missing from the monograph. Anderson's claim that
+``Intuition operates on events, not theories'' is reinterpreted as
+``the projection precedes reasoning,'' which is the Priority Theorem.
+Her ``Intelligence is Prediction'' is reinterpreted as admissibility
+estimation, not point forecasting. Her Bizarre Domains taxonomy is
+reinterpreted as four failure modes of admissibility-preserving
+projection, unifying what had appeared to be independent categories into
+a single geometric obstruction: non-decomposability of the admissibility
+operator. The Artificial Intuition Variational Principle
+(Theorem~\ref{thm:ai-variational}) then compresses Anderson's entire
+2007 programme into a single optimization statement whose unique solution
+is the admissibility quotient.
+
+The Calvin--Anderson--Feyerabend synthesis provides the historical and
+philosophical context. Calvin's uphill river is the quotient hierarchy;
+its stabilization theorem gives the fixed point that cognitive systems
+approach. Anderson's epistemological program is the practical description
+of the quotient construction from an engineering perspective. Feyerabend's
+impossibility result is Theorem~\ref{thm:feyerabend}: information
+discarded by a premature projection cannot be recovered by internal
+operations. The Admissible Discovery Principle unifies all three.
+
+The CLIO Convergence theorem is conditional on three explicit hypotheses.
+The Local Extension Stability theorem is one-directional. The full
+Curvature--Admissibility Threshold is identified as a conjecture with its
+missing ingredients named. These are not weaknesses but honest boundaries.
+The core framework is exact; the conditional results are useful under
+stated conditions; the conjecture identifies the deepest remaining open
+problem.
+
+The Semantic Emergence theorem (Theorem~\ref{thm:semantic-emergence})
+establishes the deepest link in the monograph: prediction itself
+generates the admissibility quotient hierarchy. Stable prediction
+equivalence classes are the semantic manifold. The full implication
+chain --- Prediction $\Rightarrow$ Semantics $\Rightarrow$
+Understanding $\Rightarrow$ Reasoning --- that Anderson proposed in
+2007 is now provable within the framework. The three arrows correspond
+respectively to the Semantic Emergence theorem, the Identification
+Theorem, and the Priority Theorem.
+
+Three further results in the Brittleness chapter extend the framework
+to collective and dynamic phenomena. Interpretive Attractors formalize
+the observation that projections concentrate into self-reinforcing
+frameworks. The Community Semantic Manifold proposition shows that
+understanding is a collective geometric structure maintained through
+shared corpora, explaining why identical events can produce radically
+different conclusions in different communities. Projection Capture
+formalizes the dynamic failure mode that Projection Supremacy does not
+cover: a projection that has become insulated from revision by its own
+prior successes, losing the ability to discover new saliences by the
+Feyerabend--Anderson Constraint.
+
+Anderson's insight --- that intelligence is fundamentally about choosing
+what can be ignored without losing what matters --- is a variational
+principle: find the exact minimal admissibility-preserving projection.
+The admissibility quotient is its canonical solution. The Identification
+Theorem shows that Anderson already knew this, expressed in a vocabulary
+adequate to her engineering context. The present monograph provides the
+geometry that explains why she was right.
+
+\clearpage
+
+% ============================================================
+\appendix
+
+\chapter{Glossary}
+\label{app:glossary}
+
+\begin{description}
+\item[Admissibility Quotient] $\M_0 = \X/\SA$: the canonical minimal
+  representational manifold identifying states with identical admissible
+  futures.
+\item[Admissibility-Preserving Projection (weak)] Commutes with admissible
+  dynamics: $\proj(\Adm(x)) = \Adm_\M(\proj(x))$. May retain extra
+  information.
+\item[Admissible Discovery Principle] Defer commitment to a
+  representational manifold until the corpus determines which features
+  are admissibility-sensitive.
+\item[Artificial General Learner] A system learning competence across
+  wide domains through data exposure, without antecedent domain-specific
+  Understanding encoded as programs.
+\item[Bizarre Domain] A problem domain in which no Model can be
+  simultaneously tractable and faithful.
+\item[CLIO] Machine-learning operator approximating the admissibility
+  quotient by minimizing $L_{\mathrm{CLIO}}$; convergent under (C1)--(C3).
+\item[Corpus Congruence] $\CC^\varepsilon(x) = e^{-d(x,\C)/(\varepsilon+d(x,\C))}$.
+\item[Epistemic Reduction] Salience-preserving projection from rich
+  experience to structured representation; equivalent to exact minimal
+  admissibility-preserving projection.
+\item[Exact Minimal Admissibility-Preserving Projection]
+  $\proj(x) = \proj(y)$ iff $\Adm(x) = \Adm(y)$: no redundant
+  information retained and no admissibility distinction collapsed.
+\item[Familiarity Potential (smoothed)] $\phiCe(x) = -\log(\varepsilon +
+  d(x,\C))$.
+\item[Holism] Avoidance of a priori Models; allowing the projection to
+  be learned from data.
+\item[Model] A context-free simplification of reality.
+\item[Projection Supremacy] Applying $R$ without detecting projection error.
+\item[Reductionism] The use of Models.
+\item[Salience (metric)] A feature whose deletion changes some admissible
+  future cone.
+\item[Salience (smooth RSVP)] A feature for which $\nabla_f \Ent(x) \neq 0$;
+  a computable proxy, not equivalent to the set-theoretic criterion.
+\item[TARTAN] Tiled Admissibility-Reduction Traversal Architecture;
+  distributed CLIO assembled via sheaf descent.
+\item[Understanding] Construction of $\proj : \X \to \M$.
+\item[Reasoning] Operation $R : \M \to \M$ on the manifold produced
+  by Understanding.
+\end{description}
+
+\chapter{Notation Reference}
+\label{app:notation}
+
+\begin{center}
+\begin{tabular}{lp{0.59\textwidth}}
+\toprule
+Symbol & Meaning \\
+\midrule
+$\X$, $(\X, d_\X)$ & Trajectory space (compact metric) \\
+$\M$, $\M_0$ & Representational manifold; admissibility quotient \\
+$\X_n$ & Trajectory space at recursive abstraction level $n$ \\
+$\projA$ & Canonical projection to $\M_0$ \\
+$\projA^{(n)}$ & Canonical projection at level $n$ \\
+$\proj : \X \to \M$ & General projection \\
+$\Adm(x)$ & Admissible future cone of $x$ (subset of $\X$) \\
+$\Adm_\M(m)$ & Induced admissibility on $\M$: $\proj(\Adm(x))$ for $\proj(x)=m$ \\
+$\SA$ & Admissibility equivalence: $\Adm(x) = \Adm(y)$ \\
+$\dH$ & Hausdorff distance on compact subsets \\
+$\Ent(x)$ & Accessibility entropy: $\log \mu(\Adm(x))$ \\
+$\phiCe$ & Smoothed familiarity potential: $-\log(\varepsilon + d(x,\C))$ \\
+$\nabla \phiCe$ & Inferential flow field (RSVP $\vel$) \\
+$\CC^\varepsilon(x)$ & Corpus Congruence (smoothed) \\
+$\Nov^\varepsilon(x)$ & Novelty: $1 - \CC^\varepsilon(x)$ \\
+$\varepsilon$ & Smoothing parameter for familiarity potential \\
+$\C$ & Training corpus (compact subset of $\X$) \\
+$L_{\mathrm{CLIO}}$ & CLIO reduction functional \\
+$R : \M \to \M$ & Reasoning operator \\
+$L_u : \M_0 \to \M_0'$ & Learning extension operator \\
+$K_{\max}$ & Curvature bound for Local Extension Stability \\
+$\mathscr{A}(U_i)$ & Admissibility presheaf over $U_i$ \\
+$s_i \in \mathscr{A}(U_i)$ & Local section (Grain of Wisdom) \\
+$\rho_{ij}$ & Restriction map between local sections \\
+$\colim_i s_i$ & Harvest (colimit of local sections) \\
+$I(\X;\M)$ & Mutual information between $\X$ and $\M$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\chapter{Summary of Main Results}
+\label{app:theorems}
+
+\begin{description}
+\item[Lemma 5.1] \textit{Closure.} Hausdorff-continuity of $\Adm$ implies
+  $\SA$ is a closed equivalence relation. \textsc{Proved.}
+
+\item[Theorem 6.1] \textit{Existence of the Admissibility Quotient.}
+  Under compactness and Hausdorff-continuity, $\M_0 = \X/\SA$ is compact
+  Hausdorff with a unique exact minimal admissibility-preserving
+  canonical projection $\projA$. \textsc{Proved.}
+
+\item[Theorem 6.2] \textit{Universal Property.} Every exact minimal
+  admissibility-preserving projection factors through $\M_0$ via an
+  injection; $\M_0$ is initial in the relevant category.
+  \textsc{Proved.}
+
+\item[Theorem 6.3] \textit{Information Minimality.} All exact minimal
+  admissibility-preserving projections carry the same mutual information
+  $I(\X;\M_0)$. The quotient is the unique such representation up to
+  isomorphism. \textsc{Proved.}
+
+\item[Proposition 6.4] \textit{Entropy Preservation as Necessary Condition.}
+  Admissibility preservation implies entropy preservation. The converse
+  requires additional assumptions; in general equal entropy does not
+  imply equal admissible future sets. \textsc{Proved; converse failure
+  shown by counterexample.}
+
+\item[Theorem 7.1] \textit{Salience--Admissibility Equivalence.}
+  A feature is salient iff its deletion changes some admissible future
+  cone. \textsc{Proved (metric setting).}
+
+\item[Proposition 7.2] \textit{Salience as Entropy Gradient.}
+  $\nabla_f \Ent(x) \neq 0$ is a computable proxy for salience.
+  Not equivalent to the set-theoretic criterion.
+  \textsc{Proved (smooth RSVP setting).}
+
+\item[Proposition 7.3] \textit{Gradient of Familiarity Potential.}
+  $\nabla \phiCe = -\nabla d(\,\cdot\,,\C)\,/\,(\varepsilon + d(\,\cdot\,,\C))$
+  on any Riemannian manifold with differentiable distance function.
+  \textsc{Proved.}
+
+\item[Theorem 9.1] \textit{Priority of Understanding.}
+  Reasoning requires a prior Understanding; Understanding does not
+  require Reasoning. \textsc{Proved (structural tautology).}
+
+\item[Theorem 10.1] \textit{The Anderson Projection Theorem.}
+  Four characterizations of Epistemic Reduction are equivalent.
+  Entropy preservation is a consequence, not an equivalent.
+  \textsc{Proved (metric setting; entropy corollary in smooth RSVP).}
+
+\item[Theorem 11.1] \textit{CLIO Consistency.}
+  Empirical CLIO minimizers converge in probability to $\projA$ under
+  conditions (C1)--(C3). \textsc{Proved conditionally.}
+
+\item[Theorem 12.1] \textit{Local Extension Stability.}
+  Bounded curvature in $\Ent$ near $m_u$ implies locally stable
+  deformation under learning extension $L_u$.
+  Converse not proved. \textsc{Proved (one direction only).}
+
+\item[Conjecture 12.2] \textit{Curvature--Admissibility Threshold.}
+  Admissibility-compatible learning holds iff Hessian of $\Ent$ is
+  bounded by a threshold determined by global geometry of $\M_0$.
+  Missing ingredients identified in Chapter~\ref{ch:learning}.
+  \textsc{Open.}
+
+\item[Theorem 13.1] \textit{Brittleness from Projection Supremacy.}
+  Projection Supremacy produces unmodulated errors outside the
+  zero-error region. \textsc{Proved.}
+
+\item[Theorem 15.1] \textit{Recursive Abstraction.}
+  The sequence $(\X_n)$ of iterative admissibility quotients forms a
+  projective system with monotonically decreasing mutual information.
+  \textsc{Proved.}
+
+\item[Theorem 15.2] \textit{Feyerabend--Anderson Constraint.}
+  Features discarded by a fixed projection cannot become salient through
+  endomorphisms on the codomain.
+  \textsc{Proved (information-theoretic impossibility).}
+
+\item[Theorem 16.1] \textit{TARTAN Descent.}
+  Under overlap consistency (D1) and sheaf axioms (D2), the colimit
+  of local sections is isomorphic to the unique global section.
+  \textsc{Proved (consequence of sheaf gluing axiom).}
+
+\item[Proposition 16.2] \textit{Stable Sections as Good Ideas.}
+  Low-holonomy sections survive sheaf transport; high-holonomy sections
+  fail the gluing condition. \textsc{Proved.}
+
+\item[Theorem (Identification)] \textit{The Identification Theorem.}
+  Every operation Anderson attributes to Understanding --- salience
+  detection, corpus congruence, novelty recognition, abstraction
+  formation, graceful degradation, model-free operation, corpus-driven
+  improvement, and priority over Reasoning --- is realized by a property
+  of the admissibility quotient or its associated fields.
+  \textsc{Proved (as compilation of prior results).}
+
+\item[Proposition (Models--Projection)] \textit{Models are Projections.}
+  A Model in Anderson's sense corresponds to a projection $\proj : \X \to \M$.
+  Model creation is projection specification. Discarded context is fiber
+  information. Model-Based AI Circularity follows from
+  Theorem~\ref{thm:feyerabend}. \textsc{Proved.}
+
+\item[Theorem (Depth Necessary)] \textit{Depth is Necessary for Multi-Level Salience.}
+  When the admissibility quotient hierarchy has depth $N > 1$, no
+  single-layer projection can replicate the filtering performed by the
+  full hierarchy. \textsc{Proved.}
+
+\item[Theorem (Deep Learning Convergence)] \textit{Deep Learning as
+  Approximate Admissibility Reduction.}
+  Under CLIO conditions (C1)--(C3), trained deep network projections
+  converge in probability to the admissibility quotient.
+  \textsc{Proved conditionally (inherits CLIO conditions).}
+
+\item[Proposition (Calvin's River)] \textit{Calvin's River as Quotient Hierarchy.}
+  The recursive abstraction sequence is the formal realization of
+  Calvin's uphill river. \textsc{Proved as interpretation of
+  Theorem~\ref{thm:recursive-abstraction}.}
+
+\item[Proposition (Stabilization)] \textit{Stabilization of the Quotient Hierarchy.}
+  The projective limit $\X_\infty = \varprojlim \X_n$ exists as a
+  compact Hausdorff space in which every remaining distinction is
+  admissibility-relevant. \textsc{Proved.}
+
+\item[Definition (Artificial Intuition)] Approximation of $\projA : \X \to \M_0$
+  from corpus alone, with no symbolic domain theory as input.
+  \textsc{Definition.}
+
+\item[Theorem (Theory-Free Learning)] Under CLIO conditions (C1)--(C3),
+  corpus-driven empirical projections converge to $\projA$ without
+  specifying a symbolic theory. Formalizes ``Intuition learns directly
+  from events.'' \textsc{Proved conditionally (inherits CLIO conditions).}
+
+\item[Proposition (Emergent Semantics)] Semantic categories are
+  admissibility attractors in the quotient hierarchy: stable regions
+  where accessible future structure is approximately constant.
+  \textsc{Proved.}
+
+\item[Proposition (Bizarre Domains as Projection Failure Modes)]
+  Anderson's four Bizarre Domain categories (Chaos, Holism, Ambiguity,
+  Emergence) correspond to four distinct failure modes of
+  admissibility-preserving projection, all arising from
+  non-decomposability of $\Adm$. \textsc{Proved.}
+
+\item[Theorem (Artificial Intuition Variational Principle)]
+  The AI programme is the variational problem
+  $\argmin C(\M)$ subject to admissibility error $< \varepsilon$.
+  The unique solution is $\projA$, and the principle subsumes all of
+  Anderson's named AI properties. \textsc{Proved.}
+
+\item[Proposition (Premature Collapse as Projection Supremacy)]
+  Prematurely selecting a single interpretation from an interpretation
+  bundle is an instance of Projection Supremacy; produces unmodulated
+  errors by Theorem~\ref{thm:brittleness}. \textsc{Proved.}
+
+\item[Theorem (Semantic Emergence by Prediction Quotients)]
+  Under CLIO conditions, the prediction-equivalence relation $\sim_P$
+  converges in probability to the admissibility equivalence $\SA$.
+  Consequently: prediction quotient $\to \M_0$; stable semantic
+  categories are attractors of prediction dynamics; Semantics $=$
+  Stable Equivalence Classes of Prediction. Establishes the full chain
+  Prediction $\Rightarrow$ Semantics $\Rightarrow$ Understanding
+  $\Rightarrow$ Reasoning. \textsc{Proved conditionally (inherits CLIO
+  conditions).}
+
+\item[Definition (Interpretive Attractor)] A compact region of $\M_0$
+  with high internal accessibility and high boundary crossing cost;
+  formalizes stable interpretive frameworks. \textsc{Definition.}
+
+\item[Proposition (Frameworks as Self-Reinforcing Projections)]
+  A projection concentrated in an interpretive attractor assimilates new
+  inputs into the existing framework rather than expanding the projection.
+  \textsc{Proved.}
+
+\item[Proposition (Community Semantic Manifold)]
+  Under repeated exchange, agents converge toward a shared admissibility
+  quotient of the community corpus. Identical events projected through
+  different community manifolds occupy different salience locations.
+  \textsc{Proved.}
+
+\item[Definition (Projection Capture)] The dynamic analogue of
+  Projection Supremacy: the CLIO update gradient is suppressed by prior
+  reinforcement, insulating the projection from revision even under
+  positive projection error. \textsc{Definition.}
+
+\item[Proposition (Projection Capture as Dynamic Projection Supremacy)]
+  Projection capture is Projection Supremacy persisted dynamically; the
+  system loses the ability to update $\proj$ and therefore cannot
+  discover new saliences, by Theorem~\ref{thm:feyerabend}.
+  \textsc{Proved.}
+\end{description}
+
+% ============================================================
+\chapter*{Bibliography}
+\addcontentsline{toc}{chapter}{Bibliography}
+\markboth{Bibliography}{Bibliography}
+
+\begin{description}
+
+\item[Anderson 2007] Anderson, Monica.
+  \textit{Artificial Intuition: A New Possible Path to Artificial Intelligence.}
+  \url{https://artificial-intuition.com}, 2007.
+  [Archived primary source; original site covering Bizarre Domains,
+  Intuition vs.\ Logic, prediction as intelligence, and the Tradeoff
+  framework. Cited throughout as the 2007 text.]
+
+\item[Anderson 2017a] Anderson, Monica.
+  \textit{Why AI Works: Intelligence = Understanding + Reasoning.}
+  Artificial Understanding (Medium), 2017.
+
+\item[Anderson 2017b] Anderson, Monica.
+  \textit{Our Greatest Invention: Model-Based Problem Solving.}
+  Artificial Understanding (Medium), 2017.
+
+\item[Anderson 2017c] Anderson, Monica.
+  \textit{Two Dirty Words: Reductionism and Holism.}
+  Artificial Understanding (Medium), 2017.
+
+\item[Anderson 2017d] Anderson, Monica.
+  \textit{Reduction: An Introduction.}
+  Artificial Understanding (Medium), 2017.
+
+\item[Anderson 2018] Anderson, Monica.
+  \textit{Why Deep Learning Works: Deep Learning Performs Epistemic Reduction.}
+  Experimental Epistemology, 2018. \url{https://experimental-epistemology.ai}
+
+\item[Anderson 2022a] Anderson, Monica.
+  \textit{The Red Pill of Machine Learning.}
+  Experimental Epistemology, 2022.
+
+\item[Anderson 2022b] Anderson, Monica.
+  \textit{Corpus Congruence.}
+  Experimental Epistemology, 2022.
+
+\item[Anderson 2022c] Anderson, Monica.
+  \textit{Model Free AI: Don't Model the World---Just Model the Mind.}
+  Experimental Epistemology, 2022.
+
+\item[Anderson 2022d] Anderson, Monica.
+  \textit{Experimental Epistemology for AI.}
+  Experimental Epistemology, 2022.
+
+\item[Anderson 2022e] Anderson, Monica.
+  \textit{The Wisdom Salon.}
+  Experimental Epistemology, 2022.
+
+\item[Anderson/Flyxion 2022] Anderson, Monica; edited by Flyxion.
+  \textit{Monica's Little Pills.} Standard Galactic Edition, 2022.
+
+\item[Calvin 1996] Calvin, William H\@.
+  \textit{How Brains Think: Evolving Intelligence, Then and Now.}
+  Basic Books, New York, 1996.
+
+\item[Edelman 1987] Edelman, Gerald M\@.
+  \textit{Neural Darwinism: The Theory of Neuronal Group Selection.}
+  Basic Books, New York, 1987.
+
+\item[Feyerabend 1975] Feyerabend, Paul.
+  \textit{Against Method: Outline of an Anarchistic Theory of Knowledge.}
+  New Left Books, London, 1975.
+
+\item[Flyxion 2026a] Flyxion.
+  \textit{Adjunction and Irreversibility: RSVP Field Theory.}
+  Independent monograph, 2026.
+  \url{https://standardgalactic.github.io/calculus/computation/adjunction_and_irreversibility.pdf}
+
+\item[Flyxion 2026b] Flyxion.
+  \textit{The Projection Crisis: Constraint, Trajectory, and Irreversibility.}
+  Independent monograph, 2026.
+  \url{https://standardgalactic.github.io/playfloor/epistemology/projection_crisis.pdf}
+
+\item[Flyxion 2026c] Flyxion.
+  \textit{Beyond Prediction Error: Admissibility-Based Ecological Cognition.}
+  Independent monograph, 2026.
+  \url{https://standardgalactic.github.io/alphabet/framework/beyond_prediction_error.pdf}
+
+\item[Flyxion 2026d] Flyxion.
+  \textit{Function Survives Collapse.}
+  Independent monograph, 2026.
+  \url{https://standardgalactic.github.io/alphabet/working/function_survives_collapse.pdf}
+
+\item[Kahneman 2011] Kahneman, Daniel.
+  \textit{Thinking, Fast and Slow.}
+  Farrar, Straus and Giroux, New York, 2011.
+
+\item[Krizhevsky et al.\ 2012] Krizhevsky, Alex; Sutskever, Ilya;
+  Hinton, Geoffrey E\@.
+  ImageNet Classification with Deep Convolutional Neural Networks.
+  \textit{Advances in Neural Information Processing Systems}, 25, 2012.
+
+\item[Lee 2003] Lee, John M\@.
+  \textit{Introduction to Smooth Manifolds.}
+  Graduate Texts in Mathematics 218. Springer, New York, 2003.
+
+\item[Mac Lane 1971] Mac Lane, Saunders.
+  \textit{Categories for the Working Mathematician.}
+  Graduate Texts in Mathematics 5. Springer, New York, 1971.
+
+\item[McCarthy \& Hayes 1969] McCarthy, John; Hayes, Patrick J\@.
+  Some Philosophical Problems from the Standpoint of Artificial Intelligence.
+  \textit{Machine Intelligence}, 4:463--502, 1969.
+
+\item[Pirsig 1974] Pirsig, Robert M\@.
+  \textit{Zen and the Art of Motorcycle Maintenance.}
+  William Morrow, New York, 1974.
+
+\item[Schr\"{o}dinger 1944] Schr\"{o}dinger, Erwin.
+  \textit{What Is Life?}
+  Cambridge University Press, Cambridge, 1944.
+
+\item[Smuts 1926] Smuts, Jan Christiaan.
+  \textit{Holism and Evolution.}
+  Macmillan, London, 1926.
+
+\item[Vapnik 1998] Vapnik, Vladimir N\@.
+  \textit{Statistical Learning Theory.}
+  Wiley, New York, 1998.
+
+\item[Winston 1975] Winston, Patrick H\@.
+  \textit{The Psychology of Computer Vision.}
+  McGraw-Hill, New York, 1975.
+
+\end{description}
+
+\end{document}

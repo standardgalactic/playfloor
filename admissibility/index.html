@@ -1,0 +1,691 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Structure Surviving Transformation</title>
+
+<style>
+*{box-sizing:border-box}
+
+html,body{
+  margin:0;
+  width:100%;
+  height:100%;
+  overflow:hidden;
+  background:#000;
+  color:#7cff7c;
+  font-family:monospace;
+  touch-action:manipulation;
+}
+
+body{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  cursor:pointer;
+}
+
+body::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  z-index:500;
+  background:
+    repeating-linear-gradient(
+      to bottom,
+      rgba(255,255,255,.028) 0px,
+      rgba(255,255,255,.028) 1px,
+      transparent 2px,
+      transparent 5px
+    );
+  opacity:.14;
+}
+
+body::after{
+  content:"";
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  z-index:501;
+  background:
+    radial-gradient(
+      circle at center,
+      transparent 0%,
+      rgba(0,0,0,.28) 72%,
+      rgba(0,0,0,.80) 100%
+    );
+}
+
+.title{
+  position:fixed;
+  top:16px;
+  width:96vw;
+  text-align:center;
+  font-size:13px;
+  letter-spacing:.16em;
+  text-transform:uppercase;
+  color:#00ff88;
+  text-shadow:0 0 10px #00ff66;
+  z-index:100;
+}
+
+.selector{
+  position:fixed;
+  top:48px;
+  width:96vw;
+  display:flex;
+  flex-wrap:wrap;
+  gap:7px;
+  justify-content:center;
+  z-index:120;
+  cursor:default;
+}
+
+.selector button{
+  background:#001400;
+  border:1px solid rgba(0,255,100,.55);
+  color:#7cff7c;
+  padding:6px 8px;
+  font-family:monospace;
+  font-size:9px;
+  letter-spacing:.06em;
+  cursor:pointer;
+}
+
+.selector button.active{
+  background:#003d1a;
+  color:#eaffea;
+  box-shadow:0 0 8px #00ff66 inset;
+}
+
+.status{
+  position:fixed;
+  top:88px;
+  opacity:.45;
+  font-size:10px;
+  letter-spacing:.14em;
+  z-index:120;
+}
+
+canvas{
+  width:min(440px,82vw);
+  height:min(440px,82vw);
+  border-radius:50%;
+  border:3px solid rgba(0,255,120,.42);
+  background:#000;
+  box-shadow:
+    0 0 60px rgba(0,255,120,.15) inset,
+    0 0 24px rgba(0,255,0,.55);
+  z-index:40;
+}
+
+.subs{
+  position:fixed;
+  bottom:24px;
+  width:min(680px,92vw);
+  min-height:2.5em;
+  padding:8px 12px;
+  text-align:center;
+  font-size:14px;
+  line-height:1.45;
+  color:#aaffaa;
+  text-shadow:0 0 6px #00ff66;
+  background:rgba(0,20,0,.36);
+  border:1px solid rgba(0,255,0,.22);
+  border-radius:6px;
+  pointer-events:none;
+  z-index:80;
+}
+
+@media(max-width:700px){
+  .title{top:13px;font-size:10px}
+  .selector{top:42px}
+  .selector button{font-size:8px;padding:5px 6px}
+  .status{top:92px;font-size:9px}
+  .subs{bottom:18px;font-size:13px}
+}
+</style>
+</head>
+
+<body>
+
+<div class="title" id="title">Structure Surviving Transformation</div>
+<div class="selector" id="selector"></div>
+<div class="status">TOUCH / CLICK ANYWHERE TO PLAY OR PAUSE</div>
+<canvas id="viz"></canvas>
+<div class="subs" id="subs"></div>
+
+<audio id="audio" preload="auto"></audio>
+
+<script>
+const tracks = [
+  {
+    file:"Math_is_structure_surviving_transformation.mp3",
+    label:"Math",
+    title:"Math Is Structure Surviving Transformation",
+    mode:"structure"
+  },
+  {
+    file:"The_Geometric_Necessity_of_AI_Hallucination.mp3",
+    label:"Hallucination",
+    title:"The Geometric Necessity of AI Hallucination",
+    mode:"hallucination"
+  },
+  {
+    file:"Mathematics_is_structure_surviving_transformation.mp3",
+    label:"Mathematics",
+    title:"Mathematics Is Structure Surviving Transformation",
+    mode:"structure"
+  },
+  {
+    file:"The_Physics_of_Our_Collapsing_Futures.mp3",
+    label:"Futures",
+    title:"The Physics of Our Collapsing Futures",
+    mode:"collapse"
+  },
+  {
+    file:"Reality_is_an_invisible_collision_mesh.mp3",
+    label:"Collision Mesh",
+    title:"Reality Is an Invisible Collision Mesh",
+    mode:"mesh"
+  }
+];
+
+tracks.forEach(t=>{
+  t.vtt = t.file.replace(/\.mp3$/i,".vtt");
+});
+
+let trackIndex = 0;
+let mode = tracks[0].mode;
+
+const audio = document.getElementById("audio");
+const subs = document.getElementById("subs");
+const title = document.getElementById("title");
+const selector = document.getElementById("selector");
+
+let audioCtx;
+let analyser;
+let freqData;
+let timeData;
+
+function initAudio(){
+  if(audioCtx) return;
+
+  audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+
+  analyser = audioCtx.createAnalyser();
+  analyser.fftSize = 2048;
+  analyser.smoothingTimeConstant = .87;
+
+  freqData = new Uint8Array(analyser.frequencyBinCount);
+  timeData = new Uint8Array(analyser.fftSize);
+
+  const source = audioCtx.createMediaElementSource(audio);
+  source.connect(analyser);
+  analyser.connect(audioCtx.destination);
+}
+
+function buildSelector(){
+  selector.innerHTML = "";
+
+  tracks.forEach((track,i)=>{
+    const button = document.createElement("button");
+    button.textContent = track.label;
+
+    button.onclick = async e=>{
+      e.stopPropagation();
+      initAudio();
+      if(audioCtx.state === "suspended") await audioCtx.resume();
+      await loadTrack(i,true);
+    };
+
+    selector.appendChild(button);
+  });
+}
+
+function updateButtons(){
+  [...selector.querySelectorAll("button")]
+    .forEach((button,i)=>{
+      button.classList.toggle("active",i===trackIndex);
+    });
+}
+
+async function loadTrack(i,autoplay=true){
+  trackIndex = ((i % tracks.length) + tracks.length) % tracks.length;
+
+  const track = tracks[trackIndex];
+
+  mode = track.mode;
+  title.textContent = track.title;
+
+  audio.src = track.file;
+  audio.load();
+
+  updateButtons();
+  await loadVTT(track.vtt);
+
+  if(autoplay){
+    try{ await audio.play(); }catch(e){}
+  }
+}
+
+audio.addEventListener("ended",()=>{
+  loadTrack(trackIndex+1,true);
+});
+
+document.body.onclick = async ()=>{
+  initAudio();
+
+  if(audioCtx.state === "suspended")
+    await audioCtx.resume();
+
+  if(audio.paused)
+    await audio.play();
+  else
+    audio.pause();
+};
+
+/* subtitles */
+
+let cues = [];
+
+async function loadVTT(url){
+  cues = [];
+  subs.textContent = "";
+
+  try{
+    const res = await fetch(url);
+
+    if(!res.ok){
+      console.warn("Missing VTT:",url);
+      return;
+    }
+
+    cues = parseVTT(await res.text());
+
+  }catch(e){
+    console.warn("VTT load failed:",e);
+  }
+}
+
+function parseVTT(text){
+  const blocks = text.replace(/\r/g,"").split(/\n{2,}/);
+  const out = [];
+
+  for(const block of blocks){
+    const lines = block.trim().split("\n");
+    const ts = lines.find(line=>line.includes("-->"));
+    if(!ts) continue;
+
+    const tsIndex = lines.indexOf(ts);
+    const [start,end] = ts.split("-->").map(x=>x.trim());
+
+    out.push({
+      start:parseTime(start),
+      end:parseTime(end),
+      text:lines.slice(tsIndex+1).join(" ")
+    });
+  }
+
+  return out;
+}
+
+function parseTime(t){
+  t = t.split(" ")[0].replace(",",".");
+  const p = t.split(":");
+
+  if(p.length === 3)
+    return (+p[0])*3600 + (+p[1])*60 + parseFloat(p[2]);
+
+  return (+p[0])*60 + parseFloat(p[1]);
+}
+
+audio.ontimeupdate = ()=>{
+  const t = audio.currentTime;
+  const cue = cues.find(c=>t>=c.start && t<c.end+.2);
+  subs.textContent = cue ? cue.text : "";
+};
+
+/* visualizer */
+
+const canvas = document.getElementById("viz");
+const ctx = canvas.getContext("2d");
+
+const W = 480;
+const H = 480;
+const cx = W/2;
+const cy = H/2;
+const R = W*.39;
+
+canvas.width = W;
+canvas.height = H;
+
+let frame = 0;
+let bass = 0;
+let mid = 0;
+let high = 0;
+
+function updateEnergy(){
+  if(!analyser) return;
+
+  analyser.getByteFrequencyData(freqData);
+
+  let b=0,m=0,h=0;
+
+  for(let i=0;i<42;i++) b += freqData[i];
+  for(let i=42;i<180;i++) m += freqData[i];
+  for(let i=180;i<freqData.length;i++) h += freqData[i];
+
+  bass += (b/(42*255)-bass)*.08;
+  mid += (m/(138*255)-mid)*.06;
+  high += (h/((freqData.length-180)*255)-high)*.05;
+}
+
+function clearPortal(){
+  ctx.fillStyle = "rgba(0,5,0,.09)";
+  ctx.fillRect(0,0,W,H);
+
+  ctx.save();
+  ctx.beginPath();
+  ctx.arc(cx,cy,R,0,Math.PI*2);
+  ctx.clip();
+
+  const g = ctx.createRadialGradient(cx,cy,0,cx,cy,R);
+  g.addColorStop(0,"rgba(0,35,14,.24)");
+  g.addColorStop(.68,"rgba(0,10,0,.42)");
+  g.addColorStop(1,"rgba(0,0,0,.96)");
+
+  ctx.fillStyle = g;
+  ctx.fillRect(0,0,W,H);
+
+  drawSparseStars();
+
+  ctx.restore();
+
+  ctx.beginPath();
+  ctx.arc(cx,cy,R,0,Math.PI*2);
+  ctx.strokeStyle = "rgba(124,255,196,.32)";
+  ctx.lineWidth = 3;
+  ctx.shadowBlur = 14;
+  ctx.shadowColor = "#00ff66";
+  ctx.stroke();
+  ctx.shadowBlur = 0;
+}
+
+function drawSparseStars(){
+  ctx.fillStyle = "rgba(180,255,210,.13)";
+
+  for(let i=0;i<38;i++){
+    const x = ((Math.sin(i*83.17)*43758.5453)%1+1)%1;
+    const y = ((Math.sin(i*41.93+2)*19341.13)%1+1)%1;
+
+    const px = x*W;
+    const py = y*H;
+
+    const dx = px-cx;
+    const dy = py-cy;
+
+    if(dx*dx+dy*dy < R*R)
+      ctx.fillRect(px,py,1.4,1.4);
+  }
+}
+
+function drawStructure(){
+  ctx.save();
+  ctx.beginPath();
+  ctx.arc(cx,cy,R,0,Math.PI*2);
+  ctx.clip();
+  ctx.translate(cx,cy);
+
+  const scale = 1 + bass*.07 + Math.sin(frame*.012)*.018;
+
+  for(let k=0;k<5;k++){
+    ctx.save();
+    ctx.rotate(frame*.003 + k*Math.PI/5);
+
+    ctx.strokeStyle = `rgba(124,255,196,${.12+k*.08})`;
+    ctx.lineWidth = 5;
+    ctx.shadowBlur = 10;
+    ctx.shadowColor = "#00ff88";
+
+    const s = R*(.32 + k*.075)*scale;
+
+    ctx.beginPath();
+    ctx.rect(-s/2,-s/2,s,s);
+    ctx.stroke();
+
+    ctx.restore();
+  }
+
+  for(let i=0;i<8;i++){
+    const a = i/8*Math.PI*2 + frame*.004;
+    const x = Math.cos(a)*R*.52;
+    const y = Math.sin(a)*R*.52;
+
+    ctx.beginPath();
+    ctx.arc(x,y,7+mid*8,0,Math.PI*2);
+    ctx.fillStyle = "rgba(190,255,220,.88)";
+    ctx.shadowBlur = 14;
+    ctx.shadowColor = "#00ff88";
+    ctx.fill();
+  }
+
+  ctx.restore();
+}
+
+function drawHallucination(){
+  ctx.save();
+  ctx.beginPath();
+  ctx.arc(cx,cy,R,0,Math.PI*2);
+  ctx.clip();
+  ctx.translate(cx,cy);
+
+  for(let k=0;k<14;k++){
+    ctx.beginPath();
+
+    const r = R*(.10+k*.045);
+
+    for(let a=0;a<=Math.PI*2+.04;a+=.05){
+      const offset =
+        Math.sin(a*(5+k*.2)+frame*.02+k)*
+        (3+high*22);
+
+      const slip =
+        Math.cos(a*(2+k*.13)-frame*.013)*
+        (2+mid*14);
+
+      const x = Math.cos(a)*(r+offset);
+      const y = Math.sin(a)*(r+slip);
+
+      if(a===0) ctx.moveTo(x,y);
+      else ctx.lineTo(x,y);
+    }
+
+    ctx.strokeStyle = `rgba(124,255,196,${.025+k*.014})`;
+    ctx.lineWidth = 4;
+    ctx.shadowBlur = 8;
+    ctx.shadowColor = "#00ff88";
+    ctx.stroke();
+  }
+
+  for(let i=0;i<32;i++){
+    const a = i/32*Math.PI*2 + frame*.006;
+    const r = R*(.18 + (i%8)*.065);
+
+    ctx.beginPath();
+    ctx.arc(
+      Math.cos(a)*r*.65,
+      Math.sin(a*1.4)*r*.48,
+      3 + high*12,
+      0,
+      Math.PI*2
+    );
+    ctx.strokeStyle = `rgba(190,255,220,${.10+high*.25})`;
+    ctx.lineWidth = 3;
+    ctx.stroke();
+  }
+
+  ctx.restore();
+}
+
+function drawCollapse(){
+  ctx.save();
+  ctx.beginPath();
+  ctx.arc(cx,cy,R,0,Math.PI*2);
+  ctx.clip();
+  ctx.translate(cx,cy);
+
+  for(let k=0;k<13;k++){
+    const y = -R*.62 + k*R*.105;
+    const squeeze = 1 - bass*.24 - k*.012;
+
+    ctx.beginPath();
+
+    for(let i=-100;i<=100;i++){
+      const p = i/100;
+      const x = p*R*.72*squeeze;
+      const sag =
+        Math.sin(p*Math.PI*2 + frame*.018+k)*
+        (4+mid*20) +
+        k*k*.16;
+
+      if(i===-100) ctx.moveTo(x,y+sag);
+      else ctx.lineTo(x,y+sag);
+    }
+
+    ctx.strokeStyle = `rgba(124,255,196,${.07+k*.02})`;
+    ctx.lineWidth = 5;
+    ctx.shadowBlur = 8;
+    ctx.shadowColor = "#00ff88";
+    ctx.stroke();
+  }
+
+  ctx.beginPath();
+  ctx.moveTo(-R*.68,R*.48);
+  ctx.lineTo(R*.68,R*.48);
+  ctx.strokeStyle = "rgba(190,255,220,.42)";
+  ctx.lineWidth = 8;
+  ctx.stroke();
+
+  ctx.restore();
+}
+
+function drawMesh(){
+  ctx.save();
+  ctx.beginPath();
+  ctx.arc(cx,cy,R,0,Math.PI*2);
+  ctx.clip();
+  ctx.translate(cx,cy);
+
+  const points = [];
+
+  for(let i=0;i<12;i++){
+    const a = i/12*Math.PI*2 + Math.sin(frame*.006+i)*.08;
+    const r = R*(.22 + (i%4)*.12 + bass*.05);
+
+    points.push({
+      x:Math.cos(a)*r,
+      y:Math.sin(a*1.12)*r
+    });
+  }
+
+  for(let i=0;i<points.length;i++){
+    for(let j=i+1;j<points.length;j++){
+      const p = points[i];
+      const q = points[j];
+      const dx = p.x-q.x;
+      const dy = p.y-q.y;
+      const d = Math.sqrt(dx*dx+dy*dy);
+
+      if(d < R*.62){
+        ctx.beginPath();
+        ctx.moveTo(p.x,p.y);
+        ctx.lineTo(q.x,q.y);
+        ctx.strokeStyle = `rgba(124,255,196,${.05 + (1-d/(R*.62))*.22})`;
+        ctx.lineWidth = 4;
+        ctx.shadowBlur = 8;
+        ctx.shadowColor = "#00ff88";
+        ctx.stroke();
+      }
+    }
+  }
+
+  for(const p of points){
+    ctx.beginPath();
+    ctx.arc(p.x,p.y,8+mid*7,0,Math.PI*2);
+    ctx.fillStyle = "rgba(190,255,220,.88)";
+    ctx.shadowBlur = 14;
+    ctx.shadowColor = "#00ff88";
+    ctx.fill();
+  }
+
+  ctx.restore();
+}
+
+function drawHeavyTrace(){
+  if(!analyser) return;
+
+  analyser.getByteTimeDomainData(timeData);
+
+  const lagBase =
+    mode==="hallucination" ? .20 :
+    mode==="collapse" ? .12 :
+    mode==="mesh" ? .17 :
+    .14;
+
+  const lag = Math.floor(timeData.length*(lagBase+mid*.09));
+
+  ctx.beginPath();
+
+  for(let i=0;i<timeData.length;i+=3){
+    const a = (timeData[i]-128)/128;
+    const b = (timeData[(i+lag)%timeData.length]-128)/128;
+
+    const twist =
+      mode==="hallucination"
+      ? Math.sin(i*.05+frame*.018)*high*18
+      : mode==="mesh"
+      ? Math.sin(i*.025+frame*.012)*mid*12
+      : 0;
+
+    const x = cx + a*R*.52 + twist + Math.sin(frame*.008)*8;
+    const y = cy + b*R*.43 + Math.cos(frame*.006)*7;
+
+    if(i===0) ctx.moveTo(x,y);
+    else ctx.lineTo(x,y);
+  }
+
+  ctx.strokeStyle = "rgba(124,255,196,.78)";
+  ctx.lineWidth = 5;
+  ctx.lineCap = "round";
+  ctx.shadowBlur = 18;
+  ctx.shadowColor = "#00ff66";
+  ctx.stroke();
+  ctx.shadowBlur = 0;
+}
+
+function draw(){
+  frame++;
+  updateEnergy();
+  clearPortal();
+
+  if(mode==="structure") drawStructure();
+  if(mode==="hallucination") drawHallucination();
+  if(mode==="collapse") drawCollapse();
+  if(mode==="mesh") drawMesh();
+
+  drawHeavyTrace();
+
+  requestAnimationFrame(draw);
+}
+
+buildSelector();
+loadTrack(0,false);
+draw();
+</script>
+
+</body>
+</html>

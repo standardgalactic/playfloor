@@ -46,7 +46,7 @@ start	end	text
 140620	142560	We are going to guide you through a real transition today.
 142680	147880	By the end of this, you won't see meaning as just a bunch of data points plotted on a graph.
 148160	152160	You will see meaning as an invisible, highly curved field of constraints.
-152160	159560	And the catalyst for this shift is a groundbreaking 2025 monograph by an independent researcher named Flickpnam.
+152160	159560	And the catalyst for this shift is a groundbreaking 2025 monograph by an independent researcher named Flyxion.
 159840	160100	Right.
 160440	166080	It is titled, Hitting Curvature, Constraint Geometry, Projection, and the Reconstruction of Meaning.
 166480	168760	But we should set the stakes here early on.
@@ -166,7 +166,7 @@ start	end	text
 572340	578760	And the fascinating thing is that engineers have known about these logical failures for years, and they've tried to fix them.
 579460	586680	The source material talks about how people have thrown modal logic approaches and enriched embedding layers at the problem.
 586880	587760	Yeah, they've tried.
-587760	592880	But Fliction argues these attempts are doomed because they face a regress problem.
+587760	592880	But Flyxion argues these attempts are doomed because they face a regress problem.
 593120	596000	The standard engineering instinct is always to add more features.
 596540	603020	If the AI doesn't understand modal operators like must or could, the engineers try to enrich the map.
 603280	603380	Right.
@@ -182,13 +182,13 @@ start	end	text
 635840	639240	Which leads to one of the most mind-bending quotes in Chapter 1 of the monograph.
 639420	641900	I read this three times to make sure I understood the gravity of it.
 641960	642560	It's a big one.
-642560	646320	Fliction writes, collapse events are not errors to be corrected.
+642560	646320	Flyxion writes, collapse events are not errors to be corrected.
 646880	648200	They are measurement signals.
 648740	651660	We have to zoom out and look at the broader implications of that statement.
 652420	661640	For years, every time an AI generated a hallucination, every time it confused a possibility with a certainty, engineers viewed it as a failure.
 661780	662400	Like a bug.
 662400	664720	A piece of trash to be swept up and filtered out.
-665460	667000	Fliction is saying the exact opposite.
+665460	667000	Flyxion is saying the exact opposite.
 667560	669560	That hallucination is not random noise.
 670080	674560	It is a precise, observable shadow cast by the hidden 3D mountain range.
 674660	675200	Okay, wow.
@@ -199,7 +199,7 @@ start	end	text
 690220	691120	Sure, go for it.
 691120	698900	If mapping meaning by proximity, putting words near each other on a 2D map doesn't work, what is the mountain actually made of?
 699260	704640	If it's not made of tokens and vocabulary words clustering together, what is the geography of meaning?
-704780	711100	To get to the bottom of that, we move into part two of the monograph where Fliction introduces the underlying geography.
+704780	711100	To get to the bottom of that, we move into part two of the monograph where Flyxion introduces the underlying geography.
 711860	714620	This is the concept of the admissibility manifold.
 714620	716120	The admissibility manifold.
 716360	716540	Right.
@@ -207,14 +207,14 @@ start	end	text
 722100	726020	The core premise here is constraints come before representations.
 726600	728080	Constraints before representations.
 728080	733820	Let's dig into this admissibility manifold, which the paper mathematically denotes as X.
-734460	737180	Fliction makes a really aggressive philosophical claim here.
+734460	737180	Flyxion makes a really aggressive philosophical claim here.
 737300	738380	Yeah, it's a huge departure.
 738740	744780	The text argues that a semantic state, a thought, a concept, a word, is not a point with intrinsic properties.
 745220	748400	It is defined entirely by what transitions are admissible from it.
 748400	750200	Let's strip away the abstract terminology.
 750440	756860	The conventional view of language is that a word is like a brick, and it has an intrinsic heaviness, a color, a texture.
 757240	760500	We take these bricks, and we stack them together to build a house of meaning.
-761220	763620	Fliction is arguing that the brick does not exist.
+761220	763620	Flyxion is arguing that the brick does not exist.
 763780	764760	Wait, it doesn't exist.
 764860	765120	No.
 765460	768720	A semantic position has no intrinsic properties whatsoever.
@@ -224,7 +224,7 @@ start	end	text
 782220	782680	Exactly.
 783120	790700	It is defined by what futures are coherent, what futures are strictly forbidden, and what futures are possible but unlikely.
 791000	795640	Okay, so if we are existing inside this space, the admissibility manifold X.
-795640	803440	Fliction says that for every single position you occupy in that space, there is an invisible continuation space radiating out in front of you.
+795640	803440	Flyxion says that for every single position you occupy in that space, there is an invisible continuation space radiating out in front of you.
 803660	803820	Yes.
 804020	808280	And within that continuation space, there is a conditional probability density.
 808480	812360	Let's visualize that continuation space as a cone of light shining out from a flashlight.
@@ -241,7 +241,7 @@ start	end	text
 843020	848740	It is a probability derived from the pure, hard constraint structure of the logical domain itself.
 848740	854460	But to actually map this space, to figure out where the walls are, you need a mathematical ruler.
 854620	855360	You need a metric.
-855680	863860	And Fliction points out that the standard ruler everyone in machine learning uses, the Hessian metric, completely falls apart when you try to use it in this space.
+855680	863860	And Flyxion points out that the standard ruler everyone in machine learning uses, the Hessian metric, completely falls apart when you try to use it in this space.
 864000	866260	The Hessian metric is the darling of optimization.
 866260	871220	Usually, it measures the curvature of a landscape by looking at the second derivatives.
 871320	872400	Right, the calculus stuff.
@@ -260,7 +260,7 @@ start	end	text
 922260	924220	So it's useless exactly when you need it.
 924420	932540	Trying to use the Hessian to understand AI hallucinations is like having a Geiger counter that automatically shuts off the moment it gets near actual radiation.
 932980	934760	It fails exactly when you need it, though.
-934880	939320	The Fliction throws out the Hessian and brings in a different tool, the Fischer information metric.
+934880	939320	The Flyxion throws out the Hessian and brings in a different tool, the Fischer information metric.
 939320	941920	The Fischer metric doesn't care about the slope of the hills.
 942040	942140	Yeah.
 942440	944320	The Fischer metric measures semantic distinguishability.
@@ -366,7 +366,7 @@ start	end	text
 1284040	1287520	I am picturing this like gravitational lensing out in deep space.
 1287600	1288520	Oh, that's a great visual.
 1288740	1294600	We know that supermassive black holes or galaxies physically bend the path of light traveling past them.
-1295460	1302360	In Fliction's framework, the massive semantic rules, the heavy logical constraints of a language, act like those black holes.
+1295460	1302360	In Flyxion's framework, the massive semantic rules, the heavy logical constraints of a language, act like those black holes.
 1302360	1302920	They do.
 1302920	1309200	They literally bend the path of the AI's logic to the densest, safest cluster of valid meanings.
 1309620	1314220	The gravitational lensing analogy is practically a one-to-one mapping of the mathematics here.
@@ -384,7 +384,7 @@ start	end	text
 1353080	1353400	Never?
 1353400	1353880	No.
 1354380	1357660	The AI is trapped, operating in a flat representational space.
-1358060	1366100	And the violent transition between the true curved space and the AI's flat space is governed by what Fliction calls the projection collapse principle.
+1358060	1366100	And the violent transition between the true curved space and the AI's flat space is governed by what Flyxion calls the projection collapse principle.
 1366300	1366500	Okay.
 1366580	1368160	This brings us to Section 4, The Squeeze.
 1368300	1373400	This is Part 3 of the monograph, and it is the absolute core theorem of the entire paper.
@@ -396,7 +396,7 @@ start	end	text
 1392640	1396820	The countries near the edges are going to get stretched, torn, and heavily distorted.
 1396820	1401620	So we are taking our 3D mountain range of meaning and squashing it onto the 2D piece of paper.
 1402420	1405920	But the text gets incredibly specific about how that squashing happens.
-1406580	1410020	Fliction introduces something called the vertical-horizontal decomposition.
+1406580	1410020	Flyxion introduces something called the vertical-horizontal decomposition.
 1410440	1411380	Yes, he does.
 1411520	1413460	And sounds like we are slicing the space in half.
 1413520	1414600	In a way, we are.
@@ -463,7 +463,7 @@ start	end	text
 1625500	1629820	You can't fix a fundamentally distorted map by printing it on a bigger piece of paper.
 1630020	1631380	It's mathematically impossible.
 1631640	1631960	Right.
-1632460	1637120	Flexition mathematically formalizes this with the representational mixing functional.
+1632460	1637120	Flyxion mathematically formalizes this with the representational mixing functional.
 1637740	1644720	This functional measures the observable hallucination, the degree to which the AI mixes up concepts that should be logically separated.
 1644720	1651060	And the projection collapse principle links this observable hallucination directly to the hidden mixed curvature.
 1652020	1655740	The text mentions a weak form and a strong form of this principle.
@@ -496,7 +496,7 @@ start	end	text
 1751960	1754920	can we mathematically rebuild the 3D mountain range?
 1755140	1761060	It's like trying to guess the shape of a bird only by looking at its shadow on the ground while it flies.
 1761200	1762180	Yes, exactly.
-1762180	1765180	And fliction introduces the reconstruction operator to do this.
+1762180	1765180	And Flyxion introduces the reconstruction operator to do this.
 1765520	1770900	It takes the observed mixing field, the shadows, the hallucinations, and maps them back to the hidden curvature field.
 1770940	1771260	Right.
 1771920	1773900	But the math required to pull this off.
@@ -536,7 +536,7 @@ start	end	text
 1894860	1896120	Okay, that makes perfect sense.
 1897080	1900040	The text also mentions the Kramer-Rowe bound in this section.
 1900760	1907060	Usually I've heard of that as a statistical limit and probability like how well you can estimate a parameter from a data sample.
-1907260	1911460	But in this semantic setting, Fliction adapts it into something much more profound.
+1907260	1911460	But in this semantic setting, Flyxion adapts it into something much more profound.
 1911460	1916080	It is not a statistical limit based on how much data you have.
 1916260	1916700	Then what is it?
 1917160	1923360	It is a hard geometric limit on how finely your representation can ever resolve the underlying constraint structures.
@@ -546,7 +546,7 @@ start	end	text
 1934360	1937000	What are the actual instruments we use to measure these shadows?
 1937420	1938280	We use probes.
 1938280	1938580	Right.
-1938920	1942420	Fliction lists three specific probes to measure the hidden curvature.
+1938920	1942420	Flyxion lists three specific probes to measure the hidden curvature.
 1942660	1944100	The first one is triplet measurements.
 1944720	1947180	A triplet measurement is a highly targeted probe.
 1947400	1954780	You evaluate three distinct semantic states, an anchor state, a valid logical substitute, and a misleading decoy.
@@ -577,7 +577,7 @@ start	end	text
 2058840	2067200	If we are only looking at the shadows of these errors, and we are using audio filters to dampen the noise, how do we know we aren't being completely fooled?
 2067740	2073520	Can this inverse math ever actually recover the pure, original vertical curvature?
 2074080	2079500	Or are we permanently stuck only seeing the mixed-up curvature where the shadows overlap?
-2079500	2083840	That is a vital piercing question, and Flikstian addresses it head-on.
+2079500	2083840	That is a vital piercing question, and Flyxion addresses it head-on.
 2084500	2088500	The mathematics prove that we can only ever recover the fiber-averaged mixed curvature.
 2089080	2092740	We cannot see the pure, unadulterated vertical curvature.
 2092900	2093240	Oh, really?
@@ -597,7 +597,7 @@ start	end	text
 2148120	2150180	Because it is entirely modeled on physics.
 2150180	2157620	RSVP Field Theory provides a dynamical equation, a set of rules, for how the admissibility field evolves over time.
 2157780	2158040	Okay.
-2158200	2165040	And to describe how the field becomes unstable, fliction uses a concept borrowed directly from physics, the Mexican hat potential.
+2158200	2165040	And to describe how the field becomes unstable, Flyxion uses a concept borrowed directly from physics, the Mexican hat potential.
 2165060	2166440	I remember this from physics class.
 2166540	2166720	Yeah.
 2166840	2169980	A Mexican hat potential is a graph that physically looks like a sombrero.
@@ -608,7 +608,7 @@ start	end	text
 2186880	2189600	When the marble is on top, it has perfect symmetry.
 2190060	2193200	When it rolls down into the brim, that symmetry is broken.
 2193440	2194940	So how does that map to language?
-2194940	2199940	In Fliction's framework, the peak of the sombrero represents a semantic bottleneck.
+2194940	2199940	In Flyxion's framework, the peak of the sombrero represents a semantic bottleneck.
 2200380	2206880	It is a place where the logical constraints are incredibly tight and the admissibility density collapses towards zero.
 2207200	2209860	It is a highly unstable region of thought.
 2210100	2212260	So what happens to the AI when it gets near the peak?
@@ -625,21 +625,21 @@ start	end	text
 2251040	2253880	The small gain condition is a mathematical boundary line.
 2254080	2254980	Like a point of no return.
 2255360	2260560	If your system crosses that line, the feedback loop spirals out of control and the system loses stability.
-2261460	2265460	Fliction takes this boundary and maps it directly onto the admissibility manifold.
+2261460	2265460	Flyxion takes this boundary and maps it directly onto the admissibility manifold.
 2265720	2265960	Okay.
 2266380	2269140	The small gain condition acts as a collapsed surface.
 2269140	2279680	If the AI's thought process wanders and hits that specific geometric surface, the curvature becomes critical, the math breaks down, and observable hallucinations violently spike.
 2279940	2287820	So if the peak of the sombrero and the collapsed surface are where the AI dies, how do we build an AI that physically cannot hit those surfaces?
 2287960	2288960	We use a new architecture.
 2289360	2289520	Right.
-2289680	2292740	Fliction proposes what is called a constraint-first semantic architecture.
+2289680	2292740	Flyxion proposes what is called a constraint-first semantic architecture.
 2293180	2294940	Let's contrast this with how things work today.
 2294940	2299560	Right now, almost all AI uses a generate-then-filter approach.
 2299780	2300300	Yes, they do.
 2300540	2302060	The AI predicts the next word.
 2302700	2305400	Maybe it generates something totally illogical or toxic.
 2305800	2313560	And then a secondary downstream safety system jumps in and says, whoops, you can't say that, and filters it out before the user sees it.
-2313780	2317620	Which Fliction argues is fundamentally backward and mathematically wasteful.
+2313780	2317620	Which Flyxion argues is fundamentally backward and mathematically wasteful.
 2317620	2327920	Because in a generate-then-filter system, the AI has already spent millions of computational cycles navigating deeply into forbidden, inadmissible space.
 2327960	2328580	It's already crashed.
 2328680	2331800	It has already fallen off the cliff, and you are just catching the body at the bottom.
@@ -651,7 +651,7 @@ start	end	text
 2355760	2362380	It's like, current AI is a car that has been programmed to drive blindly in any direction,
 2362380	2369680	and we just build massive rubber guardrails all over the city to bounce the car back onto the road when it swerves off a cliff.
 2369800	2370940	That's exactly what we do.
-2371380	2376060	But Fliction is saying we need to tear up the road entirely and lay down train tracks first.
+2371380	2376060	But Flyxion is saying we need to tear up the road entirely and lay down train tracks first.
 2376380	2380980	If the AI is a train on a track, it literally cannot steer into an invalid direction.
 2381520	2383180	The physics of the track forbid it.
 2383420	2385020	That is the exact paradigm shift.
@@ -666,7 +666,7 @@ start	end	text
 2417400	2420640	But an overall accuracy score is dangerously misleading.
 2420640	2424740	It hides the underlying structural geometry of the failures.
 2425200	2426700	So how do we test the train tracks?
-2427100	2431120	Under Fliction's paradigm, auditors won't care about a 95% pass rate.
+2427100	2431120	Under Flyxion's paradigm, auditors won't care about a 95% pass rate.
 2431540	2433620	Instead, they will generate collapse graphs.
 2434240	2439040	They will use the mathematical probes we discussed to map the specific topological failures of the model.
 2439420	2442520	They will map the exact coordinates where the train tracks are broken.
@@ -696,7 +696,7 @@ start	end	text
 2525720	2528320	Part 6 of the monograph leaves the engineering behind
 2528320	2532340	and explicitly challenges our deepest philosophical assumptions about language.
 2532440	2532740	Which are?
-2532740	2537520	The core ontological claim Fliction makes here is that constraint is prior to representation.
+2532740	2537520	The core ontological claim Flyxion makes here is that constraint is prior to representation.
 2538260	2539260	Meaning is not the word.
 2539560	2541840	Meaning is an invariant of the admissibility field.
 2542140	2543300	We really need to underline this.
@@ -707,11 +707,11 @@ start	end	text
 2552240	2553800	They are the 2D shadows of the mountain.
 2554340	2556400	Meaning is the constraint field itself.
 2556560	2557460	Meaning is the field.
-2557460	2560620	Fliction mathematically formalizes this.
+2557460	2560620	Flyxion mathematically formalizes this.
 2561180	2566780	A linguistic transformation preserves meaning if and only if it strictly maps admissible
 2566780	2569200	continuations to admissible continuations.
 2569580	2574940	If the rules of the board stay the same, the meaning stays the same, regardless of the words used.
-2575060	2579260	Fliction brings up a very famous philosophical thought experiment to illustrate this difference.
+2575060	2579260	Flyxion brings up a very famous philosophical thought experiment to illustrate this difference.
 2580120	2581780	John Searle's Chinese Room.
 2581780	2583760	I've heard of this, but remind me how it works.
 2584060	2588100	It's a classic argument against artificial intelligence truly understanding anything.
@@ -728,13 +728,13 @@ start	end	text
 2611780	2614900	To the outside observer, the room speaks fluent Chinese.
 2615380	2618460	But Searle argues that the room doesn't understand anything.
 2618720	2621220	It is merely manipulating syntax blindly.
-2622160	2626740	And how does Fliction's geometric framework respond to that critique?
-2627080	2630100	Because it sounds like Fliction agrees that the room doesn't understand.
-2630500	2633740	Fliction entirely agrees, but for a radically different reason.
+2622160	2626740	And how does Flyxion's geometric framework respond to that critique?
+2627080	2630100	Because it sounds like Flyxion agrees that the room doesn't understand.
+2630500	2633740	Flyxion entirely agrees, but for a radically different reason.
 2634400	2637880	The standard AI industry response to the Chinese room is to say,
 2637880	2641660	well, we just need to give the person a bigger rule book with more context.
-2641780	2642980	But Fliction says.
-2643220	2648600	Fliction says the Chinese room fails to generate true meaning because it operates entirely on representations.
+2641780	2642980	But Flyxion says.
+2643220	2648600	Flyxion says the Chinese room fails to generate true meaning because it operates entirely on representations.
 2649500	2651520	The rule book is just a flat 2D map.
 2652020	2655940	It is the description of constraints, but it is not the actual geometry of the constraints.
 2656100	2656440	Oh, wow.

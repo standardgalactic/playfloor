@@ -188,7 +188,7 @@ You will see meaning as an invisible, highly curved field of constraints.
 
 48
 00:02:32,160 --> 00:02:39,560
-And the catalyst for this shift is a groundbreaking 2025 monograph by an independent researcher named Flickpnam.
+And the catalyst for this shift is a groundbreaking 2025 monograph by an independent researcher named Flyxion.
 
 49
 00:02:39,840 --> 00:02:40,100
@@ -668,7 +668,7 @@ Yeah, they've tried.
 
 168
 00:09:47,760 --> 00:09:52,880
-But Fliction argues these attempts are doomed because they face a regress problem.
+But Flyxion argues these attempts are doomed because they face a regress problem.
 
 169
 00:09:53,120 --> 00:09:56,000
@@ -732,7 +732,7 @@ It's a big one.
 
 184
 00:10:42,560 --> 00:10:46,320
-Fliction writes, collapse events are not errors to be corrected.
+Flyxion writes, collapse events are not errors to be corrected.
 
 185
 00:10:46,880 --> 00:10:48,200
@@ -756,7 +756,7 @@ A piece of trash to be swept up and filtered out.
 
 190
 00:11:05,460 --> 00:11:07,000
-Fliction is saying the exact opposite.
+Flyxion is saying the exact opposite.
 
 191
 00:11:07,560 --> 00:11:09,560
@@ -800,7 +800,7 @@ If it's not made of tokens and vocabulary words clustering together, what is the
 
 201
 00:11:44,780 --> 00:11:51,100
-To get to the bottom of that, we move into part two of the monograph where Fliction introduces the underlying geography.
+To get to the bottom of that, we move into part two of the monograph where Flyxion introduces the underlying geography.
 
 202
 00:11:51,860 --> 00:11:54,620
@@ -832,7 +832,7 @@ Let's dig into this admissibility manifold, which the paper mathematically denot
 
 209
 00:12:14,460 --> 00:12:17,180
-Fliction makes a really aggressive philosophical claim here.
+Flyxion makes a really aggressive philosophical claim here.
 
 210
 00:12:17,300 --> 00:12:18,380
@@ -860,7 +860,7 @@ We take these bricks, and we stack them together to build a house of meaning.
 
 216
 00:12:41,220 --> 00:12:43,620
-Fliction is arguing that the brick does not exist.
+Flyxion is arguing that the brick does not exist.
 
 217
 00:12:43,780 --> 00:12:44,760
@@ -900,7 +900,7 @@ Okay, so if we are existing inside this space, the admissibility manifold X.
 
 226
 00:13:15,640 --> 00:13:23,440
-Fliction says that for every single position you occupy in that space, there is an invisible continuation space radiating out in front of you.
+Flyxion says that for every single position you occupy in that space, there is an invisible continuation space radiating out in front of you.
 
 227
 00:13:23,660 --> 00:13:23,820
@@ -968,7 +968,7 @@ You need a metric.
 
 243
 00:14:15,680 --> 00:14:23,860
-And Fliction points out that the standard ruler everyone in machine learning uses, the Hessian metric, completely falls apart when you try to use it in this space.
+And Flyxion points out that the standard ruler everyone in machine learning uses, the Hessian metric, completely falls apart when you try to use it in this space.
 
 244
 00:14:24,000 --> 00:14:26,260
@@ -1044,7 +1044,7 @@ It fails exactly when you need it, though.
 
 262
 00:15:34,880 --> 00:15:39,320
-The Fliction throws out the Hessian and brings in a different tool, the Fischer information metric.
+The Flyxion throws out the Hessian and brings in a different tool, the Fischer information metric.
 
 263
 00:15:39,320 --> 00:15:41,920
@@ -1468,7 +1468,7 @@ We know that supermassive black holes or galaxies physically bend the path of li
 
 368
 00:21:35,460 --> 00:21:42,360
-In Fliction's framework, the massive semantic rules, the heavy logical constraints of a language, act like those black holes.
+In Flyxion's framework, the massive semantic rules, the heavy logical constraints of a language, act like those black holes.
 
 369
 00:21:42,360 --> 00:21:42,920
@@ -1540,7 +1540,7 @@ The AI is trapped, operating in a flat representational space.
 
 386
 00:22:38,060 --> 00:22:46,100
-And the violent transition between the true curved space and the AI's flat space is governed by what Fliction calls the projection collapse principle.
+And the violent transition between the true curved space and the AI's flat space is governed by what Flyxion calls the projection collapse principle.
 
 387
 00:22:46,300 --> 00:22:46,500
@@ -1588,7 +1588,7 @@ But the text gets incredibly specific about how that squashing happens.
 
 398
 00:23:26,580 --> 00:23:30,020
-Fliction introduces something called the vertical-horizontal decomposition.
+Flyxion introduces something called the vertical-horizontal decomposition.
 
 399
 00:23:30,440 --> 00:23:31,380
@@ -1856,7 +1856,7 @@ Right.
 
 465
 00:27:12,460 --> 00:27:17,120
-Flexition mathematically formalizes this with the representational mixing functional.
+Flyxion mathematically formalizes this with the representational mixing functional.
 
 466
 00:27:17,740 --> 00:27:24,720
@@ -1988,7 +1988,7 @@ Yes, exactly.
 
 498
 00:29:22,180 --> 00:29:25,180
-And fliction introduces the reconstruction operator to do this.
+And Flyxion introduces the reconstruction operator to do this.
 
 499
 00:29:25,520 --> 00:29:30,900
@@ -2148,7 +2148,7 @@ Usually I've heard of that as a statistical limit and probability like how well 
 
 538
 00:31:47,260 --> 00:31:51,460
-But in this semantic setting, Fliction adapts it into something much more profound.
+But in this semantic setting, Flyxion adapts it into something much more profound.
 
 539
 00:31:51,460 --> 00:31:56,080
@@ -2188,7 +2188,7 @@ Right.
 
 548
 00:32:18,920 --> 00:32:22,420
-Fliction lists three specific probes to measure the hidden curvature.
+Flyxion lists three specific probes to measure the hidden curvature.
 
 549
 00:32:22,660 --> 00:32:24,100
@@ -2312,7 +2312,7 @@ Or are we permanently stuck only seeing the mixed-up curvature where the shadows
 
 579
 00:34:39,500 --> 00:34:43,840
-That is a vital piercing question, and Flikstian addresses it head-on.
+That is a vital piercing question, and Flyxion addresses it head-on.
 
 580
 00:34:44,500 --> 00:34:48,500
@@ -2392,7 +2392,7 @@ Okay.
 
 599
 00:35:58,200 --> 00:36:05,040
-And to describe how the field becomes unstable, fliction uses a concept borrowed directly from physics, the Mexican hat potential.
+And to describe how the field becomes unstable, Flyxion uses a concept borrowed directly from physics, the Mexican hat potential.
 
 600
 00:36:05,060 --> 00:36:06,440
@@ -2436,7 +2436,7 @@ So how does that map to language?
 
 610
 00:36:34,940 --> 00:36:39,940
-In Fliction's framework, the peak of the sombrero represents a semantic bottleneck.
+In Flyxion's framework, the peak of the sombrero represents a semantic bottleneck.
 
 611
 00:36:40,380 --> 00:36:46,880
@@ -2504,7 +2504,7 @@ If your system crosses that line, the feedback loop spirals out of control and t
 
 627
 00:37:41,460 --> 00:37:45,460
-Fliction takes this boundary and maps it directly onto the admissibility manifold.
+Flyxion takes this boundary and maps it directly onto the admissibility manifold.
 
 628
 00:37:45,720 --> 00:37:45,960
@@ -2532,7 +2532,7 @@ Right.
 
 634
 00:38:09,680 --> 00:38:12,740
-Fliction proposes what is called a constraint-first semantic architecture.
+Flyxion proposes what is called a constraint-first semantic architecture.
 
 635
 00:38:13,180 --> 00:38:14,940
@@ -2560,7 +2560,7 @@ And then a secondary downstream safety system jumps in and says, whoops, you can
 
 641
 00:38:33,780 --> 00:38:37,620
-Which Fliction argues is fundamentally backward and mathematically wasteful.
+Which Flyxion argues is fundamentally backward and mathematically wasteful.
 
 642
 00:38:37,620 --> 00:38:47,920
@@ -2608,7 +2608,7 @@ That's exactly what we do.
 
 653
 00:39:31,380 --> 00:39:36,060
-But Fliction is saying we need to tear up the road entirely and lay down train tracks first.
+But Flyxion is saying we need to tear up the road entirely and lay down train tracks first.
 
 654
 00:39:36,380 --> 00:39:40,980
@@ -2668,7 +2668,7 @@ So how do we test the train tracks?
 
 668
 00:40:27,100 --> 00:40:31,120
-Under Fliction's paradigm, auditors won't care about a 95% pass rate.
+Under Flyxion's paradigm, auditors won't care about a 95% pass rate.
 
 669
 00:40:31,540 --> 00:40:33,620
@@ -2788,7 +2788,7 @@ Which are?
 
 698
 00:42:12,740 --> 00:42:17,520
-The core ontological claim Fliction makes here is that constraint is prior to representation.
+The core ontological claim Flyxion makes here is that constraint is prior to representation.
 
 699
 00:42:18,260 --> 00:42:19,260
@@ -2832,7 +2832,7 @@ Meaning is the field.
 
 709
 00:42:37,460 --> 00:42:40,620
-Fliction mathematically formalizes this.
+Flyxion mathematically formalizes this.
 
 710
 00:42:41,180 --> 00:42:46,780
@@ -2848,7 +2848,7 @@ If the rules of the board stay the same, the meaning stays the same, regardless 
 
 713
 00:42:55,060 --> 00:42:59,260
-Fliction brings up a very famous philosophical thought experiment to illustrate this difference.
+Flyxion brings up a very famous philosophical thought experiment to illustrate this difference.
 
 714
 00:43:00,120 --> 00:43:01,780
@@ -2916,15 +2916,15 @@ It is merely manipulating syntax blindly.
 
 730
 00:43:42,160 --> 00:43:46,740
-And how does Fliction's geometric framework respond to that critique?
+And how does Flyxion's geometric framework respond to that critique?
 
 731
 00:43:47,080 --> 00:43:50,100
-Because it sounds like Fliction agrees that the room doesn't understand.
+Because it sounds like Flyxion agrees that the room doesn't understand.
 
 732
 00:43:50,500 --> 00:43:53,740
-Fliction entirely agrees, but for a radically different reason.
+Flyxion entirely agrees, but for a radically different reason.
 
 733
 00:43:54,400 --> 00:43:57,880
@@ -2936,11 +2936,11 @@ well, we just need to give the person a bigger rule book with more context.
 
 735
 00:44:01,780 --> 00:44:02,980
-But Fliction says.
+But Flyxion says.
 
 736
 00:44:03,220 --> 00:44:08,600
-Fliction says the Chinese room fails to generate true meaning because it operates entirely on representations.
+Flyxion says the Chinese room fails to generate true meaning because it operates entirely on representations.
 
 737
 00:44:09,500 --> 00:44:11,520

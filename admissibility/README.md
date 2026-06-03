@@ -9,3 +9,5 @@
 * [Notes](https://standardgalactic.github.io/playfloor/admissibility/hidden-curvature.pdf)
 
 * [Law of Invariance](https://standardgalactic.github.io/playfloor/admissibility/law-of-invariance.pdf)
+
+[Structure Surviving Transformation](https://standardgalactic.github.io/playfloor/admissibility/) — *Audio Overviews*

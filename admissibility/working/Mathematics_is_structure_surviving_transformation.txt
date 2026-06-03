@@ -19,7 +19,7 @@ then what on earth is it actually doing?
 Exactly.
 And that is exactly the rabbit hole we are jumping into for today's Deep Dive.
 We're pulling from a really provocative book that just came out this year,
-2026, written by an independent researcher going by the name Flixian.
+2026, written by an independent researcher going by the name Flyxion.
 Which is a cool name, honestly.
 It is, yeah.
 And the title alone tells you you're in for a ride.
@@ -28,7 +28,7 @@ It's called Constraint Before Content,
 a mathematical roadmap toward the study of structure-preserving transformations and field theory.
 Quite a mouthful.
 A huge mouthful.
-But right there in the preface, Flixian drops this absolute bombshell of a thesis,
+But right there in the preface, Flyxion drops this absolute bombshell of a thesis,
 and I want you listening to really hear this.
 Quote,
 Mathematics is the study of structures that survive their own transformations.
@@ -46,7 +46,7 @@ what exactly makes it out the other side completely intact?
 That surviving core, that thing that absolutely refuses to break when you twist the universe around it,
 that is the actual math.
 And for you listening today, our mission isn't just to talk about some abstract philosophy.
-Flixian's book is a very deliberate, step-by-step roadmap building toward a highly specific,
+Flyxion's book is a very deliberate, step-by-step roadmap building toward a highly specific,
 very real destination in advanced physics.
 Right, which is the RSVP framework.
 Yes, the RSVP.
@@ -62,7 +62,7 @@ Phi, little v, and big S.
 Okay, so it sounds like the three raw ingredients you'd need if you were trying to, like,
 bake a universe from scratch.
 In a lot of ways, yeah, that is exactly what this is.
-But Flixian makes it super clear that if you want to understand how those three ingredients behave
+But Flyxion makes it super clear that if you want to understand how those three ingredients behave
 to create reality, you can't just start doing high school algebra.
 You have to completely unlearn how you think about structure.
 You have to ask one central dieting question for this entire deep dive.
@@ -80,7 +80,7 @@ Logic, sets, and structure.
 Because mathematical truth doesn't just float out there in the ether.
 It is actively built through rigorous proof.
 Yeah.
-And Flixian pulls this beautiful quote from the mathematician G.H. Hardy to set this up.
+And Flyxion pulls this beautiful quote from the mathematician G.H. Hardy to set this up.
 I love this.
 Hardy said,
 A mathematician, like a painter or a poet, is a maker of patterns.
@@ -89,7 +89,7 @@ It's a great quote.
 It is.
 Because math is a language of arguments, not just a static dictionary of facts.
 To make an argument permanent, you need an ironclad proof.
-Infliction spends an enormous amount of time up front dissecting one specific technique,
+Flyxion spends an enormous amount of time up front dissecting one specific technique,
 which is mathematical induction.
 Which, I mean, might seem a bit odd to someone picking up a book on advanced field theory, right?
 Yeah, I thought so too.
@@ -148,7 +148,7 @@ The state of the system at time zero.
 That's your boundary condition.
 The first tip.
 Yes.
-So Fliction is showing us that mathematical induction is the exact same structure as a physical field evolving over time.
+So Flyxion is showing us that mathematical induction is the exact same structure as a physical field evolving over time.
 Global validity follows from a local propagation rule plus a boundary condition.
 That's wow.
 And this pops up everywhere in advanced math.
@@ -165,7 +165,7 @@ So we aren't just doing logic puzzles with induction.
 We are basically establishing the rules for how time and space actually unfold.
 Exactly.
 But induction isn't the only tool we get.
-Fliction walks us through other architectural tools for building truth.
+Flyxion walks us through other architectural tools for building truth.
 Like there is proof by contrapositive, which I always found incredibly clever.
 Oh, it's a fantastic way to approach a problem when the direct route is just completely blocked.
 Yeah, the logic goes like this.
@@ -190,7 +190,7 @@ And since an odd number physically can't be even, your original assumption had t
 Therefore, the square root of 2 cannot be a neat fraction.
 It must be irrational.
 It's such a powerful method.
-But honestly, as elegant as those proofs are, my absolute favorite part of this whole foundational logic section is when fliction demonstrates the power of a single counterexample.
+But honestly, as elegant as those proofs are, my absolute favorite part of this whole foundational logic section is when Flyxion demonstrates the power of a single counterexample.
 Ah, yeah, I know exactly which one you were going to bring up, the polynomial formula.
 Yes.
 Oh, man.
@@ -228,9 +228,9 @@ It is not prime.
 The entire universal claim just shatters in an instant.
 All it took was one single counterexample.
 One failed domino stops the whole chain.
-And Flixxion uses this not just to, you know, teach us caution, but to illustrate a really
+And Flyxion uses this not just to, you know, teach us caution, but to illustrate a really
 profound divide in how we approach systems.
-It is the difference between true structural proof and what Flixxion calls wishful continuation.
+It is the difference between true structural proof and what Flyxion calls wishful continuation.
 Wishful continuation.
 Yeah, you saw primes 40 times in a row and you just wished it would continue.
 But desire isn't structure.
@@ -246,7 +246,7 @@ The next logical question is, what exactly are we proving things about?
 Which requires us to leave the comfortable world of absolute identity.
 Right.
 We move into set theory.
-And Flixxion makes a really provocative claim here.
+And Flyxion makes a really provocative claim here.
 To do the kind of advanced math required for the RSVP field theory, we actually have to
 abandon the concept of strict equality.
 Yeah, because strict equality is incredibly fragile.
@@ -305,7 +305,7 @@ You start throwing things into piles based purely on color.
 All the red things in one pile, all the blue things in another, all the black things in a third.
 What you have just done is created quotient sets or equivalence classes.
 The red pile is an equivalence class.
-Infliction points out a crucial theorem here.
+Flyxion points out a crucial theorem here.
 Theorem 2.1.
 Equivalence classes partition a set.
 Meaning, they divide the room perfectly.
@@ -370,7 +370,7 @@ Yes.
 G modulo, the kernel, is isomorphic to the image.
 The original space, partitioned by what you cannot see, is structurally identical to the output.
 Now, apply this to the relativistic Staler Vector Plenum.
-Why does Flixson care about kernels and quotients?
+Why does Flyxion care about kernels and quotients?
 Wow, I'm starting to see it.
 If we are trying to observe a universe.
 Exactly.
@@ -390,7 +390,7 @@ Our reality is just the shadow.
 And algebra proves that the shadow is just the universe with the hidden bits quotiented away.
 It's profound.
 It really is.
-But before we leave set theory entirely, there is one more foundational concept Flitchin brings up that we absolutely have to talk about.
+But before we leave set theory entirely, there is one more foundational concept Flyxion brings up that we absolutely have to talk about.
 Cantor's theorem.
 Because if we're talking about these spaces and sets, we need to know how big they can get.
 And George Cantor proved that the answer is larger than you can possibly imagine.
@@ -444,7 +444,7 @@ He proved that the infinity of combinations, the power set, is fundamentally lar
 It totally shattered mathematics at the time because it proves that there are always deeper,
 larger layers of reality that cannot be mapped one-to-one with what we already know.
 It defines the absolute boundaries of what mathematical spaces can actually hold.
-And that perfectly sets up the next major phase of Flixian's roadmap.
+And that perfectly sets up the next major phase of Flyxion's roadmap.
 I mean, we've learned how logic works.
 We've learned how to group things into equivalence classes.
 We know about infinities.
@@ -458,7 +458,7 @@ And this brings us to the next section.
 Building the continuum.
 The integers, the fractions, the decimals you use to balance your checkbook.
 They are not handed down by nature.
-Flixian shows us that humanity actively built them, piece by piece,
+Flyxion shows us that humanity actively built them, piece by piece,
 using the exact quotient tools we just learned about.
 It is a remarkable construction project.
 Let's trace the steps.
@@ -554,7 +554,7 @@ There are no more holes.
 The continuum is solid.
 Right.
 But I have to ask the physicist's question.
-Why does fliction care if the math has microscopic holes?
+Why does Flyxion care if the math has microscopic holes?
 How does that actually impact a scalar vector plenum?
 Because field theory is entirely based on limits.
 In the RSVP framework, a field evolves over time.
@@ -572,7 +572,7 @@ That is wild.
 The math has to be solid so the physics doesn't fall through the floor.
 And this leads us directly into real analysis, the study of these limits.
 Yeah.
-And Fletcher notes that analysis was invented because human intuition about limits is just dangerously unreliable.
+And Flyxion notes that analysis was invented because human intuition about limits is just dangerously unreliable.
 Oh, totally.
 We can't just wave our hands and say, oh, the numbers get super tiny.
 We have to prove it rigidly.
@@ -601,7 +601,7 @@ And if I can do that for any epsilon you give me, even if you demand a tolerance
 No intuition needed.
 Just an infinite game of tightening the target.
 It is airtight.
-And within analysis, Flicksheen zeros in on a very specific theorem, theorem 4.1, the intermediate value theorem.
+And within analysis, Flyxion zeros in on a very specific theorem, theorem 4.1, the intermediate value theorem.
 Now, I have to push back on this one.
 I read this section, and the theorem basically says, if you have a continuous function, and it goes from a negative value to a positive value, it absolutely must hit zero somewhere in between.
 That is correct.
@@ -609,9 +609,9 @@ And my immediate thought was, well, obviously.
 I mean, if I am driving out of Death Valley, which is below sea level, and I drive up to a mountain peak, I cannot teleport.
 At some specific instant, my tires must have been exactly at sea level.
 A toddler understands walking up a hill.
-Why is Flicksheen, in a book about advanced relativistic fields, dedicating precious ink to something so trivial?
+Why is Flyxion, in a book about advanced relativistic fields, dedicating precious ink to something so trivial?
 It seems trivial when you think of a car on a hill.
-But remember, Flicksheen is setting up the structural mechanics of the RSVP framework.
+But remember, Flyxion is setting up the structural mechanics of the RSVP framework.
 Think about what the intermediate value theorem is forcing to happen.
 It is illustrating a massive physical principle.
 Continuity forces transition interfaces.
@@ -632,7 +632,7 @@ It is a topological necessity.
 Oh, wow.
 Okay, so the obvious hill is actually the mathematical mechanism that creates physical boundaries, like the surface of a liquid or the edge of a magnetic domain.
 The structure dictates the reality.
-And just to generalize this, fliction ends this phase by introducing metric spaces.
+And just to generalize this, Flyxion ends this phase by introducing metric spaces.
 This is where we take the idea of distance and we just rip it away from the rigid XY coordinates we learned in high school.
 Because coordinates are just artificial grids we overlay on the universe, the universe doesn't have an X-axis painted on it.
 Right, right.
@@ -654,7 +654,7 @@ That is the perfect transition.
 We are moving from the space to the actions within it.
 We are entering phase two, algebraic structure, specifically the mathematics of transformation, conservation, and flux.
 We dive into chapter six, linear algebra.
-And I laughed out loud at the, quote, fliction attributes here.
+And I laughed out loud at the, quote, Flyxion attributes here.
 Linear algebra is what you do when you have no choice.
 Every physicist knows that feeling.
 When a nonlinear problem gets too hard, you just zoom in close enough until it looks flat and linear, just so you can actually calculate something.
@@ -681,9 +681,9 @@ The melody, or kernel, plus the two dimensions that survived the rank.
 Or image, 3 equals 1 plus 2.
 It's a basic algebra equation.
 Yeah.
-But Flixson sees something much deeper hiding in this equation, doesn't it?
+But Flyxion sees something much deeper hiding in this equation, doesn't it?
 Oh, absolutely.
-What is truly fascinating here is that Flixson explicitly frames Rank Nullity not just as an algebra identity, but as an information conservation law.
+What is truly fascinating here is that Flyxion explicitly frames Rank Nullity not just as an algebra identity, but as an information conservation law.
 Conservation of information.
 Yes.
 Think of it physically.
@@ -705,7 +705,7 @@ You have a vector space, which we call V, and then haunting it like a shadow, yo
 And the elements of the dual space aren't vectors, they are linear functionals, covectors.
 Let's try to explain this mechanically.
 A vector represents a direction and a magnitude.
-In the RSVP framework, Flickiewen says vectors represent directions of flow, a velocity field, little v.
+In the RSVP framework, Flyxion says vectors represent directions of flow, a velocity field, little v.
 Imagine water rushing down a river.
 The vector tells you which way the water is moving and how fast.
 Right.
@@ -744,7 +744,7 @@ They pair together to create physics.
 And this pairing concept generalizes into something called differential forms,
 which are the absolute core language for integrating over complex surfaces or manifolds.
 But to manipulate these forms,
-fliction introduces a very specific mathematical operation, the wedge product.
+Flyxion introduces a very specific mathematical operation, the wedge product.
 And the defining feature of the wedge product is something called antisymmetry.
 Antisymmetry is critical.
 If you have two forms, alpha and beta,
@@ -812,7 +812,7 @@ Any other object that also solves it perfectly is guaranteed to be structurally 
 They are the same object wearing different clothes.
 So how does that help the relativistic scalar vector plenum?
 It provides RSVP with a rigorous language for true invariance.
-Remember Fliction's opening thesis.
+Remember Flyxion's opening thesis.
 Mathematics is the study of structures that survive transformation.
 Right.
 Constraint before content.
@@ -829,7 +829,7 @@ The truth just is.
 The structure survives the transformation of human perspective.
 That is deeply satisfying.
 We spend so much time arguing about which model is right, and category theory just smiles and says if it preserves the structure, they are all reflections of the same truth.
-Which brings us to the final stretch of Fliction's roadmap.
+Which brings us to the final stretch of Flyxion's roadmap.
 The absolute bedrock required to launch the RSVP theory.
 We enter the final phase.
 Phase three of the text.
@@ -843,12 +843,12 @@ We remove the metric of distance entirely.
 That is so hard to picture.
 Space without distance.
 We are left with the purest, most raw form of space imaginable.
-Fliction states it plainly, topology is the study of admissibility before measurement.
+Flyxion states it plainly, topology is the study of admissibility before measurement.
 Which is such a profound reframing.
 Usually, topology is taught with the coffee mug and donut analogy, you know, the study of shapes stretching like rubber.
-But Fliction teaches it as the master rulebook for what actions are allowed to happen.
+But Flyxion teaches it as the master rulebook for what actions are allowed to happen.
 Let's break down exactly how topology writes those rules.
-Fliction outlines the five questions of topology.
+Flyxion outlines the five questions of topology.
 These questions act as the ultimate filter for the RSVP fields.
 Let's walk through the three most critical ones.
 The first question is accessibility.
@@ -905,7 +905,7 @@ They just follow the paths that the topology allows.
 The structure creates the reality.
 Let's zoom all the way out and look at the path we just walked today.
 Because for anyone listening, especially if you felt intimidated by the math at the start,
-I want you to see the magnificent architecture of what Flixion has built here.
+I want you to see the magnificent architecture of what Flyxion has built here.
 It has been a deliberate, meticulous ascent.
 We didn't start with numbers.
 We started by building the very concept of truth using mathematical induction.
@@ -917,14 +917,14 @@ We saw the intermediate value theorem force continuous fields to create physical
 We tracked the conservation of reality using matrices and rank nullity.
 We watched category theory guarantee that structural truth is invariant no matter how we look at it.
 And finally, we stripped away the rulers to find topology, the raw, unfiltered landscape of what is allowed and what is forbidden.
-And every single one of those theorems, every analogy, every logical step points relentlessly to the ultimate destination of Flixion's roadmap, the RSVP framework.
+And every single one of those theorems, every analogy, every logical step points relentlessly to the ultimate destination of Flyxion's roadmap, the RSVP framework.
 The relativistic scalar vector plenum, a universe governed by that simple triple of fields operating in a reality organized entirely around topological constraints.
 It is the ultimate mathematical proof that transformation truly precedes content.
 It changes the way you look at everything, doesn't it?
 It really does.
 You can't unsee it.
 And as we wrap up this deep dive, I want to leave you, the listener, with a final thought.
-It's a thought drawn right from the preface of Flixion's book, touching on something we discussed at the very beginning with the prime numbers.
+It's a thought drawn right from the preface of Flyxion's book, touching on something we discussed at the very beginning with the prime numbers.
 It's a mathematical concept, but I haven't been able to stop applying it to everyday life.
 The distinction between continuations.
 Yes.
@@ -949,7 +949,7 @@ Are you looking at the actual topological landscape of what is allowed, or are y
 Exactly.
 At the start of this hour, we talk about the illusion of numbers.
 We assume math is just counting apples.
-Fliction shows us that the universe is only confusing if we focus on the content, the apples, the decoration.
+Flyxion shows us that the universe is only confusing if we focus on the content, the apples, the decoration.
 But when we strip it all back, when we focus on the constraints, the underlying structure surviving transformation, suddenly the entire universe becomes beautifully logically clear.
 Thank you so much for joining us on this deep dive.
 Keep questioning the structures around you.

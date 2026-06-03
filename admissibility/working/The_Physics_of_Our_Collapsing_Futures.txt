@@ -9,7 +9,7 @@ But the moment you start looking for the shared architecture between a thought, 
 Which brings us to our mission for today.
 Welcome to the Deep Dive. We have a very special, highly ambitious session for you today. We are going to sprint through a text dated May 30, 2026.
 Which is a fascinating detail in its own right, honestly.
-Yeah. Authored by an independent researcher known simply as Fliction. The title is, let me read it here, Semantic Infrastructure. Constraint, Projection, and Accessibility.
+Yeah. Authored by an independent researcher known simply as Flyxion. The title is, let me read it here, Semantic Infrastructure. Constraint, Projection, and Accessibility.
 It is dense. So dense. Over 300 pages. And our goal today, could we go through each chapter in the book and do a speed teaching of it? We are going to take this massive theory and break it down. By the time we finish this conversation, you will never look at reality the same way again.
 No pressure.
 Right. Okay. Let's unpack this. We are doing a full structural teardown of the universe.
@@ -20,7 +20,7 @@ Okay. That's a big ask.
 It is.
 Because we are raised to believe in a world made of objects, right? Things that exist in specific states. You think of a coffee cup on your desk as a discrete physical object just resting in a state of stillness.
 Yeah, obviously. It's a cup.
-Right. But Fliction demands that we discard that noun-based worldview entirely. We have to embrace a universe defined not by things, but by verbs.
+Right. But Flyxion demands that we discard that noun-based worldview entirely. We have to embrace a universe defined not by things, but by verbs.
 Verbs.
 Specifically, access and futures.
 Okay. Let's anchor that right away. Because chapter one of this manuscript throws us straight into what it calls the accessibility inversion.
@@ -43,7 +43,7 @@ How can you tell me this solid physical piece of fruit is actually just like a t
 Well, you have to realize your sensory apparatus evolved to keep you alive, not to perceive fundamental physics.
 Fair point.
 It is highly advantageous for a hungry primate to perceive an apple as a solid static reward.
-But in the framework Fliction presents in Chapter 1, that apple is not a discrete noun.
+But in the framework Flyxion presents in Chapter 1, that apple is not a discrete noun.
 What is it then?
 It is what we call a basin in an accessibility landscape.
 A basin.
@@ -112,7 +112,7 @@ Because if you have a donut made of soft clay, you can mold it, stretch it, and 
 Exactly.
 The single hole in the middle of the donut simply becomes the hole in the handle of the coffee mug.
 Topologically, they are the exact same shape.
-And fliction is applying this topological thinking to how meaning and information are structured.
+And Flyxion is applying this topological thinking to how meaning and information are structured.
 The shape of the constraints matters more than the specific realized state.
 Which leads us directly into chapter two's discussion on containment and boundaries.
 Yes.
@@ -121,7 +121,7 @@ A physical fence separating your backyard from your neighbors or like a firewall
 Something that keeps things out.
 Exactly.
 The intuitive view is that boundaries divide things that already exist.
-But fliction argues the inverse.
+But Flyxion argues the inverse.
 Boundaries don't divide things.
 Boundaries generate information.
 I know that feels incredibly counterintuitive.
@@ -146,7 +146,7 @@ But the text takes this and starts pushing boundaries inside of other boundaries
 And when you nest containment structures deep enough, the mechanics start to break down in a really fascinating way.
 You inevitably crash into recursion and self-reference.
 And the mechanical failure of self-reference is one of the most difficult concepts in logic.
-But Flicksheen frames it geometrically.
+But Flyxion frames it geometrically.
 What happens when a boundary attempts to contain itself?
 Like drawing a map of a room, but the map includes a drawing of the map sitting on the table,
 which includes a drawing of the map infinitely.
@@ -166,7 +166,7 @@ Spot on.
 Gödel mathematically proved that any sufficiently complex formal system, like arithmetic,
 will inevitably contain statements that refer to their own provability.
 A system cannot prove its own consistency without stepping outside of itself.
-And in Flicksheen's topology, this is a system attempting to contain a complete description
+And in Flyxion's topology, this is a system attempting to contain a complete description
 of its own boundary within its own boundary.
 It is a region collapsing onto its own accessibility set.
 Because the space inside the boundary is smaller than the boundary itself.
@@ -261,7 +261,7 @@ But the author argues that they are not different numbers at all.
 No, they are different trajectories to the same equivalence class.
 Equivalence class.
 Yeah.
-This is where fliction strips away the illusion of objects again.
+This is where Flyxion strips away the illusion of objects again.
 Mathematics is not the study of static numbers.
 It is the study of equivalence classes of trajectories.
 So when you write 3 times 4.
@@ -272,7 +272,7 @@ It is the ultimate attractor.
 It's like all of those complex equations are winding, turbulent rivers, and the number 12 is the ocean they all eventually flow into.
 That's a perfect way to put it.
 They look different on the mountainside, but their inevitable collapse destination is identical.
-And Flixian boldly scales this mathematical principle up to physical reality.
+And Flyxion boldly scales this mathematical principle up to physical reality.
 Why do we see stable structures in the universe?
 Why does a spiral galaxy hold its shape for billions of years?
 Or why does carbon form a diamond under pressure?
@@ -305,7 +305,7 @@ You are constantly on the verge of stalling the engine because you are manually 
 But as you practice, the mechanics of renormalization take over.
 You begin to collapse those nested bubbles.
 Exactly.
-I mean, you literally consume what Fliction calls accessibility entropy.
+I mean, you literally consume what Flyxion calls accessibility entropy.
 Yeah.
 After a year of driving, you don't think about the clutch or the friction zone anymore.
 You just decide to drive to the grocery store and your body handles the rest automatically.
@@ -324,7 +324,7 @@ A meat puppet.
 Right.
 We think the brain conjures a pure, abstract concept like the letter A and then sends an electrical signal to the meat of the hand to simply draw it or type it.
 The mind generates, the body merely executes.
-But fliction completely inverts this hierarchy.
+But Flyxion completely inverts this hierarchy.
 The physical kinematic motion of the body is the actual primary substrate of meaning.
 And the manuscript uses the modern computer keyboard to brilliantly illustrate this loss of physical meaning.
 When you press a key on your laptop, you believe you are simply transmitting a discrete symbol to the screen.
@@ -351,7 +351,7 @@ It is taking the high-dimensional reality of my physical, emotional, human movem
 Yes.
 The discrete text is the map, and my human intention is the lost information trapped in the fiber.
 The keyboard throws all the physical richness away to force my action into a canonical state the machine can process.
-And Fliction points out that human communication is deeply impoverished by this.
+And Flyxion points out that human communication is deeply impoverished by this.
 Absolutely.
 We spend so much energy trying to infer tone and intention from flat text messages, precisely because the mechanical interface of the keyboard stripped away the gestational context.
 To truly recover the intended meaning, we have to perform a difficult inverse inference.
@@ -419,13 +419,13 @@ Right.
 The classic textbook example is that a messy bedroom has higher entropy than a clean, organized bedroom.
 The second law of thermodynamics dictates that entropy in a closed system always increases.
 Therefore, the universe is constantly degrading from order into chaos.
-But Fliction argues that defining entropy as messiness is a fundamental category error.
+But Flyxion argues that defining entropy as messiness is a fundamental category error.
 Right.
 Huge one.
 In the RSVP framework, entropy is redefined rigorously as accessibility.
 It is the logarithmic volume of admissible future configurations available to a system.
 Meaning, it's a measure of how many different possible futures a system can choose from at this exact moment.
-Infliction's formulation of the second law states that accessibility must continually decrease.
+Flyxion's formulation of the second law states that accessibility must continually decrease.
 Decrease, yes.
 Systems intrinsically consume their future options over time as they evolve.
 I need to make sure the causality of this is crystal clear for everyone.
@@ -519,7 +519,7 @@ Imagine your visual patch tells you there is a solid brick wall directly in fron
 You reach your hand out to touch it, but your tactile patch reports that your hand passes straight through empty air.
 Your local observations are violently incompatible.
 They refuse to glue into a global sheesh.
-This successful gluing of local data is the very foundation of what Fliction defines as consciousness in chapters 22 to 24.
+This successful gluing of local data is the very foundation of what Flyxion defines as consciousness in chapters 22 to 24.
 The text argues that the experienced world, the room you are sitting in, the sounds you are hearing right now, is not base reality.
 No, it is a latent construct.
 Your brain is running a sparse internal simulation of the environment, and you navigate this simulation by sensing the accessibility gradients.
@@ -533,7 +533,7 @@ This is a vital mechanical distinction.
 If your identity was merely the accumulated database of your memories, then the act of forgetting a childhood event would mean a piece of your actual identity vanished.
 You would be less you.
 Right.
-But in Fliction's framework, identity over time is a constraint-preserving process.
+But in Flyxion's framework, identity over time is a constraint-preserving process.
 You are the operator, not the data.
 You are the specific, localized, geometric engine that takes the present state of the world, applies your unique historical constraints, and projects the subsequent state.
 So what does this all mean?
@@ -541,7 +541,7 @@ It implies that meaning itself is not a static property.
 It's geometric.
 Geometric.
 If I look up the word apple in a dictionary, it gives me a text description.
-But Fliction says meaning is the shape of the constraint basin.
+But Flyxion says meaning is the shape of the constraint basin.
 Meaning is entirely spatial in this model.
 When you conceptualize an apple, you are not accessing a definition.
 You are accessing a multidimensional topological shape defined by what the object can and cannot do.
@@ -562,7 +562,7 @@ A square is 2D.
 A cube is 3D.
 A tesseract is 40.
 A peneract is a five-dimensional hypercube.
-Fliction utilizes this massive 5D geometric shape to spatially map all of Boolean logic.
+Flyxion utilizes this massive 5D geometric shape to spatially map all of Boolean logic.
 The significance of the peneract brings us full circle back to the map territory projection theorem from the very first chapter.
 If you attempt to draw a five-dimensional hypercube on a flat, two-dimensional piece of paper, the geometric distortion is catastrophic.
 You have to discard an immense amount of structural information just to make it fit on the page.
@@ -576,7 +576,7 @@ The text introduces the concept of semantic infrastructure, arguing that we must
 Our current digital civilization is incredibly rigid. We organize knowledge hierarchically.
 You put a document into a folder which goes into a larger folder which sits on a hard drive.
 It's a top-down tree-like structure.
-Fliction proposes replacing this with xylorarchy, a term that roughly translates to forest intelligence.
+Flyxion proposes replacing this with xylorarchy, a term that roughly translates to forest intelligence.
 Forest intelligence.
 Instead of rigid digital filing cabinets, knowledge networks should be structured like living ecologies.
 The text specifically highlights mycorrhizal networks, the vast, subterranean webs of fungi that connect the root systems of entire forests.
@@ -627,7 +627,7 @@ It stands for Read, Evolve, Print, Loop.
 Originally, this is a concept from computer programming.
 It describes an interactive shell where a programmer types a command, read, the computer executes the code, evolve, outputs the result to the screen, print, and then waits for the next command, loop.
 It's a rapid cycle of input and output.
-But Fliction strips this out of software engineering and elevates it to a universal cognitive principle.
+But Flyxion strips this out of software engineering and elevates it to a universal cognitive principle.
 The REPL is the fundamental architecture of all genuine human learning.
 It perfectly models the scientific method on a microscopic scale.
 You propose an action or belief.
@@ -673,7 +673,7 @@ We arrive at chapter 52.
 The last collapse.
 The last collapse.
 We have sprinted through an incredibly dense interconnected theory that ties together abstract math, human biology, language, and astrophysics.
-If we connect this to the bigger picture, stepping back to look at the massive geometric landscape Flickshin has painted, the foundational thesis of the manuscript can be distilled into one unifying truth.
+If we connect this to the bigger picture, stepping back to look at the massive geometric landscape Flyxion has painted, the foundational thesis of the manuscript can be distilled into one unifying truth.
 The pop is universal.
 It is the single mechanism driving all of reality.
 From the invisible, silent collapse of a mathematical sphere pop bubble inside your brain as you finally comprehend a difficult equation.
