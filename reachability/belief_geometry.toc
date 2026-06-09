@@ -1,0 +1,40 @@
+\contentsline {section}{\numberline {1}Introduction: Two Geometries of the Same Structure}{4}{section.1}%
+\contentsline {section}{\numberline {2}Computational Mechanics: Hidden Structure and Belief Geometry}{5}{section.2}%
+\contentsline {subsection}{\numberline {2.1}Hidden Markov Processes and Mixed-State Presentations}{6}{subsection.2.1}%
+\contentsline {subsection}{\numberline {2.2}The Belief Simplex as a Geometric Object}{6}{subsection.2.2}%
+\contentsline {subsection}{\numberline {2.3}Why Next-Token Prediction Requires the Full Geometry}{7}{subsection.2.3}%
+\contentsline {section}{\numberline {3}Reachability Geometry: The Process-Primary Perspective}{8}{section.3}%
+\contentsline {subsection}{\numberline {3.1}Admissibility Structures and Reachability Cones}{8}{subsection.3.1}%
+\contentsline {subsection}{\numberline {3.2}The Possibility-Reachability Distinction in Belief Space}{9}{subsection.3.2}%
+\contentsline {subsection}{\numberline {3.3}Reachability Fidelity as the Primary Criterion}{9}{subsection.3.3}%
+\contentsline {section}{\numberline {4}The Formal Correspondence}{10}{section.4}%
+\contentsline {subsection}{\numberline {4.1}Belief States as Admissibility Coordinates}{10}{subsection.4.1}%
+\contentsline {subsection}{\numberline {4.2}The Noun Fallacy in Belief Representation}{11}{subsection.4.2}%
+\contentsline {subsection}{\numberline {4.3}Synchronization as Trajectory Navigation}{12}{subsection.4.3}%
+\contentsline {section}{\numberline {5}Derivation: Belief-State Geometry as Probabilistic Admissibility}{12}{section.5}%
+\contentsline {subsection}{\numberline {5.1}Starting Point: The CLIO Projection onto Belief Space}{13}{subsection.5.1}%
+\contentsline {subsection}{\numberline {5.2}Hidden Process Dynamics as Latent Flow}{13}{subsection.5.2}%
+\contentsline {subsection}{\numberline {5.3}Admissibility Becomes Posterior Support}{13}{subsection.5.3}%
+\contentsline {subsection}{\numberline {5.4}Deriving the MSP Update from Admissibility Filtering}{14}{subsection.5.4}%
+\contentsline {subsection}{\numberline {5.5}Iterated Updates as Trajectory Compression}{14}{subsection.5.5}%
+\contentsline {subsection}{\numberline {5.6}Future Distributions as Reachability Fields}{15}{subsection.5.6}%
+\contentsline {subsection}{\numberline {5.7}Residual Stream as Learned Coordinate Chart}{15}{subsection.5.7}%
+\contentsline {subsection}{\numberline {5.8}Summary: The Four Restrictions}{16}{subsection.5.8}%
+\contentsline {section}{\numberline {6}Three Applications}{17}{section.6}%
+\contentsline {subsection}{\numberline {6.1}CLIO Projections as Belief-Manifold Compressions}{17}{subsection.6.1}%
+\contentsline {subsection}{\numberline {6.2}The Admissibility Log as a Belief-Manifold Record}{18}{subsection.6.2}%
+\contentsline {subsection}{\numberline {6.3}Implications for Language Model Evaluation}{19}{subsection.6.3}%
+\contentsline {section}{\numberline {7}Pearl's Causal Framework and the Three-Way Hierarchy}{20}{section.7}%
+\contentsline {subsection}{\numberline {7.1}Belief States as Pearlian Epistemic States}{20}{subsection.7.1}%
+\contentsline {subsection}{\numberline {7.2}Observation Versus Intervention: Two Kinds of Manifold Change}{21}{subsection.7.2}%
+\contentsline {subsection}{\numberline {7.3}Causal States and Markov Boundaries}{21}{subsection.7.3}%
+\contentsline {subsection}{\numberline {7.4}Structural Causal Models as Reachability Graphs}{22}{subsection.7.4}%
+\contentsline {subsection}{\numberline {7.5}The Three-Way Hierarchy Formalized}{23}{subsection.7.5}%
+\contentsline {subsection}{\numberline {7.6}A Unified Vocabulary}{23}{subsection.7.6}%
+\contentsline {section}{\numberline {8}The Deeper Convergence: Ontology and Geometry}{24}{section.8}%
+\contentsline {subsection}{\numberline {8.1}Two Routes to the Same Geometry}{25}{subsection.8.1}%
+\contentsline {subsection}{\numberline {8.2}Preservation of Latent Distinctions}{25}{subsection.8.2}%
+\contentsline {subsection}{\numberline {8.3}Goodhart Dynamics as Belief Manifold Collapse}{26}{subsection.8.3}%
+\contentsline {subsection}{\numberline {8.4}The Identity Question}{27}{subsection.8.4}%
+\contentsline {section}{\numberline {9}Conclusion: Navigation, Not Description}{28}{section.9}%
+\contentsline {section}{\numberline {A}Formal Details of the Belief-Manifold Correspondence}{29}{appendix.A}%

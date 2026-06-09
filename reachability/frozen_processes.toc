@@ -1,0 +1,98 @@
+\contentsline {section}{\numberline {1}Introduction: The Stability That Was Never There}{6}{section.1}%
+\contentsline {subsection}{\numberline {1.1}Relationship to Prior Work and Positioning}{8}{subsection.1.1}%
+\contentsline {subsection}{\numberline {1.2}Relationship to Prior Work and Positioning}{8}{subsection.1.2}%
+\contentsline {section}{\numberline {2}Why Compression Survives: The Rational Economy of the Noun}{10}{section.2}%
+\contentsline {subsection}{\numberline {2.1}Compression as Cognitive Economy}{10}{subsection.2.1}%
+\contentsline {subsection}{\numberline {2.2}The Stability Condition and Phase Transitions}{11}{subsection.2.2}%
+\contentsline {subsection}{\numberline {2.3}The Fallacy Stated Precisely}{11}{subsection.2.3}%
+\contentsline {subsection}{\numberline {2.4}The Saying-Doing Asymmetry}{12}{subsection.2.4}%
+\contentsline {subsection}{\numberline {2.5}Institutional Compression and the Hardening of Categories}{12}{subsection.2.5}%
+\contentsline {section}{\numberline {3}Independent Corrections: A Survey of Process Recoveries}{13}{section.3}%
+\contentsline {subsection}{\numberline {3.1}Biology: From Species Essentialism to Evolutionary Dynamics}{14}{subsection.3.1}%
+\contentsline {subsection}{\numberline {3.2}Physics: From Caloric Fluid to Kinetic Theory and Beyond}{14}{subsection.3.2}%
+\contentsline {subsection}{\numberline {3.3}Computation: From Objects to Processes}{15}{subsection.3.3}%
+\contentsline {subsection}{\numberline {3.4}Architecture and Urbanism: From Master Plans to Generative Sequences}{16}{subsection.3.4}%
+\contentsline {subsection}{\numberline {3.5}Cognitive Science: From Representations to Trajectories}{17}{subsection.3.5}%
+\contentsline {subsection}{\numberline {3.6}Neural Manifolds as Admissibility Structures: Evidence from BCI Learning}{18}{subsection.3.6}%
+\contentsline {section}{\numberline {4}The General Framework: Admissibility Structures, Trajectories, and Stable Residues}{22}{section.4}%
+\contentsline {subsection}{\numberline {4.1}Admissibility Structures}{23}{subsection.4.1}%
+\contentsline {subsection}{\numberline {4.2}Trajectories}{24}{subsection.4.2}%
+\contentsline {subsection}{\numberline {4.3}Stable Residues and the Noun as Compression}{24}{subsection.4.3}%
+\contentsline {subsection}{\numberline {4.4}Reachability as the Primary Relation}{25}{subsection.4.4}%
+\contentsline {subsection}{\numberline {4.5}Relaxation Dynamics and the Production of Residues}{25}{subsection.4.5}%
+\contentsline {subsection}{\numberline {4.6}Specialized Realizations}{27}{subsection.4.6}%
+\contentsline {section}{\numberline {5}Possibility Versus Reachability}{27}{section.5}%
+\contentsline {subsection}{\numberline {5.1}Possibility Space and Trajectory Space}{28}{subsection.5.1}%
+\contentsline {subsection}{\numberline {5.2}Convergence Without Reachability: A Recurring Failure Mode}{28}{subsection.5.2}%
+\contentsline {subsection}{\numberline {5.3}Expanding the Reachability Cone as a Design Goal}{29}{subsection.5.3}%
+\contentsline {section}{\numberline {6}The Geometry of Corrective Action}{30}{section.6}%
+\contentsline {subsection}{\numberline {6.1}State Difference Versus Transformation Difficulty}{30}{subsection.6.1}%
+\contentsline {subsection}{\numberline {6.2}Bottlenecks, Corridors, and the Topology of Change}{31}{subsection.6.2}%
+\contentsline {subsection}{\numberline {6.3}Corrective Action as Trajectory Design}{31}{subsection.6.3}%
+\contentsline {section}{\numberline {7}Hysteresis and Frozen Histories}{32}{section.7}%
+\contentsline {subsection}{\numberline {7.1}Hysteresis in the Admissibility Structure}{33}{subsection.7.1}%
+\contentsline {subsection}{\numberline {7.2}The Noun Fallacy and the Invisibility of Hysteresis}{33}{subsection.7.2}%
+\contentsline {subsection}{\numberline {7.3}Precautionary Principles as Hysteresis Recognition}{34}{subsection.7.3}%
+\contentsline {section}{\numberline {8}Reachability as an Ontological Primitive}{35}{section.8}%
+\contentsline {subsection}{\numberline {8.1}Reversing the Conventional Order}{35}{subsection.8.1}%
+\contentsline {subsection}{\numberline {8.2}Persistence as Stable Reachability}{35}{subsection.8.2}%
+\contentsline {subsection}{\numberline {8.3}Objects as Compressed Trajectory Summaries}{36}{subsection.8.3}%
+\contentsline {subsection}{\numberline {8.4}The Consequences for Theory Construction}{37}{subsection.8.4}%
+\contentsline {section}{\numberline {9}Re-Nominalization: How Process Insights Are Converted Back}{38}{section.9}%
+\contentsline {subsection}{\numberline {9.1}Alexander's Progressive Process Recovery}{38}{subsection.9.1}%
+\contentsline {subsection}{\numberline {9.2}The Gang of Four Inversion}{39}{subsection.9.2}%
+\contentsline {subsection}{\numberline {9.3}The Structural Logic of Re-Nominalization}{40}{subsection.9.3}%
+\contentsline {section}{\numberline {10}Difficulty as a Relational Property}{41}{section.10}%
+\contentsline {subsection}{\numberline {10.1}The Standard View and Its Failure}{41}{subsection.10.1}%
+\contentsline {subsection}{\numberline {10.2}Relational Difficulty: Formal Account}{42}{subsection.10.2}%
+\contentsline {subsection}{\numberline {10.3}Empirical Instantiation: Neural Manifolds and the Geometry of Difficulty}{42}{subsection.10.3}%
+\contentsline {subsection}{\numberline {10.4}Goodhart Dynamics as Re-Nominalization}{44}{subsection.10.4}%
+\contentsline {section}{\numberline {11}The Politics of Nominalization: Power, Visibility, and Contested Residues}{45}{section.11}%
+\contentsline {subsection}{\numberline {11.1}Who Benefits from Which Nouns}{46}{subsection.11.1}%
+\contentsline {subsection}{\numberline {11.2}Contested Residues and Process Recovery as Political Act}{46}{subsection.11.2}%
+\contentsline {subsection}{\numberline {11.3}The Visibility of Labor and the Invisibility of Infrastructure}{47}{subsection.11.3}%
+\contentsline {subsection}{\numberline {11.4}Process Recovery as Institutional Reform}{48}{subsection.11.4}%
+\contentsline {section}{\numberline {12}Process-Primary Theorizing Without Reifying Process}{48}{section.12}%
+\contentsline {subsection}{\numberline {12.1}Process Is Not a Privileged Primitive}{49}{subsection.12.1}%
+\contentsline {subsection}{\numberline {12.2}The Four Methodological Questions}{49}{subsection.12.2}%
+\contentsline {subsection}{\numberline {12.3}Wittgenstein and the Anti-Essentialist Lineage}{50}{subsection.12.3}%
+\contentsline {subsection}{\numberline {12.4}The Positive Program: Designing for Reachability}{51}{subsection.12.4}%
+\contentsline {section}{\numberline {13}The Admissibility Log: Process-Primary Historical Recording}{52}{section.13}%
+\contentsline {subsection}{\numberline {13.1}The Problem with Conventional Logs}{52}{subsection.13.1}%
+\contentsline {subsection}{\numberline {13.2}The Structure of an Admissibility Log}{53}{subsection.13.2}%
+\contentsline {subsection}{\numberline {13.3}The Memory Analogy and the Closure of the Loop}{54}{subsection.13.3}%
+\contentsline {subsection}{\numberline {13.4}Formal Comparison with Existing Historical Record Systems}{55}{subsection.13.4}%
+\contentsline {subsubsection}{\numberline {13.4.1}Git (Snapshot DAG)}{55}{subsubsection.13.4.1}%
+\contentsline {subsubsection}{\numberline {13.4.2}Event Sourcing}{56}{subsubsection.13.4.2}%
+\contentsline {subsubsection}{\numberline {13.4.3}Operation-Based CRDTs}{56}{subsubsection.13.4.3}%
+\contentsline {subsubsection}{\numberline {13.4.4}Process Mining / XES Event Logs}{57}{subsubsection.13.4.4}%
+\contentsline {subsubsection}{\numberline {13.4.5}Summary}{57}{subsubsection.13.4.5}%
+\contentsline {subsection}{\numberline {13.5}Connection to Version Control and Semantic Infrastructure}{58}{subsection.13.5}%
+\contentsline {subsection}{\numberline {13.6}The Log as a Connection on a Manifold}{58}{subsection.13.6}%
+\contentsline {subsection}{\numberline {13.7}Multi-Scale Admissibility and Nested Logs}{59}{subsection.13.7}%
+\contentsline {subsection}{\numberline {13.8}Applications}{60}{subsection.13.8}%
+\contentsline {section}{\numberline {14}The Ecology of Contexts}{61}{section.14}%
+\contentsline {subsection}{\numberline {14.1}Contexts as Maintained Trajectories}{62}{subsection.14.1}%
+\contentsline {subsection}{\numberline {14.2}The Hierarchy of Context Maintenance}{62}{subsection.14.2}%
+\contentsline {subsection}{\numberline {14.3}Context Overlap, Inheritance, and Compatibility}{63}{subsection.14.3}%
+\contentsline {subsection}{\numberline {14.4}Contexts as the Invisible Labor of Systems}{64}{subsection.14.4}%
+\contentsline {section}{\numberline {15}The Economics of Compression and Maintenance}{64}{section.15}%
+\contentsline {subsection}{\numberline {15.1}Naming Costs Versus Maintenance Costs}{64}{subsection.15.1}%
+\contentsline {subsection}{\numberline {15.2}Trajectory Debt and Its Accumulation}{65}{subsection.15.2}%
+\contentsline {subsection}{\numberline {15.3}The Trajectory Debt Principle}{66}{subsection.15.3}%
+\contentsline {subsection}{\numberline {15.4}When Process-Primary Tracking Pays}{66}{subsection.15.4}%
+\contentsline {section}{\numberline {16}Civilization as Reachability Management}{67}{section.16}%
+\contentsline {subsection}{\numberline {16.1}Civilization as Admissibility Infrastructure}{68}{subsection.16.1}%
+\contentsline {subsection}{\numberline {16.2}The Civilizational Admissibility Log}{68}{subsection.16.2}%
+\contentsline {subsection}{\numberline {16.3}The Maintenance Imperative}{69}{subsection.16.3}%
+\contentsline {subsection}{\numberline {16.4}Recursive Application: This Paper as a Stable Residue}{70}{subsection.16.4}%
+\contentsline {section}{\numberline {17}Conclusion: Reachability, Not Existence}{70}{section.17}%
+\contentsline {section}{\numberline {A}Admissibility Geometry: Reachability Volumes, Basin Measures, and Contraction Metrics}{73}{appendix.A}%
+\contentsline {section}{\numberline {B}The Stability Functional, Phase Transitions, and Log Invariants}{77}{appendix.B}%
+\contentsline {section}{\numberline {C}Sheaf-Theoretic Expression of the Central Claims}{81}{appendix.C}%
+\contentsline {section}{\numberline {D}The Full Table of Corrections}{82}{appendix.D}%
+\contentsline {section}{\numberline {E}Diagnostic Tests for the Noun Fallacy}{84}{appendix.E}%
+\contentsline {section}{\numberline {F}Specialized Realizations of the General Framework}{87}{appendix.F}%
+\contentsline {subsection}{\numberline {F.1}RSVP Cosmology}{87}{subsection.F.1}%
+\contentsline {subsection}{\numberline {F.2}CLIO Projections}{88}{subsection.F.2}%
+\contentsline {subsection}{\numberline {F.3}Spherepop Event Calculus}{88}{subsection.F.3}%
