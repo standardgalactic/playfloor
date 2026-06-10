@@ -1,5 +1,7 @@
 # Playfloor
 
+[The Admissibility Program](https://github.com/standardgalactic/playfloor/blob/main/coordinates/README.md)
+
 [Reachability Framework](https://github.com/standardgalactic/playfloor/blob/main/reachability/README.md)
 
 [Semantic Infrastructure](https://standardgalactic.github.io/playfloor/processing/semantic-infrastructure.pdf)

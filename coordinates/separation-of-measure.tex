@@ -1,0 +1,1591 @@
+% ============================================================
+%  KERNEL EMBEDDINGS AND THE SEPARATION OF MEASURE PHENOMENON
+%  A Monograph
+% ============================================================
+
+\documentclass[12pt, oneside]{book}
+
+% ---- Packages -----------------------------------------------
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[a4paper, top=2.8cm, bottom=3.2cm, inner=3.2cm, outer=2.8cm]{geometry}
+\usepackage{amsmath, amsthm, amssymb, amsfonts}
+\usepackage{mathtools}
+\usepackage{bm}
+%\usepackage{microtype}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{enumitem}
+\usepackage{emptypage}
+\usepackage{fancyhdr}
+\usepackage{tocloft}
+\usepackage[hidelinks]{hyperref}
+\usepackage{cleveref}
+\usepackage[numbers]{natbib}
+\usepackage{epigraph}
+\usepackage{mdframed}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+\usetikzlibrary{arrows.meta, positioning, shapes.geometric, calc, patterns}
+
+% ---- Colors -------------------------------------------------
+\definecolor{deepblue}{RGB}{12,44,88}
+\definecolor{midblue}{RGB}{40,100,160}
+\definecolor{lightblue}{RGB}{180,215,240}
+\definecolor{deepred}{RGB}{140,20,20}
+\definecolor{darkgray}{RGB}{50,50,50}
+\definecolor{medgray}{RGB}{120,120,120}
+\definecolor{boxgray}{RGB}{240,243,248}
+\definecolor{boxborder}{RGB}{160,185,215}
+
+% ---- Theorem environments -----------------------------------
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}[chapter]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{caution}[theorem]{Caution}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{notation}[theorem]{Notation}
+\newtheorem{observation}[theorem]{Observation}
+
+% ---- Highlight box ------------------------------------------
+\newmdenv[
+  backgroundcolor=boxgray,
+  linecolor=boxborder,
+  linewidth=1.2pt,
+  leftmargin=0pt,
+  rightmargin=0pt,
+  innerleftmargin=12pt,
+  innerrightmargin=12pt,
+  innertopmargin=10pt,
+  innerbottommargin=10pt,
+  roundcorner=4pt
+]{highlightbox}
+
+% ---- Mathematical macros ------------------------------------
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\calH}{\mathcal{H}}
+\newcommand{\calX}{\mathcal{X}}
+\newcommand{\calP}{\mathcal{P}}
+\newcommand{\calB}{\mathcal{B}}
+\newcommand{\calN}{\mathcal{N}}
+\newcommand{\PP}{\mathbb{P}}
+\newcommand{\QQ}{\mathbb{Q}}
+\newcommand{\EE}{\mathbb{E}}
+\newcommand{\HS}{\mathrm{HS}}
+\newcommand{\tr}{\mathrm{tr}}
+\newcommand{\op}{\mathrm{op}}
+\newcommand{\ran}{\mathfrak{R}}
+\newcommand{\mP}{\mathbf{m}_{\PP}}
+\newcommand{\mQ}{\mathbf{m}_{\QQ}}
+\newcommand{\SP}{\mathbf{S}_{\PP}}
+\newcommand{\SQ}{\mathbf{S}_{\QQ}}
+\newcommand{\perpp}{\perp\!\!\!\perp}
+\newcommand{\KL}{\mathrm{KL}}
+\newcommand{\MMD}{\mathrm{MMD}}
+% Safe symbol overrides: save originals before redefining
+\let\oldleq\leq
+\let\oldgeq\geq
+\renewcommand{\leq}{\leqslant}
+\renewcommand{\geq}{\geqslant}
+\newcommand{\calG}{\mathcal{G}}
+\newcommand{\calY}{\mathcal{Y}}
+\newcommand{\calM}{\mathcal{M}}
+\newcommand{\calI}{\mathcal{I}}
+\DeclareMathOperator{\trace}{trace}
+\DeclareMathOperator{\spec}{spec}
+\DeclareMathOperator{\supp}{supp}
+\DeclareMathOperator{\id}{Id}
+% Operator log-determinant (Fredholm/trace-class sense; see Chapter~7)
+\DeclareMathOperator{\logdet}{log\,det}
+
+% ---- Page style ---------------------------------------------
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[LE]{\small\textit{\leftmark}}
+\fancyhead[RO]{\small\textit{\rightmark}}
+\fancyfoot[C]{\small\thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+
+% ---- Chapter style ------------------------------------------
+\usepackage{titlesec}
+\titleformat{\chapter}[display]
+  {\normalfont\huge\bfseries\color{deepblue}}
+  {\chaptertitlename\ \thechapter}{18pt}{\Huge}
+\titleformat{\section}
+  {\normalfont\Large\bfseries\color{deepblue}}
+  {\thesection}{1em}{}
+\titleformat{\subsection}
+  {\normalfont\large\bfseries\color{midblue}}
+  {\thesubsection}{1em}{}
+\titleformat{\subsubsection}
+  {\normalfont\normalsize\bfseries\color{darkgray}}
+  {\thesubsubsection}{1em}{}
+
+% ---- Epigraph style -----------------------------------------
+\setlength{\epigraphwidth}{0.62\textwidth}
+\renewcommand{\epigraphflush}{flushright}
+
+% ---- TOC style ----------------------------------------------
+\setlength{\cftbeforechapskip}{6pt}
+
+% ---- Hyperref setup -----------------------------------------
+\hypersetup{
+  pdftitle={Kernel Embeddings and the Separation of Measure Phenomenon: A Monograph},
+  pdfauthor={},
+  colorlinks=false,
+  bookmarksnumbered=true
+}
+
+% =============================================================
+\begin{document}
+% =============================================================
+
+% ---- Half-title ---------------------------------------------
+\begin{titlepage}
+\thispagestyle{empty}
+\begin{center}
+\vspace*{4cm}
+
+{\fontsize{26}{34}\selectfont\bfseries\color{deepblue}
+Kernel Embeddings and the\\[8pt]
+Separation of Measure Phenomenon}
+
+\vspace{2.2cm}
+
+{\Large\color{darkgray} Flyxion}
+
+\vspace{0.6cm}
+
+{\normalsize\color{medgray} June 2026}
+
+\vfill
+
+{\small\color{medgray} Based on Santoro, Waghmare \& Panaretos, \textit{PNAS} 123(23), 2026}
+
+\end{center}
+\end{titlepage}
+
+% ---- Table of Contents -------------------------------------
+\frontmatter
+\tableofcontents
+
+% ---- Preface ------------------------------------------------
+\chapter*{Preface}
+\addcontentsline{toc}{chapter}{Preface}
+\markboth{Preface}{Preface}
+
+\epigraph{``Simply put, we don't know what differences to look for, the possibilities
+are bewildering.''}{Victor M.\ Panaretos (2026)}
+
+\noindent
+Two probability distributions walk into an infinite-dimensional Hilbert space. Under the right embedding, they will never meet again.
+
+This is the informal content of the separation of measure theorem---with an important caveat: the result holds for \emph{continuous} (non-atomic) distributions embedded via a \emph{universal} kernel. Both conditions are essential. Discrete or atomic measures, and non-universal kernels, are outside the theorem's scope. The reader should keep this in mind whenever the exposition speaks loosely of ``two distributions'': throughout, these are non-atomic Borel probability measures and the kernel is assumed bounded, continuous, and universal.
+
+This monograph is an extended exposition of a single mathematical theorem and its consequences: the \emph{separation of measure phenomenon} identified by Santoro, Waghmare, and Panaretos in their 2026 \textit{Proceedings of the National Academy of Sciences} paper. The theorem proves, in a remarkably clean and general form, that kernel covariance embeddings transform distinct continuous probability distributions into mutually singular Gaussian measures. Mutual singularity is the strongest possible form of separation: the two measures live on essentially disjoint regions of the ambient space, each invisible to the other.
+
+The result matters for several reasons.
+
+First, it provides a precise geometric explanation for an important aspect of the empirical success of kernel methods in high-dimensional two-sample testing. Practitioners have long observed that kernel-based tests outperform classical alternatives, but the mechanism was not well understood. The separation of measure phenomenon supplies a previously missing geometric explanation: suitable embedding places the hypotheses at infinite information-theoretic distance from one another at the population level, rendering the population-level distinction perfectly identifiable.
+
+Second, the proof technique is beautiful. It routes through the classical Feldman--H\'ajek dichotomy, a deep theorem in the theory of Gaussian measures on infinite-dimensional Hilbert spaces that dates to the 1950s and 1960s. The paper shows that the two-sample testing problem can be \emph{exactly} reformulated as the problem of distinguishing singular from equivalent Gaussian measures---a problem for which the Feldman--H\'ajek theorem provides a complete criterion. This is a paradigm example of an old result in pure mathematics illuminating a contemporary question in data science.
+
+Third, the paper demonstrates a negative companion result: mean embeddings alone do \emph{not} produce separation. The covariance structure is essential. This is not merely a technical distinction; it reflects a deep fact about what kind of information is required to characterise a probability measure---a fact that resonates with longstanding themes in the philosophy of probability and information theory.
+
+This monograph aims to make the paper accessible to a reader with a background in mathematics or theoretical statistics who may not be familiar with Gaussian measures on Hilbert spaces or the Feldman--H\'ajek theory. Accordingly, the first several chapters are devoted to foundations: reproducing kernel Hilbert spaces, operator theory on Hilbert spaces, Gaussian measures in infinite dimensions, and the Feldman--H\'ajek theorem itself. These are not mere preliminaries; each contains material that is worth understanding deeply for its own sake, and the main theorem can only be properly appreciated against this background.
+
+Later chapters engage with the broader intellectual implications of the result: its connection to the information geometry of hypothesis testing, its relationship to the maximum mean discrepancy and other kernel criteria, the construction of practically implementable tests that exploit the separation phenomenon, and the philosophical question of what it means for an embedding to \emph{amplify} rather than merely preserve distinctions.
+
+A concluding chapter situates the result within several broader research programmes: process ontology and constraint geometry, semantic manifold theory, and the general question of how representational choices determine what distinctions are accessible to an observer.
+
+The reader who desires only a route through the proof may follow Chapters \ref{chap:background}--\ref{chap:fh}--\ref{chap:main}. The reader who desires to understand the result fully is encouraged to read in sequence.
+
+\bigskip
+\noindent\textit{June 2026 \hfill Flyxion}
+
+\clearpage
+
+% =============================================================
+\mainmatter
+% =============================================================
+
+% ============================================================
+\chapter{The Two-Sample Problem and Its Difficulties}
+\label{chap:twosample}
+% ============================================================
+
+\epigraph{``Without knowing which kinds of deviations to target, it becomes difficult
+to optimize the choice of test statistic.''}{Santoro, Waghmare, Panaretos (2026)}
+
+\section{The Classical Setting}
+
+The \emph{two-sample problem} is one of the oldest and most fundamental questions in statistics: given observations $X_1, \ldots, X_n \sim \PP$ and $Y_1, \ldots, Y_m \sim \QQ$, does $\PP = \QQ$? This question arises wherever one wishes to detect differences between populations, compare experimental and control groups, evaluate generative models, or test whether two datasets could plausibly have the same source.
+
+The formal version is a hypothesis test:
+\begin{equation}
+H_0: \PP = \QQ \qquad \text{vs} \qquad H_1: \PP \neq \QQ.
+\label{eq:twosample}
+\end{equation}
+
+In low-dimensional settings, classical procedures are available. The \emph{Kolmogorov--Smirnov test} compares empirical distribution functions; the \emph{t-test} compares means under normality; the \emph{Wilcoxon rank-sum test} is a nonparametric alternative robust to departures from normality. The chi-squared test handles categorical or discretized data.
+
+The challenge, however, lies in what happens when the state space $\calX$ is high-dimensional, structured, or of a type for which there is no natural total order---such as a space of functions, graphs, images, or text documents. The classical tests all rely, in some way, on the one-dimensional structure of the real line, whether through empirical CDFs, ranks, or scalar summaries. They do not transfer.
+
+\section{The Nonparametric Two-Sample Problem}
+
+The nonparametric version of the problem, where $\PP$ and $\QQ$ are arbitrary Borel probability measures on a general space $\calX$ with no structural assumptions, is genuinely difficult. The alternative hypothesis $H_1$ is vast: there are infinitely many ways in which two distributions can differ. A difference might be confined to the mean while leaving higher moments untouched, or conversely present in the variance while the means coincide. It may reside in the tails rather than the bulk, in a multimodal structure invisible in the marginals, in the correlation structure without any marginal effect, or localized in a small region of the support rather than diffusely spread everywhere.
+
+Any test statistic is, by definition, a summary of the data. A summary compresses information. The difficulty is that no scalar or finite-dimensional summary can adequately represent all possible forms of departure from $H_0$. A test that is powerful against mean shifts may have no power against higher-moment alternatives. A test designed for diffuse alternatives may miss sharp localized ones.
+
+This is not merely a practical difficulty---it reflects a fundamental information-theoretic constraint. The nonparametric alternative is simply too large for any fixed choice of test statistic to be uniformly powerful.
+
+\section{High-Dimensional and Complex Domains}
+
+The difficulty is further compounded in modern applications. In genomics, each observation may be a gene expression profile with tens of thousands of dimensions. In natural language processing, each observation may be a document embedded in a high-dimensional latent space. In computer vision, each observation is a high-resolution image. In these settings, the state space $\calX$ may be a subset of $\R^d$ for large $d$, a space of functions, a space of graphs or networks, a Riemannian manifold, a metric space with no algebraic structure, or a product of several heterogeneous spaces.
+
+In each case, the structure of the space creates new possibilities for how $\PP$ and $\QQ$ can differ, and existing test statistics must be adapted or entirely redesigned.
+
+\section{Kernel Methods and the MMD}
+
+The most successful general-purpose approach to the nonparametric two-sample problem is the \emph{kernel trick}. Instead of comparing $\PP$ and $\QQ$ directly, one maps both distributions into a reproducing kernel Hilbert space and compares them there. The primary measure of discrepancy is the \emph{Maximum Mean Discrepancy}:
+\begin{equation}
+\MMD(\PP, \QQ; k) = \|\mP - \mQ\|_{\calH},
+\label{eq:mmd}
+\end{equation}
+the RKHS distance between the kernel mean embeddings of the two distributions. Under a characteristic kernel, $\MMD(\PP, \QQ; k) = 0$ if and only if $\PP = \QQ$, so the MMD is a proper metric on the space of probability measures.
+
+The empirical MMD can be computed from samples and its asymptotic distribution under the null is known, enabling the construction of tests with controlled type-I error. Extensive empirical evidence demonstrates that MMD-based tests outperform classical alternatives, particularly in complex and high-dimensional settings. Yet until recently, a transparent mathematical explanation for this superior performance was lacking.
+
+\begin{highlightbox}
+\textbf{The Central Question.} Why do kernel methods perform so well? Is there a mathematical reason for the empirical success of the kernel trick in two-sample testing, beyond the fact that it embeds distributions into a rich space? The paper of Santoro, Waghmare, and Panaretos gives a precise and striking answer.
+\end{highlightbox}
+
+\section{Overview of the Separation Phenomenon}
+
+The main result---to be developed in full in subsequent chapters---can be stated informally as follows:
+
+\begin{quote}
+\itshape
+If $\PP \neq \QQ$ are two distinct continuous (non-atomic) probability measures on a locally compact Polish space $\calX$, then their kernel Gaussian embeddings $\calN(0, \SP)$ and $\calN(0, \SQ)$ are mutually singular.
+\end{quote}
+
+Mutual singularity means the two Gaussian measures are concentrated on \emph{disjoint} subsets of the RKHS. The embedded distributions do not merely differ---they live in separate regions of the infinite-dimensional space with no overlap whatsoever.
+
+Equivalently:
+\begin{equation}
+\PP \neq \QQ \iff \calN(0, \SP) \perp \calN(0, \SQ).
+\end{equation}
+
+This reformulates the two-sample testing problem from asking whether two arbitrary distributions differ (the hard nonparametric problem) to asking whether two Gaussian measures are equivalent or singular (a structurally cleaner problem). The Feldman--H\'ajek theorem, reviewed in Chapter~\ref{chap:fh}, gives a complete criterion for the latter. At the population level, the distinction is perfectly identifiable; the finite-sample problem of how to exploit this structure efficiently is addressed in Chapter~\ref{chap:lrt}.
+
+This is the separation of measure phenomenon, and it is, as Panaretos describes it, a \emph{blessing of infinite dimensionality}.
+
+% ============================================================
+\chapter{Reproducing Kernel Hilbert Spaces}
+\label{chap:rkhs}
+% ============================================================
+
+\epigraph{``The key idea is to map probability measures to vectors or functions
+in a reproducing kernel Hilbert space, thereby enabling the application of linear
+or multivariate methods directly to distributions.''}{Santoro, Waghmare, Panaretos (2026)}
+
+\section{Kernels and Feature Maps}
+
+\begin{definition}
+Let $\calX$ be a nonempty set. A function $k: \calX \times \calX \to \R$ is a \emph{positive semidefinite kernel} (or simply \emph{kernel}) if for every $n \in \N$, every $x_1, \ldots, x_n \in \calX$, and every $a_1, \ldots, a_n \in \R$:
+\begin{equation}
+\sum_{i=1}^n \sum_{j=1}^n a_i a_j k(x_i, x_j) \geq 0.
+\end{equation}
+A kernel is \emph{symmetric} if $k(x, y) = k(y, x)$ for all $x, y \in \calX$.
+\end{definition}
+
+Associated to each kernel is a canonical \emph{feature map} $\varphi: \calX \to \R^{\calX}$ defined by $\varphi(x) = k(x, \cdot) =: k_x$. The feature map sends each point $x \in \calX$ to the function $y \mapsto k(x,y)$.
+
+The key object is the Hilbert space generated by these feature maps.
+
+\begin{definition}[Reproducing Kernel Hilbert Space]
+Let $\calX$ be a set and $k: \calX \times \calX \to \R$ a kernel. The \emph{reproducing kernel Hilbert space} (RKHS) associated to $k$, denoted $\calH = \calH(k)$, is the completion of the pre-Hilbert space
+\begin{equation}
+\calH^0 = \mathrm{span}\{ k_x : x \in \calX \}
+\end{equation}
+under the inner product determined by $\langle k_x, k_y \rangle_{\calH} = k(x, y)$.
+\end{definition}
+
+The defining property of an RKHS is the \emph{reproducing property}:
+\begin{equation}
+f(x) = \langle f, k_x \rangle_{\calH} \quad \text{for all } f \in \calH, x \in \calX.
+\end{equation}
+This says that the evaluation functional $f \mapsto f(x)$ is continuous (hence representable) and is reproduced by the kernel. It is a powerful regularity property: functions in $\calH$ cannot oscillate wildly, since their values are controlled by their norm.
+
+\section{Examples of Kernels}
+
+\begin{example}[Gaussian RBF kernel]
+On $\calX = \R^d$, the \emph{Gaussian radial basis function kernel} is
+\begin{equation}
+k(x, y) = \exp\!\left(-\frac{\|x-y\|^2}{2\sigma^2}\right),
+\end{equation}
+for bandwidth $\sigma > 0$. This is the most commonly used kernel in practice. Its RKHS consists of smooth functions, and it is universal on compact subsets of $\R^d$.
+\end{example}
+
+\begin{example}[Matérn kernels]
+The family of \emph{Matérn kernels} on $\R^d$ parameterizes smoothness through a parameter $\nu > 0$. For $\nu = 1/2$, one recovers the Ornstein--Uhlenbeck kernel $k(x,y) = \exp(-\|x-y\|/\ell)$. For $\nu \to \infty$, one approaches the Gaussian RBF kernel.
+\end{example}
+
+\begin{example}[Polynomial kernel]
+On $\R^d$, the \emph{polynomial kernel} of degree $p$ is $k(x, y) = (\langle x, y \rangle + c)^p$. Its RKHS is a finite-dimensional space of polynomials of degree at most $p$.
+\end{example}
+
+\section{Universality and Characteristic Kernels}
+
+Two properties of kernels are particularly relevant for statistical applications.
+
+\begin{definition}[Universal kernel]
+A kernel $k$ on a locally compact Hausdorff space $\calX$ is \emph{$C_0(\calX)$-universal} (or simply \emph{universal}) if its RKHS $\calH(k)$ is dense in $C_0(\calX)$, the space of continuous functions vanishing at infinity, under the uniform norm.
+\end{definition}
+
+\begin{definition}[Characteristic kernel]
+A kernel $k$ is \emph{characteristic} for a class $\mathcal{F}$ of probability measures on $\calX$ if the mean embedding map $\PP \mapsto m_\PP$ is injective on $\mathcal{F}$.
+\end{definition}
+
+Universal kernels are characteristic. The Gaussian RBF and Matérn kernels are universal on $\R^d$. For a bounded universal kernel, the mean embedding uniquely identifies each probability measure.
+
+\section{Operator Theory on Hilbert Spaces}
+
+Since the covariance embedding maps distributions to \emph{operators} rather than vectors, we need some operator theory.
+
+Let $\calH$ be a separable Hilbert space. For vectors $f, g \in \calH$, their \emph{tensor product} is the rank-one operator
+\begin{equation}
+(f \otimes g)\, u = \langle g, u \rangle_{\calH}\, f, \qquad u \in \calH.
+\end{equation}
+
+\begin{definition}
+An operator $\mathbf{A}: \calH \to \calH$ is \emph{self-adjoint} if $\mathbf{A} = \mathbf{A}^*$; \emph{positive semidefinite} (written $\mathbf{A} \succeq 0$) if $\langle \mathbf{A}h, h \rangle_{\calH} \geq 0$ for all $h$; \emph{compact} if the image of the unit ball is precompact; \emph{Hilbert--Schmidt} if $\|\mathbf{A}\|_{\HS}^2 := \trace(\mathbf{A}^* \mathbf{A}) < \infty$; and \emph{trace-class} if $\|\mathbf{A}\|_{\tr} := \trace(\sqrt{\mathbf{A}^* \mathbf{A}}) < \infty$.
+\end{definition}
+
+One always has $\|\mathbf{A}\|_{\op} \leq \|\mathbf{A}\|_{\HS} \leq \|\mathbf{A}\|_{\tr}$. Trace-class operators are compact; Hilbert--Schmidt operators are compact. For a positive semidefinite compact operator $\mathbf{A}$, the spectral theorem gives an orthonormal basis $\{e_j\}$ and non-negative eigenvalues $\{\lambda_j\}$ with $\mathbf{A}e_j = \lambda_j e_j$ and $\lambda_j \to 0$. Then $\trace(\mathbf{A}) = \sum_j \lambda_j$.
+
+\section{Mean and Covariance Embeddings}
+
+We now define the central objects of the paper.
+
+\begin{definition}[Kernel mean embedding]
+Let $k$ be a bounded kernel on $\calX$ with RKHS $\calH$. The \emph{kernel mean embedding} of $\PP \in \calP(\calX)$ is the unique element $\mP \in \calH$ satisfying
+\begin{equation}
+\langle \mP, f \rangle_{\calH} = \int_{\calX} f(u)\, d\PP(u) \qquad \text{for all } f \in \calH.
+\end{equation}
+Equivalently, $\mP = \int k_u\, d\PP(u)$ (Bochner integral).
+\end{definition}
+
+\begin{definition}[Kernel covariance embedding]
+The \emph{(uncentred) kernel covariance embedding} of $\PP$ is the operator $\SP: \calH \to \calH$ defined by
+\begin{equation}
+\langle f, \SP g \rangle_{\calH} = \int_{\calX} f(u)\, g(u)\, d\PP(u) \qquad \text{for all } f, g \in \calH,
+\end{equation}
+or equivalently, $\SP = \int k_u \otimes k_u\, d\PP(u)$.
+\end{definition}
+
+The covariance embedding $\SP$ is self-adjoint, positive semidefinite, and trace-class. Its eigenvalues $\{\lambda_j(\SP)\}$ are non-negative and satisfy $\sum_j \lambda_j(\SP) = \trace(\SP) = \int k(u, u)\, d\PP(u) < \infty$.
+
+\begin{remark}
+When $k$ is a bounded universal kernel on $\calX$ and $\PP$ has full support on $\calX$, the operator $\SP$ is injective ($\ker(\SP) = \{0\}$). The argument is that $\langle f, \SP f \rangle = \int f(u)^2\, d\PP(u) = 0$ implies $f = 0$ $\PP$-almost surely, and since $\PP$ has full support and $f \in \calH$ is continuous, this forces $f \equiv 0$. We include this fact for completeness; it is not used critically elsewhere, and readers should note that the exact relationship between universality, full support, and injectivity in full generality requires care (see \cite{SteinwartChristmann2008}).
+\end{remark}
+
+The pair $(\mP, \SP)$ constitutes the combined embedding of $\PP$. The Gaussian associated to this pair is the object of central interest.
+
+% ============================================================
+\chapter{Gaussian Measures in Infinite Dimensions}
+\label{chap:gaussian}
+% ============================================================
+
+\epigraph{``A fundamental result in the theory of Gaussian measures states that
+Gaussians are either mutually equivalent or mutually singular, with no
+intermediate case.''}{Santoro, Waghmare, Panaretos (2026)}
+
+\section{Gaussian Measures on Hilbert Spaces}
+
+In finite dimensions, a Gaussian measure $\calN(\mu, \Sigma)$ on $\R^d$ is characterized by its mean vector $\mu \in \R^d$ and positive semidefinite covariance matrix $\Sigma \in \R^{d \times d}$. The extension to infinite-dimensional Hilbert spaces requires care, because the natural analogue of the covariance matrix---an operator---must be trace-class for the Gaussian measure to be well-defined.
+
+\begin{definition}
+A Borel measure $\mu$ on a separable Hilbert space $\calH$ is \emph{Gaussian} if for every $f \in \calH$, the random variable $\langle \cdot, f \rangle$ (under $\mu$) is a real Gaussian. A Gaussian measure $\mu$ is determined by its \emph{mean vector} $\mathbf{m} = \int u\, d\mu(u) \in \calH$ and its \emph{covariance operator} $\mathbf{C} = \int (u - \mathbf{m}) \otimes (u - \mathbf{m})\, d\mu(u)$, where $\mathbf{C}$ is a positive semidefinite trace-class operator. We write $\mu = \calN(\mathbf{m}, \mathbf{C})$.
+\end{definition}
+
+The condition that $\mathbf{C}$ be trace-class is necessary for the Gaussian measure to be a proper probability measure on $\calH$. If $\mathbf{C}$ is bounded but not trace-class, there is no Gaussian measure with that covariance in the Hilbert space sense (though one may exist on a larger Banach space).
+
+\begin{example}
+Consider the RKHS $\calH$ associated to the Gaussian RBF kernel on $\R^d$, and let $\PP$ be any absolutely continuous probability measure on $\R^d$. Then $\SP$ is a positive semidefinite trace-class operator on $\calH$, and $\calN(0, \SP)$ is a well-defined Gaussian measure on $\calH$.
+\end{example}
+
+\section{Support of a Gaussian Measure}
+
+\begin{definition}
+The \emph{Cameron--Martin space} (or \emph{reproducing kernel Hilbert space}) of a Gaussian measure $\mu = \calN(\mathbf{m}, \mathbf{C})$ on $\calH$ is the range of $\mathbf{C}^{1/2}$:
+\begin{equation}
+\calH_\mu = \ran(\mathbf{C}^{1/2}) \subset \calH.
+\end{equation}
+\end{definition}
+
+The Cameron--Martin space determines the absolutely continuous translations of the Gaussian measure and governs much of its geometric behaviour, but it must be carefully distinguished from the \emph{topological support}.
+
+\begin{definition}
+The \emph{topological support} of a Borel measure $\mu$ on $\calH$ is the smallest closed set of full $\mu$-measure:
+\begin{equation}
+\supp(\mu) = \overline{\ran(\mathbf{C}^{1/2})} + \mathbf{m} \subset \calH.
+\end{equation}
+\end{definition}
+
+For $\mu = \calN(\mathbf{m}, \mathbf{C})$, the topological support equals the closure of the Cameron--Martin space translated by the mean. The Cameron--Martin space $\ran(\mathbf{C}^{1/2})$ is generally \emph{dense} in $\supp(\mu)$ but is a proper subset of it whenever $\mathbf{C}$ is compact (since the range of a compact operator is not closed unless it is finite-dimensional). The Cameron--Martin space is therefore typically strictly smaller than the support.
+
+\begin{remark}
+This distinction matters. One should not say ``the support of $\calN(0, \mathbf{C})$ is $\ran(\mathbf{C}^{1/2})$.'' The correct statement is: the topological support is $\overline{\ran(\mathbf{C}^{1/2})}$, and the Cameron--Martin space $\ran(\mathbf{C}^{1/2})$ is a dense subspace of the support on which absolutely continuous translations live. It is the Cameron--Martin space, not the topological support per se, that governs singularity via the Feldman--H\'ajek conditions.
+
+When $\calH$ is infinite-dimensional, the Cameron--Martin space presents a genuine measure-theoretic paradox: it has \emph{zero measure} under the very Gaussian it governs. That is,
+\begin{equation}
+\mu\!\left(\ran(\mathbf{C}^{1/2})\right) = 0.
+\end{equation}
+The Gaussian $\mu = \calN(0, \mathbf{C})$ assigns full measure to the topological support $\overline{\ran(\mathbf{C}^{1/2})}$, yet typical samples drawn from $\mu$ lie \emph{outside} the Cameron--Martin space---they belong to the support but not to its dense core. In other words, the structure that governs absolutely continuous translations and the Feldman--H\'ajek conditions is itself invisible to the measure; $\mu$ cannot ``see'' its own Cameron--Martin space in the sense that it assigns that space measure zero. This is one of the genuinely strange features of infinite-dimensional Gaussian geometry and is the geometric engine behind the Feldman--H\'ajek dichotomy.
+\end{remark}
+
+A central geometric fact is:
+
+\begin{proposition}
+If $\mathbf{C}$ is trace-class (necessarily the case for a Gaussian measure on an infinite-dimensional Hilbert space), then $\calN(0, \mathbf{C})$ assigns measure zero to every bounded subset of $\calH$, and in particular to any finite-dimensional subspace. The Gaussian is, in a precise sense, concentrated in the ``infinite-dimensional'' part of $\calH$.
+\end{proposition}
+
+This is an analogue of the fact that in $\R^2$, a degenerate Gaussian can be concentrated on a line. In infinite dimensions, every Gaussian with trace-class covariance is, in a sense, degenerate from the perspective of the full Hilbert space. See Figure~\ref{fig:gaussian_support} for a two-dimensional illustration.
+
+\begin{figure}[h]
+\centering
+\begin{tikzpicture}[scale=1.1]
+  % Axes
+  \draw[->] (-3,0) -- (3.4,0) node[right] {$e_1$};
+  \draw[->] (0,-2.5) -- (0,2.7) node[above] {$e_2$};
+
+  % Gaussian 1: full support in plane
+  \begin{scope}
+    \clip (-2.8,-2.3) rectangle (2.8,2.4);
+    \foreach \r/\o in {0.5/25, 1.0/18, 1.5/12, 2.0/7, 2.5/3}{
+      \draw[deepblue, opacity=\o/25*0.8+0.05, line width=0.8pt]
+        (0,0) ellipse ({\r*1.6} and {\r*0.9});
+    }
+  \end{scope}
+  \node[deepblue] at (1.7,1.6) {$\calN(0, \mathbf{S}_{\PP})$};
+
+  % Gaussian 2: supported on a line
+  \draw[deepred, very thick] (-2.8,-0.8) -- (2.8,0.8);
+  \node[deepred] at (2.2,-1.15) {$\calN(0, \mathbf{S}_{\QQ})$};
+
+  % Indicating the disjoint support
+  \draw[<->, dashed, medgray] (0.9,0.25) -- (0.9,-0.6) node[midway, right, medgray, font=\small] {singular};
+\end{tikzpicture}
+\caption{Illustration of mutual singularity of Gaussian measures in $\R^2$. One Gaussian is supported on the full plane (elliptical contours); the other is degenerate and supported on a line. The two measures are mutually singular: each is concentrated on a set of measure zero for the other. In infinite dimensions, the geometry is analogous but far richer.}
+\label{fig:gaussian_support}
+\end{figure}
+
+\section{Mutual Singularity and Equivalence}
+
+We now define the central dichotomy.
+
+\begin{definition}
+Two probability measures $\mu$ and $\nu$ on a measurable space $(\Omega, \mathcal{F})$ are \emph{equivalent} (written $\mu \sim \nu$) if they have the same null sets, meaning $\mu(A) = 0 \iff \nu(A) = 0$ for all $A \in \mathcal{F}$. They are \emph{mutually singular} (written $\mu \perp \nu$) if there exists a set $A \in \mathcal{F}$ with $\mu(A) = 1$ and $\nu(A) = 0$.
+\end{definition}
+
+Mutual singularity is the strongest possible form of difference between measures: the Kullback--Leibler divergence is infinite in both directions, and neither measure has a density with respect to the other. Two mutually singular measures are concentrated on essentially disjoint sets---they are, in a precise sense, orthogonal.
+
+Equivalence means they share the same null sets; each has density with respect to the other.
+
+The remarkable fact, which lies at the heart of the Feldman--H\'ajek theorem, is that for Gaussian measures on Hilbert spaces, these are the \emph{only} two possibilities.
+
+\begin{theorem}[Gaussian dichotomy]
+\label{thm:dichotomy}
+Two Gaussian measures on a separable Hilbert space are either equivalent or mutually singular. There is no intermediate case.
+\end{theorem}
+
+This is in sharp contrast to the situation in finite dimensions. In $\R^d$, two Gaussian measures $\calN(\mu_1, \Sigma_1)$ and $\calN(\mu_2, \Sigma_2)$ with \emph{nonsingular} covariance matrices are always equivalent: both are absolutely continuous with respect to Lebesgue measure on $\R^d$, hence with respect to each other, and the Radon--Nikodym derivative is a smooth positive function. (The nondegeneracy assumption is essential: if either covariance matrix is singular, the corresponding Gaussian is supported on a proper affine subspace of $\R^d$, and two Gaussians supported on different affine subspaces are mutually singular even in finite dimensions---as the figure examples earlier illustrate.) In infinite dimensions, even measures with nonsingular covariance operators can be mutually singular, because the Hilbert--Schmidt condition involves all infinitely many eigenvalues and may fail even when none of them is zero.
+
+% ============================================================
+\chapter{The Feldman--H\'ajek Theorem}
+\label{chap:fh}
+% ============================================================
+
+\epigraph{``Our proof leverages the classical Feldman--H\'ajek dichotomy, and shows that
+even a small perturbation of a continuous distribution will be maximally magnified
+through its Gaussian embedding.''}%
+{Santoro, Waghmare, Panaretos (2026)}
+
+\section{Statement of the Theorem}
+
+The Feldman--H\'ajek theorem gives an explicit criterion for when two Gaussian measures on a Hilbert space are equivalent versus singular. It is named for Jacob Feldman \cite{Feldman1958} and Jaroslav H\'ajek \cite{Hajek1958}, who independently proved versions of it in 1958.
+
+\begin{theorem}[Feldman--H\'ajek]
+\label{thm:FH}
+Let $\mu_i = \calN(\mathbf{m}_i, \mathbf{C}_i)$, $i = 1, 2$, be two Gaussian measures on a separable Hilbert space $\calH$. Then $\mu_1 \sim \mu_2$ or $\mu_1 \perp \mu_2$. The measures are equivalent if and only if the following three conditions hold simultaneously. First, the Cameron--Martin spaces coincide: $\ran(\mathbf{C}_1^{1/2}) = \ran(\mathbf{C}_2^{1/2})$. Second, the relative perturbation is Hilbert--Schmidt: $\mathbf{C}_1^{-1/2} \mathbf{C}_2 \mathbf{C}_1^{-1/2} - \mathbf{I} \in \HS(\calH)$. Third, the mean shift lies in the Cameron--Martin space: $\mathbf{m}_1 - \mathbf{m}_2 \in \ran(\mathbf{C}_1^{1/2})$. If any one of these conditions fails, then $\mu_1 \perp \mu_2$.
+\end{theorem}
+
+\noindent The theorem is sharp: failure of \emph{any single one} of the three conditions implies mutual singularity.
+
+\begin{remark}
+Conditions 1 and 2 together say that the covariance operators must be \emph{close} in a precise operator-theoretic sense. Condition 1 requires that the Cameron--Martin spaces of the two measures coincide---equivalently, that the two measures are supported on the same closed affine subspace (the closure of the Cameron--Martin space). Condition 2 says that the relative perturbation of the covariance operators, when expressed in a common eigenbasis, must be square-summable: it is not enough that the covariance operators differ by a trace-class perturbation; the perturbation must be Hilbert--Schmidt-close in a \emph{relative} sense. Condition 3 says the mean shift must lie in the Cameron--Martin space $\ran(\mathbf{C}_1^{1/2})$, not merely in the topological support.
+\end{remark}
+
+\section{Geometric Interpretation}
+
+The Feldman--H\'ajek theorem has a clean geometric interpretation. Two Gaussians with different Cameron--Martin spaces have different absolutely-continuous translation classes: translations that preserve the measure for one will be singular for the other. If two Gaussians have different Cameron--Martin spaces---equivalently, if $\ran(\mathbf{C}_1^{1/2}) \neq \ran(\mathbf{C}_2^{1/2})$---they are mutually singular. If they have the same Cameron--Martin space but the eigenvalue ratios $\lambda_{2,j}/\lambda_{1,j}$ deviate from 1 in a non-square-summable way, they are also singular. Equivalence requires both conditions: matching Cameron--Martin spaces and a Hilbert--Schmidt-close relative perturbation.
+
+\begin{figure}[h]
+\centering
+\begin{tikzpicture}[scale=1.0]
+  % Three scenarios side by side
+
+  % Scenario A: Same support, equivalent
+  \begin{scope}[xshift=-4.2cm]
+    \draw[->] (-1.4,0) -- (1.6,0);
+    \draw[->] (0,-1.2) -- (0,1.4);
+    \draw[deepblue, thick] (0,0) ellipse (1.1 and 0.7);
+    \draw[midblue, dashed, thick] (0,0) ellipse (0.7 and 0.45);
+    \node[font=\small] at (0,-1.6) {Equivalent};
+    \node[font=\tiny, deepblue] at (1.2,1.0) {$\mu_1$};
+    \node[font=\tiny, midblue] at (0.55,0.25) {$\mu_2$};
+  \end{scope}
+
+  % Scenario B: Different supports, singular
+  \begin{scope}[xshift=0cm]
+    \draw[->] (-1.4,0) -- (1.6,0);
+    \draw[->] (0,-1.2) -- (0,1.4);
+    \draw[deepblue, thick] (0,0) ellipse (1.1 and 0.7);
+    \draw[deepred, thick] (-1.3,-0.6) -- (1.3,0.6);
+    \node[font=\small] at (0,-1.6) {Singular (support)};
+    \node[font=\tiny, deepblue] at (1.2,1.0) {$\mu_1$};
+    \node[font=\tiny, deepred] at (1.4,0.45) {$\mu_2$};
+  \end{scope}
+
+  % Scenario C: Non-HS perturbation, singular
+  \begin{scope}[xshift=4.2cm]
+    \draw[->] (-1.4,0) -- (1.6,0);
+    \draw[->] (0,-1.2) -- (0,1.4);
+    \draw[deepblue, thick] (0,0) ellipse (1.1 and 0.7);
+    \draw[deepred, thick] (0,0) ellipse (1.1 and 0.15);
+    \node[font=\small] at (0,-1.6) {Singular (non-HS)};
+    \node[font=\tiny, deepblue] at (1.2,1.0) {$\mu_1$};
+    \node[font=\tiny, deepred] at (1.25,-0.28) {$\mu_2$};
+  \end{scope}
+\end{tikzpicture}
+\caption{Schematic of the Feldman--H\'ajek dichotomy illustrated in $\R^2$. Left: Two Gaussian measures with the same support are equivalent (each has density with respect to the other). Centre: Two Gaussians with different supports (one full-plane, one on a line) are mutually singular. Right: A heuristic visualization only---in $\R^2$, two nondegenerate Gaussians are always equivalent regardless of how different their covariances are; the right panel is intended to suggest, schematically, the infinite-dimensional phenomenon where a highly anisotropic perturbation of the covariance causes failure of the Hilbert--Schmidt condition and hence mutual singularity. The actual phenomenon cannot be visualized in finite dimensions.}
+\label{fig:FH}
+\end{figure}
+
+\section{The Criterion for Centered Gaussians}
+
+For the purpose of the main theorem, the centered case---where both Gaussians have mean zero---is particularly important. In this case, Condition 3 of Theorem~\ref{thm:FH} is automatically satisfied (since $\mathbf{m}_1 = \mathbf{m}_2 = 0$), and the dichotomy simplifies:
+
+\begin{corollary}
+\label{cor:centered}
+For centered Gaussians $\calN(0, \mathbf{C}_1)$ and $\calN(0, \mathbf{C}_2)$:
+\begin{equation}
+\calN(0, \mathbf{C}_1) \sim \calN(0, \mathbf{C}_2) \iff 
+\begin{cases}
+\ran(\mathbf{C}_1^{1/2}) = \ran(\mathbf{C}_2^{1/2}) \\
+\mathbf{C}_1^{-1/2} \mathbf{C}_2 \mathbf{C}_1^{-1/2} - \mathbf{I} \in \mathrm{HS}(\calH).
+\end{cases}
+\end{equation}
+In all other cases, $\calN(0, \mathbf{C}_1) \perp \calN(0, \mathbf{C}_2)$.
+\end{corollary}
+
+\begin{remark}
+The condition that $\ran(\mathbf{C}_1^{1/2}) = \ran(\mathbf{C}_2^{1/2})$ can be understood spectrally. If $\mathbf{C}_i$ has eigenvalues $\{\lambda_{i,j}\}_{j \geq 1}$ in the same eigenbasis, then the condition requires that the two covariance operators have the same null space, and the additional Hilbert--Schmidt condition requires
+\begin{equation}
+\sum_{j=1}^{\infty} \left(\frac{\lambda_{2,j}}{\lambda_{1,j}} - 1\right)^2 < \infty.
+\end{equation}
+This is a fine-grained condition on how the eigenvalues must be comparable.
+\end{remark}
+
+\section{Historical Notes}
+
+The Feldman--H\'ajek theorem is one of the foundational results of the theory of Gaussian measures on infinite-dimensional spaces, developed in the 1950s--1970s alongside the theory of Gaussian processes and stochastic differential equations. Key contributions include Feldman \cite{Feldman1958}, H\'ajek \cite{Hajek1958}, and the comprehensive treatments of Skorokhod \cite{Skorokhod1974} and Bogachev \cite{Bogachev1998}. The theorem has applications in statistics (testing problems for Gaussian processes), in quantum field theory (where functional integrals require understanding when measures are equivalent), and in optimal transport (since singularity has implications for transport costs).
+
+The insight of Santoro, Waghmare, and Panaretos is to use the Feldman--H\'ajek theorem not as a tool for analyzing Gaussian processes directly, but as a lens through which to view \emph{non-Gaussian} distributions via their Gaussian embeddings. This represents a novel application of a classical result.
+
+% ============================================================
+\chapter{The Main Theorem: Separation of Measure}
+\label{chap:main}
+% ============================================================
+
+\epigraph{``Even a small perturbation of a continuous distribution will be
+maximally magnified through its Gaussian embedding.''}{Santoro, Waghmare, Panaretos (2026)}
+
+\section{Setup and Assumptions}
+
+We now have all the ingredients needed to state and discuss the main result.
+
+Let $\calX$ be a locally compact Polish space. This is a broad class of spaces, encompassing $\R^d$ and open subsets thereof, compact metric spaces, countable discrete spaces such as $\N$ or $\Z^d$, Riemannian manifolds, and function spaces with appropriate topologies.
+The key conditions are local compactness and the Polish property (complete separable metric space). These ensure that measure theory works well and that the RKHS theory applies.
+
+Let $k: \calX \times \calX \to \R$ be a bounded, continuous, positive semidefinite kernel that is \emph{universal} on $\calX$. Recall that universality means $\calH(k)$ is dense in $C_0(\calX)$. The Gaussian RBF kernel satisfies this condition on $\R^d$ and on any compact subset of $\R^d$.
+
+A probability measure $\PP$ on $\calX$ is \emph{non-atomic} (or continuous) if $\PP(\{x\}) = 0$ for every $x \in \calX$. This excludes point masses and atomic components.
+
+\section{The Separation of Measure Theorem}
+
+\begin{theorem}[Separation of Measure; Santoro--Waghmare--Panaretos 2026]
+\label{thm:separation}
+Let $\calX$ be a locally compact Polish space, $k$ a bounded, continuous, universal kernel on $\calX$, and $\PP, \QQ$ non-atomic Borel probability measures on $\calX$. Then:
+\begin{equation}
+\PP \neq \QQ \iff \calN(0, \SP) \perp \calN(0, \SQ),
+\label{eq:separation}
+\end{equation}
+where $\SP = \int k_u \otimes k_u\, d\PP(u)$ and $\SQ = \int k_u \otimes k_u\, d\QQ(u)$ are the kernel covariance embeddings.
+\end{theorem}
+
+\noindent The biconditional is the full force of the theorem. The direction $\PP = \QQ \Rightarrow \calN(0, \SP) = \calN(0, \SQ)$ (hence trivially equivalent) is immediate from the definition. The content is the reverse: $\PP \neq \QQ \Rightarrow$ the centered Gaussian embeddings are \emph{mutually singular}.
+
+\begin{corollary}[Uncentered version]
+\label{cor:uncentered}
+Under the same hypotheses:
+\begin{equation}
+\PP \neq \QQ \iff \calN(\mP, \SP) \perp \calN(\mQ, \SQ).
+\label{eq:separation_uncentered}
+\end{equation}
+\end{corollary}
+
+Thus both centered and uncentered Gaussian embeddings achieve separation. The centered version is the main theorem; the uncentered is a corollary.
+
+\section{Proof Strategy}
+
+The proof proceeds by applying the Feldman--H\'ajek theorem (Theorem~\ref{thm:FH}). To show $\calN(0, \SP) \perp \calN(0, \SQ)$ when $\PP \neq \QQ$, it suffices (by Corollary~\ref{cor:centered}) to show that at least one of the following must hold: either the Cameron--Martin spaces differ, $\ran(\SP^{1/2}) \neq \ran(\SQ^{1/2})$, or the relative perturbation $\SP^{-1/2} \SQ \SP^{-1/2} - \mathbf{I}$ fails to be Hilbert--Schmidt.
+
+\begin{caution}
+A common misreading of the theorem is to reason as follows: ``$\PP \neq \QQ$ implies $\SP \neq \SQ$ (by injectivity of the covariance embedding), and distinct trace-class operators on an infinite-dimensional Hilbert space \emph{generically} fail the Feldman--H\'ajek conditions.'' This is \emph{not} sufficient as a proof. It is easy to construct pairs of distinct trace-class operators for which equivalence still holds. For example, if
+\begin{equation}
+\lambda_j^{(2)} = \lambda_j^{(1)}\!\left(1 + \frac{1}{j^2}\right),
+\end{equation}
+then $\SP \neq \SQ$, yet
+\begin{equation}
+\sum_{j=1}^{\infty} \left(\frac{\lambda_j^{(2)}}{\lambda_j^{(1)}} - 1\right)^2 = \sum_{j=1}^{\infty} \frac{1}{j^4} < \infty,
+\end{equation}
+so the Hilbert--Schmidt condition is satisfied and the Gaussians remain equivalent. The separation phenomenon is therefore \emph{not} a consequence of generic operator-theoretic reasoning. It is a consequence of a \emph{special structural property} of covariance operators that arise from non-atomic probability measures through kernel embedding.
+\end{caution}
+
+The actual argument requires identifying what it is about \emph{kernel-embedded} covariance operators that forces failure of the Feldman--H\'ajek conditions when $\PP \neq \QQ$. We outline this in two steps.
+
+\subsection{Step 1: Injectivity of the Covariance Embedding}
+
+The first step establishes that for a universal kernel, the covariance embedding is injective on non-atomic measures.
+
+\begin{proposition}
+\label{prop:injective}
+Let $k$ be a bounded universal kernel on a locally compact Polish space $\calX$. If $\PP$ and $\QQ$ are non-atomic probability measures with $\SP = \SQ$, then $\PP = \QQ$.
+\end{proposition}
+
+\begin{proof}[Proof sketch]
+If $\SP = \SQ$, then for all $f, g \in \calH$:
+\begin{equation}
+\int f(u)\, g(u)\, d\PP(u) = \int f(u)\, g(u)\, d\QQ(u).
+\end{equation}
+This says that $\PP$ and $\QQ$ agree on all integrals of functions of the form $h = fg$ with $f, g \in \calH$. The key step is to show that the linear span of such products is dense in $C_0(\calX)$ in the uniform norm.
+
+This density claim is the substantive content of the argument and requires care. It does not follow directly from the definition of universality (which asserts density of $\calH$ itself, not of products of elements of $\calH$). The argument proceeds as follows: since $k$ is universal, $\calH$ is dense in $C_0(\calX)$. The pointwise products of elements of $\calH$ belong to the RKHS $\calH(k^2)$ of the squared kernel $k^2(x,y) = k(x,y)^2$. One then shows that $\calH(k^2)$ is also dense in $C_0(\calX)$ using the Stone--Weierstrass theorem and the separating/non-vanishing properties of $\calH$, provided $k$ is a continuous universal kernel on a locally compact Polish space (see \cite{SteinwartChristmann2008}, Theorem~4.58 and surrounding discussion; and \cite{SantoroPNAS2026} for the version applicable here).
+
+Given this density, $\PP$ and $\QQ$ agree on a class dense in $C_0(\calX)$, and by standard measure theory they agree on all bounded continuous functions, hence $\PP = \QQ$.
+\end{proof}
+
+\begin{remark}
+The density of products of RKHS functions is a non-trivial fact that deserves explicit acknowledgment. In particular, injectivity of the covariance embedding is a \emph{stronger} result than injectivity of the mean embedding (which only requires $\calH$ to be dense, not products of elements of $\calH$). The reader who wishes to see the full argument is directed to the original paper and the cited references.
+\end{remark}
+
+This establishes: $\PP \neq \QQ \Rightarrow \SP \neq \SQ$. But as the caution above shows, this is only the beginning.
+
+\subsection{Step 2: The Special Structure of Kernel Covariance Operators}
+
+The deep step is to show that the specific way in which $\SP$ and $\SQ$ differ---arising as they do from non-atomic measures via the kernel covariance embedding---forces failure of the Feldman--H\'ajek Hilbert--Schmidt condition.
+
+The key structural property is that $\SP$ and $\SQ$ have the integral representations
+\begin{equation}
+\SP = \int_{\calX} k_u \otimes k_u\, d\PP(u), \qquad \SQ = \int_{\calX} k_u \otimes k_u\, d\QQ(u),
+\end{equation}
+so their difference $\Delta = \SQ - \SP$ inherits the full measure-theoretic structure of the signed measure $\QQ - \PP$. When $\PP \neq \QQ$, this difference is non-zero and non-trivial throughout the RKHS.
+
+The actual proof of why this forces failure of the Hilbert--Schmidt condition---that is, why
+\begin{equation}
+\sum_{j=1}^{\infty} \sigma_j\!\left(\SP^{-1/2}\,\Delta\,\SP^{-1/2}\right)^2 = +\infty
+\end{equation}
+when $\PP \neq \QQ$ and both are non-atomic---requires detailed spectral arguments specific to covariance operators arising from kernel embeddings of continuous measures. These arguments are worked out in full in Santoro, Waghmare, and Panaretos \cite{SantoroPNAS2026}.
+
+\begin{caution}
+It is tempting to explain the Hilbert--Schmidt failure by saying the difference ``propagates across all eigenmodes of $\SP$.'' This is an intuition, not a proof. Universality of the kernel does not in itself imply rapid or slow spectral decay of $\SP$; spectral decay depends on kernel smoothness, the geometry of $\calX$, and the regularity of $\PP$. The theorem does not reduce to a statement about eigenvalue growth rates, and informal accounts that suggest it does are overstating what has been proved. The actual mechanism is subtler: it depends on structural properties of the integral representation of $\SP$ and $\SQ$ that are incompatible with the Hilbert--Schmidt condition once both measures are non-atomic and distinct.
+\end{caution}
+
+\begin{remark}
+The non-atomicity condition is a genuine structural necessity. For atomic measures (finite mixtures of point masses), the covariance operators $\SP$ and $\SQ$ have finite rank, the eigenspectrum terminates at a finite index $N$, and the Hilbert--Schmidt sum $\sum_{j=1}^N (\cdot)^2$ is automatically finite. The separation phenomenon is therefore intrinsically a property of \emph{continuous} distributions.
+\end{remark}
+
+The full proof is given in the original paper. The conceptual upshot is:
+
+\begin{highlightbox}
+\textbf{The Structural Miracle.} It is not merely that $\PP \neq \QQ$ implies $\SP \neq \SQ$. The miracle is that the specific structure of kernel-embedded covariance operators arising from non-atomic measures forces the Feldman--H\'ajek Hilbert--Schmidt condition to fail whenever $\SP \neq \SQ$. This is a non-trivial property of the kernel embedding that does not hold for arbitrary pairs of distinct trace-class operators.
+\end{highlightbox}
+
+\section{Why Covariance, Not Mean, Suffices}
+
+A companion negative result shows that mean embeddings alone do not produce separation.
+
+\begin{proposition}[Mean embeddings do not separate; Santoro--Waghmare--Panaretos 2026]
+\label{prop:mean_fail}
+For any covariance operator $\mathbf{C}$ on $\calH$ and any distinct non-atomic probability measures $\PP \neq \QQ$ on $\R$ whose mean embeddings satisfy $\mP - \mQ \in \ran(\mathbf{C}^{1/2})$, we have
+\begin{equation}
+\calN(\mP, \mathbf{C}) \sim \calN(\mQ, \mathbf{C}).
+\end{equation}
+More precisely: for any fixed covariance operator $\mathbf{C}$, there always exist distinct non-atomic measures $\PP \neq \QQ$ whose mean-shifted Gaussian embeddings are equivalent. The failure of mean-based separation is therefore not a rare edge case but a generic phenomenon.
+\end{proposition}
+
+The mechanism is Condition 3 of the Feldman--H\'ajek theorem: $\calN(\mathbf{m}_1, \mathbf{C}) \sim \calN(\mathbf{m}_2, \mathbf{C})$ if and only if $\mathbf{m}_1 - \mathbf{m}_2 \in \ran(\mathbf{C}^{1/2})$. Since $\ran(\mathbf{C}^{1/2})$ is a \emph{dense} subspace of $\calH$, the set of mean differences that preserve equivalence is dense in $\calH$; for any target mean difference one can find measures achieving it. The condition is therefore generically satisfied, not exceptional.
+
+This result is significant: it explains \emph{why} the MMD, based on mean embeddings, is theoretically limited in its ability to exploit the separation phenomenon. The covariance structure is essential for achieving perfect separation.
+
+\begin{highlightbox}
+\textbf{Summary of the Main Result.}\\[4pt]
+The covariance embedding $\PP \mapsto \SP$ is injective on non-atomic measures: $\PP \neq \QQ \Rightarrow \SP \neq \SQ$.
+However, this injectivity alone does not imply singularity of the Gaussian embeddings. The additional content of the theorem is that the specific structure of kernel-embedded covariance operators---arising from non-atomic measures via an infinite-dimensional integral over the feature map---forces the Feldman--H\'ajek Hilbert--Schmidt condition to fail whenever $\SP \neq \SQ$.
+This is a genuine structural property of kernel embeddings, not a consequence of generic operator theory.
+The mean embedding alone does not achieve this: for any fixed covariance operator $\mathbf{C}$, the Cameron--Martin space $\ran(\mathbf{C}^{1/2})$ is dense in $\calH$, so the set of mean differences preserving Gaussian equivalence is itself dense, and failure of mean-based separation is generic rather than exceptional.
+\end{highlightbox}
+
+\section{A $0/\infty$ Law for the Likelihood Ratio}
+
+The mutual singularity has a striking consequence for the likelihood ratio.
+
+\begin{theorem}[$0/\infty$ law; Santoro--Waghmare--Panaretos 2026]
+\label{thm:zero_infty}
+Under the conditions of Theorem~\ref{thm:separation}, the KL divergence between the Gaussian embeddings satisfies $\KL\!\left(\calN(0, \SP) \| \calN(0, \SQ)\right) \in \{0, +\infty\}$: it is zero under $H_0$ (when $\PP = \QQ$) and infinite under $H_1$ (when $\PP \neq \QQ$).
+\end{theorem}
+
+This $0/\infty$ law says that the embedded hypotheses are not merely separated---they are \emph{maximally} separated in an information-theoretic sense. The Gaussian likelihood ratio test is the natural test statistic; it vanishes under the null and diverges under the alternative.
+
+In practice, one works with regularised versions of this likelihood ratio. Santoro and Panaretos \cite{SantoroPanaretos2025} develop this into a complete testing framework with consistency guarantees and remarkable empirical power.
+
+% ============================================================
+\chapter{The Blessing of Infinite Dimensionality}
+\label{chap:blessing}
+% ============================================================
+
+\epigraph{``High-dimensional geometry can have concrete implications for modern data science.''}%
+{Victor M.\ Panaretos (2026)}
+
+\section{Inverting the Curse}
+
+The \emph{curse of dimensionality} is a phrase coined by Richard Bellman to describe the exponential growth of sample complexity with dimension. In statistical learning, it manifests as the observation that many methods require sample sizes that scale badly with the dimension of the input space. For nonparametric two-sample testing, the curse is severe: in dimension $d$, the minimax-optimal rate for testing at precision $\varepsilon$ typically scales as $n \sim \varepsilon^{-(d+2)/d}$ or worse, depending on the smoothness class.
+
+The separation of measure phenomenon represents an inversion of this intuition. Rather than high dimensions making the problem harder, embedding into an \emph{infinite}-dimensional space makes the problem---in a limiting, idealized sense---trivially easy: distinct continuous distributions are perfectly separated. The blessing of infinite dimensionality is that the limiting geometry is simpler, not more complex.
+
+\section{Why Infinite Dimensionality Helps}
+
+The mechanism can be understood intuitively as follows.
+
+In finite-dimensional Euclidean space $\R^d$, two Gaussian measures $\calN(0, \Sigma_1)$ and $\calN(0, \Sigma_2)$ with \emph{nonsingular} covariance matrices $\Sigma_1 \neq \Sigma_2$ are always equivalent: both are absolutely continuous with respect to Lebesgue measure on $\R^d$ and hence with respect to each other. (Singular covariance matrices---degenerate Gaussians supported on lower-dimensional subspaces---can produce singularity even in finite dimensions, as already noted.) Distinguishing nondegenerate Gaussians in finite dimensions always requires statistical work.
+
+In infinite-dimensional Hilbert space, the same Gaussians may be singular. The reason is that with infinitely many eigenvalues, even a small multiplicative perturbation $(\lambda_{2,j}/\lambda_{1,j} - 1)^2$ at each eigenmode can sum to infinity:
+\begin{equation}
+\sum_{j=1}^{\infty} \left(\frac{\lambda_{2,j}}{\lambda_{1,j}} - 1\right)^2 = +\infty,
+\end{equation}
+which by the Feldman--H\'ajek theorem implies mutual singularity. In finite dimensions, there are only finitely many terms and the sum is always finite.
+
+Infinite dimensionality amplifies perturbations by accumulating their effects across all modes. A perturbation that would be invisible in any finite-dimensional projection becomes detectable through its cumulative effect across infinitely many modes.
+
+\section{The Reformulation Principle}
+
+The separation of measure theorem can be understood as a \emph{reformulation principle}: it takes a hard problem (nonparametric two-sample testing) and reformulates it as an easier problem (distinguishing singular versus equivalent Gaussians).
+
+This is a recurring strategy in mathematics. The real roots of a polynomial become easier to count by passing to $\mathbb{C}$, as the fundamental theorem of algebra attests. Linear ODEs become algebraic equations under Fourier or Laplace transform. Group-theoretic questions become linear-algebraic questions via representation theory, and topological questions become algebraic questions via cohomology. In each case, passing to a larger, more structured space reveals regularity that was hidden in the original setting.
+
+The separation of measure theorem is an instance of the same principle applied to statistical testing. The RKHS is the richer space; the Gaussian embedding provides the reformulation; and the Feldman--H\'ajek theorem is the algebraic criterion that makes the reformulated problem tractable.
+
+\section{Comparison with the Curse of Dimensionality}
+
+The curse of dimensionality concerns the difficulty of estimation problems in high but \emph{finite} dimensions. The blessing of infinite dimensionality concerns a qualitative phenomenon that emerges only in the limit. These two effects are not contradictory; they operate at different levels.
+
+\begin{table}[h]
+\centering
+\begin{tabular}{p{3.8cm} p{4.2cm} p{4.2cm}}
+\toprule
+& \textbf{Curse of Dimensionality} & \textbf{Blessing of Infinite Dimensionality} \\
+\midrule
+Domain & Finite $\R^d$, $d$ large & Infinite-dimensional RKHS \\
+Effect & Sample complexity grows exponentially & Distinct distributions are perfectly separated \\
+Mechanism & More parameters to estimate & Eigenvalue sums diverge \\
+Regime & Statistical / estimation & Information-theoretic / structural \\
+Implication & Harder to distinguish distributions & Trivial to distinguish distributions (in principle) \\
+\bottomrule
+\end{tabular}
+\caption{Comparison of the curse and blessing of dimensionality.}
+\end{table}
+
+The practical takeaway is that although the idealized problem becomes perfectly separable in the RKHS, finite samples still require careful estimation of the relevant statistics. The blessing identifies what one should target; finite-sample methods determine how efficiently that target can be reached.
+
+\section{A Historical Parallel: the Weierstrass Inversion}
+
+The separation of measure phenomenon belongs to a recurring pattern in
+the history of analysis, and the pattern has a canonical first
+instance. Before the 1870s, the working intuition of mathematics held
+that continuity and smoothness were nearly the same property. A
+continuous curve was expected to be differentiable except at isolated
+singularities, because every curve one could draw looked locally
+straight under sufficient magnification. Weierstrass's function
+\begin{equation}
+f(x) \;=\; \sum_{n=0}^{\infty} a^{\,n} \cos\!\bigl(b^{\,n}\pi x\bigr),
+\qquad 0 < a < 1, \quad ab \ge 1,
+\end{equation}
+destroyed this intuition with two ingredients in deliberate tension:
+the amplitude factor $a^n$ decays fast enough to force uniform
+convergence, hence continuity, while the frequency factor $b^n$ grows
+fast enough that fresh oscillations arrive at every scale. There is no
+magnification at which the graph becomes approximately straight. The
+derivative exists nowhere. The function is globally coherent but
+locally directionless --- continuous in position, discontinuous in
+direction.
+
+The lasting shock, however, was not the example but its typicality.
+Banach and Mazurkiewicz showed in 1931 that nowhere-differentiable
+functions are \emph{residual} in $C[0,1]$: the smooth functions, far
+from being the norm, form a meagre set. The same verdict is returned
+by every inequivalent notion of ``most'' that has since been tried:
+prevalence in the measure-theoretic sense appropriate to spaces
+without translation-invariant measure, and almost-sure roughness of
+Brownian sample paths in the probabilistic sense. The monster was the
+generic object all along; the smooth curve was the measure-zero
+exception on which human geometric intuition happened to be trained.
+
+The separation theorem runs the same inversion in the space of
+measures. Finite-dimensional probability trains the intuition that
+distinct distributions are merely \emph{metrically} separated:
+distinguishable at some finite distance, with mutual singularity a
+strong and special condition. Indeed, in finite dimensions any two
+nondegenerate Gaussians are equivalent, and this fact generalises
+silently into the expectation that distributions can always be
+partially distinguished but never perfectly separated. The theorem of
+Santoro, Waghmare, and Panaretos shows that after kernel covariance
+embedding this expectation fails in the strongest possible way:
+mutual singularity is the \emph{generic} outcome for distinct
+non-atomic measures, and equivalence is the exceptional regime ---
+exactly the regime that finite-dimensional experience samples. Once
+again the intuitive case is the measure-zero island, and the
+``pathological'' case is the sea.
+
+The parallel extends beyond the moral to the mechanism, and at two
+points it is structurally precise.
+
+\emph{Scale-distributed discrepancy.} The Weierstrass function fails
+to be differentiable not because its irregularity is large at any one
+scale but because it is present at every scale: the contributions
+$a^n \cos(b^n \pi x)$ never become negligible relative to the
+resolution at which one inspects the graph. The failure of
+equivalence in the separation theorem has the same anatomy. The
+covariance operators $\SP$ and $\SQ$ may be close in operator norm,
+but equivalence requires the relative perturbation
+$\SP^{-1/2}(\SQ - \SP)\SP^{-1/2}$
+to be Hilbert--Schmidt, and the discrepancy injected by the embedding
+is not localised at any finite set of eigenmodes. In both cases the
+object is destroyed not by a singularity somewhere but by a
+distributed roughness everywhere: no truncation captures it, because
+the obstruction lives in the tail.
+
+\emph{Dimensional interstice.} The graph of the Weierstrass function
+has Hausdorff dimension $D = 2 + \log_b a$, strictly between $1$ and
+$2$: too irregular to be a curve, not irregular enough to fill a
+region. The Feldman--H\'ajek stratification places a Gaussian measure
+in an analogous interstice. The Cameron--Martin space
+$\ran(\mathbf{C}^{1/2})$ --- the directions along which translation preserves
+equivalence --- has measure zero under the Gaussian itself, while the
+measure is supported inside the full space $\calH$. The Gaussian lives
+\emph{between} its Cameron--Martin space and $\calH$: not concentrated
+on the former, not spread over the latter, occupying a stratum that no
+integer-graded intuition anticipates. The fractional dimension of the
+Weierstrass graph and the measure-zero-yet-generating role of the
+Cameron--Martin space are two appearances of the same phenomenon: in
+infinite-codimension settings, the natural objects sit in graded
+interstices that finite-dimensional experience does not equip us to
+expect.
+
+The common structure, stated once for both results: a construction
+that looks as if it should fail --- the function ought to be
+differentiable somewhere; the embedded measures ought to be equivalent
+--- instead succeeds in the maximally strong sense, and the success is
+not exceptional but generic. Weierstrass's function was the first
+warning that the space of possibilities is dominated by objects our
+intuition classifies as monsters, with the familiar objects forming a
+negligible exceptional set. Fractals, turbulence, Brownian motion,
+random graphs, and high-dimensional geometry each rediscovered the
+warning in their own vocabulary. The separation of measure phenomenon
+is the same inversion arriving in the theory of kernel embeddings:
+what looked like the strongest and rarest relation between
+distributions --- living on disjoint regions of the space, each
+invisible to the other --- turns out to be what distinct distributions
+\emph{generically do}, the moment the ambient space is large enough to
+let them.
+
+A reader who knows either result therefore has an immediate foothold
+on the other. The Weierstrass function is the separation theorem of
+$C[0,1]$: it separates continuity from smoothness with a gap that is
+generic rather than constructed. The separation theorem is the
+Weierstrass function of $\calG(\calH)$: it reveals that the
+equivalence classes our intuition treats as the ordinary case are
+meagre strata in a space whose generic relation is mutual singularity.
+Both are blessings in the same currency --- the very roughness and
+immensity of infinite-dimensional spaces is what makes perfect
+separation, and hence perfect distinguishability, available at all.
+
+% ============================================================
+\chapter{The Maximum Mean Discrepancy and Its Limitations}
+\label{chap:mmd}
+% ============================================================
+
+\section{The MMD Revisited}
+
+The Maximum Mean Discrepancy is defined as
+\begin{equation}
+\MMD^2(\PP, \QQ; k) = \|\mP - \mQ\|_{\calH}^2 = \int\!\!\int k(x,y)\, d(\PP - \QQ)(x)\, d(\PP - \QQ)(y).
+\end{equation}
+Under a characteristic kernel, $\MMD(\PP, \QQ) = 0 \iff \PP = \QQ$. The empirical estimator
+\begin{equation}
+\widehat{\MMD}^2 = \frac{1}{n^2} \sum_{i,j} k(X_i, X_j) + \frac{1}{m^2}\sum_{i,j} k(Y_i, Y_j) - \frac{2}{nm}\sum_{i,j} k(X_i, Y_j)
+\end{equation}
+is an unbiased estimator of $\MMD^2$ and converges at the parametric $n^{-1/2}$ rate under the null.
+
+\section{Why MMD Does Not Exploit Separation}
+
+The key limitation of the MMD is identified by Proposition~\ref{prop:mean_fail}: it is based on the \emph{mean} embedding and does not use the covariance. The mean embedding does not achieve separation of measure. Two distributions can differ substantially in their second-order structure while having identical mean embeddings; the MMD would then have zero power.
+
+More formally: the test statistic $\|\mP - \mQ\|_{\calH}$ measures the distance between two \emph{vectors} in $\calH$. The separation of measure phenomenon, by contrast, lives in the structure of the covariance \emph{operators}. These are fundamentally different objects---vectors versus operators---and the information in the operator cannot be recovered from the vector.
+
+\begin{remark}
+This does not mean the MMD is a poor test; in practice, it performs well because typical alternatives differ both in mean and covariance structure. The point is that it is not \emph{designed} to exploit the separation phenomenon, and it can miss alternatives that manifest only at the covariance level.
+\end{remark}
+
+\section{The Spectrum of Covariance Operators and Testing}
+
+Since the separation of measure phenomenon is entirely a covariance effect, the natural test statistics should be functions of $\SP - \SQ$ or of the relative spectrum of $\SQ$ with respect to $\SP$. Candidate statistics include the Hilbert--Schmidt distance $\|\SP - \SQ\|_{\HS}^2$ between covariance operators, the Gaussian KL divergence $\KL(\calN(0, \SP) \| \calN(0, \SQ))$, and the regularised Gaussian likelihood ratio.
+The follow-up paper of Santoro and Panaretos \cite{SantoroPanaretos2025} develops the likelihood-ratio approach, showing it achieves the $0/\infty$ law of Theorem~\ref{thm:zero_infty} and yields tests with power exceeding state-of-the-art methods.
+
+% ============================================================
+\chapter{Likelihood Ratio Tests by Kernel Gaussian Embedding}
+\label{chap:lrt}
+% ============================================================
+
+\epigraph{``The likelihood ratio is specifically tailored to detect equality versus
+singularity of two Gaussians, and satisfies a $0/\infty$ law.''}%
+{Santoro \& Panaretos (2025)}
+
+\section{The Gaussian Likelihood Ratio}
+
+The Kullback--Leibler divergence between two Gaussian measures on a Hilbert space is only well-defined when the measures are equivalent; otherwise it is $+\infty$ by convention. In the equivalent case, for $\calN(0, \mathbf{C}_1)$ and $\calN(0, \mathbf{C}_2)$, it takes the form
+\begin{equation}
+\KL(\calN(0, \mathbf{C}_1) \| \calN(0, \mathbf{C}_2)) = \frac{1}{2}\Bigl[\trace(\mathbf{C}_2^{-1}\mathbf{C}_1 - \mathbf{I}) - \logdet(\mathbf{C}_2^{-1}\mathbf{C}_1)\Bigr],
+\label{eq:gauss_kl}
+\end{equation}
+where $\logdet$ denotes the operator log-determinant. In infinite dimensions, ordinary determinants do not exist for general bounded operators, so $\logdet$ requires a regularised interpretation.
+
+\begin{definition}[Fredholm log-determinant]
+\label{def:fredholm_logdet}
+For a positive operator $\mathbf{A} = \mathbf{I} + \mathbf{T}$ where $\mathbf{T}$ is trace-class, the \emph{Fredholm determinant} is
+\begin{equation}
+\det_1(\mathbf{A}) = \prod_{j=1}^{\infty} \lambda_j(\mathbf{A}),
+\end{equation}
+and the \emph{Fredholm log-determinant} is $\logdet(\mathbf{A}) = \log \det_1(\mathbf{A}) = \sum_{j=1}^{\infty} \log \lambda_j(\mathbf{A})$.
+\end{definition}
+
+The Fredholm log-determinant is well-defined and finite precisely when $\mathbf{A} - \mathbf{I}$ is trace-class. Under the Feldman--H\'ajek equivalence conditions, the relative operator $\mathbf{C}_2^{-1}\mathbf{C}_1 - \mathbf{I}$ is Hilbert--Schmidt; if additionally $\trace(\mathbf{C}_2^{-1}\mathbf{C}_1 - \mathbf{I}) < \infty$, the Fredholm determinant applies and \eqref{eq:gauss_kl} is finite. The more general \emph{Carleman--Fredholm determinant} $\det_2(\mathbf{A}) = \det_1(\mathbf{A}\,e^{-(\mathbf{A}-\mathbf{I})})$ is finite for Hilbert--Schmidt perturbations and is used in the regularised setting.
+
+For the purposes of the separation theorem, the precise finiteness conditions matter less than the qualitative consequence. Under $H_0$ (when $\PP = \QQ$), we have $\mathbf{C}_1 = \mathbf{C}_2$, so $\mathbf{C}_2^{-1}\mathbf{C}_1 = \mathbf{I}$, giving $\trace(\mathbf{0}) = 0$ and $\logdet(\mathbf{I}) = 0$, hence $\KL = 0$. Under $H_1$ (when $\PP \neq \QQ$ and both are non-atomic), the Gaussians are singular by Theorem~\ref{thm:separation}, the Feldman--H\'ajek Hilbert--Schmidt condition fails, and $\KL = +\infty$. This is the $0/\infty$ law of Theorem~\ref{thm:zero_infty}.
+
+\section{Regularisation}
+
+Since the measures are singular under the alternative, the raw likelihood ratio is $+\infty$ and cannot be used directly. The solution is regularisation: replace $\SQ$ with $\SQ + \alpha \mathbf{I}$ for a regularisation parameter $\alpha > 0$. This smooths the operators sufficiently to ensure the KL is finite, at the cost of some power.
+
+The regularised test statistic is:
+\begin{equation}
+T_\alpha = \KL\!\left(\calN(0, \SP + \alpha \mathbf{I}) \,\Big\|\, \calN(0, \SQ + \alpha \mathbf{I})\right),
+\end{equation}
+estimated from data as $\hat T_\alpha$ using empirical covariance operators. The null distribution is obtained by permutation.
+
+\section{Theoretical Guarantees}
+
+Santoro and Panaretos \cite{SantoroPanaretos2025} prove three main results for this test. First, \emph{consistency}: as $n \to \infty$ and $\alpha \to 0$ at an appropriate rate, $\hat T_\alpha \to +\infty$ under $H_1$. Second, \emph{uniform power}: the test achieves non-trivial power against all alternatives satisfying mild regularity conditions. Third, \emph{unification}: the framework subsumes and extends spectral regularisation approaches based on the MMD.
+
+Empirically, the likelihood-ratio test reports power substantially higher than MMD-based tests across a range of alternatives, confirming that exploiting the covariance structure yields real gains.
+
+% ============================================================
+\chapter{Representation as Distinction Amplification}
+\label{chap:amplification}
+% ============================================================
+
+\epigraph{``Suitable kernel embedding into an infinite-dimensional RKHS separates
+continuous distributions perfectly, even when their differences are arbitrarily subtle.''}%
+{Santoro, Waghmare, Panaretos (2026)}
+
+\section{A Hierarchy of Representations}
+
+The separation of measure theorem is most naturally understood as a theorem about \emph{representation}. The same probability measure $\PP$ can be represented in three increasingly rich ways:
+\begin{align}
+\text{Mean embedding:} & \quad \PP \mapsto \mP \in \calH, \\
+\text{Covariance embedding:} & \quad \PP \mapsto \SP \in \mathrm{TC}(\calH), \\
+\text{Gaussian embedding:} & \quad \PP \mapsto \calN(0, \SP) \in \calG(\calH),
+\end{align}
+where $\mathrm{TC}(\calH)$ denotes the space of positive trace-class operators on $\calH$ and $\calG(\calH)$ denotes the space of centered Gaussian measures on $\calH$.
+
+Each step in this hierarchy is strictly richer: the mean embedding is a special case of the Gaussian embedding (via the first moment), and the covariance captures second-order structure invisible to the mean alone. But the richness is not merely additive---it is qualitative. The Gaussian embedding lives in a space that carries an entirely different geometry: not the linear geometry of a Hilbert space, but the \emph{information geometry} of probability measures, with its singularity/equivalence dichotomy.
+
+\section{Distinguishability at Each Level}
+
+We can precisely characterise what each representation is capable of distinguishing.
+
+\begin{proposition}[Distinguishability of the mean embedding]
+\label{prop:mean_distinguish}
+Let $k$ be a characteristic kernel. Then:
+\begin{equation}
+\mP = \mQ \iff \PP = \QQ.
+\end{equation}
+The mean embedding is injective: it distinguishes all distributions. However, the distance $\|\mP - \mQ\|_{\calH}$ can be arbitrarily small even when $\PP \neq \QQ$, so the mean embedding \emph{preserves} distinctions but does not amplify them.
+\end{proposition}
+
+\begin{proposition}[Distinguishability of the covariance embedding]
+\label{prop:cov_distinguish}
+Let $k$ be a bounded universal kernel and $\PP, \QQ$ non-atomic. Then:
+\begin{equation}
+\SP = \SQ \iff \PP = \QQ.
+\end{equation}
+The covariance embedding is also injective. As with the mean, the operator norm $\|\SP - \SQ\|_{\op}$ can be small for $\PP \neq \QQ$, so the covariance embedding alone also merely preserves rather than amplifies. The amplification occurs in the next step.
+\end{proposition}
+
+\begin{theorem}[Distinguishability of the Gaussian embedding]
+\label{thm:gaussian_distinguish}
+Under the same hypotheses:
+\begin{equation}
+\PP \neq \QQ \implies \KL(\calN(0, \SP) \| \calN(0, \SQ)) = +\infty.
+\end{equation}
+The Gaussian embedding not only distinguishes $\PP$ from $\QQ$: it places them at \emph{infinite} information-theoretic distance. This is amplification, not merely preservation.
+\end{theorem}
+
+Theorem~\ref{thm:gaussian_distinguish} is precisely the separation of measure phenomenon restated in amplification language. The passage from the covariance embedding to the Gaussian embedding is where the amplification occurs: the operator $\SP$ and the measure $\calN(0, \SP)$ contain the same data, but the measure-theoretic lens reveals that data at a categorically different scale.
+
+\begin{theorem}[Injectivity does not imply amplification]
+\label{thm:inj_neq_amp}
+An injective representation $\Phi: \calP(\calX) \to \calM$ need not be amplifying. The mean embedding $\PP \mapsto \mP$ is injective under a characteristic kernel, but for any $\varepsilon > 0$ there exist $\PP \neq \QQ$ with $\|\mP - \mQ\|_{\calH} < \varepsilon$: distinguishability under the mean embedding is finite and can be made arbitrarily small. The covariance embedding $\PP \mapsto \SP$ is likewise injective under a universal kernel for non-atomic measures, but $\|\SP - \SQ\|_{\HS}$ can similarly be made arbitrarily small for $\PP \neq \QQ$. The Gaussian embedding $\PP \mapsto \calN(0, \SP)$, by contrast, is amplifying: for any $\PP \neq \QQ$ (non-atomic), $\KL(\calN(0,\SP) \| \calN(0,\SQ)) = +\infty$, so no matter how close $\PP$ and $\QQ$ are in any metric on $\calP(\calX)$, their Gaussian embeddings are infinitely far apart.
+\end{theorem}
+
+This theorem makes the key conceptual point precise. The covariance operator $\SP$ and the Gaussian measure $\calN(0, \SP)$ carry \emph{identical information} about $\PP$---the same data, encoded in operator eigenvalues. No new information is added when passing from $\SP$ to $\calN(0, \SP)$. Yet the geometry of distinguishability undergoes a qualitative phase transition: from the metric space $(\mathrm{TC}(\calH), \|\cdot\|_{\HS})$ with finite distances, to the information-geometric space of Gaussian measures where distinct non-atomic distributions are at infinite distance.
+
+This is the deepest conceptual novelty of the paper: \emph{the same information can simultaneously support finite distinguishability in one geometric setting and infinite distinguishability in another}. The choice of representation determines which geometric regime is accessible.
+
+\begin{proposition}[Information preservation under geometric reinterpretation]
+\label{prop:info_preserve}
+The map $\SP \mapsto \calN(0, \SP)$ does not add informational content. Specifically, the covariance operator $\SP$ and the centered Gaussian measure $\calN(0, \SP)$ are in bijective correspondence: given one, the other is uniquely determined. No data about $\PP$ that is absent from $\SP$ is present in $\calN(0, \SP)$.
+
+Nevertheless, the map strictly enlarges the class of admissible notions of distinguishability. At the level of operators, distinguishability is measured by operator norms ($\|\cdot\|_{\op}$, $\|\cdot\|_{\HS}$, $\|\cdot\|_{\tr}$), all of which produce finite real values. At the level of Gaussian measures, the natural divergence is the KL divergence under equivalence, or the singularity/equivalence dichotomy under the Feldman--H\'ajek stratification---a $\{0, +\infty\}$-valued structure. The latter notion is not available at the operator level.
+\end{proposition}
+
+The proposition states precisely what the theorem's philosophical heart is: not a gain in information, but a change in the geometry through which existing information is expressed. Moving from $\SP$ to $\calN(0, \SP)$ is a change of representation that unlocks a new and more powerful notion of distinguishability---one unavailable at the operator level---without adding any new content.
+
+\section{Formal Notion of Amplification}
+
+We can formalise the distinction between preservation and amplification using the language of \emph{distinguishability functions}.
+
+\begin{definition}
+For a representation $\Phi: \calP(\calX) \to \calM$ (where $\calM$ is a metric or information-geometric space with divergence $D$), the \emph{distinguishability} of the pair $(\PP, \QQ)$ under $\Phi$ is:
+\begin{equation}
+\mathrm{Dist}_\Phi(\PP, \QQ) = D(\Phi(\PP), \Phi(\QQ)).
+\end{equation}
+\end{definition}
+
+Under this definition, the mean distinguishability is $\mathrm{Dist}_{\text{mean}}(\PP, \QQ) = \|\mP - \mQ\|_{\calH}^2 = \MMD^2(\PP, \QQ) \in [0, \infty)$; the covariance distinguishability is $\mathrm{Dist}_{\text{cov}}(\PP, \QQ) = \|\SP - \SQ\|_{\HS}^2 \in [0, \infty)$ when finite; and the Gaussian distinguishability is $\mathrm{Dist}_{\text{Gauss}}(\PP, \QQ) = \KL(\calN(0, \SP) \| \calN(0, \SQ)) \in \{0, +\infty\}$.
+
+The Gaussian distinguishability collapses to a singular/equivalent dichotomy: either zero (when $\PP = \QQ$, measures are equivalent) or infinite (when $\PP \neq \QQ$, non-atomic, measures are singular). It does not produce a graded measure of similarity. Note that $\KL$ is not a metric and is not symmetric; the $\{0,+\infty\}$ structure here reflects the Feldman--H\'ajek dichotomy applied to the embedded Gaussians, not a distance in the usual sense. This is the mathematical content of the ``blessing.''
+
+\begin{remark}
+The singular/equivalent dichotomy of the Gaussian distinguishability---$0$ or $\infty$---is both a strength and a limitation. As a population-level theoretical property, it implies that any difference between non-atomic distributions is in principle detectable via kernel methods. As a practical guide, it indicates that the right test statistic should target this singularity structure (via the regularised likelihood ratio), rather than targeting the graded MMD distance. Finite-sample behaviour reintroduces grading through regularisation.
+\end{remark}
+
+\section{The Representation Chain}
+
+We can display the hierarchy of representations as a chain:
+\begin{equation}
+\PP
+\;\xrightarrow{\text{mean}}\;
+\mP
+\;\xrightarrow{\text{covariance}}\;
+\SP
+\;\xrightarrow{\text{Gaussian}}\;
+\calN(0, \SP)
+\;\xrightarrow{\text{FH dichotomy}}\;
+\{\text{strata}\}.
+\end{equation}
+
+At each arrow, information is \emph{reorganised}: no information is lost (all maps are injective), but the geometry in which information is expressed changes. The final step---from Gaussian measure to Feldman--H\'ajek stratum---is where the binary amplification occurs. Two distributions are in the same stratum if and only if they are equal.
+
+The chain can be extended further (to higher-order moment embeddings, conditional embeddings, etc.), but the Gaussian step is the one that achieves the amplification from finite distinguishability to infinite distinguishability in a single move.
+
+\section{Representation-Induced Phase Transitions}
+
+Theorem~\ref{thm:inj_neq_amp} exhibits a qualitative phase transition in distinguishability topology:
+\begin{equation}
+\underbrace{\PP \to \mP}_{\text{finite dist.}} \;\longrightarrow\; \underbrace{\PP \to \SP}_{\text{finite dist.}} \;\longrightarrow\; \underbrace{\PP \to \calN(0, \SP)}_{\text{infinite dist.} \;(\{0,\infty\})}.
+\end{equation}
+
+We can characterise the type of representation by its effect on distinguishability:
+
+\begin{definition}[Classification of representations by distinguishability type]
+\label{def:rep_types}
+Let $\Phi: \calP(\calX) \to (\calM, D)$ be a representation. It is \emph{collapsing} if there exist $\PP \neq \QQ$ with $D(\Phi(\PP), \Phi(\QQ)) = 0$. It is \emph{preserving} (or \emph{metrically faithful}) if $D(\Phi(\PP), \Phi(\QQ)) > 0$ whenever $\PP \neq \QQ$ while $D(\Phi(\PP_n), \Phi(\QQ)) \to 0$ remains possible as $\PP_n \to \QQ$. It is \emph{amplifying} if $D(\Phi(\PP), \Phi(\QQ)) = +\infty$ whenever $\PP \neq \QQ$ within the relevant class.
+\end{definition}
+
+Under this classification, projections and non-injective summaries are collapsing. The mean embedding (under a characteristic kernel) and the covariance embedding (under a universal kernel) are preserving. The Gaussian embedding, mapping covariance operators to Gaussian measures with KL divergence as $D$, is amplifying on non-atomic measures.
+
+The kernel theorem is therefore a precise instance of a broader phenomenon: \emph{representation-induced phase transitions in distinguishability topology}. The transition from preserving to amplifying is not a smooth increase in distinguishability; it is a jump from a graded real-valued metric to a binary $\{0, +\infty\}$ information structure. No intermediate stage exists, because of the Gaussian dichotomy theorem (Theorem~\ref{thm:dichotomy}).
+
+This observation connects naturally to a range of other topics where representation choice determines what distinctions are accessible. In the theory of sufficient statistics, a sufficient statistic $T(X)$ is neither collapsing nor amplifying in the relevant sense; it preserves the likelihood ratio exactly. In information geometry, the Fisher--Rao metric on parametric families captures smooth, preserving geometry, while the kernel Gaussian embedding achieves discontinuous, amplifying geometry. In the study of categorical versus continuous cognition, within-category variation is graded (preserving geometry) while between-category distinctions may be amplified to near-categorical separation.
+The kernel theorem is, in this light, a precise mathematical instance of the general principle that \emph{information is not merely stored in representations---representations determine which distinctions become geometrically visible and at what scale}.
+
+\section{Comparison: Projection-Induced Collapse}
+
+To sharpen the concept of amplification, it helps to contrast it with the opposite phenomenon: \emph{projection-induced collapse}.
+
+A projection $\pi: \calX \to \calY$ (for example, a dimension-reduction map, a discretisation, or a summary statistic) can map distinct states $x \neq x'$ to the same image $\pi(x) = \pi(x')$. Information is irreversibly lost. In measure-theoretic terms, if $\pi_* \PP = \pi_* \QQ$ for the pushforward measures, the projection cannot distinguish $\PP$ from $\QQ$ regardless of how much data is collected.
+
+The kernel covariance embedding is the dual of this: an \emph{injective} map from measures to a richer space that not only prevents collapse but actively amplifies distinctions. The amplification is maximal: no information about the relative position of $\PP$ and $\QQ$ is lost, and the representation reveals them as infinitely separated.
+
+\begin{table}[h]
+\centering
+\begin{tabular}{p{3.8cm} p{4.5cm} p{4.0cm}}
+\toprule
+& \textbf{Projection} & \textbf{Kernel Gaussian Embedding} \\
+\midrule
+Type & Many-to-one & Injective \\
+Effect on distinctions & Collapses (may erase) & Amplifies to singularity \\
+Distinguishability & $\leq$ original & Maximal ($0$ or $\infty$) \\
+Dimension & Lower & Infinite \\
+Information & Lost & Reorganised, amplified \\
+\bottomrule
+\end{tabular}
+\caption{Projection versus embedding as dual operations on the space of probability measures.}
+\end{table}
+
+% ============================================================
+\chapter{Information-Theoretic and Geometric Perspectives}
+\label{chap:information}
+% ============================================================
+
+\section{The Information Geometry of the Result}
+
+The separation of measure phenomenon can be viewed through the lens of information geometry. The space of Gaussian measures on a Hilbert space is itself a metric space under the Fisher information metric (for finite-dimensional Gaussians, this gives the Fisher--Rao metric). The KL divergence is the natural information-theoretic divergence.
+
+The $0/\infty$ law of Theorem~\ref{thm:zero_infty} says that after Gaussian embedding, the hypotheses $H_0$ and $H_1$ are at zero distance and infinite distance respectively. There is no intermediate case. The embedded hypothesis space has been \emph{collapsed} to a single point (the null) surrounded by an \emph{abyss} (the alternatives at infinite information-theoretic distance).
+
+This is an extreme form of information amplification. The MMD amplifies differences to $O(1)$ scale with $O(n^{-1/2})$ fluctuations, while the Gaussian likelihood ratio amplifies differences to $O(\infty)$ scale---they are infinite in the population---leaving finite-sample fluctuations as the operative constraint.
+
+\section{Reachability and Support Geometry}
+
+A natural reinterpretation of the separation theorem uses the language of \emph{reachability}. Two probability measures are mutually singular when one cannot ``reach'' the other by any absolutely continuous transformation: there is no path of likelihood ratios connecting them.
+
+For a Gaussian measure $\calN(0, \mathbf{C})$, its Cameron--Martin space $\ran(\mathbf{C}^{1/2})$ is the set of admissible shift directions---the directions $h \in \calH$ for which the translated measure $\calN(h, \mathbf{C})$ is absolutely continuous with respect to $\calN(0, \mathbf{C})$. Points outside the closure $\overline{\ran(\mathbf{C}^{1/2})}$ (the topological support) are not reachable at all; typical sample points lie in the topological support but outside the Cameron--Martin space. If two Gaussians have different Cameron--Martin spaces, their absolutely-continuous translation classes are incompatible: no shift admissible for one is admissible for the other, and the measures are mutually singular.
+
+From this perspective: the kernel covariance embedding sends probability measures to operators, and operators to Cameron--Martin spaces (via the square-root map). Two distinct non-atomic measures are sent to operators whose Cameron--Martin spaces are geometrically incompatible---lying in different Feldman--H\'ajek strata. The singularity of the Gaussian measures reflects this incompatibility.
+
+\section{Amplification vs.\ Preservation}
+
+A theme in the paper is the distinction between \emph{preserving} distinctions versus \emph{amplifying} them. It is important to locate the amplification precisely.
+
+The mean embedding $\PP \mapsto \mP$ is injective under a characteristic kernel: it preserves the distinction between measures, but preserves them at the same scale. Two nearby measures have nearby mean embeddings, and two far-apart measures have far-apart mean embeddings. The distinction is preserved but not amplified.
+
+The covariance embedding $\PP \mapsto \SP$ is also injective and also merely preserving: the operator norm $\|\SP - \SQ\|_{\op}$ or Hilbert--Schmidt norm $\|\SP - \SQ\|_{\HS}$ can be made arbitrarily small for distinct non-atomic measures. At the level of operators, no amplification has occurred.
+
+The amplification occurs in the final step: passing from $\SP$ to the Gaussian measure $\calN(0, \SP)$ and evaluating distinguishability through the Feldman--H\'ajek stratification. The covariance operator and the Gaussian measure encode the same information about $\PP$; no new data is added. Yet the geometry of distinguishability changes categorically. An infinitesimally small difference between $\SP$ and $\SQ$ in any operator norm becomes infinite KL divergence in the information-geometric sense. This is why the terminology must be precise: the \emph{covariance embedding} is preserving; the \emph{Gaussian embedding} is amplifying.
+
+The analogy is to a change of coordinates that reveals structure already present but geometrically inaccessible: an isometry preserves distances, a projection collapses them, and a representation change can reveal distinctions that existed but were hidden in the original geometry. The kernel Gaussian embedding is such a representation change: it does not create information, it reorganises the geometry through which information is expressed.
+
+\section{Information Is Not Distinguishability}
+
+The deepest observation in this monograph can be stated as a single principle:
+
+\begin{highlightbox}
+\textbf{The Fundamental Asymmetry.} Information and distinguishability are not the same thing. The covariance operator $\SP$ and the Gaussian measure $\calN(0, \SP)$ carry identical information about $\PP$. Yet their distinguishability structures are categorically different: finite operator distances in the first case, infinite KL divergence in the second. Distinguishability is not a property of information itself. It is a property of the geometry in which information is interpreted.
+\end{highlightbox}
+
+To make this precise, we introduce the following definition.
+
+\begin{definition}[Distinguishability structure]
+\label{def:diststructure}
+Let $\calI$ be a class of probability measures, and let $\Phi: \calI \to (\calM, D)$ be a representation into a space $\calM$ equipped with a divergence $D$. The \emph{distinguishability structure} induced by $\Phi$ is the function
+\begin{equation}
+d_\Phi: \calI \times \calI \to [0, +\infty], \qquad d_\Phi(\PP, \QQ) = D(\Phi(\PP), \Phi(\QQ)).
+\end{equation}
+Two representations $\Phi_1$ and $\Phi_2$ are \emph{distinguishability-equivalent} if $d_{\Phi_1} = d_{\Phi_2}$ as functions on $\calI \times \calI$.
+\end{definition}
+
+The key observation is that two representations can be related by a bijection---contain identical information---while inducing categorically different distinguishability structures. The passage $\SP \mapsto \calN(0, \SP)$ is precisely such a bijection: injective in both directions, yet changing $d_\Phi$ from a finite-valued operator norm to a $\{0, +\infty\}$-valued information-theoretic structure. The practical utility of a representation is therefore not fully determined by the information it contains, but by the distinguishability structure it exposes.
+
+\section{Distinguishability Phase Transitions: A General Theory}
+
+The separation of measure theorem is a specific instance of a more general phenomenon. A representation $\Phi: \calI \to (\calM, D)$ induces a \emph{distinguishability phase transition} if it is a bijection on $\calI$ yet the distinguishability structure $d_\Phi$ is qualitatively different from the original---specifically, if the original structure has finite values everywhere while $d_\Phi$ takes the value $+\infty$ for all $\PP \neq \QQ$ within the relevant class.
+
+The separation theorem is exactly this: $\Phi_1 = (\PP \mapsto \SP)$ gives finite operator distances, $\Phi_2 = (\PP \mapsto \calN(0, \SP))$ gives $\{0, +\infty\}$-valued distinguishability, and both are injections on non-atomic measures. The bijection does not create information. It changes the ambient geometry, and the new geometry makes distinctions infinitely sharp.
+
+This pattern recurs across mathematics in contexts that appear unrelated. In Fourier analysis, a function $f \in L^2(\R)$ and its Fourier transform $\hat f$ carry identical information (Parseval's theorem ensures the map is an $L^2$-isometry), yet functions that overlap heavily in the time domain may be sharply separated in the frequency domain. The Fourier transform does not amplify information; it reorganises the geometry of function space so that certain distinctions become transparent.
+
+In representation theory, a group element $g \in G$ and its matrix image $\rho(g)$ under a linear representation carry the same group-theoretic information, but in the representation space, algebraic relations become eigenvalue and trace conditions that are far easier to detect. The representation theory machine converts hard group-theoretic distinctions into accessible linear-algebraic ones.
+
+In the theory of sufficient statistics, a sufficient statistic $T(X)$ for a parametric family $\{P_\theta\}$ carries the same information about $\theta$ as the full data $X$, yet the distinguishability structure for $\theta$ simplifies: the relevant comparison is now between the distributions of $T(X)$ under different $\theta$, which may be much simpler geometrically than comparing the full data distributions.
+
+In renormalization group theory in physics, a physical system at one scale is mapped to an equivalent description at another scale. The two descriptions contain the same information (near a renormalization fixed point), yet the distinguishability of different phases of matter---ordered versus disordered, gapped versus gapless---becomes visible only at the correct scale. The phase transition in the physical system manifests as a distinguishability phase transition in the representation.
+
+In manifold learning, a high-dimensional data set embedded in $\R^d$ may contain geometric structure (cluster membership, intrinsic dimensionality, topological features) that is invisible in Euclidean distance but becomes apparent after nonlinear embedding. Algorithms such as UMAP and t-SNE seek representations in which the distinguishability structure of interest is geometrically accessible.
+
+What these examples share with the kernel embedding theorem is the following structure: an information-preserving bijection $\Phi: \calI \to \calM$ such that $d_\Phi$ has qualitatively different properties from $d_{\mathrm{id}}$. The bijection does not create information; it changes the ambient geometry, and the new geometry supports a richer or more accessible distinguishability.
+
+\section{The Geometry-Distinguishability Meta-Principle}
+
+The examples above suggest the following principle:
+
+\begin{highlightbox}
+\textbf{The Geometry-Distinguishability Meta-Principle.} The practical power to distinguish elements of a class $\calI$ depends not only on the information they contain but on the geometry of the representation in which they are expressed. Information-preserving bijections can change the distinguishability structure without changing information content. The relevant question for a statistical or inferential problem is therefore not only which representation preserves the most information, but which representation exposes the relevant distinctions in the most accessible geometry.
+\end{highlightbox}
+
+This principle is not new to mathematicians. It is implicit in the use of Fourier analysis, representation theory, and sufficient statistics throughout modern mathematics. What is novel in the Santoro--Waghmare--Panaretos theorem is the precision with which it instantiates the principle: the precise class of objects (non-atomic Borel measures), the precise representation (kernel Gaussian embedding), the precise geometry (Gaussian measures with Feldman--H\'ajek stratification), and the precise form of the phase transition ($\{0, +\infty\}$-valued KL divergence versus finite operator distances).
+
+The meta-principle also raises a natural research question. Given a class $\calI$ and a statistical task, which representation $\Phi$ exposes the relevant distinctions most effectively? The separation theorem answers this for the two-sample testing problem with kernel covariance Gaussian embeddings. For other tasks and other representation families, the analogous question is largely open. The general problem of designing representations that induce distinguishability phase transitions for specific inferential goals could be called \emph{representational amplification design} and constitutes a research programme suggested by but extending beyond the paper.
+
+\section{The Cameron--Martin Paradox as Conceptual Keystone}
+
+No account of the representation-geometry relationship in the Gaussian setting is complete without returning to the Cameron--Martin paradox. Recall: for an infinite-dimensional Gaussian $\mu = \calN(0, \mathbf{C})$,
+\begin{equation}
+\mu\!\left(\ran(\mathbf{C}^{1/2})\right) = 0.
+\end{equation}
+The measure assigns zero probability to its own Cameron--Martin space.
+
+This fact is the geometric engine behind the entire singularity phenomenon. In finite dimensions, the Cameron--Martin space of a nondegenerate Gaussian on $\R^d$ is all of $\R^d$, and the measure is everywhere positive. Every direction is admissible, every shift preserves absolute continuity, and two Gaussians with the same covariance matrix are always equivalent regardless of their means. The Cameron--Martin structure is invisible because it fills the whole space.
+
+In infinite dimensions, the Cameron--Martin space $\ran(\mathbf{C}^{1/2})$ is a proper dense subspace of the topological support $\overline{\ran(\mathbf{C}^{1/2})}$, and the measure assigns it probability zero. Typical samples live outside the Cameron--Martin space: they belong to the support but not to its dense core. The admissible shift directions form a null set under the very measure they govern.
+
+This creates a situation with no finite-dimensional analogue. The structure governing whether two Gaussians can reach one another (Cameron--Martin spaces, Hilbert--Schmidt conditions) is structurally present but empirically invisible. The Feldman--H\'ajek conditions are conditions on a null set from the measures' own perspective.
+
+The philosophical implication is deep: in infinite dimensions, the \emph{structural} properties of a measure and its \emph{empirical} properties---what typical samples look like---are decoupled in a way that cannot occur in finite dimensions. Deciding whether two Gaussians are equivalent or singular is a purely structural question, unanswerable by any finite collection of samples. It requires analytic conditions on the operators.
+
+This is why the separation theorem is simultaneously so powerful and so subtle. Its power is real and exact at the population level; the challenge of exploiting it in practice is exactly the challenge of estimating structural properties from empirical ones, which is what regularised likelihood-ratio tests address. The Cameron--Martin paradox---the measure cannot see its own Cameron--Martin space---is not a pathology to be explained away. It is the source of the theorem's force, and understanding it is understanding why infinite-dimensional Gaussian geometry is fundamentally different from anything finite-dimensional intuition can anticipate.
+
+% ============================================================
+\chapter{Admissibility, Reachability, and Constraint Geometry}
+\label{chap:admissibility}
+% ============================================================
+
+\epigraph{``The important effect is information amplification. A good representation does not
+merely retain distinctions. It can magnify them until they become geometrically
+unavoidable.''}{Commentary on the paper}
+
+\begin{highlightbox}
+\textbf{Note on scope.} The preceding chapters have been mathematical exposition: definitions, theorems, and proof sketches closely following Santoro, Waghmare, and Panaretos \cite{SantoroPNAS2026}. This chapter is different in character. It offers an \emph{interpretation} of the theorem's meaning, reframing the separation of measure result within a broader conceptual vocabulary of reachability, admissible regions, and representational hierarchy. Nothing in this chapter is claimed to be a consequence of the paper; these are readings of what the theorem \emph{means}, not additional mathematical results derived from it. The distinction between exposition and interpretation is kept explicit throughout.
+\end{highlightbox}
+
+\section{An Interpretive Reframing: From Metric to Reachability}
+
+One way to read the separation of measure theorem is as a shift from metric questions to reachability questions. Classical statistical distances---total variation, Hellinger, KL divergence---are metrics on the space of probability measures, producing non-negative real numbers. The question they answer is: \emph{how far apart} are $\PP$ and $\QQ$?
+
+The separation of measure theorem, as interpreted here, asks instead: do $\PP$ and $\QQ$ \emph{occupy the same region} of the ambient space after embedding? The answer is binary (equivalent or singular). This is a \emph{reachability} question: two measures are mutually reachable (equivalent) if and only if they assign positive probability to exactly the same events. If any event has positive probability under one but zero under the other, they are unreachable from one another (singular).
+
+This reachability framing is an interpretation, not a theorem. The paper does not use the language of reachability. But the mathematical content---that $\PP \neq \QQ$ places the embedded Gaussians in disjoint support strata with no path of absolutely continuous transformations between them---makes this interpretation natural.
+
+\section{Strata as Admissible Regions (Interpretive)}
+
+The Feldman--H\'ajek theorem partitions the space of Gaussian measures on $\calH$ into equivalence classes under the relation of mutual absolute continuity. Two Gaussians are in the same class (``stratum'') if and only if they are equivalent---they have the same Cameron--Martin space and Hilbert--Schmidt-close covariances. This stratification is a mathematical fact.
+
+The \emph{interpretive} step is to call these strata ``admissible regions'' and to say that the kernel covariance embedding ``sends each non-atomic measure to its own stratum.'' This language of admissibility is not standard in the paper; it is borrowed from the vocabulary of process ontology and constraint geometry to illuminate the structure. The mathematical content it glosses is precise: the separation theorem says the embedding $\PP \mapsto \calN(0, \SP)$ is injective at the level of Feldman--H\'ajek strata, mapping distinct non-atomic measures to distinct equivalence classes.
+
+\section{Representational Choices and What They Preserve}
+
+The distinction between mean embeddings and covariance embeddings is an instance of a general principle: \emph{representational choices determine what distinctions are accessible}.
+
+The mean embedding $\PP \mapsto \mP$ represents each distribution by a single vector in $\calH$. Vectors in $\calH$ form a linear space; the geometry is flat. Distinctions are preserved but not amplified.
+
+The covariance embedding $\PP \mapsto \SP$ represents each distribution by a trace-class operator. Operators in $\calH$ form a nonlinear space with richer structure. The Feldman--H\'ajek theorem is sensitive to operator structure in ways that have no finite-dimensional analogue.
+
+The Gaussian embedding $\PP \mapsto \calN(0, \SP)$ represents each distribution by a probability measure on $\calH$. The space of probability measures carries the information geometry (Fisher metric, KL divergence), which is where singularity and equivalence live.
+
+Each successive representation is richer, and each successive richness enables one to see distinctions that were invisible at the previous level. This is a hierarchy of representations, each amplifying distinctions left unresolved by the previous.
+
+\section{Connections to CLIO and Projection-Induced Collapse}
+
+In certain theoretical frameworks, one encounters the phenomenon of \emph{projection-induced collapse}: different underlying states are mapped to the same representation by a many-to-one projection. Information is lost.
+
+The separation of measure phenomenon demonstrates the opposite: an embedding that \emph{expands} distinctions until they are maximally separated.
+
+A projection $\pi: \calX \to \calY$ is many-to-one and typically finite-dimensional; distinctions may be erased entirely. The kernel Gaussian embedding $\calP(\calX) \to \calG(\calH)$, by contrast, is injective and infinite-dimensional; distinctions are amplified to singularity. These are dual operations, and the study of which distinctions are preserved, erased, or amplified by a given representation is a central question in the theory of information and inference.
+
+\section{Semantic Geometry and Gaussian Measures (Speculative)}
+
+The following extrapolation goes beyond anything claimed or implied in the original paper and is offered as a direction for future work.
+
+If documents, concepts, or memories are modelled as probability measures over a latent feature space, the kernel covariance embedding would map each semantic object to a Gaussian measure on an RKHS. If the conditions of the separation theorem hold---the measures are non-atomic and the kernel is universal---then distinct semantic objects would be mapped to mutually singular Gaussian measures. They would be perfectly distinguishable in the embedding space.
+
+The semantic geometry of the space would then be determined by the structure of the Gaussian measures: two semantic objects are ``close'' if their Gaussian embeddings are equivalent (same Cameron--Martin space, Hilbert--Schmidt-close covariances) and ``far apart'' if the embeddings are singular (different strata). This gives a qualitative two-level geometry in which intra-stratum distances are continuous and smooth (captured by the Fisher metric), while inter-stratum distinctions are topologically disconnected (captured by singularity). The intra-stratum geometry captures graded similarity; the inter-stratum structure captures categorical difference, echoing the distinction between within-category and between-category variation in conceptual spaces.
+
+% ============================================================
+\chapter{Extensions and Open Problems}
+\label{chap:extensions}
+% ============================================================
+
+\section{Beyond Two-Sample Testing}
+
+The separation of measure theorem has the potential to inform inference tasks beyond two-sample testing. Several directions are natural:
+
+\subsubsection{Classification}
+If each class is modelled by a probability distribution $\PP_c$, the Gaussian embeddings $\calN(0, S_{\PP_c})$ are mutually singular across classes. A Bayes classifier in the RKHS would achieve zero Bayes error in the population limit. Finite-sample classifiers exploiting this structure could yield improved performance.
+
+\subsubsection{Generative Model Evaluation}
+Training a generative model and evaluating whether the generated distribution $\hat{\PP}$ equals the target $\PP$ is a two-sample testing problem. The separation theorem implies that even subtle mode-dropping or artefact injection would be detectable in principle. The likelihood-ratio test provides a tool for this.
+
+\subsubsection{Variational Inference}
+Variational inference minimizes the KL divergence between a variational distribution $q$ and a target $p$. If $q$ is parameterized as a Gaussian on an RKHS, the Feldman--H\'ajek conditions provide a criterion for when the approximation is exact versus when it remains in a different stratum.
+
+\section{Atomic Measures}
+
+The theorem requires non-atomicity. For atomic measures (including empirical measures), the covariance operator has finite rank, and the Feldman--H\'ajek conditions can be satisfied even for distinct measures. This is not a deficiency---empirical measures are always distinct from each other---but it highlights that the theorem is fundamentally a population-level result.
+
+The finite-sample theory requires regularisation precisely because empirical measures are atomic. The regularisation parameter interpolates between the atomic and non-atomic regimes.
+
+\section{Dependent Observations}
+
+The theorem as stated assumes independent samples from $\PP$ and $\QQ$. Extensions to time series data with temporal dependence, spatial data with spatial autocorrelation, and samples from a Markov chain after mixing would require modifications to both the embedding and the test statistic. The separation phenomenon itself may hold under weaker conditions, but the precise conditions and the form of the test statistic would need to be worked out.
+
+\section{Other Embeddings}
+
+The paper considers the kernel covariance embedding, but other natural embeddings are available: higher-order moment embeddings $\PP \mapsto \int k_x^{\otimes p}\, d\PP(x)$ for $p \geq 3$, conditional embeddings for conditional distributions, and distributional embeddings into other function spaces such as Sobolev or Besov spaces. Whether analogues of the separation theorem hold for these embeddings is open.
+
+\section{Minimax Optimality}
+
+The likelihood-ratio test of Santoro and Panaretos achieves consistency and uniform power under mild conditions. A natural question is whether it achieves minimax-optimal power rates against specific classes of alternatives---for instance, against alternatives at a given smoothness level in the RKHS. Establishing minimax lower bounds and matching upper bounds would complete the statistical theory.
+
+% ============================================================
+\chapter{Summary and Conclusions}
+\label{chap:conclusion}
+% ============================================================
+
+\section{What Has Been Proved}
+
+The main contribution of Santoro, Waghmare, and Panaretos is a clean, general, and mathematically rigorous theorem:
+
+\begin{highlightbox}
+\textbf{Theorem (informal).} Let $\PP$ and $\QQ$ be distinct continuous probability distributions on a locally compact Polish space. Let $k$ be a bounded universal kernel with RKHS $\calH$, and let $\SP$, $\SQ$ be the corresponding kernel covariance embeddings. Then the Gaussian measures $\calN(0, \SP)$ and $\calN(0, \SQ)$ are mutually singular.
+\end{highlightbox}
+
+This theorem achieves five things. It provides a precise geometric explanation for an important aspect of the empirical success of kernel methods in two-sample testing. It reformulates the nonparametric two-sample problem as a Gaussian singularity detection problem. It identifies the covariance structure, rather than the mean, as the essential ingredient. It yields a $0/\infty$ law for the likelihood ratio, pointing toward a new generation of powerful tests. And it demonstrates a ``blessing of infinite dimensionality'' that inverts the naive intuition that high dimensions make problems harder.
+
+\section{Proof Architecture}
+
+The proof routes through the classical Feldman--H\'ajek theorem in two non-trivial steps. The first establishes injectivity of the kernel covariance embedding on non-atomic measures (Proposition~\ref{prop:injective}), giving $\PP \neq \QQ \Rightarrow \SP \neq \SQ$. The second, and deeper, step is structural: the specific way covariance operators $\SP$ and $\SQ$ arise from non-atomic measures via the kernel integral representation forces the Feldman--H\'ajek Hilbert--Schmidt condition to fail. This does not follow from generic operator theory, since distinct trace-class operators need not produce singular Gaussians. The conclusion then follows immediately from the Feldman--H\'ajek theorem: since the Hilbert--Schmidt condition fails, the Gaussian embeddings are mutually singular. The elegance of this proof lies in its reuse of old machinery (Feldman--H\'ajek, 1958) in a new context (kernel embeddings, 2000s--2020s), combined with the structural insight that kernel covariance operators carry information across the entire spectrum in a way incompatible with Gaussian equivalence.
+
+\section{Broader Significance}
+
+Beyond the specific result, the paper illustrates several broader principles:
+
+\textbf{Representation determines accessibility.} The choice of how to represent a probability measure---as a mean embedding (vector), a covariance embedding (operator), or a Gaussian measure---determines what information is accessible and at what scale. Richer representations enable finer distinctions.
+
+\textbf{Amplification is possible.} Good representations do not merely preserve distinctions; they can amplify them. The kernel covariance embedding amplifies even infinitesimal differences between distributions to infinite information-theoretic distance.
+
+\textbf{Old mathematics illuminates new problems.} The Feldman--H\'ajek theorem was proved in 1958, long before the modern theory of kernel methods. Its application to the two-sample testing problem is a reminder that classical analysis often contains tools that await novel applications.
+
+\textbf{The population limit reveals structure.} The separation phenomenon is a population-level result---it holds in the limit of infinite data. The finite-sample theory is more nuanced. But the population limit identifies the right target and the right test statistic, which the finite-sample theory then makes operational.
+
+\section{Closing Remarks}
+
+The paper of Santoro, Waghmare, and Panaretos is a rare specimen: a result that is simultaneously a contribution to pure mathematics (the theory of Gaussian measures on Hilbert spaces), applied mathematics (functional analysis and operator theory), and statistics (two-sample testing). Its proof is short and technically tight; its implications are broad and practically significant.
+
+The blessing of infinite dimensionality, at least in the form identified here, is not mere metaphor. It is a precise mathematical statement: the RKHS, equipped with the kernel covariance structure and the Gaussian measure, provides a geometric arena in which the hardest problems of nonparametric testing are perfectly resolved. The challenge remains to design finite-sample procedures that approach this ideal, and the follow-up work of Santoro and Panaretos suggests that the gap between the ideal and the attainable is bridgeable.
+
+The interaction between infinite-dimensional geometry, Gaussian measure theory, and statistical inference opened up by this paper is likely to be productive for years to come.
+
+% ============================================================
+% APPENDICES
+% ============================================================
+\appendix
+
+\chapter{Proof of the Feldman--H\'ajek Theorem}
+\label{app:FH_proof}
+
+We sketch the main ideas in the proof of Theorem~\ref{thm:FH}.
+
+\section{Reduction to the Diagonal Case}
+
+Without loss of generality, work in the case $\mathbf{m}_1 = \mathbf{m}_2 = 0$ (the mean-shift conditions can be handled separately). Let $\mathbf{C}_1 = \mathbf{C}$ be the reference covariance. Write the eigendecomposition
+\begin{equation}
+\mathbf{C} = \sum_{j=1}^{\infty} \lambda_j \, e_j \otimes e_j,
+\end{equation}
+where $\{e_j\}$ is an orthonormal basis and $\lambda_j > 0$ are eigenvalues summing to $\trace(\mathbf{C}) < \infty$.
+
+Any measure $\calN(0, \mathbf{C}_2)$ can be written in this basis as $\calN(0, \mathbf{D})$ where $\mathbf{D}$ is diagonal (or at least, the relative measures can be studied component by component using the Kakutani product measure theorem).
+
+\section{Kakutani's Product Theorem}
+
+The key tool is Kakutani's theorem on infinite product measures. Consider independent sequences $X_j \sim \calN(0, \lambda_j)$ and $Y_j \sim \calN(0, \mu_j)$. The product measures $\bigotimes_j \calN(0, \lambda_j)$ and $\bigotimes_j \calN(0, \mu_j)$ are either equivalent or singular, with the dichotomy governed by:
+\begin{equation}
+\prod_{j=1}^{\infty} \left(\frac{2\sqrt{\lambda_j \mu_j}}{\lambda_j + \mu_j}\right)^{1/2},
+\end{equation}
+the Hellinger affinity of the component Gaussians. The product converges to a positive limit (hence equivalence) if and only if $\sum_j (\sqrt{\mu_j/\lambda_j} - 1)^2 < \infty$; otherwise it converges to zero (hence singularity).
+
+\section{Connecting to Hilbert--Schmidt}
+
+The condition $\sum_j (\sqrt{\mu_j/\lambda_j} - 1)^2 < \infty$ is equivalent (to first order in $\mu_j/\lambda_j - 1$) to $\sum_j (\mu_j/\lambda_j - 1)^2 < \infty$, which is precisely the Hilbert--Schmidt condition $\mathbf{C}_1^{-1/2}\mathbf{C}_2 \mathbf{C}_1^{-1/2} - \mathbf{I} \in \HS(\calH)$. The full Feldman--H\'ajek theorem follows by combining this spectral analysis with the mean-shift condition.
+
+\chapter{Operator Norms and the Hilbert--Schmidt Space}
+\label{app:operators}
+
+\section{The Hilbert--Schmidt Space}
+
+The space $\HS(\calH)$ of Hilbert--Schmidt operators on $\calH$ is itself a Hilbert space under the inner product
+\begin{equation}
+\langle \mathbf{A}, \mathbf{B} \rangle_{\HS} = \trace(\mathbf{A}^* \mathbf{B}) = \sum_{j} \langle \mathbf{A}e_j, \mathbf{B}e_j \rangle,
+\end{equation}
+for any orthonormal basis $\{e_j\}$. The induced norm is $\|\mathbf{A}\|_{\HS}^2 = \trace(\mathbf{A}^* \mathbf{A})$.
+
+For a self-adjoint operator with eigenvalues $\{\sigma_j(\mathbf{A})\}$:
+\begin{equation}
+\|\mathbf{A}\|_{\HS}^2 = \sum_j \sigma_j(\mathbf{A})^2, \qquad \|\mathbf{A}\|_{\tr} = \sum_j |\sigma_j(\mathbf{A})|.
+\end{equation}
+
+\section{Trace-Class Operators and Their Role}
+
+Trace-class operators play a central role because they are the correct class of covariance operators for Gaussian measures on infinite-dimensional Hilbert spaces. The condition $\trace(\mathbf{C}) < \infty$ ensures that the associated Gaussian process (with covariance operator $\mathbf{C}$) has sample paths in $\calH$ almost surely.
+
+The Hilbert--Schmidt condition in the Feldman--H\'ajek theorem is weaker than the trace-class condition: if $\mathbf{A}$ is trace-class, it is Hilbert--Schmidt, but not conversely. This is why the Feldman--H\'ajek criterion is non-trivial: it requires the \emph{relative} perturbation to be Hilbert--Schmidt, not the absolute difference.
+
+\chapter{Background on Locally Compact Polish Spaces}
+\label{app:topology}
+
+\section{Polish Spaces}
+
+A \emph{Polish space} is a topological space that is separable and completely metrisable. Polish spaces include $\R^d$ and all separable Banach and Hilbert spaces, compact metric spaces, countable discrete spaces, and closed subsets of Polish spaces.
+
+Polish spaces support a well-behaved measure theory: Borel probability measures on Polish spaces are regular (inner and outer regular), and weak convergence of measures is well-defined.
+
+\section{Local Compactness}
+
+A topological space is \emph{locally compact} if every point has a compact neighbourhood. Locally compact Polish spaces include $\R^d$, compact metric spaces, and locally compact groups.
+
+Local compactness is used in the proof of the separation theorem to ensure that the RKHS is dense in $C_0(\calX)$ (the definition of universality) and that the covariance embedding has the required trace-class properties.
+
+% ============================================================
+% BIBLIOGRAPHY
+% ============================================================
+
+\backmatter
+
+\begin{thebibliography}{99}
+
+\bibitem{Flyxion2026}
+Flyxion,
+\textit{Kernel Embeddings and the Separation of Measure Phenomenon: A Monograph},
+Independent Research monograph, June 2026.
+
+\bibitem{SantoroPNAS2026}
+L.V.~Santoro, K.G.~Waghmare, \& V.M.~Panaretos,
+``Kernel embeddings and the separation of measure phenomenon,''
+\textit{Proc.\ Natl.\ Acad.\ Sci.\ U.S.A.}\ \textbf{123}(23), e2522504123 (2026).
+\url{https://doi.org/10.1073/pnas.2522504123}
+
+\bibitem{SantoroPanaretos2025}
+L.V.~Santoro \& V.M.~Panaretos,
+``Likelihood ratio tests by kernel Gaussian embedding,''
+\textit{arXiv:2508.07982} (2025).
+
+\bibitem{SantoroArxiv2025}
+L.V.~Santoro, K.G.~Waghmare, \& V.M.~Panaretos,
+``Kernel embeddings and the separation of measure phenomenon,''
+\textit{arXiv:2505.04613} (2025).
+
+\bibitem{Feldman1958}
+J.~Feldman,
+``Equivalence and perpendicularity of Gaussian processes,''
+\textit{Pacific J.\ Math.}\ \textbf{8}, 699--708 (1958).
+
+\bibitem{Hajek1958}
+J.~H\'ajek,
+``On a property of normal distribution of any stochastic process,''
+\textit{Czechoslovak Math.\ J.}\ \textbf{8}, 610--618 (1958).
+
+\bibitem{Bogachev1998}
+V.I.~Bogachev,
+\textit{Gaussian Measures},
+Mathematical Surveys and Monographs, American Mathematical Society (1998).
+
+\bibitem{Skorokhod1974}
+A.V.~Skorokhod,
+\textit{Integration in Hilbert Space},
+Springer (1974).
+
+\bibitem{Smola2007}
+A.~Smola, A.~Gretton, L.~Song, \& B.~Sch\"olkopf,
+``A Hilbert space embedding for distributions,''
+in \textit{Algorithmic Learning Theory}, Springer, 13--31 (2007).
+
+\bibitem{Gretton2012}
+A.~Gretton, K.M.~Borgwardt, M.J.~Rasch, B.~Sch\"olkopf, \& A.~Smola,
+``A kernel two-sample test,''
+\textit{J.\ Mach.\ Learn.\ Res.}\ \textbf{13}, 723--773 (2012).
+
+\bibitem{MuandetFukumizuSriperumbudurScholkopf2017}
+K.~Muandet, K.~Fukumizu, B.~Sriperumbudur, \& B.~Sch\"olkopf,
+``Kernel mean embedding of distributions: A review and beyond,''
+\textit{Found.\ Trends Mach.\ Learn.}\ \textbf{10}(1--2), 1--141 (2017).
+
+\bibitem{BerlietHeinrich2020}
+M.~Briol, C.J.~Oates, M.~Girolami, M.A.~Osborne, \& D.~Sejdinovic,
+``Probabilistic integration: A role in statistical computation?''
+\textit{Statist.\ Sci.}\ \textbf{34}(1), 1--22 (2019).
+
+\bibitem{Sriperumbudur2010}
+B.K.~Sriperumbudur, A.~Gretton, K.~Fukumizu, G.R.G.~Lanckriet, \& B.~Sch\"olkopf,
+``Hilbert space embedding and characteristic kernels above a Gaussian kernel,''
+\textit{J.\ Mach.\ Learn.\ Res.}\ \textbf{11}, 1517--1561 (2010).
+
+\bibitem{Kakutani1948}
+S.~Kakutani,
+``On equivalence of infinite product measures,''
+\textit{Ann.\ Math.}\ \textbf{49}(1), 214--224 (1948).
+
+\bibitem{DaCrateZabczyk1992}
+G.~Da~Prato \& J.~Zabczyk,
+\textit{Stochastic Equations in Infinite Dimensions},
+Cambridge University Press (1992).
+
+\bibitem{VanderVaart1998}
+A.W.~van der Vaart,
+\textit{Asymptotic Statistics},
+Cambridge University Press (1998).
+
+\bibitem{Lifshits2012}
+M.A.~Lifshits,
+\textit{Lectures on Gaussian Processes},
+Springer (2012).
+
+\bibitem{ScholkopfSmola2002}
+B.~Sch\"olkopf \& A.J.~Smola,
+\textit{Learning with Kernels},
+MIT Press (2002).
+
+\bibitem{SteinwartChristmann2008}
+I.~Steinwart \& A.~Christmann,
+\textit{Support Vector Machines},
+Springer (2008).
+
+\bibitem{BerlietSriperumbudur2023}
+J.-F.~Briol, F.-X.~Briol, \& B.K.~Sriperumbudur,
+``Kernel methods for nonparametric hypothesis testing: a review,''
+\textit{Statist.\ Surveys}\ (2023).
+
+\end{thebibliography}
+
+\end{document}

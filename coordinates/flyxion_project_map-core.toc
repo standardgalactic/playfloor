@@ -1,0 +1,68 @@
+\contentsline {part}{Part I: Origins and Convergence}{6}{part*.1}%
+\contentsline {section}{\numberline {1}Practice as the Ground Floor}{6}{section.1}%
+\contentsline {section}{\numberline {2}The Phase Before the Map}{7}{section.2}%
+\contentsline {section}{\numberline {3}Four Recurring Intuitions}{8}{section.3}%
+\contentsline {section}{\numberline {4}Precursor Works and Recovered Threads}{9}{section.4}%
+\contentsline {section}{\numberline {5}The Wider Speculative Corpus}{11}{section.5}%
+\contentsline {part}{Part II: The Current Architecture}{12}{part*.2}%
+\contentsline {section}{\numberline {6}Overview: A Five-Layer Architecture}{12}{section.6}%
+\contentsline {section}{\numberline {7}Layer One: Foundational Ontology}{14}{section.7}%
+\contentsline {subsection}{\numberline {7.1}Reachability Ontology}{14}{subsection.7.1}%
+\contentsline {section}{\numberline {8}Layer Two: Primary Theories}{14}{section.8}%
+\contentsline {subsection}{\numberline {8.1}RSVP — Relativistic Scalar-Vector Plenum}{15}{subsection.8.1}%
+\contentsline {subsection}{\numberline {8.2}CLIO — Constraint-Leveraged Inference and Optimisation}{15}{subsection.8.2}%
+\contentsline {subsection}{\numberline {8.3}Spherepop}{16}{subsection.8.3}%
+\contentsline {subsection}{\numberline {8.4}Repair Theory}{19}{subsection.8.4}%
+\contentsline {section}{\numberline {9}Layer Three: Secondary Formalisms}{19}{section.9}%
+\contentsline {subsection}{\numberline {9.1}TARTAN}{19}{subsection.9.1}%
+\contentsline {subsection}{\numberline {9.2}Coordination Geometry}{20}{subsection.9.2}%
+\contentsline {subsection}{\numberline {9.3}Active Geodesic Inference}{20}{subsection.9.3}%
+\contentsline {subsection}{\numberline {9.4}Semantic Navigation and Preference Fields}{21}{subsection.9.4}%
+\contentsline {section}{\numberline {10}Layer Four: Integrative and Applied Frameworks}{22}{section.10}%
+\contentsline {subsection}{\numberline {10.1}HYDRA}{22}{subsection.10.1}%
+\contentsline {subsection}{\numberline {10.2}Process-Native Computing}{22}{subsection.10.2}%
+\contentsline {subsection}{\numberline {10.3}Civilisation and Institutional Geometry}{23}{subsection.10.3}%
+\contentsline {section}{\numberline {11}The RSVP Formalization Programs}{23}{section.11}%
+\contentsline {section}{\numberline {12}Domain Applications and Peripheral Investigations}{24}{section.12}%
+\contentsline {subsection}{\numberline {12.1}Ecological Network Dynamics}{24}{subsection.12.1}%
+\contentsline {subsection}{\numberline {12.2}Pedagogy}{24}{subsection.12.2}%
+\contentsline {subsection}{\numberline {12.3}Peripheral Investigations}{24}{subsection.12.3}%
+\contentsline {section}{\numberline {13}The Adjacent Ecosystem: 8b.IS and its Stack}{25}{section.13}%
+\contentsline {part}{Part III: Open Problems}{27}{part*.3}%
+\contentsline {section}{\numberline {14}Major Unresolved Questions}{27}{section.14}%
+\contentsline {subsection}{\numberline {14.1}The Continuous-Discrete Interface: RSVP and Spherepop}{27}{subsection.14.1}%
+\contentsline {subsection}{\numberline {14.2}Projection and Intrinsic Structure: The CLIO Problem}{28}{subsection.14.2}%
+\contentsline {subsection}{\numberline {14.3}Repair and Thermodynamics}{28}{subsection.14.3}%
+\contentsline {subsection}{\numberline {14.4}Coordination and Meaning}{28}{subsection.14.4}%
+\contentsline {subsection}{\numberline {14.5}Preservation and Reachability}{29}{subsection.14.5}%
+\contentsline {subsection}{\numberline {14.6}The Umbrella Question}{29}{subsection.14.6}%
+\contentsline {section}{\numberline {15}The Central Conjecture of the Admissibility Program}{29}{section.15}%
+\contentsline {section}{\numberline {16}The Architecture in Retrospect}{31}{section.16}%
+\contentsline {part}{Appendix A: Framework Reference Guide}{34}{part*.4}%
+\contentsline {section}{\numberline {A}How to Use This Appendix}{34}{appendix.A}%
+\contentsline {section}{\numberline {B}Precursor Works}{34}{appendix.B}%
+\contentsline {subsubsection}{\numberline {B.0.1}Persistent Anomalies and the Geometry of Ontology Revision}{34}{subsubsection.B.0.1}%
+\contentsline {section}{\numberline {C}Formalization Programs}{35}{appendix.C}%
+\contentsline {subsubsection}{\numberline {C.0.1}Holonomic Space}{35}{subsubsection.C.0.1}%
+\contentsline {subsubsection}{\numberline {C.0.2}Derived Algebraic Geometry Formalization}{36}{subsubsection.C.0.2}%
+\contentsline {subsubsection}{\numberline {C.0.3}AKSZ/BV Quantization}{37}{subsubsection.C.0.3}%
+\contentsline {section}{\numberline {D}Foundational Ontology}{38}{appendix.D}%
+\contentsline {subsubsection}{\numberline {D.0.1}Reachability Ontology}{38}{subsubsection.D.0.1}%
+\contentsline {section}{\numberline {E}Primary Theories}{39}{appendix.E}%
+\contentsline {subsubsection}{\numberline {E.0.1}RSVP}{39}{subsubsection.E.0.1}%
+\contentsline {subsubsection}{\numberline {E.0.2}CLIO}{40}{subsubsection.E.0.2}%
+\contentsline {subsubsection}{\numberline {E.0.3}Spherepop}{41}{subsubsection.E.0.3}%
+\contentsline {subsubsection}{\numberline {E.0.4}Repair Theory}{44}{subsubsection.E.0.4}%
+\contentsline {section}{\numberline {F}Secondary Formalisms}{45}{appendix.F}%
+\contentsline {subsubsection}{\numberline {F.0.1}TARTAN}{45}{subsubsection.F.0.1}%
+\contentsline {subsubsection}{\numberline {F.0.2}Coordination Geometry}{45}{subsubsection.F.0.2}%
+\contentsline {subsubsection}{\numberline {F.0.3}Preservation, Continuity, and Ecphory}{46}{subsubsection.F.0.3}%
+\contentsline {subsubsection}{\numberline {F.0.4}Semantic Navigation and Preference Fields}{47}{subsubsection.F.0.4}%
+\contentsline {subsubsection}{\numberline {F.0.5}Abstraction as Reduction}{48}{subsubsection.F.0.5}%
+\contentsline {subsubsection}{\numberline {F.0.6}Active Geodesic Inference}{49}{subsubsection.F.0.6}%
+\contentsline {section}{\numberline {G}Integrative and Applied Frameworks}{50}{appendix.G}%
+\contentsline {subsubsection}{\numberline {G.0.1}HYDRA}{50}{subsubsection.G.0.1}%
+\contentsline {subsubsection}{\numberline {G.0.2}Process-Native Computing}{51}{subsubsection.G.0.2}%
+\contentsline {subsubsection}{\numberline {G.0.3}Civilisation and Institutional Geometry}{52}{subsubsection.G.0.3}%
+\contentsline {part}{Appendix B: Research Corpus}{53}{part*.5}%
+\contentsfinish 

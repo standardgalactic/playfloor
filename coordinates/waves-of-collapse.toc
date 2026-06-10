@@ -1,0 +1,53 @@
+\contentsline {part}{I\hspace {1em}The Problem of the Frozen Codec}{1}{part.1}%
+\contentsline {chapter}{\numberline {1}Compression Without Memory}{2}{chapter.1}%
+\contentsline {section}{\numberline {1.1}The classical setting}{2}{section.1.1}%
+\contentsline {section}{\numberline {1.2}The proposal in one page}{2}{section.1.2}%
+\contentsline {section}{\numberline {1.3}Why this is not merely a better dictionary coder}{3}{section.1.3}%
+\contentsline {chapter}{\numberline {2}A Formal Skeleton}{5}{chapter.2}%
+\contentsline {section}{\numberline {2.1}Templates, encodings, and the description complex}{5}{section.2.1}%
+\contentsline {section}{\numberline {2.2}Rematching as relaxation}{5}{section.2.2}%
+\contentsline {section}{\numberline {2.3}Collapse events and the wave structure}{7}{section.2.3}%
+\contentsline {section}{\numberline {2.4}The description complex as a sheaf}{8}{section.2.4}%
+\contentsline {part}{II\hspace {1em}Mechanics of a Rematching Archive}{9}{part.2}%
+\contentsline {chapter}{\numberline {3}The Template Hierarchy in Practice}{10}{chapter.3}%
+\contentsline {section}{\numberline {3.1}Level 1: fragments and the quantization floor}{10}{section.3.1}%
+\contentsline {section}{\numberline {3.2}Level 2 and above: grammar over the fragment alphabet}{10}{section.3.2}%
+\contentsline {section}{\numberline {3.3}Rematching schedules}{10}{section.3.3}%
+\contentsline {section}{\numberline {3.4}Lossy regimes and the distortion lattice}{11}{section.3.4}%
+\contentsline {chapter}{\numberline {4}Multimodal Fusion: From Codec to World Model}{12}{chapter.4}%
+\contentsline {section}{\numberline {4.1}Observations as slices}{12}{section.4.1}%
+\contentsline {section}{\numberline {4.2}A worked cascade: when sound rewrites a photograph}{12}{section.4.2}%
+\contentsline {section}{\numberline {4.3}The crossover point}{13}{section.4.3}%
+\contentsline {section}{\numberline {4.4}Residuals as the archive's frontier}{15}{section.4.4}%
+\contentsline {part}{III\hspace {1em}Information-Theoretic Foundations}{16}{part.3}%
+\contentsline {chapter}{\numberline {5}Two-Part Codes, MDL, and the Rent a Template Pays}{17}{chapter.5}%
+\contentsline {section}{\numberline {5.1}Kolmogorov ideal and computable practice}{17}{section.5.1}%
+\contentsline {section}{\numberline {5.2}MDL admission as Bayesian model comparison}{17}{section.5.2}%
+\contentsline {section}{\numberline {5.3}Compression $=$ prediction $=$ comprehension}{18}{section.5.3}%
+\contentsline {section}{\numberline {5.4}The Weierstrass lesson: roughness, typicality, and forced strata}{18}{section.5.4}%
+\contentsline {chapter}{\numberline {6}The Thermodynamics of Rematching}{20}{chapter.6}%
+\contentsline {section}{\numberline {6.1}Description length as free energy}{20}{section.6.1}%
+\contentsline {section}{\numberline {6.2}RSVP: the field-theoretic reading}{20}{section.6.2}%
+\contentsline {section}{\numberline {6.3}TARTAN and the texture of the residual field}{21}{section.6.3}%
+\contentsline {part}{IV\hspace {1em}Admissibility, Strata, and Frozen Processes}{23}{part.4}%
+\contentsline {chapter}{\numberline {7}The Archive as a Stratified Reachability Space}{24}{chapter.7}%
+\contentsline {section}{\numberline {7.1}Strata of description}{24}{section.7.1}%
+\contentsline {section}{\numberline {7.2}Persistent anomalies and forced revision}{24}{section.7.2}%
+\contentsline {section}{\numberline {7.3}Belief geometry of the encoder}{25}{section.7.3}%
+\contentsline {chapter}{\numberline {8}Memory, Brains, and Resonance Without a Substrate}{27}{chapter.8}%
+\contentsline {chapter}{\numberline {9}Threads, Projections, and the Category of Admissible Paths}{29}{chapter.9}%
+\contentsline {section}{\numberline {9.1}Against modality-first typing}{29}{section.9.1}%
+\contentsline {section}{\numberline {9.2}Yarncrawler threads as the primitive type}{29}{section.9.2}%
+\contentsline {section}{\numberline {9.3}Geometric and algebraic at once}{30}{section.9.3}%
+\contentsline {section}{\numberline {9.4}The loop foundation models do not close}{30}{section.9.4}%
+\contentsline {chapter}{\numberline {10}Compression as Epistemology}{31}{chapter.10}%
+\contentsline {section}{\numberline {10.1}The archive as a scientific community}{31}{section.10.1}%
+\contentsline {section}{\numberline {10.2}Knowledge as navigation}{31}{section.10.2}%
+\contentsline {part}{V\hspace {1em}Consequences, Designs, and Open Problems}{32}{part.5}%
+\contentsline {chapter}{\numberline {11}Engineering Consequences}{33}{chapter.11}%
+\contentsline {section}{\numberline {11.1}What changes when size is not a property of files}{33}{section.11.1}%
+\contentsline {section}{\numberline {11.2}Failure modes the theory predicts}{33}{section.11.2}%
+\contentsline {section}{\numberline {11.3}A minimal experimental program}{34}{section.11.3}%
+\contentsline {chapter}{\numberline {12}Open Problems}{36}{chapter.12}%
+\contentsline {chapter}{Coda}{37}{chapter*.3}%
+\contentsline {chapter}{Bibliographic Notes}{38}{chapter*.4}%
