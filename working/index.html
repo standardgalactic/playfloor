@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Distinction Engine</title>
+
+<style>
+*{box-sizing:border-box}
+
+html,body{
+  margin:0;width:100%;height:100%;overflow:hidden;
+  background:#000;color:#7cff7c;font-family:monospace;
+  touch-action:manipulation;
+}
+
+body{
+  display:flex;align-items:center;justify-content:center;
+  flex-direction:column;cursor:pointer;
+}
+
+body::before{
+  content:"";position:fixed;inset:0;pointer-events:none;z-index:500;
+  background:repeating-linear-gradient(to bottom,
+    rgba(255,255,255,.025) 0px,
+    rgba(255,255,255,.025) 1px,
+    transparent 2px,
+    transparent 6px);
+  opacity:.10;
+}
+
+.title{
+  position:fixed;top:16px;width:94vw;text-align:center;
+  font-size:12px;letter-spacing:.18em;text-transform:uppercase;
+  color:#88ddaa;text-shadow:0 0 8px #00aa55;z-index:100;
+}
+
+.selector{
+  position:fixed;top:46px;display:flex;gap:8px;flex-wrap:wrap;
+  justify-content:center;width:96vw;z-index:120;cursor:default;
+}
+
+.selector button{
+  background:#000a04;border:1px solid rgba(0,200,80,.38);
+  color:#55cc88;padding:6px 10px;font-family:monospace;
+  font-size:9px;letter-spacing:.08em;cursor:pointer;
+  transition:background .2s,color .2s;
+}
+
+.selector button.active{
+  background:#001f0d;color:#ccffdd;
+  box-shadow:0 0 6px #00aa44 inset;
+}
+
+.status{
+  position:fixed;top:88px;opacity:.32;font-size:9px;
+  letter-spacing:.16em;color:#55aa77;z-index:120;
+}
+
+canvas{
+  width:min(420px,80vw);height:min(420px,80vw);
+  border-radius:50%;border:1px solid rgba(0,200,80,.22);
+  background:#000;
+  box-shadow:0 0 40px rgba(0,180,80,.06) inset,
+             0 0 12px rgba(0,160,60,.22);
+  z-index:40;
+}
+
+.subs{
+  position:fixed;bottom:24px;width:min(660px,90vw);
+  min-height:2.4em;padding:8px 14px;text-align:center;
+  font-size:13px;line-height:1.5;color:#88ccaa;
+  text-shadow:0 0 5px #005533;background:rgba(0,12,6,.42);
+  border:1px solid rgba(0,180,80,.15);border-radius:4px;
+  pointer-events:none;z-index:80;
+  font-style:italic;letter-spacing:.02em;
+}
+
+@media(max-width:700px){
+  .title{top:12px;font-size:10px}
+  .selector{top:40px}
+  .selector button{font-size:8px;padding:5px 7px}
+  .status{top:88px;font-size:8px}
+  .subs{bottom:16px;font-size:12px}
+}
+</style>
+</head>
+
+<body>
+
+<div class="title" id="title">Distinction Engine</div>
+<div class="selector" id="selector"></div>
+<div class="status">touch · click to play or pause</div>
+<canvas id="viz"></canvas>
+<div id="subs" class="subs"></div>
+
+<audio id="audio" preload="auto"></audio>
+
+<script>
+const tracks = [
+  {
+    file:"AI_treats_nouns_as_frozen_verbs.mp3",
+    vtt:"AI_treats_nouns_as_frozen_verbs.vtt",
+    label:"Nouns",
+    title:"AI Treats Nouns as Frozen Verbs",
+    mode:"verbs"
+  },
+  {
+    file:"Identity_Is_a_Trajectory_Not_a_State.mp3",
+    vtt:"Identity_Is_a_Trajectory_Not_a_State.vtt",
+    label:"Identity",
+    title:"Identity Is a Trajectory Not a State",
+    mode:"identity"
+  },
+  {
+    file:"Computation_Is_the_Progressive_Restriction_of_Possibility.mp3",
+    vtt:"Computation_Is_the_Progressive_Restriction_of_Possibility.vtt",
+    label:"Restriction",
+    title:"Computation Is the Progressive Restriction of Possibility",
+    mode:"restriction"
+  },
+  {
+    file:"The_Geometry_of_Telling_Things_Apart.mp3",
+    vtt:"The_Geometry_of_Telling_Things_Apart.vtt",
+    label:"Distinction",
+    title:"The Geometry of Telling Things Apart",
+    mode:"distinction"
+  }
+];
+
+let trackIndex = 0;
+let mode = tracks[0].mode;
+
+const audio    = document.getElementById("audio");
+const subs     = document.getElementById("subs");
+const titleEl  = document.getElementById("title");
+const selector = document.getElementById("selector");
+
+let audioCtx, analyser, freqData, timeData;
+
+function initAudio(){
+  if(audioCtx) return;
+  audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+  analyser = audioCtx.createAnalyser();
+  analyser.fftSize = 2048;
+  analyser.smoothingTimeConstant = .90;
+  freqData = new Uint8Array(analyser.frequencyBinCount);
+  timeData = new Uint8Array(analyser.fftSize);
+  const src = audioCtx.createMediaElementSource(audio);
+  src.connect(analyser);
+  analyser.connect(audioCtx.destination);
+}
+
+function buildSelector(){
+  selector.innerHTML = "";
+  tracks.forEach((t,i)=>{
+    const btn = document.createElement("button");
+    btn.textContent = t.label;
+    btn.onclick = async e=>{
+      e.stopPropagation();
+      initAudio();
+      if(audioCtx.state==="suspended") await audioCtx.resume();
+      await loadTrack(i,true);
+    };
+    selector.appendChild(btn);
+  });
+}
+
+function updateButtons(){
+  [...selector.querySelectorAll("button")]
+    .forEach((b,i)=>b.classList.toggle("active",i===trackIndex));
+}
+
+async function loadTrack(i,autoplay=true){
+  trackIndex = ((i%tracks.length)+tracks.length)%tracks.length;
+  const t = tracks[trackIndex];
+  mode = t.mode;
+  titleEl.textContent = t.title;
+  audio.src = t.file;
+  audio.load();
+  updateButtons();
+  await loadVTT(t.vtt);
+  if(autoplay){ try{ await audio.play(); }catch(e){} }
+}
+
+audio.addEventListener("ended",()=>loadTrack(trackIndex+1,true));
+
+document.body.onclick = async ()=>{
+  initAudio();
+  if(audioCtx.state==="suspended") await audioCtx.resume();
+  if(audio.paused) await audio.play();
+  else audio.pause();
+};
+
+/* subtitles */
+
+let cues = [];
+
+async function loadVTT(url){
+  cues = [];
+  subs.textContent = "";
+  try{
+    const res = await fetch(url);
+    if(!res.ok){ console.warn("Missing VTT:",url); return; }
+    cues = parseVTT(await res.text());
+  }catch(e){ console.warn("VTT:",e); }
+}
+
+function parseVTT(text){
+  const out = [];
+  for(const block of text.replace(/\r/g,"").split(/\n{2,}/)){
+    const lines = block.trim().split("\n");
+    const ts = lines.find(l=>l.includes("-->"));
+    if(!ts) continue;
+    const ti = lines.indexOf(ts);
+    const [s,e] = ts.split("-->").map(x=>x.trim());
+    out.push({start:parseTime(s),end:parseTime(e),text:lines.slice(ti+1).join(" ")});
+  }
+  return out;
+}
+
+function parseTime(t){
+  t = t.split(" ")[0].replace(",",".");
+  const p = t.split(":");
+  if(p.length===3) return (+p[0])*3600+(+p[1])*60+parseFloat(p[2]);
+  return (+p[0])*60+parseFloat(p[1]);
+}
+
+audio.ontimeupdate = ()=>{
+  const t = audio.currentTime;
+  const c = cues.find(c=>t>=c.start&&t<c.end+.2);
+  subs.textContent = c ? c.text : "";
+};
+
+/* canvas */
+
+const canvas = document.getElementById("viz");
+const ctx    = canvas.getContext("2d");
+const W=480, H=480, cx=W/2, cy=H/2, R=W*.39;
+canvas.width=W; canvas.height=H;
+
+let frame=0, bass=0, mid=0, high=0;
+
+function updateEnergy(){
+  if(!analyser) return;
+  analyser.getByteFrequencyData(freqData);
+  let b=0,m=0,h=0;
+  for(let i=0;i<40;i++) b+=freqData[i];
+  for(let i=40;i<180;i++) m+=freqData[i];
+  for(let i=180;i<freqData.length;i++) h+=freqData[i];
+  bass+=(b/(40*255)-bass)*.07;
+  mid +=(m/(140*255)-mid )*.05;
+  high+=(h/((freqData.length-180)*255)-high)*.04;
+}
+
+function clearPortal(){
+  ctx.fillStyle="rgba(0,3,1,.11)";
+  ctx.fillRect(0,0,W,H);
+
+  ctx.save();
+  ctx.beginPath();
+  ctx.arc(cx,cy,R,0,Math.PI*2);
+  ctx.clip();
+
+  const g=ctx.createRadialGradient(cx,cy,0,cx,cy,R);
+  g.addColorStop(0,"rgba(0,18,8,.32)");
+  g.addColorStop(.65,"rgba(0,6,2,.52)");
+  g.addColorStop(1,"rgba(0,0,0,.98)");
+  ctx.fillStyle=g;
+  ctx.fillRect(0,0,W,H);
+  ctx.restore();
+
+  ctx.beginPath();
+  ctx.arc(cx,cy,R,0,Math.PI*2);
+  ctx.strokeStyle="rgba(80,200,120,.18)";
+  ctx.lineWidth=1.5;
+  ctx.shadowBlur=8;
+  ctx.shadowColor="#004422";
+  ctx.stroke();
+  ctx.shadowBlur=0;
+}
+
+/* shared latent cloud — undifferentiated substrate */
+
+function drawLatentCloud(){
+  ctx.save();
+  ctx.beginPath();
+  ctx.arc(cx,cy,R,0,Math.PI*2);
+  ctx.clip();
+
+  for(let i=0;i<140;i++){
+    const a = frame*.002 + i*.17;
+    const r = R*.15 + (i%20)*R*.025;
+    const x = cx + Math.sin(a+i)*r*.6;
+    const y = cy + Math.cos(a*.8+i)*r*.5;
+
+    ctx.beginPath();
+    ctx.arc(x,y,2,0,Math.PI*2);
+    ctx.fillStyle="rgba(124,255,196,.08)";
+    ctx.fill();
+  }
+
+  ctx.restore();
+}
+
+/* renderers */
+
+// 1. Nouns as Frozen Verbs — clusters condense and dissolve
+function drawVerbs(){
+  drawLatentCloud();
+
+  ctx.save();
+  ctx.beginPath();
+  ctx.arc(cx,cy,R,0,Math.PI*2);
+  ctx.clip();
+
+  for(let i=0;i<8;i++){
+    const a = i/8*Math.PI*2 + frame*.005;
+    const x = cx + Math.cos(a)*R*.35;
+    const y = cy + Math.sin(a)*R*.35;
+    const pulse = Math.sin(frame*.03+i);
+
+    // outer halo — the process still visible
+    ctx.beginPath();
+    ctx.arc(x,y,26+pulse*10,0,Math.PI*2);
+    ctx.strokeStyle=`rgba(124,255,196,${.06+mid*.06})`;
+    ctx.lineWidth=1;
+    ctx.stroke();
+
+    // condensed ring — the apparent object
+    ctx.beginPath();
+    ctx.arc(x,y,16+pulse*6,0,Math.PI*2);
+    ctx.strokeStyle="rgba(220,255,220,.7)";
+    ctx.lineWidth=5;
+    ctx.shadowBlur=8;
+    ctx.shadowColor="#00cc66";
+    ctx.stroke();
+    ctx.shadowBlur=0;
+  }
+
+  ctx.restore();
+  drawWaveTrace(.16);
+}
+
+// 2. Identity Is a Trajectory — one continuous path through state space
+function drawIdentity(){
+  drawLatentCloud();
+
+  ctx.save();
+  ctx.beginPath();
+  ctx.arc(cx,cy,R,0,Math.PI*2);
+  ctx.clip();
+
+  // ghost of past path — faint older trail
+  ctx.beginPath();
+  for(let t=0;t<220;t++){
+    const p = (frame*.003 - .8) + t*.03;
+    const x = cx + Math.sin(p)*R*.55;
+    const y = cy + Math.sin(p*.7)*R*.45;
+    if(t===0) ctx.moveTo(x,y);
+    else ctx.lineTo(x,y);
+  }
+  ctx.strokeStyle="rgba(124,255,196,.12)";
+  ctx.lineWidth=3;
+  ctx.stroke();
+
+  // current trajectory — the identity
+  ctx.beginPath();
+  for(let t=0;t<220;t++){
+    const p = frame*.003 + t*.03;
+    const x = cx + Math.sin(p)*R*.55;
+    const y = cy + Math.sin(p*.7)*R*.45;
+    if(t===0) ctx.moveTo(x,y);
+    else ctx.lineTo(x,y);
+  }
+  ctx.strokeStyle="rgba(255,255,220,.85)";
+  ctx.lineWidth=6;
+  ctx.lineCap="round";
+  ctx.shadowBlur=10;
+  ctx.shadowColor="#ffffaa";
+  ctx.stroke();
+  ctx.shadowBlur=0;
+
+  // present position marker
+  const hp = frame*.003;
+  ctx.beginPath();
+  ctx.arc(
+    cx+Math.sin(hp)*R*.55,
+    cy+Math.sin(hp*.7)*R*.45,
+    5+bass*4,0,Math.PI*2
+  );
+  ctx.fillStyle="rgba(255,255,200,.9)";
+  ctx.fill();
+
+  ctx.restore();
+  drawWaveTrace(.13);
+}
+
+// 3. Restriction — possibility space progressively narrows
+function drawRestriction(){
+  drawLatentCloud();
+
+  ctx.save();
+  ctx.beginPath();
+  ctx.arc(cx,cy,R,0,Math.PI*2);
+  ctx.clip();
+
+  // full outer ring — the original possibility space
+  ctx.beginPath();
+  ctx.arc(cx,cy,R*.78,0,Math.PI*2);
+  ctx.strokeStyle="rgba(124,255,196,.08)";
+  ctx.lineWidth=1;
+  ctx.stroke();
+
+  for(let i=0;i<36;i++){
+    const a     = i/36*Math.PI*2;
+    const width = .9 - i/36;          // each ray shorter than the last
+
+    ctx.beginPath();
+    ctx.moveTo(
+      cx + Math.cos(a)*R*.75,
+      cy + Math.sin(a)*R*.75
+    );
+    ctx.lineTo(
+      cx + Math.cos(a)*R*width*.25,
+      cy + Math.sin(a)*R*width*.25
+    );
+    ctx.strokeStyle=`rgba(124,255,196,${.06+high*.08})`;
+    ctx.lineWidth=5;
+    ctx.lineCap="round";
+    ctx.stroke();
+  }
+
+  // shrinking inner boundary — what remains reachable
+  const shrink = .30 + Math.sin(frame*.006)*.08 + bass*.06;
+  ctx.beginPath();
+  ctx.arc(cx,cy,R*shrink,0,Math.PI*2);
+  ctx.strokeStyle="rgba(220,255,220,.55)";
+  ctx.lineWidth=2;
+  ctx.shadowBlur=10;
+  ctx.shadowColor="#00cc66";
+  ctx.stroke();
+  ctx.shadowBlur=0;
+
+  ctx.restore();
+  drawWaveTrace(.18);
+}
+
+// 4. Distinction — one cloud separates into many categories
+function drawDistinction(){
+  drawLatentCloud();
+
+  ctx.save();
+  ctx.beginPath();
+  ctx.arc(cx,cy,R,0,Math.PI*2);
+  ctx.clip();
+
+  const centers = [];
+  for(let i=0;i<12;i++){
+    const a = i/12*Math.PI*2;
+    centers.push({
+      x: cx + Math.cos(a)*R*.45,
+      y: cy + Math.sin(a)*R*.45
+    });
+  }
+
+  // boundary edges between all pairs — the distinction geometry
+  centers.forEach(a=>{
+    centers.forEach(b=>{
+      ctx.beginPath();
+      ctx.moveTo(a.x,a.y);
+      ctx.lineTo(b.x,b.y);
+      ctx.strokeStyle="rgba(124,255,196,.03)";
+      ctx.lineWidth=1;
+      ctx.stroke();
+    });
+  });
+
+  // category nodes
+  centers.forEach((c,i)=>{
+    // outer glow — the distinction boundary
+    ctx.beginPath();
+    ctx.arc(c.x,c.y,22+bass*6,0,Math.PI*2);
+    ctx.strokeStyle=`rgba(124,255,196,${.08+mid*.06})`;
+    ctx.lineWidth=1;
+    ctx.stroke();
+
+    // filled node — the identified category
+    ctx.beginPath();
+    ctx.arc(c.x,c.y,12+bass*6,0,Math.PI*2);
+    ctx.fillStyle="rgba(190,255,220,.75)";
+    ctx.shadowBlur=6;
+    ctx.shadowColor="#00ff88";
+    ctx.fill();
+    ctx.shadowBlur=0;
+  });
+
+  ctx.restore();
+  drawWaveTrace(.11);
+}
+
+/* lissajous wave trace */
+
+function drawWaveTrace(lagBase){
+  if(!analyser) return;
+  analyser.getByteTimeDomainData(timeData);
+  const lag = Math.floor(timeData.length*(lagBase+mid*.06));
+
+  ctx.beginPath();
+  for(let i=0;i<timeData.length;i+=3){
+    const a = (timeData[i]-128)/128;
+    const b = (timeData[(i+lag)%timeData.length]-128)/128;
+    const x = cx + a*R*.50 + Math.sin(frame*.007)*8;
+    const y = cy + b*R*.42 + Math.cos(frame*.005)*6;
+    if(i===0) ctx.moveTo(x,y);
+    else ctx.lineTo(x,y);
+  }
+  ctx.strokeStyle="rgba(100,220,160,.48)";
+  ctx.lineWidth=3;
+  ctx.lineCap="round";
+  ctx.shadowBlur=8;
+  ctx.shadowColor="#00aa55";
+  ctx.stroke();
+  ctx.shadowBlur=0;
+}
+
+/* main loop */
+
+function draw(){
+  frame++;
+  updateEnergy();
+  clearPortal();
+
+  if(mode==="verbs")       drawVerbs();
+  if(mode==="identity")    drawIdentity();
+  if(mode==="restriction") drawRestriction();
+  if(mode==="distinction") drawDistinction();
+
+  requestAnimationFrame(draw);
+}
+
+buildSelector();
+loadTrack(0,false);
+draw();
+</script>
+
+</body>
+</html>
+

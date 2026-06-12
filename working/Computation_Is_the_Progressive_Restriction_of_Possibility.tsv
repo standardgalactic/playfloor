@@ -1,0 +1,864 @@
+start	end	text
+0	5800	Usually, when we sit down to read a mystery novel, there's this, you know, this built-in expectation of a journey.
+6120	7660	Right, yeah. You expect a narrative.
+7840	14600	Exactly. Like, you read chapter one, the crime happens. Chapter two, the detective shows up and, I don't know, finds a muddy footprint or something.
+14820	16680	Yeah, then chapter three, they interview the suspect.
+16940	23840	Right. You follow the sequence of events as they unfold over time. The story literally is the sequence.
+24260	27520	Because the history of what happened is the entire point.
+27520	31580	I mean, without that history, the narrative just, it doesn't exist.
+31940	39000	But imagine if instead of handing you a 300-page book, the author just handed you, like, a single index card.
+39160	43460	And on that index card, it just said, the butler is currently in jail.
+44220	45360	That would be a terrible book.
+45380	48240	Right. You'd be holding the state, but you would have completely lost the history.
+48460	50980	Yeah, you'd look at it and say, well, okay, but what happened?
+51200	55380	Exactly. Who was murdered? Why did the butler do it? Did he act alone?
+55380	61680	You have the final configuration of the characters, you know, but the journey is just completely gone.
+61760	62440	It's all erased.
+62920	66120	And here is the wild part for you listening today.
+66440	68080	That exact scenario.
+68240	68820	The index card.
+68980	72020	Yeah. Throwing away the whole book and just keeping the final index card.
+72360	79140	That is the fundamental mechanism behind almost every piece of software running our modern world.
+79360	80200	It really is.
+80200	85140	It's how we've been taught to program computers for, I mean, decades now.
+85280	88940	We are just handing the machine index cards and immediately throwing away the book.
+89020	92600	And then, you know, we act surprised when the machine does something completely unexpected.
+92940	93180	Right.
+93240	94920	And we have absolutely no idea why.
+95320	100900	We've built an entire digital infrastructure on this premise that the current moment is the only thing that matters.
+101040	103280	Which is just a massive philosophical assumption.
+103540	103900	Huge.
+104440	105340	And a dangerous one.
+105340	108520	Which brings us to the core of today's deep dive.
+108700	112800	We are unpacking some truly mind-bending source material for you today.
+112840	113780	Yeah, this one is dense.
+113960	114320	It is.
+114400	121800	We have our hands on a highly philosophical 2026 monograph from Flixion Independent Research.
+121940	122120	Right.
+122360	127700	It is titled Programs as Histories, Projection, Admissibility, and the Geometry of Computation.
+127840	128540	Quite a mouthful.
+128540	134360	Yeah, but we're exploring a conceptual programming language detailed in this text, and it's called SpherePop.
+134720	135160	SpherePop.
+135360	139440	And SpherePop claims everything we know about computing is entirely backward.
+139960	146120	So the goal today is to kind of, you know, cut through the dense math in this paper and get to this paradigm-shifting realization.
+146380	147240	The big aha moment.
+147400	147820	Exactly.
+148100	152180	The realization that computation is not the manipulation of values.
+152500	155440	It is the progressive restriction of possibility.
+155740	157840	Which is just a beautiful way to phrase it.
+157840	164500	And, you know, the backdrop visual we have up right now, this abstract geometry shifting and crystallizing into cascading lines of code.
+164620	164820	Yeah.
+164980	167840	It really captures what the authors are trying to do here.
+168160	173700	They are translating highly abstract philosophical geometry into hard, executable reality.
+173900	174080	Right.
+174160	177560	They aren't just proposing a new syntax, like a new way to type things.
+177640	178320	No, not at all.
+178420	181520	They are proposing a whole new ontology of what computing actually is.
+181620	181820	Okay.
+181960	182980	So let's start with the problem.
+182980	192420	Because to understand why SpherePop is so revolutionary, we first have to understand the fundamental lie that almost every other programming language is built on.
+192580	195340	What the text calls the state-centric assumption.
+195820	196100	Right.
+196220	199500	I mean, when I learned to code, the very first lesson was about variables.
+199760	200000	Sure.
+200200	200340	Yeah.
+200340	207320	I was taught that a variable is like a little box in the computer's memory, and you put a value in it, like X equals 5.
+207460	210340	And then the next instruction might be X equals X plus 1.
+210420	210600	Right.
+210860	214840	So you take the 5 out, add 1, and put the 6 back into the box.
+215240	215460	Yeah.
+215580	218180	So the program starts in an initial state.
+218540	220880	The instructions modify that state step by step.
+220880	224280	And whatever is left in the boxes at the end, well, that's your final answer.
+224580	226260	Which feels completely natural, right?
+226620	229920	Because it mirrors how we naively view physical processes.
+230040	230460	How so?
+230780	232500	Well, an object has properties.
+233020	234560	Those properties change over time.
+234840	237720	And the current properties make up the object's current state.
+238020	241660	But the monograph argues this naturalness is actually just an illusion.
+242580	242920	Yes.
+243160	246540	The source refers to this explicitly as the state illusion.
+246740	247440	The state illusion.
+247440	247700	Yeah.
+247840	253680	They argue it's a prior choice by language designers to treat the present configuration as the fundamental unit of description.
+254040	254280	Right.
+254360	257940	Because when you put the 6 into the box, the 5 is just overwritten.
+258140	258620	It's gone.
+259000	263840	The history of that box ever holding a 5 is utterly annihilated from the universe.
+264440	274240	And the source uses some fantastic real-world examples to illustrate why treating that final state as the base reality is just the wrong approach.
+274400	274800	Oh, yeah.
+274980	276020	The Git example is great.
+276020	277100	I love the Git example.
+277100	281140	Think about version control, which developers use literally every single day.
+281460	286460	If Git operated under the state illusion, it would just save the current version of your code files.
+286540	287480	Just the final text.
+287620	287840	Right.
+287980	288900	But it doesn't do that.
+289160	293200	A Git repository's actual substance is the entire sequence of commits.
+293380	295500	The diffs, the additions, the deletions.
+295560	295980	Exactly.
+296200	298660	All of that history that produced the final file tree.
+298740	301520	The final files are just a projection of that history.
+301740	306160	Or consider event sourcing and enterprise database architecture.
+306160	306860	Okay, yeah.
+306900	312740	If you look at a modern banking system, the database doesn't just store a single cell that says your balance is $500.
+313220	316820	Because if it did and a glitch randomly changed it to $0.
+317320	319460	The bank would have absolutely no idea how to fix it.
+319640	321020	They'd just be like, well, I guess you're broke.
+321100	321680	Right, exactly.
+321680	327180	So instead, event sourcing means the database records an append-only log of events.
+327320	330320	Like a $200 deposit, then a $100 withdrawal.
+330720	332300	Then a $400 deposit.
+332460	337520	And the current state of your balance, that $500, is just a summary calculation.
+337680	338400	A fold.
+338540	340740	Yeah, a fold over that entire historical log.
+340740	342340	So the state is just a summary.
+342460	344160	The history is the actual substance.
+344780	351560	But current programming languages like C, Python, Java, they treat the summary as the base reality.
+351800	352180	They do.
+352320	356100	And the monograph goes really deep into the mathematical consequences of this flaw.
+356180	356480	Right.
+356680	362040	It introduces Proposition 1.2, which is the formal mathematical proof of the state illusion.
+362040	368820	Okay, so the paper throws around Proposition 1.2 and mentions non-injective projections.
+369200	369360	Right.
+369720	374240	Which honestly just sounds like a lot of really dense math to say, we lose data.
+374500	377540	I mean, is that really all it's saying, or is there something deeper there?
+377820	378660	Oh, it's definitely deeper.
+379200	382460	Because it proves that losing data isn't just a minor side effect.
+382620	384420	It is a structural inevitability.
+384640	385820	Okay, break that down for me.
+386040	387640	Let's use the Pigeonel principle behind it.
+388080	391800	Imagine the set of all possible finite histories of a program.
+392460	395780	So every single path a program could ever take.
+395920	396300	Exactly.
+396620	400640	Every loop it could run, every single piece of user input it could receive over time.
+401040	403580	Let's call that infinite space of possibilities H.
+403740	404880	Okay, H is infinite.
+405040	405360	Got it.
+405460	412960	Now imagine the space of all possible observable states the computer can actually hold in its memory at any one given moment.
+413020	413740	Let's call that S.
+413740	419780	And because a computer has finite RAM, you know, physical memory limits, S has to be a finite space.
+419980	420440	Precisely.
+420440	423620	Even if S is massively huge, it is still finite.
+423860	424120	Right.
+424320	433420	So a program that relies on state is essentially running a function that maps the infinite space of histories, H, into the finite space of states, S.
+433560	434760	Oh, I see where this is going.
+434860	437940	Yeah, because H is infinitely larger than S, you have a mathematical bottleneck.
+438000	438180	Yeah.
+438180	440940	This projection literally cannot be injective.
+441320	449520	Meaning it's a mathematical certainty that multiple completely different histories will inevitably collapse into the exact same state.
+449600	452160	Because you have way more pigeons than you have pigeonholes.
+452360	452660	Right.
+452660	454320	Some pigeons are going to have to share a whole.
+454400	454660	Yes.
+455820	463560	Any program that only exposes that final state projection silently discards distinguishing information.
+463760	466500	You can just no longer tell which history actually occurred.
+466640	466880	Okay.
+466960	470160	I want to use an analogy here to make sure we're fully grasping the weight of this.
+470220	473760	Because a listener actually brought this up in some feedback we were looking at, and I think it's brilliant.
+473800	474620	Oh, I'd love to hear it.
+474620	478280	So imagine you come home, and your living room is completely destroyed.
+478540	478780	Okay.
+478920	479400	Bad day.
+479560	479780	Right.
+480200	481680	The lamp is broken on the floor.
+482180	492160	Now, in a state-based programming language, the state is simply recorded as lamp location equals floor, lamp status equals broken.
+492440	495580	Which tells you absolutely nothing about the causality.
+495700	496140	Exactly.
+496140	501020	If you're trying to debug this living room, you just have a single photograph of the mess.
+501020	504640	You are left staring at this photograph trying to deduce what happened.
+504780	506180	I mean, did the cat knock it over?
+506240	506840	Was there an earthquake?
+507380	508600	Did a burglar break in?
+508740	509840	You're just guessing at that point.
+510640	514820	But if you were using a history-based system, you wouldn't just see the final state.
+515040	516140	You would see the log.
+516340	517340	The sequence of events.
+517480	517600	Right.
+517700	524020	It would say door opens, drunk uncle enters, uncle trips on rug, table wobbles, lamp falls.
+524020	531360	That is a brilliant way to visualize it, because if you want to fix the bug in a state-based system, you just pick up the lamp and fix the state.
+531920	533260	But the uncle is still drunk.
+533540	533940	Exactly.
+534160	535820	The bug will absolutely happen again.
+535980	542480	You have to fix the uncle, but you don't even know the uncle was there because his presence was erased by the state projection.
+542700	546680	And this perfectly explains why debugging software is universally miserable.
+546880	547540	It really is.
+547660	551120	The source points out that conventional debuggers are just desperate instruments.
+551120	557940	They are tools trying to guess the complex video footage of history from a single degenerate photograph.
+558260	561260	After the information has already been permanently destroyed by the CPU.
+561540	561800	Wow.
+561960	565120	And this really raises the practical cost of this illusion.
+566300	577160	The source argues that devastating real-world bugs exist entirely because systems conflate distinct histories into the same degenerate state.
+577480	578480	Like race conditions, right?
+578480	578780	Yes.
+579020	580260	Take a race condition, for example.
+580260	584080	That's where two parts of a program are trying to do something at the exact same time.
+584200	584280	Yeah.
+584380	587220	Imagine a multi-threaded ticket purchasing system.
+587340	587640	Okay.
+587920	595460	Thread A is processing your purchase for the last concert ticket, and thread B is processing someone else's purchase for that exact same ticket.
+595620	596340	Oh, boy.
+596680	601300	The system state tracker just looks at the variable tickets available equals one.
+601300	606580	So, both threads check the state, they both see a one, and assume they can proceed.
+606820	607160	Correct.
+607160	610420	The state projection is non-injective on interleaved histories.
+610720	610940	Meaning?
+611240	617800	The history where thread A checks first and the history where thread B checks first, they both look identical to the state tracker at that split second.
+617860	618500	Oh, man.
+618500	624160	So, both threads sell the ticket, the inventory drops to negative one, and the system catastrophically crashes.
+624400	625420	Just a total nightmare.
+625420	633420	And the same goes for use after free vulnerabilities in memory management, which, you know, are responsible for countless security breaches.
+633480	633960	Oh, yeah.
+634080	635320	Those are huge.
+635560	640400	They arise because the state conflates histories that differ only in deallocation events.
+640960	644260	The system simply forgets the history of what happened to the memory pointer.
+644260	654400	Okay, so if discarding history is the root of our computational problems, the obvious next step is to ask, well, what happens if we build a language where history is the only thing that's real?
+654520	654780	Right.
+654940	657740	What if we don't even have variables in the traditional sense?
+657860	660080	That brings us to the SpherePop inversion.
+660300	661520	The SpherePop inversion.
+661620	665540	Yeah, SpherePop proposes the exact opposite ontological priority.
+666120	671380	Instead of history being an afterthought that you definitely try to reconstruct during debugging.
+671600	673320	Right, trying to piece together the photograph.
+673320	673960	Exactly.
+674300	675300	History comes first.
+675600	679780	State is entirely derived, secondary, and strictly temporary.
+680020	681620	It completely flips the script.
+681820	688500	Instead of a program being a sequence of state transformations, the system runs on what the text calls a world structure.
+688940	692460	And this world structure consists of just two things.
+692880	698420	First, a history, which is defined as an ever-growing finite sequence of events.
+698580	698800	Right.
+698800	706020	And second, an option space, which is the finite set of available symbols or possibilities currently open to the program.
+706220	707500	Notice what is missing there.
+707680	708020	State.
+708460	711280	State is totally absent from the foundational structure.
+711440	711860	Exactly.
+711860	718920	Instead, the computation is driven by four primitive operators that interact strictly with the option space and the history.
+719080	723660	Okay, I want to build a mini-program live right now to understand how these four primitives actually work.
+723740	724240	Let's do it.
+724240	728440	Because they are so counterintuitive if you are used to normal coding.
+728700	732720	Let's imagine we are writing a sphere pop program to make a cup of coffee.
+732940	733560	Okay, I like it.
+733780	735120	The first primitive is pop.
+735460	736220	P-O-P, pop.
+736360	736540	Right.
+736880	741240	The text says pop commits to a symbol, essentially removing it from the option space.
+741420	743440	So what does that mean for our coffee maker?
+743440	747680	Your initial option space for the coffee maker includes everything it could possibly do.
+747840	747980	Right.
+748260	751960	Make espresso, make a latte, dispense hot water, turn off.
+752040	753080	Okay, all the possibilities.
+753580	757680	When the program executes a pop on espresso, it is an act of consumption.
+758280	762240	You are taking the latte and hot water possibilities off the table entirely.
+762360	763080	Oh, I see.
+763460	768560	The option space shrinks and the event, Joe's espresso, is appended to the history.
+768880	770940	Okay, so pop is a permanent commitment.
+771240	771440	Yes.
+771440	773240	The second primitive is refuse.
+773980	777100	Now the text says refuse documents that a path is inadmissible,
+777320	781680	but it does this without removing the structural option from the option space.
+781860	782080	Right.
+782320	783840	This sounds like a contradiction to me.
+783920	786260	I mean, if I refuse something, isn't it just gone?
+786640	788040	This is a crucial distinction.
+788340	789800	Let's say your next step is to add milk.
+789940	792860	So you attempt to pop the add milk option.
+792980	793300	Okay.
+793600	795760	But the sensor detects the milk reservoir is empty.
+796360	797560	The system executes a refuse.
+797560	801700	It doesn't say the concept of adding milk no longer exists in this universe.
+802100	803760	Because the machine still has a milk button.
+803860	804260	Exactly.
+804840	809540	It says, I have evaluated the add milk option right now, given the current historical context,
+809740	812900	and documented a specific reason why we cannot take it.
+813020	813460	Wow.
+813660	815720	It records inadmissibility into the history.
+815720	822200	So the history log now says chose espresso, refused to add milk due to empty reservoir.
+822380	822780	Exactly.
+823320	827700	And then third is bind, which simply records a dependency between two things in the history.
+827900	832080	So like binding the temperature of the water to the type of roast you popped earlier?
+832340	833120	Spot on.
+833200	838680	And fourth is collapse, which makes an observation of the history, which we will get to later.
+838680	842660	Because none of these operators are mutating a value in a memory slot.
+842860	843380	None of them.
+843440	848360	They are just appending events to the history log and shrinking the space of what is actually possible next.
+848540	852760	And this leads directly to one of the most beautiful mathematical properties in the text.
+853420	854900	Theorem 2.7.
+855060	855340	Yes.
+855560	857220	The conservation of possibility law.
+857300	859260	The conservation of possibility law.
+859340	864900	It is a conservation law, much like the conservation of mass or energy in physics, but applied to computer science.
+865060	865360	Okay.
+865480	866020	Break that down.
+866020	875840	Under pure POP dynamics, the law states that the size of the history, plus the size of the current option space, will always equal the size of the initial option space.
+876240	876760	Oh, wow.
+876980	885720	So using the mathematical notation from the source, the absolute value of h sub t plus the absolute value of omega sub t equals omega sub zero.
+885900	886340	Exactly.
+886560	890540	So as the history log gets longer, the option space gets proportionally smaller.
+891260	893900	Possibility cannot be created or destroyed in this system.
+894000	894260	Never.
+894260	898000	It is only consumed by a POP or documented by a refuse.
+898240	901640	The total computational material is completely invariant.
+901740	902080	That's right.
+902160	904680	The total information in the system is totally constant.
+904940	907380	It makes me think of carving a block of marble.
+907680	908640	Oh, that's a good analogy.
+908780	911400	The uncarked block is your initial option space.
+911580	915120	I mean, it could be a statue of a horse, a person, a bull.
+915460	916840	It could literally be anything.
+917240	917460	Right.
+917460	919880	Every strike of your chisel is a POP.
+920460	924260	It permanently removes a piece of marble, an option, from the block.
+924360	924560	Yeah.
+924840	927660	You can never sculpt that specific piece of marble again.
+927840	933740	But simultaneously, that strike adds a permanent feature to the history, which is the actual sculpture taking shape.
+933920	936340	And just like carving stone, you can never put the marble back.
+936520	936840	Right.
+936840	940240	The history is strictly monotonically increasing.
+940900	942280	It is completely irreversible.
+942840	945280	And this isn't just theoretical poetry, you know.
+945480	945760	Right.
+945980	950340	The developers strictly adhered to this philosophy when actually writing the code base.
+950500	955520	The text includes snippets from the actual Rust implementation of SpherePop.
+955520	956960	Yeah, I saw those.
+957080	963260	If you look at the file core slash world dotters, the world struct is defined with exactly two fields.
+964300	968380	Pub options of type option space and pub history of type history.
+968500	971100	There is literally no state field.
+971280	971480	None.
+971700	973100	They refuse to build one.
+973200	976940	The absence of a state field is the mechanization of theorem 2.7.
+977680	980700	The philosophy literally forced the code's architecture.
+980860	981720	That's wild.
+981720	987060	They refuse to store observable state permanently because, ontologically, it isn't real.
+987260	990480	Okay, I have to stop you here, though, and put on my practical programmer hat.
+990640	991040	Okay.
+991180	994700	Because if I am listening to this, I am screaming about memory usage right now.
+994780	995120	Oh, sure.
+995240	1002700	If every single thing I do just appends to an ever-growing history log and we never overwrite state, my laptop is going to literally burst into flames.
+1002820	1002980	Right.
+1003080	1003960	That's the immediate fear.
+1003960	1011320	I mean, if a loop runs a million times, I have a million events in memory instead of just one integer that updated a million times.
+1012060	1015360	How does SpherePop avoid instantly crashing the RAM?
+1015780	1018180	It's the most common and intuitive objection.
+1018940	1022300	If history constantly grows, surely we run out of space.
+1022640	1025920	But you have to remember the other side of theorem 2.7.
+1026020	1026960	The conservation of possibility.
+1027720	1028240	Exactly.
+1028540	1031260	As history grows, the option space shrinks.
+1031260	1034500	But practically, how does that actually balance out in hardware?
+1034920	1038440	Through aggressive use of persistent data structures and structural sharing.
+1038640	1039620	Structural sharing.
+1039740	1039880	Yeah.
+1040160	1043820	When an option is popped, the system doesn't duplicate the entire world.
+1044100	1047080	It just creates a new pointer that shares the previous context.
+1047180	1047680	Oh, I see.
+1047900	1053560	Furthermore, the option space itself is garbage collected as branches of possibility are definitively closed off.
+1053760	1055980	You aren't storing infinite parallel universes.
+1056260	1056520	Right.
+1056560	1060580	You're storing a highly compressed, single-path traversal through a finite graph.
+1061260	1066260	The space required to store the history is offset by the memory freed from the collapsed option space.
+1066700	1068480	So the complexity is conserved.
+1068580	1069000	Precisely.
+1069100	1070180	That makes a lot of sense.
+1070280	1073660	It's not like copying the whole block of marble every time I strike the chisel.
+1073820	1076140	It's just recording the coordinates of the strike.
+1076240	1076440	Right.
+1076580	1076980	Exactly.
+1076980	1084540	But, okay, if we are navigating this ever-trinking block of marble, permanently removing options and committing to paths,
+1085160	1088000	how do I know I haven't carved myself into a corner?
+1088260	1088780	What do you mean?
+1088780	1094980	If there is no state to check, how does the system know my next chisel strike isn't just a fatal error?
+1095540	1102160	Like, in C or Java, the compiler yells at me if I try to put a string of text into a bucket meant for an integer.
+1102360	1102540	Right.
+1102760	1103280	Type checking.
+1103700	1103940	Yeah.
+1104120	1106060	If there are no buckets here, what protects me?
+1106060	1109820	That is where the concept of types completely changes in SpherePop.
+1110020	1110240	Okay.
+1111020	1114360	In conventional languages, a type is, as you said, exactly like a bucket.
+1114680	1118760	If a variable is an integer type, it just means it belongs to the set of whole numbers.
+1118900	1119100	Right.
+1119180	1120980	The compiler just checks the shape of the bucket.
+1121180	1123740	It asks, does this data fit in the integer bucket?
+1124080	1127400	But in SpherePop, types do not describe sets of values.
+1128040	1128320	Wait.
+1128600	1128900	Really?
+1129120	1129380	Really.
+1129780	1131240	Types are reachability certificates.
+1131400	1132260	Reachability certificates.
+1132260	1132940	Yes.
+1133840	1137540	They are mathematical proofs of the history of how a term was produced.
+1138540	1145200	A value of a certain type is the result of a path through history that reached that value without violating any constraints.
+1145360	1146080	Oh, okay.
+1146200	1150500	So it's less like a bucket checking a shape and more like a passport filled with stamps.
+1150680	1150900	Yes.
+1151040	1156420	The passport proves everywhere you traveled, every border you crossed, to get to your current destination legally.
+1156740	1157200	Exactly.
+1157720	1159260	The type certifies the journey.
+1159260	1161960	Let's break down the specific types the system uses.
+1162260	1168120	We have admissible T, which is a certificate proving that the historical path that produced this term was completely valid.
+1168340	1168580	Okay.
+1168860	1173480	Then we have collapsed T, comma, C, which seals an observation under a specific rule.
+1173620	1173880	Right.
+1174220	1178200	But the most interesting and powerful one is refused T, comma, R.
+1178440	1181360	Oh, the refuse primitive we talked about earlier with the coffee maker.
+1181420	1181760	Yes.
+1182200	1185980	Crucially, the refused type inherently carries the reason for refusal.
+1186180	1186640	Oh.
+1186640	1189120	Denoted by that, R in the type signature.
+1189260	1193540	If you try to do something illegal, like adding milk when the reservoir is empty.
+1193660	1195660	The system doesn't just throw an exception or crash.
+1196000	1197960	Or return a generic null error.
+1198120	1198220	Right.
+1198300	1198460	Yeah.
+1198580	1203960	It generates a type that encapsulates the exact historical context of why the path was blocked.
+1204320	1211320	So a constraint violation is fundamentally a different mathematical type than a generic not available error.
+1211600	1212020	Correct.
+1212020	1218080	Two terms refused for different reasons have genuinely different mathematical types.
+1218180	1218540	Wow.
+1218540	1221680	Because the reason is permanently embedded as part of the type.
+1222120	1225160	This creates a system where refusal isn't a failure.
+1225480	1229040	It is documented inadmissibility with a permanent certificate.
+1229420	1229880	That's wild.
+1229880	1232160	You can pass that refusal around in your code.
+1232280	1232440	Yeah.
+1232660	1238140	Analyze it and branch logic off of it because the refusal itself is a first class citizen of the history.
+1238540	1239560	That is incredibly rigorous.
+1239820	1240200	It is.
+1240460	1245440	But, I mean, implementing something that strict led to a massive internal conflict for the developers, didn't it?
+1245440	1250920	The text dedicates a significant portion to this wild clash they ran into regarding the open and close world.
+1251040	1251220	Yes.
+1251320	1260540	This is one of the most fascinating anecdotes in the whole development process because it shows how abstract philosophy suddenly becomes a very real engineering roadblock.
+1260660	1260760	Right.
+1260820	1266660	When the developers were building the interpreter for SpherePop, they encountered a major problem with free variables.
+1267320	1270240	Free variables meaning variables that are undeclared or unknown.
+1270580	1274980	Like if I just write I plus 5 but I never told the computer what Y actually is.
+1274980	1275500	Precisely.
+1276280	1282180	Now the interpreter, which executes the code, treated an unknown variable as a symbolic atom.
+1282380	1282700	Meaning?
+1282840	1284340	Just an unresolved possibility.
+1284480	1289880	It essentially said, I don't know what Y is yet, but I will keep it in the option space just in case.
+1289980	1290240	Okay.
+1290360	1291220	That seems reasonable.
+1291480	1297300	But the type checker, which is designed to prove validity, immediately rejected Y as a hard error.
+1297380	1297780	Oh.
+1298200	1300980	It said, this isn't declared, therefore it is illegal.
+1301540	1301780	Wait.
+1301780	1302860	I have to push back here.
+1303200	1304540	Isn't the type checker just right?
+1304980	1305180	No.
+1305240	1309040	I mean, if a variable isn't defined in the code, isn't that just a typo?
+1309500	1309980	A bug?
+1310060	1311660	Like I just forgot to declare why.
+1311820	1316920	Why is this a profound philosophical discovery and not just a standard syntax error that they needed to patch?
+1317080	1320860	Because it forces a decision about what an unknown actually represents in reality.
+1321160	1324280	Does the absence of a declaration mean the object doesn't exist?
+1324780	1327440	Or does it just mean we haven't decided what it is yet?
+1327680	1328160	Oh.
+1328160	1334200	The developers realized they weren't just fighting over a bug, they were clashing over epistemology.
+1334360	1336320	The philosophical theory of knowledge.
+1336500	1336840	Exactly.
+1336980	1337280	I see.
+1337920	1341440	But how does a type checker mechanize epistemology?
+1342000	1345680	It depends entirely on the boundary of the world you assume you are operating in.
+1345720	1346000	Right.
+1346000	1351420	A closed world context assumes we have complete total knowledge of the system.
+1352040	1359120	In a closed world, if something is unknown, it means it does not exist and therefore trying to use it is an error.
+1359320	1362060	Which is how almost all traditional compilers work.
+1362180	1363780	They assume they can see the whole board.
+1363960	1364040	Yeah.
+1364120	1365940	If it's not in the dictionary, it's just not a word.
+1366080	1366420	Exactly.
+1366860	1369260	But the alternative is an open world context.
+1369360	1369600	Okay.
+1369760	1371540	This assumes we only have partial knowledge.
+1371980	1374760	We are operating in a universe larger than our current perception.
+1374920	1375120	Right.
+1375320	1378600	In an open world, an unknown variable is not an error.
+1379080	1381280	It is simply undecided possibility.
+1381520	1381840	Oh, what?
+1381840	1384260	It exists as an unresolved manifold.
+1385200	1391280	The type checker assigns it the type unit, meaning this is an unconstrained path that we might travel down later.
+1391280	1394420	This makes me think of, like, a robot navigating a room.
+1394600	1394860	Sure.
+1395140	1403580	If the robot's camera doesn't see a chair in the corner, a closed world AI assumes the corner is empty and might just try to drive straight through it.
+1403660	1403900	Yes.
+1404180	1406940	But an open world AI assumes the corner is unknown.
+1407580	1410580	Like, there might be a chair there, it just hasn't observed it yet.
+1410600	1411700	That's a perfect analogy.
+1412000	1416140	So both the interpreter and the type checker in SpherePop were mathematically correct.
+1416140	1421840	They were just operating under entirely different philosophical assumptions about the boundaries of reality.
+1422160	1422380	Yes.
+1422680	1427620	And the developers realized they couldn't just fix the bug by making one side win.
+1428080	1428420	Right.
+1428540	1429700	Because both are valid.
+1429760	1434400	Because depending on what you are building, you might need a closed world or you might need an open world.
+1434560	1434760	Okay.
+1434820	1435600	So what did they do?
+1436060	1440160	They had to introduce a new construct called type mode into the rest code.
+1440580	1440700	Yeah.
+1440880	1446000	Type mode is an explicit declaration of whether the compiler should operate in a closed world or an open world state.
+1446000	1449980	They literally had to code their philosophical stance into an enum.
+1450240	1450880	They had to.
+1451060	1451260	Yeah.
+1451860	1461460	A language whose fundamental ontology is about navigating a possibility space must explicitly state its epistemological boundaries.
+1461560	1461940	Right.
+1461940	1468180	It forces the programmer to declare, do I know everything about this domain or am I leaving room for the unknown?
+1468420	1469360	I love that.
+1469740	1470700	I absolutely love that.
+1470740	1471260	It's pretty amazing.
+1471620	1471800	Okay.
+1471800	1481680	So we have an irreversible history of events and we have types that act as passports proving our legal journey through possibility space and we've established the boundaries of our world.
+1482460	1483640	But let's be real for a second.
+1484320	1488380	Eventually, a human being needs to look at the computer screen and actually see an output.
+1488620	1488920	Of course.
+1488920	1491100	I need to see if my bank balance is $500.
+1491540	1492500	I need to see a state.
+1492760	1492940	Yes.
+1493000	1497980	So how do we look at history without ruining the philosophy and just falling back into the state illusion?
+1498440	1500580	This is where we reach the geometry of observation.
+1501680	1508120	The source text reveals that observable state is not a real physical thing stored in the computer's memory.
+1508300	1508560	Okay.
+1508760	1510080	It is a quotient of history.
+1510260	1511540	A quotient like in division.
+1511680	1513500	Can you explain how that applies here?
+1513500	1521940	In mathematics, a quotient space is formed by taking a larger set and grouping items into equivalence classes based on some specific rule.
+1522060	1522340	Okay.
+1522640	1523760	You are folding the space.
+1524400	1529160	In sphere pop, the state you observe depends entirely on how you look at the history.
+1529340	1529620	Right.
+1529860	1534340	And how you look at it requires what the text calls a collapse rule.
+1534580	1535020	Collapse.
+1535200	1539780	You apply a collapse rule to the history and it generates the state for you at that exact moment.
+1539780	1540220	Okay.
+1540360	1543340	Let's walk through the four canonical rules of collapse mentioned in the text.
+1543500	1546580	Because they perfectly illustrate how a state is just a projection.
+1546860	1547280	Let's do it.
+1547380	1548740	The first is the identity rule.
+1549020	1549500	Identity.
+1549560	1551320	This is the finest, most granular rule.
+1551800	1554760	Under identity, every single event in the history is visible.
+1554920	1556260	So no compression whatsoever.
+1556380	1556660	Exactly.
+1556820	1560300	The state you see is exactly equal to the raw history log.
+1560620	1560880	Okay.
+1561060	1562880	The second is the last right rule.
+1563180	1568080	And this seems like it's essentially the conventional view of state in modern programming.
+1568080	1568640	Yes.
+1569120	1574560	Last right maps the history by only caring about the most recent assignment to a variable.
+1574760	1575460	Oh, right.
+1575560	1582140	If your history shows you assigned x to 1, then x to 2, then x to 3, applying the last
+1582140	1585860	right rule collapses all of that and only shows you that x is 3.
+1586220	1589300	It retroactively ignores all the previous pops.
+1589480	1589720	Yes.
+1589860	1592020	It creates the state illusion on demand.
+1592260	1592640	Wow.
+1592640	1594780	The third is the accumulate rule.
+1595260	1599600	This one counts the events, but it entirely forgets the order in which they happened.
+1600020	1600980	It's order forgetful.
+1601040	1601220	Right.
+1601400	1604880	Like knowing I drank three cups of coffee, but not knowing if I drank them in the morning
+1604880	1605460	or at night.
+1605640	1606400	Perfect example.
+1606760	1608120	And finally, the projection rule.
+1608800	1614320	This rule filters the history events by a specific label prefix, only showing you a
+1614320	1616780	slice of the history that matches your specific criteria.
+1617320	1618660	So ignoring everything else.
+1618780	1619000	Right.
+1619000	1622160	Thinking about these collapse rules, a visual metaphor comes to mind.
+1622160	1622700	Let's hear it.
+1622740	1625440	It's like looking at a three-dimensional cylinder floating in a room.
+1625780	1630320	If your rule is look at the cylinder from directly above, it collapses into a two-dimensional
+1630320	1630740	circle.
+1630900	1631120	Yes.
+1631240	1635060	If your rule is look at it from the side, it collapses into a two-dimensional rectangle.
+1635240	1635560	Exactly.
+1635780	1638540	A circle and a rectangle look like completely different shapes.
+1638620	1641820	I mean, if you showed them to two different people, they would argue about what object they
+1641820	1642300	were looking at.
+1642300	1643340	They absolutely would.
+1643680	1646960	But the cylinder itself, the history, it never changed.
+1647380	1649780	Only the observer's angle, the rule, did.
+1649780	1651920	That is a perfect topological analogy.
+1652660	1658680	The history is the 3D object, and the state is the 2D shadow it casts, depending on where
+1658680	1659520	you place the light.
+1659640	1660600	Oh, I like that.
+1660940	1664400	And this aligns directly with the CLIO connection mentioned in the text.
+1664820	1668420	CLIO stands for constraint-limited information ontology, right?
+1668600	1668900	Yes.
+1669080	1670560	How does that apply to our cylinder?
+1670560	1676640	CLIO is a framework that models how representations restructure semantic space.
+1678080	1685040	CLIO argues that representations, or in our case, collapse rules, don't just compress data.
+1685260	1688500	They fundamentally alter the topology of what is distinguishable.
+1688820	1689180	Exactly.
+1689380	1691280	They change what shadows can be cast.
+1691620	1695380	For example, under the accumulate rule, two completely different histories.
+1695380	1699420	Like doing task A, then task B, versus doing task B, then task A.
+1699480	1699580	Right.
+1699760	1702540	Those cast the exact same shadow under accumulate.
+1703180	1706660	Because the event counts are the same, they look identical.
+1706920	1708420	They are topologically identified.
+1708720	1713280	But under the identity rule, they cast different shadows because the order actually matters.
+1713800	1716860	So state is entirely relative to the observer's rule.
+1717000	1718900	There is no such thing as the true state.
+1719140	1719340	No.
+1719460	1722000	There is only the state given rule X.
+1722000	1722480	Yes.
+1722900	1725440	And the SpherePop implementation reflects this beautifully.
+1725900	1731420	In the observable state module, state is derived on demand using a function called derive,
+1731880	1734020	which takes history and rule as arguments.
+1734140	1734620	Oh, wow.
+1734700	1736700	Observable state is never stored permanently.
+1736880	1737620	It's just a shadow.
+1737980	1738160	Right.
+1738240	1743100	It is a fleeting projection, a shadow, calculated at the exact moment a human needs to look at
+1743100	1744920	it, and then it is immediately discarded.
+1745140	1745360	Okay.
+1745460	1750440	So if state is just a fleeting shadow and types are just travel logs, what happens to the most
+1750440	1752560	sacred cow of computer science?
+1752680	1753040	Which is-
+1753040	1756940	The function- I mean, functional programming is practically a religion for a lot of developers.
+1757180	1757740	It really is.
+1757840	1759280	Everything is built on functions.
+1759940	1761540	How does SpherePop handle them?
+1761820	1764740	SpherePop radically reverses the priority of functions.
+1764880	1765240	How so?
+1765640	1769180	In standard computing, functions are the base reality.
+1769780	1772460	A program is just applying functions to values.
+1772620	1772920	Right.
+1772920	1775400	But in SpherePop, functions are not primitive.
+1775920	1779520	They are just a convenient notation for a specific historical pattern.
+1779520	1783640	The text defines a function as deferred commitment.
+1784120	1784860	Deferred commitment.
+1785080	1786300	I want to unpack that carefully.
+1786460	1786580	Yeah.
+1786760	1790740	When I write a function in a normal language, say a simple function that takes a variable
+1790740	1795820	y, multiplies it by two, and returns the result, what is that in SpherePop?
+1796140	1800400	When you define that function, you are creating what SpherePop calls a closure.
+1800720	1800980	Right.
+1801500	1803280	But the text redefines a closure.
+1803540	1805940	It's not a machine waiting for inputs.
+1806120	1807720	It is a frozen possibility.
+1807840	1808620	Frozen possibility.
+1808620	1814360	Is a partial, unrealized future suspended along with its historical context, just waiting
+1814360	1815960	for a pop event to actualize it.
+1815960	1820820	You are saying, I have this timeline mapped out where something gets multiplied by two,
+1821300	1824620	but I am deferring the commitment of what that something actually is.
+1824720	1828320	And when I finally call that function in my code and pass it the number five...
+1828320	1833340	That process, formerly known as beta reduction in lambda calculus, is actually just a special
+1833340	1834200	case of a collapse.
+1834720	1835440	Wait, really?
+1835440	1835920	Yeah.
+1835920	1839400	When you apply the argument five, you are generating a pop event.
+1840100	1844920	You are committing the variable y to the value five, which removes all other possibilities
+1844920	1849640	for i from the option space, thaws the frozen timeline, and resumes the history.
+1849640	1853920	So a function isn't a factory that takes raw materials and spits out a product.
+1854120	1854200	No.
+1854300	1859040	It's a paused timeline waiting for a specific historical event to kickstart it again.
+1859120	1859500	Exactly.
+1859660	1861360	That is a massive paradigm shift.
+1861680	1866120	And reading through the paper, it becomes clear this has riled implications for how you
+1866120	1867860	actually build a compiler for this language.
+1867920	1870220	Oh, it breaks traditional compiler correctness completely.
+1870220	1872900	Let's look at how conventional compilers are tested.
+1873300	1877040	A compiler translates human-readable code into machine code.
+1877620	1882600	In traditional language design, a compiler is considered correct if the compiled machine
+1882600	1886520	code produces the exact same output value as the interpreted code.
+1886640	1886920	Right.
+1887120	1892120	If they both output the number 42, the compiler is certified as correct.
+1892560	1895900	But SpherePop says that is totally insufficient.
+1896280	1896660	Completely.
+1896660	1902200	Which makes sense because, as we established, the final output, the 42, is just a degenerate
+1902200	1903000	state projection.
+1903260	1906000	It's just the index card that says the butler is in jail.
+1906180	1906660	Exactly.
+1907340	1912200	Two programs that produce the same final value of 42 may have constructed radically different
+1912200	1913280	histories to get there.
+1913440	1915220	One might have added 20 and 22.
+1915780	1917940	Another might have multiplied 21 by 2.
+1918120	1921700	Another might have crashed three times, recovered, and then output 42.
+1922040	1922320	Right.
+1922520	1925140	And in SpherePop, the history is the program.
+1925140	1927900	So verifying just the output is completely meaningless.
+1928160	1929560	But hold on, I have to challenge this.
+1929640	1930040	Go for it.
+1930260	1932620	If output equivalence isn't enough, what is?
+1932780	1936000	Does the compiler have to perfectly mimic every single microscopic step?
+1936280	1936580	Yes.
+1936760	1936900	What?
+1937200	1939620	The standards SpherePop uses is history equivalence.
+1939880	1945400	A compiler is only correct if the history constructed by the virtual machine executing the compiled
+1945400	1949940	code matches the history constructed by the interpreter exactly, event for event.
+1949940	1950560	Wow.
+1951080	1957640	The mathematical standard in the paper is I of P dot history equals V of C of P dot history.
+1958000	1959900	Interpreter history equals VM history.
+1960120	1960400	Yes.
+1960580	1962760	So the compiler can't take any clever shortcuts.
+1962900	1963120	Yes.
+1963280	1966920	Because modern compilers like LLVM are famous for optimizing QuarNode.
+1967100	1967340	Right.
+1967500	1971920	If I write a loop that does nothing but count to 10, the compiler might just replace the whole
+1971920	1973780	loop with the number 10 to save time.
+1973780	1978140	But in SpherePop, it can't do that because that alters the sequence of events.
+1978320	1978860	Oh, man.
+1979220	1979460	Correct.
+1979920	1982300	The optimization cannot destroy the history.
+1983020	1987680	And this requirement fundamentally changes what the intermediate representation or IR of
+1987680	1989080	the compiler actually looks like.
+1989300	1989400	Right.
+1989720	1994020	Traditional IR emits instructions to mutate the machine's state in the most efficient way
+1994020	1994440	possible.
+1994900	1996620	It issues commands to overwrite memory.
+1996800	1998460	But SpherePop's IR doesn't do that.
+1998720	2001620	No, it doesn't emit mutating instructions at all.
+2001620	2004980	It emits events to reconstruct history.
+2005820	2010920	The compiler acts as a history reconstruction engine, not a state mutation engine.
+2011640	2014700	This all sounds theoretically perfect and rigorously beautiful.
+2014920	2015640	It really is.
+2015940	2020500	But when this monograph was peer-reviewed, a reviewer raised a massive red flag.
+2021260	2025180	Chapter 18 of the Saurus is entirely dedicated to answering this challenge.
+2025380	2025660	Yes.
+2025880	2027860	The reviewer pointed out a perceived paradox.
+2027860	2032560	They basically said, look, because human programmers eventually have to look at a collapsed
+2032560	2037240	value on a screen, an output shadow, aren't they still suffering from the state illusion?
+2037860	2038680	That's a very fair point.
+2038820	2039040	Right.
+2039160	2039400	Right.
+2039560	2043840	Has SpherePop actually solved anything or did you just relocate the problem to the monitor?
+2044060	2045240	It's a brilliant critique.
+2045600	2049920	The reviewer is essentially saying that as long as a human is in the loop, you just can't
+2049920	2050600	escape state.
+2050600	2053620	And the authors of the monograph address it with brutal honesty.
+2053820	2056860	They do, by introducing the no-direct-observation theorem.
+2056980	2059760	The mathematically rigorous limit of the entire system.
+2059800	2060040	Yes.
+2060340	2064180	The theorem proves that the reviewer is technically correct about the illusion.
+2064300	2064840	Oh, wow.
+2065060	2068040	Because the space of all possible histories is infinite.
+2068720	2074440	And any observable space, like a computer monitor or terminal window or a human retina,
+2074680	2075400	is finite.
+2075680	2077340	So you have the pigeonhole problem again?
+2077340	2077940	Exactly.
+2078300	2085380	Any observation map must be non-injective, meaning some level of state illusion is mathematically
+2085380	2086820	unavoidable in this universe.
+2086940	2092000	No computational system can eliminate the illusion entirely if it wants to actually show a result
+2092000	2093480	to a finite human observer.
+2093720	2094000	Right.
+2094400	2095620	So wait, the reviewer was right.
+2095740	2096660	SpherePop fails.
+2096820	2097060	No.
+2097280	2102300	We did all this complex history tracking, all this option space math, just to end up trapped
+2102300	2103340	by the illusion anyway.
+2103440	2106720	No, because the reviewer was conflating two entirely different concepts.
+2106720	2110780	There is a crucial distinction between state erasure and state illusion.
+2110920	2112540	Okay, we need to clarify those two terms.
+2112640	2113320	How are they different?
+2113500	2115280	Conventional coding suffers from state erasure.
+2115700	2119860	When X changes from 5 to 6, the history of it being 5 is deleted from the RAM.
+2120020	2122880	The system irrecoverably discards the history.
+2123440	2124820	The universe just forgets.
+2125140	2125540	Exactly.
+2126300	2131580	SpherePop, however, cannot eliminate the illusion of observation because of the physics of screens
+2131580	2132780	and eyeballs we just discussed.
+2132880	2133120	Right.
+2133120	2135440	But it completely eliminates the erasure.
+2135900	2142000	Because the full raw history is always kept safe in the world.history log.
+2142100	2142520	Exactly.
+2142720	2144260	The history is retained structurally.
+2144920	2149640	So while the programmer might be looking at a collapsed, illusory state on their screen,
+2150160	2152040	they're never actually trapped by it.
+2152200	2152480	Okay.
+2152480	2157360	If they suspect the observation is misleading, like if they see the lamp on the floor and
+2157360	2162220	wonder if the drunk uncle was there, they can perform what the text calls disambiguation
+2162220	2163060	by refinement.
+2163720	2165000	Disambiguation by refinement.
+2165260	2167220	Meaning they can just change their collapse rule?
+2167460	2167980	Precisely.
+2168540	2173040	Because the history is intact behind the scenes, they can switch from the last right rule to
+2173040	2173920	the identity rule.
+2174100	2175320	A finer collapse rule.
+2175360	2176580	And recover the hidden truth.
+2176740	2179680	They can look at the 3D cylinder from a completely different angle.
+2179680	2183960	In a conventional system, that recovery is physically impossible because the history
+2183960	2184580	was destroyed.
+2184940	2185200	Right.
+2185920	2187840	Sphere pop doesn't abolish the illusion.
+2188240	2192380	It makes the illusion explicit, parameterized, and fully reversible.
+2192680	2194240	It gives you the power to see through it.
+2194400	2194860	Exactly.
+2195080	2195440	I see.
+2195520	2196840	That is a phenomenal defense.
+2197340	2203280	It completely defangs the reviewer's critique and really turns a perceived weakness into a
+2203280	2205600	demonstration of the system's ultimate resilience.
+2206320	2209360	You can't avoid shadows, but you can always move the light.
+2209360	2210320	I love that.
+2210820	2215960	And this realization leads to the final, perhaps most profound evolution in the text.
+2216260	2219400	The forward shift, which they call the V4 architecture.
+2219640	2219880	Yes.
+2220620	2223640	Up until this point in the text, the framework has been backwards looking.
+2223780	2223940	Right.
+2224180	2225540	History records what happened.
+2226120	2227340	Types certify what happened.
+2227480	2228960	It's all about auditing the past.
+2229560	2232500	But the forward shift flips the causal arrow entirely.
+2232500	2236880	It says that histories are not fundamental just because they are records of the past.
+2237220	2240600	They are fundamental because they are operators that deform the future.
+2240820	2242960	This is encapsulated in the two-projection architecture.
+2243480	2246980	In this final model, a program doesn't just map a history to a state.
+2247500	2251020	First, it maps a history to a future reachability geometry.
+2251280	2252380	An admissibility field.
+2252380	2252900	Exactly.
+2253340	2258640	It maps out a geometric field of what futures are still allowed to exist, given the history
+2258640	2259500	that has already occurred.
+2260100	2263780	Every time you pop an option, the geometry of the future morphs and shrinks.
+2264220	2270000	And then the system projects that future geometry into an observable state for the user to see.
+2270260	2270460	Yes.
+2270560	2274040	So a program is not a list of instructions to be blindly executed.
+2274240	2276120	It is a reachability sculpture.
+2276380	2276800	Exactly.
+2276800	2282640	Every pop, every refuse is a chisel stroke carving away the marble of possibility,
+2283360	2286000	shaping an admissibility field of what can happen next.
+2286320	2289180	The program's true purpose isn't to calculate a number.
+2289440	2291340	It's to sculpt the boundaries of the future.
+2291640	2293920	It is a stunning conceptual leap.
+2294080	2294780	It really is.
+2294820	2298620	You stop thinking about what the machine is currently holding in memory, the fleeting state,
+2298660	2301760	and you start thinking entirely about the geometry of accessible futures.
+2301960	2304820	Bringing this massive philosophical journey to a close,
+2304820	2307780	the core takeaway for you, the learner, is really profound.
+2308120	2312620	Sphere pop forces us to fundamentally change our relationship with digital reality.
+2312800	2313020	It does.
+2313220	2317060	We have to stop asking the conventional question, what is the current state?
+2317600	2320220	And we have to start asking two much deeper questions.
+2320800	2322720	What futures have we foreclosed?
+2322800	2325220	And what histories did we construct to get here?
+2325500	2330700	Because computation is an irreversible journey through a geometry of possibilities.
+2330700	2334300	It exposes what computation actually does to possibility space,
+2334400	2339420	rather than summarizing the result as a degenerate projection and just throwing away the evidence.
+2339580	2339680	Right.
+2339880	2343740	And I want to leave you with a final lingering thought that builds on this source material.
+2344120	2348580	Because if computation is just the progressive restriction of possibility...
+2348580	2350100	A series of pops and refusals.
+2350180	2350420	Right.
+2350620	2354100	Shaping an admissibility field of what futures are open to us.
+2354500	2357400	Isn't that exactly how human memory and human life works?
+2357480	2358880	The parallel is striking, honestly.
+2358880	2364240	Every choice you make, every career path you take, every person you decide to marry or not marry,
+2364480	2367000	it permanently forecloses a million other futures.
+2367360	2369840	Your life is an irreversible history log.
+2369920	2371500	You can't go back and unpop a decision.
+2371900	2372300	Exactly.
+2372520	2374880	So the real question is, when you look back in your own life,
+2375560	2378380	what collapse rule are you using to observe your own history?
+2378640	2378960	Wow.
+2379000	2383900	Are you just looking at the last right, focusing only on your current job title or your current bank balance?
+2383900	2391140	Or are you using accumulate, just counting your successes and failures as abstract numbers without any context?
+2391460	2394600	And what hidden truths might you uncover if you change the rule?
+2394740	2395020	Right.
+2395420	2402500	If you applied the identity rule and looked at the full, uncompressed sequence of every tiny event and choice that became who you are...
+2402500	2406700	you might find that the history is far more meaningful than the state you currently occupy.
+2407420	2409760	Thank you so much for joining us on this deep dive.
+2410140	2413460	Keep questioning the boundaries of your own worlds, open or closed,
+2413580	2415920	and remember to look at the history, not just the state.
+2416520	2417760	We will see you next time.

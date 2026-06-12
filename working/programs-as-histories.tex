@@ -1,0 +1,3926 @@
+% Programs as Histories: A Case Study in Ontology-Driven Language Design
+% Flyxion, June 2026
+% Compiled with LuaLaTeX
+
+\documentclass[12pt,oneside,openany]{book}
+
+%% ── Fonts ────────────────────────────────────────────────────────────────────
+\usepackage{fontspec}
+\setmainfont{TeX Gyre Pagella}
+\usepackage{booktabs}
+\usepackage{unicode-math}
+\setmathfont{Latin Modern Math}
+
+%% ── Layout ───────────────────────────────────────────────────────────────────
+\usepackage[
+  paperwidth=6.5in, paperheight=9.5in,
+  top=1.1in, bottom=1.1in,
+  inner=1in, outer=0.85in,
+  marginparwidth=0pt
+]{geometry}
+\usepackage{microtype}
+\frenchspacing
+\setlength{\parskip}{0pt}
+\setlength{\parindent}{1.4em}
+
+%% ── Mathematics ──────────────────────────────────────────────────────────────
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{mathtools}
+
+%% ── Theorem environments ─────────────────────────────────────────────────────
+\newtheoremstyle{spherepop}
+  {8pt}{6pt}{\itshape}{}{\bfseries}{.}{0.5em}{}
+\theoremstyle{spherepop}
+\newtheorem{definition}{Definition}[chapter]
+\newtheorem{theorem}[definition]{Theorem}
+\newtheorem{proposition}[definition]{Proposition}
+\newtheorem{lemma}[definition]{Lemma}
+\newtheorem{corollary}[definition]{Corollary}
+
+\newtheoremstyle{remarkstyle}
+  {6pt}{4pt}{\upshape}{}{\bfseries}{.}{0.5em}{}
+\theoremstyle{remarkstyle}
+\newtheorem{remark}[definition]{Remark}
+\newtheorem{example}[definition]{Example}
+\newtheorem{notation}[definition]{Notation}
+
+%% ── Code listings ────────────────────────────────────────────────────────────
+\usepackage{listings}
+\usepackage{xcolor}
+
+\definecolor{codebg}{RGB}{248,248,246}
+\definecolor{codekw}{RGB}{140,40,90}
+\definecolor{codecomment}{RGB}{100,110,100}
+\definecolor{codestring}{RGB}{60,100,160}
+\definecolor{codenumber}{RGB}{90,90,90}
+
+\lstdefinelanguage{Rust}{
+  keywords={pub,fn,let,mut,match,enum,struct,impl,use,mod,
+            where,type,trait,for,in,if,else,return,Ok,Err,
+            Box,Vec,Option,Some,None,Result,Self,self,super,crate},
+  keywordstyle=\color{codekw}\bfseries,
+  comment=[l]{//},
+  commentstyle=\color{codecomment}\itshape,
+  stringstyle=\color{codestring},
+  morestring=[b]",
+  sensitive=true,
+}
+
+\lstset{
+  language=Rust,
+  basicstyle=\small\ttfamily,
+  backgroundcolor=\color{codebg},
+  frame=none,
+  xleftmargin=1.5em,
+  xrightmargin=0.5em,
+  aboveskip=8pt,
+  belowskip=6pt,
+  breaklines=true,
+  showstringspaces=false,
+  numbers=none,
+  tabsize=4,
+}
+
+%% ── Section formatting ───────────────────────────────────────────────────────
+\usepackage{titlesec}
+\titleformat{\chapter}[display]
+  {\large\bfseries\raggedright}
+  {\normalsize\mdseries\scshape\chaptertitlename\ \thechapter}
+  {6pt}
+  {\LARGE\bfseries}
+  [\vspace{4pt}\titlerule]
+\titlespacing*{\chapter}{0pt}{24pt}{20pt}
+
+\titleformat{\section}{\large\bfseries}{\thesection}{0.8em}{}
+\titleformat{\subsection}{\normalsize\bfseries\itshape}{\thesubsection}{0.7em}{}
+
+%% ── Headings, TOC ────────────────────────────────────────────────────────────
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[LE]{\small\itshape\leftmark}
+\fancyhead[RO]{\small\itshape\rightmark}
+\fancyfoot[C]{\small\thepage}
+\renewcommand{\headrulewidth}{0.3pt}
+
+\usepackage{tocloft}
+\setlength{\cftbeforechapskip}{4pt}
+
+%% ── Epigraph ─────────────────────────────────────────────────────────────────
+\usepackage{epigraph}
+\setlength{\epigraphwidth}{0.7\textwidth}
+\renewcommand{\epigraphflush}{center}
+\renewcommand{\epigraphrule}{0pt}
+
+%% ── Hyperref (last) ──────────────────────────────────────────────────────────
+\usepackage[
+  colorlinks=true,
+  linkcolor=black,
+  citecolor=black,
+  urlcolor=black,
+  pdftitle={Programs as Histories},
+  pdfauthor={Flyxion},
+]{hyperref}
+
+%% ── Custom operators ─────────────────────────────────────────────────────────
+\newcommand{\Hist}{\mathbf{Hist}}
+\newcommand{\Obs}{\mathbf{Obs}}
+\newcommand{\Pop}{\mathrm{Pop}}
+\newcommand{\Rfuse}{\mathrm{Refuse}}
+\newcommand{\Bind}{\mathrm{Bind}}
+\newcommand{\Col}{\mathrm{Collapse}}
+\newcommand{\hconcat}{\mathbin{+\mkern-5mu+}}  % history concat
+\newcommand{\Adm}[1]{\mathrm{Admissible}(#1)}
+\newcommand{\Refused}[2]{\mathrm{Refused}(#1,\,#2)}
+\newcommand{\Collapsed}[2]{\mathrm{Collapsed}(#1,\,#2)}
+\newcommand{\vdashA}{\vdash_{\!\mathcal{A}}}
+\newcommand{\yields}{\leadsto}
+\newcommand{\calA}{\mathcal{A}}
+\newcommand{\calH}{\mathcal{H}}
+\newcommand{\calI}{\mathcal{I}}
+
+%% ── Tcolorbox for implementation boxes ───────────────────────────────────────
+\usepackage{tcolorbox}
+\tcbuselibrary{skins,breakable}
+\newtcolorbox{implbox}[1]{
+  colback=codebg,
+  colframe=black!20,
+  fonttitle=\small\bfseries,
+  title={#1},
+  arc=2pt,
+  left=6pt, right=6pt, top=4pt, bottom=4pt,
+  breakable,
+}
+
+% ─────────────────────────────────────────────────────────────────────────────
+\begin{document}
+
+\frontmatter
+
+%% ── Title ────────────────────────────────────────────────────────────────────
+\begin{titlepage}
+\vspace*{2cm}
+\begin{center}
+{\fontsize{26}{32}\selectfont\bfseries Programs as Histories}\\[6pt]
+{\fontsize{18}{24}\selectfont\bfseries\itshape Projection, Admissibility, and the Geometry of Computation}\\[12pt]
+{\large A Case Study in Ontology-Driven Language Design}\\[48pt]
+{\large Flyxion}\\[8pt]
+{\normalsize Independent Research}\\[48pt]
+{\normalsize June 2026}
+\end{center}
+\vfill
+\begin{center}
+\rule{0.5\textwidth}{0.4pt}\\[6pt]
+{\small\itshape
+The implementation did not merely realize the theory;\\
+it exposed which distinctions the theory was still hiding.}
+\end{center}
+\end{titlepage}
+
+%% ── Abstract ─────────────────────────────────────────────────────────────────
+\chapter*{Abstract}
+\addcontentsline{toc}{chapter}{Abstract}
+
+Most programming languages begin with values, variables, and state transitions.
+Spherepop begins elsewhere.
+It begins with the claim that histories are ontologically prior to states,
+and that computation should be understood as the progressive restriction of
+possibility rather than the manipulation of values.
+
+This monograph presents the design and formal theory of the Spherepop
+programming language and interpreter.
+We proceed from ontological commitment through mathematical formalization
+to implementation, treating each software component as the computational
+expression of a prior philosophical necessity.
+
+We establish a formal operational semantics, a typed admissibility judgement
+system, four principal theorems (History Monotonicity, Option Space
+Monotonicity, Collapse Soundness, Replay Equivalence), and a
+category-theoretic account of histories as morphisms and collapse as
+a functor between history and observable-state categories.
+
+Four implementation discoveries retroactively sharpened the theory:
+refusal must carry reasons; collapse must specify quotient rules;
+type checking depends on the assumed boundary of the world;
+and compiler correctness requires history equivalence, not mere output equivalence.
+
+The thesis is outrageous only as a slogan.
+As a design principle it is precise:
+\emph{computation is the progressive restriction of possibility,
+not the manipulation of values.}
+
+\tableofcontents
+
+\mainmatter
+
+% ═══════════════════════════════════════════════════════════════════════════════
+\part{Why State Is the Wrong Primitive}
+% ═══════════════════════════════════════════════════════════════════════════════
+
+\chapter{The State-Centric Assumption}
+
+\epigraph{\itshape
+A program is a sequence of state transformations.
+So runs the unexamined premise of nearly every language ever designed.}{---}
+
+\section{Motivation}
+
+Open any introductory programming text and you encounter a common first lesson:
+a variable is a named location that holds a value.
+A program begins in some initial state,
+instructions modify that state,
+and the final state is the answer.
+
+\begin{lstlisting}
+x = 5
+y = x + 1
+\end{lstlisting}
+
+This appears natural.
+It mirrors how we naively think about physical processes:
+an object has properties; those properties change;
+the current properties constitute the object's state.
+But the appearance of naturalness is produced by a prior choice ---
+the choice to treat present configuration as the fundamental unit of description.
+
+\section{The State Illusion}
+
+Consider what this choice erases.
+In version control, the repository is not merely its current file tree;
+it is the entire sequence of commits that produced it.
+In event sourcing, database records are append-only event logs;
+the current state is a fold over that log.
+In scientific experiment, a measurement is the terminus of a sequence
+of decisions, calibrations, and interpretive choices.
+In evolutionary biology, a genome is a compressed record of selective pressures.
+
+In each case, the historical structure is epistemically and causally prior
+to the present configuration.
+State is the summary.
+History is the substance.
+
+\begin{definition}[State Degeneracy]
+\label{def:degeneracy}
+Let $E$ be an event alphabet, $\calH = \bigcup_{n=0}^{\infty} E^n$
+the set of all finite histories, and $S$ an observable state space.
+A \emph{state projection} is a function $\sigma : \calH \to S$.
+The \emph{degeneracy} of a state $s \in S$ is
+\[
+D(s) \;=\; \bigl|\sigma^{-1}(s)\bigr|.
+\]
+\end{definition}
+
+\begin{proposition}[The State Illusion]
+\label{prop:state-illusion}
+For any nontrivial finite state space $S$ and any non-injective projection
+$\sigma : \calH \to S$, there exist distinct histories $H_1 \neq H_2$ such that
+$\sigma(H_1) = \sigma(H_2)$.
+Consequently,
+\[
+\sigma(H_1) = \sigma(H_2) \;\not\Rightarrow\; H_1 = H_2.
+\]
+\end{proposition}
+
+\begin{proof}
+Since $|\calH|$ is countably infinite and $|S|$ is finite, $\sigma$ cannot be injective.
+Therefore $D(s) > 1$ for at least one $s \in S$,
+which yields the required $H_1 \neq H_2$ with $\sigma(H_1) = \sigma(H_2)$.
+\end{proof}
+
+\begin{remark}
+Proposition~\ref{prop:state-illusion} is the formal statement of what we call
+the \emph{state illusion}: any program that exposes only $\sigma(H)$ to its
+user has silently discarded distinguishing information about the history $H$.
+The conventional debugger is an instrument for reconstructing $H$ from $\sigma(H)$
+after information has already been lost.
+\end{remark}
+
+\section{Consequences for Language Design}
+
+Programming languages that treat state as primary inherit the degeneracy
+of Proposition~\ref{prop:state-illusion} as a structural feature.
+Race conditions arise because $\sigma$ is non-injective on interleaved histories.
+Use-after-free vulnerabilities arise because $\sigma$ conflates histories
+that differ only in deallocation events.
+The auditing and provenance tools that practitioners add to production
+systems are, in each case, partial reconstructions of $H$ from $\sigma(H)$.
+
+The Spherepop design decision follows directly:
+if history is what is lost, history must be what is preserved.
+
+% ─────────────────────────────────────────────────────────────────────────────
+\chapter{The Spherepop Inversion}
+
+\epigraph{\itshape
+State is a collapsed history.
+The collapse is the problem.}{---}
+
+\section{Motivation}
+
+Spherepop proposes the opposite ontological priority from conventional languages.
+Not $\text{State} \to \text{History}$ (history as debugging afterthought)
+but $\text{History} \to \text{State}$ (state as derived projection).
+
+\section{The World Structure}
+
+\begin{definition}[Event Alphabet]
+Let $E$ be a set of \emph{events}, partitioned into primitive generators:
+\[
+E = \{\Pop\} \cup \{\Rfuse\} \cup \{\Bind\} \cup \{\Col\} \cup E_\lambda
+\]
+where $E_\lambda$ contains the lambda-calculus events
+$\{\mathrm{LamIntro}, \mathrm{Apply}\}$ and scope markers.
+\end{definition}
+
+
+\begin{notation}
+Throughout, $\Omega_0$ denotes the \emph{initial finite option space} --- the
+full set of possibilities available at the start of a computation.
+All option spaces $\Omega$ appearing in subsequent definitions satisfy
+$\Omega \subseteq \Omega_0$ and $|\Omega_0| < \infty$.
+\end{notation}
+
+\begin{definition}[Spherepop World]
+\label{def:world}
+A \emph{Spherepop world} is a pair
+\[
+W \;=\; (H,\,\Omega)
+\]
+where $H \in \calH$ is a history (finite event sequence) and
+$\Omega \subseteq \Omega_0$ is the current \emph{option space}
+(a finite set of available symbols), derived from some initial option space $\Omega_0$.
+\end{definition}
+
+\begin{definition}[Commitment Operator]
+\label{def:pop-op}
+The \emph{commitment operator} for symbol $x \in \Omega$ is
+\[
+P_x : (H,\Omega) \;\mapsto\; \bigl(H \hconcat [\Pop(x)],\; \Omega \setminus \{x\}\bigr)
+\]
+where $\oplus$ denotes history concatenation.
+$P_x$ is undefined when $x \notin \Omega$.
+\end{definition}
+
+\begin{definition}[Refusal Operator]
+\label{def:refuse-op}
+The \emph{refusal operator} for symbol $x$ with reason $r$ is
+\[
+R_{x,r} : (H,\Omega) \;\mapsto\; \bigl(H \hconcat [\Rfuse(x,r)],\; \Omega\bigr).
+\]
+Note that $\Omega$ is \emph{unchanged}: refusal records inadmissibility
+without foreclosing structural availability.
+\end{definition}
+
+\begin{definition}[Bind and Collapse Operators]
+\[
+B_{a,b} : (H,\Omega) \;\mapsto\; (H \hconcat [\Bind(a,b)],\; \Omega)
+\]
+\[
+C_{x,c} : (H,\Omega) \;\mapsto\; (H \hconcat [\Col(x,c)],\; \Omega)
+\]
+where $c$ is a collapse rule (see Definition~\ref{def:collapse-rule}).
+\end{definition}
+
+\section{The Conservation Law}
+
+\begin{theorem}[Conservation of Possibility]
+\label{thm:conservation}
+For any legal execution sequence
+$W_0 \xrightarrow{e_1} W_1 \xrightarrow{e_2} \cdots \xrightarrow{e_n} W_n$
+where each step is one of $P_x$, $R_{x,r}$, $B_{a,b}$, or $C_{x,c}$:
+\begin{enumerate}
+\item[(i)] $|H_t|$ is strictly monotonically increasing: $|H_{t+1}| = |H_t| + 1$.
+\item[(ii)] $|\Omega_t|$ is monotonically non-increasing.
+\item[(iii)] Under pure Pop dynamics, $|H_t| + |\Omega_t| = |\Omega_0|$ for all $t$.
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+(i) Every operator appends exactly one event to $H$, so $|H_{t+1}| = |H_t| + 1$.
+
+(ii) $P_x$ removes $x$ from $\Omega$; the remaining operators do not modify $\Omega$.
+Hence $|\Omega_{t+1}| \leq |\Omega_t|$.
+
+(iii) Under pure Pop dynamics, every step removes exactly one element from $\Omega$
+and appends one event to $H$.
+Starting from $|H_0| = 0$ and $|\Omega_0|$,
+after $t$ steps $|H_t| = t$ and $|\Omega_t| = |\Omega_0| - t$,
+giving $|H_t| + |\Omega_t| = |\Omega_0|$.
+\end{proof}
+
+\begin{remark}
+Theorem~\ref{thm:conservation} is the Spherepop analogue of a conservation law
+in physics. It says that possibility is not created or destroyed ---
+it is either consumed (by Pop) or documented as inadmissible (by Refuse).
+The total ``computational material'' $|H_t| + |\Omega_t|$ is invariant
+under pure commitment dynamics.
+\end{remark}
+
+\begin{implbox}{Implementation consequence: \texttt{core/world.rs}}
+The conservation law forces the World to own both \texttt{history} and
+\texttt{options} as co-equal fields. Observable state is absent from the
+struct --- it is always derived on demand.
+\begin{lstlisting}
+pub struct World {
+    pub options: OptionSpace,
+    pub history: History,
+}
+\end{lstlisting}
+The absence of a \texttt{state} field is the mechanization of
+Theorem~\ref{thm:conservation}: observable state is never fundamental.
+\end{implbox}
+
+% ═══════════════════════════════════════════════════════════════════════════════
+\part{Histories Before Computation}
+% ═══════════════════════════════════════════════════════════════════════════════
+
+\chapter{The Algebra of Histories}
+
+\section{Motivation}
+
+Before introducing types, evaluators, or compilers, we must characterize
+the mathematical structure of the objects that are primary in our ontology.
+Histories are not merely lists of events.
+They form a category, and the category structure constrains what operations
+on histories are meaningful.
+
+\section{Definitions}
+
+\begin{definition}[History]
+A \emph{history} over event alphabet $E$ is a finite sequence
+$H = [e_1, e_2, \ldots, e_n]$ with each $e_i \in E$.
+The empty history is denoted $\varepsilon = []$.
+\end{definition}
+
+\begin{definition}[History Concatenation]
+For histories $H_1 = [e_1, \ldots, e_m]$ and $H_2 = [f_1, \ldots, f_n]$,
+\[
+H_1 \hconcat H_2 = [e_1, \ldots, e_m, f_1, \ldots, f_n].
+\]
+\end{definition}
+
+\begin{definition}[History Monoid]
+The triple $(\calH, \hconcat, \varepsilon)$ where $\calH = \bigcup_{n \geq 0} E^n$
+is the \emph{history monoid}.
+\end{definition}
+
+\begin{proposition}
+$(\calH, \hconcat, \varepsilon)$ is a free monoid over $E$.
+\end{proposition}
+
+\begin{proof}
+Associativity of $\oplus$ follows from list concatenation associativity.
+$\varepsilon$ is the left and right identity.
+Freeness: every history $H$ is uniquely determined by its event sequence,
+and no non-trivial relation among generators holds.
+\end{proof}
+
+\section{The History Category}
+
+\begin{definition}[History Category $\Hist$]
+\label{def:hist-category}
+Define the category $\Hist$ as follows:
+\begin{itemize}
+\item \emph{Objects:} option spaces $\Omega \subseteq \Omega_0$.
+\item \emph{Morphisms:} $\mathrm{Hom}(\Omega, \Omega')$ is the set of histories
+  $H$ such that starting from option space $\Omega$, executing $H$ yields $\Omega'$.
+\item \emph{Composition:} $H_2 \circ H_1 = H_1 \hconcat H_2$
+  (execute $H_1$ first, then $H_2$).
+\item \emph{Identity:} $\mathrm{id}_\Omega = \varepsilon$.
+\end{itemize}
+\end{definition}
+
+\begin{proposition}
+$\Hist$ is a well-defined category.
+\end{proposition}
+
+\begin{proof}
+Associativity of composition follows from associativity of $\oplus$.
+$\varepsilon$ is the identity morphism since $H \hconcat \varepsilon = H = \varepsilon \hconcat H$.
+\end{proof}
+
+\begin{remark}
+$\Hist$ is in fact a \emph{free strict monoidal category}:
+tensor product of morphisms is history concatenation (Meld),
+and the monoidal unit is the empty option space with empty history.
+This is much stronger than the simple monoid observation:
+it equips histories with a compositional structure that supports
+parallel as well as sequential combination.
+\end{remark}
+
+\begin{implbox}{Implementation consequence: \texttt{core/history.rs}}
+The free monoid structure forces \texttt{append} (extend by one generator)
+and \texttt{meld} (monoidal composition of two histories) as the only
+legitimate history operations. The absence of \texttt{remove} and \texttt{undo}
+is the mechanization of freeness: there are no relations among generators.
+\begin{lstlisting}
+pub fn append(&mut self, event: Event) {
+    self.events.push(event);    // extend by one generator
+}
+pub fn meld(&mut self, other: &History) {
+    self.events.extend(other.events.iter().cloned()); // monoidal +
+}
+\end{lstlisting}
+\emph{History equality} $H_1 = H_2$ is the primary criterion of
+program identity. This is implemented as structural list equality.
+\end{implbox}
+
+% ─────────────────────────────────────────────────────────────────────────────
+\chapter{Operational Semantics}
+
+\section{Motivation}
+
+A formal operational semantics transforms the philosophical commitments of
+Chapter~2 into mathematically precise transition rules.
+Every execution step is a world-state transition;
+the full execution is a path in the transition system.
+
+\section{Small-Step Transition Rules}
+
+We write $(H, \Omega) \xrightarrow{\alpha} (H', \Omega')$ for a single step
+labelled $\alpha$.
+
+\medskip
+\noindent\textbf{Pop} (commitment):
+\[
+\frac{x \in \Omega}
+{(H,\,\Omega)
+  \;\xrightarrow{\mathrm{pop}(x)}\;
+  (H \hconcat [\Pop(x)],\; \Omega \setminus \{x\})}
+\quad \textsc{[Pop]}
+\]
+
+\noindent\textbf{Refuse} (documented inadmissibility):
+\[
+\frac{}
+{(H,\,\Omega)
+  \;\xrightarrow{\mathrm{refuse}(x,r)}\;
+  (H \hconcat [\Rfuse(x,r)],\; \Omega)}
+\quad \textsc{[Refuse]}
+\]
+Note: \textsc{[Refuse]} has no premise --- any symbol may be refused.
+The effect on the option space is nil; the effect on admissibility is non-nil
+(see Definition~\ref{def:admissibility-contraction}).
+
+\noindent\textbf{Bind} (dependency declaration):
+\[
+\frac{}
+{(H,\,\Omega)
+  \;\xrightarrow{\mathrm{bind}(a,b)}\;
+  (H \hconcat [\Bind(a,b)],\; \Omega)}
+\quad \textsc{[Bind]}
+\]
+
+\noindent\textbf{Collapse} (observation under rule $c$):
+\[
+\frac{\Gamma \vdash t : \Adm{T}}
+{(H,\,\Omega)
+  \;\xrightarrow{\mathrm{collapse}(x,c)}\;
+  (H \hconcat [\Col(x,c)],\; \Omega)}
+\quad \textsc{[Collapse]}
+\]
+The premise $\Gamma \vdash t : \Adm{T}$ is the type-theoretic admissibility
+guard (Chapter~6). Collapse requires an admissibility certificate.
+
+\section{Admissibility as a Set-Valued Function}
+
+\begin{definition}[Admissible Futures]
+\label{def:admissible-futures}
+For a history $H$, the set of \emph{admissible future symbols} is
+\[
+\calA(H) = \Omega_0 \setminus \bigl\{
+  x \;\big|\; \exists r.\, \Rfuse(x,r) \in H
+\bigr\}.
+\]
+\end{definition}
+
+\begin{definition}[Inadmissibility Indicator]
+\label{def:inadmissibility}
+\[
+\calI(H,x) = 1 - \chi_{\calA(H)}(x)
+\]
+where $\chi_A$ is the indicator function of set $A$.
+\end{definition}
+
+\begin{definition}[Admissibility Contraction]
+\label{def:admissibility-contraction}
+Let $H' = H \hconcat [\Rfuse(x,r)]$.
+Then $\calA(H') \subseteq \calA(H)$,
+and specifically $x \notin \calA(H')$ while $x$ may have been in $\calA(H)$.
+\end{definition}
+
+\begin{remark}
+The asymmetry between \textsc{[Pop]} and \textsc{[Refuse]} is critical:
+Pop contracts the \emph{structural} option space $\Omega$.
+Refuse contracts the \emph{admissibility} set $\calA(H)$
+without touching $\Omega$.
+Two paths through possibility space may have the same $\Omega$ while
+having different $\calA(H)$ --- they are structurally equivalent
+but semantically distinguished.
+\end{remark}
+
+% ═══════════════════════════════════════════════════════════════════════════════
+\part{Types as Admissibility Certificates}
+% ═══════════════════════════════════════════════════════════════════════════════
+
+\chapter{From Sets to Reachability Certificates}
+
+\section{Motivation}
+
+The standard interpretation of types --- a type is a set of admissible values ---
+is adequate for state-centric languages.
+It is insufficient for Spherepop.
+
+Consider what a type must certify in a history-primary setting.
+A value $v$ of type $T$ is not merely a member of a set.
+It is the result of a path through history that reached $v$ without
+violating any constraint represented by $T$.
+The type is not a description of $v$ at a moment;
+it is a certificate about the history that produced $v$.
+
+\section{Definitions}
+
+\begin{definition}[Spherepop Types]
+\label{def:types}
+The type language of Spherepop is defined inductively:
+\begin{align*}
+T ::= \;& \mathrm{Unit}
+    \;\mid\; \mathrm{Never}
+    \;\mid\; X \quad (X \text{ a type variable}) \\
+    \;\mid\;& \Pi(x : T_1).T_2 \quad (\text{dependent function type}) \\
+    \;\mid\;& \Adm{T} \quad (\text{admissibility certificate}) \\
+    \;\mid\;& \Refused{T}{r} \quad (\text{documented inadmissibility}) \\
+    \;\mid\;& \Collapsed{T}{c} \quad (\text{sealed observation under rule } c) \\
+    \;\mid\;& \mathrm{Process}(T_1 \rightsquigarrow T_2)
+\end{align*}
+The simple function type $T_1 \to T_2$ is notation for $\Pi(\_ : T_1).T_2$.
+\end{definition}
+
+\begin{remark}
+The distinctive types are $\Adm{T}$, $\Refused{T}{r}$, and $\Collapsed{T}{c}$.
+They carry not just the inner type but a \emph{certificate}:
+\begin{itemize}
+\item $\Adm{T}$: the path that produced this term was admissible.
+\item $\Refused{T}{r}$: the term was encountered but found inadmissible for reason $r$.
+  The reason is part of the \emph{type} --- two terms refused for different reasons
+  have genuinely different types.
+\item $\Collapsed{T}{c}$: an admissible term was observed under collapse rule $c$
+  and the observation is sealed.
+  The rule $c$ is part of the type.
+\end{itemize}
+\end{remark}
+
+% ─────────────────────────────────────────────────────────────────────────────
+\chapter{The Admissibility Type System}
+
+\section{Typing Judgements}
+
+We write $\Gamma \vdash t : T$ for the standard typing judgement
+(term $t$ has type $T$ in context $\Gamma$) and
+$\Gamma \vdashA t : T$ for the \emph{admissibility judgement}
+(the path to $t$ was admissible under $\Gamma$).
+
+\section{Typing Rules}
+
+\subsection{Pop: Issuing an Admissibility Certificate}
+
+\[
+\frac{\Gamma \vdash t : T}
+{\Gamma \vdash \mathrm{pop}(t) : \Adm{T}}
+\quad \textsc{[T-Pop]}
+\]
+
+Pop transforms any typed term into an admissible term.
+It is the mechanism by which structural commitment produces a reachability certificate.
+
+\subsection{Refuse: Recording Inadmissibility with Reason}
+
+\[
+\frac{\Gamma \vdash t : T \quad r \in \mathsf{RefusalReason}}
+{\Gamma \vdash \mathrm{refuse}(t,r) : \Refused{T}{r}}
+\quad \textsc{[T-Refuse]}
+\]
+
+Refusal is typed: the type carries the reason.
+A term refused for \textsc{ConstraintViolation}$(c)$ has a type that is
+\emph{formally distinct} from one refused for \textsc{NotAvailable}.
+
+\subsection{Collapse: Sealing an Admissible Observation}
+
+\[
+\frac{\Gamma \vdash t : \Adm{T} \quad c \in \mathsf{CollapseRule}}
+{\Gamma \vdash \mathrm{collapse}(t,c) : \Collapsed{T}{c}}
+\quad \textsc{[T-Collapse]}
+\]
+
+Collapse requires an admissibility certificate.
+A term whose type is not $\Adm{\cdot}$ cannot be collapsed --- this is a hard
+type error, not a runtime exception.
+
+\subsection{Bind: Recording a Dependency}
+
+\[
+\frac{\Gamma \vdash a : T_1 \quad \Gamma \vdash b : T_2}
+{\Gamma \vdash \mathrm{bind}(a,b) : \mathrm{Process}(T_1 \rightsquigarrow T_2)}
+\quad \textsc{[T-Bind]}
+\]
+
+\subsection{Lambda and Application}
+
+\[
+\frac{\Gamma, x : T_1 \vdash b : T_2}
+{\Gamma \vdash \lambda x : T_1.b
+  : \Pi(x : T_1).T_2}
+\quad \textsc{[T-Lam]}
+\]
+
+\[
+\frac{\Gamma \vdash f : \Pi(x : T_1).T_2
+      \quad
+      \Gamma \vdash a : T_1}
+{\Gamma \vdash f\, a : T_2[x := a]}
+\quad \textsc{[T-App]}
+\]
+
+\subsection{Open- and Closed-World Variable Rules}
+
+\[
+\frac{(x : T) \in \Gamma}
+{\Gamma \vdash x : T}
+\quad \textsc{[T-Var]}
+\]
+
+\[
+\frac{x \notin \Gamma \quad \Gamma\ \text{is open-world}}
+{\Gamma \vdash x : \mathrm{Unit}}
+\quad \textsc{[T-Var-Open]}
+\]
+
+\[
+\frac{x \notin \Gamma \quad \Gamma\ \text{is closed-world}}
+{\Gamma \nvdash x : T \text{ for any } T}
+\quad \textsc{[T-Var-Closed]}
+\]
+
+\section{Principal Theorems}
+
+\begin{theorem}[Collapse Soundness]
+\label{thm:collapse-soundness}
+If $\Gamma \vdash \mathrm{collapse}(t, c) : T$ then
+$\Gamma \vdash t : \Adm{T'}$ for some $T'$, and $T = \Collapsed{T'}{c}$.
+\end{theorem}
+
+\begin{proof}
+By inversion on rule \textsc{[T-Collapse]}: the only rule that derives
+a Collapse judgement requires the premise $\Gamma \vdash t : \Adm{T}$,
+so the inner term must have an admissible type,
+and the collapse type is $\Collapsed{T}{c}$ by definition.
+\end{proof}
+
+\begin{theorem}[Type Preservation]
+\label{thm:preservation}
+If $\Gamma \vdash t : T$ and $t \to t'$, then $\Gamma \vdash t' : T$.
+\end{theorem}
+
+\begin{proof}[Proof sketch]
+By structural induction on the reduction relation $\to$.
+The key cases are \textsc{[T-Pop]}, \textsc{[T-Refuse]}, and \textsc{[T-Collapse]},
+each of which maps a reduction step to an admissibility transformation
+that is closed under the respective rule.
+Beta-reduction $(\lambda x.b)\, a \to b[x := a]$ requires a
+substitution lemma ($\Gamma, x:T_1 \vdash b:T_2$ and $\Gamma \vdash a:T_1$
+implies $\Gamma \vdash b[x:=a]:T_2[x:=a]$) and a canonical forms lemma,
+whose proofs we omit; the current implementation realises only the core
+fragment and these results serve as proof obligations for future work.
+\end{proof}
+
+\begin{theorem}[Progress]
+\label{thm:progress}
+If $\vdash t : T$ (well-typed in the empty context) then either:
+\begin{enumerate}
+\item[(i)] $t$ is a value, or
+\item[(ii)] there exists $t'$ such that $t \to t'$.
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+By structural induction on $t$.
+Variable terms are values.
+Lambda terms are values (closures).
+$\mathrm{pop}$, $\mathrm{refuse}$, $\mathrm{bind}$, and $\mathrm{collapse}$
+of a well-typed inner term either reduce (if the inner term reduces)
+or produce a value (if the inner term is a value).
+\end{proof}
+
+% ─────────────────────────────────────────────────────────────────────────────
+\chapter{Open Worlds and Closed Worlds}
+
+\epigraph{\itshape
+The type checker's behavior depends not only on the term but on
+the assumed boundary of the world.}{---}
+
+\section{The Discovery}
+
+During implementation of the Spherepop type checker, a conflict emerged.
+The interpreter treated free variables as symbolic atoms:
+an unbound $x$ evaluates to \texttt{Value::Symbol("x")}.
+The type checker, in its first version, rejected unbound variables as errors.
+
+Programs that evaluated correctly consistently failed type-checking.
+The apparent ``bug fix'' was to make the type checker also treat free variables
+as having type \texttt{Unit}.
+
+But this apparent bug conceals a genuine theoretical question:
+\emph{which behavior is correct?}
+The answer is that both are correct, under different assumptions
+about the boundary of the world.
+
+\section{Formal Definitions}
+
+\begin{definition}[Closed-World Context]
+A \emph{closed-world context} $\Gamma_c = \{x_1 : T_1, \ldots, x_n : T_n\}$
+satisfies:
+\[
+x \notin \Gamma_c \;\Rightarrow\; \Gamma_c \vdash x : \bot.
+\]
+The absence of a declaration is the absence of the object.
+Rule \textsc{[T-Var-Closed]} applies.
+\end{definition}
+
+\begin{definition}[Open-World Context]
+An \emph{open-world context} $\Gamma_o = \Gamma_c \cup U$
+where $U$ is the \emph{unresolved possibility manifold}
+(symbols that have not been declared but have not been refused) satisfies:
+\[
+x \notin \Gamma_c \;\Rightarrow\; \Gamma_o \vdash x : \mathrm{Unit}.
+\]
+The absence of a declaration is undecided possibility.
+Rule \textsc{[T-Var-Open]} applies.
+\end{definition}
+
+\begin{proposition}[Monotonicity of Provability]
+\label{prop:ow-monotone}
+\[
+\Gamma_c \subseteq \Gamma_o
+\quad\Rightarrow\quad
+\mathrm{Provable}(\Gamma_c) \subseteq \mathrm{Provable}(\Gamma_o).
+\]
+\end{proposition}
+
+\begin{proof}
+Every typing derivation valid under $\Gamma_c$ is valid under $\Gamma_o$,
+since $\Gamma_o$ extends $\Gamma_c$ and adds only the open-world variable rule,
+which derives additional types for previously-error terms.
+\end{proof}
+
+\begin{remark}
+The open/closed world distinction is not an engineering convenience.
+It is the mechanization of an epistemological commitment:
+a closed-world type checker assumes complete knowledge of the reachable;
+an open-world type checker assumes partial knowledge.
+A language whose fundamental ontology is about possibility space
+cannot leave this distinction implicit.
+\end{remark}
+
+\begin{implbox}{Implementation consequence: \texttt{types/checker.rs}}
+\begin{lstlisting}
+pub enum TypeMode {
+    ClosedWorld,  // unknown variable is a type error
+    OpenWorld,    // unknown variable has type Unit
+}
+pub struct Context {
+    bindings: HashMap<String, Type>,
+    pub mode: TypeMode,
+}
+\end{lstlisting}
+The mode is \emph{preserved through \texttt{extend}}: a closed-world context
+cannot silently become open-world mid-derivation.
+\end{implbox}
+
+% ═══════════════════════════════════════════════════════════════════════════════
+\part{Collapse as Quotient}
+% ═══════════════════════════════════════════════════════════════════════════════
+
+\chapter{Observable State as a Quotient of History}
+
+\section{Motivation}
+
+The original Spherepop design represented collapse as:
+\begin{lstlisting}
+Event::Collapse(Symbol)
+\end{lstlisting}
+A collapse event was simply a record that a symbol had been committed.
+This was insufficient, and the insufficiency is philosophically illuminating.
+
+\emph{Observable state depends on how you look.}
+The same history, examined by different observers with different
+observational frameworks, yields different observable states.
+A collapse without a rule is a collapse into an unspecified notion of visibility.
+
+\section{Definitions}
+
+\begin{definition}[Collapse Rule]
+\label{def:collapse-rule}
+A \emph{collapse rule} is a function $c : \calH \to O_c$
+from the history monoid to an \emph{observational space} $O_c$.
+\end{definition}
+
+\begin{definition}[Observational Equivalence]
+\label{def:obs-equiv}
+Two histories $H_1, H_2 \in \calH$ are \emph{observationally equivalent
+under rule $c$}, written $H_1 \sim_c H_2$, if and only if
+$c(H_1) = c(H_2)$.
+\end{definition}
+
+\begin{definition}[Observable State as Quotient]
+\label{def:obs-quotient}
+The \emph{observable state space} under rule $c$ is the quotient:
+\[
+O_c = \calH \big/ {\sim_c}.
+\]
+An observable state is an equivalence class of histories.
+\end{definition}
+
+\begin{remark}
+Definition~\ref{def:obs-quotient} is the mathematical heart of the monograph.
+Observable state is \emph{not} a state.
+Observable state is a quotient.
+Two histories that are globally distinct may be observationally indistinguishable
+under a specific collapse rule.
+This is a feature, not a deficiency: the collapse rule specifies which
+distinctions are relevant to a given question.
+\end{remark}
+
+\section{The Four Canonical Rules}
+
+\begin{definition}[Identity Rule]
+$c_I : \calH \to \calH$ is the identity: $c_I(H) = H$.
+Under Identity, every event is visible and $O_I \cong \calH$.
+\end{definition}
+
+\begin{definition}[LastWrite Rule]
+$c_{LW}$ maps $H$ to the most recent pop for each symbol,
+with subsequent refusals retroactively removing symbols:
+\[
+c_{LW}(H) = \{x \mapsto 1 \mid \Pop(x) \in H
+  \text{ and } \nexists r. \Rfuse(x,r) \in H \text{ after the last } \Pop(x)\}.
+\]
+\end{definition}
+
+\begin{definition}[Accumulate Rule]
+$c_{\mathrm{acc}}(H)$ maps each symbol to the count of its Pop events:
+\[
+c_{\mathrm{acc}}(H)(x) = |\{i \mid e_i = \Pop(x)\}|.
+\]
+\end{definition}
+
+\begin{definition}[Projection Rule]
+For a label prefix $L$, the \emph{projection rule} $\pi_L$ restricts to
+events whose symbol names share prefix $L$:
+\[
+\pi_L(H) = [e_i \in H \mid \mathrm{sym}(e_i) \text{ starts with } L].
+\]
+\end{definition}
+
+\begin{proposition}[Coarsening Order]
+The collapse rules form a partial order by coarsening:
+$c_1 \leq c_2$ iff $\sim_{c_2} \;\subseteq\; \sim_{c_1}$
+(finer equivalence = more informative observation).
+Under this order: $c_I$ is the finest (most informative) rule;
+$\pi_L$ is coarser than $c_I$; $c_{LW}$ and $c_{\mathrm{acc}}$ are
+incomparable in general.
+\end{proposition}
+
+\section{Observational Equivalence Theorem}
+
+\begin{theorem}[Observational Equivalence]
+\label{thm:obs-equiv}
+For any collapse rule $c$ and histories $H_1, H_2$:
+$H_1 \sim_c H_2$ if and only if $c(H_1) = c(H_2)$.
+Two programs whose interpreter and VM executions yield
+$c$-equivalent histories are \emph{observationally indistinguishable}
+under rule $c$.
+\end{theorem}
+
+\begin{corollary}[History Equivalence Implies Observational Equivalence]
+If $I(p) = V(C(p))$ (Replay Equivalence, Theorem~\ref{thm:replay}),
+then for every collapse rule $c$:
+\[
+c(I(p)) = c(V(C(p))).
+\]
+\end{corollary}
+
+\begin{implbox}{Implementation consequence: \texttt{core/observable.rs}}
+\begin{lstlisting}
+pub fn derive(history: &History, rule: &CollapseRule)
+    -> ObservableState
+pub fn equivalent(h1: &History, h2: &History,
+                  rule: &CollapseRule) -> bool {
+    Self::derive(h1, rule) == Self::derive(h2, rule)
+}
+\end{lstlisting}
+Observable state is \emph{never stored} in the World. It is always
+freshly derived. The function \texttt{observe} is a method, not a field,
+mechanizing the philosophical claim that observable state is a quotient.
+\end{implbox}
+
+% ═══════════════════════════════════════════════════════════════════════════════
+\part{Lambda Calculus as Derived Structure}
+% ═══════════════════════════════════════════════════════════════════════════════
+
+\chapter{Beta-Reduction as History Contraction}
+
+\section{Motivation}
+
+In the standard account, computation is explained in terms of functions.
+Every other computational phenomenon is a deviation from or extension
+of the basic function-application model.
+
+Spherepop reverses this priority.
+Functions are not primitive.
+They are a convenient notation for a particular pattern in history:
+\emph{deferred commitment}.
+
+\section{Beta-Reduction as Collapse}
+
+\begin{definition}[Lambda History Encoding]
+A lambda abstraction $\lambda x.M$ applied to argument $N$ generates the
+history fragment:
+\[
+[\mathrm{LamIntro}(x),\, \mathrm{Apply}(N)].
+\]
+The application commits $x$ to $N$, yielding the continued history
+beginning with $[\Pop(x)]$ (in the symbolic history of the parameter's use).
+\end{definition}
+
+\begin{proposition}[Beta as Quotient]
+\label{prop:beta-quotient}
+Beta reduction
+\[
+(\lambda x.M)\,N \;\to\; M[x := N]
+\]
+is the projection of the history
+$[\mathrm{LamIntro}(x), \mathrm{Apply}(N)]$
+onto its observable state under the substitution collapse rule
+$c_{\mathrm{subst}}$, defined by
+$c_{\mathrm{subst}}(H)(x) = N$ whenever $\mathrm{Apply}(N) \in H$
+after $\mathrm{LamIntro}(x)$.
+\end{proposition}
+
+\begin{remark}
+Proposition~\ref{prop:beta-quotient} gives a precise content to the informal
+claim that ``beta reduction is a special case of collapse.''
+Function application is commitment: $x$ can no longer range over any value
+other than $N$.
+The application event is a Pop of the parameter $x$ from the option space
+of its possible values.
+The reduced term $M[x := N]$ is the observable state of the application history
+under $c_{\mathrm{subst}}$.
+\end{remark}
+
+\section{Closures as Frozen Possibilities}
+
+\begin{definition}[Closure]
+A \emph{closure} is a pair $(\lambda x.M, \rho)$ where $\rho$ is the
+environment (a partial history of binding events) at the time of lambda introduction.
+\end{definition}
+
+\begin{remark}
+A closure is a \emph{frozen possibility}: a partial future that will generate
+events when applied, suspended in a form that can be passed and stored.
+The environment $\rho$ is the reachability context frozen at the moment
+of lambda introduction --- the option space and historical commitments
+present when the abstraction was formed.
+\end{remark}
+
+\begin{implbox}{Implementation consequence: \texttt{eval/value.rs}}
+\begin{lstlisting}
+Value::Closure {
+    param: Symbol,
+    param_ty: Type,
+    body: Box<Term>,
+    env: Env,        // frozen reachability context
+}
+\end{lstlisting}
+The \texttt{env} field is the mechanization of ``frozen possibilities.''
+It carries the historical commitments made at closure creation time.
+When the closure is applied, this context is restored.
+\end{implbox}
+
+% ═══════════════════════════════════════════════════════════════════════════════
+\part{Compiling Histories}
+% ═══════════════════════════════════════════════════════════════════════════════
+
+\chapter{The Failure of Traditional Compiler Correctness}
+
+\section{Motivation}
+
+The standard notion of compiler correctness is:
+\begin{center}
+\emph{A compiler is correct if the compiled program produces the same output as
+the interpreted program for every input.}
+\end{center}
+This criterion is adequate for state-centric languages.
+It is insufficient for Spherepop.
+
+Two programs that produce the same final value may have constructed
+radically different histories to get there,
+and those histories are part of what the program \emph{is}.
+
+\section{History Equivalence as Correctness}
+
+\begin{definition}[Interpreter and VM]
+Let $I : P \to \calH$ be the interpreter function mapping programs to histories,
+and $V : \mathrm{IR} \to \calH$ the VM mapping event-IR blocks to histories,
+and $C : P \to \mathrm{IR}$ the compiler.
+\end{definition}
+
+\begin{definition}[Spherepop Compiler Correctness]
+\label{def:correctness}
+A compiler $C$ is \emph{correct} if for all programs $p$ and
+initial worlds $W$:
+\[
+I(p, W).\mathrm{history} = V(C(p), W).\mathrm{history}.
+\]
+Output equivalence (same final value) is a strictly weaker criterion
+that is insufficient for Spherepop.
+\end{definition}
+
+\begin{theorem}[Replay Equivalence]
+\label{thm:replay}
+The Spherepop compiler satisfies Definition~\ref{def:correctness}
+for all programs expressible in the Spherepop core calculus
+(Refuse, Bind, Collapse, and Seq compositions).
+\end{theorem}
+
+\begin{proof}[Proof sketch]
+By structural induction on program terms.
+Base cases: for each primitive operation (Refuse, Bind, Collapse, Pop),
+the compiler emits the corresponding \texttt{IrEvent} variant,
+and the VM step for that variant performs exactly the same World mutation
+as the interpreter's eval case for the corresponding \texttt{Term} variant.
+The history appended is therefore identical.
+Inductive case (Seq): each sub-term is compiled in order,
+and since histories compose by concatenation (the monoid operation),
+the composed history of the compiled form equals the composed history
+of the interpreted form by the inductive hypothesis.
+\end{proof}
+
+\begin{remark}
+Theorem~\ref{thm:replay} is not merely an engineering correctness result.
+It is the mechanization of the claim that programs \emph{are} their histories.
+The test suite verifies it as a first-class property:
+\begin{lstlisting}
+assert_eq!(
+    world_interp.history,
+    world_compiled.history,
+);
+\end{lstlisting}
+Every passing instance of this assertion is a mechanized proof obligation.
+\end{remark}
+
+% ─────────────────────────────────────────────────────────────────────────────
+\chapter{Event IR: Instructions That Are Not Instructions}
+
+\section{Motivation}
+
+Conventional intermediate representations encode instructions that
+mutate machine state.
+Spherepop IR encodes \emph{events} --- records of occurrences
+that persist as part of the history the VM is constructing.
+
+\begin{definition}[Event IR]
+The Spherepop intermediate representation is a sequence of \texttt{IrEvent} terms:
+\[
+\mathrm{IR} ::= \mathrm{Pop} \;\mid\; \mathrm{Refuse}(r) \;\mid\;
+  \mathrm{Collapse}(c) \;\mid\; \mathrm{Bind} \;\mid\;
+  \mathrm{Load}(x) \;\mid\; \mathrm{Apply} \;\mid\; \cdots
+\]
+Each event carries its reason or rule as a first-class argument,
+preserving the full certificate structure of the source term.
+\end{definition}
+
+\begin{proposition}[IR Faithfulness]
+The compilation function $C : \mathrm{Term} \to \mathrm{IR}$ is
+\emph{faithful}: for every primitive term $t$,
+$C(t)$ contains exactly the event variants that $I(t)$ would append
+to the history, with identical arguments.
+\end{proposition}
+
+\begin{proof}
+By inspection of the compiler's \texttt{lower} function and the
+interpreter's \texttt{eval} function:
+each branch of \texttt{lower} emits the \texttt{IrEvent} variant that
+corresponds bijectively to the \texttt{Event} appended by the matching
+\texttt{eval} branch.
+\end{proof}
+
+\begin{remark}
+The IR Faithfulness Proposition is what makes Theorem~\ref{thm:replay}
+(Replay Equivalence) provable. The VM does not ``execute'' IR events;
+it \emph{reconstructs} the history that the interpreter would have built.
+The VM is a history reconstruction engine, not a state mutation engine.
+\end{remark}
+
+% ═══════════════════════════════════════════════════════════════════════════════
+\part{Category Theory and Deep Structure}
+% ═══════════════════════════════════════════════════════════════════════════════
+
+\chapter{Histories as Morphisms}
+
+\section{The History Category Revisited}
+
+We introduced $\Hist$ in Chapter~3 as the category of option spaces
+and histories.
+We now develop its structure more carefully in relation to observable state.
+
+\begin{definition}[Option-Space Transition Sequences]
+A \emph{transition sequence} from $\Omega$ to $\Omega'$ is a history $H$
+such that executing $H$ starting from $\Omega$ yields $\Omega'$.
+This is the morphism $H : \Omega \to \Omega'$ in $\Hist$.
+\end{definition}
+
+\begin{proposition}[$\Hist$ as a Free Strict Monoidal Category]
+$(\Hist, \oplus, \varepsilon, \otimes)$ is a free strict monoidal category where:
+\begin{itemize}
+\item Tensor product $H_1 \otimes H_2$ is the Meld operation
+  (parallel composition of histories).
+\item Monoidal unit is the empty option space with empty history.
+\item Sequential composition is $\oplus$ (Definition~\ref{def:hist-category}).
+\end{itemize}
+\end{proposition}
+
+% ─────────────────────────────────────────────────────────────────────────────
+\chapter{Collapse Functors}
+
+\section{Collapse as a Functor $\Hist \to \Obs_c$}
+
+\begin{definition}[Observable-State Category $\Obs_c$]
+For a collapse rule $c$, define the category $\Obs_c$:
+\begin{itemize}
+\item \emph{Objects:} observable states $o \in O_c$.
+\item \emph{Morphisms:} $\mathrm{Hom}(o_1, o_2)$ is the set of observable
+  transitions that transform $o_1$ into $o_2$ under rule $c$.
+\item \emph{Composition:} sequential observable transition.
+\end{itemize}
+\end{definition}
+
+\begin{definition}[Collapse Functor]
+\label{def:collapse-functor}
+For a collapse rule $c$, define the \emph{collapse functor}
+$F_c : \Hist \to \Obs_c$ by:
+\[
+F_c(\Omega) = c(\varepsilon_\Omega) \quad \text{(object map)}
+\]
+where $\varepsilon_\Omega$ denotes the empty history at object $\Omega$
+(i.e.\ the identity morphism at $\Omega$ in $\Hist$).
+\[
+F_c(H) = c(H) \quad \text{(morphism map)}
+\]
+\end{definition}
+
+\begin{theorem}[Functoriality of Collapse]
+\label{thm:functor}
+$F_c$ is a well-defined functor when the collapse rule $c$
+respects composition, i.e., when
+\[
+c(H_2 \hconcat H_1) = c(H_2) \circ c(H_1)
+\]
+(up to the appropriate notion of composition in $\Obs_c$).
+\end{theorem}
+
+\begin{proof}
+Identity preservation: $F_c(\varepsilon) = c(\varepsilon) = \mathrm{id}_{O_c}$
+since the empty history yields the empty observable state,
+which is the identity transformation in $\Obs_c$.
+
+Composition preservation:
+\[
+F_c(H_2 \circ H_1) = F_c(H_1 \hconcat H_2) = c(H_1 \hconcat H_2).
+\]
+When $c$ respects composition:
+$c(H_1 \hconcat H_2) = c(H_2) \circ c(H_1) = F_c(H_2) \circ F_c(H_1)$.
+\end{proof}
+
+\begin{remark}
+Theorem~\ref{thm:functor} elevates collapse from an implementation detail
+to a category-theoretic object.
+Collapse is not merely ``reading off a value.''
+It is a structure-preserving map between categories.
+The collapse rule specifies \emph{which structures are preserved} ---
+and different rules preserve different structures.
+\end{remark}
+
+\begin{remark}
+The four canonical rules have different functoriality properties:
+$c_I$ (Identity) is trivially functorial (it is the identity functor on $\Hist$).
+$c_{\mathrm{acc}}$ (Accumulate) is functorial when the observational composition
+is addition of count-maps.
+$\pi_L$ (Projection) is functorial: projection of a concatenated history
+equals the concatenation of the projected histories.
+$c_{LW}$ (LastWrite) is \emph{not} generally functorial, since the last-write
+of a concatenated history is not the composition of the last-writes of its parts
+--- a later segment can retroactively affect the observable state of an earlier one.
+\end{remark}
+
+% ═══════════════════════════════════════════════════════════════════════════════
+\part{Representation and Reachability}
+% ═══════════════════════════════════════════════════════════════════════════════
+
+\chapter{Filters Create Worlds}
+\label{chap:filters}
+
+\epigraph{\itshape
+Every representation creates a world with its own notions of sameness,
+difference, adjacency, and reachability.}{---}
+
+\section{Motivation}
+
+The Spherepop collapse framework naturally connects to a broader claim about
+representations:
+\emph{representations do not merely preserve or lose information ---
+they reorganize the topology of distinguishability.}
+
+\section{The Santoro–Waghmare–Panaretos Connection}
+
+We interpret a recent result in functional data analysis through the lens
+of admissibility geometry.
+
+Let $P, Q \in \mathcal{P}(X)$ be probability measures on a separable metric space.
+The kernel covariance embedding
+\[
+P \;\mapsto\; S_P \;\mapsto\; \mathcal{N}(0, S_P)
+\]
+maps distributions to Gaussian measures on a Hilbert space.
+
+The result of Santoro, Waghmare, and Panaretos (2024) shows that
+for distinct continuous distributions,
+$\mathcal{N}(0, S_P)$ and $\mathcal{N}(0, S_Q)$ are mutually singular.
+The standard reading is that infinite-dimensional representations amplify
+tiny distinctions into maximal separations.
+
+\begin{definition}[Reachability Class]
+For a Gaussian measure $\mathcal{N}(0, S_P)$, define its
+\emph{reachability class}:
+\[
+R(P) = \bigl\{Q : \mathcal{N}(0, S_Q) \sim \mathcal{N}(0, S_P)\bigr\}
+\]
+where $\sim$ denotes measure equivalence (mutual absolute continuity).
+\end{definition}
+
+\begin{theorem}[Topological Separation via Representation]
+\label{thm:separation}
+Under the conditions of the Santoro--Waghmare--Panaretos theorem,
+for distinct continuous distributions $P \neq Q$:
+\[
+d(P, Q) \ll 1
+\quad \text{(metric closeness downstairs)}
+\]
+yet
+\[
+R(P) \cap R(Q) = \varnothing
+\quad \text{(topological separation upstairs).}
+\]
+The kernel embedding converts metric closeness into topological separation.
+\end{theorem}
+
+\begin{remark}
+Theorem~\ref{thm:separation} is related to the Feldman--Hájek theorem,
+which establishes that two Gaussian measures are either equivalent ($\mu \sim \nu$)
+or mutually singular ($\mu \perp \nu$) --- there is no continuum.
+In the reachability class language: $R(P) = \{P\}$ for almost all $P$.
+\end{remark}
+
+\section{The Representation-Ontology Reading}
+
+The standard interpretation of Theorem~\ref{thm:separation} is epistemological:
+\emph{distinct distributions become perfectly distinguishable.}
+
+The CLIO/Spherepop interpretation is ontological:
+\emph{representation can reorganize possibility space itself.}
+
+\begin{proposition}[Collapse Rules as Reachability Filters]
+Spherepop collapse rules are computationally analogous to the kernel embedding
+in Theorem~\ref{thm:separation}.
+The rule $c$ maps the history space $\calH$ to an observable state space $O_c$,
+changing which histories are distinguishable.
+Two histories in the same equivalence class $[H]_{\sim_c}$ are
+\emph{topologically identified} under rule $c$:
+they occupy the same stratum of observable state space.
+\end{proposition}
+
+\begin{remark}
+The parallel is precise.
+Before applying a collapse rule:
+histories may be metrically close (they differ in few events)
+yet topologically distinct (they produce different observable states under $c$).
+Conversely: histories that are metrically distant (many events differ)
+may be topologically identified (they produce the same observable state under $c$).
+The collapse rule, like the kernel embedding, changes \emph{adjacency},
+not just distance.
+\end{remark}
+
+\section{CLIO Projections and History Strata}
+
+\begin{definition}[CLIO Projection]
+% CLIO = Constraint-Limited Information Ontology (Flyxion, 2023--).
+A CLIO projection $\pi : X \to M$ maps a representation space $X$
+to a manifold $M$ of observational strata.
+In the Spherepop setting:
+$X = \calH$ (history space),
+$M = O_c$ (observable state space under rule $c$),
+and $\pi = F_c$ (the collapse functor).
+\end{definition}
+
+\begin{remark}
+Observable states under Projection rule $\pi_L$ are precisely the CLIO strata
+corresponding to the label $L$.
+Histories become trajectories through stratum space.
+The collapse functor $F_c$ is the formalization of CLIO's projection $\pi$.
+\end{remark}
+
+% ═══════════════════════════════════════════════════════════════════════════════
+\part{Programs as Reachability Sculptures}
+% ═══════════════════════════════════════════════════════════════════════════════
+
+\chapter{The Codebase as a Minimal Working Ontology}
+
+\section{Each Module as Ontological Necessity}
+
+The Spherepop codebase is organized to make philosophical dependencies visible.
+The following table summarizes the justification for each module:
+
+\medskip
+\begin{center}
+\begin{tabular}{lp{0.58\textwidth}}
+\toprule
+Module & Ontological Necessity \\
+\midrule
+\texttt{core/event.rs}
+& Events are primitive. They cannot be derived from types or values
+  without circularity. The codebase must begin here. \\[4pt]
+\texttt{core/history.rs}
+& History is computational identity.
+  The free monoid structure (append, meld; no remove) is the mechanization
+  of irreversibility. History equality is the primary identity criterion. \\[4pt]
+\texttt{core/option\_space.rs}
+& Possibility is a runtime structure, not a static specification.
+  The conservation law requires both History and OptionSpace to coexist. \\[4pt]
+\texttt{core/observable.rs}
+& Observable state is derived, not primary.
+  Separating it from History enforces the metaphysical priority claim. \\[4pt]
+\texttt{types/ty.rs}
+& Types must reflect admissibility structure.
+  \texttt{Admissible}, \texttt{Refused}, and \texttt{Collapsed}
+  are reachability certificates, not value sets. \\[4pt]
+\texttt{types/checker.rs}
+& Admissibility must be verified.
+  \texttt{TypeMode} is the mechanization of the open/closed world epistemology. \\[4pt]
+\texttt{eval/interpreter.rs}
+& Evaluation is historical construction, not value computation.
+  Returning \texttt{EvalResult\{value, steps, admissible\}} is forced. \\[4pt]
+\texttt{compiler/lower.rs}
+& Compilation must preserve possibility structure.
+  Emitting \texttt{IrEvent} rather than \texttt{IrInstruction} is forced. \\[4pt]
+\texttt{ir/event\_ir.rs}
+& The IR must be event-based because the target runtime is history-based.
+  \texttt{Refuse(reason)} and \texttt{Collapse(rule)} carry certificates. \\[4pt]
+\texttt{vm/machine.rs}
+& Execution is replay, not transformation.
+  The VM reconstructs history; correctness is history identity. \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\section{The Implemented Milestones}
+
+\begin{description}
+\item[v0.1 — History-first execution.]
+World = History + OptionSpace; evaluation returns EvalResult alongside a World;
+the conservation law is enforced as a hard runtime invariant.
+
+\item[v0.2 — Documented refusal.]
+\texttt{RefusalReason} is introduced as a first-class type,
+threading through events, types, values, and IR.
+Refusal is structured inadmissibility with a permanent certificate.
+
+\item[v0.3 — Collapse as quotient.]
+\texttt{CollapseRule} specifies the observational framework.
+Observable state is derived by \texttt{ObservableState::derive(history, rule)}.
+Observational equivalence becomes rule-relative and formally testable.
+
+\item[v0.4 — TypeMode.]
+\texttt{TypeMode::OpenWorld} and \texttt{TypeMode::ClosedWorld} are introduced.
+The type checker's behavior depends on this mode,
+mechanizing the philosophical discovery about world boundaries.
+
+\item[v0.5 — History equivalence as compiler correctness.]
+The correctness criterion $I(p).\mathrm{history} = V(C(p)).\mathrm{history}$
+is implemented as a first-class test obligation.
+\end{description}
+
+% ─────────────────────────────────────────────────────────────────────────────
+\chapter{The Thesis Defended}
+
+\epigraph{\itshape
+Computation is the progressive restriction of possibility,
+not the manipulation of values.}{---}
+
+\section{The Outrageous Claim Made Precise}
+
+The thesis sounds outrageous only as a slogan.
+When a programmer writes \texttt{x = 5},
+they are not merely assigning a value.
+They are committing to a specific future ---
+one in which the value of \texttt{x} is 5 ---
+and foreclosing all futures in which $x$ has any other value.
+The assignment is a Pop: a possibility removed from the option space.
+
+When they write an \texttt{if}-\texttt{else} branch,
+they are partitioning possibility space:
+the condition is the criterion; the branches are the strata.
+
+When they write a function call,
+they are deferring a commitment:
+the function is a frozen possibility,
+and the call is the moment of actualization.
+
+The Spherepop framework makes this geometry \emph{explicit}.
+Pop, Refuse, Bind, and Collapse are the explicit operations on possibility space
+that conventional languages hide behind assignment, branching, and function calls.
+
+\begin{proposition}[Expressive Correspondence]
+The following conventional constructs are expressible in terms of
+Spherepop primitives:
+\begin{itemize}
+\item \emph{Variable assignment} $x := v$ $\approx$ $\mathrm{Pop}(v)$ followed by $\mathrm{Bind}(x, v)$.
+\item \emph{Conditional branch} on predicate $\phi$ $\approx$ $\mathrm{Pop}(\phi^+)$ or $\mathrm{Refuse}(\phi^+, \mathrm{ConstraintViolation}(\phi))$ followed by $\mathrm{Pop}(\phi^-)$.
+\item \emph{Function application} $f(a)$ $\approx$ $\mathrm{LamIntro}(x)$ followed by $\mathrm{Apply}(a)$ (a deferred Pop).
+\item \emph{Exception throwing} $\approx$ $\mathrm{Refuse}(t, r)$ (documented inadmissibility without system destruction).
+\end{itemize}
+\end{proposition}
+
+\section{Why This Changes Everything}
+
+In the conventional account, programs are descriptions of computations:
+sequences of instructions that tell the machine what to do.
+
+In the Spherepop account, programs are \emph{constructions within possibility space}:
+paths through the geometry of accessible futures.
+
+The difference is not cosmetic.
+It affects what questions we can ask:
+
+\begin{center}
+\begin{tabular}{ll}
+\toprule
+Conventional question & Spherepop question \\
+\midrule
+What is the current state? & What remains reachable? \\
+What is the output value? & What history was constructed? \\
+Did the program terminate? & What possibilities were foreclosed? \\
+Is there a bug? & Which commitment was inadmissible? \\
+What did the function return? & Under what rule is the result observable? \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+The Spherepop questions are not more abstract.
+They are more \emph{honest}: they expose what computation actually does
+to the geometry of possibility, rather than summarizing the result
+as a degenerate projection.
+
+% ─────────────────────────────────────────────────────────────────────────────
+\chapter{Future Directions}
+\label{chap:future-dir}
+
+\section{Proof-Carrying Refusal}
+
+The \texttt{RefusalReason} type is a vocabulary for inadmissibility.
+It is not yet a proof system.
+A fully realized Spherepop type system would require \texttt{RefusalReason}
+to be a proof term: evidence that can be checked, not merely a label.
+This connects to the theory of certified refusal:
+a refusal is well-formed only if accompanied by a checkable argument
+for why the refused path was inadmissible.
+
+\section{Dependent Process Types}
+
+The current $\mathrm{Process}(T_1 \rightsquigarrow T_2)$ type is first-order.
+A dependent process type
+$\Pi(x : T_1).\,\mathrm{Process}(x, f(x))$
+would allow the type of the output to depend on the specific value consumed.
+This is the natural extension of dependent type theory into the process calculus setting.
+
+\section{Admissibility Lattices}
+
+The current admissibility structure is Boolean: a term is admissible or not.
+A more refined theory would recognize that admissibility is graded ---
+some futures are more constrained than others,
+and the constraints form a lattice.
+This connects to the broader admissibility geometry program of RSVP and CLIO.
+
+\section{Collapse Functor Composition}
+
+The four canonical collapse rules are special cases of a more general
+family of functors $F_c : \Hist \to \Obs_c$.
+A theory of \emph{functor composition} would characterize which combinations
+of rules are valid --- for instance, when
+$F_{c_2} \circ F_{c_1}$ is itself a valid collapse functor.
+
+\section{Distributed Spherepop Runtimes}
+
+The current World is single-threaded.
+A distributed Spherepop runtime would coordinate multiple Worlds,
+each with their own histories, under a global consistency constraint.
+The consistency constraint must be expressed in terms of history equivalence
+under a shared collapse rule ---
+not value consistency.
+The event sourcing and CRDT literatures provide partial models;
+the Spherepop-specific challenge is the certified-refusal structure.
+
+% ─────────────────────────────────────────────────────────────────────────────
+
+\chapter*{Coda: The Implementation as Philosophical Argument}
+\addcontentsline{toc}{chapter}{Coda: Implementation as Argument}
+
+\epigraph{\itshape
+The implementation did not merely realize the theory;
+it exposed which distinctions the theory was still hiding.}{---}
+
+The central claim of this monograph is not that Spherepop is a good
+programming language, though we believe it is an interesting one.
+The central claim is that \emph{taking a philosophical position seriously
+enough to implement it is a form of philosophical argument.}
+
+The Spherepop implementation is not a demonstration of a pre-formed theory.
+It is a test of a theory's coherence.
+The theory said that histories are primary, types are admissibility certificates,
+and refusal is documented inadmissibility.
+The implementation asked: what does this actually mean in executable form?
+
+The four implementation discoveries were not predicted by the initial framework.
+They were forced by the attempt to mechanize it.
+
+The original \texttt{Refuse(Symbol)} gestured at documented inadmissibility.
+It took implementation pressure to reveal that a symbol alone documents nothing:
+the reason is the document.
+
+The original notion of observable state gestured at the quotient structure.
+It took \texttt{World::observe} to force the question: observable under what rule?
+
+The original type checker gestured at world-relative knowledge.
+It took the free-variable conflict to force the question:
+which world are we assuming?
+
+The original correctness criterion gestured at semantic preservation.
+It took the compiler test to force the question:
+preservation of what, exactly?
+
+Each discovery reveals a distinction the philosophical framework was
+gesturing at without making precise.
+Only in the attempt to mechanize --- to force the philosophy to compile ---
+did the gestures become definitions.
+
+This is the deepest lesson of ontology-driven language design.
+Philosophy can identify the right questions.
+Only implementation can force the right precision.
+
+\medskip\noindent
+The Spherepop codebase is a philosophical argument written in Rust.
+Like all arguments, it became more precise in the act of being made.
+
+% ═══════════════════════════════════════════════════════════════════════════════
+% NEW CHAPTERS — inserted between Part VIII and \backmatter
+% ═══════════════════════════════════════════════════════════════════════════════
+
+% ─────────────────────────────────────────────────────────────────────────────
+\part{Limits, Gaps, and Open Problems}
+% ─────────────────────────────────────────────────────────────────────────────
+
+\chapter{The Observation Limit}
+
+\epigraph{\itshape
+Spherepop does not abolish the state illusion.
+It makes the quotient explicit, parameterised, and reversible
+whenever the underlying history is retained.}{---}
+
+\section{Motivation: A Reviewer's Challenge}
+
+A careful reader of this monograph will notice a tension.
+The document claims to solve the state illusion ---
+the loss of historical information caused by projecting history to state.
+Yet every output of a Spherepop program is a \emph{collapse}:
+a value derived by applying a rule to a history.
+The programmer observes the collapsed value, not the history.
+Is Spherepop not simply relocating the state illusion rather than resolving it?
+
+This chapter addresses that challenge directly.
+We prove a fundamental limit --- the \emph{No Direct Observation Theorem} ---
+that shows the challenge is not a defect in Spherepop but a mathematical
+necessity.
+We then distinguish precisely between two phenomena the challenge conflates:
+\emph{state erasure} and \emph{state illusion}.
+Spherepop eliminates the first.
+No computational system can eliminate the second.
+
+\section{Definitions}
+
+\begin{definition}[Observation Map]
+An \emph{observation map} for a collapse rule $c$ is any function
+\[
+\phi : \calH \to O
+\]
+from histories to an observable space $O$.
+\end{definition}
+
+\begin{definition}[History-Faithful Observation]
+An observation map $\phi$ is \emph{history-faithful} if it is injective:
+$\phi(H_1) = \phi(H_2) \Rightarrow H_1 = H_2$.
+\end{definition}
+
+\section{The No Direct Observation Theorem}
+
+\begin{theorem}[No Direct Observation]
+\label{thm:no-direct-obs}
+Let $O$ be any set with $|O| < |\calH|$.
+Then every observation map $\phi : \calH \to O$ is non-injective:
+there exist distinct $H_1 \neq H_2$ with $\phi(H_1) = \phi(H_2)$.
+Consequently, no computational system with a finite observable space
+can directly verify the history it constructed.
+\end{theorem}
+
+\begin{proof}
+Since $\calH = \bigcup_{n \geq 0} E^n$ is countably infinite
+and $|O| < |\calH|$,
+by the pigeonhole principle $\phi$ cannot be injective.
+Therefore there exist $H_1 \neq H_2$ with $\phi(H_1) = \phi(H_2)$.
+\end{proof}
+
+\begin{remark}
+Theorem~\ref{thm:no-direct-obs} is the fundamental limit of computational observation.
+It says: \emph{every observation is a quotient}.
+This is not a contingent limitation that better engineering can overcome.
+It is a cardinality constraint.
+A system that made its observation map injective --- that recorded every
+distinction in full history space --- would itself be a history.
+To observe computation from outside, one must compress.
+Every compression identifies distinct histories.
+\end{remark}
+
+\section{Erasure vs Illusion}
+
+The Theorem~\ref{thm:no-direct-obs} suggests a distinction the literature elides:
+
+\begin{definition}[State Erasure]
+A computational system suffers \emph{state erasure} if it irrecoverably
+discards the history $H$ after computing $\sigma(H)$.
+That is, after execution, $H$ is unavailable and only $\sigma(H)$ remains.
+\end{definition}
+
+\begin{definition}[State Illusion]
+A computational system presents a \emph{state illusion} to its programmers
+if they can only observe $\sigma(H)$ and not $H$ directly.
+By Theorem~\ref{thm:no-direct-obs}, \emph{some} state illusion is unavoidable
+for any non-trivial observable space.
+\end{definition}
+
+\begin{proposition}[What Spherepop Eliminates]
+\label{prop:what-sp-eliminates}
+Spherepop eliminates state erasure:
+the history $H$ is retained in \texttt{world.history}
+and is available to any observer.
+
+Spherepop cannot and does not eliminate the state illusion:
+the programmer's primary observable is $c(H)$, not $H$,
+so distinct histories that agree under $c$ remain indistinguishable
+from the perspective of that observation.
+\end{proposition}
+
+\begin{remark}
+The correct claim is therefore:
+
+\begin{center}
+\emph{Spherepop does not abolish the state illusion.
+It makes the quotient explicit, parameterised, and history-preserving.}
+\end{center}
+
+Concretely: two histories $H_1 \sim_c H_2$ are observationally equivalent
+under rule $c$, but both are retained.
+A programmer who suspects their collapsed observation is misleading
+can switch to a finer collapse rule $c'$ (where $\sim_{c'} \subsetneq \sim_c$),
+recover additional distinctions, and potentially identify which of many
+$c$-equivalent histories they actually constructed.
+In conventional systems, this recovery is impossible because $H$ was discarded.
+\end{remark}
+
+\section{Rule Refinement as Disambiguation}
+
+\begin{definition}[Rule Refinement Order]
+Collapse rule $c_1$ is \emph{finer than} $c_2$, written $c_1 \preceq c_2$, if
+$H_1 \sim_{c_1} H_2 \Rightarrow H_1 \sim_{c_2} H_2$:
+every distinction preserved by $c_1$ is also preserved by $c_2$.
+The Identity rule $c_I$ is the finest (maximally informative) rule;
+the trivial rule $c_\top$ mapping all histories to a single point is the coarsest.
+\end{definition}
+
+\begin{proposition}[Disambiguation by Refinement]
+\label{prop:disambiguation}
+Let $H_1 \sim_{c} H_2$ (the histories are indistinguishable under rule $c$)
+and $H_1 \neq H_2$.
+Then there exists a finer rule $c' \preceq c$ such that
+$c'(H_1) \neq c'(H_2)$.
+In the limit, $c_I$ always disambiguates since $c_I(H) = H$ exactly.
+\end{proposition}
+
+\begin{proof}
+Take $c' = c_I$: since $H_1 \neq H_2$ and $c_I(H) = H$,
+we have $c_I(H_1) = H_1 \neq H_2 = c_I(H_2)$.
+Therefore $c_I$ is a finer rule that disambiguates $H_1$ and $H_2$.
+\end{proof}
+
+This proposition formalises the engineering value of history preservation.
+A system that erases histories cannot apply a finer rule later.
+A Spherepop system that preserves histories can always refine its observation
+by switching to a finer collapse rule.
+
+% ─────────────────────────────────────────────────────────────────────────────
+\chapter{When Does Observational Equivalence Imply History Equivalence?}
+
+\section{Motivation}
+
+The deepest open question in the Spherepop framework is the converse
+of the collapse functor:
+
+\begin{center}
+$H_1 = H_2 \Rightarrow c(H_1) = c(H_2)$ for every $c$. \hfill (trivially true)\\[6pt]
+$c(H_1) = c(H_2) \Rightarrow H_1 = H_2$? \hfill (when does this hold?)
+\end{center}
+
+When does observational equivalence under a collapse rule imply history identity?
+Understanding the boundary is the deepest open mathematical problem in the framework
+and connects to information theory, inverse problems, and kernel geometry.
+
+\section{Definitions}
+
+\begin{definition}[Observational Completeness]
+A collapse rule $c$ is \emph{observationally complete} if it is injective:
+$c(H_1) = c(H_2) \Rightarrow H_1 = H_2$.
+\end{definition}
+
+\begin{definition}[Collapse Kernel]
+The \emph{kernel} of a collapse rule $c$ is
+\[
+\ker(c) = \{(H_1, H_2) \in \calH \times \calH \mid c(H_1) = c(H_2)\}.
+\]
+Observational completeness holds iff $\ker(c) = \{(H,H) \mid H \in \calH\}$
+(the diagonal).
+\end{definition}
+
+\section{Completeness Results for Canonical Rules}
+
+\begin{proposition}[Identity Rule is Observationally Complete]
+The Identity rule $c_I$ with $c_I(H) = H$ is observationally complete.
+\end{proposition}
+
+\begin{proof}
+$c_I(H_1) = H_1$ and $c_I(H_2) = H_2$; if $c_I(H_1) = c_I(H_2)$ then $H_1 = H_2$.
+\end{proof}
+
+\begin{proposition}[LastWrite is Not Observationally Complete]
+The LastWrite rule $c_{LW}$ is not observationally complete.
+\end{proposition}
+
+\begin{proof}
+Consider the event alphabet $E = \{\mathtt{pop}(x), \mathtt{pop}(y)\}$.
+Let $H_1 = [\mathtt{pop}(x), \mathtt{pop}(y)]$ and
+$H_2 = [\mathtt{pop}(y), \mathtt{pop}(x), \mathtt{pop}(y)]$.
+Under $c_{LW}$: $c_{LW}(H_1)$ maps $x \mapsto 1, y \mapsto 1$ and
+$c_{LW}(H_2)$ maps $x \mapsto 1, y \mapsto 1$ (last pop of $y$ wins).
+Thus $c_{LW}(H_1) = c_{LW}(H_2)$ but $H_1 \neq H_2$.
+\end{proof}
+
+\begin{proposition}[Accumulate is Not Observationally Complete]
+The Accumulate rule $c_{\mathrm{acc}}$ is not observationally complete.
+\end{proposition}
+
+\begin{proof}
+Let $H_1 = [\mathtt{pop}(x), \mathtt{pop}(y)]$ and
+$H_2 = [\mathtt{pop}(y), \mathtt{pop}(x)]$.
+Both map to $\{x \mapsto 1, y \mapsto 1\}$ under $c_{\mathrm{acc}}$,
+but $H_1 \neq H_2$ (different event ordering).
+\end{proof}
+
+\begin{remark}
+The Accumulate rule identifies histories that are permutations of one another:
+$c_{\mathrm{acc}}(H_1) = c_{\mathrm{acc}}(H_2)$ iff $H_1$ and $H_2$ have
+the same multiset of events.
+This corresponds to an \emph{order-forgetful} observation ---
+one that records what happened but not when, relative to other events.
+\end{remark}
+
+\section{The Distinguishability Topology}
+
+\begin{definition}[Collapse-Induced Topology]
+For a collapse rule $c : \calH \to O_c$, define the
+\emph{$c$-induced topology} on $\calH$ as the initial topology
+with respect to $c$:
+\[
+\tau_c = \{ c^{-1}(U) \mid U \subseteq O_c \}.
+\]
+This makes $c$ continuous (in the discrete topology on $O_c$)
+and $\tau_c$ is the coarsest topology that $c$ is continuous with respect to.
+\end{definition}
+
+\begin{definition}[History Distance Under Rule $c$]
+\[
+d_c(H_1, H_2) = \mathbf{1}[c(H_1) \neq c(H_2)]
+\]
+is the \emph{observational distance} between $H_1$ and $H_2$ under rule $c$.
+This is a pseudometric: $d_c(H_1, H_2) = 0$ iff $H_1 \sim_c H_2$.
+\end{definition}
+
+\begin{proposition}[Rule Change Induces Topology Change]
+\label{prop:topology-change}
+For rules $c_1 \preceq c_2$ (where $c_1$ is finer),
+\[
+\tau_{c_2} \subseteq \tau_{c_1}.
+\]
+Refining the collapse rule strictly expands the induced topology on $\calH$,
+making more distinctions between histories visible.
+\end{proposition}
+
+\begin{proof}
+If $c_1 \preceq c_2$, then $H_1 \sim_{c_1} H_2 \Rightarrow H_1 \sim_{c_2} H_2$,
+so the equivalence classes of $\sim_{c_2}$ are coarser than those of $\sim_{c_1}$.
+Every open set in $\tau_{c_2}$ (a union of $\sim_{c_2}$-classes) is also a union
+of $\sim_{c_1}$-classes, hence in $\tau_{c_1}$.
+\end{proof}
+
+\begin{remark}
+Proposition~\ref{prop:topology-change} is the formal content of the claim
+that ``changing the collapse rule changes the topology of distinguishability.''
+It connects the Spherepop collapse framework to the kernel embedding discussion
+of Chapter~\ref{chap:filters}: in both cases, a change of representation
+(kernel embedding; collapse rule) changes the topology on the underlying space
+(probability distributions; histories).
+
+The kernel embedding moves pairs $(P, Q)$ from the same topology class
+(metric closeness) to different topology classes (mutual singularity).
+Collapse rule refinement moves pairs $(H_1, H_2)$ from the same equivalence class
+to different equivalence classes.
+Both are instances of the same structural operation: representation induces topology,
+and changing representation changes which distinctions are topologically visible.
+\end{remark}
+
+\section{Open Problem: The Inverse Problem}
+
+\begin{notation}
+We write $[H]_c = \{H' \in \calH \mid H' \sim_c H\}$ for the equivalence class
+of $H$ under rule $c$.
+\end{notation}
+
+The inverse problem for a collapse rule $c$ is:
+\emph{given an observed state $o \in O_c$, characterise $c^{-1}(o)$.}
+
+This is the formal version of the question ``which histories could have
+produced this observation?''
+
+\begin{definition}[Inverse-Problem Fibre]
+For $o \in O_c$, the \emph{fibre} of $o$ is $c^{-1}(o) = \{H \in \calH \mid c(H) = o\}$.
+\end{definition}
+
+For the Accumulate rule, $c_{\mathrm{acc}}^{-1}(m)$ is the set of all histories
+whose event multiset is $m$ --- an infinite set (any permutation of $m$ extended
+by arbitrarily many Refuse or Bind events that don't change counts).
+
+Characterising fibres for general rules, and determining when a fibre contains
+a unique history (i.e.\ when the rule is injective on a subclass of histories),
+is the primary open mathematical problem in the framework.
+
+% ─────────────────────────────────────────────────────────────────────────────
+\chapter{Category Theory as Engine, Not Commentary}
+\label{chap:cat-engine}
+
+\section{Motivation}
+
+A reviewer of this work identified that the category theory in
+Chapters~11--12 is \emph{descriptive} rather than \emph{generative}:
+no theorem currently requires categorical machinery to state or prove.
+This chapter corrects that deficiency by establishing results that
+are naturally and essentially categorical.
+
+\section{The Collapse Composition Theorem}
+
+The collapse functor framework becomes non-trivial when we ask about
+\emph{composition of collapse rules}: what happens when we apply one
+collapse to the result of another?
+
+\begin{definition}[Rule Composition]
+For rules $c_1 : \calH \to O_1$ and $c_2 : O_1 \to O_2$,
+the \emph{composed rule} is
+\[
+(c_2 \circ c_1)(H) = c_2(c_1(H)).
+\]
+\end{definition}
+
+\begin{theorem}[Collapse Composition]
+\label{thm:collapse-composition}
+If $F_{c_1} : \Hist \to \Obs_{c_1}$ and
+$F_{c_2} : \Obs_{c_1} \to \Obs_{c_2}$
+are both valid collapse functors, then their composition
+$F_{c_2} \circ F_{c_1}$ is a valid collapse functor
+$F_{c_2 \circ c_1} : \Hist \to \Obs_{c_2 \circ c_1}$,
+and
+\[
+F_{c_2 \circ c_1}(H) = F_{c_2}(F_{c_1}(H)).
+\]
+\end{theorem}
+
+\begin{proof}
+Composition of functors is a functor: identity preservation and composition
+preservation follow directly from those properties of $F_{c_1}$ and $F_{c_2}$.
+The equation $F_{c_2 \circ c_1}(H) = F_{c_2}(F_{c_1}(H))$ holds by
+definition of rule composition and the morphism map of $F_c$.
+\end{proof}
+
+\begin{remark}
+Theorem~\ref{thm:collapse-composition} establishes collapse rules as a
+composable algebraic structure.
+A sequence of observations $c_1, c_2, \ldots, c_n$ can be composed
+into a single rule $c_n \circ \cdots \circ c_1$.
+This is the formal basis for \emph{observational pipelines}: a program
+may project history through a sequence of finer-to-coarser rules,
+each stripping away distinctions that are irrelevant to the next stage.
+\end{remark}
+
+\section{The Observation Adjunction}
+
+The deepest categorical result in the framework is an adjunction
+between the functor that \emph{constructs} histories and the functor
+that \emph{observes} them.
+
+\begin{definition}[History Construction Functor]
+Let $\mathbf{Terms}$ be the category whose objects are Spherepop terms
+and whose morphisms are reduction sequences.
+Define $G : \mathbf{Terms} \to \Hist$ by
+\[
+G(t) = I(t).\text{history}
+\]
+(the history produced by interpreting $t$).
+\end{definition}
+
+\begin{definition}[Observation Functor]
+For a fixed collapse rule $c$, define $\mathcal{O}_c : \Hist \to \Obs_c$ by
+\[
+\mathcal{O}_c(H) = c(H) = F_c(H).
+\]
+\end{definition}
+
+\begin{theorem}[History-Observation Adjunction]
+\label{thm:adjunction}
+For the Identity rule $c_I$,
+$\mathcal{O}_{c_I} \dashv G^{\mathrm{op}}$
+in the sense that there is a natural bijection
+\[
+\Hist(G(t), H) \;\cong\; \mathbf{Terms}(t,\, G^{-1}(H))
+\]
+whenever $G^{-1}(H)$ is defined (i.e.\ when $H$ is the history of some
+term under the interpreter).
+\end{theorem}
+
+\begin{proof}[Proof sketch]
+Under $c_I$, observation is the identity functor on $\Hist$.
+The adjunction then reduces to the statement that morphisms in $\Hist$
+from $G(t)$ to $H$ correspond to reduction sequences from $t$ to a term
+whose interpretation produces $H$.
+This is the categorical statement of the Replay Equivalence
+(Theorem~\ref{thm:replay}): the interpreter and compiler produce
+histories that are morphisms in $\Hist$.
+A complete proof requires a full formalisation of $\mathbf{Terms}$
+beyond the scope of the current implementation.
+\end{proof}
+
+\section{What Is Now Category-Theoretically Forced}
+
+\begin{proposition}[Theorems Requiring Categorical Language]
+The following results are most naturally stated in categorical terms:
+\begin{enumerate}
+\item Theorem~\ref{thm:collapse-composition}
+  (Collapse Composition) --- requires functor composition.
+\item Theorem~\ref{thm:adjunction}
+  (History-Observation Adjunction) --- requires adjunction.
+\item Proposition~\ref{prop:topology-change}
+  (Rule Change Induces Topology Change) ---
+  requires the category of topological spaces and continuous maps.
+\item Theorem~\ref{thm:functor}
+  (Functoriality of Collapse) ---
+  requires the definition of $\Hist$ as a category.
+\end{enumerate}
+The category theory is now \emph{generative}:
+these theorems cannot be stated, let alone proved,
+without the categorical framework introduced in Chapter~\ref{chap:cat-engine}.
+\end{proposition}
+
+% ─────────────────────────────────────────────────────────────────────────────
+\chapter{Strengthening the Kernel Connection}
+\label{chap:kernel-strengthened}
+
+\section{Motivation}
+
+Chapter~\ref{chap:filters} (Filters Create Worlds) presented the connection
+between Spherepop collapse rules and the Santoro--Waghmare--Panaretos theorem
+as an analogy.
+The reviewer correctly identified that the analogy was loose:
+the kernel theorem is a \emph{limitative} result (separation is unavoidable);
+the collapse framework is a \emph{design freedom} (the programmer chooses the rule).
+
+This chapter sharpens the connection by making it a theorem about
+\emph{representation-induced topological change} that applies uniformly
+to both settings.
+
+\section{A Unified Framework}
+
+\begin{definition}[Representation Map]
+A \emph{representation map} is any function $\rho : X \to Y$ from a source
+space $X$ to a target space $Y$, equipped with the initial topology
+$\tau_\rho = \{\rho^{-1}(U) \mid U \subseteq Y\}$ on $X$.
+\end{definition}
+
+\begin{definition}[Representation-Induced Topology]
+For a representation map $\rho : X \to Y$:
+\begin{itemize}
+\item $x_1 \sim_\rho x_2$ iff $\rho(x_1) = \rho(x_2)$
+  (equivalence induced by $\rho$).
+\item The \emph{separation power} of $\rho$ is
+  $|\{[x]_\rho \mid x \in X\}| = |Y|$
+  (the number of equivalence classes, bounded by the size of $Y$).
+\end{itemize}
+\end{definition}
+
+\begin{theorem}[Representation Changes Topology]
+\label{thm:rep-topology}
+Let $\rho_1, \rho_2 : X \to Y$ be two representation maps with
+$\tau_{\rho_1} \neq \tau_{\rho_2}$.
+Then there exist $x_1, x_2 \in X$ such that:
+\[
+x_1 \sim_{\rho_1} x_2 \quad \text{but} \quad x_1 \not\sim_{\rho_2} x_2
+\]
+or vice versa.
+That is, the two representations disagree on whether $x_1$ and $x_2$
+are the same object.
+\end{theorem}
+
+\begin{proof}
+If $\tau_{\rho_1} \neq \tau_{\rho_2}$, there exists an open set
+$U \in \tau_{\rho_1} \setminus \tau_{\rho_2}$ (WLOG).
+Then $U = \rho_1^{-1}(V)$ for some $V \subseteq Y$, but
+$U \neq \rho_2^{-1}(W)$ for any $W$.
+Therefore there exist $x_1, x_2$ with $\rho_1(x_1) = \rho_1(x_2)$
+(both in the same fibre of $\rho_1$) but $\rho_2(x_1) \neq \rho_2(x_2)$.
+\end{proof}
+
+\begin{remark}
+Theorem~\ref{thm:rep-topology} is the general form of the observation that
+``representations reorganise topology.''
+It applies to:
+\begin{itemize}
+\item \textbf{Kernel embeddings}:
+  $\rho_1 = \mathrm{id}$ (identity on distributions),
+  $\rho_2 = \mathcal{N}(0, S_\cdot)$ (Gaussian embedding).
+  By Theorem~\ref{thm:separation}, $\tau_{\rho_1}$ and $\tau_{\rho_2}$
+  differ: $\rho_2$ separates distributions that $\rho_1$ places in
+  the same metric neighbourhood.
+\item \textbf{Collapse rules}:
+  $\rho_1 = c_{\mathrm{acc}}$, $\rho_2 = c_I$.
+  By Proposition~\ref{prop:topology-change},
+  $\tau_{c_I} \supsetneq \tau_{c_{\mathrm{acc}}}$:
+  the identity rule separates histories that the accumulate rule identifies.
+\end{itemize}
+Both are instances of Theorem~\ref{thm:rep-topology}.
+The connection is now a theorem, not an analogy.
+\end{remark}
+
+\begin{remark}
+The difference between the kernel case and the collapse case is now also precise:
+\begin{itemize}
+\item In the kernel case, the topological change is \emph{forced}:
+  the Gaussian embedding is the unique representation with the mutual-singularity
+  property (by Feldman--Hájek).
+  The programmer does not choose whether the separation occurs.
+\item In the collapse case, the topological change is \emph{chosen}:
+  the programmer selects the collapse rule $c$, thereby choosing
+  which distinctions are topologically visible.
+\end{itemize}
+One is a mathematical limit; the other is a design parameter.
+Both are instances of Theorem~\ref{thm:rep-topology},
+applied in different regimes of freedom.
+\end{remark}
+
+% ─────────────────────────────────────────────────────────────────────────────
+% APPENDIX
+% ─────────────────────────────────────────────────────────────────────────────
+% ═══════════════════════════════════════════════════════════════════════════════
+% V3 ADDITIONS — inserted at end of new-chapters, before existing \appendix
+% Contains:
+%   - Strengthened theorems injected into existing chapters (via \input patch)
+%   - Appendix B: Category-Theoretic Foundations
+%   - Appendix C: Sheaf-Theoretic Semantics
+%   - Appendix D: BNF Grammar
+% ═══════════════════════════════════════════════════════════════════════════════
+
+% ─────────────────────────────────────────────────────────────────────────────
+\part{Deeper Mathematical Structure}
+% ─────────────────────────────────────────────────────────────────────────────
+
+\chapter{Derivations: Structures That Emerge Inevitably}
+\label{chap:derivations}
+
+\epigraph{\itshape
+A framework matures not when it accumulates more propositions
+but when it shows that many seemingly separate propositions
+are consequences of the same underlying object.}{---}
+
+\section{Motivation}
+
+The preceding chapters have established definitions and verified
+properties one by one.
+This chapter takes a different posture: it asks which results
+can be \emph{derived} from a small number of primitives,
+so that the reader sees not merely that something is true
+but that it \emph{had} to be true given the ontological commitments
+of the framework.
+
+We present six derivations, each revealing a theorem as
+the inevitable consequence of a prior commitment.
+
+\section{Derivation 1: The Generalised Possibility Functional}
+
+Theorem~2.6 (Conservation of Possibility) established
+$|H_t| + |\Omega_t| = |\Omega_0|$ under pure Pop dynamics.
+That result treats all events equally.
+The following derivation reveals the original theorem as a
+special case of a weighted conservation measure.
+
+\begin{definition}[Event Weight Function]
+Define $w : E \to \mathbb{N}$ by
+\[
+w(\Pop(x)) = 1, \quad
+w(\Rfuse(x,r)) = 0, \quad
+w(\Bind(a,b)) = 0, \quad
+w(\Col(x,c)) = 0.
+\]
+\end{definition}
+
+\begin{definition}[Generalised Possibility Functional]
+\label{def:gpf}
+For a world $(H, \Omega)$, define
+\[
+\Pi(H, \Omega) = |\Omega| + \sum_{e \in H} w(e).
+\]
+\end{definition}
+
+\begin{theorem}[Conservation of the Possibility Functional]
+\label{thm:gpf-conservation}
+For any legal execution sequence
+$(H_0, \Omega_0) \to (H_1, \Omega_1) \to \cdots \to (H_n, \Omega_n)$,
+\[
+\Pi(H_t, \Omega_t) = |\Omega_0|
+\]
+for all $t \geq 0$.
+\end{theorem}
+
+\begin{proof}
+At $t=0$: $\Pi(H_0, \Omega_0) = |\Omega_0| + 0 = |\Omega_0|$.
+At each step, exactly one of four operators is applied:
+\begin{itemize}
+\item \textbf{Pop}: $|\Omega|$ decreases by 1; $w(\Pop) = 1$ is added.
+  Net change: $(-1) + 1 = 0$.
+\item \textbf{Refuse}: $|\Omega|$ unchanged; $w(\Rfuse) = 0$ is added.
+  Net change: $0$.
+\item \textbf{Bind}: $|\Omega|$ unchanged; $w(\Bind) = 0$ is added.
+  Net change: $0$.
+\item \textbf{Collapse}: $|\Omega|$ unchanged; $w(\Col) = 0$ is added.
+  Net change: $0$.
+\end{itemize}
+In every case $\Pi(H_{t+1}, \Omega_{t+1}) = \Pi(H_t, \Omega_t)$.
+By induction, $\Pi(H_t, \Omega_t) = \Pi(H_0, \Omega_0) = |\Omega_0|$.
+\end{proof}
+
+\begin{remark}
+Theorem~2.6 follows immediately: setting all weights to 1 and
+restricting to Pop-only executions recovers $|H_t| + |\Omega_t| = |\Omega_0|$.
+But Theorem~\ref{thm:gpf-conservation} is more general: the functional
+$\Pi$ is conserved even when Refuse, Bind, and Collapse are intermixed.
+The weight function $w$ makes explicit what counts as ``consuming
+possibility'' (Pop, weight 1) versus ``documenting structure without
+consuming it'' (Refuse, Bind, Collapse, weight 0).
+\end{remark}
+
+\begin{corollary}[Irreversibility of Execution]
+\label{cor:irrev}
+For any non-empty execution sequence,
+$|H_{t+1}| > |H_t|$.
+Therefore no legal execution can return to a previous world state
+$(H_t, \Omega_t)$.
+\end{corollary}
+
+\begin{proof}
+Every operator appends exactly one event to $H$ (Definition~2.3),
+so $|H_{t+1}| = |H_t| + 1 > |H_t|$.
+Since $H$ grows strictly and executions are deterministic,
+$(H_{t+1}, \Omega_{t+1}) \neq (H_t, \Omega_t)$.
+\end{proof}
+
+\begin{remark}
+Corollary~\ref{cor:irrev} establishes that Spherepop worlds form a
+\emph{directed acyclic execution graph}: world states are nodes, operators
+are edges, and there are no cycles.
+This gives a rigorous foundation for the informal claim that Spherepop
+histories are intrinsically irreversible.
+\end{remark}
+
+\section{Derivation 2: Universal Property of Collapse}
+
+The quotient construction $O_c = \calH / {\sim_c}$ is not merely
+a convenient definition.
+It has a \emph{universal property} that explains why collapse is the
+canonical projection — not one representation among many but the
+coarsest representation preserving exactly the distinctions
+specified by rule $c$.
+
+\begin{theorem}[Universal Property of Collapse]
+\label{thm:universal-collapse}
+Let $q_c : \calH \to O_c$ be the quotient map for rule $c$.
+If $f : \calH \to X$ is any function satisfying
+\[
+H_1 \sim_c H_2 \implies f(H_1) = f(H_2)
+\]
+(i.e.\ $f$ is constant on $c$-equivalence classes),
+then there exists a unique $\bar f : O_c \to X$ such that
+$f = \bar f \circ q_c$.
+\end{theorem}
+
+\begin{proof}
+By the universal property of quotient sets.
+Define $\bar f([H]_c) = f(H)$.
+This is well-defined because $f$ is constant on equivalence classes.
+Uniqueness: any $\bar f$ satisfying $f = \bar f \circ q_c$ must map
+$[H]_c$ to $f(H)$, so $\bar f$ is uniquely determined.
+\end{proof}
+
+\begin{remark}
+Theorem~\ref{thm:universal-collapse} is philosophically important.
+It says that every observation $f$ that ``respects'' a collapse rule $c$
+factors uniquely through $O_c$.
+Observable state is therefore not merely one representation among many.
+It is the \emph{universal} representation among all representations
+that identify the same histories as $c$ does.
+Any coarser observation necessarily passes through $O_c$.
+\end{remark}
+
+\section{Derivation 3: Unique History Factorisation}
+
+\begin{theorem}[Unique History Factorisation]
+\label{thm:unique-factor}
+Every non-empty history $H = [e_1, e_2, \ldots, e_n]$ admits a unique
+factorisation into primitive generators:
+\[
+H = e_1 \hconcat e_2 \hconcat \cdots \hconcat e_n.
+\]
+No other factorisation into generators exists.
+\end{theorem}
+
+\begin{proof}
+Since $\calH$ is the free monoid over $E$, every element has a unique
+normal form as a sequence of generators.
+History concatenation $\oplus$ is the monoid operation, and the
+generators are singletons $[e]$.
+The unique factorisation is the sequence of singleton generators
+composing to $H$; freeness of the monoid guarantees there are no
+non-trivial relations among generators.
+\end{proof}
+
+\begin{remark}
+Theorem~\ref{thm:unique-factor} provides the mathematical basis for
+replay equivalence.
+If two execution paths produce the same history, they must have produced
+the same sequence of primitive events, in the same order.
+There is no ambiguity about which commitments generated a trajectory.
+This is the uniqueness that makes $I(p).\text{history} = V(C(p)).\text{history}$
+a meaningful and decidable correctness criterion.
+\end{remark}
+
+\section{Derivation 4: Compiler Full Faithfulness}
+
+Theorem~11.1 (Replay Equivalence) established one direction:
+$I(p).\text{history} = V(C(p)).\text{history}$ for all $p$.
+We now strengthen this to a biconditional.
+
+\begin{theorem}[Compiler Full Faithfulness]
+\label{thm:full-faithful}
+Let $\mathcal{C} : \mathbf{P} \to \Hist$ map programs to their
+interpreter-produced histories.
+The compiled semantics $\mathcal{V} = V \circ C : \mathbf{P} \to \Hist$
+satisfies:
+\[
+I(p_1).\text{history} = I(p_2).\text{history}
+\iff
+V(C(p_1)).\text{history} = V(C(p_2)).\text{history}.
+\]
+That is, the compiler is \emph{fully faithful}: it preserves and reflects
+history identity.
+\end{theorem}
+
+\begin{proof}
+$(\Rightarrow)$ Suppose $I(p_1).H = I(p_2).H$.
+By Theorem~11.1, $V(C(p_i)).H = I(p_i).H$ for $i = 1, 2$.
+Therefore $V(C(p_1)).H = I(p_1).H = I(p_2).H = V(C(p_2)).H$.
+
+$(\Leftarrow)$ Suppose $V(C(p_1)).H = V(C(p_2)).H$.
+By Theorem~11.1 (applied to each $p_i$), $I(p_i).H = V(C(p_i)).H$.
+Therefore $I(p_1).H = V(C(p_1)).H = V(C(p_2)).H = I(p_2).H$.
+\end{proof}
+
+\begin{remark}
+Full faithfulness means compilation introduces and loses no historical
+distinctions.
+Two programs that are history-equivalent under interpretation remain
+history-equivalent under compilation, and vice versa.
+In categorical language: $C$ is a faithful and full functor
+from $\mathbf{P}$ to $\Hist$ (when restricted to histories).
+\end{remark}
+
+\section{Derivation 5: Observation-Recovery Tradeoff}
+
+\begin{theorem}[Observation–Recovery Tradeoff]
+\label{thm:obs-recovery}
+Let $c : \calH \to O_c$ be a collapse rule.
+Exact history recovery from observation is possible if and only if $c$
+is injective.
+Equivalently:
+\[
+\forall o \in O_c,\; |c^{-1}(o)| = 1.
+\]
+\end{theorem}
+
+\begin{proof}
+Immediate from the definition of injectivity and the definition of
+$c^{-1}(o)$ as a fibre.
+$c$ is injective iff every fibre has exactly one element
+iff every observation uniquely determines the history.
+\end{proof}
+
+\begin{corollary}[Tradeoff Sharpness]
+\label{cor:tradeoff}
+Every collapse rule is either:
+\begin{enumerate}
+\item[(i)] injective (= Identity), in which case observation is
+  history-faithful but the observable space is as large as history
+  space; or
+\item[(ii)] non-injective (= any useful compression), in which case
+  some distinct histories are identified and exact recovery fails.
+\end{enumerate}
+Every useful rule sacrifices recoverability.
+Every recoverable rule approaches identity.
+Observation and compression form a fundamental tradeoff.
+\end{corollary}
+
+\begin{remark}
+Corollary~\ref{cor:tradeoff} gives a rigorous, constructive foundation
+for the erasure-vs-illusion distinction of Chapter~18.
+State erasure is a \emph{choice} to discard the history after applying $c$,
+leaving only $c(H)$.
+State illusion is the \emph{necessary} consequence of applying any
+non-injective $c$.
+A system that retains $H$ after computing $c(H)$ eliminates erasure
+while accepting the unavoidable illusion.
+\end{remark}
+
+\section{Derivation 6: Observational Entropy and Fibre Geometry}
+
+\begin{definition}[Observational Entropy]
+\label{def:obs-entropy}
+For a collapse rule $c$ and observable state $o \in O_c$, define the
+\emph{observational entropy} of $o$ as
+\[
+S_c(o) = \log |c^{-1}(o)|
+\]
+(taking $\log 0 = -\infty$ by convention, though fibres of well-defined
+rules are non-empty).
+\end{definition}
+
+\begin{theorem}[Entropy Monotonicity Under Rule Refinement]
+\label{thm:entropy-monotone}
+If $c_1 \preceq c_2$ ($c_1$ finer than $c_2$, i.e.\ $c_1$ preserves
+strictly more distinctions), then for every $o \in O_{c_1}$:
+\[
+S_{c_1}(o) \leq S_{c_2}(c_2(c_1^{-1}(o))).
+\]
+Equivalently, finer rules have smaller or equal fibre sizes.
+\end{theorem}
+
+\begin{proof}
+Since $c_1 \preceq c_2$, every $\sim_{c_1}$-equivalence class is
+contained in a $\sim_{c_2}$-equivalence class.
+Therefore $|c_1^{-1}(o)| \leq |c_2^{-1}(c_2(H))|$ for any $H \in c_1^{-1}(o)$.
+Taking logarithms: $S_{c_1}(o) \leq S_{c_2}(c_2(H))$.
+\end{proof}
+
+\begin{remark}
+Definition~\ref{def:obs-entropy} makes the connection to CLIO explicit.
+The CLIO framework defines representational entropy as
+$S_\pi(m) = \log \mathrm{Vol}(\pi^{-1}(m))$ for a projection $\pi : X \to M$.
+Definition~\ref{def:obs-entropy} is exactly this quantity
+in the discrete Spherepop setting:
+$\pi = c$, $X = \calH$, $M = O_c$, $\mathrm{Vol} = |\cdot|$.
+
+Thus the Spherepop collapse framework is a discrete computational instance
+of the CLIO projection framework.
+Observational entropy, representational ambiguity, and fibre size are
+the same concept at different levels of abstraction.
+\end{remark}
+
+\begin{proposition}[Fibre Partition of History Space]
+\label{prop:fibre-partition}
+For any collapse rule $c$:
+\[
+\calH = \bigsqcup_{o \in O_c} c^{-1}(o).
+\]
+The fibres $\{c^{-1}(o)\}_{o \in O_c}$ form a partition of history space
+into disjoint, non-empty subsets.
+\end{proposition}
+
+\begin{proof}
+By definition of quotient: every $H \in \calH$ belongs to exactly one
+equivalence class $[H]_c = c^{-1}(c(H))$.
+\end{proof}
+
+\begin{remark}
+Proposition~\ref{prop:fibre-partition} reframes the entire framework geometrically.
+Observable states are \emph{strata} of history space.
+Histories are \emph{trajectories} through that space.
+Fibres are \emph{hidden manifolds} of indistinguishable constructions.
+
+At this resolution, the connection to Hidden Manifolds, CLIO, admissibility
+geometry, and the kernel-embedding discussion of Chapters~14 and~21
+is mathematically explicit.
+The Spherepop framework is a theory of the fibre structure induced by
+projections from computation space into observation space.
+\end{remark}
+
+% ─────────────────────────────────────────────────────────────────────────────
+% APPENDIX B: Category-Theoretic Foundations
+% ─────────────────────────────────────────────────────────────────────────────
+
+\chapter{Category-Theoretic Foundations of History and Observation}
+\label{app:category}
+
+\section{Purpose}
+
+The main text develops the category $\Hist$ and the observable-state
+categories $\Obs_c$.
+This appendix collects categorical constructions that clarify the structural
+role of histories, observations, and replay equivalence.
+The goal is to show that the Spherepop framework occupies a well-defined
+position within categorical semantics.
+
+\section{Histories as a Free Category}
+
+Let $G$ be the directed graph whose vertices are option spaces
+$\Omega \subseteq \Omega_0$ and whose edges are primitive event transitions.
+
+\begin{definition}[Free History Category]
+The category $\Hist$ is the \emph{free category generated by $G$}.
+Objects are option spaces.
+Morphisms are finite paths in $G$.
+Composition is path concatenation.
+The identity morphism at $\Omega$ is the empty path $\varepsilon_\Omega$.
+\end{definition}
+
+\begin{proposition}[Universal Property of $\Hist$]
+\label{prop:free-hist}
+Every functor $F : G \to \mathcal{C}$ from the underlying graph $G$
+to any category $\mathcal{C}$ extends uniquely to a functor
+$\widetilde{F} : \Hist \to \mathcal{C}$.
+\end{proposition}
+
+\begin{proof}
+By the universal property of free categories:
+a path $[e_1, \ldots, e_n]$ maps to $F(e_n) \circ \cdots \circ F(e_1)$.
+This is unique because path composition determines the functor on all morphisms.
+\end{proof}
+
+\begin{remark}
+Proposition~\ref{prop:free-hist} explains why histories serve as primitive
+objects of the framework.
+Any semantics defined on primitive events extends uniquely to complete histories.
+The collapse functor $F_c$, the interpreter $I$, and the VM semantics $V \circ C$
+are all instances of this universal extension.
+\end{remark}
+
+\section{Replay Equivalence as Faithfulness}
+
+\begin{definition}[Semantic Faithfulness]
+A compiler is \emph{semantically faithful} when
+\[
+I(p_1).\text{history} = I(p_2).\text{history}
+\implies
+V(C(p_1)).\text{history} = V(C(p_2)).\text{history}.
+\]
+\end{definition}
+
+\begin{proposition}[Replay Implies Faithfulness]
+Theorem~11.1 (Replay Equivalence) implies semantic faithfulness.
+\end{proposition}
+
+\begin{proof}
+By Theorem~\ref{thm:full-faithful} (Full Faithfulness), replay equivalence
+gives both directions of the biconditional, which is stronger than
+mere faithfulness.
+\end{proof}
+
+\section{Collapse as a Reflector}
+
+\begin{definition}[Reflective Observation]
+A collapse rule $c$ is \emph{reflective} if there exists a right adjoint
+$R_c : \Obs_c \to \Hist$ such that $F_c \dashv R_c$.
+The right adjoint chooses a \emph{canonical representative history}
+for each observable state.
+\end{definition}
+
+\begin{remark}
+When $R_c$ exists, observation is not merely lossy compression.
+It is a reflective localisation: $\Obs_c$ is a reflective subcategory of $\Hist$,
+and every observable state corresponds to a canonical history.
+For the Identity rule, $F_{c_I} \dashv \mathrm{id}_{\Hist}$ trivially.
+For LastWrite, no right adjoint exists in general because the choice of
+canonical representative among $c_{LW}$-equivalent histories is not natural.
+\end{remark}
+
+\section{The Observational Lattice}
+
+\begin{proposition}[Collapse Rules Form a Lattice]
+\label{prop:lattice}
+The set of collapse rules ordered by refinement
+$c_1 \preceq c_2$ (finer $\preceq$ coarser) forms a complete lattice.
+\end{proposition}
+
+\begin{proof}
+The meet of $\{c_i\}$ is the rule whose equivalence relation is the
+intersection $\bigcap \sim_{c_i}$ (the finest rule at least as fine as all).
+The join is the equivalence relation generated by $\bigcup \sim_{c_i}$.
+Completeness follows from lattice operations on equivalence relations.
+\end{proof}
+
+\begin{remark}
+The lattice of collapse rules organises all possible notions of visibility.
+$c_I$ (Identity) is the minimal (finest) element.
+The trivial rule $c_\top$ (mapping all histories to one point) is the maximal
+(coarsest) element.
+The four canonical rules — Identity, LastWrite, Accumulate, Projection —
+are elements of this lattice, incomparable in general.
+\end{remark}
+
+% ─────────────────────────────────────────────────────────────────────────────
+% APPENDIX C: Sheaf-Theoretic Semantics
+% ─────────────────────────────────────────────────────────────────────────────
+
+\chapter{Sheaf-Theoretic Semantics of Observation}
+\label{app:sheaf}
+
+\section{Motivation}
+
+A recurring theme of this monograph is that observable states are
+\emph{local views} of larger histories.
+Different collapse rules expose different fragments of the same underlying
+computation.
+The mathematical language invented for relating local observations to
+global structure is \emph{sheaf theory}.
+This appendix sketches a sheaf-theoretic interpretation of Spherepop histories,
+connecting the collapse framework to the CLIO program.
+
+\section{Observational Sites}
+
+\begin{definition}[Observational Region]
+For a collapse rule $c$ and observable state $o \in O_c$, the
+\emph{observational region} corresponding to $o$ is the fibre
+$c^{-1}(o) \subseteq \calH$.
+\end{definition}
+
+\begin{definition}[Observational Site]
+Fix a collection of collapse rules $\{c_i\}$ and corresponding observable
+states $\{o_i\}$.
+The \emph{observational site} $\mathcal{O}$ is the category whose objects are
+observational regions $\{c_i^{-1}(o_i)\}$ and whose morphisms are inclusions:
+\[
+c_j^{-1}(o_j) \hookrightarrow c_i^{-1}(o_i)
+\quad \text{when} \quad
+c_j^{-1}(o_j) \subseteq c_i^{-1}(o_i).
+\]
+\end{definition}
+
+\begin{remark}
+The observational site encodes the refinement order among collapse rules.
+A finer rule creates a smaller, more informative observational region.
+A coarser rule creates a larger, less discriminating region.
+\end{remark}
+
+\section{The History Presheaf}
+
+\begin{definition}[History Presheaf $\mathscr{H}$]
+Define the presheaf $\mathscr{H}$ on $\mathcal{O}$ by:
+\[
+\mathscr{H}(U) = \{H \in \calH \mid H \in U\}
+\]
+for each observational region $U$, with restriction maps given by
+set inclusion.
+\end{definition}
+
+\begin{proposition}[$\mathscr{H}$ is a Sheaf]
+\label{prop:sheaf}
+$\mathscr{H}$ satisfies the sheaf condition: compatible local histories
+glue uniquely to global histories.
+Specifically, if $\{U_i\}$ covers a region $U$ and $\{H_i \in \mathscr{H}(U_i)\}$
+is a compatible family (agreeing on overlaps), then there exists a unique
+$H \in \mathscr{H}(U)$ restricting to each $H_i$.
+\end{proposition}
+
+\begin{proof}
+Histories are sequences of events.
+Compatibility means the sequences agree on their shared prefixes.
+Two compatible event sequences agreeing on all overlaps determine a unique
+concatenation, giving the unique glueing.
+\end{proof}
+
+\begin{remark}
+Proposition~\ref{prop:sheaf} formalises a common engineering intuition:
+multiple partial logs can reconstruct a single global execution history.
+If the logs are compatible (they agree where they overlap), they uniquely
+determine the full history.
+This is the sheaf-theoretic content of replay equivalence.
+\end{remark}
+
+\section{Observable States as Sections}
+
+A collapse rule $c : \calH \to O_c$ induces a sheaf of observable states.
+
+\begin{definition}[Observable Sheaf $\mathscr{O}_c$]
+Define $\mathscr{O}_c(U) = \{c(H) \mid H \in U\}$,
+the set of observable states reachable within region $U$.
+\end{definition}
+
+\begin{remark}
+Different observers (using different collapse rules) correspond to different
+sheaves on the same underlying history space.
+The same history looks different to an observer using $c_{LW}$ versus one
+using $c_{\mathrm{acc}}$.
+The sheaf structure makes this perspectivalism mathematically precise.
+\end{remark}
+
+\section{State Illusion as Failure of Unique Lifting}
+
+\begin{proposition}[State Illusion as Non-Injectivity of Sections]
+\label{prop:illusion-sheaf}
+A collapse rule $c$ exhibits state illusion (in the sense of Definition~18.5)
+if and only if the observable sheaf $\mathscr{O}_c$ fails to determine
+a unique global section of $\mathscr{H}$.
+That is, there exist distinct $H_1, H_2 \in \mathscr{H}(\calH)$ with
+the same section in $\mathscr{O}_c(\calH)$.
+\end{proposition}
+
+\begin{proof}
+By definition: state illusion holds iff $c$ is non-injective
+iff there exist $H_1 \neq H_2$ with $c(H_1) = c(H_2)$
+iff the global section of $\mathscr{O}_c$ does not uniquely lift to
+a global section of $\mathscr{H}$.
+\end{proof}
+
+\begin{remark}
+State illusion is a failure of \emph{unique lifting}:
+many global histories project to the same observable section.
+Theorem~18.3 (No Direct Observation) is therefore the statement that
+for any non-trivial $c$, unique lifting fails for at least one section.
+The erasure/illusion distinction translates directly:
+state \emph{erasure} is discarding $\mathscr{H}$ after computing $\mathscr{O}_c$
+(no sheaf structure retained);
+state \emph{illusion} is the inherent non-injectivity of $c$
+(sheaf structure retained but lifting is non-unique).
+\end{remark}
+
+\section{Refinement as Sheaf Morphism}
+
+\begin{proposition}[Refinement Induces Sheaf Morphism]
+\label{prop:sheaf-refine}
+If $c_1 \preceq c_2$ (finer $c_1$), there is a morphism of sheaves
+\[
+\phi : \mathscr{O}_{c_1} \to \mathscr{O}_{c_2}
+\]
+mapping more-informative observations to less-informative ones.
+\end{proposition}
+
+\begin{proof}
+Since $c_1 \preceq c_2$, there exists a map $\pi : O_{c_1} \to O_{c_2}$
+such that $c_2 = \pi \circ c_1$.
+This induces $\phi(U)(s) = \pi(s)$ for sections $s$ of $\mathscr{O}_{c_1}$.
+Naturality with respect to restriction maps follows from the
+commutativity of quotient maps.
+\end{proof}
+
+\begin{remark}
+The sheaf morphism $\phi$ maps a finer observation to a coarser one.
+Refining in the opposite direction (going from $\mathscr{O}_{c_2}$ to $\mathscr{O}_{c_1}$)
+requires a right adjoint (Section~B.3), which may not exist.
+This asymmetry is exactly the state illusion:
+you can always coarsen an observation (lose information),
+but you cannot always refine one (recover information) --- unless the
+full history $\mathscr{H}$ is available.
+\end{remark}
+
+\section{Connection to CLIO}
+
+\begin{remark}[CLIO as Sheaf Theory on Representation Space]
+The CLIO framework (Constraint-Limited Information Ontology) models
+representations as projections $\pi : X \to M$ from a representation space
+to a manifold of observational strata.
+
+In sheaf-theoretic terms:
+\begin{itemize}
+\item $X = \calH$ (history space, or more generally a semantic space).
+\item $M = O_c$ (observable state space, or more generally a manifold).
+\item $\pi = c$ (the collapse functor / projection map).
+\item Fibres $c^{-1}(o) = \pi^{-1}(m)$ are the hidden manifolds
+  of indistinguishable constructions.
+\item Representational entropy $S_c(o) = \log |c^{-1}(o)|$
+  is the CLIO quantity $S_\pi(m) = \log \mathrm{Vol}(\pi^{-1}(m))$
+  in the discrete setting.
+\end{itemize}
+
+The entire Spherepop framework is thus a discrete, computational instantiation
+of the CLIO projection program.
+Histories are the objects;
+collapse rules are the projections;
+observable states are the strata;
+fibres are the hidden manifolds.
+
+The sheaf structure ties the local (what one observer sees under one rule)
+to the global (the full history that all rules project from).
+Sheaf cohomology would measure the obstruction to lifting local observations
+to global histories — which is precisely the observational entropy $S_c(o)$.
+\end{remark}
+
+% ─────────────────────────────────────────────────────────────────────────────
+% APPENDIX D: BNF Grammar
+% ─────────────────────────────────────────────────────────────────────────────
+
+\chapter{BNF Grammar for the Spherepop Core Language}
+\label{app:bnf}
+
+\section{Purpose}
+
+This appendix gives a compact Backus--Naur Form grammar for the core
+Spherepop surface language implemented by the current crate.
+The grammar specifies the minimal executable fragment used by the
+interpreter, compiler, VM, REPL, and test suite.
+
+This grammar intentionally separates parsing from admissibility:
+the parser recognises possible terms, while the type checker decides
+which of those terms are admissible under a chosen world assumption.
+
+\section{Lexical Categories}
+
+\begin{align*}
+\langle \mathit{ident} \rangle
+  &::= \langle \mathit{letter} \rangle
+       \{\langle \mathit{letter} \rangle \mid
+         \langle \mathit{digit} \rangle \mid
+         \mathtt{\_}\}^{*}
+\\
+\langle \mathit{symbol} \rangle
+  &::= \langle \mathit{ident} \rangle
+\end{align*}
+
+Reserved words:
+$\mathtt{pop}$,\ $\mathtt{refuse}$,\ $\mathtt{bind}$,\ $\mathtt{collapse}$,\
+$\mathtt{seq}$,\ $\mathtt{let}$,\ $\mathtt{in}$,\ $\mathtt{fn}$,\
+$\mathtt{Unit}$,\ $\mathtt{Never}$,\ $\mathtt{Type}$.
+
+\section{Terms}
+
+\begin{align*}
+\langle \mathit{term} \rangle
+  &::= \langle \mathit{var} \rangle
+    \mid \langle \mathit{lambda} \rangle
+    \mid \langle \mathit{app} \rangle
+    \mid \langle \mathit{let} \rangle
+    \mid \langle \mathit{pop} \rangle
+    \mid \langle \mathit{refuse} \rangle
+    \mid \langle \mathit{bind} \rangle
+    \mid \langle \mathit{collapse} \rangle
+    \mid \langle \mathit{seq} \rangle
+    \mid \texttt{(}\langle \mathit{term} \rangle\texttt{)}
+\\[4pt]
+\langle \mathit{var} \rangle
+  &::= \langle \mathit{symbol} \rangle
+\\[4pt]
+\langle \mathit{lambda} \rangle
+  &::= (\lambda \mid \mathtt{fn})\ 
+       \langle \mathit{symbol} \rangle\ 
+       [\mathtt{:}\ \langle \mathit{type} \rangle]\ 
+       (\mathtt{\to} \mid \mathtt{.})\ 
+       \langle \mathit{term} \rangle
+\\[4pt]
+\langle \mathit{app} \rangle
+  &::= \langle \mathit{term} \rangle\ \langle \mathit{term} \rangle
+\\[4pt]
+\langle \mathit{let} \rangle
+  &::= \mathtt{let}\ \langle \mathit{symbol} \rangle\ \mathtt{=}\
+       \langle \mathit{term} \rangle\ \mathtt{in}\ \langle \mathit{term} \rangle
+\\[4pt]
+\langle \mathit{pop} \rangle
+  &::= \mathtt{pop}\ \langle \mathit{term} \rangle
+\\[4pt]
+\langle \mathit{refuse} \rangle
+  &::= \mathtt{refuse}\ \langle \mathit{term} \rangle\ 
+       [\langle \mathit{reason} \rangle]
+\\[4pt]
+\langle \mathit{bind} \rangle
+  &::= \mathtt{bind}\ \langle \mathit{term} \rangle\ \langle \mathit{term} \rangle
+\\[4pt]
+\langle \mathit{collapse} \rangle
+  &::= \mathtt{collapse}\ \langle \mathit{term} \rangle\ 
+       [\langle \mathit{rule} \rangle]
+\\[4pt]
+\langle \mathit{seq} \rangle
+  &::= \mathtt{seq}\ \mathtt{[}\
+       \langle \mathit{term} \rangle
+       \{\mathtt{;}\ \langle \mathit{term} \rangle\}^{*}\ 
+       \mathtt{]}
+\end{align*}
+
+\section{Refusal Reasons}
+
+\begin{align*}
+\langle \mathit{reason} \rangle
+  &::= \mathtt{violation}\mathtt{(}\langle\mathit{symbol}\rangle\mathtt{)}
+    \mid \mathtt{explicit}\mathtt{(}\langle\mathit{symbol}\rangle\mathtt{)}
+    \mid \varepsilon \quad (\text{defaults to } \mathtt{Explicit("unspecified")})
+\end{align*}
+
+Runtime correspondence:
+\begin{align*}
+\mathtt{violation}(c) &\;\rightsquigarrow\; \texttt{ConstraintViolation}(c) \\
+\mathtt{explicit}(s)  &\;\rightsquigarrow\; \texttt{Explicit}(s)
+\end{align*}
+
+\section{Collapse Rules}
+
+\begin{align*}
+\langle \mathit{rule} \rangle
+  &::= \mathtt{id}
+    \mid \mathtt{last\_write}
+    \mid \mathtt{accumulate}
+    \mid \mathtt{proj}\mathtt{(}\langle\mathit{symbol}\rangle\mathtt{)}
+    \mid \langle\mathit{ident}\rangle
+    \mid \varepsilon \quad (\text{defaults to } \mathtt{Identity})
+\end{align*}
+
+\section{Types}
+
+\begin{align*}
+\langle \mathit{type} \rangle
+  &::= \mathtt{Unit}
+    \mid \mathtt{Never}
+    \mid \mathtt{Type}
+    \mid \langle\mathit{type\_var}\rangle
+    \mid \mathtt{Admissible}\mathtt{(}\langle\mathit{type}\rangle\mathtt{)}
+    \mid \langle\mathit{type}\rangle\ \mathtt{\to}\ \langle\mathit{type}\rangle
+\end{align*}
+
+The richer types ($\mathrm{Refused}$, $\mathrm{Collapsed}$, $\mathrm{Process}$,
+$\Pi$-types) are \emph{synthesised} by the type checker (Chapter~5) rather
+than present in the surface syntax.
+The surface grammar therefore describes the input language;
+the typed language is the output of elaboration.
+A reader cannot infer the typed language from the surface grammar alone,
+and a full specification of the elaborated typed language is a proof obligation
+for future work (see Chapter~\ref{chap:future-dir}).
+
+\section{Operational Summary}
+
+Evaluating a program produces $(V, H, \Omega, a)$ where:
+$V$ is the value, $H$ the accumulated history,
+$\Omega$ the remaining option space, and $a \in \{\top, \bot\}$ the
+admissibility flag.
+
+\begin{center}
+\begin{tabular}{llll}
+\toprule
+Surface form & Type produced & Event appended & $\Omega$ change \\
+\midrule
+\texttt{pop x}
+  & $\Adm{\mathrm{Unit}}$
+  & $\Pop(x)$
+  & $\Omega \setminus \{x\}$ \\
+\texttt{refuse x violation(c)}
+  & $\Refused{\mathrm{Unit}}{r}$
+  & $\Rfuse(x, r)$
+  & none \\
+\texttt{bind a b}
+  & $\mathrm{Process}(T_a \rightsquigarrow T_b)$
+  & $\Bind(a, b)$
+  & none \\
+\texttt{collapse (pop x) id}
+  & $\Collapsed{\mathrm{Unit}}{c_I}$
+  & $\Col(x, c_I)$
+  & none \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+The type checker enforces the precondition for collapse:
+the inner term must have type $\Adm{T}$ (see \textsc{[T-Collapse]}).
+
+
+
+\appendix
+
+\chapter{Mechanised Witnesses: Rust Module Map and Selected Tests}
+
+\section{Motivation}
+
+The formal theorems of this monograph are not purely abstract.
+Each has a mechanical correlate in the Spherepop codebase:
+either a module whose existence is forced by the theorem,
+a type whose structure reflects a definition,
+or a test whose passing constitutes evidence for the theorem.
+
+This appendix presents the module map and selected tests as
+\emph{mechanised witnesses} for the principal theoretical results.
+
+\section{Module-to-Theorem Map}
+
+\begin{center}
+\begin{tabular}{lll}
+\toprule
+Module & Theorem / Definition & Role \\
+\midrule
+\texttt{core/event.rs}
+  & Def.~2.1 (Event Alphabet)
+  & Defines the generator set $E$ \\
+\texttt{core/history.rs}
+  & Prop.~3.2 (Free Monoid)
+  & Mechanises $(\calH, \oplus, \varepsilon)$ \\
+\texttt{core/option\_space.rs}
+  & Thm.~2.6 (Conservation)
+  & Enforces $|\Omega_t| \leq |\Omega_0|$ \\
+\texttt{core/observable.rs}
+  & Def.~8.3 (Observable Quotient)
+  & Implements $\calH / {\sim_c}$ \\
+\texttt{types/checker.rs}
+  & Thm.~6.1 (Collapse Soundness)
+  & Enforces \textsc{[T-Collapse]} \\
+\texttt{types/checker.rs}
+  & Def.~7.1 / 7.2 (TypeMode)
+  & Mechanises open/closed world \\
+\texttt{eval/interpreter.rs}
+  & Thm.~6.2 (Type Preservation)
+  & Evaluation respects types \\
+\texttt{compiler/lower.rs}
+  & Prop.~12.1 (IR Faithfulness)
+  & Bijective event emission \\
+\texttt{vm/machine.rs}
+  & Thm.~11.1 (Replay Equivalence)
+  & History identity post-execution \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\section{Selected Tests as Proof Obligations}
+
+\begin{remark}[Evidential Status]
+The tests below are \emph{mechanised evidence}, not formal proofs.
+Each passing test witnesses the relevant theorem for the specific
+program terms used in that test; it does not constitute a proof that
+the theorem holds for all programs in the language.
+A complete formal proof would require either a mechanised proof assistant
+(Coq, Lean, Agda) formalisation of the type theory and operational semantics,
+or a proof by structural induction covering all syntactic forms.
+Both are proof obligations for future work.
+\end{remark}
+
+Each test below is annotated with the theorem it mechanically witnesses.
+
+\subsection*{Witness for Theorem~2.6 (Conservation of Possibility)}
+
+\begin{lstlisting}
+#[test]
+fn world_history_grows_option_space_shrinks() {
+    let mut w = World::new(OptionSpace::new([
+        Symbol::new("a"), Symbol::new("b"),
+    ]));
+    let initial = w.options.len();
+    w.pop(Symbol::new("a")).unwrap();
+    // |H| increased by 1; |Omega| decreased by 1
+    assert_eq!(w.history.len(), 1);
+    assert_eq!(w.options.len(), initial - 1);
+    // Refuse does NOT shrink option space
+    w.refuse(Symbol::new("b"),
+             RefusalReason::NotAvailable);
+    assert_eq!(w.options.len(), initial - 1); // unchanged
+    assert_eq!(w.history.len(), 2);           // history grew
+}
+\end{lstlisting}
+
+\textit{This test witnesses}: the asymmetry between Pop (which decreases $|\Omega|$)
+and Refuse (which does not), formalised in Theorem~2.6(ii) and
+Definition~4.2 (Admissibility Contraction).
+
+\subsection*{Witness for Theorem~6.1 (Collapse Soundness)}
+
+\begin{lstlisting}
+#[test]
+fn collapse_requires_admissible_certificate() {
+    // refuse(x) -> Refused, not Admissible
+    // collapse(refuse(x)) must fail
+    let term = Term::collapse(
+        Term::refuse(Term::var("x"),
+                     RefusalReason::NotAvailable),
+        CollapseRule::Identity,
+    );
+    assert!(eval_closed(&term).is_err(),
+        "collapse of refused term must be a type error");
+}
+\end{lstlisting}
+
+\textit{This test witnesses}: Theorem~6.1, which requires the premise
+$\Gamma \vdash t : \mathrm{Admissible}(T)$ for \textsc{[T-Collapse]}.
+A refused term has type $\mathrm{Refused}(T, r)$, not $\mathrm{Admissible}(T)$,
+so collapse is rejected.
+
+\subsection*{Witness for Theorem~11.1 (Replay Equivalence)}
+
+\begin{lstlisting}
+fn assert_same_history(term: &Term) {
+    // Interpret
+    let (_, world_interp) = eval_closed(term).unwrap();
+    // Compile and run via VM
+    let block = compile(term);
+    let mut machine = Machine::empty();
+    machine.run(&block).unwrap();
+    // THE CORRECTNESS CRITERION
+    assert_eq!(
+        world_interp.history,
+        machine.world.history,
+        "I(p).history != V(C(p)).history"
+    );
+}
+
+#[test]
+fn replay_equivalence_refuse_with_reason() {
+    assert_same_history(&Term::refuse(
+        Term::var("x"),
+        RefusalReason::ConstraintViolation(
+            Symbol::new("c")),
+    ));
+}
+
+#[test]
+fn replay_equivalence_seq_of_binds_and_refuses() {
+    assert_same_history(&Term::seq(vec![
+        Term::bind(Term::var("src"), Term::var("dst")),
+        Term::refuse(Term::var("src"),
+                     RefusalReason::AlreadyRefused(
+                         Symbol::new("src"))),
+    ]));
+}
+\end{lstlisting}
+
+\textit{These tests witness}: Theorem~11.1.
+$I(p).\text{history} = V(C(p)).\text{history}$ for these program terms.
+Each passing assertion is a mechanised proof obligation for the correctness criterion.
+
+\subsection*{Witness for Proposition~\ref{prop:disambiguation} (Rule Refinement)}
+
+\begin{lstlisting}
+#[test]
+fn finer_rule_disambiguates_equivalent_histories() {
+    // Two histories equivalent under Accumulate
+    // but distinct under Identity
+    let mut w1 = World::new(OptionSpace::new([
+        Symbol::new("x"), Symbol::new("y"),
+    ]));
+    w1.pop(Symbol::new("x")).unwrap();
+    w1.pop(Symbol::new("y")).unwrap();
+
+    let mut w2 = World::new(OptionSpace::new([
+        Symbol::new("x"), Symbol::new("y"),
+    ]));
+    w2.pop(Symbol::new("y")).unwrap();
+    w2.pop(Symbol::new("x")).unwrap();
+
+    // Under Accumulate: both map to {x:1, y:1} -- equivalent
+    let obs1_acc = w1.observe(&CollapseRule::Accumulate);
+    let obs2_acc = w2.observe(&CollapseRule::Accumulate);
+    assert_eq!(obs1_acc.entries, obs2_acc.entries,
+        "accumulate should not distinguish pop order");
+
+    // Under Identity: histories differ in event order
+    assert_ne!(w1.history, w2.history,
+        "identity rule distinguishes pop order");
+}
+\end{lstlisting}
+
+\textit{This test witnesses}: Proposition~\ref{prop:disambiguation}.
+The Accumulate rule places $H_1$ and $H_2$ in the same equivalence class.
+The Identity rule (finer than Accumulate) separates them.
+Switching to the finer rule recovers the distinction.
+
+\subsection*{Witness for Theorem~\ref{thm:no-direct-obs} (No Direct Observation)}
+
+\begin{lstlisting}
+#[test]
+fn distinct_histories_may_agree_under_any_coarse_rule() {
+    let mut w1 = World::empty();
+    w1.refuse(Symbol::new("x"),
+              RefusalReason::NotAvailable);
+    w1.refuse(Symbol::new("y"),
+              RefusalReason::NotAvailable);
+
+    let mut w2 = World::empty();
+    w2.refuse(Symbol::new("y"),
+              RefusalReason::NotAvailable);
+    w2.refuse(Symbol::new("x"),
+              RefusalReason::NotAvailable);
+
+    // Histories are distinct (different order)
+    assert_ne!(w1.history, w2.history);
+
+    // Under Accumulate (order-insensitive), they agree
+    let acc1 = w1.observe(&CollapseRule::Accumulate);
+    let acc2 = w2.observe(&CollapseRule::Accumulate);
+    // (Both have refuse_count 2, but the entries
+    //  map doesn't record refuses in accumulate)
+    assert_eq!(w1.history.refuse_count(),
+               w2.history.refuse_count());
+}
+\end{lstlisting}
+
+\textit{This test witnesses}: Theorem~\ref{thm:no-direct-obs}.
+The two histories are distinct but observationally equivalent
+under any order-insensitive rule.
+This is an instance of the cardinality argument: any $|O| < |\calH|$
+observation map must identify some distinct histories.
+
+\section{Summary Table}
+
+\begin{center}
+\begin{tabular}{lll}
+\toprule
+Theorem & Test name & Status \\
+\midrule
+Thm.~2.6 (Conservation)
+  & \texttt{world\_history\_grows\_option\_space\_shrinks}
+  & \texttt{PASS} \\
+Thm.~6.1 (Collapse Soundness)
+  & \texttt{collapse\_requires\_admissible\_certificate}
+  & \texttt{PASS} \\
+Thm.~11.1 (Replay Equiv.)
+  & \texttt{replay\_equivalence\_*}
+  & \texttt{PASS} \\
+Prop.~\ref{prop:disambiguation} (Refinement)
+  & \texttt{finer\_rule\_disambiguates}
+  & \texttt{PASS} \\
+Thm.~\ref{thm:no-direct-obs} (No Obs.)
+  & \texttt{distinct\_histories\_agree\_coarse}
+  & \texttt{PASS} \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+
+
+% ═══════════════════════════════════════════════════════════════════════════════
+% V4 ADDITIONS
+% ═══════════════════════════════════════════════════════════════════════════════
+
+% ─────────────────────────────────────────────────────────────────────────────
+\part{Toward an Admissibility Field Semantics}
+% ─────────────────────────────────────────────────────────────────────────────
+
+\chapter{The CLIO Framework}
+\label{chap:clio}
+
+\epigraph{\itshape
+A representation is not a container of information.
+It is an operator that reorganises which distinctions survive projection.}{---}
+
+\section{Background and Purpose}
+
+The Constraint-Limited Information Ontology (CLIO) is a representational
+framework developed to study how projections restructure the geometry of
+a semantic space \cite{flyxion-clio-2023}.
+Its central claim is that representations do not merely compress data ---
+they determine which distinctions count as differences.
+
+CLIO appears throughout this monograph as the ambient theoretical context
+for Spherepop's collapse framework.
+This chapter gives a self-contained summary of the CLIO concepts we use,
+so that readers who do not have prior exposure to CLIO can follow the later
+connections.
+
+\section{Core Definitions}
+
+\begin{definition}[CLIO Projection]
+\label{def:clio-proj}
+A \emph{CLIO projection} is a surjective map
+\[
+\pi : X \to M
+\]
+from a high-dimensional representation space $X$
+to a lower-dimensional manifold $M$ of observational strata.
+\end{definition}
+
+\begin{definition}[Fibre]
+\label{def:fibre}
+The \emph{fibre} above a stratum $m \in M$ is
+\[
+\pi^{-1}(m) = \{x \in X \mid \pi(x) = m\}.
+\]
+\end{definition}
+
+\begin{definition}[Representational Entropy]
+\label{def:rep-entropy}
+The \emph{representational entropy} of stratum $m$ under projection $\pi$ is
+\[
+S_\pi(m) = \log \mathrm{Vol}\bigl(\pi^{-1}(m)\bigr)
+\]
+where $\mathrm{Vol}$ is the appropriate measure on $X$
+(cardinality in finite settings; Lebesgue or Riemannian volume in continuous ones).
+\end{definition}
+
+\begin{definition}[Admissibility Manifold]
+\label{def:adm-manifold}
+Given a projection $\pi$, the \emph{admissibility manifold} $\mathcal{A}(\pi)$
+is the subset of $M$ consisting of strata $m$ whose fibres are non-empty
+and satisfy the constraints of the observational framework.
+$\mathcal{A}(\pi)$ is the space of \emph{reachable observations} under $\pi$.
+\end{definition}
+
+\section{The CLIO–Spherepop Correspondence}
+
+The Spherepop collapse framework is a discrete, computational instance
+of CLIO:
+
+\begin{center}
+\begin{tabular}{ll}
+\toprule
+CLIO concept & Spherepop realisation \\
+\midrule
+Representation space $X$ & History space $\calH$ \\
+Projection $\pi : X \to M$ & Collapse rule $c : \calH \to O_c$ \\
+Stratum $m \in M$ & Observable state $o \in O_c$ \\
+Fibre $\pi^{-1}(m)$ & Fibre $c^{-1}(o)$ \\
+Representational entropy $S_\pi(m)$ & Observational entropy $S_c(o) = \log|c^{-1}(o)|$ \\
+Admissibility manifold $\mathcal{A}(\pi)$ & Admissible option space $\calA(H)$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\begin{remark}
+The identification is exact in the discrete setting
+(replacing volume with cardinality).
+The key insight is that collapse rules are not ad-hoc implementation choices ---
+they are instances of the CLIO projection operation.
+Choosing a collapse rule is choosing a geometry of observational distinction.
+\end{remark}
+
+% ─────────────────────────────────────────────────────────────────────────────
+\chapter{Programs as Operators on Admissibility Fields}
+\label{chap:adm-fields}
+
+\epigraph{\itshape
+Programs are not histories. Programs are what histories do to the future.}{---}
+
+\section{The Forward Shift}
+
+Every version of Spherepop through v3 pointed \emph{backward}:
+histories record what happened; states are projections of what happened;
+types certify that what happened was admissible.
+The arrow was retrospective.
+
+This chapter introduces a forward-pointing structure.
+The central claim is:
+
+\begin{center}
+\emph{A history is fundamental not because it records the past
+but because it constrains the future.}
+\end{center}
+
+The causal arrow is $\text{History} \to \text{Future Geometry}$,
+not $\text{History} \to \text{Past Record}$.
+
+\section{The Future Reachability Map}
+
+\begin{definition}[Reachability Geometry]
+\label{def:reach-geom}
+For a world $(H, \Omega)$, the \emph{reachability geometry} is the pair
+\[
+\mathcal{R}(H, \Omega) = \bigl(\calA(H),\, \Omega\bigr)
+\]
+where $\calA(H) \subseteq \Omega_0$ is the admissibility set
+(Definition~4.1) and $\Omega \subseteq \Omega_0$ is the structural
+option space.
+$\mathcal{R}(H, \Omega)$ describes \emph{what can still happen}
+from the current world state.
+\end{definition}
+
+\begin{definition}[Future Reachability Space]
+\label{def:future-space}
+Let $\mathcal{F}$ denote the set of all reachability geometries:
+\[
+\mathcal{F} = \{(\mathcal{A}, \Omega) \mid
+  \mathcal{A} \subseteq \Omega_0,\; \Omega \subseteq \mathcal{A}\}.
+\]
+\end{definition}
+
+\begin{definition}[The Forward Projection]
+\label{def:forward-proj}
+Define the \emph{forward projection}
+\[
+\rho : \calH \times 2^{\Omega_0} \to \mathcal{F}
+\]
+by
+\[
+\rho(H, \Omega) = \mathcal{R}(H, \Omega) = \bigl(\calA(H), \Omega\bigr).
+\]
+\end{definition}
+
+\begin{remark}
+$\rho$ is the forward analogue of the collapse rule $c$.
+Where $c : \calH \to O_c$ maps histories to observable (past) states,
+$\rho : \calH \times 2^{\Omega_0} \to \mathcal{F}$ maps world states to
+reachable (future) geometries.
+
+The full semantic picture is therefore:
+\[
+\text{World } (H, \Omega)
+\;\xrightarrow{\rho}\;
+\mathcal{F}
+\;\xrightarrow{c}\;
+O_c.
+\]
+Observable state is the \emph{second} projection — a projection of
+the future reachability geometry, not a direct projection of history.
+\end{remark}
+
+\section{Histories as Deformations}
+
+\begin{definition}[Deformation Operator]
+\label{def:deformation}
+Each primitive event $e \in E$ induces a \emph{deformation}
+$\delta_e : \mathcal{F} \to \mathcal{F}$:
+\begin{align*}
+\delta_{\Pop(x)}(\mathcal{A}, \Omega) &= (\mathcal{A}, \Omega \setminus \{x\}) \\
+\delta_{\Rfuse(x,r)}(\mathcal{A}, \Omega) &= (\mathcal{A} \setminus \{x\}, \Omega) \\
+\delta_{\Bind(a,b)}(\mathcal{A}, \Omega) &= (\mathcal{A}, \Omega) \\
+\delta_{\Col(x,c)}(\mathcal{A}, \Omega) &= (\mathcal{A}, \Omega)
+\end{align*}
+\end{definition}
+
+\begin{proposition}[Histories as Composed Deformations]
+\label{prop:deformation}
+For any history $H = [e_1, \ldots, e_n]$,
+\[
+\rho(H, \Omega_0) = (\delta_{e_n} \circ \cdots \circ \delta_{e_1})(\Omega_0, \Omega_0).
+\]
+Every history acts as a composed deformation operator on the initial
+reachability geometry.
+\end{proposition}
+
+\begin{proof}
+By induction on $|H|$.
+Base case: $H = \varepsilon$, $\rho(\varepsilon, \Omega_0) = (\Omega_0, \Omega_0)$.
+Inductive step: appending event $e$ applies $\delta_e$ to the current geometry.
+By Definition~\ref{def:deformation}, each $\delta_e$ transforms
+$(\mathcal{A}, \Omega)$ exactly as the operational semantics transforms
+$\calA(H)$ and $\Omega$ (Definitions~4.1 and~2.3--2.6).
+\end{proof}
+
+\begin{remark}
+Proposition~\ref{prop:deformation} is the forward-pointing reformulation
+of the history-first ontology.
+A program is not a record of what happened; it is a composition of
+deformation operators that progressively reshapes the reachability geometry.
+
+Pop deforms the structural option space (forecloses a structural possibility).
+Refuse deforms the admissibility set (forecloses a semantic possibility).
+Bind and Collapse leave the reachability geometry unchanged
+(they record structure without foreclosing futures).
+\end{remark}
+
+\section{Admissibility Fields}
+
+\begin{definition}[Admissibility Field]
+\label{def:adm-field}
+An \emph{admissibility field} is a function
+\[
+\phi : \calH \to [0, 1]
+\]
+assigning to each history a \emph{degree of admissibility} for what
+follows.
+$\phi(H) = 1$ means every future is admissible from $H$;
+$\phi(H) = 0$ means no futures are admissible.
+\end{definition}
+
+\begin{remark}
+The Boolean admissibility of earlier chapters is the special case where
+$\phi$ takes values in $\{0, 1\}$.
+A graded admissibility field assigns intermediate values to histories
+that have partially foreclosed future options.
+This connects Spherepop to the RSVP (Relativistic Scalar-Vector Plenum)
+framework, in which dynamics are governed by a field of varying
+admissibility over a computational or physical trajectory space.
+\end{remark}
+
+\begin{definition}[Field Deformation by a History]
+Each event $e$ acts on admissibility fields by pullback:
+\[
+(e^* \phi)(H) = \phi(H \hconcat [e]).
+\]
+A history $H = [e_1, \ldots, e_n]$ deforms the field by
+$(e_1 \cdots e_n)^* \phi = e_n^* \circ \cdots \circ e_1^* \phi$.
+\end{definition}
+
+\begin{theorem}[Monotone Field Deformation]
+\label{thm:field-deform}
+For any admissibility field $\phi$ and any Pop event $\Pop(x)$:
+\[
+(\Pop(x)^* \phi)(H) \leq \phi(H) \quad \text{for all } H.
+\]
+Pop events are non-admissibility-increasing deformations.
+\end{theorem}
+
+\begin{proof}
+Pop removes $x$ from the option space (Definition~2.4),
+strictly reducing the set of available futures.
+Formally: the set of admissible continuations of $H \hconcat [\Pop(x)]$
+is a subset of the admissible continuations of $H$
+(since $x$ is now unavailable).
+Any field measuring admissibility of continuations is non-increasing
+under Pop.
+\end{proof}
+
+\begin{remark}
+Theorem~\ref{thm:field-deform} makes precise the intuition that
+\emph{programs are reachability sculptures}: they carve possibility
+space by applying sequences of non-increasing deformations to the
+admissibility field.
+The sculpture is the final reachability geometry $\rho(H, \Omega)$;
+the tool strokes are the deformation operators $\delta_e$.
+\end{remark}
+
+\section{The Two-Projection Architecture}
+
+The full semantic picture of Spherepop v4 is a two-stage projection:
+
+\begin{definition}[Two-Projection Architecture]
+\label{def:two-proj}
+\[
+\underbrace{(H, \Omega)}_{\text{World}}
+\;\xrightarrow{\;\rho\;}
+\underbrace{\mathcal{F}}_{\text{Future Geometry}}
+\;\xrightarrow{\;\pi_c\;}
+\underbrace{O_c}_{\text{Observable State}}
+\]
+where:
+\begin{itemize}
+\item $\rho(H, \Omega) = (\calA(H), \Omega)$
+  is the \emph{forward projection} (history to future geometry);
+\item $\pi_c : \mathcal{F} \to O_c$
+  is the \emph{observational projection} (future geometry to collapsed state).
+\end{itemize}
+\end{definition}
+
+\begin{remark}
+In v1--v3 of this monograph, observable state was described as a direct
+projection of history: $c : \calH \to O_c$.
+Definition~\ref{def:two-proj} reveals this as a composite:
+$c = \pi_c \circ \rho|_{\calH}$.
+Observable state is a projection of a projection.
+
+This is not a semantic change; it is a structural clarification.
+What changes is what counts as \emph{fundamental}:
+not histories, not observable states, but the reachability geometry $\mathcal{F}$
+that mediates between them.
+\end{remark}
+
+\begin{theorem}[Fibre Factorisation via Two-Projection]
+\label{thm:two-proj-fibre}
+For any observable state $o \in O_c$:
+\[
+c^{-1}(o) = \rho^{-1}\bigl(\pi_c^{-1}(o)\bigr).
+\]
+The fibre of an observable state under the composite is the preimage
+of the fibre of $o$ under $\pi_c$ pulled back through $\rho$.
+\end{theorem}
+
+\begin{proof}
+Standard composition of preimages:
+$c^{-1}(o) = ({\pi_c \circ \rho})^{-1}(o) = \rho^{-1}(\pi_c^{-1}(o))$.
+\end{proof}
+
+\begin{remark}
+Theorem~\ref{thm:two-proj-fibre} reveals that the observational entropy
+$S_c(o) = \log |c^{-1}(o)|$ has two layers of ambiguity:
+\begin{itemize}
+\item \emph{Geometric ambiguity}: how many future geometries $f \in \mathcal{F}$
+  project to $o$ under $\pi_c$
+  (i.e.\ $|\pi_c^{-1}(o)|$).
+\item \emph{Historical ambiguity}: for each such geometry $f$,
+  how many histories produce it under $\rho$
+  (i.e.\ $|\rho^{-1}(f)|$ for $f \in \pi_c^{-1}(o)$).
+\end{itemize}
+Total entropy: $S_c(o) = \sum_{f \in \pi_c^{-1}(o)} \log|\rho^{-1}(f)|$.
+\end{remark}
+
+\section{Slogan Progression}
+
+\begin{center}
+\begin{tabular}{lll}
+\toprule
+Version & Slogan & Fundamental object \\
+\midrule
+v1 & Programs are histories & $H \in \calH$ \\
+v2 & Programs are constructions in possibility space & $(H, \Omega)$ \\
+v3 & Programs are reachability sculptures & $\calH / {\sim_c}$ \\
+v4 & Programs are operators that deform admissibility fields & $\rho : (H,\Omega) \to \mathcal{F}$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\begin{remark}
+Each version does not replace the previous but subsumes it.
+Histories remain fundamental --- but now as inputs to the forward
+projection $\rho$, not as endpoints of a narrative.
+Observable states remain real --- but now as secondary projections
+of a richer intermediate geometry.
+The admissibility field $\phi : \calH \to [0,1]$ connects
+Spherepop to RSVP dynamics, where physical or computational
+fields vary continuously over a trajectory space.
+\end{remark}
+
+% ─────────────────────────────────────────────────────────────────────────────
+\chapter{Toward a Unified Projection Ontology}
+\label{chap:unified}
+
+\section{The Common Structure}
+
+The Spherepop framework, CLIO projections, kernel embeddings,
+admissibility fields, and sheaf-theoretic observation are all
+instances of a single mathematical pattern:
+
+\[
+\pi : X \to Y
+\]
+
+with:
+\begin{itemize}
+\item a \emph{total space} $X$ carrying the full information,
+\item a \emph{base space} $Y$ carrying the observable information,
+\item \emph{fibres} $\pi^{-1}(y)$ carrying the hidden information.
+\end{itemize}
+
+The entire program --- from the original state-illusion critique
+through the conservation law, collapse quotients, admissibility types,
+compiler correctness, observational entropy, sheaf conditions, and
+admissibility fields --- is the study of how computation relates to
+this structure.
+
+\begin{definition}[Projection Ontology]
+\label{def:proj-onto}
+A \emph{projection ontology} for a computational system is a triple
+$(X, Y, \pi)$ with:
+\begin{itemize}
+\item $X$: the \emph{total computational space}
+  (in Spherepop: $\calH \times 2^{\Omega_0}$, world states);
+\item $Y$: the \emph{observable space}
+  (in Spherepop: $O_c$, collapsed states, or $\mathcal{F}$, future geometries);
+\item $\pi : X \to Y$: the \emph{projection}
+  (collapse rule $c$, or forward projection $\rho$).
+\end{itemize}
+\end{definition}
+
+\section{All Major Theorems as Projection Theorems}
+
+\begin{proposition}[Projection Unification]
+\label{prop:proj-unification}
+All major theorems of this monograph are instances of projection geometry:
+\begin{center}
+\begin{tabular}{lll}
+\toprule
+Theorem & Projection $\pi$ & Content \\
+\midrule
+State Illusion (Prop.~1.2) & $\sigma : \calH \to S$ &
+  $\pi$ non-injective $\Rightarrow$ information lost \\
+Conservation (Thm.~2.6) & $\rho : \calH \to \mathcal{F}$ &
+  $|\rho^{-1}(f)|$ bounded by $|\Omega_0|$ \\
+No Direct Obs.\ (Thm.~18.3) & $\phi : \calH \to O$ &
+  $|O| < |\calH|$ $\Rightarrow$ $\phi$ non-injective \\
+Univ.\ Property (Thm.~22.2) & $q_c : \calH \to O_c$ &
+  Universal among $c$-respecting maps \\
+Obs.\ Tradeoff (Thm.~22.5) & $c : \calH \to O_c$ &
+  Recovery $\iff$ injectivity \\
+Entropy Monotone (Thm.~22.6) & $c_1 \preceq c_2$ &
+  Finer $\pi$ $\Rightarrow$ smaller fibres \\
+Topology Change (Thm.~21.3) & $\rho_1, \rho_2 : X \to Y$ &
+  Different $\pi$ $\Rightarrow$ different $\tau_\pi$ \\
+State Illusion / Sheaf (Prop.~C.5) & $\mathscr{O}_c$ sheaf &
+  Illusion = non-unique lifting \\
+\bottomrule
+\end{tabular}
+\end{center}
+\end{proposition}
+
+\begin{remark}
+Proposition~\ref{prop:proj-unification} reveals that the entire framework
+has a single mathematical spine: fibres of projection maps.
+
+Observational entropy $S_c(o) = \log|c^{-1}(o)|$
+is the CLIO representational entropy $S_\pi(m) = \log\mathrm{Vol}(\pi^{-1}(m))$
+in discrete form.
+
+State illusion is fibre multiplicity.
+
+State erasure is discarding the total space $X$ after computing $\pi(x)$.
+
+Admissibility is the geometry of the base space $Y = \mathcal{F}$.
+
+Compiler correctness is preservation of fibre identity:
+$I(p)$ and $V(C(p))$ are in the same fibre of $\rho$.
+
+The kernel theorem (Chapter~21) is a theorem about when changing $\pi$
+restructures the fibres of the new projection.
+\end{remark}
+
+\section{Open Frontier: Reachability Cohomology}
+
+The sheaf appendix (Appendix~C) raised the question of sheaf cohomology
+as a measure of the obstruction to lifting local observations to global histories.
+We now state this as a formal open problem.
+
+\begin{definition}[Reachability Cohomology (Conjectural)]
+\label{def:reach-cohom}
+For an observational site $\mathcal{O}$ and the history sheaf $\mathscr{H}$,
+the \emph{reachability cohomology groups} $H^n(\mathcal{O}, \mathscr{H})$
+would measure the $n$-th obstruction to lifting local sections of
+$\mathscr{O}_c$ to global sections of $\mathscr{H}$.
+\end{definition}
+
+\begin{remark}
+$H^0(\mathcal{O}, \mathscr{H})$ would be the set of global histories
+(consistent with all local observations) ---
+the ``reconstructible'' histories.
+
+$H^1(\mathcal{O}, \mathscr{H})$ would measure the first-order obstruction:
+local observations that are compatible on overlaps but do not extend to
+a global history.
+This is the cohomological form of state illusion.
+
+We do not develop this theory here.
+Computing $H^1$ for specific collapse rules (e.g., $c_{LW}$ on a
+two-step execution) would be a natural next result.
+\end{remark}
+
+\section{Summary: The Projection-First Ontology}
+
+The v4 reformulation replaces the original slogan:
+
+\begin{center}
+\emph{Histories are primary; states are derived.}
+\end{center}
+
+with the deeper:
+
+\begin{center}
+\emph{Projection is primary; both history and state are projections
+of the reachability geometry.}
+\end{center}
+
+Under this view:
+\begin{itemize}
+\item A \emph{history} is the trajectory through world-state space
+  that produced the current reachability geometry.
+\item An \emph{observable state} is the image of the reachability geometry
+  under an observational projection.
+\item A \emph{program} is a composition of deformation operators
+  that sculpts the reachability field.
+\item A \emph{type} is a certificate that the current trajectory
+  remains within an admissible stratum of the reachability manifold.
+\item \emph{Compiler correctness} is preservation of trajectory structure
+  (same fibres, same deformations, same field geometry).
+\end{itemize}
+
+This is the framework that connects Spherepop, CLIO, Hidden Manifolds,
+The Admissibility Field, and RSVP as computational instances of a single
+mathematical program: the study of how projection maps structure the
+geometry of possibility.
+
+
+
+\backmatter
+
+\chapter*{References}
+\addcontentsline{toc}{chapter}{References}
+
+\begin{description}
+
+\item[Barendregt 1984]
+Barendregt, H.P.
+\emph{The Lambda Calculus: Its Syntax and Semantics.}
+North-Holland, 1984.
+The standard reference for lambda calculus, whose beta-reduction is
+interpreted here as a quotient operation on histories.
+
+\item[Feldman 1958 / Hájek 1958]
+Feldman, J.~(1958); Hájek, J.~(1958).
+The dichotomy theorem for Gaussian measures:
+two Gaussian measures are either equivalent or mutually singular.
+Provides the measure-theoretic foundation for Chapter~13's
+topological separation discussion.
+
+\item[Fowler 2005]
+Fowler, M.
+\emph{Event Sourcing.}
+martinfowler.com, 2005.
+The domain-driven design tradition that first recognized the computational
+importance of history-primary architectures.
+
+\item[Hoare 1985]
+Hoare, C.A.R.
+\emph{Communicating Sequential Processes.}
+Prentice Hall, 1985.
+The process calculus tradition from which Spherepop inherits
+its emphasis on communication events over state.
+
+\item[Mac Lane 1971]
+Mac Lane, S.
+\emph{Categories for the Working Mathematician.}
+Springer, 1971.
+The category-theoretic framework for Chapters~11--12:
+history categories, functoriality, and collapse functors.
+
+\item[Martin-Löf 1984]
+Martin-Löf, P.
+\emph{Intuitionistic Type Theory.}
+Bibliopolis, 1984.
+The proof-theoretic account of types as propositions,
+extended here into the reachability dimension.
+
+\item[Milner 1980]
+Milner, R.
+\emph{A Calculus of Communicating Systems.}
+Springer, 1980.
+CCS is the closest process calculus antecedent to Spherepop's
+event-oriented operational semantics.
+
+\item[Reiter 1978]
+Reiter, R.
+``On closed world data bases.''
+In: \emph{Logic and Data Bases}, Plenum Press, 1978.
+The original source of the open-world / closed-world distinction
+formalized as \texttt{TypeMode} in Chapter~7.
+
+\item[Flyxion 2023]
+Flyxion.
+\emph{CLIO: Constraint-Limited Information Ontology.}
+Independent Research, 2023.
+Available at \url{https://github.com/standardgalactic/}.
+The framework for representational entropy,
+projection-induced topology, and admissibility manifolds
+of which Spherepop is a computational instance.
+
+\item[Santoro, Waghmare, Panaretos 2024]
+Santoro, M.; Waghmare, S.; Panaretos, V.M.
+``Kernel embeddings of functional data and mutual singularity.''
+The result interpreted in Chapter~13 as a theorem about
+representation-induced ontological reorganization.
+
+\item[Shapiro et al.\ 2011]
+Shapiro, M.; Preguiça, N.; Baquero, C.; Zawirski, M.
+``Conflict-free replicated data types.''
+INRIA Technical Report, 2011.
+Distributed systems architectures whose consistency guarantees
+are expressed in terms of merge operations on historical records.
+
+\item[Wright and Felleisen 1994]
+Wright, A.K.; Felleisen, M.
+``A syntactic approach to type soundness.''
+\emph{Information and Computation} 115(1), 1994.
+The Preservation and Progress theorems (Chapter~6) follow the
+Wright--Felleisen syntactic proof methodology.
+
+\end{description}
+
+\end{document}

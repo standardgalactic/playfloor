@@ -1,0 +1,2396 @@
+1
+00:00:00,000 --> 00:00:05,660
+You know, usually when we talk about making a diagnosis, whether it is a doctor looking at a
+
+2
+00:00:05,660 --> 00:00:10,700
+patient or maybe a structural engineer looking at a bridge, there is this implicit expectation
+
+3
+00:00:10,700 --> 00:00:16,220
+of absolute crystalline precision. Right. You expect that binary clarity.
+
+4
+00:00:16,540 --> 00:00:21,500
+Exactly. I mean, you break your arm. The x-ray shows that jagged white line on the glowing screen
+
+5
+00:00:21,500 --> 00:00:25,100
+and the doctor just points at it and says, there it is. There is the problem.
+
+6
+00:00:25,100 --> 00:00:30,220
+And it is incredibly comforting, you know, having that clarity. We are deeply wired to like things
+
+7
+00:00:30,220 --> 00:00:35,260
+that are visible. Yeah. We really like reality to be categorized neatly into little boxes.
+
+8
+00:00:35,440 --> 00:00:40,360
+Yeah. Broken or not broken, safe or unsafe. Exactly. But then you step into the world of
+
+9
+00:00:40,360 --> 00:00:44,920
+how we actually represent knowledge. Right. You look at how computer algorithms learn to recognize
+
+10
+00:00:44,920 --> 00:00:51,880
+faces or how human languages evolve over centuries or, you know, how monumental scientific paradigms
+
+11
+00:00:51,880 --> 00:00:55,440
+shift. Suddenly that diagnostic x-ray machine is completely useless.
+
+12
+00:00:55,760 --> 00:01:00,000
+It really is. We were looking at a landscape that is, well, honestly, it is incredibly murky.
+
+13
+00:01:00,440 --> 00:01:06,540
+We are swimming in diagnostic muddy waters when it comes to cognition. It is so much harder to point
+
+14
+00:01:06,540 --> 00:01:09,860
+to a flaw in a worldview than it is to point to a fracture in a bone.
+
+15
+00:01:10,140 --> 00:01:16,020
+Which is exactly why you are sitting here with us today in the studio. We have a massive stack of
+
+16
+00:01:16,020 --> 00:01:18,280
+source material spread out on the table between us.
+
+17
+00:01:18,280 --> 00:01:25,340
+It is quite the stack. It is. Specifically, we have an incredibly dense, brilliantly fascinating
+
+18
+00:01:25,340 --> 00:01:31,700
+independent research paper from June 2026. It is by an author named Flickshin, and it is titled
+
+19
+00:01:31,700 --> 00:01:36,260
+Distinguishability Geometry. That title alone sets a pretty high bar.
+
+20
+00:01:36,360 --> 00:01:39,240
+It really does. And honestly, it is a paradigm shifter in its own right.
+
+21
+00:01:39,420 --> 00:01:44,820
+So our mission today, together with you listening right now, is to explore how representational
+
+22
+00:01:44,820 --> 00:01:50,280
+systems work. And by that, I mean anything from a machine learning model to the English language to
+
+23
+00:01:50,280 --> 00:01:53,560
+like the way you personally categorize your friends and family.
+
+24
+00:01:53,780 --> 00:01:55,780
+Any system that processes information.
+
+25
+00:01:56,040 --> 00:02:01,020
+Exactly. We want to understand how these systems gain, lose, and transfer the capacity to express
+
+26
+00:02:01,020 --> 00:02:05,800
+differences. We are quite literally going to map the mathematical geometry of how we tell things
+
+27
+00:02:05,800 --> 00:02:06,120
+apart.
+
+28
+00:02:06,380 --> 00:02:10,760
+To really ground us before we dive into the math, I think it helps to understand what the author is
+
+29
+00:02:10,760 --> 00:02:13,380
+actually attempting here. It is a unifying framework.
+
+30
+00:02:13,540 --> 00:02:14,700
+Okay. Lay it out for us.
+
+31
+00:02:14,780 --> 00:02:19,180
+So Flickshin takes three completely independent fields of research that historically haven't really
+
+32
+00:02:19,180 --> 00:02:22,960
+spoken the same language at all. First, you have event-sourced computation.
+
+33
+00:02:23,220 --> 00:02:23,440
+Right.
+
+34
+00:02:23,440 --> 00:02:28,760
+This is a field that looks at how distinct, complicated histories in a computer system
+
+35
+00:02:28,760 --> 00:02:32,420
+collapse down into simple, observable current states.
+
+36
+00:02:32,420 --> 00:02:36,900
+So kind of like how a bank account balance is just a single number, but it is actually
+
+37
+00:02:36,900 --> 00:02:43,300
+the collapsed state of thousands of individual deposits and withdrawals over, say, 10 years.
+
+38
+00:02:43,440 --> 00:02:44,740
+That is a great way to picture it. Yeah.
+
+39
+00:02:44,940 --> 00:02:45,120
+Yeah.
+
+40
+00:02:45,520 --> 00:02:49,380
+Second, the author pulls from Kernel Statistics. This is heavy data science.
+
+41
+00:02:49,440 --> 00:02:50,480
+The really dense stuff.
+
+42
+00:02:50,740 --> 00:02:55,940
+Very dense. It looks at how you can mathematically amplify the separation between incredibly messy,
+
+43
+00:02:56,600 --> 00:03:00,780
+overlapping data distributions, just so you can draw clean lines between them.
+
+44
+00:03:00,780 --> 00:03:02,100
+Okay. And the third field?
+
+45
+00:03:02,360 --> 00:03:07,340
+Third is archive-based compression. Think about the math behind how quickly we can describe
+
+46
+00:03:07,340 --> 00:03:10,400
+massive amounts of data using repeating templates.
+
+47
+00:03:10,640 --> 00:03:13,500
+Like how a zip file actually shrinks a folder on your computer.
+
+48
+00:03:13,640 --> 00:03:19,260
+Exactly. So you have three totally different worlds. Database architecture, heavy statistics,
+
+49
+00:03:19,920 --> 00:03:20,840
+and file compression.
+
+50
+00:03:21,260 --> 00:03:26,980
+But this paper proves that all three of these fields are, without realizing it, staring at the
+
+51
+00:03:26,980 --> 00:03:29,520
+exact same hidden mathematical object.
+
+52
+00:03:29,520 --> 00:03:34,820
+Yes. It explains not just what we learn about the world, but how the underlying physical and
+
+53
+00:03:34,820 --> 00:03:39,700
+mathematical structure of our knowledge has to change for learning to actually occur.
+
+54
+00:03:40,140 --> 00:03:43,520
+I want to get straight into the foundation of this, because it starts with what feels like
+
+55
+00:03:43,520 --> 00:03:46,420
+the most deceptively simple building block imaginable.
+
+56
+00:03:46,480 --> 00:03:47,820
+It does start very basic.
+
+57
+00:03:47,940 --> 00:03:53,040
+Right. I mean, this whole grand unified theory rests on rigorously defining what it means for
+
+58
+00:03:53,040 --> 00:03:54,280
+two things to be the same.
+
+59
+00:03:54,280 --> 00:03:59,080
+So the author begins by introducing a concept called the distinguishability space.
+
+60
+00:03:59,280 --> 00:03:59,340
+Right.
+
+61
+00:03:59,480 --> 00:04:03,300
+And really, everything else in the framework flows from this one single definition.
+
+62
+00:04:03,420 --> 00:04:07,780
+Okay. Let's unpack this. The core equation of the paper is written as a pair. It is an
+
+63
+00:04:07,780 --> 00:04:10,700
+X and then a little tilde symbol. So X comma tilde.
+
+64
+00:04:10,900 --> 00:04:11,140
+Right.
+
+65
+00:04:11,380 --> 00:04:15,240
+The X just represents a set of objects, and that could be anything, right?
+
+66
+00:04:15,340 --> 00:04:19,900
+Yeah. Absolutely anything. A set of numbers, a set of photographs, a set of emotions.
+
+67
+00:04:19,900 --> 00:04:26,200
+Okay. And the tilde represents what mathematicians call an equivalence relation. In plain English,
+
+68
+00:04:26,380 --> 00:04:31,780
+the paper defines this as things that are observationally indistinguishable to a specific
+
+69
+00:04:31,780 --> 00:04:32,280
+system.
+
+70
+00:04:32,600 --> 00:04:37,440
+Think about what it means to be a system observing the world. The system looks at two distinct
+
+71
+00:04:37,440 --> 00:04:39,660
+separate objects in that set X.
+
+72
+00:04:39,940 --> 00:04:40,120
+Yeah.
+
+73
+00:04:40,220 --> 00:04:45,460
+It applies its equivalence relation, the tilde, and it essentially says, based on my current
+
+74
+00:04:45,460 --> 00:04:49,120
+rule book, I literally cannot tell the difference between these two things.
+
+75
+00:04:49,120 --> 00:04:52,740
+So I was trying to wrap my head around this last night. I was trying to find a real world
+
+76
+00:04:52,740 --> 00:04:58,020
+anchor, and I realized it is exactly like the mundane chore of sorting laundry.
+
+77
+00:04:58,320 --> 00:04:59,860
+Oh, that is a perfect example.
+
+78
+00:05:00,000 --> 00:05:04,180
+Think about your own laundry pile at home, dumped on the bedroom floor. If your personal
+
+79
+00:05:04,180 --> 00:05:08,880
+representational system for sorting laundry only operates by color, like you just have
+
+80
+00:05:08,880 --> 00:05:10,320
+a darks basket and lights basket.
+
+81
+00:05:10,440 --> 00:05:10,640
+Right.
+
+82
+00:05:10,940 --> 00:05:17,580
+Then a red cotton t-shirt and a red heavy wool winter sweater are mathematically indistinguishable
+
+83
+00:05:17,580 --> 00:05:18,480
+in that framework.
+
+84
+00:05:18,740 --> 00:05:23,200
+Because to your sorting system, their material composition is just invisible. They fall into
+
+85
+00:05:23,200 --> 00:05:24,380
+the exact same category.
+
+86
+00:05:24,560 --> 00:05:29,180
+You apply the tilde, the equivalence relation, and the system just says red is red. Put it
+
+87
+00:05:29,180 --> 00:05:29,860
+in the darks pile.
+
+88
+00:05:29,860 --> 00:05:34,520
+The terminology the paper uses for those piles of laundry is crucial. They are called fibers
+
+89
+00:05:34,520 --> 00:05:35,780
+or equivalence classes.
+
+90
+00:05:36,040 --> 00:05:36,440
+Fibers are good.
+
+91
+00:05:36,440 --> 00:05:42,420
+A fiber collects absolutely everything that cannot be told apart by the system. And this
+
+92
+00:05:42,420 --> 00:05:48,100
+brings us to a fundamental structural point about how we view reality. What is fascinating
+
+93
+00:05:48,100 --> 00:05:51,720
+here is that a finer relation has smaller fibers.
+
+94
+00:05:52,040 --> 00:05:53,320
+Meaning it makes more distinctions.
+
+95
+00:05:53,660 --> 00:05:53,840
+Yeah.
+
+96
+00:05:53,980 --> 00:05:58,960
+So if I upgrade my laundry system to serve by color and fabric type, my fibers shrink.
+
+97
+00:05:59,460 --> 00:05:59,680
+Yeah.
+
+98
+00:05:59,740 --> 00:06:04,300
+I now have a red cotton pile and a red wool pile. I have amplified the distinction.
+
+99
+00:06:04,300 --> 00:06:10,300
+Conversely, a coarser relation has larger fibers. It lumps more things together. It ignores differences,
+
+100
+00:06:10,540 --> 00:06:11,920
+usually to save energy or space.
+
+101
+00:06:12,300 --> 00:06:16,640
+And the ultimate coarse relation is, well, my teenage son's method. Just one giant pile
+
+102
+00:06:16,640 --> 00:06:19,920
+on the floor. Everything is indistinguishable. He just says it is all laundry.
+
+103
+00:06:20,200 --> 00:06:24,760
+The formal mathematical term for that teenage methodology is the indiscreet relation.
+
+104
+00:06:25,160 --> 00:06:25,880
+I love that.
+
+105
+00:06:26,060 --> 00:06:32,320
+Nothing is distinguishable. Everything shares one massive fiber. The absolute opposite extreme
+
+106
+00:06:32,320 --> 00:06:37,160
+is the discrete relation, where every single item in the universe is uniquely identified.
+
+107
+00:06:37,380 --> 00:06:38,940
+So no two things share a fiber.
+
+108
+00:06:39,240 --> 00:06:45,500
+Right. No two things. But here is the catch. In the real world, functional systems almost
+
+109
+00:06:45,500 --> 00:06:48,540
+always exist somewhere in the muddy middle. They have to.
+
+110
+00:06:48,720 --> 00:06:53,660
+Which leads us directly to what the paper calls the distinguishability principle. This
+
+111
+00:06:53,660 --> 00:06:59,260
+is the core philosophical stance of the entire framework. And honestly, this changes how I look
+
+112
+00:06:59,260 --> 00:07:03,300
+at the world. It really is profound. The principle states that a representational system
+
+113
+00:07:03,300 --> 00:07:09,700
+is defined not by what objects it contains, but strictly by what distinctions it can express.
+
+114
+00:07:09,940 --> 00:07:14,500
+That might sound like an academic nuance, but it fundamentally shifts how we evaluate knowledge.
+
+115
+00:07:14,940 --> 00:07:18,320
+Imagine two different systems observing the exact same set of objects.
+
+116
+00:07:18,320 --> 00:07:18,740
+Oh, okay.
+
+117
+00:07:18,800 --> 00:07:23,580
+They are looking at the same pile of clothes, or maybe a company is looking at the same raw customer data.
+
+118
+00:07:23,900 --> 00:07:28,160
+If those two systems have different indistinguishability relations, if they draw their fibers
+
+119
+00:07:28,160 --> 00:07:30,400
+differently, they're fundamentally different systems.
+
+120
+00:07:30,840 --> 00:07:36,380
+So you aren't defined by the data you hold. You are defined entirely by your internal geometry
+
+121
+00:07:36,380 --> 00:07:37,080
+of separation.
+
+122
+00:07:37,160 --> 00:07:37,560
+Exactly.
+
+123
+00:07:38,020 --> 00:07:43,000
+Think about what this means for you listening right now. Have you ever been incredibly frustrated
+
+124
+00:07:43,000 --> 00:07:49,460
+trying to fill out a bureaucratic form? Maybe the DMV, or a medical intake sheet at a new doctor's
+
+125
+00:07:49,460 --> 00:07:49,660
+office?
+
+126
+00:07:49,880 --> 00:07:50,940
+Oh, we have all been there.
+
+127
+00:07:51,440 --> 00:07:56,720
+You're reading through the options, and there just isn't a checkbox that fits your exact nuanced
+
+128
+00:07:56,720 --> 00:07:57,360
+situation.
+
+129
+00:07:58,160 --> 00:08:02,860
+You had a specific reality you wanted to convey, but you were forced to check a box labeled
+
+130
+00:08:02,860 --> 00:08:07,020
+other, where you had to shove yourself into a generic category that didn't quite fit.
+
+131
+00:08:07,020 --> 00:08:11,260
+That feeling of frustration is the friction of colliding with a limited ontology.
+
+132
+00:08:11,480 --> 00:08:14,300
+Exactly. You were literally shoved into a generic fiber.
+
+133
+00:08:14,380 --> 00:08:14,460
+Yeah.
+
+134
+00:08:14,460 --> 00:08:19,340
+That bureaucracy wasn't just annoying. I mean, mathematically, that system literally lacked
+
+135
+00:08:19,340 --> 00:08:22,200
+the internal geometry to distinguish your reality.
+
+136
+00:08:22,200 --> 00:08:29,840
+To the DMV, you and the 10,000 other completely unique individuals in the other fiber are
+
+137
+00:08:29,840 --> 00:08:33,900
+observationally indistinguishable. You are mathematically identical.
+
+138
+00:08:33,900 --> 00:08:42,080
+That DMV analogy highlights the inevitable, unavoidable flaw in any finite system. We live in a reality
+
+139
+00:08:42,080 --> 00:08:44,360
+with infinite nuance, infinite detail.
+
+140
+00:08:44,600 --> 00:08:44,720
+Right.
+
+141
+00:08:44,720 --> 00:08:52,340
+But no representational system, no government bureaucracy, no computer model, not even the
+
+142
+00:08:52,340 --> 00:08:58,220
+English language can capture all of those infinite distinctions. Therefore, every single system
+
+143
+00:08:58,220 --> 00:09:00,920
+must have a shortfall. It must have a flaw.
+
+144
+00:09:00,920 --> 00:09:04,340
+Because if it didn't have a flaw, if it was that discrete relation you mentioned earlier,
+
+145
+00:09:04,340 --> 00:09:08,020
+the fiber would just be infinite and impossibly complex to process.
+
+146
+00:09:08,020 --> 00:09:09,140
+Right. It would be overwhelming.
+
+147
+00:09:09,140 --> 00:09:14,700
+You would have a DMV form with 8 billion unique checkboxes, one for every person on earth. It
+
+148
+00:09:14,700 --> 00:09:16,840
+would take your entire life just to find your box.
+
+149
+00:09:16,840 --> 00:09:21,540
+The system would completely collapse under its own weight. We need fibers to function. We need to
+
+150
+00:09:21,540 --> 00:09:27,980
+blur reality just to process it. And this necessary flaw, this permanent gap between infinite reality
+
+151
+00:09:27,980 --> 00:09:33,660
+and our finite representation of it leads perfectly into the central metric of the entire paper.
+
+152
+00:09:33,660 --> 00:09:34,940
+The author calls it the deficit.
+
+153
+00:09:34,940 --> 00:09:40,460
+The ontological deficit. I'm just fascinated by this concept. The paper argues that any ontology,
+
+154
+00:09:40,460 --> 00:09:45,340
+which let's define that. An ontology is just a fancy word for a description language,
+
+155
+00:09:45,340 --> 00:09:51,820
+a template hierarchy, or your personal categorization system. It is the set of rules you use to understand
+
+156
+00:09:51,820 --> 00:09:52,940
+the world. Right.
+
+157
+00:09:52,940 --> 00:09:59,740
+The paper says every ontology has a measurable shortfall from perfection. Infliction quantifies
+
+158
+00:09:59,740 --> 00:10:03,580
+this shortfall in two completely different but complementary ways.
+
+159
+00:10:03,580 --> 00:10:07,820
+Yes. We have the coding deficit and we have the distinguishability deficit.
+
+160
+00:10:07,820 --> 00:10:11,580
+There are two different lenses looking at the exact same systemic failure.
+
+161
+00:10:11,580 --> 00:10:15,660
+Let's tackle the coding deficit first because this is something we experience every day.
+
+162
+00:10:15,660 --> 00:10:18,460
+The paper defines this as excess description length.
+
+163
+00:10:18,460 --> 00:10:23,740
+Right. How many bits of information or how much literal physical breath is wasted trying to
+
+164
+00:10:23,740 --> 00:10:27,420
+describe a phenomenon simply because your system lacks the right vocabulary for it?
+
+165
+00:10:27,420 --> 00:10:30,220
+A great way to visualize this is through language gaps.
+
+166
+00:10:30,220 --> 00:10:35,820
+My absolute favorite example of this is the German word schadenfreude. Imagine you were speaking
+
+167
+00:10:35,820 --> 00:10:38,620
+English a few hundred years ago, long before we borrow that word.
+
+168
+00:10:38,620 --> 00:10:39,020
+Okay.
+
+169
+00:10:39,020 --> 00:10:43,260
+You are at a tavern, you see a rival of yours spill a drink all over themselves,
+
+170
+00:10:43,260 --> 00:10:47,660
+and you feel a specific emotion. But you don't have the word.
+
+171
+00:10:47,660 --> 00:10:50,060
+You literally lack the label.
+
+172
+00:10:50,060 --> 00:10:54,460
+Right. To express that feeling to your friend, you'd have to use a whole paragraph
+
+173
+00:10:54,460 --> 00:11:00,460
+of circumlocution. You would have to say, I am currently experiencing this highly specific,
+
+174
+00:11:00,460 --> 00:11:06,540
+dark, complicated pleasure that is derived entirely from witnessing the sudden misfortune
+
+175
+00:11:06,540 --> 00:11:09,180
+and public embarrassment of that person over there.
+
+176
+00:11:09,180 --> 00:11:15,020
+Look at the sheer inefficiency of that sentence. You are spending a massive amount of cognitive and
+
+177
+00:11:15,020 --> 00:11:21,740
+linguistic bits to point to one single specific state of being. That is a high coding deficit.
+
+178
+00:11:21,740 --> 00:11:26,700
+But the very moment you adopt the word schadenfreude into your personal ontology,
+
+179
+00:11:26,700 --> 00:11:29,900
+your description length collapses down to one single word.
+
+180
+00:11:29,900 --> 00:11:30,380
+I did.
+
+181
+00:11:30,380 --> 00:11:31,820
+The Hagenfreude. Exactly.
+
+182
+00:11:31,820 --> 00:11:36,300
+The coding deficit is that mathematical gap. It is the wasted energy of constantly working
+
+183
+00:11:36,300 --> 00:11:39,500
+around a missing concept. Then on the other side of the conceptual coin,
+
+184
+00:11:39,500 --> 00:11:42,940
+we have the distinguishability deficit. This metric doesn't look at the length of
+
+185
+00:11:42,940 --> 00:11:45,980
+your description. It looks at your inaccessible distinction capacity.
+
+186
+00:11:45,980 --> 00:11:46,780
+What does that mean in practice?
+
+187
+00:11:46,780 --> 00:11:52,780
+It asks, how many real-world differences simply cannot be expressed in your current system,
+
+188
+00:11:52,780 --> 00:11:58,620
+no matter how many words you use? How many distinctly different objects are trapped together
+
+189
+00:11:58,620 --> 00:12:04,060
+in the exact same fiber because your system is fundamentally blind to the boundaries between
+
+190
+00:12:04,060 --> 00:12:09,340
+them? So if the coding deficit is about wasting breath, the distinguishability deficit is about
+
+191
+00:12:09,340 --> 00:12:14,220
+being blind. Yes, exactly. And this brings us to a mathematical proof in the text,
+
+192
+00:12:14,860 --> 00:12:18,860
+the deficit correspondence theorem. This is where the math starts to pull everything
+
+193
+00:12:18,860 --> 00:12:21,500
+together in a really profound way. Okay, wait, let me get this right,
+
+194
+00:12:21,500 --> 00:12:25,340
+because I really want to make sure I'm grasping the magnitude of what the math is actually proving
+
+195
+00:12:25,340 --> 00:12:30,060
+here. Sure. The paper states that under what they call a faithful encoding assumption,
+
+196
+00:12:30,060 --> 00:12:35,260
+these two deficits, the wasted breath and the blindness, literally bound each other. Yes.
+
+197
+00:12:35,260 --> 00:12:40,300
+Are you saying that mathematically, if I am using too many words to describe something,
+
+198
+00:12:40,300 --> 00:12:45,260
+it actually proves I am fundamentally failing to see the distinct reality of the object?
+
+199
+00:12:46,300 --> 00:12:52,220
+Like, is verbosity mathematical proof of ignorance? It is. That is exactly what the mathematics
+
+200
+00:12:52,220 --> 00:12:58,220
+demonstrate. The theorem shows that local optimality in coding, meaning you are describing something as
+
+201
+00:12:58,220 --> 00:13:04,300
+efficiently and tightly as theoretically possible, corresponds exactly to exhausting all expressible
+
+202
+00:13:04,300 --> 00:13:10,780
+distinctions. Wow. If your coding deficit is zero, your distinguishability deficit is zero. That is
+
+203
+00:13:10,780 --> 00:13:16,700
+wild. I mean, truly wild. If you are wasting bits to describe a situation, if you are talking in circles,
+
+204
+00:13:16,700 --> 00:13:20,940
+it is mathematical proof that your ontology is blind to some underlying distinction.
+
+205
+00:13:21,580 --> 00:13:27,500
+The inefficiency of your description is the literal measurable footprint of your blindness. I keep
+
+206
+00:13:27,500 --> 00:13:32,620
+thinking about what this means for human psychology. Think about being in therapy. Oh, that is an
+
+207
+00:13:32,620 --> 00:13:37,660
+interesting application. If I am rambling on the couch trying to explain a complex tangled feeling to my
+
+208
+00:13:37,660 --> 00:13:42,780
+therapist and I just can't find the words and I am talking in endless circles about what my mother said
+
+209
+00:13:42,780 --> 00:13:48,940
+versus what my boss did, it is not just that I need a thesaurus. Right. It is not merely a vocabulary
+
+210
+00:13:48,940 --> 00:13:57,180
+problem. Exactly. I am trapped in a distinguishability deficit. I literally lack the internal geometry to separate
+
+211
+00:13:57,180 --> 00:14:04,220
+the fibers of my own emotions. Frustration, betrayal and exhaustion are all mashed into one indistinguishable
+
+212
+00:14:04,220 --> 00:14:10,780
+fiber of I feel bad and I am wasting immense energy trying to describe the shape of a shadow. That is a deeply
+
+213
+00:14:10,780 --> 00:14:16,220
+resonant way to apply the framework. And the paper formalizes this reality further with the concept of
+
+214
+00:14:16,220 --> 00:14:22,780
+deficit non-negativity. It is a simple rule, but it grounds the theory. Okay, what is the rule? These deficits are
+
+215
+00:14:22,780 --> 00:14:28,140
+always greater than or equal to zero. Meaning you can never have a negative deficit. You can never be more than
+
+216
+00:14:28,140 --> 00:14:34,060
+perfectly optimal. Right. But it also connects this to a fascinating idea called admissibility geometry.
+
+217
+00:14:34,620 --> 00:14:39,500
+Admissibility refers to what is actually reachable or accessible from where your system currently stands.
+
+218
+00:14:39,500 --> 00:14:45,420
+Okay, so if a concept is inadmissible, it means I just can't get there from here. Precisely. If a state of reality lies
+
+219
+00:14:45,420 --> 00:14:51,660
+outside your system's admissibility, if it is fundamentally outside your reach, then your coding deficit for describing
+
+220
+00:14:51,660 --> 00:14:56,220
+that state must be strictly greater than zero. Because you literally don't have the tools.
+
+221
+00:14:56,220 --> 00:15:03,260
+You are forced into profound inefficiency because the clean, direct path to a perfect description
+
+222
+00:15:03,260 --> 00:15:08,860
+simply does not exist in your current rulebook. You are operating outside the frontier of your own
+
+223
+00:15:08,860 --> 00:15:14,700
+ontology. You are trying to describe a color you have never seen. But here's the thing. Systems aren't
+
+224
+00:15:14,700 --> 00:15:20,620
+static. We aren't just frozen in our deficits forever. Thankfully not. The DMV eventually updates its
+
+225
+00:15:20,620 --> 00:15:26,060
+forms to include new checkboxes. Machine learning models run through thousands of training epochs on
+
+226
+00:15:26,060 --> 00:15:31,980
+new data. Human beings go to therapy. We learn new words. Our cultures evolve. Right. Adaptation
+
+227
+00:15:31,980 --> 00:15:37,100
+happens constantly. So if we're all walking around burdened with these deficits, these mathematical
+
+228
+00:15:37,100 --> 00:15:42,540
+blind spots, how does the geometry of our distinguishability actually change over time? How do we learn?
+
+229
+00:15:42,540 --> 00:15:46,300
+So if we are all walking around with these blind spots, how do we fix them? How does a system
+
+230
+00:15:46,300 --> 00:15:52,460
+actually learn? The math proposes four specific geometric movements to escape these deficits. The
+
+231
+00:15:52,460 --> 00:15:57,580
+author calls them the four operations. To really visualize these four operations, you have to picture
+
+232
+00:15:57,580 --> 00:16:03,660
+a hidden architecture the paper lays out in a two-level diagram. At the very bottom layer, you have objects,
+
+233
+00:16:03,660 --> 00:16:10,380
+the raw stuff of reality. Those objects connect upward to distinctions, the boundaries between things.
+
+234
+00:16:10,380 --> 00:16:16,620
+And those distinctions connect upward again to ontologies, the overarching rule books that generate
+
+235
+00:16:16,620 --> 00:16:22,700
+the boundaries. The brilliance of this architecture is that it separates how we interact with knowledge
+
+236
+00:16:22,700 --> 00:16:28,540
+into two distinct levels. You have the local level, which involves tweaking the existing distinctions.
+
+237
+00:16:28,540 --> 00:16:33,500
+Like fiddling with the settings. Exactly. This is just moving things between the fibers within your current
+
+238
+00:16:33,500 --> 00:16:38,380
+rulebook. And then you have the global or relational level. This is where you aren't just shifting
+
+239
+00:16:38,380 --> 00:16:42,060
+things around. You are changing the ontology itself. You are changing the entire rulebook.
+
+240
+00:16:42,060 --> 00:16:45,740
+Let's walk through these four moves, starting down on the local level with operation one,
+
+241
+00:16:45,740 --> 00:16:51,660
+which is projection. Projection is an operation that merges fibers. It takes a finely tuned system
+
+242
+00:16:51,660 --> 00:16:56,700
+and coarsens it. It takes things that used to be distinctly categorized and crushes them together
+
+243
+00:16:56,700 --> 00:17:02,540
+into a single broader category. So mathematically speaking, projection destroys distinctions. Yes,
+
+244
+00:17:02,540 --> 00:17:05,820
+it destroys information. My favorite analogy to understand projection
+
+245
+00:17:05,820 --> 00:17:12,620
+is casting a three-dimensional shadow onto a two-dimensional wall. Imagine you are holding
+
+246
+00:17:12,620 --> 00:17:17,900
+a physical cylinder like a can of soup. Okay. If you shine a flashlight on it from the side,
+
+247
+00:17:17,900 --> 00:17:23,020
+the shadow it casts on the wall behind it is a flat rectangle. But if you take that exact same
+
+248
+00:17:23,020 --> 00:17:29,180
+cylinder and shine the light end on, the shadow on the wall is a flat circle. That is a great visual.
+
+249
+00:17:29,180 --> 00:17:34,380
+In both of those scenarios, you have projected a three-dimensional reality onto a two-dimensional
+
+250
+00:17:34,380 --> 00:17:40,380
+representational system, which is the wall. And in doing so, critical information is permanently lost.
+
+251
+00:17:40,380 --> 00:17:44,860
+Because the depth is gone. Right. If you are a system that can only look at the wall and you see
+
+252
+00:17:44,860 --> 00:17:50,060
+the rectangular shadow, you literally cannot tell if the real object casting it is a cylinder
+
+253
+00:17:50,060 --> 00:17:55,500
+or if it is a rectangular box. To the wall, the cylinder and the box are in the exact same fiber.
+
+254
+00:17:55,500 --> 00:18:00,620
+They're indistinguishable. The math quantifies exactly how much damage that shadow casts.
+
+255
+00:18:00,620 --> 00:18:04,940
+The author proves that when you project, when you merge those fibers, your deficit increases
+
+256
+00:18:04,940 --> 00:18:10,380
+by at least the logarithm of the fiber size. Meaning, the more unique, complex objects you
+
+257
+00:18:10,380 --> 00:18:15,500
+forcefully crush into a single category, the exponentially worse your blind spot gets.
+
+258
+00:18:15,500 --> 00:18:17,980
+But there is a fascinating, almost philosophical...
+
+259
+00:18:17,980 --> 00:18:23,980
+Exactly like an equation from thermodynamics.
+
+260
+00:18:23,980 --> 00:18:24,540
+Oh, really?
+
+261
+00:18:24,540 --> 00:18:28,940
+It states that the magnitude of your accessible history plus the magnitude of the inaccessible
+
+262
+00:18:28,940 --> 00:18:32,780
+remainder always equals the total possibility space.
+
+263
+00:18:32,780 --> 00:18:35,340
+Let me make sure I follow that. Possibility is conserved.
+
+264
+00:18:35,340 --> 00:18:39,820
+Yes. When you project, when you cast that shadow and lose the 3D depth,
+
+265
+00:18:39,820 --> 00:18:44,300
+the information isn't magically deleted from the universe. Reality doesn't shrink.
+
+266
+00:18:44,300 --> 00:18:45,340
+So where does it go?
+
+267
+00:18:45,340 --> 00:18:49,020
+That information is simply transferred from your accessible reality,
+
+268
+00:18:49,020 --> 00:18:54,060
+what you can see and measure, into the inaccessible remainder. It moves into the dark.
+
+269
+00:18:54,060 --> 00:18:58,140
+It moves into the dark. Wow. That is a haunting way to describe forgetting.
+
+270
+00:18:58,140 --> 00:19:01,900
+Okay, so projection destroys distinctions to simplify things.
+
+271
+00:19:01,900 --> 00:19:06,620
+Operation 2 is the exact opposite local move. It is called embedding.
+
+272
+00:19:06,620 --> 00:19:14,060
+Embedding is the act of separating fibers. It refines the system. It takes a single muddled category,
+
+273
+00:19:14,060 --> 00:19:20,060
+like our giant pile of laundry, and splits it apart, amplifying the distinctions between the objects
+
+274
+00:19:20,060 --> 00:19:24,940
+inside it. The paper has a mathematical proof here showing that a faithful embedding
+
+275
+00:19:24,940 --> 00:19:28,780
+never increases the coding deficit. Think about what it means to be faithful.
+
+276
+00:19:29,580 --> 00:19:35,340
+A faithful embedding takes elements that are subtly different in reality, but currently lumped together
+
+277
+00:19:35,340 --> 00:19:40,540
+in your system, and mathematically forces them apart. So it makes them distinct without breaking anything.
+
+278
+00:19:40,540 --> 00:19:45,820
+Right. It makes them easier to distinguish without adding wasted words or unnecessary
+
+279
+00:19:45,820 --> 00:19:49,020
+complexity. This is heavily used in kernel statistics.
+
+280
+00:19:49,020 --> 00:19:50,700
+How does that actually look in practice, though?
+
+281
+00:19:50,700 --> 00:19:54,700
+Imagine you have a bunch of red and blue dots mixed together on a flat piece of paper,
+
+282
+00:19:54,700 --> 00:19:58,300
+and you can't draw a single straight line to separate them. They're just too jumbled.
+
+283
+00:19:58,300 --> 00:20:03,020
+Okay, I see it. A faithful embedding would map those dots into a three-dimensional space,
+
+284
+00:20:03,020 --> 00:20:08,620
+maybe pushing the red dots up and the blue dots down. Suddenly, in 3D, you can slide a flat sheet
+
+285
+00:20:08,620 --> 00:20:14,220
+of glass right between them. Oh, I love that. You haven't added new dots. You have just embedded
+
+286
+00:20:14,220 --> 00:20:20,140
+them into a geometry where their natural distinctions are amplified and clear. That makes perfect sense.
+
+287
+00:20:20,140 --> 00:20:27,420
+But the author places a massive warning label on this operation. The key word you kept using was
+
+288
+00:20:27,420 --> 00:20:32,620
+a faithful embedding. What happens in a system if the embedding isn't faithful?
+
+289
+00:20:32,620 --> 00:20:39,020
+That brings us to the primary failure mode of embedding, and it is insidious. If an embedding is
+
+290
+00:20:39,020 --> 00:20:44,300
+unfaithful, it means the mathematical distortion is strictly greater than zero. When that happens,
+
+291
+00:20:44,300 --> 00:20:49,980
+your system creates what Fliction calls spurious distinctions. Spurious distinctions, so fake
+
+292
+00:20:49,980 --> 00:20:55,340
+boundaries. You create fall positives. Your system takes two things that are actually fundamentally
+
+293
+00:20:55,340 --> 00:21:00,140
+the same in reality, and it mathematically forces them apart as if they are wildly different. You
+
+294
+00:21:00,140 --> 00:21:03,980
+hallucinate a boundary that doesn't exist. I want to frame this in terms of modern human
+
+295
+00:21:03,980 --> 00:21:08,460
+communication because we see this constantly. Think about the agony of overthinking a text message.
+
+296
+00:21:08,460 --> 00:21:11,820
+Oh, absolutely. You're sitting on your couch, and a friend texts you the word,
+
+297
+00:21:11,820 --> 00:21:16,140
+okay, followed by a period, just okay. A very dangerous text.
+
+298
+00:21:16,140 --> 00:21:23,180
+If you just read it at face value, it is fine. But what if you apply an intense, hyper-analytical,
+
+299
+00:21:23,180 --> 00:21:29,020
+unfaithful embedding to it? You start checking the timestamps. You check their previous grammar.
+
+300
+00:21:29,020 --> 00:21:33,500
+You create a distinction in tone where none was intended. You start reading between the lines too
+
+301
+00:21:33,500 --> 00:21:38,220
+much. Exactly. You think, well, yesterday they said, okay, without a period, but today there is a period,
+
+302
+00:21:38,220 --> 00:21:42,620
+so this punctuation mark proves they are furious with me. Right. You have just separated fibers
+
+303
+00:21:42,620 --> 00:21:47,660
+that had no business being separated. You have created a spurious distinction, a total false
+
+304
+00:21:47,660 --> 00:21:53,500
+positive, and now your representational system, your understanding of your friendship is completely
+
+305
+00:21:53,500 --> 00:21:57,660
+distorted from reality. That is a brilliant translation of the math. You've increased the
+
+306
+00:21:57,660 --> 00:22:03,180
+resolution of your system far beyond what the actual data supports. It is like turning the sharpness
+
+307
+00:22:03,180 --> 00:22:08,140
+filter on a photograph up so high that the image breaks into noisy, meaningless pixels.
+
+308
+00:22:08,140 --> 00:22:14,060
+Yeah. So to summarize the local level, projection loses real information by merging fibers,
+
+309
+00:22:14,060 --> 00:22:19,340
+embedding risks creating fake information by separating them improperly. But notice that both of
+
+310
+00:22:19,340 --> 00:22:23,980
+these operations are local. They were just moving the existing furniture around inside the house.
+
+311
+00:22:23,980 --> 00:22:27,820
+Exactly. And this is where the paper shifts gears into something truly expansive.
+
+312
+00:22:28,620 --> 00:22:32,780
+Because operation three doesn't just move the furniture. Operation three is called revision.
+
+313
+00:22:33,500 --> 00:22:38,940
+And revision is a global operation. It is much bigger. If projection and embedding are rearranging the
+
+314
+00:22:38,940 --> 00:22:46,300
+living room, revision is demolishing the structure and remodeling the entire house. A revision replaces your
+
+315
+00:22:46,300 --> 00:22:52,220
+entire generating ontology. You aren't just shifting objects back and forth between existing fibers anymore.
+
+316
+00:22:52,220 --> 00:22:57,900
+You are adopting a completely new mathematical framework for how fibers are generated in the
+
+317
+00:22:57,900 --> 00:23:02,620
+first place. The math proves something highly encouraging here. It shows that if you completely
+
+318
+00:23:02,620 --> 00:23:08,380
+remodel your foundational categories, if you undergo a productive revision, your blindness strictly and
+
+319
+00:23:08,380 --> 00:23:14,300
+permanently decreases. Yes. That is the goal. You don't just shift the air around to another room. You
+
+320
+00:23:14,300 --> 00:23:20,780
+permanently eliminate wasted energy. It is the ultimate upgrade to your reality. But the danger lurking here is
+
+321
+00:23:20,780 --> 00:23:26,460
+arguably the most terrifying concept in the entire paper. It is called ontological lock-in.
+
+322
+00:23:26,460 --> 00:23:31,740
+Just the phrase ontological lock-in gives me chills. What does it actually mean to be locked in?
+
+323
+00:23:31,740 --> 00:23:37,980
+It happens when a representational system is trapped on a compression plateau. The system's deficit is
+
+324
+00:23:37,980 --> 00:23:43,980
+incredibly high. It is wasting massive amounts of energy. It is constantly failing to distinguish reality
+
+325
+00:23:43,980 --> 00:23:51,100
+accurately. But there is absolutely no path within its current rule set to make a productive revision.
+
+326
+00:23:51,100 --> 00:23:56,620
+So it can't fix itself. It cannot escape its current template hierarchy. So it's just stuck. It is
+
+327
+00:23:56,620 --> 00:24:02,140
+mathematically trapped in a flawed worldview. And the tragedy is that no amount of local tweaking,
+
+328
+00:24:02,140 --> 00:24:07,100
+no amount of projecting or embedding, no matter how clever, can save it. Because the local tools aren't
+
+329
+00:24:07,100 --> 00:24:12,220
+enough. Right. It requires a fundamental discontinuous leap to a brand new ontology,
+
+330
+00:24:12,220 --> 00:24:15,900
+but the system is mathematically blocked from seeing how to make that leap.
+
+331
+00:24:15,900 --> 00:24:20,620
+It makes me think of a computer trying to run a beautifully rendered modern 3D video game
+
+332
+00:24:20,620 --> 00:24:24,860
+on a 1980s text-based operating system like MS-DOS. Okay.
+
+333
+00:24:24,860 --> 00:24:29,660
+If you are stuck in MS-DOS, it doesn't matter how much you optimize the text code.
+
+334
+00:24:29,660 --> 00:24:33,740
+It doesn't matter how incredibly efficient you made the local fibers
+
+335
+00:24:33,740 --> 00:24:37,260
+of those green letters on the black screen. Because it's still just text.
+
+336
+00:24:37,260 --> 00:24:45,260
+You will never, ever render a 3D polygon. You are ontologically locked in to a text-based reality.
+
+337
+00:24:45,260 --> 00:24:50,860
+To see the 3D world, you don't need better text. You need a total operating system revision.
+
+338
+00:24:50,860 --> 00:24:55,500
+That is exactly the scale of the problem. And finally, we arrive at operation four,
+
+339
+00:24:55,500 --> 00:25:00,540
+which is transport. This is uniquely categorized as a relational operation.
+
+340
+00:25:00,540 --> 00:25:06,060
+Transport maps fibers across completely different spaces. It maps the rules of one ontology onto
+
+341
+00:25:06,060 --> 00:25:10,060
+the rules of another. Now, when I was reading this section, I had to stop and reread it three times.
+
+342
+00:25:10,060 --> 00:25:14,140
+It's a lot to take in. Because fliction isn't just describing a data transfer.
+
+343
+00:25:14,140 --> 00:25:19,660
+They're providing the literal, rigorous mathematical formalization of an analogy.
+
+344
+00:25:19,660 --> 00:25:23,900
+That is precisely what transport is. Let's think about what we do when we make a human analogy.
+
+345
+00:25:23,900 --> 00:25:27,740
+We take the complex fiber structure of one domain that we understand, well,
+
+346
+00:25:27,740 --> 00:25:32,940
+let's say the physical flow of water through pipes with pressure and neuro valves. And we map
+
+347
+00:25:32,940 --> 00:25:38,620
+that structure onto a completely different abstract domain, like the flow of electricity through copper
+
+348
+00:25:38,620 --> 00:25:44,460
+circuits with voltage and resistors. We are transporting the indistinguishability relations
+
+349
+00:25:44,460 --> 00:25:46,860
+from water molecules to electrons.
+
+350
+00:25:46,860 --> 00:25:51,660
+And the math proves the exact conditions under which an analogy is actually valid.
+
+351
+00:25:51,660 --> 00:25:58,620
+It does. It states that transport works, meaning the analogy holds true if and only if the underlying
+
+352
+00:25:58,620 --> 00:26:04,860
+invariants are preserved within a strictly controlled error margin. The paper refers to this as maintaining
+
+353
+00:26:04,860 --> 00:26:05,980
+a Lipschitz condition.
+
+354
+00:26:05,980 --> 00:26:07,420
+A Lipschitz condition. Okay.
+
+355
+00:26:07,420 --> 00:26:11,900
+Think about the implications of that. It proves that analogy is not just a poetic flourish.
+
+356
+00:26:12,460 --> 00:26:16,140
+It isn't just a literary device used by writers to make things sound pretty.
+
+357
+00:26:16,140 --> 00:26:20,620
+Right. It's actual math. It is a rigorous, mathematically valid operation
+
+358
+00:26:20,620 --> 00:26:25,020
+for transferring knowledge across the universe, provided the distortion between the two spaces
+
+359
+00:26:25,020 --> 00:26:30,860
+remains strictly bounded. If you push the analogy too far, if the distortion exceeds the mathematical
+
+360
+00:26:30,860 --> 00:26:36,300
+bound, the transport fails entirely. And your beautiful analogy breaks down into cognitive nonsense.
+
+361
+00:26:36,300 --> 00:26:36,540
+Exactly.
+
+362
+00:26:36,540 --> 00:26:42,780
+So we have these four foundational moves. Projection coarsens our view. Embedding
+
+363
+00:26:42,780 --> 00:26:49,740
+refines our view. Revision completely remodels the rule book. And transport maps knowledge
+
+364
+00:26:49,740 --> 00:26:52,060
+across different domains via analogy.
+
+365
+00:26:52,060 --> 00:26:53,580
+Yes. Those are the four moves.
+
+366
+00:26:53,580 --> 00:26:58,460
+But I want to bring this down from the theoretical clouds. I want to see how these equations bleed into
+
+367
+00:26:58,460 --> 00:27:04,540
+real life. How do we use this? The author provides a diagnostic framework that we can actually apply.
+
+368
+00:27:04,540 --> 00:27:09,100
+Before we jump into the diagnostics, we have to highlight a vital asymmetry the paper points
+
+369
+00:27:09,100 --> 00:27:15,820
+out between the two local operations. It is crucial for understanding failure. Projection and embedding
+
+370
+00:27:15,820 --> 00:27:17,820
+are not equal and opposite duels.
+
+371
+00:27:17,820 --> 00:27:19,100
+They don't just cancel each other out.
+
+372
+00:27:19,100 --> 00:27:21,180
+They do not perfectly cancel each other out.
+
+373
+00:27:21,180 --> 00:27:25,900
+Right. Because of what we discussed with the shadow. Projection destroys real information,
+
+374
+00:27:25,900 --> 00:27:31,420
+and once it has gone into that inaccessible remainder of the dark pist, it is generically unrecoverable.
+
+375
+00:27:31,420 --> 00:27:34,940
+Yes. You can't look at a flat rectangular shadow and mathematically
+
+376
+00:27:34,940 --> 00:27:39,020
+uncast it to figure out it was a cylinder. The data is gone. Gone forever.
+
+377
+00:27:39,020 --> 00:27:45,660
+But a bad embedding is different. A bad embedding creates fake information. It creates those spurious
+
+378
+00:27:45,660 --> 00:27:51,180
+distinctions, the overanalyzed text message. The failure modes are fundamentally asymmetric.
+
+379
+00:27:51,180 --> 00:27:57,020
+One is the tragedy of losing reality. The other is the danger of hallucinating reality. And this
+
+380
+00:27:57,020 --> 00:28:01,740
+asymmetry forms the absolute bedrock of the diagnostic grid. The troubleshooting guide.
+
+381
+00:28:01,740 --> 00:28:07,340
+Yes. Fliction proposes this as a literal troubleshooting guide for complex systems.
+
+382
+00:28:07,340 --> 00:28:12,300
+If you have a representational system that is failing, whether it is your company's legacy database,
+
+383
+00:28:12,300 --> 00:28:17,100
+a cutting edge machine learning model, or your own personal learning process when studying a new
+
+384
+00:28:17,100 --> 00:28:22,300
+language, you can use this grid to diagnose the exact mathematical nature of your failure.
+
+385
+00:28:22,300 --> 00:28:27,260
+I love a practical checklist. Let's walk through how someone might use this grid. Step one,
+
+386
+00:28:27,260 --> 00:28:30,780
+are you constantly missing crucial information that is right in front of you?
+
+387
+00:28:30,780 --> 00:28:33,100
+Then you might be suffering from a projection failure.
+
+388
+00:28:33,100 --> 00:28:38,060
+Right. You have forcefully merged categories and destroyed distinctions that you actually
+
+389
+00:28:38,060 --> 00:28:44,460
+needed to navigate your task. Step two, are you over resolving? Are you seeing patterns in the
+
+390
+00:28:44,460 --> 00:28:47,580
+static hallucinating conspiracies or jumping at shadows?
+
+391
+00:28:47,580 --> 00:28:53,020
+You have an embedding failure. Your system is creating spurious distinctions that aren't supported
+
+392
+00:28:53,020 --> 00:28:58,940
+by the data. Exactly. Step three, are you trapped on a plateau? Are you working incredibly hard,
+
+393
+00:28:58,940 --> 00:29:03,900
+wasting massive amounts of energy, but completely unable to change your results or your approach?
+
+394
+00:29:03,900 --> 00:29:09,340
+You are suffering from revision failure. You are in ontological lock-in. And step four, are you
+
+395
+00:29:09,340 --> 00:29:15,100
+aggressively applying a mental model that worked at your last job to your new situation, but the results
+
+396
+00:29:15,100 --> 00:29:20,300
+are disastrous. You have a transport failure. Your analogy is stretched past its distortion limits.
+
+397
+00:29:20,300 --> 00:29:24,380
+It is a profound diagnostic grid for the architecture of cognition itself.
+
+398
+00:29:25,260 --> 00:29:30,460
+And what is so compelling about the paper is how excitedly the author details how this exact framework,
+
+399
+00:29:30,460 --> 00:29:36,300
+these exact four geometric operations, explain almost everything we experience across wildly different
+
+400
+00:29:36,300 --> 00:29:40,780
+disciplines. It really does touch on so many fields. I want us to really take our time and explore
+
+401
+00:29:40,780 --> 00:29:45,740
+some of these real-world manifestations. Let's start with computer science, specifically file
+
+402
+00:29:45,740 --> 00:29:52,060
+compression. We all use zip files every day to email large folders. How does distinguishability
+
+403
+00:29:52,060 --> 00:29:57,580
+geometry explain what a zip file is actually doing? It all comes back to the coding deficit we talked
+
+404
+00:29:57,580 --> 00:30:03,500
+about earlier. Fliction uses the specific example of Lempel-Ziv algorithms. That is the underlying
+
+405
+00:30:03,500 --> 00:30:09,980
+mathematics that powers standard zip files. Okay, how does it work? Imagine you feed this algorithm a massive
+
+406
+00:30:09,980 --> 00:30:15,820
+text document that contains a highly repetitive periodic string of data. Maybe it is just the word apple
+
+407
+00:30:15,820 --> 00:30:21,180
+repeated 10,000 times. Got it. When the Lempel-Zig algorithm first starts reading that document,
+
+408
+00:30:21,180 --> 00:30:26,460
+it doesn't know it is a pattern. It has no context. So it is painstakingly describing every single letter
+
+409
+00:30:26,460 --> 00:30:35,500
+individually. A-P-P-L-E space. A-P-P. Oh, wow. So the deficit of the system in that moment is enormous.
+
+410
+00:30:35,500 --> 00:30:40,540
+It is all that wasted space, that massive description length required before the repeating pattern is
+
+411
+00:30:40,540 --> 00:30:45,660
+mathematically recognized. It is acting like the guy in the tavern trying to explain schadenfreude
+
+412
+00:30:45,660 --> 00:30:52,220
+without having the word. It is just babbling. Precisely. But then the algorithm hits a threshold.
+
+413
+00:30:52,220 --> 00:30:59,100
+It identifies the period. The moment it recognizes the pattern, the algorithm undergoes a literal
+
+414
+00:30:59,100 --> 00:31:05,020
+mathematical productive revision. It changes the rules. It abandons the old rule book of reading
+
+415
+00:31:05,020 --> 00:31:11,340
+letter by letter. It adopts a new template that says print apple 10,000 times. And the instant that
+
+416
+00:31:11,340 --> 00:31:17,660
+revision happens, the coding deficit collapses to near zero. The file shrinks exponentially. That is
+
+417
+00:31:17,660 --> 00:31:23,340
+what compression is. A productive revision escaping a coding deficit. Yes. Okay, from computer files
+
+418
+00:31:23,340 --> 00:31:28,780
+to artificial intelligence. How does this framework explain the limits of machine learning? We always
+
+419
+00:31:28,780 --> 00:31:33,420
+hear about models needing more data, more compute. But Fliction points out a hard limit. In machine
+
+420
+00:31:33,420 --> 00:31:38,140
+learning, there is a fundamental concept called approximation error. It acts as a hard floor on
+
+421
+00:31:38,140 --> 00:31:43,340
+how accurate a model can ever get, regardless of training time. So it can never be perfect. The paper
+
+422
+00:31:43,340 --> 00:31:49,660
+elegantly explains that approximation error is literally an ontological deficit in disguise. Let me
+
+423
+00:31:49,660 --> 00:31:55,660
+give you a concrete scenario. Imagine you have a facial recognition AI. But the underlying architecture
+
+424
+00:31:55,660 --> 00:32:01,340
+of this AI is a basic linear model, meaning it can only draw straight lines to separate data points.
+
+425
+00:32:01,340 --> 00:32:08,620
+Okay. Now it is trying to learn human faces, which are highly non-linear, curving, endlessly complex
+
+426
+00:32:08,620 --> 00:32:13,980
+realities. If you have that linear model, it absolutely does not matter if you feed it a trillion
+
+427
+00:32:13,980 --> 00:32:19,100
+photographs. It doesn't matter if you train it for a thousand years on a supercomputer. You cannot fix a
+
+428
+00:32:19,100 --> 00:32:24,460
+limited model class with more data. Because it is ontologically locked in. Exactly. The linear model
+
+429
+00:32:24,460 --> 00:32:29,660
+is locked into a straight line ontology. It is mathematically blind to curves. To reduce that
+
+430
+00:32:29,660 --> 00:32:34,460
+approximation error, you don't need more photos. You need a revision. You need to upgrade the entire
+
+431
+00:32:34,460 --> 00:32:40,220
+architecture to a deep neural network that has the internal geometry to draw curves. Let's jump from the
+
+432
+00:32:40,220 --> 00:32:46,220
+cutting edge of AI back through history. The paper brings up Thomas Kuhn. And this was the section where the
+
+433
+00:32:46,220 --> 00:32:51,740
+sheer scale of this theory really hit me. Yes. Thomas Kuhn, the famous philosopher of science
+
+434
+00:32:51,740 --> 00:32:58,140
+who coined the term paradigm shift in the 1960s, fliction maps Kuhn's historical theories directly
+
+435
+00:32:58,140 --> 00:33:03,420
+onto this new mathematical geometry. So how does that map out? Kuhn argued that most of the time,
+
+436
+00:33:03,420 --> 00:33:08,940
+scientists do what he called normal science. They do standard experiments within an established,
+
+437
+00:33:08,940 --> 00:33:14,700
+agreed upon theory. In our framework, normal science is just projection and embedding. It is just local
+
+438
+00:33:14,700 --> 00:33:20,380
+tweaking. Exactly. Scientists are just subtly adjusting the fibers within a fixed ontology.
+
+439
+00:33:20,380 --> 00:33:25,740
+The deficits are small, manageable problems. But eventually, over decades or centuries,
+
+440
+00:33:25,740 --> 00:33:31,580
+anomalies start to build up. Reality refuses to fit the boxes. The established paradigm encounters
+
+441
+00:33:31,580 --> 00:33:37,020
+phenomena it simply cannot distinguish or cleanly explain. The ultimate historical example of this
+
+442
+00:33:37,020 --> 00:33:43,100
+is the Ptolemaic model of the solar system. For centuries, brilliant astronomers looked at the night sky
+
+443
+00:33:43,100 --> 00:33:47,900
+and their absolute foundational ontology was that the Earth was the unmoving center of the universe.
+
+444
+00:33:47,900 --> 00:33:52,540
+Right. The geocentric model. But when they tracked the planet Mars night after night,
+
+445
+00:33:52,540 --> 00:33:58,700
+it didn't behave. Sometimes Mars looks like it stops, goes backward in the sky, and then moves forward
+
+446
+00:33:58,700 --> 00:34:05,180
+again. Retrograde motion. It was a massive problem for them. To explain this bizarre reality while refusing to
+
+447
+00:34:05,180 --> 00:34:11,740
+abandon their Earth-centric ontology, astronomers had to invent epicycles. They proposed that Mars
+
+448
+00:34:11,740 --> 00:34:18,140
+wasn't just orbiting Earth. It was doing tiny, complex, mini-orbits while it orbited Earth, circles upon
+
+449
+00:34:18,140 --> 00:34:24,140
+circles. The mathematics required to predict where Mars would be became astronomically complex. It was a
+
+450
+00:34:24,140 --> 00:34:29,820
+staggering coding deficit. It was incredibly inefficient, wasted energy just to keep a broken system alive.
+
+451
+00:34:29,820 --> 00:34:35,500
+There it was. The Ptolemaic model was a massive, sprawling coding deficit desperately trying to
+
+452
+00:34:35,500 --> 00:34:41,100
+cover up a fundamental distinguishability deficit. They were blind to the true geometry of the solar
+
+453
+00:34:41,100 --> 00:34:46,220
+system and their math proved their blindness by its sheer awkwardness. And then Copernicus and later
+
+454
+00:34:46,220 --> 00:34:52,620
+Kepler come along. What Fliction shows is that a scientific revolution is not just the discovery of new data.
+
+455
+00:34:52,620 --> 00:34:58,940
+A scientific revolution is a global productive revision. The paradigm shifts. Yes. The heliocentric
+
+456
+00:34:58,940 --> 00:35:04,540
+ontology. The sun at the center is adopted. And the moment that new rule book is accepted,
+
+457
+00:35:04,540 --> 00:35:09,180
+the massive description length of the solar system, all those convoluted epicycles,
+
+458
+00:35:09,180 --> 00:35:15,740
+instantly collapses into simple, elegant, predictable ellipses. The deficit drops to zero. That is
+
+459
+00:35:15,740 --> 00:35:20,380
+beautiful. And we even see this on a micro scale with human language evolution. We talked about the
+
+460
+00:35:20,380 --> 00:35:26,220
+Tavern and Schadenfreude earlier. Right. The paper argues that coining any new slang term is a
+
+461
+00:35:26,220 --> 00:35:32,300
+productive linguistic revision. Think about the word hangry. Just 10 or 15 years ago, if you were
+
+462
+00:35:32,300 --> 00:35:36,540
+incredibly irritable because your blood sugar was crashing, you had to say to your partner,
+
+463
+00:35:36,540 --> 00:35:42,780
+listen, I am feeling a really complex mixture of irritability and anger. And it is directly
+
+464
+00:35:42,780 --> 00:35:46,860
+stemming from the physiological fact that we haven't eaten lunch yet. That is a high deficit
+
+465
+00:35:46,860 --> 00:35:51,980
+sentence. It takes too long to say, especially when you were annoyed. Exactly. Then society undergoes a
+
+466
+00:35:51,980 --> 00:35:56,700
+collective productive revision. We coined the portmanteau hangry, and we instantly lowered the
+
+467
+00:35:56,700 --> 00:36:02,060
+description length for an emotional state that previously required awkward, long-winded circumlocution.
+
+468
+00:36:02,060 --> 00:36:07,180
+Language is just an ontology, constantly trying to reduce its coding deficit as human culture
+
+469
+00:36:07,180 --> 00:36:13,340
+gets more complex. The paper even touches on repair theory. Like fixing a car. Right. Think about
+
+470
+00:36:13,340 --> 00:36:18,860
+fixing a broken mechanical system, like a car engine. When a system breaks, it abruptly moves into a
+
+471
+00:36:18,860 --> 00:36:25,260
+state that is outside its nominal designed ontology. It enters an area of high deficit. It is making
+
+472
+00:36:25,260 --> 00:36:31,340
+terrible noises, losing energy, failing its purpose. So how does a mechanic fit in? Repairing that engine
+
+473
+00:36:31,340 --> 00:36:37,100
+is mathematically just a transport map. The mechanic has to find a path, a sequence of actions, to
+
+474
+00:36:37,100 --> 00:36:43,100
+transport the system from that high deficit damage state back to a low deficit functional state.
+
+475
+00:36:43,100 --> 00:36:48,620
+Everything is movement across this geometry. This framework is seemingly everywhere. But before we leave
+
+476
+00:36:48,620 --> 00:36:52,460
+this section on applications, I want to touch on a fascinating mathematical quirk the paper
+
+477
+00:36:52,460 --> 00:36:58,940
+introduces about how these deficits actually combine when systems interact. It is called sub-additivity.
+
+478
+00:36:58,940 --> 00:37:05,420
+Yes. Proposition 5.1 in the text. Sub-additivity is a really elegant rule. It states that the deficit
+
+479
+00:37:05,420 --> 00:37:12,300
+of a combined composite system is always strictly less than or equal to the sum of the deficits of its
+
+480
+00:37:12,300 --> 00:37:17,980
+individual isolated parts. I want to make sure I'm translating that right. If I have one system with a
+
+481
+00:37:17,980 --> 00:37:22,380
+measured deficit of, say, five, and I have another totally separate system with a deficit of five.
+
+482
+00:37:22,380 --> 00:37:27,420
+Okay. If I combine those two systems together, the total deficit of the new combined system will
+
+483
+00:37:27,420 --> 00:37:33,820
+be 10 or less. It will never under any circumstances be 11. That is correct. It serves as a vital mathematical
+
+484
+00:37:33,820 --> 00:37:39,420
+sanity check for the entire framework. What it proves is that combining knowledge bases cannot magically
+
+485
+00:37:39,420 --> 00:37:44,300
+create more inefficiency or more foundational blindness than the two bases had independently.
+
+486
+00:37:44,300 --> 00:37:49,500
+Wow. If you merge two corporate departments or if you combine two scientific theories, you might find
+
+487
+00:37:49,500 --> 00:37:54,460
+incredible synergies that actually reduce the total deficit down to an eight or a seven. But you will never
+
+488
+00:37:54,460 --> 00:38:00,380
+make the underlying geometry of ignorance exponentially worse purely by combining them. The math puts a hard
+
+489
+00:38:00,380 --> 00:38:05,340
+ceiling on the compounding of errors. I have to take a step back here and look at the forest instead of the trees.
+
+490
+00:38:05,340 --> 00:38:12,940
+We have just used the exact same four geometric rules to explain zip file shrinking, AI failing
+
+491
+00:38:12,940 --> 00:38:19,740
+to recognize faces, the Copernican revolution in astronomy, the invention of the word hangry, and fixing a broken
+
+492
+00:38:19,740 --> 00:38:26,780
+car engine. It is a very versatile theory. I have to ask, are we just playing clever word games here? Is this just a
+
+493
+00:38:26,780 --> 00:38:34,460
+really neat, beautifully organized taxonomy, a fun way to group things together? Or is the author actually proposing that
+
+494
+00:38:34,460 --> 00:38:40,620
+this is a universal law of reality? That is the exact question Flixia addresses head on in the final
+
+495
+00:38:40,620 --> 00:38:45,660
+sections of the paper. And the answer is unequivocally the latter. This is not a metaphor. This is not just
+
+496
+00:38:45,660 --> 00:38:50,380
+a convenient taxonomy. This is the underlying physics of cognition. Which brings us to the
+
+497
+00:38:50,380 --> 00:38:56,060
+culmination of the paper, the metatherum, categorical unification, and the ultimate classification conjecture.
+
+498
+00:38:56,060 --> 00:39:00,300
+Yes, the heavy hittles. Hit me with the metatherum. What does it actually claim?
+
+499
+00:39:00,300 --> 00:39:04,700
+The metatherum is essentially an empirical checklist for representational adequacy.
+
+500
+00:39:05,420 --> 00:39:12,540
+It states that a system, any system, biological or digital, manages its deficit successfully if and
+
+501
+00:39:12,540 --> 00:39:17,260
+only if it meets four independent measurable conditions. Okay, what are the conditions?
+
+502
+00:39:17,260 --> 00:39:23,660
+Condition one, preservation under projection. When the system simplifies things to save energy,
+
+503
+00:39:23,660 --> 00:39:28,460
+it doesn't accidentally throw away the crucial task-relevant data. Condition two,
+
+504
+00:39:28,460 --> 00:39:33,260
+recoverability under embedding. When the system zooms in to look closely at a problem,
+
+505
+00:39:33,260 --> 00:39:37,740
+it remains faithful. It doesn't hallucinate fake patterns or spurious distinctions.
+
+506
+00:39:37,740 --> 00:39:43,020
+Right, no overthinking text messages. Exactly. Condition three, deficit reduction under revision.
+
+507
+00:39:43,020 --> 00:39:47,740
+The system doesn't allow itself to get locked in. It possesses the architecture to periodically
+
+508
+00:39:47,740 --> 00:39:52,220
+tear down and upgrade its fundamental worldview when anomalies pile up. And the final one.
+
+509
+00:39:52,220 --> 00:39:57,740
+Condition four, fidelity under transport. The system can apply analogies accurately
+
+510
+00:39:57,740 --> 00:40:03,260
+across different domains without suffering massive distortion. So it is not just abstract philosophy.
+
+511
+00:40:03,260 --> 00:40:09,180
+It is a literal functional checklist for intelligence. If a tech company wants to build
+
+512
+00:40:09,180 --> 00:40:14,460
+a true artificial general intelligence, or honestly, if a CEO just wants to run a highly
+
+513
+00:40:14,460 --> 00:40:19,980
+adaptable corporate team, they mathematically have to satisfy those four geometric conditions,
+
+514
+00:40:19,980 --> 00:40:23,900
+or the system will eventually fail. And that leads directly to the boldest,
+
+515
+00:40:23,900 --> 00:40:29,900
+most audacious claim in the entire document, conjecture 4.2, the classification conjecture.
+
+516
+00:40:29,900 --> 00:40:33,500
+The author refers to this as the central open problem of the paper.
+
+517
+00:40:33,500 --> 00:40:38,940
+Fliction posits and challenges the mathematical community to prove that every representational
+
+518
+00:40:38,940 --> 00:40:43,420
+transformation ever in the entire history of the universe. Wait, sorry.
+
+519
+00:40:43,420 --> 00:40:43,900
+No, go ahead.
+
+520
+00:40:43,900 --> 00:40:48,780
+That every single human thought, every line of computer code executing, every massive scientific
+
+521
+00:40:48,780 --> 00:40:54,860
+leap factors entirely into a finite composition of just these four moves. Projection, embedding,
+
+522
+00:40:54,860 --> 00:40:58,780
+revision, and transport. Sigma, phi, rho, and tau.
+
+523
+00:40:58,780 --> 00:41:03,580
+That is breathtaking. If that conjecture is ultimately proven true, Fliction hasn't just
+
+524
+00:41:03,580 --> 00:41:08,700
+written a clever math paper. They have discovered the periodic table of cognitive moves. Just like
+
+525
+00:41:08,700 --> 00:41:14,780
+every complex chemical reaction in the universe, from a dying star to a baking cake, is just shuffling
+
+526
+00:41:14,780 --> 00:41:22,380
+elements on the periodic table. Well, every single act of learning, understanding, or forgetting is just a
+
+527
+00:41:22,380 --> 00:41:27,820
+sequence of those four geometric operations. To try and solidify this monumental claim,
+
+528
+00:41:27,820 --> 00:41:32,300
+the paper ends by formalizing all of these ideas in the language of category theory.
+
+529
+00:41:32,300 --> 00:41:36,700
+Okay, I have to admit, category theory is a phrase that terrifies a lot of people,
+
+530
+00:41:37,260 --> 00:41:42,380
+myself included. Let's keep this grounded so we don't lose the thread in the mathematical weeds.
+
+531
+00:41:42,380 --> 00:41:46,460
+What actually is category theory, and what does it bring to the table here?
+
+532
+00:41:46,460 --> 00:41:52,140
+I completely understand the hesitation. Category theory is famously abstract. It was developed in the mid-20th
+
+533
+00:41:52,140 --> 00:41:58,220
+century by Eilenberg and McLean, initially to connect completely disparate fields like topology and
+
+534
+00:41:58,220 --> 00:42:02,700
+algebra. So how should we picture it? The best way to understand category theory is to think of it as
+
+535
+00:42:02,700 --> 00:42:08,060
+a map of maps. If standard algebra is a map that helps us navigate numbers, category theory is a higher
+
+536
+00:42:08,060 --> 00:42:13,340
+level map that helps us navigate the structures of algebra itself. It looks at the overarching rules that
+
+537
+00:42:13,340 --> 00:42:17,500
+govern different mathematical universes. Okay, and in this paper? In this paper,
+
+538
+00:42:17,500 --> 00:42:22,220
+Affliction introduces a brand new category they call DIST, short for distinguishability.
+
+539
+00:42:22,220 --> 00:42:26,700
+Okay, a map of distinguishability. What are the landmarks on this map?
+
+540
+00:42:26,700 --> 00:42:31,580
+In category theory, you have objects and you have morphisms, which are the arrows connecting the
+
+541
+00:42:31,580 --> 00:42:36,700
+objects. In the DIST category, the objects are the distinguishability spaces themselves,
+
+542
+00:42:36,700 --> 00:42:40,700
+the actual laundry sorting systems, the DMV forms, the scientific paradigms.
+
+543
+00:42:40,700 --> 00:42:45,660
+And the arrows. The morphisms, the arrows showing how you get from one space to another
+
+544
+00:42:45,660 --> 00:42:50,620
+are the four operations we just spent the hour discussing. Projection, embedding, revision,
+
+545
+00:42:50,620 --> 00:42:57,340
+and transport. Let me test my understanding using our earlier analogy. So if my object is my sort
+
+546
+00:42:57,340 --> 00:43:03,260
+by color laundry system and I cast a shadow to simplify it, there's a mathematical arrow, a morphism,
+
+547
+00:43:03,260 --> 00:43:08,700
+pointing to my new everything in one pile laundry system. And the author uses something called a
+
+548
+00:43:08,700 --> 00:43:14,460
+quotient functor to map those specific projection arrows. That is exactly right. A functor is simply
+
+549
+00:43:14,460 --> 00:43:19,180
+a rigorous translator. It is the rule that perfectly translates the structure of one map into the
+
+550
+00:43:19,180 --> 00:43:24,780
+structure of another without losing the underlying logic. And where does the deficit fit into this
+
+551
+00:43:25,420 --> 00:43:31,420
+giant map of maps, the wasted breath and the blindness? The deficit acts as what category theorists
+
+552
+00:43:31,420 --> 00:43:37,420
+call a natural transformation. You can think of it as a universal measuring stick that hovers above the
+
+553
+00:43:37,420 --> 00:43:43,260
+entire category. It evaluates the quality and efficiency of every single morphism,
+
+554
+00:43:43,260 --> 00:43:49,020
+every single change in the system across the entire landscape. So why go through the immense
+
+555
+00:43:49,020 --> 00:43:53,820
+trouble of proving all this works in category theory? What does this mean for the fundamental
+
+556
+00:43:53,820 --> 00:43:58,460
+architecture of reality? It leads to the ultimate philosophical conclusion of the paper.
+
+557
+00:43:58,460 --> 00:44:04,060
+Fliction explicitly notes that this category theory wasn't imported. They didn't take an existing rigid
+
+558
+00:44:04,060 --> 00:44:09,420
+mathematical framework and forcefully bend their observations to fit into it. They didn't impose
+
+559
+00:44:09,420 --> 00:44:14,620
+this taxonomy from the top down. It naturally emerged from the bottom up. Yes. From the very first
+
+560
+00:44:14,620 --> 00:44:19,820
+basic assumption, the distinguishability principle, the simple mundane act of deciding whether two shirts
+
+561
+00:44:19,820 --> 00:44:25,660
+belong in the same pile of laundry, the entire massive categorical structure organically unfolded. The
+
+562
+00:44:25,660 --> 00:44:31,740
+math proved itself. The geometry of how we learn and fail was already there, deeply embedded in the
+
+563
+00:44:31,740 --> 00:44:37,100
+physical nature of information, just waiting for someone to find it. And like any truly great paradigm
+
+564
+00:44:37,100 --> 00:44:43,580
+shifting paper, it doesn't end with a definitive period. It ends with a question mark. Or rather, a list of
+
+565
+00:44:43,580 --> 00:44:48,860
+thrilling open questions for the future. The research program stemming from this paper is wide open.
+
+566
+00:44:48,860 --> 00:44:55,500
+Fliction asks the scientific community, can we conclusively prove the classification conjecture? Is there a
+
+567
+00:44:55,500 --> 00:45:01,820
+single unified mathematical equation that bounds how the deficit accumulates across any random chaotic
+
+568
+00:45:01,820 --> 00:45:08,540
+combination of the four moves? Is the deficit perfectly computable by an AI? So many questions. And perhaps
+
+569
+00:45:08,540 --> 00:45:13,740
+most intriguingly, is there a formal symmetrical duality that perfectly exchanges projection and
+
+570
+00:45:13,740 --> 00:45:19,660
+transport and embedding and revision? The math heavily suggests there might be a hidden mirror world to this
+
+571
+00:45:19,660 --> 00:45:24,700
+geometry that we haven't even fully uncovered yet. It is an absolutely stunning piece of work. We've been on an
+
+572
+00:45:24,700 --> 00:45:29,740
+incredible journey today. I really have. We started with something as simple as a pile of laundry, a basic
+
+573
+00:45:29,740 --> 00:45:37,100
+equivalence relation. We mapped out how those rules form fibers of indistinguishability. We defined the
+
+574
+00:45:37,100 --> 00:45:43,180
+fundamental limits of human and machine knowledge through the coding and distinguishability deficits. Right. The
+
+575
+00:45:43,180 --> 00:45:49,580
+profound realization that wasting breath is mathematical proof of blindness. And then we discovered the four
+
+576
+00:45:49,580 --> 00:45:55,180
+fundamental geometric moves that govern absolutely everything. Projection casting shadows, embating,
+
+577
+00:45:55,180 --> 00:46:01,820
+refining details, revision, completely remodeling the house, and transport mapping analogies across the
+
+578
+00:46:01,820 --> 00:46:07,820
+universe. It is a completely new lens through which to view reality. Once you grasp the mechanics of it,
+
+579
+00:46:07,820 --> 00:46:12,540
+it changes how you look at the world. You stop seeing static objects and you start seeing the hidden
+
+580
+00:46:12,540 --> 00:46:17,660
+geometry of distinctions. You see the boundaries. And before we sign off, I want to leave you, the listener,
+
+581
+00:46:17,660 --> 00:46:23,020
+with a final provocative thought. We have talked extensively today about how computer algorithms,
+
+582
+00:46:23,020 --> 00:46:28,540
+scientific paradigms, and human languages suffer from ontological lock-in. They get trapped on a
+
+583
+00:46:28,540 --> 00:46:35,180
+compression plateau, wasting massive amounts of energy, completely unable to advance until they undergo a
+
+584
+00:46:35,180 --> 00:46:42,540
+fundamental productive revision of their underlying rules. I want you to think about this. What if human
+
+585
+00:46:42,540 --> 00:46:48,540
+personalities work the exact same way? Oh, wow. Think about your own life. What if that deep,
+
+586
+00:46:48,540 --> 00:46:53,900
+frustrating feeling of being stuck in a rut, whether it is feeling trapped in a toxic relationship pattern,
+
+587
+00:46:53,900 --> 00:47:00,060
+hitting a wall in a dead-end career, or battling a negative self-image? What if that feeling isn't a
+
+588
+00:47:00,060 --> 00:47:06,780
+failure of your willpower? What if it is a literal mathematical ontological lock-in? That is a very
+
+589
+00:47:06,780 --> 00:47:11,260
+powerful way to look at it. What if the way you currently categorize your own emotions,
+
+590
+00:47:11,260 --> 00:47:16,940
+the way you sort the internal fibers of your own identity has simply reached its mathematical limit?
+
+591
+00:47:16,940 --> 00:47:21,180
+Think back to the doctor at the beginning of the hour. When the doctor looks at the x-ray,
+
+592
+00:47:21,180 --> 00:47:23,980
+and you know deep down the bone is hurting, but the doctor says,
+
+593
+00:47:23,980 --> 00:47:29,740
+I don't see a break. Well, maybe the bone isn't fine. Maybe the x-ray machine just lacks the geometry
+
+594
+00:47:29,740 --> 00:47:36,060
+to distinguish the fracture. What if you don't need to try harder, or gather more data to get unstuck in
+
+595
+00:47:36,060 --> 00:47:41,180
+your life? What if what you actually need is a fundamental productive revision of your own
+
+596
+00:47:41,180 --> 00:47:46,860
+internal geometry, a remodeling of your emotional house, to finally distinguish who you are truly
+
+597
+00:47:46,860 --> 00:47:52,300
+capable of becoming? That is definitely something to think about. Thank you for sitting down with us
+
+598
+00:47:52,300 --> 00:47:56,940
+and joining us on this deep dive. Keep exploring the spaces around you, keep questioning the boundaries
+
+599
+00:47:56,940 --> 00:48:07,180
+of your fibers, and we will see you next time.
+

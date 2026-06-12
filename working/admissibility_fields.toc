@@ -1,0 +1,70 @@
+\contentsline {section}{\numberline {1}Introduction: Three Convergences}{4}{section.1}%
+\contentsline {section}{\numberline {2}Normalization as Projection: The Hyperspherical Turn}{6}{section.2}%
+\contentsline {subsection}{\numberline {2.1}The Structure of Residual Activations}{6}{subsection.2.1}%
+\contentsline {subsection}{\numberline {2.2}Normalization as a Canonical Quotient Map}{7}{subsection.2.2}%
+\contentsline {subsection}{\numberline {2.3}Angular Similarity as the Natural Metric}{7}{subsection.2.3}%
+\contentsline {subsection}{\numberline {2.4}The Astronomical Analogy and Degree-of-Freedom Reduction}{8}{subsection.2.4}%
+\contentsline {subsection}{\numberline {2.5}First Structural Observation}{8}{subsection.2.5}%
+\contentsline {section}{\numberline {3}Constraint Clusters, Not Concept Clusters}{8}{section.3}%
+\contentsline {subsection}{\numberline {3.1}The Graph Construction}{8}{subsection.3.1}%
+\contentsline {subsection}{\numberline {3.2}The Central Anomaly}{9}{subsection.3.2}%
+\contentsline {subsection}{\numberline {3.3}The Rank-2 Result in Detail}{10}{subsection.3.3}%
+\contentsline {subsection}{\numberline {3.4}Process Attractors versus Noun Clusters}{11}{subsection.3.4}%
+\contentsline {subsection}{\numberline {3.5}Second Structural Observation}{11}{subsection.3.5}%
+\contentsline {section}{\numberline {4}The Future Equivalence Principle and the Admissibility Field}{11}{section.4}%
+\contentsline {subsection}{\numberline {4.1}Why Cosine Similarity Is the Wrong Metric}{11}{subsection.4.1}%
+\contentsline {subsection}{\numberline {4.2}The Reachability Operator}{12}{subsection.4.2}%
+\contentsline {subsection}{\numberline {4.3}Future Proximity and Exact Equivalence}{12}{subsection.4.3}%
+\contentsline {subsection}{\numberline {4.4}The Reachability Determines Representation Conjecture}{13}{subsection.4.4}%
+\contentsline {subsection}{\numberline {4.5}The Admissibility Field: First Introduction and Its Limitations}{15}{subsection.4.5}%
+\contentsline {section}{\numberline {5}The Giant Component and Admissibility Topology}{16}{section.5}%
+\contentsline {subsection}{\numberline {5.1}The Component Spectrum}{16}{subsection.5.1}%
+\contentsline {subsection}{\numberline {5.2}The Percolation Analogy}{17}{subsection.5.2}%
+\contentsline {subsection}{\numberline {5.3}Admissibility Density and the Topological Decomposition}{17}{subsection.5.3}%
+\contentsline {subsection}{\numberline {5.4}Admissibility Islands as Linguistic Ecosystems}{18}{subsection.5.4}%
+\contentsline {subsection}{\numberline {5.5}Connection to RSVP Phase Structure}{18}{subsection.5.5}%
+\contentsline {subsection}{\numberline {5.6}Third Structural Observation}{19}{subsection.5.6}%
+\contentsline {section}{\numberline {6}Constraint Fields and Natural Coordinates: A Bridge}{19}{section.6}%
+\contentsline {subsection}{\numberline {6.1}Two Descriptions of the Same Geometry}{19}{subsection.6.1}%
+\contentsline {subsection}{\numberline {6.2}Level Sets and Gradient Directions}{19}{subsection.6.2}%
+\contentsline {subsection}{\numberline {6.3}The Fundamental Geometric Triad}{20}{subsection.6.3}%
+\contentsline {section}{\numberline {7}ICA as Natural Cleavage: Statistical Fractures in Activation Space}{21}{section.7}%
+\contentsline {subsection}{\numberline {7.1}The ICALens Setup}{21}{subsection.7.1}%
+\contentsline {subsection}{\numberline {7.2}Non-Gaussianity as Constraint Selectivity}{22}{subsection.7.2}%
+\contentsline {subsection}{\numberline {7.3}ICA Directions as Gradient Directions of the Admissibility Field}{23}{subsection.7.3}%
+\contentsline {subsection}{\numberline {7.4}Effective Receptive Field as Correlation Length}{23}{subsection.7.4}%
+\contentsline {subsection}{\numberline {7.5}ICA versus SAE: Natural Coordinates versus Trained Dictionaries}{25}{subsection.7.5}%
+\contentsline {subsection}{\numberline {7.6}Fourth Structural Observation}{26}{subsection.7.6}%
+\contentsline {section}{\numberline {8}WMSD: Velocity Fields Over Possibility Space}{26}{section.8}%
+\contentsline {subsection}{\numberline {8.1}The Teacher-Student Asymmetry}{26}{subsection.8.1}%
+\contentsline {subsection}{\numberline {8.2}What the Student Must Learn}{27}{subsection.8.2}%
+\contentsline {subsection}{\numberline {8.3}The Velocity Field Formalism}{27}{subsection.8.3}%
+\contentsline {subsection}{\numberline {8.4}Proposition 1: Local Agreement Controls Global Reachability}{28}{subsection.8.4}%
+\contentsline {subsection}{\numberline {8.5}From Trajectory Stability to Distributional Stability}{29}{subsection.8.5}%
+\contentsline {subsection}{\numberline {8.6}Generation-Verification Asymmetry as Admissibility Filtering}{31}{subsection.8.6}%
+\contentsline {subsection}{\numberline {8.7}Fifth Structural Observation}{32}{subsection.8.7}%
+\contentsline {section}{\numberline {9}Distillation as Admissibility-Preserving Projection}{32}{section.9}%
+\contentsline {subsection}{\numberline {9.1}The Compression Question}{32}{subsection.9.1}%
+\contentsline {subsection}{\numberline {9.2}The Task Sufficiency Projection Principle}{33}{subsection.9.2}%
+\contentsline {subsection}{\numberline {9.3}The Role of the Reward in Reshaping the Geometry}{33}{subsection.9.3}%
+\contentsline {subsection}{\numberline {9.4}Detailed Instructions as Projection Artifacts}{34}{subsection.9.4}%
+\contentsline {section}{\numberline {10}Frozen Processes and the Ontological Inversion}{35}{section.10}%
+\contentsline {subsection}{\numberline {10.1}A Recurring Pattern}{35}{subsection.10.1}%
+\contentsline {subsection}{\numberline {10.2}The Empirical Inversion Table}{35}{subsection.10.2}%
+\contentsline {subsection}{\numberline {10.3}Nouns as Frozen Verbs: A Mechanistic Reading}{36}{subsection.10.3}%
+\contentsline {subsection}{\numberline {10.4}The Inversion as Empirical Consequence}{36}{subsection.10.4}%
+\contentsline {section}{\numberline {11}The Admissibility Field Hypothesis}{37}{section.11}%
+\contentsline {subsection}{\numberline {11.1}A Note on Ontological Status}{37}{subsection.11.1}%
+\contentsline {subsection}{\numberline {11.2}The Reachability Bundle and the Reachability Metric}{37}{subsection.11.2}%
+\contentsline {subsection}{\numberline {11.3}The Geometric Interpretability Correspondence}{38}{subsection.11.3}%
+\contentsline {subsection}{\numberline {11.4}Formal Definition of the Admissibility Field}{39}{subsection.11.4}%
+\contentsline {subsection}{\numberline {11.5}The Four Measurements}{40}{subsection.11.5}%
+\contentsline {subsection}{\numberline {11.6}The Synthesis Progression}{40}{subsection.11.6}%
+\contentsline {subsection}{\numberline {11.7}The ERF Green's Function Conjecture}{41}{subsection.11.7}%
+\contentsline {subsection}{\numberline {11.8}Open Formal Questions}{42}{subsection.11.8}%
+\contentsline {section}{\numberline {12}Predictions and Falsification Criteria}{42}{section.12}%
+\contentsline {section}{\numberline {13}Conclusion}{44}{section.13}%
+\contentsline {subsection}{\numberline {13.1}Summary of the Argument}{44}{subsection.13.1}%
+\contentsline {subsection}{\numberline {13.2}Implications for Interpretability}{45}{subsection.13.2}%
+\contentsline {subsection}{\numberline {13.3}Implications for Alignment}{45}{subsection.13.3}%
+\contentsline {subsection}{\numberline {13.4}The Broader Convergence}{46}{subsection.13.4}%

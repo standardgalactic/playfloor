@@ -1,0 +1,31 @@
+\contentsline {section}{\numberline {1}Introduction}{3}{section.1}%
+\contentsline {section}{\numberline {2}Distinguishability Spaces and Their Invariants}{4}{section.2}%
+\contentsline {subsection}{\numberline {2.1}The Ontological Triple}{4}{subsection.2.1}%
+\contentsline {subsection}{\numberline {2.2}The Distinguishability Principle}{4}{subsection.2.2}%
+\contentsline {subsection}{\numberline {2.3}Two Deficit Notions}{4}{subsection.2.3}%
+\contentsline {subsection}{\numberline {2.4}A Concrete Illustration}{6}{subsection.2.4}%
+\contentsline {section}{\numberline {3}The Classification Conjecture}{7}{section.3}%
+\contentsline {section}{\numberline {4}The Four Operations}{7}{section.4}%
+\contentsline {subsection}{\numberline {4.1}The Two-Level Structure}{7}{subsection.4.1}%
+\contentsline {subsection}{\numberline {4.2}Formal Separation: Distortion vs.\ Deficit Change}{8}{subsection.4.2}%
+\contentsline {subsection}{\numberline {4.3}Projection}{9}{subsection.4.3}%
+\contentsline {subsection}{\numberline {4.4}Embedding}{10}{subsection.4.4}%
+\contentsline {subsection}{\numberline {4.5}Revision}{11}{subsection.4.5}%
+\contentsline {subsection}{\numberline {4.6}Transport}{11}{subsection.4.6}%
+\contentsline {section}{\numberline {5}Asymmetries, Failure Modes, and the Meta-Theorem}{12}{section.5}%
+\contentsline {subsection}{\numberline {5.1}Projection and Embedding Are Not Duals}{12}{subsection.5.1}%
+\contentsline {subsection}{\numberline {5.2}The Diagnostic Grid}{12}{subsection.5.2}%
+\contentsline {subsection}{\numberline {5.3}The Meta-Theorem}{13}{subsection.5.3}%
+\contentsline {section}{\numberline {6}The Deficit as Universal Invariant}{13}{section.6}%
+\contentsline {subsection}{\numberline {6.1}Portability}{13}{subsection.6.1}%
+\contentsline {subsection}{\numberline {6.2}Subadditivity}{14}{subsection.6.2}%
+\contentsline {section}{\numberline {7}Toward a Categorical Formulation}{14}{section.7}%
+\contentsline {subsection}{\numberline {7.1}The Category $\mathbf {Dist}$}{14}{subsection.7.1}%
+\contentsline {subsection}{\numberline {7.2}The Quotient Functor and Projection}{15}{subsection.7.2}%
+\contentsline {subsection}{\numberline {7.3}Morphism Types and the Hierarchy}{15}{subsection.7.3}%
+\contentsline {subsection}{\numberline {7.4}The Deficit as Functor}{15}{subsection.7.4}%
+\contentsline {subsection}{\numberline {7.5}Relation to Admissibility Geometry}{16}{subsection.7.5}%
+\contentsline {section}{\numberline {8}Conclusion}{16}{section.8}%
+\contentsline {section}{\numberline {A}Formal Definitions: Fiber Bundles and the Quotient Construction}{17}{appendix.A}%
+\contentsline {section}{\numberline {B}The Conservation Law}{17}{appendix.B}%
+\contentsline {section}{\numberline {C}Deficit Examples and the Finite Illustration}{17}{appendix.C}%

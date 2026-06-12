@@ -1,5 +1,7 @@
 # Playfloor
 
+[Distinguishability Geometry](https://github.com/standardgalactic/playfloor/blob/main/working/README.md)
+
 [The Admissibility Program](https://github.com/standardgalactic/playfloor/blob/main/coordinates/README.md)
 
 [Reachability Framework](https://github.com/standardgalactic/playfloor/blob/main/reachability/README.md)

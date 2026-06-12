@@ -1,0 +1,16 @@
+[package]
+name = "spherepop"
+version = "0.1.0"
+edition = "2021"
+
+[[bin]]
+name = "spherepop"
+path = "src/main.rs"
+
+[lib]
+name = "spherepop"
+path = "src/lib.rs"
+
+[dependencies]
+
+[dev-dependencies]

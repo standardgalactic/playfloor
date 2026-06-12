@@ -1,0 +1,100 @@
+\contentsline {chapter}{Abstract}{ii}{chapter*.1}%
+\contentsline {chapter}{\numberline {1}Introduction: The Prediction Assumption}{1}{chapter.1}%
+\contentsline {section}{\numberline {1.1}The Standard Story}{1}{section.1.1}%
+\contentsline {section}{\numberline {1.2}The Central Thesis}{1}{section.1.2}%
+\contentsline {section}{\numberline {1.3}A Motivating Observation}{2}{section.1.3}%
+\contentsline {section}{\numberline {1.4}A Concrete Entry Point: The Frozen Archive}{2}{section.1.4}%
+\contentsline {section}{\numberline {1.5}Structure of the Monograph}{3}{section.1.5}%
+\contentsline {chapter}{\numberline {2}The Failure of Object-Centric Thinking}{4}{chapter.2}%
+\contentsline {section}{\numberline {2.1}A Recurring Pattern}{4}{section.2.1}%
+\contentsline {section}{\numberline {2.2}Examples Across Domains}{4}{section.2.2}%
+\contentsline {subsection}{\numberline {2.2.1}Memory}{4}{subsection.2.2.1}%
+\contentsline {subsection}{\numberline {2.2.2}Identity and Repair}{4}{subsection.2.2.2}%
+\contentsline {subsection}{\numberline {2.2.3}Programs and Software}{4}{subsection.2.2.3}%
+\contentsline {subsection}{\numberline {2.2.4}Institutions}{5}{subsection.2.2.4}%
+\contentsline {section}{\numberline {2.3}The General Structure}{5}{section.2.3}%
+\contentsline {chapter}{\numberline {3}Search Is Navigation}{6}{chapter.3}%
+\contentsline {section}{\numberline {3.1}Two Models of Intelligence}{6}{section.3.1}%
+\contentsline {section}{\numberline {3.2}Why Navigation Generalises Search}{6}{section.3.2}%
+\contentsline {section}{\numberline {3.3}The Vocabulary Simplex as Navigation Space}{6}{section.3.3}%
+\contentsline {chapter}{\numberline {4}Industrial Convergence Toward Reachability}{8}{chapter.4}%
+\contentsline {section}{\numberline {4.1}An Independent Confirmation}{8}{section.4.1}%
+\contentsline {section}{\numberline {4.2}From FLOPs to Admissibility}{8}{section.4.2}%
+\contentsline {section}{\numberline {4.3}AI+HW as an RSVP Field}{9}{section.4.3}%
+\contentsline {section}{\numberline {4.4}The CLIO Failure of Current Metrics}{9}{section.4.4}%
+\contentsline {section}{\numberline {4.5}Convergence Without Common Language}{10}{section.4.5}%
+\contentsline {chapter}{\numberline {5}The Bebop Result: Overlap Governs Acceptance}{11}{chapter.5}%
+\contentsline {section}{\numberline {5.1}Background: Speculative Decoding and MTP}{11}{section.5.1}%
+\contentsline {section}{\numberline {5.2}The Standard Explanation and Its Limitation}{11}{section.5.2}%
+\contentsline {section}{\numberline {5.3}The Acceptance Rate Derivations}{11}{section.5.3}%
+\contentsline {subsection}{\numberline {5.3.1}Target-Only Sampling}{11}{subsection.5.3.1}%
+\contentsline {subsection}{\numberline {5.3.2}Rejection Sampling}{12}{subsection.5.3.2}%
+\contentsline {subsection}{\numberline {5.3.3}The TV Loss}{12}{subsection.5.3.3}%
+\contentsline {subsection}{\numberline {5.3.4}Multi-Step Acceptance}{12}{subsection.5.3.4}%
+\contentsline {section}{\numberline {5.4}The Key Empirical Result}{13}{section.5.4}%
+\contentsline {section}{\numberline {5.5}What the Result Shows}{13}{section.5.5}%
+\contentsline {chapter}{\numberline {6}A Hierarchy of Future Orientation}{14}{chapter.6}%
+\contentsline {section}{\numberline {6.1}Four Levels of Description}{14}{section.6.1}%
+\contentsline {section}{\numberline {6.2}Level 0: Token Prediction}{14}{section.6.2}%
+\contentsline {section}{\numberline {6.3}Level 1: Distributional Overlap}{14}{section.6.3}%
+\contentsline {section}{\numberline {6.4}Level 2: Reachable Trajectory Overlap}{14}{section.6.4}%
+\contentsline {section}{\numberline {6.5}Level 3: Admissibility Overlap}{15}{section.6.5}%
+\contentsline {subsection}{\numberline {6.5.1}TV Overlap as a Projection of Trajectory Overlap}{15}{subsection.6.5.1}%
+\contentsline {section}{\numberline {6.6}Each Level Subsumes the Previous}{16}{section.6.6}%
+\contentsline {section}{\numberline {6.7}Level 4: Ontological Reachability}{16}{section.6.7}%
+\contentsline {chapter}{\numberline {7}Entropy as Proxy for Admissible Volume}{18}{chapter.7}%
+\contentsline {section}{\numberline {7.1}The Standard Entropy Story}{18}{section.7.1}%
+\contentsline {section}{\numberline {7.2}The Geometric Reinterpretation}{18}{section.7.2}%
+\contentsline {section}{\numberline {7.3}Admissible Volume as the Fundamental Variable}{19}{section.7.3}%
+\contentsline {subsection}{\numberline {7.3.1}Admissibility Is Not Support}{19}{subsection.7.3.1}%
+\contentsline {subsection}{\numberline {7.3.2}From Entropy to Deficit}{20}{subsection.7.3.2}%
+\contentsline {section}{\numberline {7.4}Breaking the Entropy Bound vs. Bypassing It}{20}{section.7.4}%
+\contentsline {chapter}{\numberline {8}CLIO: Projection and Admissibility}{21}{chapter.8}%
+\contentsline {section}{\numberline {8.1}The CLIO Framework}{21}{section.8.1}%
+\contentsline {section}{\numberline {8.2}The Draft Head as a Projection Operator}{21}{section.8.2}%
+\contentsline {section}{\numberline {8.3}CE vs.\ TV Through the CLIO Lens}{21}{section.8.3}%
+\contentsline {section}{\numberline {8.4}Representational Entropy and Policy Entropy}{22}{section.8.4}%
+\contentsline {chapter}{\numberline {9}RSVP: A Field-Theoretic Translation}{23}{chapter.9}%
+\contentsline {section}{\numberline {9.1}The RSVP Framework}{23}{section.9.1}%
+\contentsline {section}{\numberline {9.2}Speculative Decoding as Field Transport}{23}{section.9.2}%
+\contentsline {section}{\numberline {9.3}RL as Metric Deformation}{23}{section.9.3}%
+\contentsline {section}{\numberline {9.4}CE Is Pointwise; TV Is Geometric}{24}{section.9.4}%
+\contentsline {chapter}{\numberline {10}Repair and Future Preservation}{25}{chapter.10}%
+\contentsline {section}{\numberline {10.1}Repair as Admissibility-Preservation}{25}{section.10.1}%
+\contentsline {section}{\numberline {10.2}The Bebop Result as an Instance of Repair Theory}{25}{section.10.2}%
+\contentsline {section}{\numberline {10.3}The Ship of Theseus in Distribution Space}{25}{section.10.3}%
+\contentsline {section}{\numberline {10.4}Implications for Continual Learning}{26}{section.10.4}%
+\contentsline {chapter}{\numberline {11}The Rematching Archive: Admissibility Made Operational}{27}{chapter.11}%
+\contentsline {section}{\numberline {11.1}From Principle to Running System}{27}{section.11.1}%
+\contentsline {section}{\numberline {11.2}The Admissibility Log and the Compression Staircase}{27}{section.11.2}%
+\contentsline {section}{\numberline {11.3}The Ontological Deficit as a Measured Quantity}{28}{section.11.3}%
+\contentsline {section}{\numberline {11.4}Collapse Events as Phase Transitions}{28}{section.11.4}%
+\contentsline {section}{\numberline {11.5}Multimodal Reachability and the World-Model Crossover}{29}{section.11.5}%
+\contentsline {section}{\numberline {11.6}The Archive as an RSVP Apparatus}{29}{section.11.6}%
+\contentsline {subsection}{\numberline {11.6.1}An Order Parameter for Understanding}{30}{subsection.11.6.1}%
+\contentsline {subsection}{\numberline {11.6.2}The Deficit Without an Oracle}{30}{subsection.11.6.2}%
+\contentsline {section}{\numberline {11.7}File Size as a Relational Property}{31}{section.11.7}%
+\contentsline {section}{\numberline {11.8}Knowledge as Navigation in the Archive}{32}{section.11.8}%
+\contentsline {chapter}{\numberline {12}Compression, Reachability, and the Nature of Explanation}{33}{chapter.12}%
+\contentsline {section}{\numberline {12.1}The Question Behind the Archive}{33}{section.12.1}%
+\contentsline {section}{\numberline {12.2}Reachable Description Space}{33}{section.12.2}%
+\contentsline {section}{\numberline {12.3}Ontological Deficit as the True Measure of Ignorance}{34}{section.12.3}%
+\contentsline {section}{\numberline {12.4}The Collapse Staircase from Reachability Geometry}{35}{section.12.4}%
+\contentsline {section}{\numberline {12.5}Persistent Anomalies as Gradients Toward New Ontology}{35}{section.12.5}%
+\contentsline {section}{\numberline {12.6}Three Levels of Discovery}{36}{section.12.6}%
+\contentsline {section}{\numberline {12.7}The World-Model Crossover and the Primacy of Theory}{37}{section.12.7}%
+\contentsline {section}{\numberline {12.8}Knowledge Growth as Field Dynamics}{38}{section.12.8}%
+\contentsline {section}{\numberline {12.9}A Unified Characterisation of Theory}{38}{section.12.9}%
+\contentsline {subsection}{\numberline {12.9.1}Explanation Creates Futures}{39}{subsection.12.9.1}%
+\contentsline {chapter}{\numberline {13}Toward an Admissibility-Based Learning Objective}{40}{chapter.13}%
+\contentsline {section}{\numberline {13.1}The Progression of Objectives}{40}{section.13.1}%
+\contentsline {section}{\numberline {13.2}The Admissibility Objective}{40}{section.13.2}%
+\contentsline {section}{\numberline {13.3}Relationship to TV}{40}{section.13.3}%
+\contentsline {section}{\numberline {13.4}Challenges in Computing $\mathcal {L}_A$}{41}{section.13.4}%
+\contentsline {section}{\numberline {13.5}Admissibility-Based RL}{41}{section.13.5}%
+\contentsline {chapter}{\numberline {14}The Reachability Principle: Statement and Consequences}{42}{chapter.14}%
+\contentsline {section}{\numberline {14.1}Formal Statement}{42}{section.14.1}%
+\contentsline {section}{\numberline {14.2}Special Cases}{42}{section.14.2}%
+\contentsline {section}{\numberline {14.3}Identity as a Future Invariant}{42}{section.14.3}%
+\contentsline {section}{\numberline {14.4}The Inversion}{43}{section.14.4}%
+\contentsline {section}{\numberline {14.5}Open Questions}{44}{section.14.5}%

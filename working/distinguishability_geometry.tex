@@ -1,0 +1,996 @@
+\documentclass[12pt, a4paper]{article}
+
+\usepackage{amsmath, amssymb, amsthm}
+\usepackage{mathtools}
+\usepackage{geometry}
+\usepackage{hyperref}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{enumitem}
+\usepackage{titlesec}
+\usepackage{setspace}
+\usepackage{fancyhdr}
+\usepackage{natbib}
+
+\geometry{top=1.2in, bottom=1.2in, left=1.3in, right=1.3in}
+\setlength{\headheight}{14.5pt}
+
+\hypersetup{colorlinks=true, linkcolor=black, citecolor=black, urlcolor=black}
+
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0.4pt}
+\fancyhead[L]{\small\textit{Distinguishability Geometry}}
+\fancyhead[R]{\small\thepage}
+
+\titleformat{\section}{\large\bfseries}{\thesection.}{0.6em}{}
+\titleformat{\subsection}{\normalsize\bfseries}{\thesubsection.}{0.6em}{}
+\titleformat{\subsubsection}{\normalsize\itshape}{\thesubsubsection.}{0.6em}{}
+
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{lemma}[theorem]{Lemma}
+
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{conjecture}[theorem]{Conjecture}
+
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{principle}[theorem]{Principle}
+
+\newcommand{\deficit}{\delta_T}
+\newcommand{\Dstar}{D^*}
+\newcommand{\DT}{D_T}
+\newcommand{\Lreach}{L_T}
+\newcommand{\Lopt}{L^*}
+\newcommand{\simX}{{\sim}_X}
+\newcommand{\simY}{{\sim}_Y}
+\newcommand{\CLIO}{\textsc{clio}}
+\newcommand{\RSVP}{\textsc{rsvp}}
+\newcommand{\Ddelta}{\Delta\delta}
+\newcommand{\eps}{\epsilon}
+
+\setstretch{1.15}
+\setlength{\parskip}{0.4em}
+\setlength{\parindent}{1.4em}
+
+\begin{document}
+
+% ── Title page ───────────────────────────────────────────────────────────────
+\begin{titlepage}
+\vspace*{2cm}
+\begin{center}
+{\LARGE\bfseries Distinguishability Geometry:\\[0.4em]
+Projection, Embedding, Revision, and Transport}
+
+\vspace{1.8cm}
+{\large Flyxion}\\[0.4em]
+{\normalsize Independent Researcher}
+
+\vspace{1.2cm}
+{\normalsize June 2026}
+
+\vspace{2.2cm}
+\begin{minipage}{0.82\textwidth}
+\begin{abstract}
+\noindent
+We propose \emph{distinguishability geometry} as a unified framework for
+understanding how representational systems gain, lose, and transfer the
+capacity to express distinctions. The foundational primitive is the
+\emph{ontological triple} $(X,\sim,T)$: a set $X$, an observational
+indistinguishability relation $\sim$, and a generating ontology $T$. Every
+such triple carries two intrinsic invariants: the \emph{coding deficit}
+$\delta_T(x)=L_T(x)-L^*(x)$, measuring excess description length, and the
+\emph{distinguishability deficit} $\Delta_T(x)=D^*(x)-D_T(x)$, measuring
+inaccessible distinction capacity. The \emph{Deficit Proxy Theorem} establishes
+$\Delta_T(x)\le C\,\delta_T(x)$, making the coding deficit a computable
+surrogate for the geometric one; full equivalence is conjectured but not
+proved.
+
+We identify four primitive operations arranged in a two-level hierarchy.
+At the \emph{distinction level}, projection and embedding coarsen and
+refine $\sim$ within a fixed space. At the \emph{ontology level}, revision
+restructures the generating ontology and transport maps distinguishability
+structure across spaces. The \emph{Representational Reduction Proposition}
+establishes these as exhaustive qualitative fiber effects; the
+\emph{Classification Conjecture} asserts every representational
+transformation factors into their finite composition.
+
+For each operation we derive a characteristic theorem: a Projection Deficit
+Bound in entropic form, an Embedding Refinement theorem, a Revision
+Monotonicity theorem with asymptotic corollary, and a Transport Stability
+theorem giving a Lipschitz condition for analogy. A \emph{Distortion--Deficit
+Relationship} connects the two error measures. A concrete finite example
+illustrates all four operations. We close with a categorical formulation in
+which the hierarchy corresponds to morphism types and the deficit is a functor
+from the category $\mathbf{Dist}$ of ontological triples.
+\end{abstract}
+\end{minipage}
+\end{center}
+\end{titlepage}
+
+\tableofcontents
+\newpage
+
+% ─────────────────────────────────────────────────────────────────────────────
+\section{Introduction}
+\label{sec:intro}
+% ─────────────────────────────────────────────────────────────────────────────
+
+Three independent research programmes have converged on a common mathematical
+object. The first, from process-primary computation, establishes that observable
+state is a projection of a richer history space and that distinct histories
+collapse to the same state. The second, from kernel statistics, demonstrates
+that distinct distributions become mutually singular after covariance embedding,
+amplifying separation without creating information. The third, from archive-based
+compression, introduces \emph{reachable complexity}: the shortest description
+expressible from the archive's current template hierarchy, which may be strictly
+longer than the Kolmogorov-optimal description.
+
+Each programme arrives at the same hidden structure from a different direction:
+the \emph{geometry of distinguishability}. The first studies distinctions
+\emph{destroyed} by representation. The second studies distinctions
+\emph{amplified}. The third studies distinctions that are \emph{inaccessible}
+within the current frame.
+
+The present paper makes this object explicit. Our main contributions are:
+
+\begin{enumerate}[leftmargin=1.8em, label=(\arabic*)]
+  \item The \emph{ontological triple} $(X,\sim,T)$ as the correct object of
+        study, fixing the under-specification of earlier formulations that left
+        the generating ontology implicit.
+  \item Two intrinsic invariants---coding deficit and distinguishability
+        deficit---and a \emph{Deficit Proxy Theorem} relating them.
+  \item A two-level hierarchy of four operations with characteristic theorems
+        for each, including a corrected Embedding Refinement proof, an entropic
+        Projection Deficit Bound, and a Lipschitz Transport Stability theorem.
+  \item A \emph{Distortion--Deficit Relationship} connecting the two error
+        measures that previously lived in separate worlds.
+  \item A \emph{Classification Conjecture} precisely stated as a factorization
+        claim, together with a worked finite example illustrating all four
+        operations.
+  \item A categorical formulation of $\mathbf{Dist}$ with well-defined objects
+        and morphism types.
+\end{enumerate}
+
+The paper is organized as: spaces and invariants (\S\ref{sec:spaces}),
+classification conjecture (\S\ref{sec:conjecture}), four operations with
+theorems (\S\ref{sec:operations}), asymmetries and meta-theorem
+(\S\ref{sec:asymmetry}), deficit as universal invariant
+(\S\ref{sec:deficit-universal}), and categorical formulation
+(\S\ref{sec:category}).
+
+% ─────────────────────────────────────────────────────────────────────────────
+\section{Distinguishability Spaces and Their Invariants}
+\label{sec:spaces}
+% ─────────────────────────────────────────────────────────────────────────────
+
+\subsection{The Ontological Triple}
+
+Earlier formulations defined the foundational object as a pair $(X,\sim)$.
+This is insufficient: the indistinguishability relation $\sim$ on $X$ does
+not by itself determine which descriptions are reachable, and hence does
+not determine the deficit. The correct object is a triple.
+
+\begin{definition}[Ontological triple]
+\label{def:triple}
+An \emph{ontological triple} is $(X,\sim,T)$ where $X$ is a set, $\sim$ is
+an equivalence relation on $X$ (observational indistinguishability), and
+$T$ is an ontology: a description language or template hierarchy determining
+which descriptions of elements of $X$ are reachable. The equivalence classes
+$[x]_\sim$ are called \emph{fibers}.
+\end{definition}
+
+The same pair $(X,\sim)$ can appear in multiple triples with different ontologies
+$T$, $T'$, inducing the same fiber structure but different deficit values.
+This is not a defect; it reflects the genuine dependence of representational
+cost on the description language.
+
+\begin{proposition}[Fiber Monotonicity]
+\label{prop:monotone}
+Let $(X,\sim_1,T)$ and $(X,\sim_2,T)$ share the same set and ontology with
+$\sim_1\subseteq\sim_2$ ($\sim_2$ coarser). Then:
+\[
+  [x]_{\sim_1}\subseteq[x]_{\sim_2},\qquad
+  |[x]_{\sim_1}|\le|[x]_{\sim_2}|.
+\]
+\end{proposition}
+
+\begin{proof}
+If $y\in[x]_{\sim_1}$ then $x\sim_1 y$; since $\sim_1\subseteq\sim_2$,
+$x\sim_2 y$, so $y\in[x]_{\sim_2}$. Cardinality follows.
+\end{proof}
+
+\begin{corollary}
+Coarsening a distinguishability relation never increases the number of
+distinguishable classes. Projection always reduces expressible distinctions.
+\end{corollary}
+
+\subsection{The Distinguishability Principle}
+
+\begin{principle}[Distinguishability Principle]
+\label{prin:dist}
+A representational system is characterized not by what objects it contains
+but by what distinctions it can express.
+\end{principle}
+
+Every ontological triple possesses a deficit because no finitary ontology
+can express all distinctions present in the world.
+
+\subsection{Two Deficit Notions}
+\label{subsec:deficits}
+
+\begin{definition}[Coding deficit]
+\label{def:coding-deficit}
+Let $\Lreach(x)$ be the shortest description of $x$ reachable within $T$,
+and $\Lopt(x)=K(x)$ the Kolmogorov complexity of $x$. The \emph{coding
+deficit} is:
+\[
+  \delta_T(x) \;=\; \Lreach(x) - \Lopt(x).
+\]
+\end{definition}
+
+\begin{definition}[Distinguishability deficit]
+\label{def:dist-deficit}
+Let $D_T(x)$ be the distinguishability capacity of ontology $T$ at $x$:
+the number of objects separable from $x$ by descriptions reachable in $T$.
+Let $D^*(x)$ be the maximum capacity attainable by any ontology. The
+\emph{distinguishability deficit} is:
+\[
+  \Delta_T(x) \;=\; D^*(x) - D_T(x).
+\]
+\end{definition}
+
+\begin{theorem}[Deficit Non-Negativity]
+\label{thm:nonneg}
+For every ontological triple $(X,\sim,T)$ and every $x\in X$:
+\[
+  \delta_T(x)\ge 0,\qquad \Delta_T(x)\ge 0.
+\]
+Both vanish iff $T$ is locally optimal for $x$.
+\end{theorem}
+
+\begin{proof}
+$\Lopt(x)$ is the minimum over all ontologies, so $\Lopt(x)\le\Lreach(x)$,
+giving $\delta_T(x)\ge 0$. Similarly $D^*(x)$ is the maximum, so
+$D_T(x)\le D^*(x)$, giving $\Delta_T(x)\ge 0$. Both equalities hold iff
+$T$ achieves the respective optimum.
+\end{proof}
+
+\begin{theorem}[Deficit Proxy]
+\label{thm:proxy}
+Under the assumption that each expressible distinction requires at least one
+description bit (\emph{faithful encoding}), the coding deficit bounds the
+distinguishability deficit:
+\[
+  \Delta_T(x) \;\le\; C\,\delta_T(x)
+\]
+for a system-dependent constant $C>0$. In particular:
+\[
+  \delta_T(x)=0 \;\Longrightarrow\; \Delta_T(x)=0.
+\]
+The converse direction, $\Delta_T(x)=0\Rightarrow\delta_T(x)=0$, requires
+the additional assumption that optimal coding uses all available distinctions,
+and is left as a conjecture.
+\end{theorem}
+
+\begin{proof}
+Under faithful encoding, each inaccessible distinction in $\Delta_T(x)$
+requires at least one additional bit in $T$'s description of $x$ to flag
+the corresponding fiber collapse. Hence $\Delta_T(x)\le\delta_T(x)$,
+and the general bound $\Delta_T(x)\le C\,\delta_T(x)$ follows with $C\ge 1$
+scaling with the maximum description-length cost per inaccessible distinction.
+
+For the forward implication: if $\delta_T(x)=0$, then $T$ achieves optimal
+description length for $x$. Under faithful encoding, this means every
+bit-costly distinction is expressible in $T$, so no distinction is
+inaccessible: $\Delta_T(x)=0$.
+\end{proof}
+
+\begin{conjecture}[Full Deficit Correspondence]
+\label{conj:full-corr}
+Under faithful encoding, $\Delta_T(x)=0\iff\delta_T(x)=0$.
+\end{conjecture}
+
+\begin{remark}
+The Deficit Proxy Theorem is sufficient for all subsequent arguments in
+this paper. The coding deficit $\delta_T(x)$ is a computable surrogate
+for the geometric quantity $\Delta_T(x)$, and the two share the same zero
+set under the proxy direction. Full equivalence remains an open problem.
+\end{remark}
+
+\subsection{A Concrete Illustration}
+\label{subsec:example}
+
+Before stating the classification conjecture, we ground the framework in a
+finite example that will be extended throughout the paper.
+
+\begin{example}[Four operations on a four-element set]
+\label{ex:four}
+Let $X=\{a,b,c,d\}$ with ontology $T_0$ admitting a full distinguishing
+description for each element. Consider the following relations and ontologies:
+
+\medskip
+\noindent\textbf{Initial space.}
+$\sim_0 = \bigl\{\{a\},\{b\},\{c\},\{d\}\bigr\}$ (discrete: all elements
+distinguishable). Here $\delta_{T_0}(x)=0$ for all $x$.
+
+\medskip
+\noindent\textbf{Projection.}
+The map $\sigma:X\to\{p,q,r\}$ with $\sigma(a)=\sigma(b)=p$, $\sigma(c)=q$,
+$\sigma(d)=r$ induces $\sim_1=\bigl\{\{a,b\},\{c\},\{d\}\bigr\}$. The
+fiber $F_p=\{a,b\}$ has size 2, so the projection deficit bound gives
+$\Ddelta(\sigma)\ge\log 2=1$ bit.
+
+\medskip
+\noindent\textbf{Embedding.}
+From $(X,\sim_0)$, map $\phi:X\to X\times\{0,1\}$ by $\phi(x)=(x,f(x))$
+where $f(a)=f(c)=0$, $f(b)=f(d)=1$. This refines $\sim_0$ by separating
+elements according to a new attribute: $\phi(a)\not\sim'\phi(b)$ even when
+$a\sim_0 b$ under a coarser version of $\sim_0$. A faithful embedding
+here preserves all existing distinctions and adds new ones.
+
+\medskip
+\noindent\textbf{Revision.}
+Starting from $(X,\sim_1,T_0)$ with $\sim_1=\bigl\{\{a,b\},\{c\},\{d\}\bigr\}$,
+suppose a new ontology $T_1\supset T_0$ adds a template that distinguishes
+$a$ from $b$ directly. Then $\sim_{T_1}=\sim_0$ is recovered and
+$\delta_{T_1}(a)=\delta_{T_1}(b)=0$: a productive revision has decreased
+the deficit.
+
+\medskip
+\noindent\textbf{Transport.}
+Let $Y=\{w,x,y,z\}$ with $\sim_Y=\bigl\{\{w,x\},\{y\},\{z\}\bigr\}$.
+The map $\tau:X\to Y$ given by $\tau(a)=w$, $\tau(b)=x$, $\tau(c)=y$,
+$\tau(d)=z$ is a transport with zero distortion: it preserves the fiber
+structure of $\sim_1$ exactly ($a\sim_1 b\iff\tau(a)\sim_Y\tau(b)$).
+
+\medskip
+\noindent\textbf{Hybrid operation.}
+Note that the transformation $\sim_0\to\sim_3$ where
+$\sim_3=\bigl\{\{a,b\},\{c,d\}\bigr\}$ is \emph{not} a pure projection
+(it coarsens in two places simultaneously). By the Classification Conjecture
+(\S\ref{sec:conjecture}), it should factor as a composition: e.g.\ first
+project $\{c,d\}$ to a single class, then project $\{a,b\}$. This factorization
+is not unique, but the conjecture asserts it always exists.
+\end{example}
+
+% ─────────────────────────────────────────────────────────────────────────────
+\section{The Classification Conjecture}
+\label{sec:conjecture}
+% ─────────────────────────────────────────────────────────────────────────────
+
+Before developing the four operations in detail, we state the conjecture
+that organizes the entire framework. The preceding example and the
+Representational Reduction Proposition (stated as Proposition~\ref{prop:rep-reduction}
+in \S\ref{sec:operations}) motivate it; the following sections constitute
+the evidence for it.
+
+\begin{conjecture}[Classification Conjecture]
+\label{conj:classification}
+Every representational transformation factors into a finite composition of
+projection, embedding, revision, and transport maps.
+\end{conjecture}
+
+Three clarifications are essential.
+
+\medskip
+\noindent\textbf{Factorization, not identity.}
+The transformation itself need not be one of the four primitive operations.
+A hybrid transformation that simultaneously coarsens some fibers and refines
+others factors as a composition---for instance, a projection followed by an
+embedding. This is precisely the sense in which the conjecture resembles
+factorization theorems in algebra and topology.
+
+\medskip
+\noindent\textbf{Scope.}
+The conjecture concerns representational transformations: maps between
+ontological triples $(X,\sim,T)$ that may alter any or all of $X$, $\sim$,
+and $T$. Pure set-theoretic maps that ignore the relational and ontological
+structure are outside its scope.
+
+\medskip
+\noindent\textbf{Evidence.}
+The characteristic theorems of \S\ref{sec:operations} can be read as
+partial evidence: they show that the four operations, together, are capable
+of expressing the full range of qualitative fiber behaviors. Whether every
+transformation \emph{factors} into these behaviors---whether no genuinely
+new operation can arise from their combination---is what the conjecture
+claims and what remains to be proved.
+
+% ─────────────────────────────────────────────────────────────────────────────
+\section{The Four Operations}
+\label{sec:operations}
+% ─────────────────────────────────────────────────────────────────────────────
+
+\subsection{The Two-Level Structure}
+
+The four operations divide into two levels according to what they modify:
+
+\[
+  \text{Objects} \;\longleftrightarrow\; \text{Distinctions}
+  \;\longleftrightarrow\; \text{Ontologies}.
+\]
+
+Projection and embedding operate at the \emph{distinction level}: they
+modify $\sim$ within a fixed space, moving horizontally between finer and
+coarser relations on the same $X$. Revision and transport operate at the
+\emph{ontology level}: revision changes $T$ (moving vertically in the diagram)
+and transport connects two distinct triples (moving between nodes).
+
+\begin{proposition}[Representational Reduction]
+\label{prop:rep-reduction}
+Every representational transformation induces a transformation on
+distinguishability structure. The qualitatively distinct fiber effects are:
+\begin{itemize}[leftmargin=1.8em]
+  \item \textbf{Projection}: merges fibers (coarsens $\sim$).
+  \item \textbf{Embedding}: separates fibers (refines $\sim$).
+  \item \textbf{Revision}: restructures the ontology generating $\sim$.
+  \item \textbf{Transport}: maps fiber structure between distinct triples.
+\end{itemize}
+These four effects are mutually exclusive as pure operations and jointly
+exhaust the qualitative possibilities.
+\end{proposition}
+
+\begin{table}[h]
+\centering
+\renewcommand{\arraystretch}{1.35}
+\begin{tabular}{lllll}
+\toprule
+\textbf{Level} & \textbf{Operation} & \textbf{Effect on $\sim$}
+  & $\Ddelta$ & \textbf{Failure mode} \\
+\midrule
+Distinction & Projection  & Coarsens $\sim$           & $\ge 0$ & Information loss \\
+Distinction & Embedding   & Refines $\sim$            & $\le 0$ & Spurious distinctions \\
+Ontology    & Revision    & Restructures $T$          & $<0$ (productive) & Lock-in \\
+Ontology    & Transport   & Maps $\sim$ across spaces & bounded & Fiber distortion \\
+\bottomrule
+\end{tabular}
+\caption{The four operations, their level, deficit change $\Ddelta(f)$,
+and canonical failure modes. Note: $\eps(f)\ge 0$ always; $\Ddelta(f)$
+is signed.}
+\label{tab:ops}
+\end{table}
+
+\subsection{Formal Separation: Distortion vs.\ Deficit Change}
+\label{subsec:formalism}
+
+\begin{definition}[Distortion and deficit change]
+For a map $f$ between ontological triples:
+\begin{itemize}[leftmargin=1.8em]
+  \item $\eps(f)\ge 0$: the \emph{distortion} of $f$, measuring how much $f$
+        fails to be a fiber-isomorphism. Always non-negative.
+  \item $\Ddelta(f)=\delta_{T'}(f(x))-\delta_T(x)$: the \emph{deficit change}
+        induced by $f$. Signed: positive means deficit increases, negative
+        means it decreases.
+\end{itemize}
+\end{definition}
+
+These quantities are related. The following theorem provides the connection
+that was previously missing.
+
+\begin{theorem}[Distortion--Deficit Relationship]
+\label{thm:dist-deficit}
+Let $f:(X,\sim_X,T_X)\to(Y,\sim_Y,T_Y)$ be a representational transformation
+with distortion $\eps(f)$. Then under faithful encoding:
+\[
+  |\Ddelta(f)| \;\le\; K\,\eps(f)
+\]
+for a constant $K>0$ depending on the description complexity of individual
+fibers in $T_X$ and $T_Y$.
+\end{theorem}
+
+\begin{proof}
+Each unit of distortion $\eps(f)$ corresponds to a fiber violation: either
+a pair that was equivalent in $X$ becoming inequivalent in $Y$ (distinction
+inflation) or a pair inequivalent in $X$ becoming equivalent in $Y$
+(distinction collapse). Under faithful encoding, each such violation costs
+at most $K$ bits of description length: collapsing a fiber saves at most
+$\log|F|$ bits (gained by the projection) and inflating creates at most
+$\log|F'|$ bits (cost of the new separation). In both cases, the change in
+deficit is bounded by the description complexity of the affected fibers,
+which is controlled by $K\cdot\eps(f)$ where $K$ is the maximum
+per-violation description cost.
+\end{proof}
+
+\begin{remark}
+Theorem~\ref{thm:dist-deficit} makes distortion and deficit change into
+\emph{exchange rates} between geometry and information. A transformation
+with small distortion cannot change the deficit by much; a large deficit
+change must be accompanied by substantial distortion. This connects the
+geometric and coding-theoretic aspects of the framework into a single
+inequality.
+\end{remark}
+
+\subsection{Projection}
+
+\begin{definition}[Projection]
+A \emph{projection} on $(X,\sim,T)$ is a surjective map $\sigma:X\to S$
+inducing a coarsening $\sim'$ of $\sim$: $\sigma(x)=\sigma(y)\implies x\sim'y$.
+Fibers under $\sim'$ are unions of fibers under $\sim$.
+\end{definition}
+
+\begin{theorem}[Projection Deficit Bound]
+\label{thm:proj-deficit}
+Let $\sigma:X\to S$ be a projection inducing fiber partition
+$\{F_s=\sigma^{-1}(s)\}_{s\in S}$. Let $X$ carry a probability measure $\mu$.
+Then the deficit increase satisfies:
+\[
+  \Ddelta(\sigma) \;\ge\; H(X\mid S)
+  \;=\; -\sum_{s\in S}\mu(F_s)\sum_{x\in F_s}\frac{\mu(\{x\})}{\mu(F_s)}
+  \log\frac{\mu(\{x\})}{\mu(F_s)},
+\]
+the conditional entropy of $X$ given $S$.
+\end{theorem}
+
+\begin{proof}
+Describing $x\in X$ via $\sigma(x)\in S$ plus a within-fiber index requires
+at least $H(X\mid S)$ additional bits beyond the description of $\sigma(x)$,
+by Shannon's source coding theorem. Projection discards this index, making
+$H(X\mid S)$ bits of distinguishing information inaccessible. Hence
+$\Ddelta(\sigma)\ge H(X\mid S)$.
+\end{proof}
+
+\begin{corollary}
+When fibers are uniform of size $|F_s|$, the bound reduces to
+$\Ddelta(\sigma)\ge\log|F_s|$, recovering the earlier finite-fiber result
+as a special case.
+\end{corollary}
+
+The conservation law governing projection is:
+\begin{equation}
+  |H_t| + |\Omega_t| = |\Omega_0|,
+  \label{eq:conservation}
+\end{equation}
+where $H_t$ is the realized history, $\Omega_t$ the remaining possibility
+space, and $|\cdot|$ measures information content. Projection transfers
+possibility from the accessible history into the inaccessible remainder.
+
+\subsection{Embedding}
+
+\begin{definition}[Embedding]
+An \emph{embedding} of $(X,\sim,T)$ into $(Y,\sim',T')$ is an injective map
+$\phi:X\to Y$ such that the fiber structure is preserved:
+$\phi(x)\sim'\phi(y)\implies x\sim y$. An embedding is \emph{faithful} if
+the converse also holds: $x\sim y\iff\phi(x)\sim'\phi(y)$.
+\end{definition}
+
+\begin{theorem}[Embedding Refinement]
+\label{thm:embed-refine}
+Let $\phi:(X,\sim,T)\to(Y,\sim',T')$ be a faithful embedding. Then:
+\[
+  \delta_{T'}(\phi(x)) \;\le\; \delta_T(x).
+\]
+A faithful embedding never increases the coding deficit.
+\end{theorem}
+
+\begin{proof}
+We need to show $L_{T'}(\phi(x))-L^*(\phi(x))\le L_T(x)-L^*(x)$.
+
+Since $\phi$ is faithful, every description of $x$ reachable in $T$ corresponds
+to a description of $\phi(x)$ reachable in $T'$: the image $\phi$ preserves
+the full fiber structure, so $L_{T'}(\phi(x))\le L_T(x)$.
+
+For the optimal lengths: $\phi$ is an injective map, so any optimal description
+of $\phi(x)$ can be decoded to an optimal description of $x$ by applying
+$\phi^{-1}$ to the fiber structure. This means $L^*(\phi(x))\ge L^*(x)$:
+the optimal description of $\phi(x)$ cannot be shorter than the optimal
+description of $x$, because the description must encode at least as much
+distinguishing information (the embedding may add structure in $Y$ that is
+extrinsic to $x$, making optimal descriptions of $\phi(x)$ longer, not shorter).
+
+Combining: $\delta_{T'}(\phi(x))=L_{T'}(\phi(x))-L^*(\phi(x))
+\le L_T(x)-L^*(x)=\delta_T(x)$.
+\end{proof}
+
+\begin{remark}
+The key inequality is $L^*(\phi(x))\ge L^*(x)$, not $\le$. An injective
+embedding into a richer space means a description of the image $\phi(x)$
+must specify $\phi(x)$'s position within $Y$, which contains $X$ as a proper
+subset. This can only make optimal descriptions longer (or equal), not shorter.
+Non-faithful embeddings that collapse fibers may admit shorter optimal
+descriptions for the image, but then they are not embeddings in the present
+sense.
+\end{remark}
+
+\subsection{Revision}
+
+\begin{definition}[Revision]
+An \emph{ontological revision} is a transition $(X,\sim_T,T)\to(X,\sim_{T'},T')$
+where $T'\supset T$ (every description reachable in $T$ is reachable in $T'$).
+A revision is \emph{productive} if $\delta_{T'}(x)<\delta_T(x)$.
+\end{definition}
+
+\begin{theorem}[Revision Monotonicity]
+\label{thm:revision-mono}
+Let $T_0\subset T_1\subset T_2\subset\cdots$ be an expanding sequence of
+ontologies. Then for all $n\ge 0$:
+\[
+  \delta_{T_{n+1}}(x) \;\le\; \delta_{T_n}(x).
+\]
+\end{theorem}
+
+\begin{proof}
+Since $T_n\subset T_{n+1}$, every description reachable in $T_n$ is reachable
+in $T_{n+1}$, so $L_{T_{n+1}}(x)\le L_{T_n}(x)$. The optimal length
+$L^*(x)=K(x)$ is independent of the ontology. Hence
+$\delta_{T_{n+1}}(x)=L_{T_{n+1}}(x)-K(x)\le L_{T_n}(x)-K(x)=\delta_{T_n}(x)$.
+\end{proof}
+
+\begin{corollary}[Asymptotic deficit]
+\label{cor:asymptotic}
+The sequence $(\delta_{T_n}(x))_{n\ge 0}$ is monotone non-increasing and
+bounded below by zero. Therefore:
+\[
+  \lim_{n\to\infty}\delta_{T_n}(x) \;=\; \delta_\infty(x) \;\ge\; 0.
+\]
+The \emph{residual deficit} $\delta_\infty(x)$ exists for every revision
+sequence. $\delta_\infty(x)=0$ iff there exists a productive revision
+sequence converging to an optimal ontology for $x$.
+\end{corollary}
+
+The canonical failure of revision is \emph{ontological lock-in}: $\delta_T(x)$
+is large and $\delta_\infty(x)>0$, meaning no revision sequence reachable
+from within $T$ can achieve optimality for $x$.
+
+\subsection{Transport}
+
+\begin{definition}[Transport]
+\label{def:transport}
+A \emph{transport map} is a function
+$\tau:(X,\sim_X,T_X)\to(Y,\sim_Y,T_Y)$ with distortion at most $\eps\ge 0$:
+\[
+  x\sim_X x' \;\implies\; \tau(x)\sim_Y\tau(x'),
+\]
+and the measure of pairs $(\tau(x),\tau(x'))$ with $\tau(x)\sim_Y\tau(x')$
+but $x\not\sim_X x'$ is controlled by $\eps$.
+\end{definition}
+
+\begin{theorem}[Transport Stability]
+\label{thm:transport-stability}
+Let $\tau:(X,\sim_X,T_X)\to(Y,\sim_Y,T_Y)$ be a transport map with
+distortion at most $\eps$. Let $I_X:X\to\mathbb{R}$ be an invariant constant
+on fibers of $\sim_X$, and let $I_Y:Y\to\mathbb{R}$ be a corresponding
+invariant constant on fibers of $\sim_Y$ with $I_Y(\tau(x))$ well-defined
+for all $x\in X$. Suppose $I_X$ and $I_Y$ agree on perfectly transported
+fibers: $I_X(x)=I_Y(\tau(x))$ whenever $\tau$ maps the fiber of $x$ in $X$
+isomorphically to the fiber of $\tau(x)$ in $Y$. Then:
+\[
+  |I_X(x) - I_Y(\tau(x))| \;\le\; C\eps
+\]
+for a constant $C$ depending on the oscillation of $I_X$ and $I_Y$ across
+fiber boundaries.
+\end{theorem}
+
+\begin{proof}
+Let $E_\eps\subseteq X$ be the set of $x$ for which $\tau$ violates
+fiber preservation (either collapsing a distinction or creating a spurious
+one). By the distortion bound, $\mu(E_\eps)\le\eps$ for some natural
+measure $\mu$ on $X$. For $x\notin E_\eps$, the fiber of $x$ maps
+isomorphically to the fiber of $\tau(x)$, so $I_X(x)=I_Y(\tau(x))$ by
+assumption.
+
+For $x\in E_\eps$, the invariants can differ by at most the oscillation of
+$I_X$ (or $I_Y$) over a single fiber: $|I_X(x)-I_Y(\tau(x))|\le\mathrm{osc}(I)$.
+Taking $C=\mathrm{osc}(I)/\min(\mu(F))$ where the minimum is over non-trivial
+fibers, the bound $|I_X(x)-I_Y(\tau(x))|\le C\eps$ holds uniformly.
+\end{proof}
+
+\begin{corollary}[Justification of analogy]
+An analogical inference transported by $\tau$ is valid up to error $C\eps(\tau)$.
+An analogy is \emph{justified} for inference purposes iff $\eps(\tau)$ is
+controlled and the relevant invariants have bounded oscillation. Transport
+Stability is the precise mathematical condition under which analogical reasoning
+is valid.
+\end{corollary}
+
+% ─────────────────────────────────────────────────────────────────────────────
+\section{Asymmetries, Failure Modes, and the Meta-Theorem}
+\label{sec:asymmetry}
+% ─────────────────────────────────────────────────────────────────────────────
+
+\subsection{Projection and Embedding Are Not Duals}
+
+Both are distinction-level operations, but they are not inverses. Projection
+necessarily has $\Ddelta(\sigma)\ge H(X\mid S)>0$ for non-trivial fibers:
+it always loses information. Embedding has $\Ddelta(\phi)\le 0$ for faithful
+embeddings but may introduce spurious distinctions ($\eps(\phi)>0$) for
+non-faithful ones. Neither recovers what the other destroys in the general case.
+
+\subsection{The Diagnostic Grid}
+
+Each failure mode yields a testable diagnosis:
+
+\begin{enumerate}[leftmargin=1.8em, label=(\arabic*)]
+  \item \emph{Projection failure}: $H(X\mid S)$ is large. Distinctions needed
+        for the task have been collapsed. Return to a less-projected representation.
+  \item \emph{Embedding failure}: $\eps(\phi)>0$ and spurious distinctions
+        are driving behavior. Coarsen the embedded space.
+  \item \emph{Revision failure}: $\delta_\infty(x)>0$. The residual deficit
+        is positive; the system is stuck. Identify what template expansion
+        would trigger a productive revision.
+  \item \emph{Transport failure}: $\eps(\tau)$ is large relative to the
+        oscillation bound in Theorem~\ref{thm:transport-stability}. The analogy
+        is invalid; quantify and correct the distortion.
+\end{enumerate}
+
+\subsection{The Meta-Theorem}
+
+\begin{theorem}[Meta-theorem on representational adequacy]
+\label{thm:meta}
+A representational system manages its ontological deficit well iff:
+\begin{enumerate}[label=(\roman*)]
+  \item \emph{Projection}: $H(X\mid S)$ is small for task-relevant objects.
+  \item \emph{Embedding}: $\eps(\phi)$ is controlled; few spurious distinctions.
+  \item \emph{Revision}: $\delta_\infty(x)=0$; residual deficit vanishes under
+        the reachable revision sequence.
+  \item \emph{Transport}: $C\eps(\tau)$ is within acceptable tolerance for
+        invariants of interest.
+\end{enumerate}
+\end{theorem}
+
+Each condition is independently measurable via conditional entropy, false
+discovery rate, asymptotic deficit convergence, and transport distortion
+respectively.
+
+% ─────────────────────────────────────────────────────────────────────────────
+\section{The Deficit as Universal Invariant}
+\label{sec:deficit-universal}
+% ─────────────────────────────────────────────────────────────────────────────
+
+\subsection{Portability}
+
+\noindent\textbf{Compression.} The deficit is the redundancy of archive $T$
+for object $x$. The Revision Monotonicity theorem guarantees that a productive
+revision sequence converges to a residual deficit, and the compression jumps
+are exactly the productive revisions.
+
+\noindent\textbf{Machine learning.} The deficit is approximation error:
+the component of generalization error due to hypothesis class limitation that
+more data cannot reduce.
+
+\noindent\textbf{Scientific discovery.} Normal science is the regime of small,
+decreasing $\delta_T$ within the current paradigm. Scientific revolution is
+a productive revision with large $\Ddelta(\rho)<0$: the paradigm shift reaches
+a new $T'$ with much lower deficit for the anomalous observations.
+
+\noindent\textbf{Language evolution.} New terms are productive revisions of
+the linguistic archive; each coinage decreases $\delta_T(x)$ for objects
+previously requiring circumlocution.
+
+\noindent\textbf{Repair theory.} Repair is transport from a high-deficit
+damaged state to a low-deficit repaired state; the validity of the repair
+is governed by Transport Stability.
+
+\subsection{Subadditivity}
+
+\begin{theorem}[Deficit Subadditivity]
+\label{thm:subadditive}
+Let $x\oplus y$ denote an object whose optimal description decomposes
+independently into descriptions of $x$ and $y$. Then:
+\[
+  \delta_T(x\oplus y) \;\le\; \delta_T(x) + \delta_T(y) + O(\log n),
+\]
+where $n=|x|+|y|$ is the combined description length and the $O(\log n)$
+term accounts for the overhead of specifying the decomposition.
+\end{theorem}
+
+\begin{proof}
+$L_T(x\oplus y)\le L_T(x)+L_T(y)$ since a description of $x\oplus y$
+can be formed by concatenating descriptions of $x$ and $y$ reachable in $T$.
+By near-additivity of Kolmogorov complexity for independent objects,
+$K(x\oplus y)\ge K(x)+K(y)-O(\log n)$.
+Hence $\delta_T(x\oplus y)=L_T(x\oplus y)-K(x\oplus y)
+\le(L_T(x)+L_T(y))-(K(x)+K(y)-O(\log n))
+=\delta_T(x)+\delta_T(y)+O(\log n)$.
+\end{proof}
+
+\begin{remark}
+This mirrors the subadditivity of Kolmogorov complexity and makes the deficit
+behave like a legitimate information quantity. The Deficit Subadditivity Theorem
+connects the framework directly to coding theory: the deficit of a composed
+system is no worse than the sum of deficits of its parts.
+\end{remark}
+
+% ─────────────────────────────────────────────────────────────────────────────
+\section{Toward a Categorical Formulation}
+\label{sec:category}
+% ─────────────────────────────────────────────────────────────────────────────
+
+The categorical formulation must be derived, not imported. We proceed in
+strict order: objects, morphisms, operations, functors.
+
+\subsection{The Category $\mathbf{Dist}$}
+
+\begin{definition}[The category $\mathbf{Dist}$]
+\label{def:dist-cat}
+The category $\mathbf{Dist}$ has:
+\begin{itemize}[leftmargin=1.8em]
+  \item \emph{Objects}: ontological triples $(X,\sim,T)$.
+  \item \emph{Morphisms}: functions $f:(X,\simX,T_X)\to(Y,\simY,T_Y)$
+        with associated distortion $\eps(f)\ge 0$ and deficit change
+        $\Ddelta(f)\in\mathbb{R}$.
+  \item \emph{Identity}: the identity map on $(X,\sim,T)$ with $\eps=0$,
+        $\Ddelta=0$.
+  \item \emph{Composition}: $(g\circ f)$ has $\eps(g\circ f)\le\eps(f)+\eps(g)$
+        (distortions accumulate) and $\Ddelta(g\circ f)=\Ddelta(f)+\Ddelta(g)$
+        (deficit changes add).
+\end{itemize}
+\end{definition}
+
+By including $T$ in the object, the deficit $\delta_T$ is a genuine invariant
+of objects, not an additional datum to be tracked separately. This resolves
+the under-specification present in earlier formulations.
+
+\subsection{The Quotient Functor and Projection}
+
+\begin{proposition}[Projection Functor]
+\label{prop:proj-functor}
+Define the quotient functor $Q:\mathbf{Dist}\to\mathbf{Set}$ by
+$Q(X,\sim,T)=X/{\sim}$. Every projection $\sigma$ with
+$\sim_1\subseteq\sim_2$ induces a quotient map:
+\[
+  Q(\sigma):X/{\sim_1}\to X/{\sim_2},\quad[x]_{\sim_1}\mapsto[x]_{\sim_2}.
+\]
+$Q(\sigma)$ is well-defined and surjective. This identifies projection with
+quotient formation in $\mathbf{Dist}$.
+\end{proposition}
+
+\begin{proof}
+Well-definedness: since $\sim_1\subseteq\sim_2$, every $\sim_1$-class is
+a subset of a $\sim_2$-class, so the map is consistent. Surjectivity: every
+$\sim_2$-class is the image of some $\sim_1$-class.
+\end{proof}
+
+\subsection{Morphism Types and the Hierarchy}
+
+The two-level hierarchy maps onto morphism types:
+
+\medskip\noindent\textbf{Projection}: endomorphism with $\Ddelta\ge 0$,
+$Q$-image a quotient map.
+
+\medskip\noindent\textbf{Embedding}: morphism into a larger object
+$(Y,\sim',T')$ with $Y\supset X$, $\Ddelta\le 0$ (faithful), $\eps\ge 0$
+(potential spurious distinctions).
+
+\medskip\noindent\textbf{Revision}: endomorphism changing $T$ while preserving
+$X$, $\Ddelta<0$ (productive).
+
+\medskip\noindent\textbf{Transport}: ordinary morphism between distinct objects,
+governed by Theorem~\ref{thm:transport-stability}.
+
+\subsection{The Deficit as Functor}
+
+\begin{proposition}[Deficit functor]
+\label{prop:deficit-functor}
+Define $\delta:\mathbf{Dist}\to\mathbf{Fun}(X,\mathbb{R}_{\ge 0})$ by
+$\delta(X,\sim,T)=(x\mapsto\delta_T(x))$. On morphisms, $\delta(f)$ is
+the function $\delta_T(x)\mapsto\delta_{T'}(f(x))=\delta_T(x)+\Ddelta(f)$.
+This assignment is functorial: $\delta(\mathrm{id})=\mathrm{id}$ and
+$\delta(g\circ f)=\delta(g)\circ\delta(f)$.
+\end{proposition}
+
+\begin{remark}
+This is a well-defined functor because $\delta_T$ depends on $T$, which is
+part of the object. The action on morphisms is determined by the signed
+deficit change $\Ddelta(f)$, which is part of the morphism data. The
+natural transformation interpretation from earlier drafts holds: $\delta$
+measures morphism quality, and perfect morphisms are those with $\Ddelta=0$,
+$\eps=0$.
+\end{remark}
+
+\subsection{Relation to Admissibility Geometry}
+
+The admissibility relation $\mathcal{A}$ specifies the subcategory of
+$\mathbf{Dist}$ whose morphisms have $\eps(f)\le\eps_{\max}$ and
+$\Ddelta(f)\le\Delta_{\max}$. In the \RSVP{} framework, inadmissible transitions
+are those that increase deficit or distortion beyond acceptable thresholds.
+The categorical structure of $\mathbf{Dist}$ subsumes admissibility geometry
+as the sub-category determined by these bounds, connecting the formal framework
+to the broader research programme.
+
+% ─────────────────────────────────────────────────────────────────────────────
+\section{Conclusion}
+\label{sec:conclusion}
+% ─────────────────────────────────────────────────────────────────────────────
+
+Distinguishability geometry proposes the ontological triple $(X,\sim,T)$
+as the primitive object for the study of representational change. The deficit
+is the invariant. The four operations are the dynamics. The Classification
+Conjecture is the central open problem.
+
+\medskip
+\noindent\textbf{What is established.}
+The Deficit Proxy Theorem makes the coding deficit a computable surrogate for
+the geometric distinguishability deficit. The Representational Reduction
+Proposition establishes the four operations as the exhaustive qualitative
+fiber effects. Each operation has a characteristic theorem.
+The Distortion--Deficit Relationship connects the two error measures. The
+Meta-Theorem restates representational adequacy as four independently
+measurable conditions. The category $\mathbf{Dist}$ is well-defined and the
+deficit is a genuine functor.
+
+\medskip
+\noindent\textbf{What remains open.}
+
+\begin{enumerate}[leftmargin=1.8em, label=(\arabic*)]
+  \item \emph{Full Deficit Correspondence} (Conjecture~\ref{conj:full-corr}):
+        does $\Delta_T(x)=0\iff\delta_T(x)=0$?
+  \item \emph{Classification Conjecture} (Conjecture~\ref{conj:classification}):
+        does every representational transformation factor into a finite
+        composition of the four operations?
+  \item \emph{Residual deficit}: when does $\delta_\infty(x)=0$? What
+        structural property of the revision sequence ensures convergence to
+        zero?
+  \item \emph{Transport metric}: is there a canonical metric on $\mathbf{Dist}$
+        making transport maps Lipschitz?
+  \item \emph{Two-level duality}: is there a duality functor
+        $\mathbf{Dist}\to\mathbf{Dist}^{\mathrm{op}}$ exchanging projection
+        with transport and embedding with revision?
+  \item \emph{Unified deficit bound}: does a single expression govern
+        $\delta_{T'}(x)\le\delta_T(x)+C(\sigma,\phi,\rho,\tau)$ for arbitrary
+        composed transformations?
+\end{enumerate}
+
+The strongest reading of the paper is not ``here is a complete theory''
+but ``here is a candidate primitive ontology and four conjectured primitive
+operations.'' These six open problems define exactly where the theory
+consolidates or breaks. They are where the work is.
+
+% ─────────────────────────────────────────────────────────────────────────────
+\appendix
+% ─────────────────────────────────────────────────────────────────────────────
+
+\section{Formal Definitions: Fiber Bundles and the Quotient Construction}
+\label{app:formal}
+
+An ontological triple $(X,\sim,T)$ corresponds to a fiber bundle $E\to B$
+where $B=X/{\sim}$ is the base space of equivalence classes, each fiber
+$q^{-1}(b)=[x]_\sim$ lies above its class, and the ontology $T$ equips
+$E$ with a description system. Projection increases fiber size (bundle
+coarsening). Embedding decreases it (bundle refinement). Revision changes
+$B$ by changing $T$. Transport maps between distinct bundles.
+
+The deficit $\delta_T(x)$ is an invariant of the triple, not of the bundle
+alone: two triples $(X,\sim,T)$ and $(X,\sim,T')$ with the same fiber
+structure but different ontologies carry different deficit functions.
+
+\section{The Conservation Law}
+\label{app:conservation}
+
+In the event-sourced setting: at $t=0$, $|\Omega_0|=\log|\mathrm{supp}(\mu)|$.
+As history $h_t$ is realized, $|H_t|+|\Omega_t|=|\Omega_0|$ because
+information transferred to actuality is subtracted from possibility.
+The Projection Deficit Bound (Theorem~\ref{thm:proj-deficit}) is consistent:
+the $H(X\mid S)$ bits of information destroyed by projection move from
+accessible history into the inaccessible remainder $\Omega_t$.
+
+\section{Deficit Examples and the Finite Illustration}
+\label{app:deficit}
+
+\noindent\textbf{Compression.} LZ over periodic string: $\Lreach(x)\approx|x|/\log|x|$,
+$K(x)\approx\log p+\log(|x|/p)$ for period $p$. Deficit is bits wasted before
+the archive learns the period.
+
+\noindent\textbf{\CLIO{} projection error.} For history $h$ with $\sigma(h)=s$
+and fiber $F_s$, $\delta_T(h)=H(X\mid S)\ge\log|F_s|$ consistent with
+Theorem~\ref{thm:proj-deficit}.
+
+\noindent\textbf{Machine learning.} Linear class over nonlinear data: the
+deficit is the approximation error floor. Revision Monotonicity guarantees
+that expanding the hypothesis class (a productive revision) decreases this
+floor.
+
+\noindent\textbf{Finite illustration revisited.} In Example~\ref{ex:four}
+with $X=\{a,b,c,d\}$: the projection $\sigma$ has $|F_p|=2$, so
+$\Ddelta(\sigma)\ge\log 2=1$ bit. The revision from $T_0$ to $T_1$ has
+$\delta_{T_1}(a)=\delta_{T_1}(b)=0<\delta_{T_0}(a)=\delta_{T_0}(b)$
+when working from the projected space: a productive revision. The transport
+$\tau:X\to Y$ has $\eps(\tau)=0$ and hence $\Ddelta(\tau)=0$ by
+Theorem~\ref{thm:dist-deficit}: a perfect transport.
+
+\end{document}

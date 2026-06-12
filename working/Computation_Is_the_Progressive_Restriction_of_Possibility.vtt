@@ -1,0 +1,2591 @@
+WEBVTT
+
+00:00.000 --> 00:05.800
+Usually, when we sit down to read a mystery novel, there's this, you know, this built-in expectation of a journey.
+
+00:06.120 --> 00:07.660
+Right, yeah. You expect a narrative.
+
+00:07.840 --> 00:14.600
+Exactly. Like, you read chapter one, the crime happens. Chapter two, the detective shows up and, I don't know, finds a muddy footprint or something.
+
+00:14.820 --> 00:16.680
+Yeah, then chapter three, they interview the suspect.
+
+00:16.940 --> 00:23.840
+Right. You follow the sequence of events as they unfold over time. The story literally is the sequence.
+
+00:24.260 --> 00:27.520
+Because the history of what happened is the entire point.
+
+00:27.520 --> 00:31.580
+I mean, without that history, the narrative just, it doesn't exist.
+
+00:31.940 --> 00:39.000
+But imagine if instead of handing you a 300-page book, the author just handed you, like, a single index card.
+
+00:39.160 --> 00:43.460
+And on that index card, it just said, the butler is currently in jail.
+
+00:44.220 --> 00:45.360
+That would be a terrible book.
+
+00:45.380 --> 00:48.240
+Right. You'd be holding the state, but you would have completely lost the history.
+
+00:48.460 --> 00:50.980
+Yeah, you'd look at it and say, well, okay, but what happened?
+
+00:51.200 --> 00:55.380
+Exactly. Who was murdered? Why did the butler do it? Did he act alone?
+
+00:55.380 --> 01:01.680
+You have the final configuration of the characters, you know, but the journey is just completely gone.
+
+01:01.760 --> 01:02.440
+It's all erased.
+
+01:02.920 --> 01:06.120
+And here is the wild part for you listening today.
+
+01:06.440 --> 01:08.080
+That exact scenario.
+
+01:08.240 --> 01:08.820
+The index card.
+
+01:08.980 --> 01:12.020
+Yeah. Throwing away the whole book and just keeping the final index card.
+
+01:12.360 --> 01:19.140
+That is the fundamental mechanism behind almost every piece of software running our modern world.
+
+01:19.360 --> 01:20.200
+It really is.
+
+01:20.200 --> 01:25.140
+It's how we've been taught to program computers for, I mean, decades now.
+
+01:25.280 --> 01:28.940
+We are just handing the machine index cards and immediately throwing away the book.
+
+01:29.020 --> 01:32.600
+And then, you know, we act surprised when the machine does something completely unexpected.
+
+01:32.940 --> 01:33.180
+Right.
+
+01:33.240 --> 01:34.920
+And we have absolutely no idea why.
+
+01:35.320 --> 01:40.900
+We've built an entire digital infrastructure on this premise that the current moment is the only thing that matters.
+
+01:41.040 --> 01:43.280
+Which is just a massive philosophical assumption.
+
+01:43.540 --> 01:43.900
+Huge.
+
+01:44.440 --> 01:45.340
+And a dangerous one.
+
+01:45.340 --> 01:48.520
+Which brings us to the core of today's deep dive.
+
+01:48.700 --> 01:52.800
+We are unpacking some truly mind-bending source material for you today.
+
+01:52.840 --> 01:53.780
+Yeah, this one is dense.
+
+01:53.960 --> 01:54.320
+It is.
+
+01:54.400 --> 02:01.800
+We have our hands on a highly philosophical 2026 monograph from Flixion Independent Research.
+
+02:01.940 --> 02:02.120
+Right.
+
+02:02.360 --> 02:07.700
+It is titled Programs as Histories, Projection, Admissibility, and the Geometry of Computation.
+
+02:07.840 --> 02:08.540
+Quite a mouthful.
+
+02:08.540 --> 02:14.360
+Yeah, but we're exploring a conceptual programming language detailed in this text, and it's called SpherePop.
+
+02:14.720 --> 02:15.160
+SpherePop.
+
+02:15.360 --> 02:19.440
+And SpherePop claims everything we know about computing is entirely backward.
+
+02:19.960 --> 02:26.120
+So the goal today is to kind of, you know, cut through the dense math in this paper and get to this paradigm-shifting realization.
+
+02:26.380 --> 02:27.240
+The big aha moment.
+
+02:27.400 --> 02:27.820
+Exactly.
+
+02:28.100 --> 02:32.180
+The realization that computation is not the manipulation of values.
+
+02:32.500 --> 02:35.440
+It is the progressive restriction of possibility.
+
+02:35.740 --> 02:37.840
+Which is just a beautiful way to phrase it.
+
+02:37.840 --> 02:44.500
+And, you know, the backdrop visual we have up right now, this abstract geometry shifting and crystallizing into cascading lines of code.
+
+02:44.620 --> 02:44.820
+Yeah.
+
+02:44.980 --> 02:47.840
+It really captures what the authors are trying to do here.
+
+02:48.160 --> 02:53.700
+They are translating highly abstract philosophical geometry into hard, executable reality.
+
+02:53.900 --> 02:54.080
+Right.
+
+02:54.160 --> 02:57.560
+They aren't just proposing a new syntax, like a new way to type things.
+
+02:57.640 --> 02:58.320
+No, not at all.
+
+02:58.420 --> 03:01.520
+They are proposing a whole new ontology of what computing actually is.
+
+03:01.620 --> 03:01.820
+Okay.
+
+03:01.960 --> 03:02.980
+So let's start with the problem.
+
+03:02.980 --> 03:12.420
+Because to understand why SpherePop is so revolutionary, we first have to understand the fundamental lie that almost every other programming language is built on.
+
+03:12.580 --> 03:15.340
+What the text calls the state-centric assumption.
+
+03:15.820 --> 03:16.100
+Right.
+
+03:16.220 --> 03:19.500
+I mean, when I learned to code, the very first lesson was about variables.
+
+03:19.760 --> 03:20.000
+Sure.
+
+03:20.200 --> 03:20.340
+Yeah.
+
+03:20.340 --> 03:27.320
+I was taught that a variable is like a little box in the computer's memory, and you put a value in it, like X equals 5.
+
+03:27.460 --> 03:30.340
+And then the next instruction might be X equals X plus 1.
+
+03:30.420 --> 03:30.600
+Right.
+
+03:30.860 --> 03:34.840
+So you take the 5 out, add 1, and put the 6 back into the box.
+
+03:35.240 --> 03:35.460
+Yeah.
+
+03:35.580 --> 03:38.180
+So the program starts in an initial state.
+
+03:38.540 --> 03:40.880
+The instructions modify that state step by step.
+
+03:40.880 --> 03:44.280
+And whatever is left in the boxes at the end, well, that's your final answer.
+
+03:44.580 --> 03:46.260
+Which feels completely natural, right?
+
+03:46.620 --> 03:49.920
+Because it mirrors how we naively view physical processes.
+
+03:50.040 --> 03:50.460
+How so?
+
+03:50.780 --> 03:52.500
+Well, an object has properties.
+
+03:53.020 --> 03:54.560
+Those properties change over time.
+
+03:54.840 --> 03:57.720
+And the current properties make up the object's current state.
+
+03:58.020 --> 04:01.660
+But the monograph argues this naturalness is actually just an illusion.
+
+04:02.580 --> 04:02.920
+Yes.
+
+04:03.160 --> 04:06.540
+The source refers to this explicitly as the state illusion.
+
+04:06.740 --> 04:07.440
+The state illusion.
+
+04:07.440 --> 04:07.700
+Yeah.
+
+04:07.840 --> 04:13.680
+They argue it's a prior choice by language designers to treat the present configuration as the fundamental unit of description.
+
+04:14.040 --> 04:14.280
+Right.
+
+04:14.360 --> 04:17.940
+Because when you put the 6 into the box, the 5 is just overwritten.
+
+04:18.140 --> 04:18.620
+It's gone.
+
+04:19.000 --> 04:23.840
+The history of that box ever holding a 5 is utterly annihilated from the universe.
+
+04:24.440 --> 04:34.240
+And the source uses some fantastic real-world examples to illustrate why treating that final state as the base reality is just the wrong approach.
+
+04:34.400 --> 04:34.800
+Oh, yeah.
+
+04:34.980 --> 04:36.020
+The Git example is great.
+
+04:36.020 --> 04:37.100
+I love the Git example.
+
+04:37.100 --> 04:41.140
+Think about version control, which developers use literally every single day.
+
+04:41.460 --> 04:46.460
+If Git operated under the state illusion, it would just save the current version of your code files.
+
+04:46.540 --> 04:47.480
+Just the final text.
+
+04:47.620 --> 04:47.840
+Right.
+
+04:47.980 --> 04:48.900
+But it doesn't do that.
+
+04:49.160 --> 04:53.200
+A Git repository's actual substance is the entire sequence of commits.
+
+04:53.380 --> 04:55.500
+The diffs, the additions, the deletions.
+
+04:55.560 --> 04:55.980
+Exactly.
+
+04:56.200 --> 04:58.660
+All of that history that produced the final file tree.
+
+04:58.740 --> 05:01.520
+The final files are just a projection of that history.
+
+05:01.740 --> 05:06.160
+Or consider event sourcing and enterprise database architecture.
+
+05:06.160 --> 05:06.860
+Okay, yeah.
+
+05:06.900 --> 05:12.740
+If you look at a modern banking system, the database doesn't just store a single cell that says your balance is $500.
+
+05:13.220 --> 05:16.820
+Because if it did and a glitch randomly changed it to $0.
+
+05:17.320 --> 05:19.460
+The bank would have absolutely no idea how to fix it.
+
+05:19.640 --> 05:21.020
+They'd just be like, well, I guess you're broke.
+
+05:21.100 --> 05:21.680
+Right, exactly.
+
+05:21.680 --> 05:27.180
+So instead, event sourcing means the database records an append-only log of events.
+
+05:27.320 --> 05:30.320
+Like a $200 deposit, then a $100 withdrawal.
+
+05:30.720 --> 05:32.300
+Then a $400 deposit.
+
+05:32.460 --> 05:37.520
+And the current state of your balance, that $500, is just a summary calculation.
+
+05:37.680 --> 05:38.400
+A fold.
+
+05:38.540 --> 05:40.740
+Yeah, a fold over that entire historical log.
+
+05:40.740 --> 05:42.340
+So the state is just a summary.
+
+05:42.460 --> 05:44.160
+The history is the actual substance.
+
+05:44.780 --> 05:51.560
+But current programming languages like C, Python, Java, they treat the summary as the base reality.
+
+05:51.800 --> 05:52.180
+They do.
+
+05:52.320 --> 05:56.100
+And the monograph goes really deep into the mathematical consequences of this flaw.
+
+05:56.180 --> 05:56.480
+Right.
+
+05:56.680 --> 06:02.040
+It introduces Proposition 1.2, which is the formal mathematical proof of the state illusion.
+
+06:02.040 --> 06:08.820
+Okay, so the paper throws around Proposition 1.2 and mentions non-injective projections.
+
+06:09.200 --> 06:09.360
+Right.
+
+06:09.720 --> 06:14.240
+Which honestly just sounds like a lot of really dense math to say, we lose data.
+
+06:14.500 --> 06:17.540
+I mean, is that really all it's saying, or is there something deeper there?
+
+06:17.820 --> 06:18.660
+Oh, it's definitely deeper.
+
+06:19.200 --> 06:22.460
+Because it proves that losing data isn't just a minor side effect.
+
+06:22.620 --> 06:24.420
+It is a structural inevitability.
+
+06:24.640 --> 06:25.820
+Okay, break that down for me.
+
+06:26.040 --> 06:27.640
+Let's use the Pigeonel principle behind it.
+
+06:28.080 --> 06:31.800
+Imagine the set of all possible finite histories of a program.
+
+06:32.460 --> 06:35.780
+So every single path a program could ever take.
+
+06:35.920 --> 06:36.300
+Exactly.
+
+06:36.620 --> 06:40.640
+Every loop it could run, every single piece of user input it could receive over time.
+
+06:41.040 --> 06:43.580
+Let's call that infinite space of possibilities H.
+
+06:43.740 --> 06:44.880
+Okay, H is infinite.
+
+06:45.040 --> 06:45.360
+Got it.
+
+06:45.460 --> 06:52.960
+Now imagine the space of all possible observable states the computer can actually hold in its memory at any one given moment.
+
+06:53.020 --> 06:53.740
+Let's call that S.
+
+06:53.740 --> 06:59.780
+And because a computer has finite RAM, you know, physical memory limits, S has to be a finite space.
+
+06:59.980 --> 07:00.440
+Precisely.
+
+07:00.440 --> 07:03.620
+Even if S is massively huge, it is still finite.
+
+07:03.860 --> 07:04.120
+Right.
+
+07:04.320 --> 07:13.420
+So a program that relies on state is essentially running a function that maps the infinite space of histories, H, into the finite space of states, S.
+
+07:13.560 --> 07:14.760
+Oh, I see where this is going.
+
+07:14.860 --> 07:17.940
+Yeah, because H is infinitely larger than S, you have a mathematical bottleneck.
+
+07:18.000 --> 07:18.180
+Yeah.
+
+07:18.180 --> 07:20.940
+This projection literally cannot be injective.
+
+07:21.320 --> 07:29.520
+Meaning it's a mathematical certainty that multiple completely different histories will inevitably collapse into the exact same state.
+
+07:29.600 --> 07:32.160
+Because you have way more pigeons than you have pigeonholes.
+
+07:32.360 --> 07:32.660
+Right.
+
+07:32.660 --> 07:34.320
+Some pigeons are going to have to share a whole.
+
+07:34.400 --> 07:34.660
+Yes.
+
+07:35.820 --> 07:43.560
+Any program that only exposes that final state projection silently discards distinguishing information.
+
+07:43.760 --> 07:46.500
+You can just no longer tell which history actually occurred.
+
+07:46.640 --> 07:46.880
+Okay.
+
+07:46.960 --> 07:50.160
+I want to use an analogy here to make sure we're fully grasping the weight of this.
+
+07:50.220 --> 07:53.760
+Because a listener actually brought this up in some feedback we were looking at, and I think it's brilliant.
+
+07:53.800 --> 07:54.620
+Oh, I'd love to hear it.
+
+07:54.620 --> 07:58.280
+So imagine you come home, and your living room is completely destroyed.
+
+07:58.540 --> 07:58.780
+Okay.
+
+07:58.920 --> 07:59.400
+Bad day.
+
+07:59.560 --> 07:59.780
+Right.
+
+08:00.200 --> 08:01.680
+The lamp is broken on the floor.
+
+08:02.180 --> 08:12.160
+Now, in a state-based programming language, the state is simply recorded as lamp location equals floor, lamp status equals broken.
+
+08:12.440 --> 08:15.580
+Which tells you absolutely nothing about the causality.
+
+08:15.700 --> 08:16.140
+Exactly.
+
+08:16.140 --> 08:21.020
+If you're trying to debug this living room, you just have a single photograph of the mess.
+
+08:21.020 --> 08:24.640
+You are left staring at this photograph trying to deduce what happened.
+
+08:24.780 --> 08:26.180
+I mean, did the cat knock it over?
+
+08:26.240 --> 08:26.840
+Was there an earthquake?
+
+08:27.380 --> 08:28.600
+Did a burglar break in?
+
+08:28.740 --> 08:29.840
+You're just guessing at that point.
+
+08:30.640 --> 08:34.820
+But if you were using a history-based system, you wouldn't just see the final state.
+
+08:35.040 --> 08:36.140
+You would see the log.
+
+08:36.340 --> 08:37.340
+The sequence of events.
+
+08:37.480 --> 08:37.600
+Right.
+
+08:37.700 --> 08:44.020
+It would say door opens, drunk uncle enters, uncle trips on rug, table wobbles, lamp falls.
+
+08:44.020 --> 08:51.360
+That is a brilliant way to visualize it, because if you want to fix the bug in a state-based system, you just pick up the lamp and fix the state.
+
+08:51.920 --> 08:53.260
+But the uncle is still drunk.
+
+08:53.540 --> 08:53.940
+Exactly.
+
+08:54.160 --> 08:55.820
+The bug will absolutely happen again.
+
+08:55.980 --> 09:02.480
+You have to fix the uncle, but you don't even know the uncle was there because his presence was erased by the state projection.
+
+09:02.700 --> 09:06.680
+And this perfectly explains why debugging software is universally miserable.
+
+09:06.880 --> 09:07.540
+It really is.
+
+09:07.660 --> 09:11.120
+The source points out that conventional debuggers are just desperate instruments.
+
+09:11.120 --> 09:17.940
+They are tools trying to guess the complex video footage of history from a single degenerate photograph.
+
+09:18.260 --> 09:21.260
+After the information has already been permanently destroyed by the CPU.
+
+09:21.540 --> 09:21.800
+Wow.
+
+09:21.960 --> 09:25.120
+And this really raises the practical cost of this illusion.
+
+09:26.300 --> 09:37.160
+The source argues that devastating real-world bugs exist entirely because systems conflate distinct histories into the same degenerate state.
+
+09:37.480 --> 09:38.480
+Like race conditions, right?
+
+09:38.480 --> 09:38.780
+Yes.
+
+09:39.020 --> 09:40.260
+Take a race condition, for example.
+
+09:40.260 --> 09:44.080
+That's where two parts of a program are trying to do something at the exact same time.
+
+09:44.200 --> 09:44.280
+Yeah.
+
+09:44.380 --> 09:47.220
+Imagine a multi-threaded ticket purchasing system.
+
+09:47.340 --> 09:47.640
+Okay.
+
+09:47.920 --> 09:55.460
+Thread A is processing your purchase for the last concert ticket, and thread B is processing someone else's purchase for that exact same ticket.
+
+09:55.620 --> 09:56.340
+Oh, boy.
+
+09:56.680 --> 10:01.300
+The system state tracker just looks at the variable tickets available equals one.
+
+10:01.300 --> 10:06.580
+So, both threads check the state, they both see a one, and assume they can proceed.
+
+10:06.820 --> 10:07.160
+Correct.
+
+10:07.160 --> 10:10.420
+The state projection is non-injective on interleaved histories.
+
+10:10.720 --> 10:10.940
+Meaning?
+
+10:11.240 --> 10:17.800
+The history where thread A checks first and the history where thread B checks first, they both look identical to the state tracker at that split second.
+
+10:17.860 --> 10:18.500
+Oh, man.
+
+10:18.500 --> 10:24.160
+So, both threads sell the ticket, the inventory drops to negative one, and the system catastrophically crashes.
+
+10:24.400 --> 10:25.420
+Just a total nightmare.
+
+10:25.420 --> 10:33.420
+And the same goes for use after free vulnerabilities in memory management, which, you know, are responsible for countless security breaches.
+
+10:33.480 --> 10:33.960
+Oh, yeah.
+
+10:34.080 --> 10:35.320
+Those are huge.
+
+10:35.560 --> 10:40.400
+They arise because the state conflates histories that differ only in deallocation events.
+
+10:40.960 --> 10:44.260
+The system simply forgets the history of what happened to the memory pointer.
+
+10:44.260 --> 10:54.400
+Okay, so if discarding history is the root of our computational problems, the obvious next step is to ask, well, what happens if we build a language where history is the only thing that's real?
+
+10:54.520 --> 10:54.780
+Right.
+
+10:54.940 --> 10:57.740
+What if we don't even have variables in the traditional sense?
+
+10:57.860 --> 11:00.080
+That brings us to the SpherePop inversion.
+
+11:00.300 --> 11:01.520
+The SpherePop inversion.
+
+11:01.620 --> 11:05.540
+Yeah, SpherePop proposes the exact opposite ontological priority.
+
+11:06.120 --> 11:11.380
+Instead of history being an afterthought that you definitely try to reconstruct during debugging.
+
+11:11.600 --> 11:13.320
+Right, trying to piece together the photograph.
+
+11:13.320 --> 11:13.960
+Exactly.
+
+11:14.300 --> 11:15.300
+History comes first.
+
+11:15.600 --> 11:19.780
+State is entirely derived, secondary, and strictly temporary.
+
+11:20.020 --> 11:21.620
+It completely flips the script.
+
+11:21.820 --> 11:28.500
+Instead of a program being a sequence of state transformations, the system runs on what the text calls a world structure.
+
+11:28.940 --> 11:32.460
+And this world structure consists of just two things.
+
+11:32.880 --> 11:38.420
+First, a history, which is defined as an ever-growing finite sequence of events.
+
+11:38.580 --> 11:38.800
+Right.
+
+11:38.800 --> 11:46.020
+And second, an option space, which is the finite set of available symbols or possibilities currently open to the program.
+
+11:46.220 --> 11:47.500
+Notice what is missing there.
+
+11:47.680 --> 11:48.020
+State.
+
+11:48.460 --> 11:51.280
+State is totally absent from the foundational structure.
+
+11:51.440 --> 11:51.860
+Exactly.
+
+11:51.860 --> 11:58.920
+Instead, the computation is driven by four primitive operators that interact strictly with the option space and the history.
+
+11:59.080 --> 12:03.660
+Okay, I want to build a mini-program live right now to understand how these four primitives actually work.
+
+12:03.740 --> 12:04.240
+Let's do it.
+
+12:04.240 --> 12:08.440
+Because they are so counterintuitive if you are used to normal coding.
+
+12:08.700 --> 12:12.720
+Let's imagine we are writing a sphere pop program to make a cup of coffee.
+
+12:12.940 --> 12:13.560
+Okay, I like it.
+
+12:13.780 --> 12:15.120
+The first primitive is pop.
+
+12:15.460 --> 12:16.220
+P-O-P, pop.
+
+12:16.360 --> 12:16.540
+Right.
+
+12:16.880 --> 12:21.240
+The text says pop commits to a symbol, essentially removing it from the option space.
+
+12:21.420 --> 12:23.440
+So what does that mean for our coffee maker?
+
+12:23.440 --> 12:27.680
+Your initial option space for the coffee maker includes everything it could possibly do.
+
+12:27.840 --> 12:27.980
+Right.
+
+12:28.260 --> 12:31.960
+Make espresso, make a latte, dispense hot water, turn off.
+
+12:32.040 --> 12:33.080
+Okay, all the possibilities.
+
+12:33.580 --> 12:37.680
+When the program executes a pop on espresso, it is an act of consumption.
+
+12:38.280 --> 12:42.240
+You are taking the latte and hot water possibilities off the table entirely.
+
+12:42.360 --> 12:43.080
+Oh, I see.
+
+12:43.460 --> 12:48.560
+The option space shrinks and the event, Joe's espresso, is appended to the history.
+
+12:48.880 --> 12:50.940
+Okay, so pop is a permanent commitment.
+
+12:51.240 --> 12:51.440
+Yes.
+
+12:51.440 --> 12:53.240
+The second primitive is refuse.
+
+12:53.980 --> 12:57.100
+Now the text says refuse documents that a path is inadmissible,
+
+12:57.320 --> 13:01.680
+but it does this without removing the structural option from the option space.
+
+13:01.860 --> 13:02.080
+Right.
+
+13:02.320 --> 13:03.840
+This sounds like a contradiction to me.
+
+13:03.920 --> 13:06.260
+I mean, if I refuse something, isn't it just gone?
+
+13:06.640 --> 13:08.040
+This is a crucial distinction.
+
+13:08.340 --> 13:09.800
+Let's say your next step is to add milk.
+
+13:09.940 --> 13:12.860
+So you attempt to pop the add milk option.
+
+13:12.980 --> 13:13.300
+Okay.
+
+13:13.600 --> 13:15.760
+But the sensor detects the milk reservoir is empty.
+
+13:16.360 --> 13:17.560
+The system executes a refuse.
+
+13:17.560 --> 13:21.700
+It doesn't say the concept of adding milk no longer exists in this universe.
+
+13:22.100 --> 13:23.760
+Because the machine still has a milk button.
+
+13:23.860 --> 13:24.260
+Exactly.
+
+13:24.840 --> 13:29.540
+It says, I have evaluated the add milk option right now, given the current historical context,
+
+13:29.740 --> 13:32.900
+and documented a specific reason why we cannot take it.
+
+13:33.020 --> 13:33.460
+Wow.
+
+13:33.660 --> 13:35.720
+It records inadmissibility into the history.
+
+13:35.720 --> 13:42.200
+So the history log now says chose espresso, refused to add milk due to empty reservoir.
+
+13:42.380 --> 13:42.780
+Exactly.
+
+13:43.320 --> 13:47.700
+And then third is bind, which simply records a dependency between two things in the history.
+
+13:47.900 --> 13:52.080
+So like binding the temperature of the water to the type of roast you popped earlier?
+
+13:52.340 --> 13:53.120
+Spot on.
+
+13:53.200 --> 13:58.680
+And fourth is collapse, which makes an observation of the history, which we will get to later.
+
+13:58.680 --> 14:02.660
+Because none of these operators are mutating a value in a memory slot.
+
+14:02.860 --> 14:03.380
+None of them.
+
+14:03.440 --> 14:08.360
+They are just appending events to the history log and shrinking the space of what is actually possible next.
+
+14:08.540 --> 14:12.760
+And this leads directly to one of the most beautiful mathematical properties in the text.
+
+14:13.420 --> 14:14.900
+Theorem 2.7.
+
+14:15.060 --> 14:15.340
+Yes.
+
+14:15.560 --> 14:17.220
+The conservation of possibility law.
+
+14:17.300 --> 14:19.260
+The conservation of possibility law.
+
+14:19.340 --> 14:24.900
+It is a conservation law, much like the conservation of mass or energy in physics, but applied to computer science.
+
+14:25.060 --> 14:25.360
+Okay.
+
+14:25.480 --> 14:26.020
+Break that down.
+
+14:26.020 --> 14:35.840
+Under pure POP dynamics, the law states that the size of the history, plus the size of the current option space, will always equal the size of the initial option space.
+
+14:36.240 --> 14:36.760
+Oh, wow.
+
+14:36.980 --> 14:45.720
+So using the mathematical notation from the source, the absolute value of h sub t plus the absolute value of omega sub t equals omega sub zero.
+
+14:45.900 --> 14:46.340
+Exactly.
+
+14:46.560 --> 14:50.540
+So as the history log gets longer, the option space gets proportionally smaller.
+
+14:51.260 --> 14:53.900
+Possibility cannot be created or destroyed in this system.
+
+14:54.000 --> 14:54.260
+Never.
+
+14:54.260 --> 14:58.000
+It is only consumed by a POP or documented by a refuse.
+
+14:58.240 --> 15:01.640
+The total computational material is completely invariant.
+
+15:01.740 --> 15:02.080
+That's right.
+
+15:02.160 --> 15:04.680
+The total information in the system is totally constant.
+
+15:04.940 --> 15:07.380
+It makes me think of carving a block of marble.
+
+15:07.680 --> 15:08.640
+Oh, that's a good analogy.
+
+15:08.780 --> 15:11.400
+The uncarked block is your initial option space.
+
+15:11.580 --> 15:15.120
+I mean, it could be a statue of a horse, a person, a bull.
+
+15:15.460 --> 15:16.840
+It could literally be anything.
+
+15:17.240 --> 15:17.460
+Right.
+
+15:17.460 --> 15:19.880
+Every strike of your chisel is a POP.
+
+15:20.460 --> 15:24.260
+It permanently removes a piece of marble, an option, from the block.
+
+15:24.360 --> 15:24.560
+Yeah.
+
+15:24.840 --> 15:27.660
+You can never sculpt that specific piece of marble again.
+
+15:27.840 --> 15:33.740
+But simultaneously, that strike adds a permanent feature to the history, which is the actual sculpture taking shape.
+
+15:33.920 --> 15:36.340
+And just like carving stone, you can never put the marble back.
+
+15:36.520 --> 15:36.840
+Right.
+
+15:36.840 --> 15:40.240
+The history is strictly monotonically increasing.
+
+15:40.900 --> 15:42.280
+It is completely irreversible.
+
+15:42.840 --> 15:45.280
+And this isn't just theoretical poetry, you know.
+
+15:45.480 --> 15:45.760
+Right.
+
+15:45.980 --> 15:50.340
+The developers strictly adhered to this philosophy when actually writing the code base.
+
+15:50.500 --> 15:55.520
+The text includes snippets from the actual Rust implementation of SpherePop.
+
+15:55.520 --> 15:56.960
+Yeah, I saw those.
+
+15:57.080 --> 16:03.260
+If you look at the file core slash world dotters, the world struct is defined with exactly two fields.
+
+16:04.300 --> 16:08.380
+Pub options of type option space and pub history of type history.
+
+16:08.500 --> 16:11.100
+There is literally no state field.
+
+16:11.280 --> 16:11.480
+None.
+
+16:11.700 --> 16:13.100
+They refuse to build one.
+
+16:13.200 --> 16:16.940
+The absence of a state field is the mechanization of theorem 2.7.
+
+16:17.680 --> 16:20.700
+The philosophy literally forced the code's architecture.
+
+16:20.860 --> 16:21.720
+That's wild.
+
+16:21.720 --> 16:27.060
+They refuse to store observable state permanently because, ontologically, it isn't real.
+
+16:27.260 --> 16:30.480
+Okay, I have to stop you here, though, and put on my practical programmer hat.
+
+16:30.640 --> 16:31.040
+Okay.
+
+16:31.180 --> 16:34.700
+Because if I am listening to this, I am screaming about memory usage right now.
+
+16:34.780 --> 16:35.120
+Oh, sure.
+
+16:35.240 --> 16:42.700
+If every single thing I do just appends to an ever-growing history log and we never overwrite state, my laptop is going to literally burst into flames.
+
+16:42.820 --> 16:42.980
+Right.
+
+16:43.080 --> 16:43.960
+That's the immediate fear.
+
+16:43.960 --> 16:51.320
+I mean, if a loop runs a million times, I have a million events in memory instead of just one integer that updated a million times.
+
+16:52.060 --> 16:55.360
+How does SpherePop avoid instantly crashing the RAM?
+
+16:55.780 --> 16:58.180
+It's the most common and intuitive objection.
+
+16:58.940 --> 17:02.300
+If history constantly grows, surely we run out of space.
+
+17:02.640 --> 17:05.920
+But you have to remember the other side of theorem 2.7.
+
+17:06.020 --> 17:06.960
+The conservation of possibility.
+
+17:07.720 --> 17:08.240
+Exactly.
+
+17:08.540 --> 17:11.260
+As history grows, the option space shrinks.
+
+17:11.260 --> 17:14.500
+But practically, how does that actually balance out in hardware?
+
+17:14.920 --> 17:18.440
+Through aggressive use of persistent data structures and structural sharing.
+
+17:18.640 --> 17:19.620
+Structural sharing.
+
+17:19.740 --> 17:19.880
+Yeah.
+
+17:20.160 --> 17:23.820
+When an option is popped, the system doesn't duplicate the entire world.
+
+17:24.100 --> 17:27.080
+It just creates a new pointer that shares the previous context.
+
+17:27.180 --> 17:27.680
+Oh, I see.
+
+17:27.900 --> 17:33.560
+Furthermore, the option space itself is garbage collected as branches of possibility are definitively closed off.
+
+17:33.760 --> 17:35.980
+You aren't storing infinite parallel universes.
+
+17:36.260 --> 17:36.520
+Right.
+
+17:36.560 --> 17:40.580
+You're storing a highly compressed, single-path traversal through a finite graph.
+
+17:41.260 --> 17:46.260
+The space required to store the history is offset by the memory freed from the collapsed option space.
+
+17:46.700 --> 17:48.480
+So the complexity is conserved.
+
+17:48.580 --> 17:49.000
+Precisely.
+
+17:49.100 --> 17:50.180
+That makes a lot of sense.
+
+17:50.280 --> 17:53.660
+It's not like copying the whole block of marble every time I strike the chisel.
+
+17:53.820 --> 17:56.140
+It's just recording the coordinates of the strike.
+
+17:56.240 --> 17:56.440
+Right.
+
+17:56.580 --> 17:56.980
+Exactly.
+
+17:56.980 --> 18:04.540
+But, okay, if we are navigating this ever-trinking block of marble, permanently removing options and committing to paths,
+
+18:05.160 --> 18:08.000
+how do I know I haven't carved myself into a corner?
+
+18:08.260 --> 18:08.780
+What do you mean?
+
+18:08.780 --> 18:14.980
+If there is no state to check, how does the system know my next chisel strike isn't just a fatal error?
+
+18:15.540 --> 18:22.160
+Like, in C or Java, the compiler yells at me if I try to put a string of text into a bucket meant for an integer.
+
+18:22.360 --> 18:22.540
+Right.
+
+18:22.760 --> 18:23.280
+Type checking.
+
+18:23.700 --> 18:23.940
+Yeah.
+
+18:24.120 --> 18:26.060
+If there are no buckets here, what protects me?
+
+18:26.060 --> 18:29.820
+That is where the concept of types completely changes in SpherePop.
+
+18:30.020 --> 18:30.240
+Okay.
+
+18:31.020 --> 18:34.360
+In conventional languages, a type is, as you said, exactly like a bucket.
+
+18:34.680 --> 18:38.760
+If a variable is an integer type, it just means it belongs to the set of whole numbers.
+
+18:38.900 --> 18:39.100
+Right.
+
+18:39.180 --> 18:40.980
+The compiler just checks the shape of the bucket.
+
+18:41.180 --> 18:43.740
+It asks, does this data fit in the integer bucket?
+
+18:44.080 --> 18:47.400
+But in SpherePop, types do not describe sets of values.
+
+18:48.040 --> 18:48.320
+Wait.
+
+18:48.600 --> 18:48.900
+Really?
+
+18:49.120 --> 18:49.380
+Really.
+
+18:49.780 --> 18:51.240
+Types are reachability certificates.
+
+18:51.400 --> 18:52.260
+Reachability certificates.
+
+18:52.260 --> 18:52.940
+Yes.
+
+18:53.840 --> 18:57.540
+They are mathematical proofs of the history of how a term was produced.
+
+18:58.540 --> 19:05.200
+A value of a certain type is the result of a path through history that reached that value without violating any constraints.
+
+19:05.360 --> 19:06.080
+Oh, okay.
+
+19:06.200 --> 19:10.500
+So it's less like a bucket checking a shape and more like a passport filled with stamps.
+
+19:10.680 --> 19:10.900
+Yes.
+
+19:11.040 --> 19:16.420
+The passport proves everywhere you traveled, every border you crossed, to get to your current destination legally.
+
+19:16.740 --> 19:17.200
+Exactly.
+
+19:17.720 --> 19:19.260
+The type certifies the journey.
+
+19:19.260 --> 19:21.960
+Let's break down the specific types the system uses.
+
+19:22.260 --> 19:28.120
+We have admissible T, which is a certificate proving that the historical path that produced this term was completely valid.
+
+19:28.340 --> 19:28.580
+Okay.
+
+19:28.860 --> 19:33.480
+Then we have collapsed T, comma, C, which seals an observation under a specific rule.
+
+19:33.620 --> 19:33.880
+Right.
+
+19:34.220 --> 19:38.200
+But the most interesting and powerful one is refused T, comma, R.
+
+19:38.440 --> 19:41.360
+Oh, the refuse primitive we talked about earlier with the coffee maker.
+
+19:41.420 --> 19:41.760
+Yes.
+
+19:42.200 --> 19:45.980
+Crucially, the refused type inherently carries the reason for refusal.
+
+19:46.180 --> 19:46.640
+Oh.
+
+19:46.640 --> 19:49.120
+Denoted by that, R in the type signature.
+
+19:49.260 --> 19:53.540
+If you try to do something illegal, like adding milk when the reservoir is empty.
+
+19:53.660 --> 19:55.660
+The system doesn't just throw an exception or crash.
+
+19:56.000 --> 19:57.960
+Or return a generic null error.
+
+19:58.120 --> 19:58.220
+Right.
+
+19:58.300 --> 19:58.460
+Yeah.
+
+19:58.580 --> 20:03.960
+It generates a type that encapsulates the exact historical context of why the path was blocked.
+
+20:04.320 --> 20:11.320
+So a constraint violation is fundamentally a different mathematical type than a generic not available error.
+
+20:11.600 --> 20:12.020
+Correct.
+
+20:12.020 --> 20:18.080
+Two terms refused for different reasons have genuinely different mathematical types.
+
+20:18.180 --> 20:18.540
+Wow.
+
+20:18.540 --> 20:21.680
+Because the reason is permanently embedded as part of the type.
+
+20:22.120 --> 20:25.160
+This creates a system where refusal isn't a failure.
+
+20:25.480 --> 20:29.040
+It is documented inadmissibility with a permanent certificate.
+
+20:29.420 --> 20:29.880
+That's wild.
+
+20:29.880 --> 20:32.160
+You can pass that refusal around in your code.
+
+20:32.280 --> 20:32.440
+Yeah.
+
+20:32.660 --> 20:38.140
+Analyze it and branch logic off of it because the refusal itself is a first class citizen of the history.
+
+20:38.540 --> 20:39.560
+That is incredibly rigorous.
+
+20:39.820 --> 20:40.200
+It is.
+
+20:40.460 --> 20:45.440
+But, I mean, implementing something that strict led to a massive internal conflict for the developers, didn't it?
+
+20:45.440 --> 20:50.920
+The text dedicates a significant portion to this wild clash they ran into regarding the open and close world.
+
+20:51.040 --> 20:51.220
+Yes.
+
+20:51.320 --> 21:00.540
+This is one of the most fascinating anecdotes in the whole development process because it shows how abstract philosophy suddenly becomes a very real engineering roadblock.
+
+21:00.660 --> 21:00.760
+Right.
+
+21:00.820 --> 21:06.660
+When the developers were building the interpreter for SpherePop, they encountered a major problem with free variables.
+
+21:07.320 --> 21:10.240
+Free variables meaning variables that are undeclared or unknown.
+
+21:10.580 --> 21:14.980
+Like if I just write I plus 5 but I never told the computer what Y actually is.
+
+21:14.980 --> 21:15.500
+Precisely.
+
+21:16.280 --> 21:22.180
+Now the interpreter, which executes the code, treated an unknown variable as a symbolic atom.
+
+21:22.380 --> 21:22.700
+Meaning?
+
+21:22.840 --> 21:24.340
+Just an unresolved possibility.
+
+21:24.480 --> 21:29.880
+It essentially said, I don't know what Y is yet, but I will keep it in the option space just in case.
+
+21:29.980 --> 21:30.240
+Okay.
+
+21:30.360 --> 21:31.220
+That seems reasonable.
+
+21:31.480 --> 21:37.300
+But the type checker, which is designed to prove validity, immediately rejected Y as a hard error.
+
+21:37.380 --> 21:37.780
+Oh.
+
+21:38.200 --> 21:40.980
+It said, this isn't declared, therefore it is illegal.
+
+21:41.540 --> 21:41.780
+Wait.
+
+21:41.780 --> 21:42.860
+I have to push back here.
+
+21:43.200 --> 21:44.540
+Isn't the type checker just right?
+
+21:44.980 --> 21:45.180
+No.
+
+21:45.240 --> 21:49.040
+I mean, if a variable isn't defined in the code, isn't that just a typo?
+
+21:49.500 --> 21:49.980
+A bug?
+
+21:50.060 --> 21:51.660
+Like I just forgot to declare why.
+
+21:51.820 --> 21:56.920
+Why is this a profound philosophical discovery and not just a standard syntax error that they needed to patch?
+
+21:57.080 --> 22:00.860
+Because it forces a decision about what an unknown actually represents in reality.
+
+22:01.160 --> 22:04.280
+Does the absence of a declaration mean the object doesn't exist?
+
+22:04.780 --> 22:07.440
+Or does it just mean we haven't decided what it is yet?
+
+22:07.680 --> 22:08.160
+Oh.
+
+22:08.160 --> 22:14.200
+The developers realized they weren't just fighting over a bug, they were clashing over epistemology.
+
+22:14.360 --> 22:16.320
+The philosophical theory of knowledge.
+
+22:16.500 --> 22:16.840
+Exactly.
+
+22:16.980 --> 22:17.280
+I see.
+
+22:17.920 --> 22:21.440
+But how does a type checker mechanize epistemology?
+
+22:22.000 --> 22:25.680
+It depends entirely on the boundary of the world you assume you are operating in.
+
+22:25.720 --> 22:26.000
+Right.
+
+22:26.000 --> 22:31.420
+A closed world context assumes we have complete total knowledge of the system.
+
+22:32.040 --> 22:39.120
+In a closed world, if something is unknown, it means it does not exist and therefore trying to use it is an error.
+
+22:39.320 --> 22:42.060
+Which is how almost all traditional compilers work.
+
+22:42.180 --> 22:43.780
+They assume they can see the whole board.
+
+22:43.960 --> 22:44.040
+Yeah.
+
+22:44.120 --> 22:45.940
+If it's not in the dictionary, it's just not a word.
+
+22:46.080 --> 22:46.420
+Exactly.
+
+22:46.860 --> 22:49.260
+But the alternative is an open world context.
+
+22:49.360 --> 22:49.600
+Okay.
+
+22:49.760 --> 22:51.540
+This assumes we only have partial knowledge.
+
+22:51.980 --> 22:54.760
+We are operating in a universe larger than our current perception.
+
+22:54.920 --> 22:55.120
+Right.
+
+22:55.320 --> 22:58.600
+In an open world, an unknown variable is not an error.
+
+22:59.080 --> 23:01.280
+It is simply undecided possibility.
+
+23:01.520 --> 23:01.840
+Oh, what?
+
+23:01.840 --> 23:04.260
+It exists as an unresolved manifold.
+
+23:05.200 --> 23:11.280
+The type checker assigns it the type unit, meaning this is an unconstrained path that we might travel down later.
+
+23:11.280 --> 23:14.420
+This makes me think of, like, a robot navigating a room.
+
+23:14.600 --> 23:14.860
+Sure.
+
+23:15.140 --> 23:23.580
+If the robot's camera doesn't see a chair in the corner, a closed world AI assumes the corner is empty and might just try to drive straight through it.
+
+23:23.660 --> 23:23.900
+Yes.
+
+23:24.180 --> 23:26.940
+But an open world AI assumes the corner is unknown.
+
+23:27.580 --> 23:30.580
+Like, there might be a chair there, it just hasn't observed it yet.
+
+23:30.600 --> 23:31.700
+That's a perfect analogy.
+
+23:32.000 --> 23:36.140
+So both the interpreter and the type checker in SpherePop were mathematically correct.
+
+23:36.140 --> 23:41.840
+They were just operating under entirely different philosophical assumptions about the boundaries of reality.
+
+23:42.160 --> 23:42.380
+Yes.
+
+23:42.680 --> 23:47.620
+And the developers realized they couldn't just fix the bug by making one side win.
+
+23:48.080 --> 23:48.420
+Right.
+
+23:48.540 --> 23:49.700
+Because both are valid.
+
+23:49.760 --> 23:54.400
+Because depending on what you are building, you might need a closed world or you might need an open world.
+
+23:54.560 --> 23:54.760
+Okay.
+
+23:54.820 --> 23:55.600
+So what did they do?
+
+23:56.060 --> 24:00.160
+They had to introduce a new construct called type mode into the rest code.
+
+24:00.580 --> 24:00.700
+Yeah.
+
+24:00.880 --> 24:06.000
+Type mode is an explicit declaration of whether the compiler should operate in a closed world or an open world state.
+
+24:06.000 --> 24:09.980
+They literally had to code their philosophical stance into an enum.
+
+24:10.240 --> 24:10.880
+They had to.
+
+24:11.060 --> 24:11.260
+Yeah.
+
+24:11.860 --> 24:21.460
+A language whose fundamental ontology is about navigating a possibility space must explicitly state its epistemological boundaries.
+
+24:21.560 --> 24:21.940
+Right.
+
+24:21.940 --> 24:28.180
+It forces the programmer to declare, do I know everything about this domain or am I leaving room for the unknown?
+
+24:28.420 --> 24:29.360
+I love that.
+
+24:29.740 --> 24:30.700
+I absolutely love that.
+
+24:30.740 --> 24:31.260
+It's pretty amazing.
+
+24:31.620 --> 24:31.800
+Okay.
+
+24:31.800 --> 24:41.680
+So we have an irreversible history of events and we have types that act as passports proving our legal journey through possibility space and we've established the boundaries of our world.
+
+24:42.460 --> 24:43.640
+But let's be real for a second.
+
+24:44.320 --> 24:48.380
+Eventually, a human being needs to look at the computer screen and actually see an output.
+
+24:48.620 --> 24:48.920
+Of course.
+
+24:48.920 --> 24:51.100
+I need to see if my bank balance is $500.
+
+24:51.540 --> 24:52.500
+I need to see a state.
+
+24:52.760 --> 24:52.940
+Yes.
+
+24:53.000 --> 24:57.980
+So how do we look at history without ruining the philosophy and just falling back into the state illusion?
+
+24:58.440 --> 25:00.580
+This is where we reach the geometry of observation.
+
+25:01.680 --> 25:08.120
+The source text reveals that observable state is not a real physical thing stored in the computer's memory.
+
+25:08.300 --> 25:08.560
+Okay.
+
+25:08.760 --> 25:10.080
+It is a quotient of history.
+
+25:10.260 --> 25:11.540
+A quotient like in division.
+
+25:11.680 --> 25:13.500
+Can you explain how that applies here?
+
+25:13.500 --> 25:21.940
+In mathematics, a quotient space is formed by taking a larger set and grouping items into equivalence classes based on some specific rule.
+
+25:22.060 --> 25:22.340
+Okay.
+
+25:22.640 --> 25:23.760
+You are folding the space.
+
+25:24.400 --> 25:29.160
+In sphere pop, the state you observe depends entirely on how you look at the history.
+
+25:29.340 --> 25:29.620
+Right.
+
+25:29.860 --> 25:34.340
+And how you look at it requires what the text calls a collapse rule.
+
+25:34.580 --> 25:35.020
+Collapse.
+
+25:35.200 --> 25:39.780
+You apply a collapse rule to the history and it generates the state for you at that exact moment.
+
+25:39.780 --> 25:40.220
+Okay.
+
+25:40.360 --> 25:43.340
+Let's walk through the four canonical rules of collapse mentioned in the text.
+
+25:43.500 --> 25:46.580
+Because they perfectly illustrate how a state is just a projection.
+
+25:46.860 --> 25:47.280
+Let's do it.
+
+25:47.380 --> 25:48.740
+The first is the identity rule.
+
+25:49.020 --> 25:49.500
+Identity.
+
+25:49.560 --> 25:51.320
+This is the finest, most granular rule.
+
+25:51.800 --> 25:54.760
+Under identity, every single event in the history is visible.
+
+25:54.920 --> 25:56.260
+So no compression whatsoever.
+
+25:56.380 --> 25:56.660
+Exactly.
+
+25:56.820 --> 26:00.300
+The state you see is exactly equal to the raw history log.
+
+26:00.620 --> 26:00.880
+Okay.
+
+26:01.060 --> 26:02.880
+The second is the last right rule.
+
+26:03.180 --> 26:08.080
+And this seems like it's essentially the conventional view of state in modern programming.
+
+26:08.080 --> 26:08.640
+Yes.
+
+26:09.120 --> 26:14.560
+Last right maps the history by only caring about the most recent assignment to a variable.
+
+26:14.760 --> 26:15.460
+Oh, right.
+
+26:15.560 --> 26:22.140
+If your history shows you assigned x to 1, then x to 2, then x to 3, applying the last
+
+26:22.140 --> 26:25.860
+right rule collapses all of that and only shows you that x is 3.
+
+26:26.220 --> 26:29.300
+It retroactively ignores all the previous pops.
+
+26:29.480 --> 26:29.720
+Yes.
+
+26:29.860 --> 26:32.020
+It creates the state illusion on demand.
+
+26:32.260 --> 26:32.640
+Wow.
+
+26:32.640 --> 26:34.780
+The third is the accumulate rule.
+
+26:35.260 --> 26:39.600
+This one counts the events, but it entirely forgets the order in which they happened.
+
+26:40.020 --> 26:40.980
+It's order forgetful.
+
+26:41.040 --> 26:41.220
+Right.
+
+26:41.400 --> 26:44.880
+Like knowing I drank three cups of coffee, but not knowing if I drank them in the morning
+
+26:44.880 --> 26:45.460
+or at night.
+
+26:45.640 --> 26:46.400
+Perfect example.
+
+26:46.760 --> 26:48.120
+And finally, the projection rule.
+
+26:48.800 --> 26:54.320
+This rule filters the history events by a specific label prefix, only showing you a
+
+26:54.320 --> 26:56.780
+slice of the history that matches your specific criteria.
+
+26:57.320 --> 26:58.660
+So ignoring everything else.
+
+26:58.780 --> 26:59.000
+Right.
+
+26:59.000 --> 27:02.160
+Thinking about these collapse rules, a visual metaphor comes to mind.
+
+27:02.160 --> 27:02.700
+Let's hear it.
+
+27:02.740 --> 27:05.440
+It's like looking at a three-dimensional cylinder floating in a room.
+
+27:05.780 --> 27:10.320
+If your rule is look at the cylinder from directly above, it collapses into a two-dimensional
+
+27:10.320 --> 27:10.740
+circle.
+
+27:10.900 --> 27:11.120
+Yes.
+
+27:11.240 --> 27:15.060
+If your rule is look at it from the side, it collapses into a two-dimensional rectangle.
+
+27:15.240 --> 27:15.560
+Exactly.
+
+27:15.780 --> 27:18.540
+A circle and a rectangle look like completely different shapes.
+
+27:18.620 --> 27:21.820
+I mean, if you showed them to two different people, they would argue about what object they
+
+27:21.820 --> 27:22.300
+were looking at.
+
+27:22.300 --> 27:23.340
+They absolutely would.
+
+27:23.680 --> 27:26.960
+But the cylinder itself, the history, it never changed.
+
+27:27.380 --> 27:29.780
+Only the observer's angle, the rule, did.
+
+27:29.780 --> 27:31.920
+That is a perfect topological analogy.
+
+27:32.660 --> 27:38.680
+The history is the 3D object, and the state is the 2D shadow it casts, depending on where
+
+27:38.680 --> 27:39.520
+you place the light.
+
+27:39.640 --> 27:40.600
+Oh, I like that.
+
+27:40.940 --> 27:44.400
+And this aligns directly with the CLIO connection mentioned in the text.
+
+27:44.820 --> 27:48.420
+CLIO stands for constraint-limited information ontology, right?
+
+27:48.600 --> 27:48.900
+Yes.
+
+27:49.080 --> 27:50.560
+How does that apply to our cylinder?
+
+27:50.560 --> 27:56.640
+CLIO is a framework that models how representations restructure semantic space.
+
+27:58.080 --> 28:05.040
+CLIO argues that representations, or in our case, collapse rules, don't just compress data.
+
+28:05.260 --> 28:08.500
+They fundamentally alter the topology of what is distinguishable.
+
+28:08.820 --> 28:09.180
+Exactly.
+
+28:09.380 --> 28:11.280
+They change what shadows can be cast.
+
+28:11.620 --> 28:15.380
+For example, under the accumulate rule, two completely different histories.
+
+28:15.380 --> 28:19.420
+Like doing task A, then task B, versus doing task B, then task A.
+
+28:19.480 --> 28:19.580
+Right.
+
+28:19.760 --> 28:22.540
+Those cast the exact same shadow under accumulate.
+
+28:23.180 --> 28:26.660
+Because the event counts are the same, they look identical.
+
+28:26.920 --> 28:28.420
+They are topologically identified.
+
+28:28.720 --> 28:33.280
+But under the identity rule, they cast different shadows because the order actually matters.
+
+28:33.800 --> 28:36.860
+So state is entirely relative to the observer's rule.
+
+28:37.000 --> 28:38.900
+There is no such thing as the true state.
+
+28:39.140 --> 28:39.340
+No.
+
+28:39.460 --> 28:42.000
+There is only the state given rule X.
+
+28:42.000 --> 28:42.480
+Yes.
+
+28:42.900 --> 28:45.440
+And the SpherePop implementation reflects this beautifully.
+
+28:45.900 --> 28:51.420
+In the observable state module, state is derived on demand using a function called derive,
+
+28:51.880 --> 28:54.020
+which takes history and rule as arguments.
+
+28:54.140 --> 28:54.620
+Oh, wow.
+
+28:54.700 --> 28:56.700
+Observable state is never stored permanently.
+
+28:56.880 --> 28:57.620
+It's just a shadow.
+
+28:57.980 --> 28:58.160
+Right.
+
+28:58.240 --> 29:03.100
+It is a fleeting projection, a shadow, calculated at the exact moment a human needs to look at
+
+29:03.100 --> 29:04.920
+it, and then it is immediately discarded.
+
+29:05.140 --> 29:05.360
+Okay.
+
+29:05.460 --> 29:10.440
+So if state is just a fleeting shadow and types are just travel logs, what happens to the most
+
+29:10.440 --> 29:12.560
+sacred cow of computer science?
+
+29:12.680 --> 29:13.040
+Which is-
+
+29:13.040 --> 29:16.940
+The function- I mean, functional programming is practically a religion for a lot of developers.
+
+29:17.180 --> 29:17.740
+It really is.
+
+29:17.840 --> 29:19.280
+Everything is built on functions.
+
+29:19.940 --> 29:21.540
+How does SpherePop handle them?
+
+29:21.820 --> 29:24.740
+SpherePop radically reverses the priority of functions.
+
+29:24.880 --> 29:25.240
+How so?
+
+29:25.640 --> 29:29.180
+In standard computing, functions are the base reality.
+
+29:29.780 --> 29:32.460
+A program is just applying functions to values.
+
+29:32.620 --> 29:32.920
+Right.
+
+29:32.920 --> 29:35.400
+But in SpherePop, functions are not primitive.
+
+29:35.920 --> 29:39.520
+They are just a convenient notation for a specific historical pattern.
+
+29:39.520 --> 29:43.640
+The text defines a function as deferred commitment.
+
+29:44.120 --> 29:44.860
+Deferred commitment.
+
+29:45.080 --> 29:46.300
+I want to unpack that carefully.
+
+29:46.460 --> 29:46.580
+Yeah.
+
+29:46.760 --> 29:50.740
+When I write a function in a normal language, say a simple function that takes a variable
+
+29:50.740 --> 29:55.820
+y, multiplies it by two, and returns the result, what is that in SpherePop?
+
+29:56.140 --> 30:00.400
+When you define that function, you are creating what SpherePop calls a closure.
+
+30:00.720 --> 30:00.980
+Right.
+
+30:01.500 --> 30:03.280
+But the text redefines a closure.
+
+30:03.540 --> 30:05.940
+It's not a machine waiting for inputs.
+
+30:06.120 --> 30:07.720
+It is a frozen possibility.
+
+30:07.840 --> 30:08.620
+Frozen possibility.
+
+30:08.620 --> 30:14.360
+Is a partial, unrealized future suspended along with its historical context, just waiting
+
+30:14.360 --> 30:15.960
+for a pop event to actualize it.
+
+30:15.960 --> 30:20.820
+You are saying, I have this timeline mapped out where something gets multiplied by two,
+
+30:21.300 --> 30:24.620
+but I am deferring the commitment of what that something actually is.
+
+30:24.720 --> 30:28.320
+And when I finally call that function in my code and pass it the number five...
+
+30:28.320 --> 30:33.340
+That process, formerly known as beta reduction in lambda calculus, is actually just a special
+
+30:33.340 --> 30:34.200
+case of a collapse.
+
+30:34.720 --> 30:35.440
+Wait, really?
+
+30:35.440 --> 30:35.920
+Yeah.
+
+30:35.920 --> 30:39.400
+When you apply the argument five, you are generating a pop event.
+
+30:40.100 --> 30:44.920
+You are committing the variable y to the value five, which removes all other possibilities
+
+30:44.920 --> 30:49.640
+for i from the option space, thaws the frozen timeline, and resumes the history.
+
+30:49.640 --> 30:53.920
+So a function isn't a factory that takes raw materials and spits out a product.
+
+30:54.120 --> 30:54.200
+No.
+
+30:54.300 --> 30:59.040
+It's a paused timeline waiting for a specific historical event to kickstart it again.
+
+30:59.120 --> 30:59.500
+Exactly.
+
+30:59.660 --> 31:01.360
+That is a massive paradigm shift.
+
+31:01.680 --> 31:06.120
+And reading through the paper, it becomes clear this has riled implications for how you
+
+31:06.120 --> 31:07.860
+actually build a compiler for this language.
+
+31:07.920 --> 31:10.220
+Oh, it breaks traditional compiler correctness completely.
+
+31:10.220 --> 31:12.900
+Let's look at how conventional compilers are tested.
+
+31:13.300 --> 31:17.040
+A compiler translates human-readable code into machine code.
+
+31:17.620 --> 31:22.600
+In traditional language design, a compiler is considered correct if the compiled machine
+
+31:22.600 --> 31:26.520
+code produces the exact same output value as the interpreted code.
+
+31:26.640 --> 31:26.920
+Right.
+
+31:27.120 --> 31:32.120
+If they both output the number 42, the compiler is certified as correct.
+
+31:32.560 --> 31:35.900
+But SpherePop says that is totally insufficient.
+
+31:36.280 --> 31:36.660
+Completely.
+
+31:36.660 --> 31:42.200
+Which makes sense because, as we established, the final output, the 42, is just a degenerate
+
+31:42.200 --> 31:43.000
+state projection.
+
+31:43.260 --> 31:46.000
+It's just the index card that says the butler is in jail.
+
+31:46.180 --> 31:46.660
+Exactly.
+
+31:47.340 --> 31:52.200
+Two programs that produce the same final value of 42 may have constructed radically different
+
+31:52.200 --> 31:53.280
+histories to get there.
+
+31:53.440 --> 31:55.220
+One might have added 20 and 22.
+
+31:55.780 --> 31:57.940
+Another might have multiplied 21 by 2.
+
+31:58.120 --> 32:01.700
+Another might have crashed three times, recovered, and then output 42.
+
+32:02.040 --> 32:02.320
+Right.
+
+32:02.520 --> 32:05.140
+And in SpherePop, the history is the program.
+
+32:05.140 --> 32:07.900
+So verifying just the output is completely meaningless.
+
+32:08.160 --> 32:09.560
+But hold on, I have to challenge this.
+
+32:09.640 --> 32:10.040
+Go for it.
+
+32:10.260 --> 32:12.620
+If output equivalence isn't enough, what is?
+
+32:12.780 --> 32:16.000
+Does the compiler have to perfectly mimic every single microscopic step?
+
+32:16.280 --> 32:16.580
+Yes.
+
+32:16.760 --> 32:16.900
+What?
+
+32:17.200 --> 32:19.620
+The standards SpherePop uses is history equivalence.
+
+32:19.880 --> 32:25.400
+A compiler is only correct if the history constructed by the virtual machine executing the compiled
+
+32:25.400 --> 32:29.940
+code matches the history constructed by the interpreter exactly, event for event.
+
+32:29.940 --> 32:30.560
+Wow.
+
+32:31.080 --> 32:37.640
+The mathematical standard in the paper is I of P dot history equals V of C of P dot history.
+
+32:38.000 --> 32:39.900
+Interpreter history equals VM history.
+
+32:40.120 --> 32:40.400
+Yes.
+
+32:40.580 --> 32:42.760
+So the compiler can't take any clever shortcuts.
+
+32:42.900 --> 32:43.120
+Yes.
+
+32:43.280 --> 32:46.920
+Because modern compilers like LLVM are famous for optimizing QuarNode.
+
+32:47.100 --> 32:47.340
+Right.
+
+32:47.500 --> 32:51.920
+If I write a loop that does nothing but count to 10, the compiler might just replace the whole
+
+32:51.920 --> 32:53.780
+loop with the number 10 to save time.
+
+32:53.780 --> 32:58.140
+But in SpherePop, it can't do that because that alters the sequence of events.
+
+32:58.320 --> 32:58.860
+Oh, man.
+
+32:59.220 --> 32:59.460
+Correct.
+
+32:59.920 --> 33:02.300
+The optimization cannot destroy the history.
+
+33:03.020 --> 33:07.680
+And this requirement fundamentally changes what the intermediate representation or IR of
+
+33:07.680 --> 33:09.080
+the compiler actually looks like.
+
+33:09.300 --> 33:09.400
+Right.
+
+33:09.720 --> 33:14.020
+Traditional IR emits instructions to mutate the machine's state in the most efficient way
+
+33:14.020 --> 33:14.440
+possible.
+
+33:14.900 --> 33:16.620
+It issues commands to overwrite memory.
+
+33:16.800 --> 33:18.460
+But SpherePop's IR doesn't do that.
+
+33:18.720 --> 33:21.620
+No, it doesn't emit mutating instructions at all.
+
+33:21.620 --> 33:24.980
+It emits events to reconstruct history.
+
+33:25.820 --> 33:30.920
+The compiler acts as a history reconstruction engine, not a state mutation engine.
+
+33:31.640 --> 33:34.700
+This all sounds theoretically perfect and rigorously beautiful.
+
+33:34.920 --> 33:35.640
+It really is.
+
+33:35.940 --> 33:40.500
+But when this monograph was peer-reviewed, a reviewer raised a massive red flag.
+
+33:41.260 --> 33:45.180
+Chapter 18 of the Saurus is entirely dedicated to answering this challenge.
+
+33:45.380 --> 33:45.660
+Yes.
+
+33:45.880 --> 33:47.860
+The reviewer pointed out a perceived paradox.
+
+33:47.860 --> 33:52.560
+They basically said, look, because human programmers eventually have to look at a collapsed
+
+33:52.560 --> 33:57.240
+value on a screen, an output shadow, aren't they still suffering from the state illusion?
+
+33:57.860 --> 33:58.680
+That's a very fair point.
+
+33:58.820 --> 33:59.040
+Right.
+
+33:59.160 --> 33:59.400
+Right.
+
+33:59.560 --> 34:03.840
+Has SpherePop actually solved anything or did you just relocate the problem to the monitor?
+
+34:04.060 --> 34:05.240
+It's a brilliant critique.
+
+34:05.600 --> 34:09.920
+The reviewer is essentially saying that as long as a human is in the loop, you just can't
+
+34:09.920 --> 34:10.600
+escape state.
+
+34:10.600 --> 34:13.620
+And the authors of the monograph address it with brutal honesty.
+
+34:13.820 --> 34:16.860
+They do, by introducing the no-direct-observation theorem.
+
+34:16.980 --> 34:19.760
+The mathematically rigorous limit of the entire system.
+
+34:19.800 --> 34:20.040
+Yes.
+
+34:20.340 --> 34:24.180
+The theorem proves that the reviewer is technically correct about the illusion.
+
+34:24.300 --> 34:24.840
+Oh, wow.
+
+34:25.060 --> 34:28.040
+Because the space of all possible histories is infinite.
+
+34:28.720 --> 34:34.440
+And any observable space, like a computer monitor or terminal window or a human retina,
+
+34:34.680 --> 34:35.400
+is finite.
+
+34:35.680 --> 34:37.340
+So you have the pigeonhole problem again?
+
+34:37.340 --> 34:37.940
+Exactly.
+
+34:38.300 --> 34:45.380
+Any observation map must be non-injective, meaning some level of state illusion is mathematically
+
+34:45.380 --> 34:46.820
+unavoidable in this universe.
+
+34:46.940 --> 34:52.000
+No computational system can eliminate the illusion entirely if it wants to actually show a result
+
+34:52.000 --> 34:53.480
+to a finite human observer.
+
+34:53.720 --> 34:54.000
+Right.
+
+34:54.400 --> 34:55.620
+So wait, the reviewer was right.
+
+34:55.740 --> 34:56.660
+SpherePop fails.
+
+34:56.820 --> 34:57.060
+No.
+
+34:57.280 --> 35:02.300
+We did all this complex history tracking, all this option space math, just to end up trapped
+
+35:02.300 --> 35:03.340
+by the illusion anyway.
+
+35:03.440 --> 35:06.720
+No, because the reviewer was conflating two entirely different concepts.
+
+35:06.720 --> 35:10.780
+There is a crucial distinction between state erasure and state illusion.
+
+35:10.920 --> 35:12.540
+Okay, we need to clarify those two terms.
+
+35:12.640 --> 35:13.320
+How are they different?
+
+35:13.500 --> 35:15.280
+Conventional coding suffers from state erasure.
+
+35:15.700 --> 35:19.860
+When X changes from 5 to 6, the history of it being 5 is deleted from the RAM.
+
+35:20.020 --> 35:22.880
+The system irrecoverably discards the history.
+
+35:23.440 --> 35:24.820
+The universe just forgets.
+
+35:25.140 --> 35:25.540
+Exactly.
+
+35:26.300 --> 35:31.580
+SpherePop, however, cannot eliminate the illusion of observation because of the physics of screens
+
+35:31.580 --> 35:32.780
+and eyeballs we just discussed.
+
+35:32.880 --> 35:33.120
+Right.
+
+35:33.120 --> 35:35.440
+But it completely eliminates the erasure.
+
+35:35.900 --> 35:42.000
+Because the full raw history is always kept safe in the world.history log.
+
+35:42.100 --> 35:42.520
+Exactly.
+
+35:42.720 --> 35:44.260
+The history is retained structurally.
+
+35:44.920 --> 35:49.640
+So while the programmer might be looking at a collapsed, illusory state on their screen,
+
+35:50.160 --> 35:52.040
+they're never actually trapped by it.
+
+35:52.200 --> 35:52.480
+Okay.
+
+35:52.480 --> 35:57.360
+If they suspect the observation is misleading, like if they see the lamp on the floor and
+
+35:57.360 --> 36:02.220
+wonder if the drunk uncle was there, they can perform what the text calls disambiguation
+
+36:02.220 --> 36:03.060
+by refinement.
+
+36:03.720 --> 36:05.000
+Disambiguation by refinement.
+
+36:05.260 --> 36:07.220
+Meaning they can just change their collapse rule?
+
+36:07.460 --> 36:07.980
+Precisely.
+
+36:08.540 --> 36:13.040
+Because the history is intact behind the scenes, they can switch from the last right rule to
+
+36:13.040 --> 36:13.920
+the identity rule.
+
+36:14.100 --> 36:15.320
+A finer collapse rule.
+
+36:15.360 --> 36:16.580
+And recover the hidden truth.
+
+36:16.740 --> 36:19.680
+They can look at the 3D cylinder from a completely different angle.
+
+36:19.680 --> 36:23.960
+In a conventional system, that recovery is physically impossible because the history
+
+36:23.960 --> 36:24.580
+was destroyed.
+
+36:24.940 --> 36:25.200
+Right.
+
+36:25.920 --> 36:27.840
+Sphere pop doesn't abolish the illusion.
+
+36:28.240 --> 36:32.380
+It makes the illusion explicit, parameterized, and fully reversible.
+
+36:32.680 --> 36:34.240
+It gives you the power to see through it.
+
+36:34.400 --> 36:34.860
+Exactly.
+
+36:35.080 --> 36:35.440
+I see.
+
+36:35.520 --> 36:36.840
+That is a phenomenal defense.
+
+36:37.340 --> 36:43.280
+It completely defangs the reviewer's critique and really turns a perceived weakness into a
+
+36:43.280 --> 36:45.600
+demonstration of the system's ultimate resilience.
+
+36:46.320 --> 36:49.360
+You can't avoid shadows, but you can always move the light.
+
+36:49.360 --> 36:50.320
+I love that.
+
+36:50.820 --> 36:55.960
+And this realization leads to the final, perhaps most profound evolution in the text.
+
+36:56.260 --> 36:59.400
+The forward shift, which they call the V4 architecture.
+
+36:59.640 --> 36:59.880
+Yes.
+
+37:00.620 --> 37:03.640
+Up until this point in the text, the framework has been backwards looking.
+
+37:03.780 --> 37:03.940
+Right.
+
+37:04.180 --> 37:05.540
+History records what happened.
+
+37:06.120 --> 37:07.340
+Types certify what happened.
+
+37:07.480 --> 37:08.960
+It's all about auditing the past.
+
+37:09.560 --> 37:12.500
+But the forward shift flips the causal arrow entirely.
+
+37:12.500 --> 37:16.880
+It says that histories are not fundamental just because they are records of the past.
+
+37:17.220 --> 37:20.600
+They are fundamental because they are operators that deform the future.
+
+37:20.820 --> 37:22.960
+This is encapsulated in the two-projection architecture.
+
+37:23.480 --> 37:26.980
+In this final model, a program doesn't just map a history to a state.
+
+37:27.500 --> 37:31.020
+First, it maps a history to a future reachability geometry.
+
+37:31.280 --> 37:32.380
+An admissibility field.
+
+37:32.380 --> 37:32.900
+Exactly.
+
+37:33.340 --> 37:38.640
+It maps out a geometric field of what futures are still allowed to exist, given the history
+
+37:38.640 --> 37:39.500
+that has already occurred.
+
+37:40.100 --> 37:43.780
+Every time you pop an option, the geometry of the future morphs and shrinks.
+
+37:44.220 --> 37:50.000
+And then the system projects that future geometry into an observable state for the user to see.
+
+37:50.260 --> 37:50.460
+Yes.
+
+37:50.560 --> 37:54.040
+So a program is not a list of instructions to be blindly executed.
+
+37:54.240 --> 37:56.120
+It is a reachability sculpture.
+
+37:56.380 --> 37:56.800
+Exactly.
+
+37:56.800 --> 38:02.640
+Every pop, every refuse is a chisel stroke carving away the marble of possibility,
+
+38:03.360 --> 38:06.000
+shaping an admissibility field of what can happen next.
+
+38:06.320 --> 38:09.180
+The program's true purpose isn't to calculate a number.
+
+38:09.440 --> 38:11.340
+It's to sculpt the boundaries of the future.
+
+38:11.640 --> 38:13.920
+It is a stunning conceptual leap.
+
+38:14.080 --> 38:14.780
+It really is.
+
+38:14.820 --> 38:18.620
+You stop thinking about what the machine is currently holding in memory, the fleeting state,
+
+38:18.660 --> 38:21.760
+and you start thinking entirely about the geometry of accessible futures.
+
+38:21.960 --> 38:24.820
+Bringing this massive philosophical journey to a close,
+
+38:24.820 --> 38:27.780
+the core takeaway for you, the learner, is really profound.
+
+38:28.120 --> 38:32.620
+Sphere pop forces us to fundamentally change our relationship with digital reality.
+
+38:32.800 --> 38:33.020
+It does.
+
+38:33.220 --> 38:37.060
+We have to stop asking the conventional question, what is the current state?
+
+38:37.600 --> 38:40.220
+And we have to start asking two much deeper questions.
+
+38:40.800 --> 38:42.720
+What futures have we foreclosed?
+
+38:42.800 --> 38:45.220
+And what histories did we construct to get here?
+
+38:45.500 --> 38:50.700
+Because computation is an irreversible journey through a geometry of possibilities.
+
+38:50.700 --> 38:54.300
+It exposes what computation actually does to possibility space,
+
+38:54.400 --> 38:59.420
+rather than summarizing the result as a degenerate projection and just throwing away the evidence.
+
+38:59.580 --> 38:59.680
+Right.
+
+38:59.880 --> 39:03.740
+And I want to leave you with a final lingering thought that builds on this source material.
+
+39:04.120 --> 39:08.580
+Because if computation is just the progressive restriction of possibility...
+
+39:08.580 --> 39:10.100
+A series of pops and refusals.
+
+39:10.180 --> 39:10.420
+Right.
+
+39:10.620 --> 39:14.100
+Shaping an admissibility field of what futures are open to us.
+
+39:14.500 --> 39:17.400
+Isn't that exactly how human memory and human life works?
+
+39:17.480 --> 39:18.880
+The parallel is striking, honestly.
+
+39:18.880 --> 39:24.240
+Every choice you make, every career path you take, every person you decide to marry or not marry,
+
+39:24.480 --> 39:27.000
+it permanently forecloses a million other futures.
+
+39:27.360 --> 39:29.840
+Your life is an irreversible history log.
+
+39:29.920 --> 39:31.500
+You can't go back and unpop a decision.
+
+39:31.900 --> 39:32.300
+Exactly.
+
+39:32.520 --> 39:34.880
+So the real question is, when you look back in your own life,
+
+39:35.560 --> 39:38.380
+what collapse rule are you using to observe your own history?
+
+39:38.640 --> 39:38.960
+Wow.
+
+39:39.000 --> 39:43.900
+Are you just looking at the last right, focusing only on your current job title or your current bank balance?
+
+39:43.900 --> 39:51.140
+Or are you using accumulate, just counting your successes and failures as abstract numbers without any context?
+
+39:51.460 --> 39:54.600
+And what hidden truths might you uncover if you change the rule?
+
+39:54.740 --> 39:55.020
+Right.
+
+39:55.420 --> 40:02.500
+If you applied the identity rule and looked at the full, uncompressed sequence of every tiny event and choice that became who you are...
+
+40:02.500 --> 40:06.700
+you might find that the history is far more meaningful than the state you currently occupy.
+
+40:07.420 --> 40:09.760
+Thank you so much for joining us on this deep dive.
+
+40:10.140 --> 40:13.460
+Keep questioning the boundaries of your own worlds, open or closed,
+
+40:13.580 --> 40:15.920
+and remember to look at the history, not just the state.
+
+40:16.520 --> 40:17.760
+We will see you next time.
+
