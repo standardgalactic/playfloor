@@ -138,6 +138,9 @@
   breakable,
 }
 
+\setlength{\emergencystretch}{4em}
+\relpenalty=500
+\binoppenalty=700
 \begin{document}
 
 \frontmatter
@@ -225,7 +228,7 @@ The calculus of this chapter and the following three is the original sequential 
 \begin{definition}[Event Alphabet]
 Fix finite sets $\Sym$ of symbols, $\mathsf{Rsn}$ of refusal reasons, and $\mathsf{Rul}$ of collapse rules. The \emph{event alphabet} is
 \[
-E=\{\Pop(x),\ \Rfuse(x,r),\ \Bind(a,b),\ \Col(x,c)\mid x,a,b\in\Sym,\ r\in\mathsf{Rsn},\ c\in\mathsf{Rul}\}\cup E_\lambda,
+\begin{gathered}E=\{\Pop(x),\ \Rfuse(x,r),\ \Bind(a,b),\ \Col(x,c)\mid\\ x,a,b\in\Sym,\ r\in\mathsf{Rsn},\ c\in\mathsf{Rul}\}\cup E_\lambda,\end{gathered}
 \]
 where $E_\lambda$ contains the lambda events $\mathrm{LamIntro}(x)$ and $\mathrm{Apply}(N)$ used in Chapter~\ref{ch:lambda}. The core fragment studied in Chapters~\ref{ch:types} through~\ref{ch:compiler} has $E_\lambda=\varnothing$, so that $E$ is finite.
 \end{definition}
@@ -238,8 +241,8 @@ $\Omega_0\subseteq\Sym$ denotes the finite \emph{initial option space}. All opti
 \label{def:world}
 A \emph{world} is a pair $W=(H,\Omega)$ with $H\in\calH$ and $\Omega\subseteq\Omega_0$. The partial function $\mathrm{app}(e,W)$ applying an event to a world is
 \begin{align*}
-\mathrm{app}(\Pop(x),(H,\Omega)) &= (H\hconcat[\Pop(x)],\ \Omega\setminus\{x\}) && \text{if } x\in\Omega,\ \text{undefined otherwise},\\
-\mathrm{app}(e,(H,\Omega)) &= (H\hconcat[e],\ \Omega) && \text{if } e \text{ is a Refuse, Bind, or Collapse event.}
+\mathrm{app}(\Pop(x),(H,\Omega)) &= (H\hconcat[\Pop(x)],\ \Omega\setminus\{x\}) \\ &\quad\text{if } x\in\Omega,\ \text{undefined otherwise},\\
+\mathrm{app}(e,(H,\Omega)) &= (H\hconcat[e],\ \Omega) \\ &\quad\text{if } e \text{ is a Refuse, Bind, or Collapse event.}
 \end{align*}
 The corresponding \emph{operators} are written $P_x$, $R_{x,r}$, $B_{a,b}$, and $C_{x,c}$. A history $K=[e_1,\dots,e_n]$ is \emph{legal} from $W$ if $\mathrm{app}(e_n,\dots\mathrm{app}(e_1,W)\dots)$ is defined, and the result is written $\mathrm{run}(K,W)$. Lambda events leave $\Omega$ unchanged.
 \end{definition}
@@ -348,12 +351,14 @@ pub fn meld(&mut self, other: &History) {
 We write $(H,\Omega)\xrightarrow{\alpha}(H',\Omega')$ for a step labelled $\alpha$.
 \[
 \frac{x\in\Omega}{(H,\Omega)\xrightarrow{\mathrm{pop}(x)}(H\hconcat[\Pop(x)],\ \Omega\setminus\{x\})}\ \textsc{[Pop]}
-\qquad
+\]
+\[
 \frac{}{(H,\Omega)\xrightarrow{\mathrm{refuse}(x,r)}(H\hconcat[\Rfuse(x,r)],\ \Omega)}\ \textsc{[Refuse]}
 \]
 \[
 \frac{}{(H,\Omega)\xrightarrow{\mathrm{bind}(a,b)}(H\hconcat[\Bind(a,b)],\ \Omega)}\ \textsc{[Bind]}
-\qquad
+\]
+\[
 \frac{}{(H,\Omega)\xrightarrow{\mathrm{collapse}(x,c)}(H\hconcat[\Col(x,c)],\ \Omega)}\ \textsc{[Collapse]}
 \]
 The rules agree with $\mathrm{app}$ of Definition~\ref{def:world}. \textsc{[Refuse]} has no premise, so any symbol may be refused. \textsc{[Collapse]} has no premise at the level of worlds either. The requirement that a collapsed term carry an admissibility certificate is a static condition enforced by the type system of Chapter~\ref{ch:types}, so an untyped execution may collapse anything.
@@ -397,7 +402,7 @@ The standard reading of a type is a set of admissible values. In a setting where
 \begin{definition}[Spherepop Types]
 \label{def:types}
 \begin{align*}
-T ::= \;& \mathrm{Unit}\;\mid\;\mathrm{Never}\;\mid\;X\;\mid\;\Pi(x:T_1).T_2\;\mid\;\Adm{T}\;\mid\;\Refused{T}{r}\;\mid\;\Collapsed{T}{c}\;\mid\;\mathrm{Process}(T_1\yields T_2)
+T ::= \;& \mathrm{Unit}\;\mid\;\mathrm{Never}\;\mid\;X\;\mid\;\Pi(x:T_1).T_2\;\mid\;\Adm{T}\\ &\mid\;\Refused{T}{r}\;\mid\;\Collapsed{T}{c}\;\mid\;\mathrm{Process}(T_1\yields T_2)
 \end{align*}
 The function type $T_1\to T_2$ abbreviates $\Pi(\_:T_1).T_2$.
 \end{definition}
@@ -418,22 +423,26 @@ In the original calculus the constructor $\Adm{T}$ certifies one thing: the term
 We write $\Gamma\vdash t:T$ for the typing judgement. The system is syntax-directed: each term form has exactly one typing rule, and there is no subsumption.
 \[
 \frac{\Gamma\vdash t:T}{\Gamma\vdash\mathrm{pop}(t):\Adm{T}}\ \textsc{[T-Pop]}
-\qquad
+\]
+\[
 \frac{\Gamma\vdash t:T\quad r\in\mathsf{Rsn}}{\Gamma\vdash\mathrm{refuse}(t,r):\Refused{T}{r}}\ \textsc{[T-Refuse]}
 \]
 \[
 \frac{\Gamma\vdash t:\Adm{T}\quad c\in\mathsf{Rul}}{\Gamma\vdash\mathrm{collapse}(t,c):\Collapsed{T}{c}}\ \textsc{[T-Collapse]}
-\qquad
+\]
+\[
 \frac{\Gamma\vdash a:T_1\quad\Gamma\vdash b:T_2}{\Gamma\vdash\mathrm{bind}(a,b):\mathrm{Process}(T_1\yields T_2)}\ \textsc{[T-Bind]}
 \]
 \[
 \frac{\Gamma\vdash t_1:T_1\quad\Gamma\vdash t_2:T_2}{\Gamma\vdash t_1;t_2:T_2}\ \textsc{[T-Seq]}
-\qquad
+\]
+\[
 \frac{(x:T)\in\Gamma}{\Gamma\vdash x:T}\ \textsc{[T-Var]}
 \]
 \[
 \frac{\Gamma,x:T_1\vdash b:T_2}{\Gamma\vdash\lambda x{:}T_1.b:\Pi(x{:}T_1).T_2}\ \textsc{[T-Lam]}
-\qquad
+\]
+\[
 \frac{\Gamma\vdash f:\Pi(x{:}T_1).T_2\quad\Gamma\vdash a:T_1}{\Gamma\vdash f\,a:T_2[x:=a]}\ \textsc{[T-App]}
 \]
 The rules for unbound variables depend on the world assumption and are given in Chapter~\ref{ch:worlds}. Collapse requires an admissibility certificate: a term whose type is not $\Adm{\cdot}$ cannot be collapsed, and this is a type error and not a run-time exception.
@@ -459,11 +468,11 @@ t::=\mathrm{pop}(x)\mid\mathrm{refuse}(x,r)\mid\mathrm{bind}(a,b)\mid\mathrm{col
 \]
 with $x,a,b\in\Sym$. Values are $\mathrm{adm}(x)$, $\mathrm{ref}(x,r)$, $\mathrm{bnd}(a,b)$, and $\mathrm{col}(x,c)$, typed by $\mathrm{adm}(x):\Adm{\mathrm{Unit}}$, $\mathrm{ref}(x,r):\Refused{\mathrm{Unit}}{r}$, $\mathrm{bnd}(a,b):\mathrm{Process}(\mathrm{Unit}\yields\mathrm{Unit})$, and $\mathrm{col}(x,c):\Collapsed{\mathrm{Unit}}{c}$, provided the symbols are declared with type $\mathrm{Unit}$ in $\Gamma$. The evaluation function $\eval(t,W)$ returns either a pair $(v,W')$ or $\blocked(x)$:
 \begin{align*}
-\eval(\mathrm{pop}(x),W)&=(\mathrm{adm}(x),P_xW)\ \text{ if }x\in\Omega_W,\quad\blocked(x)\text{ otherwise},\\
+\eval(\mathrm{pop}(x),W)&=(\mathrm{adm}(x),P_xW)\ \text{ if }x\in\Omega_W,\\ &\qquad\blocked(x)\text{ otherwise},\\
 \eval(\mathrm{refuse}(x,r),W)&=(\mathrm{ref}(x,r),R_{x,r}W),\\
 \eval(\mathrm{bind}(a,b),W)&=(\mathrm{bnd}(a,b),B_{a,b}W),\\
-\eval(\mathrm{collapse}(t,c),W)&=(\mathrm{col}(x,c),C_{x,c}W')\ \text{ if }\eval(t,W)=(\mathrm{adm}(x),W'),\ \text{and propagates }\blocked,\\
-\eval(t_1;t_2,W)&=\eval(t_2,W_1)\ \text{ if }\eval(t_1,W)=(v_1,W_1),\ \text{and propagates }\blocked.
+\eval(\mathrm{collapse}(t,c),W)&=(\mathrm{col}(x,c),C_{x,c}W')\\ &\qquad\text{if }\eval(t,W)=(\mathrm{adm}(x),W'),\\ &\qquad\text{and propagates }\blocked,\\
+\eval(t_1;t_2,W)&=\eval(t_2,W_1)\\ &\qquad\text{if }\eval(t_1,W)=(v_1,W_1),\\ &\qquad\text{and propagates }\blocked.
 \end{align*}
 In the clause for collapse, if $t$ is well typed with type $\Adm(T)$ and $\eval(t,W)$ succeeds, its value has the form $\mathrm{adm}(x)$; evaluation can still be blocked when the option consumed by $t$ is unavailable. A type of the form $\Adm(T)$ anticipates commitment before execution, and only a successful evaluation yields a value that certifies that the commitment occurred.
 \end{definition}
@@ -506,7 +515,8 @@ During implementation of the type checker a conflict appeared. The interpreter t
 
 \[
 \frac{x\notin\Gamma\quad\Gamma\ \text{is open-world}}{\Gamma\vdash x:\mathrm{Unit}}\ \textsc{[T-Var-Open]}
-\qquad
+\]
+\[
 \frac{x\notin\Gamma\quad\Gamma\ \text{is closed-world}}{\text{no typing derivation for }x}\ \textsc{[T-Var-Closed]}
 \]
 
@@ -869,8 +879,11 @@ The usual criterion for compiler correctness is that the compiled program produc
 \label{def:correctness}
 The interpreter is $\eval$ of Section~\ref{sec:core}. The \emph{event IR} is a list of events from $\Pop(x)$, $\Rfuse(x,r)$, $\Bind(a,b)$, $\Col(x,c)$, each carrying its argument. For terms whose type is $\Adm{\cdot}$ let $\mathrm{res}(\mathrm{pop}(x))=x$ and $\mathrm{res}(t_1;t_2)=\mathrm{res}(t_2)$. The compiler is
 \begin{align*}
-C(\mathrm{pop}(x))&=[\Pop(x)], & C(\mathrm{refuse}(x,r))&=[\Rfuse(x,r)], & C(\mathrm{bind}(a,b))&=[\Bind(a,b)],\\
-C(\mathrm{collapse}(t,c))&=C(t)\hconcat[\Col(\mathrm{res}(t),c)], & C(t_1;t_2)&=C(t_1)\hconcat C(t_2),
+C(\mathrm{pop}(x))&=[\Pop(x)],\\
+C(\mathrm{refuse}(x,r))&=[\Rfuse(x,r)],\\
+C(\mathrm{bind}(a,b))&=[\Bind(a,b)],\\
+C(t_1;t_2)&=C(t_1)\hconcat C(t_2),\\
+C(\mathrm{collapse}(t,c))&=C(t)\hconcat[\Col(\mathrm{res}(t),c)]
 \end{align*}
 and the machine executes $\mathrm{run}(C(t),W)$, which is undefined when a Pop event is not applicable. A compiler is \emph{correct} for a program $p$ and world $W$ if $\eval(p,W)$ succeeds with world $W'$ exactly when $\mathrm{run}(C(p),W)$ is defined, and then $W'=\mathrm{run}(C(p),W)$, in particular with equal histories.
 \end{definition}
@@ -1226,7 +1239,7 @@ The proposition is the formal content of the rule that a commit is evaluated ato
 
 Three predicates are distinguished, and none may be silently substituted for another. For a candidate $\tau$, a history $H$, a context $\Gamma$, evidence $\omega$, and an authorization $\alpha$:
 \[
-\mathrm{Valid}(\tau;H,\Gamma),\qquad\mathrm{Certified}(\tau;H,\Gamma,\omega),\qquad\mathrm{Authorized}(\tau;H,\Gamma,\alpha).
+\begin{gathered}\mathrm{Valid}(\tau;H,\Gamma),\qquad\mathrm{Certified}(\tau;H,\Gamma,\omega),\\\mathrm{Authorized}(\tau;H,\Gamma,\alpha).\end{gathered}
 \]
 $\mathrm{Valid}$ states that the candidate satisfies the obligations of the context. $\mathrm{Certified}$ states that a deterministic checker accepts the evidence $\omega$ as establishing the obligations declared by the profile. $\mathrm{Authorized}$ states that the principal holds authority to commit $\tau$ at $H$, evaluated against the state before the transition. A \emph{profile} is \emph{sound} if $\mathrm{Certified}$ implies $\mathrm{Valid}$ for the obligations it declares.
 
@@ -1248,11 +1261,12 @@ A proof that a transformation is correct does not itself grant permission to com
 In the original calculus, \textsc{[T-Pop]} yields $\Adm{T}$ from any typing derivation, and Remark~\ref{rem:adm-scope} limits its meaning to structural commitment. A type system for the protocol must go further. Opening a sphere must not certify the transformation subsequently performed in it. The judgement forms are separate, and a certificate type is introduced by exactly one rule.
 \[
 \frac{\Gamma\vdash\tau:\mathrm{Cand}}{\Gamma\vdash\mathsf{pop}(\tau):\mathrm{Open}(\tau)}\ \textsc{[P-Open]}
-\qquad
-\frac{\Gamma\vdash u:\mathrm{Open}(\tau)\quad\mathsf{check}(\omega,\tau,H)=\mathsf{accept}\quad h=\mathrm{head}(H)}{\Gamma\vdash\mathsf{verify}(u,\omega):\mathrm{Cert}_{h,\sigma,v}(\tau,\omega)}\ \textsc{[P-Verify]}
 \]
 \[
-\frac{\Gamma\vdash c:\mathrm{Cert}_{h,\sigma,v}(\tau,\omega)\quad\mathrm{Authorized}(\tau;H,\Gamma,\alpha)\quad h=\mathrm{head}(H)}{\Gamma\vdash\mathsf{collapse}(c,\alpha):\mathrm{Committed}(\tau)}\ \textsc{[P-Commit]}
+\frac{\begin{array}{c}\Gamma\vdash u:\mathrm{Open}(\tau)\\\mathsf{check}(\omega,\tau,H)=\mathsf{accept}\quad h=\mathrm{head}(H)\end{array}}{\Gamma\vdash\mathsf{verify}(u,\omega):\mathrm{Cert}_{h,\sigma,v}(\tau,\omega)}\ \textsc{[P-Verify]}
+\]
+\[
+\frac{\begin{array}{c}\Gamma\vdash c:\mathrm{Cert}_{h,\sigma,v}(\tau,\omega)\\\mathrm{Authorized}(\tau;H,\Gamma,\alpha)\quad h=\mathrm{head}(H)\end{array}}{\Gamma\vdash\mathsf{collapse}(c,\alpha):\mathrm{Committed}(\tau)}\ \textsc{[P-Commit]}
 \]
 
 \begin{proposition}[No Certificate from Opening]
@@ -1597,7 +1611,8 @@ The Spherepop Development Protocol specifies how software is maintained through 
 \section{Two Calculi}
 
 \begin{center}
-\begin{tabular}{lll}
+\small
+\begin{tabular}{p{0.19\textwidth}p{0.27\textwidth}p{0.32\textwidth}}
 \toprule
 Operation & Original calculus & Development protocol \\
 \midrule
@@ -1647,7 +1662,8 @@ Limits of this evidence should be stated. The kernels have one author and share 
 Three executable fixtures serve as worked examples, and each exhibits a distinction the original calculus does not represent.
 
 \begin{center}
-\begin{tabular}{lp{0.55\textwidth}}
+\small
+\begin{tabular}{p{0.28\textwidth}p{0.6\textwidth}}
 \toprule
 Fixture & Principle demonstrated \\
 \midrule
@@ -1666,16 +1682,17 @@ Each substantive requirement is associated with its formal definition, implement
 
 \medskip
 \begin{center}
-\small
-\begin{tabular}{p{0.2\textwidth}p{0.17\textwidth}p{0.17\textwidth}p{0.2\textwidth}p{0.15\textwidth}}
+\footnotesize
+\setlength{\tabcolsep}{3pt}
+\begin{tabular}{p{0.18\textwidth}p{0.17\textwidth}p{0.17\textwidth}p{0.16\textwidth}p{0.17\textwidth}}
 \toprule
 Requirement & Definition & Component & Fixture or test & Status \\
 \midrule
 Commit needs verified disposition and current base & Def.~\ref{def:commit}, Prop.~\ref{prop:serial} & \texttt{commit} & Parser history & Proved on model; exercised \\
 Typed findings & Ch.~\ref{ch:refusal} & Findings in \texttt{commit} & Parser, repair & Exercised for three findings \\
-Local certification not compositional & Thm.~\ref{thm:noncompositional} & \texttt{nested\_commit} & Nested spheres & Proved on model; exercised \\
+Local certification not compositional & Thm.~\ref{thm:noncompositional} & \texttt{nested\_\allowbreak commit} & Nested spheres & Proved on model; exercised \\
 Repair names an existing event & Ch.~\ref{ch:obstruction} & Repair check & Repair target; differential & Exercised \\
-Hash-chain integrity & Prop.\ in Ch.~\ref{ch:receipts} & \texttt{verify\_chain} & All fixtures regenerate identically & Conditional on collision resistance \\
+Hash-chain integrity & Prop.\ in Ch.~\ref{ch:receipts} & \texttt{verify\_\allowbreak chain} & All fixtures regenerate identically & Conditional on collision resistance \\
 Budget rule & Protocol specification & Budget check & Differential with mutation & Exercised \\
 Journals, rebasing, authorization time, context index & Protocol specification & Not implemented & None & Open \\
 \bottomrule
@@ -1884,16 +1901,16 @@ Application is left associative and binds tighter than abstraction and \texttt{l
 
 \begin{align*}
 \langle \mathit{term} \rangle
-  &::= \langle \mathit{var} \rangle
-    \mid \langle \mathit{lambda} \rangle
-    \mid \langle \mathit{app} \rangle
-    \mid \langle \mathit{let} \rangle
-    \mid \langle \mathit{pop} \rangle
-    \mid \langle \mathit{refuse} \rangle
-    \mid \langle \mathit{bind} \rangle
-    \mid \langle \mathit{collapse} \rangle
-    \mid \langle \mathit{seq} \rangle
-    \mid \texttt{(}\langle \mathit{term} \rangle\texttt{)}
+  &::= \langle \mathit{var} \rangle\\
+    &\mid \langle \mathit{lambda} \rangle\\
+    &\mid \langle \mathit{app} \rangle\\
+    &\mid \langle \mathit{let} \rangle\\
+    &\mid \langle \mathit{pop} \rangle\\
+    &\mid \langle \mathit{refuse} \rangle\\
+    &\mid \langle \mathit{bind} \rangle\\
+    &\mid \langle \mathit{collapse} \rangle\\
+    &\mid \langle \mathit{seq} \rangle\\
+    &\mid \texttt{(}\langle \mathit{term} \rangle\texttt{)}
 \\[4pt]
 \langle \mathit{var} \rangle
   &::= \langle \mathit{symbol} \rangle
@@ -1937,9 +1954,9 @@ Application is left associative and binds tighter than abstraction and \texttt{l
 
 \begin{align*}
 \langle \mathit{reason} \rangle
-  &::= \mathtt{violation}\mathtt{(}\langle\mathit{symbol}\rangle\mathtt{)}
-    \mid \mathtt{explicit}\mathtt{(}\langle\mathit{symbol}\rangle\mathtt{)}
-    \mid \varepsilon \quad (\text{defaults to } \mathtt{Explicit("unspecified")})
+  &::= \mathtt{violation}\mathtt{(}\langle\mathit{symbol}\rangle\mathtt{)}\\
+    &\mid \mathtt{explicit}\mathtt{(}\langle\mathit{symbol}\rangle\mathtt{)}\\
+    &\mid \varepsilon \quad (\text{defaults to } \mathtt{Explicit("unspecified")})
 \end{align*}
 
 Runtime correspondence:
@@ -1952,24 +1969,24 @@ Runtime correspondence:
 
 \begin{align*}
 \langle \mathit{rule} \rangle
-  &::= \mathtt{id}
-    \mid \mathtt{last\_write}
-    \mid \mathtt{accumulate}
-    \mid \mathtt{proj}\mathtt{(}\langle\mathit{symbol}\rangle\mathtt{)}
-    \mid \langle\mathit{ident}\rangle
-    \mid \varepsilon \quad (\text{defaults to } \mathtt{Identity})
+  &::= \mathtt{id}\\
+    &\mid \mathtt{last\_write}\\
+    &\mid \mathtt{accumulate}\\
+    &\mid \mathtt{proj}\mathtt{(}\langle\mathit{symbol}\rangle\mathtt{)}\\
+    &\mid \langle\mathit{ident}\rangle\\
+    &\mid \varepsilon \quad (\text{defaults to } \mathtt{Identity})
 \end{align*}
 
 \section{Types}
 
 \begin{align*}
 \langle \mathit{type} \rangle
-  &::= \mathtt{Unit}
-    \mid \mathtt{Never}
-    \mid \mathtt{Type}
-    \mid \langle\mathit{type\_var}\rangle
-    \mid \mathtt{Admissible}\mathtt{(}\langle\mathit{type}\rangle\mathtt{)}
-    \mid \langle\mathit{type}\rangle\ \mathtt{\to}\ \langle\mathit{type}\rangle
+  &::= \mathtt{Unit}\\
+    &\mid \mathtt{Never}\\
+    &\mid \mathtt{Type}\\
+    &\mid \langle\mathit{type\_var}\rangle\\
+    &\mid \mathtt{Admissible}\mathtt{(}\langle\mathit{type}\rangle\mathtt{)}\\
+    &\mid \langle\mathit{type}\rangle\ \mathtt{\to}\ \langle\mathit{type}\rangle
 \end{align*}
 
 The richer types ($\mathrm{Refused}$, $\mathrm{Collapsed}$, $\mathrm{Process}$,
@@ -1989,7 +2006,7 @@ $\Omega$ the remaining option space, and $a \in \{\top, \bot\}$ the
 admissibility flag.
 
 \begin{center}
-\begin{tabular}{llll}
+\small\setlength{\tabcolsep}{3pt}\begin{tabular}{p{0.17\textwidth}p{0.27\textwidth}p{0.22\textwidth}p{0.15\textwidth}}
 \toprule
 Surface form & Type produced & Event appended & $\Omega$ change \\
 \midrule
@@ -2022,18 +2039,19 @@ the inner term must have type $\Adm{T}$ (see \textsc{[T-Collapse]}).
 \section{Module-to-Result Map}
 
 \begin{center}
-\begin{tabular}{lll}
+\small
+\begin{tabular}{p{0.36\textwidth}p{0.3\textwidth}p{0.26\textwidth}}
 \toprule
 Module & Result & Role \\
 \midrule
-\texttt{core/event.rs} & Event alphabet & Defines the generator set $E$ \\
-\texttt{core/history.rs} & Free monoid & Implements $(\calH,\hconcat,\varepsilon)$ \\
-\texttt{core/option\_space.rs} & Theorem~\ref{thm:conservation} & Maintains $\Omega_t$ \\
-\texttt{core/observable.rs} & Definition~\ref{def:collapse-rule} & Implements the quotient by a rule \\
-\texttt{types/checker.rs} & Theorem~\ref{thm:collapse-soundness} & Enforces \textsc{[T-Collapse]} \\
-\texttt{types/checker.rs} & Chapter~\ref{ch:worlds} & Open and closed world modes \\
-\texttt{compiler/lower.rs} & Definition~\ref{def:correctness} & Emits event IR \\
-\texttt{vm/machine.rs} & Theorem~\ref{thm:replay} & Executes event IR on a world \\
+\texttt{core/\allowbreak event.rs} & Event alphabet & Defines the generator set $E$ \\
+\texttt{core/\allowbreak history.rs} & Free monoid & Implements $(\calH,\hconcat,\varepsilon)$ \\
+\texttt{core/\allowbreak option\_\allowbreak space.rs} & Theorem~\ref{thm:conservation} & Maintains $\Omega_t$ \\
+\texttt{core/\allowbreak observable.rs} & Definition~\ref{def:collapse-rule} & Implements the quotient by a rule \\
+\texttt{types/\allowbreak checker.rs} & Theorem~\ref{thm:collapse-soundness} & Enforces \textsc{[T-Collapse]} \\
+\texttt{types/\allowbreak checker.rs} & Chapter~\ref{ch:worlds} & Open and closed world modes \\
+\texttt{compiler/\allowbreak lower.rs} & Definition~\ref{def:correctness} & Emits event IR \\
+\texttt{vm/\allowbreak machine.rs} & Theorem~\ref{thm:replay} & Executes event IR on a world \\
 \bottomrule
 \end{tabular}
 \end{center}
@@ -2158,14 +2176,15 @@ Accumulate places the two histories in one class and Identity, which is finer, s
 \section{Recorded Results}
 
 \begin{center}
-\begin{tabular}{lll}
+\small
+\begin{tabular}{p{0.28\textwidth}p{0.4\textwidth}p{0.17\textwidth}}
 \toprule
 Result & Test & Recorded status \\
 \midrule
-Theorem~\ref{thm:conservation} & \texttt{world\_history\_grows\_option\_space\_shrinks} & \texttt{PASS} \\
-Theorem~\ref{thm:collapse-soundness} & \texttt{collapse\_requires\_admissible\_certificate} & \texttt{PASS} \\
-Theorem~\ref{thm:replay} & \texttt{replay\_equivalence\_*} & \texttt{PASS} \\
-Proposition~\ref{prop:disambiguation} & \texttt{finer\_rule\_disambiguates} & \texttt{PASS} \\
+Theorem~\ref{thm:conservation} & \texttt{world\_\allowbreak history\_\allowbreak grows\_\allowbreak option\_\allowbreak space\_\allowbreak shrinks} & \texttt{PASS} \\
+Theorem~\ref{thm:collapse-soundness} & \texttt{collapse\_\allowbreak requires\_\allowbreak admissible\_\allowbreak certificate} & \texttt{PASS} \\
+Theorem~\ref{thm:replay} & \texttt{replay\_\allowbreak equivalence\_\allowbreak *} & \texttt{PASS} \\
+Proposition~\ref{prop:disambiguation} & \texttt{finer\_\allowbreak rule\_\allowbreak disambiguates} & \texttt{PASS} \\
 \bottomrule
 \end{tabular}
 \end{center}
@@ -2178,7 +2197,7 @@ The ledger records the status of each principal result. \emph{Proved} means prov
 \medskip
 \begin{center}
 \small
-\begin{longtable}{p{0.5\textwidth}p{0.2\textwidth}p{0.2\textwidth}}
+\begin{longtable}{p{0.45\textwidth}p{0.22\textwidth}p{0.2\textwidth}}
 \toprule
 Result & Location & Status \\
 \midrule
@@ -2232,7 +2251,7 @@ Protocol kernels and fixtures & Ch.~\ref{ch:kernels} & Exercised \\
 % =====================================================================
 \backmatter
 
-\chapter*{References}
+\renewcommand{\bibname}{References}
 \addcontentsline{toc}{chapter}{References}
 
 \begin{thebibliography}{99}
